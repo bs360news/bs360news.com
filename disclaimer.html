@@ -16,7 +16,11 @@
 
 <meta name="robots" content="index, follow">
 
-<link rel="canonical" href="https://bs360news.com/disclaimer.html">
+<link
+    rel="canonical"
+    href="https://bs360news.com/disclaimer.html"
+>
+
 
 <style>
 
@@ -24,6 +28,10 @@
     box-sizing:border-box;
     margin:0;
     padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
 }
 
 html,
@@ -39,14 +47,18 @@ body{
     line-height:1.8;
 }
 
-/* HEADER */
+
+/* =========================
+   HEADER
+========================= */
 
 .header{
     width:100%;
     background:#111;
     color:#fff;
-    padding:22px 30px;
+    padding:22px 5%;
     text-align:center;
+    border-bottom:3px solid #e00000;
 }
 
 .header h1{
@@ -55,13 +67,16 @@ body{
     font-weight:700;
 }
 
-/* MAIN */
+
+/* =========================
+   MAIN CONTENT
+========================= */
 
 .container{
     width:100%;
     max-width:none;
     margin:0;
-    padding:35px 6%;
+    padding:35px 6% 45px;
 }
 
 .content{
@@ -72,13 +87,16 @@ body{
     box-shadow:none;
 }
 
-/* HEADINGS */
+
+/* =========================
+   HEADINGS
+========================= */
 
 .content h2{
     margin:0 0 25px;
     padding-bottom:12px;
     border-bottom:2px solid #d60000;
-    color:#d60000;
+    color:#111;
     font-size:30px;
     font-weight:700;
 }
@@ -86,20 +104,30 @@ body{
 .content h3{
     margin-top:30px;
     margin-bottom:10px;
+    padding-left:12px;
+    border-left:4px solid #e00000;
     color:#222;
     font-size:21px;
     font-weight:700;
 }
 
-/* PARAGRAPHS */
+
+/* =========================
+   PARAGRAPHS
+========================= */
 
 .content p{
     margin:0 0 16px;
+    max-width:1150px;
     font-size:16px;
     color:#333;
+    line-height:1.9;
 }
 
-/* LINKS */
+
+/* =========================
+   LINKS
+========================= */
 
 a{
     color:#d60000;
@@ -110,30 +138,153 @@ a:hover{
     text-decoration:underline;
 }
 
+
+/* =========================
+   HOME LINK
+========================= */
+
 .home-link{
     display:inline-block;
     margin-top:15px;
+    padding:9px 16px;
+    background:#075aaa;
+    color:#fff;
+    border-radius:4px;
     font-weight:600;
 }
 
-/* FOOTER */
+.home-link:hover{
+    color:#fff;
+    text-decoration:none;
+    opacity:.92;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
 
 .footer{
     width:100%;
     background:#111;
-    color:#fff;
-    padding:20px 15px;
-    margin-top:20px;
+    color:#aaa;
+    padding:35px 5% 20px;
     text-align:center;
     font-size:14px;
+    border-top:3px solid #e00000;
 }
 
-/* MOBILE */
+
+/* =========================
+   FOOTER BRAND
+========================= */
+
+.footer-brand{
+    max-width:850px;
+    margin:0 auto 20px;
+}
+
+.footer-brand strong{
+    display:block;
+    color:#fff;
+    font-size:21px;
+    margin-bottom:8px;
+}
+
+.footer-brand p{
+    max-width:850px;
+    margin:0 auto;
+    color:#aaa;
+    font-size:14px;
+    line-height:1.7;
+}
+
+
+/* =========================
+   FOOTER CONTACT
+========================= */
+
+.footer-contact{
+    margin:18px auto;
+}
+
+.footer-contact p{
+    margin:6px 0;
+    color:#aaa;
+    font-size:14px;
+    max-width:none;
+}
+
+.footer-contact strong{
+    color:#fff;
+}
+
+.footer-contact a{
+    color:#ddd;
+    text-decoration:none;
+}
+
+.footer-contact a:hover{
+    color:#fff;
+    text-decoration:underline;
+}
+
+
+/* =========================
+   FOOTER LINKS
+========================= */
+
+.footer-links{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:8px 18px;
+    max-width:1000px;
+    margin:22px auto;
+    padding:18px 0;
+    border-top:1px solid #333;
+    border-bottom:1px solid #333;
+}
+
+.footer-links a{
+    color:#ccc;
+    text-decoration:none;
+    font-size:13px;
+}
+
+.footer-links a:hover{
+    color:#fff;
+    text-decoration:underline;
+}
+
+
+/* =========================
+   FOOTER BOTTOM
+========================= */
+
+.footer-bottom{
+    max-width:900px;
+    margin:0 auto;
+}
+
+.footer-bottom p{
+    margin:5px 0;
+    color:#888;
+    font-size:12px;
+    line-height:1.6;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:768px){
 
     .header{
         padding:18px 15px;
+        border-bottom-width:2px;
     }
 
     .header h1{
@@ -141,7 +292,7 @@ a:hover{
     }
 
     .container{
-        padding:25px 18px;
+        padding:25px 18px 35px;
     }
 
     .content h2{
@@ -152,19 +303,62 @@ a:hover{
     .content h3{
         font-size:19px;
         margin-top:25px;
+        padding-left:10px;
     }
 
     .content p{
         font-size:15px;
-        line-height:1.75;
+        line-height:1.8;
+    }
+
+    .home-link{
+        font-size:14px;
+    }
+
+
+    /* MOBILE FOOTER */
+
+    .footer{
+        padding:30px 5% 18px;
+    }
+
+    .footer-brand strong{
+        font-size:19px;
+    }
+
+    .footer-brand p{
+        font-size:13px;
+    }
+
+    .footer-contact p{
+        font-size:13px;
+    }
+
+    .footer-links{
+        gap:10px 15px;
+        margin:18px auto;
+        padding:15px 0;
+    }
+
+    .footer-links a{
+        font-size:12px;
+    }
+
+    .footer-bottom p{
+        font-size:11px;
     }
 
 }
 
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
 @media(max-width:480px){
 
     .container{
-        padding:22px 15px;
+        padding:22px 15px 30px;
     }
 
     .header h1{
@@ -189,27 +383,37 @@ a:hover{
 
 </head>
 
+
 <body>
 
-<!-- HEADER -->
 
-<div class="header">
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="header">
 
     <h1>
         BS 360 NEWS
     </h1>
 
-</div>
+</header>
 
-<!-- CONTENT -->
 
-<div class="container">
+
+<!-- =========================
+     CONTENT
+========================= -->
+
+<main class="container">
 
 <div class="content">
+
 
 <h2>
     Disclaimer
 </h2>
+
 
 <p>
     The news, articles, information, and other content published on
@@ -217,6 +421,7 @@ a:hover{
     We make reasonable efforts to present news and information based
     on available information and relevant sources.
 </p>
+
 
 <h3>
     News Information
@@ -236,8 +441,9 @@ a:hover{
     to relevant articles when necessary.
 </p>
 
+
 <h3>
-    Articles & News Content
+    Articles &amp; News Content
 </h3>
 
 <p>
@@ -254,8 +460,9 @@ a:hover{
     necessary.
 </p>
 
+
 <h3>
-    Movies & Entertainment News
+    Movies &amp; Entertainment News
 </h3>
 
 <p>
@@ -265,6 +472,7 @@ a:hover{
     official announcements or information from the concerned organizations
     are available, preference may be given to such information.
 </p>
+
 
 <h3>
     Sports News
@@ -277,6 +485,7 @@ a:hover{
     encouraged to verify important information through relevant official
     announcements and sources when necessary.
 </p>
+
 
 <h3>
     External Links
@@ -295,6 +504,7 @@ a:hover{
     or providing any personal information.
 </p>
 
+
 <h3>
     Advertising
 </h3>
@@ -311,6 +521,7 @@ a:hover{
     advertisement, users should independently verify the relevant details,
     terms, conditions, pricing, availability, and other applicable information.
 </p>
+
 
 <h3>
     Website Usage
@@ -330,6 +541,7 @@ a:hover{
     available on the website.
 </p>
 
+
 <h3>
     Disclaimer Updates
 </h3>
@@ -341,6 +553,7 @@ a:hover{
     of this Disclaimer will be made available on this page.
 </p>
 
+
 <h3>
     Contact
 </h3>
@@ -350,23 +563,165 @@ a:hover{
     this Disclaimer, you can contact BS 360 NEWS through our Contact Us page.
 </p>
 
+
 <p>
-    <a class="home-link" href="index.html">
+    <strong>
+        Email:
+    </strong>
+
+    <a href="mailto:newsb386@gmail.com">
+        newsb386@gmail.com
+    </a>
+</p>
+
+
+<p>
+    <strong>
+        WhatsApp:
+    </strong>
+
+    <a
+        href="https://wa.me/917331137354"
+        target="_blank"
+        rel="noopener"
+    >
+        +91 73311 37354
+    </a>
+</p>
+
+
+<p>
+    <a
+        class="home-link"
+        href="index.html"
+    >
         ← Return to Home
     </a>
 </p>
 
-</div>
 
 </div>
 
-<!-- FOOTER -->
+</main>
 
-<div class="footer">
 
-    © 2026 BS 360 NEWS. All Rights Reserved.
 
-</div>
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer class="footer">
+
+
+    <!-- FOOTER BRAND -->
+
+    <div class="footer-brand">
+
+        <strong>
+            BS 360 NEWS
+        </strong>
+
+        <p>
+            BS 360 NEWS is a Telugu digital news platform providing
+            the latest updates on Andhra Pradesh, Telangana, India,
+            world, cinema, sports, business and entertainment.
+        </p>
+
+    </div>
+
+
+
+    <!-- FOOTER CONTACT -->
+
+    <div class="footer-contact">
+
+        <p>
+
+            <strong>
+                Contact:
+            </strong>
+
+            <a href="mailto:newsb386@gmail.com">
+                newsb386@gmail.com
+            </a>
+
+        </p>
+
+
+        <p>
+
+            <strong>
+                WhatsApp:
+            </strong>
+
+            <a
+                href="https://wa.me/917331137354"
+                target="_blank"
+                rel="noopener"
+            >
+                +91 73311 37354
+            </a>
+
+        </p>
+
+    </div>
+
+
+
+    <!-- FOOTER LINKS -->
+
+    <div class="footer-links">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="about.html">
+            About Us
+        </a>
+
+        <a href="contact.html">
+            Contact Us
+        </a>
+
+        <a href="advertise.html">
+            Advertise With Us
+        </a>
+
+        <a href="Privacy Policy.html">
+            Privacy Policy
+        </a>
+
+        <a href="disclaimer.html">
+            Disclaimer
+        </a>
+
+        <a href="terms.html">
+            Terms &amp; Conditions
+        </a>
+
+    </div>
+
+
+
+    <!-- FOOTER BOTTOM -->
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 BS 360 NEWS. All Rights Reserved.
+        </p>
+
+        <p>
+            The information published on this website is provided
+            for general informational purposes.
+        </p>
+
+    </div>
+
+
+</footer>
+
 
 </body>
 
