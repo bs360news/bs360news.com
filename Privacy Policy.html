@@ -7,12 +7,20 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Privacy Policy | bs360 Media</title>
+<title>Privacy Policy | BS 360 NEWS</title>
 
 <meta
     name="description"
-    content="bs360 Media Privacy Policy – Learn how visitor information, cookies, advertisements and third-party services are used on our website."
+    content="BS 360 NEWS Privacy Policy – Learn how visitor information, cookies, advertisements and third-party services are used on our website."
 >
+
+<meta name="robots" content="index, follow">
+
+<link
+    rel="canonical"
+    href="https://bs360news.com/Privacy%20Policy.html"
+>
+
 
 <style>
 
@@ -20,6 +28,10 @@
     box-sizing:border-box;
     margin:0;
     padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
 }
 
 html,
@@ -35,6 +47,7 @@ body{
     line-height:1.8;
 }
 
+
 /* =========================
    HEADER
 ========================= */
@@ -43,8 +56,9 @@ body{
     width:100%;
     background:#111;
     color:#fff;
-    padding:22px 30px;
+    padding:22px 5%;
     text-align:center;
+    border-bottom:3px solid #e00000;
 }
 
 .header h1{
@@ -52,6 +66,7 @@ body{
     font-size:28px;
     font-weight:700;
 }
+
 
 /* =========================
    MAIN CONTENT
@@ -61,7 +76,7 @@ body{
     width:100%;
     max-width:none;
     margin:0;
-    padding:35px 6%;
+    padding:35px 6% 45px;
 }
 
 .content{
@@ -72,6 +87,7 @@ body{
     box-shadow:none;
 }
 
+
 /* =========================
    HEADINGS
 ========================= */
@@ -80,7 +96,7 @@ body{
     margin:0 0 25px;
     padding-bottom:12px;
     border-bottom:2px solid #d60000;
-    color:#d60000;
+    color:#111;
     font-size:30px;
     font-weight:700;
 }
@@ -88,6 +104,8 @@ body{
 .content h3{
     margin-top:30px;
     margin-bottom:10px;
+    padding-left:12px;
+    border-left:4px solid #e00000;
     color:#222;
     font-size:21px;
     font-weight:700;
@@ -95,9 +113,12 @@ body{
 
 .content p{
     margin:0 0 16px;
+    max-width:1150px;
     font-size:16px;
     color:#333;
+    line-height:1.9;
 }
+
 
 /* =========================
    LINKS
@@ -112,6 +133,7 @@ a:hover{
     text-decoration:underline;
 }
 
+
 /* =========================
    HOME LINK
 ========================= */
@@ -119,8 +141,19 @@ a:hover{
 .home-link{
     display:inline-block;
     margin-top:15px;
+    padding:9px 16px;
+    background:#075aaa;
+    color:#fff;
+    border-radius:4px;
     font-weight:600;
 }
+
+.home-link:hover{
+    color:#fff;
+    text-decoration:none;
+    opacity:.92;
+}
+
 
 /* =========================
    FOOTER
@@ -129,12 +162,106 @@ a:hover{
 .footer{
     width:100%;
     background:#111;
-    color:#fff;
-    padding:20px 15px;
-    margin-top:20px;
+    color:#aaa;
+    padding:35px 5% 20px;
     text-align:center;
     font-size:14px;
+    border-top:3px solid #e00000;
 }
+
+
+/* FOOTER BRAND */
+
+.footer-brand{
+    max-width:850px;
+    margin:0 auto 20px;
+}
+
+.footer-brand strong{
+    display:block;
+    color:#fff;
+    font-size:21px;
+    margin-bottom:8px;
+}
+
+.footer-brand p{
+    max-width:850px;
+    margin:0 auto;
+    color:#aaa;
+    font-size:14px;
+    line-height:1.7;
+}
+
+
+/* FOOTER CONTACT */
+
+.footer-contact{
+    margin:18px auto;
+}
+
+.footer-contact p{
+    margin:6px 0;
+    color:#aaa;
+    font-size:14px;
+    max-width:none;
+}
+
+.footer-contact strong{
+    color:#fff;
+}
+
+.footer-contact a{
+    color:#ddd;
+    text-decoration:none;
+}
+
+.footer-contact a:hover{
+    color:#fff;
+    text-decoration:underline;
+}
+
+
+/* FOOTER LINKS */
+
+.footer-links{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:8px 18px;
+    max-width:1000px;
+    margin:22px auto;
+    padding:18px 0;
+    border-top:1px solid #333;
+    border-bottom:1px solid #333;
+}
+
+.footer-links a{
+    color:#ccc;
+    text-decoration:none;
+    font-size:13px;
+}
+
+.footer-links a:hover{
+    color:#fff;
+    text-decoration:underline;
+}
+
+
+/* FOOTER BOTTOM */
+
+.footer-bottom{
+    max-width:900px;
+    margin:0 auto;
+}
+
+.footer-bottom p{
+    margin:5px 0;
+    color:#888;
+    font-size:12px;
+    line-height:1.6;
+}
+
 
 /* =========================
    MOBILE
@@ -144,6 +271,7 @@ a:hover{
 
     .header{
         padding:18px 15px;
+        border-bottom-width:2px;
     }
 
     .header h1{
@@ -151,7 +279,7 @@ a:hover{
     }
 
     .container{
-        padding:25px 18px;
+        padding:25px 18px 35px;
     }
 
     .content h2{
@@ -162,14 +290,53 @@ a:hover{
     .content h3{
         font-size:19px;
         margin-top:25px;
+        padding-left:10px;
     }
 
     .content p{
         font-size:15px;
-        line-height:1.75;
+        line-height:1.8;
+    }
+
+    .home-link{
+        font-size:14px;
+    }
+
+
+    /* MOBILE FOOTER */
+
+    .footer{
+        padding:30px 5% 18px;
+    }
+
+    .footer-brand strong{
+        font-size:19px;
+    }
+
+    .footer-brand p{
+        font-size:13px;
+    }
+
+    .footer-contact p{
+        font-size:13px;
+    }
+
+    .footer-links{
+        gap:10px 15px;
+        margin:18px auto;
+        padding:15px 0;
+    }
+
+    .footer-links a{
+        font-size:12px;
+    }
+
+    .footer-bottom p{
+        font-size:11px;
     }
 
 }
+
 
 /* =========================
    SMALL MOBILE
@@ -178,7 +345,7 @@ a:hover{
 @media(max-width:480px){
 
     .container{
-        padding:22px 15px;
+        padding:22px 15px 30px;
     }
 
     .header h1{
@@ -203,197 +370,388 @@ a:hover{
 
 </head>
 
+
 <body>
 
-<!-- HEADER -->
 
-<div class="header">
-    <h1>bs 360 Media</h1>
-</div>
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="header">
+
+    <h1>
+        BS 360 NEWS
+    </h1>
+
+</header>
 
 
-<!-- MAIN CONTENT -->
 
-<div class="container">
+<!-- =========================
+     MAIN CONTENT
+========================= -->
+
+<main class="container">
 
 <div class="content">
 
-<h2>Privacy Policy</h2>
 
-<p>
-At bs 360 Media, we respect the privacy of everyone who visits our website.
-This Privacy Policy explains what general information may be collected when
-you use our website, how that information may be used, and how we handle
-third-party services.
-</p>
-
-
-<h3>Information We Collect</h3>
-
-<p>
-When you visit our website, we do not intentionally collect personal
-information such as your name, phone number, or other personal details
-unless you voluntarily provide such information.
-</p>
-
-<p>
-However, some non-personal technical information may be automatically
-recorded when you access our website. This may include information such as
-your browser type, device type, visited pages, date and time, and general
-website usage information.
-</p>
-
-<p>
-This information may be used to understand how visitors use our website,
-monitor website performance, improve our pages, and provide a better
-browsing experience.
-</p>
-
-
-<h3>Cookies</h3>
-
-<p>
-bs 360 Media may use cookies and similar technologies to improve user
-experience and website performance. Cookies are small data files that may
-be stored on your browser when you visit a website.
-</p>
-
-<p>
-Cookies may help certain website features work properly and may also help
-us understand how visitors use different pages and sections of our website.
-</p>
-
-<p>
-You can control or disable cookies through your browser settings. However,
-disabling certain cookies may affect how some website features work.
-</p>
-
-
-<h3>Advertisements</h3>
-
-<p>
-Our website may display advertisements provided by third-party advertising
-services. These advertising services may use cookies or similar technologies
-to provide advertisements on our website.
-</p>
-
-<p>
-Advertising partners may use certain general information related to your
-browser or browsing activity to display advertisements that may be relevant
-to you.
-</p>
-
-<p>
-bs 360 Media does not directly control the cookies or technologies used by
-third-party advertising partners. Their use of information is subject to
-their own privacy policies and terms.
-</p>
-
-
-<h3>Google AdSense</h3>
-
-<p>
-bs 360 Media may use Google AdSense or other Google advertising services
-now or in the future. Google and its advertising partners may use cookies
-or similar technologies to display advertisements to visitors.
-</p>
-
-<p>
-Google may use information collected through advertising technologies to
-help provide and measure advertisements. Visitors can review Google's
-privacy information and advertising policies for more details.
-</p>
-
-
-<h3>Third-Party Websites</h3>
-
-<p>
-Our news articles or other pages may contain links to third-party websites.
-These links may be provided for additional information or reference.
-</p>
-
-<p>
-Once you leave the bs 360 Media website and visit a third-party website,
-that website's own Privacy Policy and Terms will apply. We do not control
-the privacy practices, content, or policies of third-party websites.
-</p>
-
-<p>
-We recommend reviewing the Privacy Policy and Terms of any third-party
-website before providing personal information or using its services.
-</p>
-
-
-<h3>News and Website Usage</h3>
-
-<p>
-bs 360 Media provides news and information covering Telugu news, movies,
-sports, business, and other topics. General website usage information may
-be used to understand visitor interests and improve our content and website
-experience.
-</p>
-
-<p>
-We may use general website statistics to understand which pages and
-sections receive more visits. This helps us improve the website and provide
-useful content to our visitors.
-</p>
-
-
-<h3>Children's Privacy</h3>
-
-<p>
-Protecting children's privacy is important to us. We do not intentionally
-collect personal information from children through our website.
-</p>
-
-<p>
-Parents and guardians are encouraged to guide children about sharing
-personal information online and to take appropriate precautions when using
-internet services.
-</p>
-
-
-<h3>Changes to This Privacy Policy</h3>
-
-<p>
-We may update this Privacy Policy from time to time due to changes in our
-website, new features, services, advertising partners, or other requirements.
-</p>
-
-<p>
-If we make any changes to this Privacy Policy, the updated version will be
-published on this page. We recommend checking this page periodically for
-the latest information.
-</p>
-
-
-<h3>Contact Us</h3>
-
-<p>
-If you have any questions, concerns, or requests regarding this Privacy
-Policy, you can contact bs 360 Media through our Contact Us page.
-</p>
+<h2>
+    Privacy Policy
+</h2>
 
 
 <p>
-<a class="home-link" href="index.html">
-← Back to Home
-</a>
+    At BS 360 NEWS, we respect the privacy of everyone who visits our website.
+    This Privacy Policy explains what general information may be collected when
+    you use our website, how that information may be used, and how we handle
+    third-party services.
 </p>
+
+
+
+<h3>
+    Information We Collect
+</h3>
+
+<p>
+    When you visit our website, we do not intentionally collect personal
+    information such as your name, phone number, or other personal details
+    unless you voluntarily provide such information.
+</p>
+
+<p>
+    However, some non-personal technical information may be automatically
+    recorded when you access our website. This may include information such as
+    your browser type, device type, visited pages, date and time, and general
+    website usage information.
+</p>
+
+<p>
+    This information may be used to understand how visitors use our website,
+    monitor website performance, improve our pages, and provide a better
+    browsing experience.
+</p>
+
+
+
+<h3>
+    Cookies
+</h3>
+
+<p>
+    BS 360 NEWS may use cookies and similar technologies to improve user
+    experience and website performance. Cookies are small data files that may
+    be stored on your browser when you visit a website.
+</p>
+
+<p>
+    Cookies may help certain website features work properly and may also help
+    us understand how visitors use different pages and sections of our website.
+</p>
+
+<p>
+    You can control or disable cookies through your browser settings. However,
+    disabling certain cookies may affect how some website features work.
+</p>
+
+
+
+<h3>
+    Advertisements
+</h3>
+
+<p>
+    Our website may display advertisements provided by third-party advertising
+    services. These advertising services may use cookies or similar technologies
+    to provide advertisements on our website.
+</p>
+
+<p>
+    Advertising partners may use certain general information related to your
+    browser or browsing activity to display advertisements that may be relevant
+    to you.
+</p>
+
+<p>
+    BS 360 NEWS does not directly control the cookies or technologies used by
+    third-party advertising partners. Their use of information is subject to
+    their own privacy policies and terms.
+</p>
+
+
+
+<h3>
+    Google AdSense
+</h3>
+
+<p>
+    BS 360 NEWS may use Google AdSense or other Google advertising services
+    now or in the future. Google and its advertising partners may use cookies
+    or similar technologies to display advertisements to visitors.
+</p>
+
+<p>
+    Google may use information collected through advertising technologies to
+    help provide and measure advertisements. Visitors can review Google's
+    privacy information and advertising policies for more details.
+</p>
+
+
+
+<h3>
+    Third-Party Websites
+</h3>
+
+<p>
+    Our news articles or other pages may contain links to third-party websites.
+    These links may be provided for additional information or reference.
+</p>
+
+<p>
+    Once you leave the BS 360 NEWS website and visit a third-party website,
+    that website's own Privacy Policy and Terms will apply. We do not control
+    the privacy practices, content, or policies of third-party websites.
+</p>
+
+<p>
+    We recommend reviewing the Privacy Policy and Terms of any third-party
+    website before providing personal information or using its services.
+</p>
+
+
+
+<h3>
+    News and Website Usage
+</h3>
+
+<p>
+    BS 360 NEWS provides news and information covering Telugu news, movies,
+    sports, business, and other topics. General website usage information may
+    be used to understand visitor interests and improve our content and website
+    experience.
+</p>
+
+<p>
+    We may use general website statistics to understand which pages and
+    sections receive more visits. This helps us improve the website and provide
+    useful content to our visitors.
+</p>
+
+
+
+<h3>
+    Children's Privacy
+</h3>
+
+<p>
+    Protecting children's privacy is important to us. We do not intentionally
+    collect personal information from children through our website.
+</p>
+
+<p>
+    Parents and guardians are encouraged to guide children about sharing
+    personal information online and to take appropriate precautions when using
+    internet services.
+</p>
+
+
+
+<h3>
+    Changes to This Privacy Policy
+</h3>
+
+<p>
+    We may update this Privacy Policy from time to time due to changes in our
+    website, new features, services, advertising partners, or other requirements.
+</p>
+
+<p>
+    If we make any changes to this Privacy Policy, the updated version will be
+    published on this page. We recommend checking this page periodically for
+    the latest information.
+</p>
+
+
+
+<h3>
+    Contact Us
+</h3>
+
+<p>
+    If you have any questions, concerns, or requests regarding this Privacy
+    Policy, you can contact BS 360 NEWS through our Contact Us page.
+</p>
+
+
+<p>
+
+    <strong>
+        Email:
+    </strong>
+
+    <a href="mailto:newsb386@gmail.com">
+        newsb386@gmail.com
+    </a>
+
+</p>
+
+
+<p>
+
+    <strong>
+        WhatsApp:
+    </strong>
+
+    <a
+        href="https://wa.me/917331137354"
+        target="_blank"
+        rel="noopener"
+    >
+        +91 73311 37354
+    </a>
+
+</p>
+
+
+<p>
+
+    <a
+        class="home-link"
+        href="index.html"
+    >
+        ← Back to Home
+    </a>
+
+</p>
+
 
 </div>
 
-</div>
+</main>
 
 
-<!-- FOOTER -->
 
-<div class="footer">
-© 2026 bs 360 Media. All Rights Reserved.
-</div>
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer class="footer">
+
+
+    <!-- FOOTER BRAND -->
+
+    <div class="footer-brand">
+
+        <strong>
+            BS 360 NEWS
+        </strong>
+
+        <p>
+
+            BS 360 NEWS is a Telugu digital news platform providing
+            the latest updates on Andhra Pradesh, Telangana, India,
+            world, cinema, sports, business and entertainment.
+
+        </p>
+
+    </div>
+
+
+
+    <!-- FOOTER CONTACT -->
+
+    <div class="footer-contact">
+
+        <p>
+
+            <strong>
+                Contact:
+            </strong>
+
+            <a href="mailto:newsb386@gmail.com">
+                newsb386@gmail.com
+            </a>
+
+        </p>
+
+
+        <p>
+
+            <strong>
+                WhatsApp:
+            </strong>
+
+            <a
+                href="https://wa.me/917331137354"
+                target="_blank"
+                rel="noopener"
+            >
+                +91 73311 37354
+            </a>
+
+        </p>
+
+    </div>
+
+
+
+    <!-- FOOTER LINKS -->
+
+    <div class="footer-links">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="about.html">
+            About Us
+        </a>
+
+        <a href="contact.html">
+            Contact Us
+        </a>
+
+        <a href="advertise.html">
+            Advertise With Us
+        </a>
+
+        <a href="Privacy Policy.html">
+            Privacy Policy
+        </a>
+
+        <a href="disclaimer.html">
+            Disclaimer
+        </a>
+
+        <a href="terms.html">
+            Terms &amp; Conditions
+        </a>
+
+    </div>
+
+
+
+    <!-- FOOTER BOTTOM -->
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 BS 360 NEWS. All Rights Reserved.
+        </p>
+
+        <p>
+            The information published on this website is provided
+            for general informational purposes.
+        </p>
+
+    </div>
+
+
+</footer>
+
 
 </body>
 
 </html>
-
