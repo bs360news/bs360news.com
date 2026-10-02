@@ -16,10 +16,17 @@
 
 <meta name="robots" content="index, follow">
 
-<link rel="canonical" href="https://bs360news.com/about.html">
+<link
+    rel="canonical"
+    href="https://bs360news.com/about.html"
+>
 
 
 <style>
+
+/* =========================================================
+   RESET
+========================================================= */
 
 *{
     box-sizing:border-box;
@@ -50,9 +57,9 @@ a:hover{
 }
 
 
-/* =========================
+/* =========================================================
    HEADER
-========================= */
+========================================================= */
 
 .top-header{
     width:100%;
@@ -80,9 +87,9 @@ a:hover{
 }
 
 
-/* =========================
+/* =========================================================
    MAIN
-========================= */
+========================================================= */
 
 .page-wrap{
     width:100%;
@@ -92,9 +99,9 @@ a:hover{
 }
 
 
-/* =========================
+/* =========================================================
    ABOUT CONTENT
-========================= */
+========================================================= */
 
 .about-box{
     width:100%;
@@ -127,9 +134,9 @@ a:hover{
 }
 
 
-/* =========================
+/* =========================================================
    SECTION HEADINGS
-========================= */
+========================================================= */
 
 .about-box h3{
     margin:32px 0 10px;
@@ -141,9 +148,9 @@ a:hover{
 }
 
 
-/* =========================
+/* =========================================================
    CONTACT
-========================= */
+========================================================= */
 
 .contact-box{
     width:100%;
@@ -170,9 +177,32 @@ a:hover{
 }
 
 
-/* =========================
+/* =========================================================
+   CONTACT LINKS
+========================================================= */
+
+.contact-info{
+    margin-top:15px;
+}
+
+.contact-info p{
+    margin:6px 0;
+    font-size:15px;
+}
+
+.contact-info a{
+    color:#d00000;
+    text-decoration:none;
+}
+
+.contact-info a:hover{
+    text-decoration:underline;
+}
+
+
+/* =========================================================
    HOME LINK
-========================= */
+========================================================= */
 
 .back-home{
     display:inline-block;
@@ -192,24 +222,116 @@ a:hover{
 }
 
 
-/* =========================
+/* =========================================================
    FOOTER
-========================= */
+========================================================= */
 
 footer{
     width:100%;
-    margin:0;
-    padding:24px 15px;
     background:#111;
-    color:#bbb;
+    color:#aaa;
+    padding:35px 5% 20px;
     text-align:center;
     font-size:14px;
+    border-top:3px solid #e00000;
 }
 
 
-/* =========================
+/* FOOTER BRAND */
+
+.footer-brand{
+    max-width:850px;
+    margin:0 auto 20px;
+}
+
+.footer-brand strong{
+    display:block;
+    color:#fff;
+    font-size:21px;
+    margin-bottom:8px;
+}
+
+.footer-brand p{
+    max-width:850px;
+    margin:0 auto;
+    color:#aaa;
+    font-size:14px;
+    line-height:1.7;
+}
+
+
+/* FOOTER CONTACT */
+
+.footer-contact{
+    margin:18px auto;
+}
+
+.footer-contact p{
+    margin:6px 0;
+    color:#aaa;
+    font-size:14px;
+}
+
+.footer-contact strong{
+    color:#fff;
+}
+
+.footer-contact a{
+    color:#ddd;
+    text-decoration:none;
+}
+
+.footer-contact a:hover{
+    color:#fff;
+    text-decoration:underline;
+}
+
+
+/* FOOTER LINKS */
+
+.footer-links{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:8px 18px;
+    max-width:1000px;
+    margin:22px auto;
+    padding:18px 0;
+    border-top:1px solid #333;
+    border-bottom:1px solid #333;
+}
+
+.footer-links a{
+    color:#ccc;
+    text-decoration:none;
+    font-size:13px;
+}
+
+.footer-links a:hover{
+    color:#fff;
+    text-decoration:underline;
+}
+
+
+/* FOOTER BOTTOM */
+
+.footer-bottom{
+    max-width:900px;
+    margin:0 auto;
+}
+
+.footer-bottom p{
+    margin:5px 0;
+    color:#888;
+    font-size:12px;
+    line-height:1.6;
+}
+
+
+/* =========================================================
    MOBILE
-========================= */
+========================================================= */
 
 @media(max-width:600px){
 
@@ -262,22 +384,54 @@ footer{
         line-height:1.8;
     }
 
+    .contact-info p{
+        font-size:14px;
+    }
+
     .back-home{
         margin-top:22px;
         font-size:15px;
     }
 
+
+    /* MOBILE FOOTER */
+
     footer{
-        padding:20px 12px;
+        padding:30px 5% 18px;
+    }
+
+    .footer-brand strong{
+        font-size:19px;
+    }
+
+    .footer-brand p{
         font-size:13px;
+    }
+
+    .footer-contact p{
+        font-size:13px;
+    }
+
+    .footer-links{
+        gap:10px 15px;
+        margin:18px auto;
+        padding:15px 0;
+    }
+
+    .footer-links a{
+        font-size:12px;
+    }
+
+    .footer-bottom p{
+        font-size:11px;
     }
 
 }
 
 
-/* =========================
+/* =========================================================
    VERY SMALL MOBILE
-========================= */
+========================================================= */
 
 @media(max-width:380px){
 
@@ -303,7 +457,9 @@ footer{
 <body>
 
 
-<!-- HEADER -->
+<!-- =========================================================
+     HEADER
+========================================================= -->
 
 <header class="top-header">
 
@@ -322,7 +478,10 @@ footer{
 </header>
 
 
-<!-- MAIN CONTENT -->
+
+<!-- =========================================================
+     MAIN CONTENT
+========================================================= -->
 
 <main class="page-wrap">
 
@@ -426,7 +585,10 @@ footer{
         </p>
 
 
-        <!-- CONTACT -->
+
+        <!-- =====================================================
+             CONTACT
+        ====================================================== -->
 
         <div class="contact-box">
 
@@ -439,7 +601,42 @@ footer{
                 or other inquiries, please visit our Contact Us page.
             </p>
 
+
+            <div class="contact-info">
+
+                <p>
+
+                    <strong>
+                        Email:
+                    </strong>
+
+                    <a href="mailto:newsb386@gmail.com">
+                        newsb386@gmail.com
+                    </a>
+
+                </p>
+
+
+                <p>
+
+                    <strong>
+                        WhatsApp:
+                    </strong>
+
+                    <a
+                        href="https://wa.me/917331137354"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        +91 73311 37354
+                    </a>
+
+                </p>
+
+            </div>
+
         </div>
+
 
 
         <!-- HOME -->
@@ -457,11 +654,120 @@ footer{
 </main>
 
 
-<!-- FOOTER -->
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
 
 <footer>
 
-    © 2026 BS 360 NEWS. All Rights Reserved.
+
+    <!-- WEBSITE IDENTITY -->
+
+    <div class="footer-brand">
+
+        <strong>
+            BS 360 NEWS
+        </strong>
+
+        <p>
+            BS 360 NEWS is a Telugu digital news platform providing
+            the latest updates on Andhra Pradesh, Telangana, India,
+            world, cinema, sports, business and entertainment.
+        </p>
+
+    </div>
+
+
+
+    <!-- CONTACT INFORMATION -->
+
+    <div class="footer-contact">
+
+        <p>
+
+            <strong>
+                Contact:
+            </strong>
+
+            <a href="mailto:newsb386@gmail.com">
+                newsb386@gmail.com
+            </a>
+
+        </p>
+
+
+        <p>
+
+            <strong>
+                WhatsApp:
+            </strong>
+
+            <a
+                href="https://wa.me/917331137354"
+                target="_blank"
+                rel="noopener"
+            >
+                +91 73311 37354
+            </a>
+
+        </p>
+
+    </div>
+
+
+
+    <!-- FOOTER NAVIGATION -->
+
+    <div class="footer-links">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="about.html">
+            About Us
+        </a>
+
+        <a href="contact.html">
+            Contact Us
+        </a>
+
+        <a href="advertise.html">
+            Advertise With Us
+        </a>
+
+        <a href="privacy-policy.html">
+            Privacy Policy
+        </a>
+
+        <a href="disclaimer.html">
+            Disclaimer
+        </a>
+
+        <a href="terms.html">
+            Terms &amp; Conditions
+        </a>
+
+    </div>
+
+
+
+    <!-- FOOTER COPYRIGHT -->
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 BS 360 NEWS. All Rights Reserved.
+        </p>
+
+        <p>
+            The information published on this website is provided
+            for general informational purposes.
+        </p>
+
+    </div>
+
 
 </footer>
 
