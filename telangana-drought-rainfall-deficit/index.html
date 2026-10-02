@@ -23,20 +23,24 @@
     content="index, follow, max-image-preview:large"
 >
 
+<!-- =========================================================
+     CANONICAL - FOLDER URL
+========================================================= -->
+
 <link
     rel="canonical"
-    href="https://bs360news.com/telangana-drought-rainfall-deficit.html"
+    href="https://bs360news.com/telangana-drought-rainfall-deficit/"
 >
 
 <link
     rel="icon"
     type="image/png"
-    href="dp.png.png"
+    href="../dp.png.png"
 >
 
 <link
     rel="apple-touch-icon"
-    href="dp.png.png"
+    href="../dp.png.png"
 >
 
 
@@ -61,7 +65,7 @@
 
 <meta
     property="og:url"
-    content="https://bs360news.com/telangana-drought-rainfall-deficit.html"
+    content="https://bs360news.com/telangana-drought-rainfall-deficit/"
 >
 
 <meta
@@ -112,14 +116,14 @@
 
 <link
     rel="stylesheet"
-    href="style.css?v=20260918"
+    href="../style.css?v=20260918"
 >
 
 
 <style>
 
 /* =========================================================
-   ARTICLE PAGE - BASE
+   ARTICLE PAGE
 ========================================================= */
 
 .article-page{
@@ -128,26 +132,18 @@
 
 .article-layout{
     display:grid;
-
-    grid-template-columns:
-        minmax(0,1fr)
-        320px;
-
+    grid-template-columns:minmax(0,1fr) 320px;
     gap:0;
-
     width:100%;
     max-width:100%;
-
     margin:0;
     padding:0;
-
     align-items:start;
 }
 
 .article-main{
     width:100%;
     min-width:0;
-
     margin:0;
     padding:0;
 }
@@ -155,41 +151,35 @@
 .article-sidebar{
     width:100%;
     min-width:0;
-
     margin:0;
     padding:0;
+    overflow:hidden;
 }
 
 
 /* =========================================================
-   ARTICLE TITLE
+   TITLE
 ========================================================= */
 
 .article-title{
     font-size:32px;
     line-height:1.4;
-
     margin:0 0 15px;
     padding:0;
-
     color:#111;
-
     font-weight:800;
 }
 
 
 /* =========================================================
-   ARTICLE CONTENT
+   CONTENT
 ========================================================= */
 
 .article-content{
     width:100%;
-
     font-size:18px;
     line-height:2;
-
     color:#222;
-
     margin:0;
     padding:0;
 }
@@ -205,23 +195,17 @@
 
 
 /* =========================================================
-   ARTICLE IMAGE
+   IMAGE
 ========================================================= */
 
 .article-image{
     display:block;
-
     width:100%;
     max-width:100%;
-
     aspect-ratio:16 / 9;
-
     height:auto;
-
     object-fit:cover;
-
     border-radius:7px;
-
     margin:15px 0;
 }
 
@@ -230,178 +214,119 @@
    SIDEBAR
 ========================================================= */
 
-.article-sidebar{
-    overflow:hidden;
-}
-
 .sidebar-box{
     width:100%;
-
     margin:0 0 22px;
     padding:0;
 }
 
 .sidebar-title{
     width:100%;
-
     background:#075aaa;
-
     color:#fff;
-
     font-size:20px;
     font-weight:800;
-
     padding:10px 12px;
-
     border-left:5px solid #e60000;
-
     margin:0 0 8px;
 }
 
-
-/* =========================================================
-   SIDEBAR ITEM
-========================================================= */
-
 .sidebar-item{
     display:flex;
-
     width:100%;
-
     gap:10px;
-
     padding:9px 0;
-
     border-bottom:1px solid #ddd;
-
     text-decoration:none;
-
     color:#111;
-
     align-items:center;
-
     box-sizing:border-box;
 }
 
 .sidebar-item img{
     width:78px;
     height:55px;
-
     object-fit:cover;
-
     flex:0 0 78px;
-
     border-radius:4px;
-
     display:block;
 }
 
 .sidebar-item-title{
     width:auto;
-
     flex:1;
-
     font-size:14px;
-
     line-height:1.45;
-
     font-weight:700;
 }
 
 
 /* =========================================================
-   MOST READ
+   RELATED
 ========================================================= */
 
-.most-read-item{
-    display:flex;
-
+.related-section{
     width:100%;
-
-    gap:9px;
-
-    padding:9px 0;
-
-    border-bottom:1px solid #ddd;
-
-    text-decoration:none;
-
-    color:#111;
-
-    align-items:center;
-
-    box-sizing:border-box;
+    margin-top:30px;
+    padding:0;
 }
 
-.most-read-number{
-    width:28px;
-    height:28px;
-
-    background:#075aaa;
-
-    color:#fff;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
+.related-title{
+    font-size:24px;
     font-weight:800;
-
-    border-radius:3px;
-
-    flex:0 0 28px;
+    border-left:5px solid #e60000;
+    padding-left:10px;
+    margin:0 0 15px;
 }
 
-.most-read-item img{
-    width:70px;
-    height:50px;
-
-    object-fit:cover;
-
-    border-radius:4px;
-
-    flex:0 0 70px;
-
-    display:block;
+.news-grid{
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:15px;
+    width:100%;
 }
 
-.most-read-title{
-    flex:1;
+.related-section .news-grid .news-card{
+    display:block !important;
+    width:100% !important;
+    min-width:0 !important;
+    text-decoration:none !important;
+    color:#111 !important;
+}
 
-    font-size:13px;
+.related-section .news-grid .news-card img{
+    display:block !important;
+    width:100% !important;
+    height:auto !important;
+    aspect-ratio:16 / 9 !important;
+    object-fit:cover !important;
+    border-radius:6px !important;
+    margin:0 !important;
+}
 
-    line-height:1.4;
-
-    font-weight:700;
+.related-section .news-grid .news-card h3{
+    display:block !important;
+    width:100% !important;
+    font-size:15px !important;
+    line-height:1.45 !important;
+    margin:8px 0 0 !important;
+    padding:0 !important;
+    font-weight:700 !important;
 }
 
 
 /* =========================================================
-   DESKTOP SIDEBAR
+   DESKTOP
 ========================================================= */
 
 @media screen and (min-width:801px){
 
     .article-layout{
-        grid-template-columns:
-            minmax(0,1fr)
-            320px !important;
-
+        grid-template-columns:minmax(0,1fr) 320px !important;
         gap:0 !important;
         column-gap:0 !important;
-
         width:100% !important;
         max-width:100% !important;
-
-        margin:0 !important;
-        padding:0 !important;
-    }
-
-    .article-main{
-        width:100% !important;
-        min-width:0 !important;
-
         margin:0 !important;
         padding:0 !important;
     }
@@ -409,162 +334,39 @@
     .article-sidebar{
         width:320px !important;
         min-width:320px !important;
-
-        margin:0 !important;
-        padding:0 !important;
     }
-
 
     #trendingSidebar .sidebar-item,
     #latestSidebar .sidebar-item,
     #entertainmentSidebar .sidebar-item{
-
         display:block !important;
-
         width:100% !important;
-
         padding:9px 0 11px !important;
-
-        border-bottom:1px solid #ddd;
     }
 
     #trendingSidebar .sidebar-item img,
     #latestSidebar .sidebar-item img,
     #entertainmentSidebar .sidebar-item img{
-
         display:block !important;
-
         width:100% !important;
         height:auto !important;
-
         aspect-ratio:16 / 9 !important;
-
         object-fit:cover !important;
-
         margin:0 0 6px !important;
-
         border-radius:5px !important;
     }
 
     #trendingSidebar .sidebar-item-title,
     #latestSidebar .sidebar-item-title,
     #entertainmentSidebar .sidebar-item-title{
-
         display:block !important;
-
         width:100% !important;
-
         font-size:14px !important;
-
         line-height:1.45 !important;
-
         font-weight:700 !important;
-
         margin:0 !important;
     }
 
-
-    #mostReadSidebar .most-read-item{
-        display:flex !important;
-
-        width:100% !important;
-
-        padding:9px 0 !important;
-    }
-
-}
-
-
-/* =========================================================
-   RELATED SECTION
-========================================================= */
-
-.related-section{
-    width:100%;
-
-    margin-top:30px;
-
-    padding:0;
-}
-
-.related-title{
-    font-size:24px;
-
-    font-weight:800;
-
-    border-left:5px solid #e60000;
-
-    padding-left:10px;
-
-    margin:0 0 15px;
-}
-
-
-/* =========================================================
-   DESKTOP RELATED GRID
-========================================================= */
-
-.news-grid{
-    display:grid;
-
-    grid-template-columns:
-        repeat(4,minmax(0,1fr));
-
-    gap:15px;
-
-    width:100%;
-}
-
-
-/* =========================================================
-   NEWS CARD
-========================================================= */
-
-.related-section .news-grid .news-card{
-
-    display:block !important;
-
-    width:100% !important;
-
-    min-width:0 !important;
-
-    text-decoration:none !important;
-
-    color:#111 !important;
-}
-
-.related-section .news-grid .news-card img{
-
-    display:block !important;
-
-    width:100% !important;
-
-    height:auto !important;
-
-    aspect-ratio:16 / 9 !important;
-
-    object-fit:cover !important;
-
-    border-radius:6px !important;
-
-    margin:0 !important;
-}
-
-.related-section .news-grid .news-card h3{
-
-    display:block !important;
-
-    width:100% !important;
-
-    font-size:15px !important;
-
-    line-height:1.45 !important;
-
-    margin:8px 0 0 !important;
-
-    padding:0 !important;
-
-    font-weight:700 !important;
 }
 
 
@@ -577,246 +379,94 @@
     .article-page{
         width:100% !important;
         max-width:100% !important;
-
         padding:12px 12px 30px !important;
-
         margin:0 !important;
     }
 
     .article-layout{
-
         display:flex !important;
-
         flex-direction:column !important;
-
         width:100% !important;
         max-width:100% !important;
-
         gap:0 !important;
-
-        margin:0 !important;
-        padding:0 !important;
     }
 
     .article-main{
-
-        display:block !important;
-
         width:100% !important;
         max-width:100% !important;
-
-        min-width:0 !important;
-
-        margin:0 !important;
-        padding:0 !important;
     }
 
     .article-sidebar{
-
-        display:block !important;
-
         width:100% !important;
         max-width:100% !important;
-
-        min-width:0 !important;
-
         margin:25px 0 0 !important;
-        padding:0 !important;
-
         order:2 !important;
     }
 
-
     .article-title{
-
         width:100% !important;
-
         font-size:24px;
-
         line-height:1.4;
-
         margin:0 0 12px !important;
     }
 
-
     .article-content{
-
         width:100% !important;
         max-width:100% !important;
-
         font-size:17px;
-
         line-height:1.9;
-
-        margin:0 !important;
-        padding:0 !important;
     }
-
-    .article-content p{
-
-        margin:0 0 8px !important;
-        padding:0 !important;
-    }
-
 
     .article-image{
-
         display:block !important;
-
         width:100% !important;
         max-width:100% !important;
-
         height:auto !important;
-
         aspect-ratio:16 / 9 !important;
-
         object-fit:cover !important;
-
         border-radius:5px !important;
-
         margin:12px 0 !important;
     }
 
-
-    .sidebar-box{
-
-        width:100% !important;
-
-        margin:0 0 20px !important;
-
-        padding:0 !important;
-    }
-
-    .sidebar-title{
-
-        width:100% !important;
-
-        font-size:18px;
-
-        padding:9px 11px;
-
-        margin:0 0 5px;
-    }
-
     .sidebar-item{
-
         display:flex !important;
-
-        flex-direction:row !important;
-
         width:100% !important;
-
-        gap:10px;
-
-        padding:8px 0;
-
-        align-items:center;
     }
 
     .sidebar-item img{
-
         width:75px !important;
         height:53px !important;
-
-        aspect-ratio:auto !important;
-
-        object-fit:cover !important;
-
         flex:0 0 75px !important;
-
-        margin:0 !important;
     }
-
-    .sidebar-item-title{
-
-        display:block !important;
-
-        width:auto !important;
-
-        flex:1;
-
-        font-size:14px;
-
-        line-height:1.45;
-
-        font-weight:700 !important;
-    }
-
 
     .related-section{
-
         width:100% !important;
-
         margin-top:25px;
-
     }
 
     .related-title{
-
         font-size:21px;
-
         margin-bottom:12px;
     }
 
     .news-grid{
-
         width:100% !important;
-
         display:grid !important;
-
-        grid-template-columns:
-            repeat(2,minmax(0,1fr)) !important;
-
+        grid-template-columns:repeat(2,minmax(0,1fr)) !important;
         gap:12px !important;
-    }
-
-    .related-section .news-grid{
-
-        grid-template-columns:
-            repeat(2,minmax(0,1fr)) !important;
-
-        gap:12px !important;
-    }
-
-    .related-section .news-grid .news-card{
-
-        display:block !important;
-
-        width:100% !important;
-
-        min-width:0 !important;
     }
 
     .related-section .news-grid .news-card img{
-
-        display:block !important;
-
         width:100% !important;
-
-        height:auto !important;
-
         aspect-ratio:16 / 9 !important;
-
+        height:auto !important;
         object-fit:cover !important;
-
-        border-radius:6px !important;
-
-        margin:0 !important;
     }
 
     .related-section .news-grid .news-card h3{
-
-        display:block !important;
-
-        width:100% !important;
-
-        margin:7px 0 0 !important;
-
         font-size:14px !important;
-
         line-height:1.45 !important;
-
-        font-weight:700 !important;
+        margin-top:7px !important;
     }
 
 }
@@ -829,122 +479,44 @@
 @media screen and (max-width:600px){
 
     .article-page{
-
         padding:10px 10px 25px !important;
     }
 
     .article-title{
-
         font-size:22px;
-
-        line-height:1.4;
-
-        margin-bottom:10px !important;
     }
 
     .article-content{
-
         font-size:16px;
-
         line-height:1.85;
     }
 
-    .article-content p{
-
-        margin-bottom:7px !important;
-    }
-
-    .article-image{
-
-        border-radius:5px;
-
-        margin:10px 0 !important;
-    }
-
-    .sidebar-item img{
-
-        width:75px !important;
-        height:53px !important;
-
-        flex-basis:75px !important;
-    }
-
-    .sidebar-item-title{
-
-        font-size:14px;
-    }
-
-    .sidebar-title{
-
-        font-size:18px;
-    }
-
     .related-section .news-grid{
-
-        grid-template-columns:
-            repeat(2,minmax(0,1fr)) !important;
-
+        grid-template-columns:repeat(2,minmax(0,1fr)) !important;
         gap:12px !important;
-    }
-
-    .related-section .news-grid .news-card img{
-
-        width:100% !important;
-
-        aspect-ratio:16 / 9 !important;
-
-        height:auto !important;
-
-        object-fit:cover !important;
-    }
-
-    .related-section .news-grid .news-card h3{
-
-        font-size:14px !important;
-
-        line-height:1.45 !important;
-
-        margin-top:7px !important;
     }
 
 }
 
 
 /* =========================================================
-   VERY SMALL MOBILE
+   VERY SMALL
 ========================================================= */
 
 @media screen and (max-width:380px){
 
     .article-page{
-
         padding-left:8px !important;
         padding-right:8px !important;
     }
 
-    .news-grid{
-
-        gap:9px;
-    }
-
-    .news-card h3{
-
-        font-size:13px;
-    }
-
     .related-section .news-grid{
-
-        grid-template-columns:
-            repeat(2,minmax(0,1fr)) !important;
-
+        grid-template-columns:repeat(2,minmax(0,1fr)) !important;
         gap:9px !important;
     }
 
     .related-section .news-grid .news-card h3{
-
         font-size:13px !important;
-
-        line-height:1.4 !important;
     }
 
 }
@@ -966,7 +538,7 @@
     <div class="container brand-inner">
 
         <a
-            href="./"
+            href="../"
             class="brand-logo"
             aria-label="BS 360 NEWS Home"
         >
@@ -974,7 +546,7 @@
             <div class="logo-mark">
 
                 <img
-                    src="dp.png.png"
+                    src="../dp.png.png"
                     alt="BS 360 NEWS"
                 >
 
@@ -1051,7 +623,7 @@
         <div class="lang-selector">
 
             <a
-                href="./"
+                href="../"
                 class="active"
             >
                 తెలుగు
@@ -1059,15 +631,11 @@
 
             <span>|</span>
 
-            <span>
-                English
-            </span>
+            <span>English</span>
 
             <span>|</span>
 
-            <span>
-                हिन्दी
-            </span>
+            <span>हिन्दी</span>
 
         </div>
 
@@ -1077,23 +645,23 @@
             id="navLinks"
         >
 
-            <a href="index.html">
+            <a href="../index.html">
                 HOME
             </a>
 
-            <a href="MOVIES.html">
+            <a href="../MOVIES.html">
                 ENTERTAINMENT
             </a>
 
-            <a href="SPORTS.html">
+            <a href="../SPORTS.html">
                 SPORTS
             </a>
 
-            <a href="AP&TS.html">
+            <a href="../AP&TS.html">
                 AP & TS
             </a>
 
-            <a href="business.html">
+            <a href="../business.html">
                 BUSINESS
             </a>
 
@@ -1105,7 +673,7 @@
 
 
 <!-- =========================================================
-     TOP HEADLINES
+     HEADLINES
 ========================================================= -->
 
 <div class="headlines-bar">
@@ -1134,21 +702,17 @@
 
 <main class="container article-page">
 
-
 <div class="article-layout">
 
 
 <!-- =========================================================
-     ARTICLE MAIN
+     ARTICLE
 ========================================================= -->
 
 <article class="article-main">
 
-
 <h1 class="article-title">
-
 తెలంగాణలో కరువు పరిస్థితులపై అలర్ట్.. 17% వర్షపాతం లోటు
-
 </h1>
 
 
@@ -1156,80 +720,84 @@
 
 
 <p>
-<strong>హైదరాబాద్:</strong> తెలంగాణలో ఈ ఏడాది వర్షపాతం లోటు ఆందోళన కలిగిస్తోంది. 2026 నైరుతి రుతుపవనాల సీజన్ ముగిసే సమయానికి రాష్ట్రవ్యాప్తంగా సాధారణం కంటే సుమారు 17 శాతం తక్కువ వర్షపాతం నమోదైంది. జూన్ 1 నుంచి సెప్టెంబర్ 30 వరకు కొనసాగిన నైరుతి రుతుపవనాల కాలంలో రాష్ట్రానికి సాధారణంగా 740.6 మిల్లీమీటర్ల వర్షపాతం రావాల్సి ఉండగా.. 615.5 మిల్లీమీటర్లు మాత్రమే నమోదైంది. దీంతో వర్షపాతం లోటు 17 శాతంగా నమోదైంది. అయితే భారత వాతావరణ శాఖ ప్రమాణాల ప్రకారం -19 శాతం నుంచి +19 శాతం మధ్య ఉన్న వర్షపాతాన్ని సాధారణ కేటగిరీలోనే పరిగణిస్తారు. అందువల్ల రాష్ట్రం మొత్తంగా అధికారికంగా సాధారణ వర్షపాతం కేటగిరీలో ఉన్నప్పటికీ.. జిల్లాలు, మండలాల వారీగా పరిస్థితుల్లో మాత్రం గణనీయమైన తేడాలు కనిపిస్తున్నాయి. వర్షాల పంపిణీ, భూగర్భ జలాల స్థాయి, రిజర్వాయర్లలో నీటి లభ్యత, చెరువుల పరిస్థితి వంటి అంశాలు రానున్న నెలల్లో కీలకంగా మారనున్నాయి. 1
+<strong>హైదరాబాద్:</strong> తెలంగాణలో ఈ ఏడాది వర్షపాతం లోటు ఆందోళన కలిగిస్తోంది. 2026 నైరుతి రుతుపవనాల సీజన్ ముగిసే సమయానికి రాష్ట్రవ్యాప్తంగా సాధారణం కంటే సుమారు 17 శాతం తక్కువ వర్షపాతం నమోదైంది. జూన్ 1 నుంచి సెప్టెంబర్ 30 వరకు కొనసాగిన నైరుతి రుతుపవనాల కాలంలో రాష్ట్రానికి సాధారణంగా 740.6 మిల్లీమీటర్ల వర్షపాతం రావాల్సి ఉండగా.. 615.5 మిల్లీమీటర్లు మాత్రమే నమోదైంది. దీంతో వర్షపాతం లోటు 17 శాతంగా నమోదైంది.
 </p>
 
 
 <p>
-ఈసారి వర్షపాతం లోటు వ్యవసాయ రంగంతో పాటు తాగునీరు, పశుసంవర్ధక రంగం, గ్రామీణ ఉపాధి, భూగర్భ జలాల లభ్యత వంటి అంశాలపై ప్రభావం చూపే అవకాశం ఉంది. సాధారణంగా నైరుతి రుతుపవనాలు తెలంగాణకు ప్రధాన వర్షాధారంగా ఉంటాయి. ఈ కాలంలో కురిసే వర్షాలు చెరువులు, కుంటలు, సాగునీటి ప్రాజెక్టులు, భూగర్భ జలాలను నింపడంలో కీలక పాత్ర పోషిస్తాయి. అయితే 2026లో వర్షాలు రాష్ట్రవ్యాప్తంగా సమానంగా కురవలేదు. జూలైలో వర్షపాతం దాదాపు సాధారణ స్థాయిలో ఉన్నప్పటికీ.. ఆగస్టులో లోటు గణనీయంగా పెరిగి, సెప్టెంబర్‌లోనూ వర్షపాతం సాధారణం కంటే తక్కువగా నమోదైంది. దీంతో సీజన్ మొత్తం మీద 125.1 మిల్లీమీటర్ల వర్షపాతం లోటు ఏర్పడింది. 2
+ఈసారి వర్షపాతం లోటు వ్యవసాయ రంగంతో పాటు తాగునీరు, పశుసంవర్ధక రంగం, గ్రామీణ ఉపాధి, భూగర్భ జలాల లభ్యత వంటి అంశాలపై ప్రభావం చూపే అవకాశం ఉంది. సాధారణంగా నైరుతి రుతుపవనాలు తెలంగాణకు ప్రధాన వర్షాధారంగా ఉంటాయి. ఈ కాలంలో కురిసే వర్షాలు చెరువులు, కుంటలు, సాగునీటి ప్రాజెక్టులు, భూగర్భ జలాలను నింపడంలో కీలక పాత్ర పోషిస్తాయి.
 </p>
 
 
 <p>
-రాష్ట్రంలోని అన్ని ప్రాంతాల్లో ఒకే విధమైన పరిస్థితి లేదని వర్షపాతం గణాంకాలు చెబుతున్నాయి. 33 జిల్లాల్లో 18 జిల్లాలు వర్షపాతం లోటు కేటగిరీలో ఉండగా, 15 జిల్లాలు సాధారణ వర్షపాతం కేటగిరీలో ముగిశాయి. కొన్ని జిల్లాల్లో లోటు మరింత ఎక్కువగా నమోదైంది. జోగులాంబ గద్వాల జిల్లాలో 41 శాతం లోటు నమోదవగా.. నారాయణపేట, హనుమకొండ జిల్లాల్లో 35 శాతం చొప్పున లోటు నమోదైంది. నల్గొండలో 34 శాతం లోటు నమోదైంది. హైదరాబాద్‌లో కూడా సాధారణంతో పోలిస్తే 27 శాతం తక్కువ వర్షపాతం నమోదైనట్లు నివేదికలు పేర్కొన్నాయి. దీంతో రాష్ట్ర సగటు గణాంకాలను మాత్రమే కాకుండా.. జిల్లాలు, మండలాల వారీగా నీటి పరిస్థితిని పరిశీలించడం అవసరంగా మారింది. 3
+రాష్ట్రంలోని అన్ని ప్రాంతాల్లో ఒకే విధమైన పరిస్థితి లేదని వర్షపాతం గణాంకాలు చెబుతున్నాయి. 33 జిల్లాల్లో 18 జిల్లాలు వర్షపాతం లోటు కేటగిరీలో ఉండగా, 15 జిల్లాలు సాధారణ వర్షపాతం కేటగిరీలో ముగిశాయి. కొన్ని జిల్లాల్లో లోటు మరింత ఎక్కువగా నమోదైంది. దీంతో రాష్ట్ర సగటు గణాంకాలను మాత్రమే కాకుండా.. జిల్లాలు, మండలాల వారీగా నీటి పరిస్థితిని పరిశీలించడం అవసరంగా మారింది.
 </p>
 
+
+<!-- =========================================================
+     ARTICLE IMAGE
+========================================================= -->
 
 <img
     class="article-image"
-    src="telangana-drought-rainfall-deficit.png"
+    src="../telangana-drought-rainfall-deficit.png"
     alt="తెలంగాణలో వర్షపాతం లోటుతో కరువు పరిస్థితులు"
     loading="eager"
 >
 
 
 <p>
-ఇదే సమయంలో రాష్ట్ర ప్రభుత్వం ఎల్ నినో ప్రభావాన్ని ప్రత్యేకంగా సమీక్షిస్తోంది. నైరుతి రుతుపవనాల సీజన్ ముగిసిన నేపథ్యంలో వర్షాభావ పరిస్థితులు ఏ ప్రాంతాల్లో తీవ్రంగా ఉన్నాయో అంచనా వేయడం, వ్యవసాయ రంగంపై ప్రభావాన్ని పరిశీలించడం, తాగునీటి అవసరాలను ముందుగానే గుర్తించడం వంటి అంశాలపై ప్రభుత్వం దృష్టి సారించింది. తెలంగాణ కేబినెట్ వర్షపాతం లోటు, ఎల్ నినో పరిస్థితిపై చర్చించింది. మొత్తం రాష్ట్ర వర్షపాతం లోటు 17 శాతంగా ఉన్నప్పటికీ.. సుమారు 235 మండలాల్లో ప్రభావం తీవ్రంగా ఉందని అధికారులు కేబినెట్‌కు వివరించినట్లు ప్రభుత్వం వెల్లడించింది. ఈ ప్రాంతాల్లో తక్షణ చర్యలను పరిశీలించేందుకు కేబినెట్ సబ్ కమిటీ ద్వారా పరిస్థితిని అంచనా వేయాలని నిర్ణయించారు. 4
+ఇదే సమయంలో రాష్ట్ర ప్రభుత్వం ఎల్ నినో ప్రభావాన్ని ప్రత్యేకంగా సమీక్షిస్తోంది. నైరుతి రుతుపవనాల సీజన్ ముగిసిన నేపథ్యంలో వర్షాభావ పరిస్థితులు ఏ ప్రాంతాల్లో తీవ్రంగా ఉన్నాయో అంచనా వేయడం, వ్యవసాయ రంగంపై ప్రభావాన్ని పరిశీలించడం, తాగునీటి అవసరాలను ముందుగానే గుర్తించడం వంటి అంశాలపై ప్రభుత్వం దృష్టి సారించింది. సుమారు 235 మండలాల్లో ప్రభావం తీవ్రంగా ఉందని అధికారులు కేబినెట్‌కు వివరించినట్లు నివేదికలు పేర్కొన్నాయి.
 </p>
 
 
 <p>
-పరిస్థితిని వివిధ వర్గాల సూచనలతో సమీక్షించేందుకు అఖిలపక్ష సమావేశం నిర్వహించాలని ప్రభుత్వం నిర్ణయించింది. రాజకీయ పార్టీల ప్రతినిధులతో పాటు రైతు సంఘాలు, వ్యవసాయ రంగ నిపుణులు, ఇతర రంగాల నిపుణులతో చర్చలు జరిపి ఎల్ నినో ప్రభావం, వర్షపాతం లోటు వల్ల ఏర్పడే సమస్యలను ఎలా ఎదుర్కోవాలనే అంశంపై సూచనలు తీసుకునే అవకాశం ఉంది. అనంతరం ప్రత్యేక కేబినెట్ సమావేశం నిర్వహించి కార్యాచరణపై నిర్ణయం తీసుకునే అవకాశం ఉందని ప్రభుత్వం తెలిపింది. ప్రభావిత మండలాల్లో రైతులకు అవసరమైన సహాయం, తాగునీటి భద్రత, గ్రామీణ ఉపాధి, వ్యవసాయ రంగానికి సంబంధించిన చర్యలు వంటి అంశాలు ఈ చర్చల్లో ప్రాధాన్యం పొందనున్నాయి. 5
+పరిస్థితిని వివిధ వర్గాల సూచనలతో సమీక్షించేందుకు అఖిలపక్ష సమావేశం నిర్వహించాలని ప్రభుత్వం నిర్ణయించింది. రాజకీయ పార్టీల ప్రతినిధులతో పాటు రైతు సంఘాలు, వ్యవసాయ రంగ నిపుణులు, ఇతర రంగాల నిపుణులతో చర్చలు జరిపి ఎల్ నినో ప్రభావం, వర్షపాతం లోటు వల్ల ఏర్పడే సమస్యలను ఎలా ఎదుర్కోవాలనే అంశంపై సూచనలు తీసుకునే అవకాశం ఉంది.
 </p>
 
 
 <p>
-తాగునీటి విషయంలోనూ ప్రభుత్వం ముందస్తు చర్యలను కీలకంగా చూస్తోంది. వర్షాభావ పరిస్థితులు కొనసాగితే వేసవి ప్రారంభానికి ముందే కొన్ని గ్రామాలు, పట్టణాల్లో తాగునీటి సమస్య ఏర్పడే అవకాశం ఉంటుంది. అందుకే రిజర్వాయర్లలో నీటి నిల్వలు, చెరువుల పరిస్థితి, బోర్లు, భూగర్భ జలాల స్థాయిని ముందుగానే అంచనా వేయాల్సి ఉంటుంది. గ్రామీణ ప్రాంతాల్లో తాగునీటితో పాటు పశువులకు నీరు, మేత అందుబాటు కూడా ముఖ్యమైన అంశంగా మారుతుంది. ఎల్ నినో ప్రభావంతో కొన్ని ప్రాంతాల్లో తాగునీటి సమస్యలు ఏర్పడినట్లు రాష్ట్ర ప్రభుత్వం పేర్కొంది. ఈ నేపథ్యంలో అవసరమైన ప్రాంతాల్లో నీటి సరఫరా, పశుగ్రాసం, ఉపాధి అవకాశాలు, వ్యవసాయ సలహాలు అందించాల్సిన అవసరం ఉంటుంది. 6
+తాగునీటి విషయంలోనూ ప్రభుత్వం ముందస్తు చర్యలను కీలకంగా చూస్తోంది. వర్షాభావ పరిస్థితులు కొనసాగితే వేసవి ప్రారంభానికి ముందే కొన్ని గ్రామాలు, పట్టణాల్లో తాగునీటి సమస్య ఏర్పడే అవకాశం ఉంటుంది. అందుకే రిజర్వాయర్లలో నీటి నిల్వలు, చెరువుల పరిస్థితి, బోర్లు, భూగర్భ జలాల స్థాయిని ముందుగానే అంచనా వేయాల్సి ఉంటుంది.
 </p>
 
 
 <p>
-వ్యవసాయ రంగంపై ప్రభావం కూడా ఈ పరిస్థితుల్లో అత్యంత ముఖ్యమైన అంశంగా మారుతోంది. తెలంగాణలో పెద్ద సంఖ్యలో రైతులు వర్షాధార వ్యవసాయంపై ఆధారపడుతున్నారు. సరైన సమయంలో వర్షాలు కురవకపోతే విత్తనాలు వేసే సమయం, మొలక దశ, పంట పెరుగుదల, దిగుబడి వంటి అంశాలపై ప్రభావం పడే అవకాశం ఉంటుంది. నీటి లభ్యత తక్కువగా ఉన్నప్పుడు అధిక నీటి అవసరం ఉన్న పంటలను సాగు చేయడం రైతులకు అదనపు సవాలుగా మారవచ్చు. అందుకే తక్కువ నీటితో సాగయ్యే పంటలకు ప్రాధాన్యం ఇవ్వడం, నీటి పొదుపు పద్ధతులను పాటించడం, పంటల వైవిధ్యీకరణ, సూక్ష్మ సాగునీటి విధానాలను ఉపయోగించడం వంటి అంశాలు ప్రాధాన్యం సంతరించుకుంటాయి. రానున్న రబీ సీజన్‌లో అందుబాటులో ఉన్న నీటి ఆధారంగా పంటల ప్రణాళిక రూపొందించడం అవసరం ఉంటుంది.
+వ్యవసాయ రంగంపై ప్రభావం కూడా ఈ పరిస్థితుల్లో అత్యంత ముఖ్యమైన అంశంగా మారుతోంది. తెలంగాణలో పెద్ద సంఖ్యలో రైతులు వర్షాధార వ్యవసాయంపై ఆధారపడుతున్నారు. సరైన సమయంలో వర్షాలు కురవకపోతే పంటల పెరుగుదల, దిగుబడి వంటి అంశాలపై ప్రభావం పడే అవకాశం ఉంటుంది. అందుకే నీటి పొదుపు పద్ధతులు, పంటల ప్రణాళిక వంటి అంశాలకు ప్రాధాన్యం ఇవ్వాల్సి ఉంటుంది.
 </p>
 
 
 <p>
-వర్షపాతం లోటు నేపథ్యంలో భూగర్భ జలాలపై ఒత్తిడి పెరగకుండా నీటి వినియోగాన్ని నియంత్రించడం కూడా అవసరం. చెరువులు, చిన్న నీటిపారుదల వనరులు, నీటి సంరక్షణ పనులను బలోపేతం చేయడం ద్వారా వర్షపాతం తక్కువగా ఉన్న సంవత్సరాల్లో కూడా రైతులకు కొంత భరోసా కల్పించే అవకాశం ఉంటుంది. పంటలకు నీటి అవసరం ఎక్కువగా ఉండే దశల్లో స్థానిక పరిస్థితులను బట్టి రైతులకు వ్యవసాయ శాఖ సూచనలు అందించాల్సి ఉంటుంది. ముఖ్యంగా చిన్న, సన్నకారు రైతులు వర్షపాతం లోటు వల్ల ఎదుర్కొనే ఆర్థిక ప్రభావాన్ని తగ్గించేందుకు ప్రభుత్వం అందుబాటులో ఉన్న పథకాలను సమర్థంగా అమలు చేయాల్సి ఉంటుంది.
+వర్షపాతం లోటు నేపథ్యంలో భూగర్భ జలాలపై ఒత్తిడి పెరగకుండా నీటి వినియోగాన్ని నియంత్రించడం కూడా అవసరం. చెరువులు, చిన్న నీటిపారుదల వనరులు, నీటి సంరక్షణ పనులను బలోపేతం చేయడం ద్వారా వర్షపాతం తక్కువగా ఉన్న సంవత్సరాల్లో కూడా రైతులకు కొంత భరోసా కల్పించే అవకాశం ఉంటుంది.
 </p>
 
 
 <p>
-గ్రామీణ ఉపాధి, జీవనోపాధి అంశాలు కూడా వర్షాభావ పరిస్థితుల్లో కీలకంగా మారనున్నాయి. వ్యవసాయ పనులు తగ్గినప్పుడు వ్యవసాయ కూలీల ఆదాయంపై ప్రభావం పడే అవకాశం ఉంటుంది. అందువల్ల అవసరమైన ప్రాంతాల్లో గ్రామీణ ఉపాధి అవకాశాలను పెంచడం, నీటి సంరక్షణ పనులు, చెరువుల పునరుద్ధరణ, ఇతర ప్రజాప్రయోజన పనులను చేపట్టడం ద్వారా గ్రామీణ కుటుంబాలకు ఉపాధి కల్పించే అవకాశం ఉంటుంది. వర్షపాతం లోటు ప్రభావాన్ని కేవలం వ్యవసాయ సమస్యగా కాకుండా గ్రామీణ జీవనోపాధికి సంబంధించిన అంశంగా కూడా ప్రభుత్వం పరిశీలించాల్సిన అవసరం ఉంది.
+గ్రామీణ ఉపాధి, జీవనోపాధి అంశాలు కూడా వర్షాభావ పరిస్థితుల్లో కీలకంగా మారనున్నాయి. వ్యవసాయ పనులు తగ్గినప్పుడు వ్యవసాయ కూలీల ఆదాయంపై ప్రభావం పడే అవకాశం ఉంటుంది. అందువల్ల అవసరమైన ప్రాంతాల్లో గ్రామీణ ఉపాధి అవకాశాలను పెంచడం, నీటి సంరక్షణ పనులు, చెరువుల పునరుద్ధరణ వంటి పనులను చేపట్టడం అవసరం.
 </p>
 
 
 <p>
-ఎల్ నినో ప్రభావం విషయంలో వాతావరణ నిపుణులు కూడా జాగ్రత్తగా వ్యవహరించాలని సూచిస్తున్నారు. ఎల్ నినో ఒక పెద్ద స్థాయి వాతావరణ కారకం అయినప్పటికీ.. ప్రతి ప్రాంతంలో వర్షపాతం ఎలా ఉంటుందో దానిని ఒక్క కారణంతో నిర్ణయించలేమని నిపుణులు చెబుతున్నారు. తెలంగాణలో వర్షపాతాన్ని స్థానిక వాతావరణ వ్యవస్థలు, వాటి సమయం, తీవ్రత కూడా ప్రభావితం చేస్తాయి. 2026లో జూలైలో వర్షపాతం దాదాపు సాధారణంగా ఉండగా.. ఆగస్టు, సెప్టెంబర్‌లో వర్షాలు తగ్గడంతో మొత్తం సీజన్ లోటులో ముగిసింది. కాబట్టి రానున్న కాలంలో కూడా వాతావరణ శాఖ అంచనాలు, స్థానిక వర్షపాతం పరిస్థితులు, నీటి వనరుల స్థాయిని కలిపి పరిశీలించడం అవసరం. 7
+ఎల్ నినో ప్రభావం విషయంలో వాతావరణ పరిస్థితులను నిరంతరం పర్యవేక్షించడం అవసరం. ప్రతి ప్రాంతంలో వర్షపాతం పరిస్థితులు ఒకే విధంగా ఉండవు. స్థానిక వాతావరణ వ్యవస్థలు, వర్షాల సమయం, తీవ్రత వంటి అంశాలు కూడా ప్రభావం చూపుతాయి. అందువల్ల వాతావరణ శాఖ అంచనాలు, స్థానిక వర్షపాతం పరిస్థితులు, నీటి వనరుల స్థాయిని కలిపి పరిశీలించడం అవసరం.
 </p>
 
 
 <p>
-అఖిలపక్ష సమావేశం నేపథ్యంలో రాష్ట్రంలోని వివిధ రాజకీయ పార్టీల ప్రతినిధులు, రైతు సంఘాలు, వ్యవసాయ నిపుణులు, నీటి వనరుల నిపుణుల నుంచి సూచనలు తీసుకునే అవకాశం ఉంది. ఎల్ నినో ప్రభావాన్ని ఎదుర్కోవడానికి దీర్ఘకాలికంగా ఎలాంటి చర్యలు తీసుకోవాలి, తాగునీటి భద్రతను ఎలా పెంచాలి, వర్షాభావం ప్రభావిత మండలాల్లో రైతులకు ఎలాంటి సహాయం అందించాలి, గ్రామీణ ఉపాధిని ఎలా పెంచాలి వంటి అంశాలు చర్చకు వచ్చే అవకాశం ఉంది. ప్రభుత్వం ఇప్పటికే కేబినెట్ సబ్ కమిటీ ద్వారా ప్రభావాన్ని అంచనా వేయాలని నిర్ణయించింది. ఆ నివేదిక ఆధారంగా తదుపరి చర్యలు తీసుకునే అవకాశం ఉంది. 8
+అఖిలపక్ష సమావేశం నేపథ్యంలో రాష్ట్రంలోని వివిధ రాజకీయ పార్టీల ప్రతినిధులు, రైతు సంఘాలు, వ్యవసాయ నిపుణులు, నీటి వనరుల నిపుణుల నుంచి సూచనలు తీసుకునే అవకాశం ఉంది. ఎల్ నినో ప్రభావాన్ని ఎదుర్కోవడానికి దీర్ఘకాలికంగా ఎలాంటి చర్యలు తీసుకోవాలి, తాగునీటి భద్రతను ఎలా పెంచాలి, వర్షాభావం ప్రభావిత మండలాల్లో రైతులకు ఎలాంటి సహాయం అందించాలి వంటి అంశాలు చర్చకు వచ్చే అవకాశం ఉంది.
 </p>
 
 
 <p>
-మరోవైపు ప్రభావిత మండలాలకు కేంద్ర ప్రభుత్వ సహాయం కోరాలని రాష్ట్ర కేబినెట్ నిర్ణయించినట్లు తాజా నివేదికలు పేర్కొంటున్నాయి. కరువు తరహా పరిస్థితులు ఉన్న 235 మండలాలకు సంబంధించిన నష్టాన్ని అంచనా వేసి నివేదిక సిద్ధం చేయాలని ప్రభుత్వం భావిస్తోంది. అనంతరం కేంద్రాన్ని ఆర్థిక సహాయం కోరే అంశంపై రాష్ట్రం ముందుకు వెళ్లనుంది. ఈ ప్రక్రియలో వ్యవసాయం, తాగునీరు, గ్రామీణ జీవనోపాధి వంటి రంగాల్లో ఏర్పడిన ప్రభావాన్ని పరిగణనలోకి తీసుకునే అవకాశం ఉంది. 9
+మరోవైపు ప్రభావిత మండలాలకు కేంద్ర ప్రభుత్వ సహాయం కోరే అంశాన్ని కూడా రాష్ట్ర ప్రభుత్వం పరిశీలిస్తోంది. కరువు తరహా పరిస్థితులు ఉన్న మండలాలకు సంబంధించిన నష్టాన్ని అంచనా వేసి నివేదిక సిద్ధం చేసే ప్రక్రియ కొనసాగుతోంది. వ్యవసాయం, తాగునీరు, గ్రామీణ జీవనోపాధి వంటి రంగాల్లో ఏర్పడిన ప్రభావాన్ని పరిగణనలోకి తీసుకునే అవకాశం ఉంది.
 </p>
 
 
 <p>
-మొత్తంగా చూస్తే తెలంగాణలో 2026 నైరుతి రుతుపవనాల ముగింపు రాష్ట్రానికి ఒక ముఖ్యమైన హెచ్చరికగా మారింది. రాష్ట్రవ్యాప్తంగా వర్షపాతం లోటు 17 శాతంగా ఉన్నప్పటికీ.. IMD ప్రమాణాల ప్రకారం ఇది సాధారణ పరిమితిలోనే ఉంది. అయితే రాష్ట్ర సగటు గణాంకాల వెనుక జిల్లాలు, మండలాల వారీగా భిన్నమైన పరిస్థితులు కనిపిస్తున్నాయి. 18 జిల్లాల్లో లోటు వర్షపాతం నమోదవగా.. సుమారు 235 మండలాల్లో తీవ్ర ప్రభావం ఉందని ప్రభుత్వం తెలిపింది. అందువల్ల నీటి వనరులు, భూగర్భ జలాలు, వ్యవసాయ పరిస్థితులు, తాగునీటి అవసరాలు, గ్రామీణ ఉపాధి వంటి అంశాలను ప్రభుత్వం నిరంతరం పర్యవేక్షించాల్సి ఉంటుంది. 10
+మొత్తంగా చూస్తే తెలంగాణలో 2026 నైరుతి రుతుపవనాల ముగింపు నేపథ్యంలో వర్షపాతం లోటుపై ప్రభుత్వం అప్రమత్తంగా వ్యవహరిస్తోంది. రాష్ట్ర సగటు వర్షపాతం లోటు 17 శాతంగా ఉన్నప్పటికీ.. జిల్లాలు, మండలాల వారీగా పరిస్థితులు భిన్నంగా ఉన్నాయి. నీటి వనరులు, భూగర్భ జలాలు, వ్యవసాయ పరిస్థితులు, తాగునీటి అవసరాలను ప్రభుత్వం నిరంతరం పర్యవేక్షించాల్సి ఉంటుంది.
 </p>
 
 
 <p>
-ప్రస్తుతం తెలంగాణలో రాష్ట్రవ్యాప్తంగా అధికారిక కరువు ప్రకటన కంటే.. వర్షపాతం లోటు మరియు కొన్ని మండలాల్లో కరువు తరహా పరిస్థితుల నేపథ్యంలో ప్రభుత్వం అప్రమత్తంగా సమీక్షిస్తున్న దశలో ఉంది. కేబినెట్ సబ్ కమిటీ నివేదిక, అఖిలపక్ష సమావేశం, రైతు సంఘాలు మరియు నిపుణులతో జరిగే చర్చల తర్వాత ప్రభుత్వం తీసుకునే నిర్ణయాలు కీలకంగా మారనున్నాయి. రానున్న నెలల్లో వర్షపాతం, రిజర్వాయర్ల నీటి నిల్వలు, చెరువుల పరిస్థితి, భూగర్భ జలాల స్థాయి, పంటల పరిస్థితిని ప్రభుత్వం పర్యవేక్షించాల్సి ఉంటుంది. ప్రభావిత ప్రాంతాలను ముందుగానే గుర్తించి తాగునీరు, వ్యవసాయం, పశుగ్రాసం, ఉపాధి వంటి అంశాల్లో అవసరమైన చర్యలు తీసుకుంటే వర్షాభావ ప్రభావాన్ని తగ్గించే అవకాశం ఉంటుంది. 11
+ప్రస్తుతం తెలంగాణలో రాష్ట్రవ్యాప్తంగా అధికారిక కరువు ప్రకటన కంటే.. వర్షపాతం లోటు మరియు కొన్ని మండలాల్లో కరువు తరహా పరిస్థితుల నేపథ్యంలో ప్రభుత్వం సమీక్షిస్తున్న దశలో ఉంది. కేబినెట్ సబ్‌కమిటీ నివేదిక, అఖిలపక్ష సమావేశం, నిపుణులతో జరిగే చర్చల తర్వాత ప్రభుత్వం తీసుకునే చర్యలు తదుపరి పరిస్థితిని నిర్ణయించనున్నాయి.
 </p>
 
 
@@ -1244,11 +812,10 @@
 
 <aside class="article-sidebar">
 
-
 <div class="sidebar-box">
 
     <div class="sidebar-title">
-         Trending News
+        Trending News
     </div>
 
     <div id="trendingSidebar"></div>
@@ -1259,7 +826,7 @@
 <div class="sidebar-box">
 
     <div class="sidebar-title">
-         Latest News
+        Latest News
     </div>
 
     <div id="latestSidebar"></div>
@@ -1272,91 +839,60 @@
 
 
 <!-- =========================================================
-     LATEST NEWS
+     RELATED SECTIONS
 ========================================================= -->
 
 <section class="related-section">
 
     <div class="related-title">
-         Latest News
+        Latest News
     </div>
 
-    <div
-        id="latestGrid"
-        class="news-grid"
-    ></div>
+    <div id="latestGrid" class="news-grid"></div>
 
 </section>
 
 
-<!-- =========================================================
-     SPORTS
-========================================================= -->
-
 <section class="related-section">
 
     <div class="related-title">
-         Sports
+        Sports
     </div>
 
-    <div
-        id="sportsGrid"
-        class="news-grid"
-    ></div>
+    <div id="sportsGrid" class="news-grid"></div>
 
 </section>
 
 
-<!-- =========================================================
-     ENTERTAINMENT
-========================================================= -->
-
 <section class="related-section">
 
     <div class="related-title">
-         Entertainment
+        Entertainment
     </div>
 
-    <div
-        id="moviesGrid"
-        class="news-grid"
-    ></div>
+    <div id="moviesGrid" class="news-grid"></div>
 
 </section>
 
 
-<!-- =========================================================
-     AP & TS
-========================================================= -->
-
 <section class="related-section">
 
     <div class="related-title">
-         AP & TS
+        AP & TS
     </div>
 
-    <div
-        id="aptsGrid"
-        class="news-grid"
-    ></div>
+    <div id="aptsGrid" class="news-grid"></div>
 
 </section>
 
 
-<!-- =========================================================
-     BUSINESS
-========================================================= -->
-
 <section class="related-section">
 
     <div class="related-title">
-         Business
+        Business
     </div>
 
-    <div
-        id="businessGrid"
-        class="news-grid"
-    ></div>
+    <div id="businessGrid" class="news-grid"></div>
 
 </section>
 
@@ -1380,27 +916,27 @@
 
             <div class="footer-links">
 
-                <a href="advertise.html">
+                <a href="../advertise.html">
                     Advertise With Us
                 </a>
 
-                <a href="about.html">
+                <a href="../about.html">
                     About Us
                 </a>
 
-                <a href="contact.html">
+                <a href="../contact.html">
                     Contact Us
                 </a>
 
-                <a href="Privacy Policy.html">
+                <a href="../Privacy%20Policy.html">
                     Privacy Policy
                 </a>
 
-                <a href="disclaimer.html">
+                <a href="../disclaimer.html">
                     Disclaimer
                 </a>
 
-                <a href="terms.html">
+                <a href="../terms.html">
                     Terms & Conditions
                 </a>
 
@@ -1437,16 +973,16 @@
 </footer>
 
 
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
 <script>
 
 document.addEventListener("DOMContentLoaded", function () {
 
     "use strict";
 
-
-    /* =====================================================
-       HELPERS
-    ===================================================== */
 
     function cleanText(text) {
 
@@ -1524,12 +1060,12 @@ document.addEventListener("DOMContentLoaded", function () {
         return `
 
             <a
-                href="${article.url}"
+                href="../${article.url}"
                 class="sidebar-item"
             >
 
                 <img
-                    src="${article.image}"
+                    src="../${article.image}"
                     alt="${article.alt || article.title}"
                     loading="lazy"
                 >
@@ -1550,12 +1086,12 @@ document.addEventListener("DOMContentLoaded", function () {
         return `
 
             <a
-                href="${article.url}"
+                href="../${article.url}"
                 class="news-card"
             >
 
                 <img
-                    src="${article.image}"
+                    src="../${article.image}"
                     alt="${article.alt || article.title}"
                     loading="lazy"
                 >
@@ -1563,36 +1099,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 <h3>
                     ${article.title}
                 </h3>
-
-            </a>
-
-        `;
-
-    }
-
-
-    function mostReadHTML(article, number) {
-
-        return `
-
-            <a
-                href="${article.url}"
-                class="most-read-item"
-            >
-
-                <div class="most-read-number">
-                    ${number}
-                </div>
-
-                <img
-                    src="${article.image}"
-                    alt="${article.alt || article.title}"
-                    loading="lazy"
-                >
-
-                <div class="most-read-title">
-                    ${article.title}
-                </div>
 
             </a>
 
@@ -1621,7 +1127,7 @@ document.addEventListener("DOMContentLoaded", function () {
     ===================================================== */
 
     fetch(
-        "index.html?v=" + Date.now(),
+        "../index.html?v=" + Date.now(),
         {
             cache: "no-store"
         }
@@ -1641,7 +1147,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     })
 
-
     .then(function (html) {
 
         const parser =
@@ -1654,10 +1159,6 @@ document.addEventListener("DOMContentLoaded", function () {
             );
 
 
-        /* =================================================
-           HOME PAGE SOURCES
-        ================================================= */
-
         const latest =
             getArticles(
                 home,
@@ -1668,12 +1169,6 @@ document.addEventListener("DOMContentLoaded", function () {
             getArticles(
                 home,
                 "trendingSource"
-            );
-
-        const mostRead =
-            getArticles(
-                home,
-                "mostReadSource"
             );
 
         const apts =
@@ -1701,180 +1196,66 @@ document.addEventListener("DOMContentLoaded", function () {
             );
 
 
-        /* =================================================
-           TRENDING NEWS
-        ================================================= */
-
         show(
             "trendingSidebar",
-
             trending
-                .slice(0, 8)
+                .slice(0,8)
                 .map(sidebarHTML)
                 .join("")
         );
 
-
-        /* =================================================
-           LATEST NEWS
-        ================================================= */
 
         show(
             "latestSidebar",
-
             latest
-                .slice(0, 8)
+                .slice(0,8)
                 .map(sidebarHTML)
                 .join("")
         );
 
-
-        /* =================================================
-           MOST READ
-        ================================================= */
-
-        show(
-            "mostReadSidebar",
-
-            mostRead
-                .slice(0, 8)
-                .map(function (article, index) {
-
-                    return mostReadHTML(
-                        article,
-                        index + 1
-                    );
-
-                })
-                .join("")
-        );
-
-
-        /* =================================================
-           ENTERTAINMENT
-        ================================================= */
-
-        show(
-            "entertainmentSidebar",
-
-            entertainment
-                .slice(0, 8)
-                .map(sidebarHTML)
-                .join("")
-        );
-
-
-        /* =================================================
-           LATEST GRID
-        ================================================= */
 
         show(
             "latestGrid",
-
             latest
-                .slice(0, 8)
+                .slice(0,8)
                 .map(cardHTML)
                 .join("")
         );
 
-
-        /* =================================================
-           SPORTS GRID
-        ================================================= */
 
         show(
             "sportsGrid",
-
             sports
-                .slice(0, 8)
+                .slice(0,8)
                 .map(cardHTML)
                 .join("")
         );
 
-
-        /* =================================================
-           ENTERTAINMENT GRID
-        ================================================= */
 
         show(
             "moviesGrid",
-
             entertainment
-                .slice(0, 8)
+                .slice(0,8)
                 .map(cardHTML)
                 .join("")
         );
 
-
-        /* =================================================
-           AP & TS GRID
-        ================================================= */
 
         show(
             "aptsGrid",
-
             apts
-                .slice(0, 8)
+                .slice(0,8)
                 .map(cardHTML)
                 .join("")
         );
 
-
-        /* =================================================
-           BUSINESS GRID
-        ================================================= */
 
         show(
             "businessGrid",
-
             business
-                .slice(0, 8)
+                .slice(0,8)
                 .map(cardHTML)
                 .join("")
-        );
-
-
-        /* =================================================
-           CONSOLE CHECK
-        ================================================= */
-
-        console.log(
-            "BS360 HOME ARTICLES LOADED"
-        );
-
-        console.log(
-            "Latest:",
-            latest.length
-        );
-
-        console.log(
-            "Trending:",
-            trending.length
-        );
-
-        console.log(
-            "Most Read:",
-            mostRead.length
-        );
-
-        console.log(
-            "AP & TS:",
-            apts.length
-        );
-
-        console.log(
-            "Sports:",
-            sports.length
-        );
-
-        console.log(
-            "Entertainment:",
-            entertainment.length
-        );
-
-        console.log(
-            "Business:",
-            business.length
         );
 
     })
