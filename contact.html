@@ -15,8 +15,11 @@
 
 <meta name="robots" content="index, follow">
 
-<link rel="canonical"
-href="https://bs360news.com/contact.html">
+<link
+    rel="canonical"
+    href="https://bs360news.com/contact.html"
+>
+
 
 <style>
 
@@ -24,6 +27,10 @@ href="https://bs360news.com/contact.html">
     box-sizing:border-box;
     margin:0;
     padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
 }
 
 html,
@@ -39,7 +46,19 @@ body{
     line-height:1.8;
 }
 
-/* HEADER */
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+a:hover{
+    text-decoration:underline;
+}
+
+
+/* =========================
+   HEADER
+========================= */
 
 .header{
     width:100%;
@@ -65,6 +84,11 @@ body{
     font-weight:700;
 }
 
+.logo:hover{
+    color:#fff;
+    text-decoration:none;
+}
+
 .home{
     color:#fff;
     text-decoration:none;
@@ -77,9 +101,13 @@ body{
 .home:hover{
     background:#fff;
     color:#111;
+    text-decoration:none;
 }
 
-/* MAIN CONTENT */
+
+/* =========================
+   MAIN CONTENT
+========================= */
 
 .container{
     width:100%;
@@ -93,7 +121,10 @@ body{
     background:transparent;
 }
 
-/* TITLE */
+
+/* =========================
+   TITLE
+========================= */
 
 h1{
     margin:0 0 8px;
@@ -109,18 +140,26 @@ h1{
     margin-bottom:25px;
 }
 
-/* INTRO */
+
+/* =========================
+   INTRO
+========================= */
 
 .intro{
     margin:0 0 25px;
     color:#444;
     font-size:16px;
     max-width:1000px;
+    line-height:1.9;
 }
 
-/* SECTIONS */
+
+/* =========================
+   CONTACT SECTIONS
+========================= */
 
 .contact-box{
+    width:100%;
     padding:22px 0;
     border-top:1px solid #e5e5e5;
 }
@@ -142,9 +181,13 @@ h1{
     color:#444;
     font-size:16px;
     max-width:1100px;
+    line-height:1.9;
 }
 
-/* EMAIL */
+
+/* =========================
+   EMAIL
+========================= */
 
 .email{
     color:#d00000 !important;
@@ -153,7 +196,39 @@ h1{
     word-break:break-word;
 }
 
-/* NOTE */
+.email a{
+    color:#d00000;
+    text-decoration:none;
+}
+
+.email a:hover{
+    text-decoration:underline;
+}
+
+
+/* =========================
+   WHATSAPP
+========================= */
+
+.whatsapp{
+    margin-top:12px !important;
+}
+
+.whatsapp a{
+    color:#168a45;
+    font-size:16px;
+    font-weight:600;
+    text-decoration:none;
+}
+
+.whatsapp a:hover{
+    text-decoration:underline;
+}
+
+
+/* =========================
+   NOTE
+========================= */
 
 .note{
     margin-top:15px;
@@ -167,42 +242,126 @@ h1{
     margin:0;
     color:#555;
     font-size:14px;
+    line-height:1.8;
 }
 
-/* FOOTER */
+
+/* =========================
+   FOOTER
+========================= */
 
 .footer{
     width:100%;
     background:#111;
     color:#aaa;
-    padding:22px 15px;
+    padding:35px 5% 20px;
     text-align:center;
-    font-size:13px;
+    font-size:14px;
+    border-top:3px solid #e00000;
 }
 
-.footer p{
-    margin:0 0 10px;
+
+/* FOOTER BRAND */
+
+.footer-brand{
+    max-width:850px;
+    margin:0 auto 20px;
 }
+
+.footer-brand strong{
+    display:block;
+    color:#fff;
+    font-size:21px;
+    margin-bottom:8px;
+}
+
+.footer-brand p{
+    max-width:850px;
+    margin:0 auto;
+    color:#aaa;
+    font-size:14px;
+    line-height:1.7;
+}
+
+
+/* FOOTER CONTACT */
+
+.footer-contact{
+    margin:18px auto;
+}
+
+.footer-contact p{
+    margin:6px 0;
+    color:#aaa;
+    font-size:14px;
+}
+
+.footer-contact strong{
+    color:#fff;
+}
+
+.footer-contact a{
+    color:#ddd;
+    text-decoration:none;
+}
+
+.footer-contact a:hover{
+    color:#fff;
+    text-decoration:underline;
+}
+
+
+/* FOOTER LINKS */
 
 .footer-links{
     display:flex;
     justify-content:center;
+    align-items:center;
     flex-wrap:wrap;
-    gap:14px;
+    gap:8px 18px;
+    max-width:1000px;
+    margin:22px auto;
+    padding:18px 0;
+    border-top:1px solid #333;
+    border-bottom:1px solid #333;
 }
 
 .footer-links a{
     color:#ccc;
     text-decoration:none;
+    font-size:13px;
 }
 
 .footer-links a:hover{
     color:#fff;
+    text-decoration:underline;
 }
 
-/* MOBILE */
+
+/* FOOTER BOTTOM */
+
+.footer-bottom{
+    max-width:900px;
+    margin:0 auto;
+}
+
+.footer-bottom p{
+    margin:5px 0;
+    color:#888;
+    font-size:12px;
+    line-height:1.6;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:600px){
+
+    .header{
+        border-bottom-width:2px;
+    }
 
     .header-inner{
         min-height:58px;
@@ -218,6 +377,7 @@ h1{
         padding:6px 9px;
     }
 
+
     .container{
         padding:25px 5% 35px;
     }
@@ -229,13 +389,85 @@ h1{
     .intro,
     .contact-box p{
         font-size:15px;
+        line-height:1.85;
+    }
+
+    .contact-box{
+        padding:20px 0;
     }
 
     .contact-box h2{
         font-size:19px;
     }
 
+    .email{
+        font-size:16px !important;
+    }
+
+    .whatsapp a{
+        font-size:15px;
+    }
+
+    .note{
+        padding:13px 14px;
+    }
+
     .note p{
+        font-size:14px;
+    }
+
+
+    /* MOBILE FOOTER */
+
+    .footer{
+        padding:30px 5% 18px;
+    }
+
+    .footer-brand strong{
+        font-size:19px;
+    }
+
+    .footer-brand p{
+        font-size:13px;
+    }
+
+    .footer-contact p{
+        font-size:13px;
+    }
+
+    .footer-links{
+        gap:10px 15px;
+        margin:18px auto;
+        padding:15px 0;
+    }
+
+    .footer-links a{
+        font-size:12px;
+    }
+
+    .footer-bottom p{
+        font-size:11px;
+    }
+
+}
+
+
+/* =========================
+   VERY SMALL MOBILE
+========================= */
+
+@media(max-width:380px){
+
+    .logo{
+        font-size:19px;
+    }
+
+    h1{
+        font-size:23px;
+    }
+
+    .intro,
+    .contact-box p{
         font-size:14px;
     }
 
@@ -245,20 +477,30 @@ h1{
 
 </head>
 
+
 <body>
 
 
-<!-- HEADER -->
+<!-- =========================
+     HEADER
+========================= -->
 
 <header class="header">
 
     <div class="header-inner">
 
-        <a href="index.html" class="logo">
+        <a
+            href="index.html"
+            class="logo"
+        >
             BS 360 NEWS
         </a>
 
-        <a href="index.html" class="home">
+
+        <a
+            href="index.html"
+            class="home"
+        >
             ← Home
         </a>
 
@@ -267,110 +509,181 @@ h1{
 </header>
 
 
-<!-- CONTENT -->
+
+<!-- =========================
+     CONTENT
+========================= -->
 
 <main class="container">
 
 <div class="content">
 
-    <h1>Contact Us</h1>
+
+    <h1>
+        Contact Us
+    </h1>
+
 
     <div class="red-line"></div>
 
 
     <p class="intro">
+
         If you have any suggestions, feedback, questions, or concerns
         regarding the news, articles, and other information published
         on BS 360 NEWS, you can contact us. If you notice any information
         that requires correction, you can also reach out to us with
         the relevant details.
+
     </p>
 
 
-    <!-- EMAIL -->
+
+    <!-- =========================
+         EMAIL
+    ========================= -->
 
     <div class="contact-box">
 
-        <h2>Email</h2>
+        <h2>
+            Email
+        </h2>
+
 
         <p>
+
             You can send us news-related information, suggestions,
             feedback, corrections, or other general questions through
             our email address.
+
         </p>
 
+
         <p class="email">
-            newsb386@gmail.com
+
+            <a href="mailto:newsb386@gmail.com">
+                newsb386@gmail.com
+            </a>
+
+        </p>
+
+
+        <p class="whatsapp">
+
+            <strong>
+                WhatsApp:
+            </strong>
+
+            <a
+                href="https://wa.me/917331137354"
+                target="_blank"
+                rel="noopener"
+            >
+                +91 73311 37354
+            </a>
+
         </p>
 
     </div>
 
 
-    <!-- NEWS CORRECTION -->
+
+    <!-- =========================
+         NEWS CORRECTION
+    ========================= -->
 
     <div class="contact-box">
 
-        <h2>News Correction</h2>
+        <h2>
+            News Correction
+        </h2>
+
 
         <p>
+
             If you notice incorrect information or any details that
             need to be corrected in a news article published on our
             website, please contact us by email with the relevant
             article details and clearly mention the information that
             needs correction.
+
         </p>
 
+
         <p>
+
             We will review the information received and, where
             appropriate, make necessary corrections or updates to
             the relevant article.
+
         </p>
 
     </div>
 
 
-    <!-- SUGGESTIONS -->
+
+    <!-- =========================
+         SUGGESTIONS
+    ========================= -->
 
     <div class="contact-box">
 
-        <h2>Suggestions & Feedback</h2>
+        <h2>
+            Suggestions &amp; Feedback
+        </h2>
+
 
         <p>
+
             If you have suggestions regarding news selection, article
             presentation, website features, or any other aspect of
             BS 360 NEWS, you are welcome to share them with us.
             Reader feedback can help us improve our website and
             provide a better experience.
+
         </p>
 
     </div>
 
 
-    <!-- OTHER QUESTIONS -->
+
+    <!-- =========================
+         OTHER QUESTIONS
+    ========================= -->
 
     <div class="contact-box">
 
-        <h2>Other Queries</h2>
+        <h2>
+            Other Queries
+        </h2>
+
 
         <p>
+
             For questions related to news, articles, the website,
             general information, or other website-related matters,
             you can also contact us using the email address provided
             above.
+
         </p>
 
     </div>
 
 
-    <!-- NOTE -->
+
+    <!-- =========================
+         NOTE
+    ========================= -->
 
     <div class="note">
 
         <p>
+
             We make reasonable efforts to review messages received
             from readers as soon as possible. Depending on the nature
             of the request, we may respond after reviewing the relevant
             information and details.
+
         </p>
 
     </div>
@@ -381,13 +694,72 @@ h1{
 </main>
 
 
-<!-- FOOTER -->
+
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer class="footer">
 
-    <p>
-        © 2026 BS 360 NEWS. All Rights Reserved.
-    </p>
+
+    <!-- FOOTER BRAND -->
+
+    <div class="footer-brand">
+
+        <strong>
+            BS 360 NEWS
+        </strong>
+
+        <p>
+
+            BS 360 NEWS is a Telugu digital news platform providing
+            the latest updates on Andhra Pradesh, Telangana, India,
+            world, cinema, sports, business and entertainment.
+
+        </p>
+
+    </div>
+
+
+
+    <!-- FOOTER CONTACT -->
+
+    <div class="footer-contact">
+
+        <p>
+
+            <strong>
+                Contact:
+            </strong>
+
+            <a href="mailto:newsb386@gmail.com">
+                newsb386@gmail.com
+            </a>
+
+        </p>
+
+
+        <p>
+
+            <strong>
+                WhatsApp:
+            </strong>
+
+            <a
+                href="https://wa.me/917331137354"
+                target="_blank"
+                rel="noopener"
+            >
+                +91 73311 37354
+            </a>
+
+        </p>
+
+    </div>
+
+
+
+    <!-- FOOTER LINKS -->
 
     <div class="footer-links">
 
@@ -399,6 +771,14 @@ h1{
             About Us
         </a>
 
+        <a href="contact.html">
+            Contact Us
+        </a>
+
+        <a href="advertise.html">
+            Advertise With Us
+        </a>
+
         <a href="Privacy Policy.html">
             Privacy Policy
         </a>
@@ -408,10 +788,30 @@ h1{
         </a>
 
         <a href="terms.html">
-            Terms
+            Terms &amp; Conditions
         </a>
 
     </div>
+
+
+
+    <!-- FOOTER BOTTOM -->
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 BS 360 NEWS. All Rights Reserved.
+        </p>
+
+        <p>
+
+            The information published on this website is provided
+            for general informational purposes.
+
+        </p>
+
+    </div>
+
 
 </footer>
 
