@@ -777,47 +777,119 @@ body.dark-mode .bs-navigation a:hover {
 </section> 
 
 
-<!-- ================= BIGG BOSS SECTION ================= -->
-    <section class="bigboss-section">
-        <div class="bigboss-heading">
+    
+   <!-- ================= BIGG BOSS SECTION ================= --><section class="bigboss-section"><div class="bigboss-heading">
     <span>BIGG BOSS</span>
 </div>
 
 <div class="bigboss-scroll">
 
     <!-- Bigg Boss Article 1 -->
-   <article
-    class="news-item post"
-    data-url="bigg-boss-telugu-10-debjani-srushti-draggers/"
->
-
-    <img
-        src="bigg-boss-telugu-10-debjani-srushti-draggers.png"
-        alt="బిగ్‌బాస్‌లో ఉత్కంఠ.. గెలిచిన టీమ్ తరఫున దేబ్జానీ, సృష్టి కీలక నిర్ణయం"
+    <article
+        class="bigboss-card"
+        onclick="location.href='v.html'"
     >
 
-    <div class="news-content">
+        <img
+            src="temper.png"
+            alt="బిగ్ బాస్ తెలుగు 10"
+        >
 
-        <p>
-            బిగ్‌బాస్‌లో ఉత్కంఠ.. గెలిచిన టీమ్ తరఫున దేబ్జానీ, సృష్టి కీలక నిర్ణయం
-        </p>
+        <h3>
+            బిగ్ బాస్ తెలుగు 10.. టెంపర్ వంశీ ఎంట్రీతో హౌస్‌లో కొత్త సందడి
+        </h3>
 
-     </article>
-    
+    </article>
+
+
+    <!-- Bigg Boss Article 2 -->
+    <article
+        class="bigboss-card"
+        onclick="location.href='bigboss2.html'"
+    >
+
+        <img
+            src="bigboss2.jpg"
+            alt="బిగ్ బాస్ తెలుగు"
+        >
+
+        <h3>
+            బిగ్ బాస్ తెలుగు.. హౌస్‌లో కంటెస్టెంట్స్ మధ్య ఆసక్తికర పరిణామాలు
+        </h3>
+
+    </article>
+
+
+    <!-- Bigg Boss Article 3 -->
+    <article
+        class="bigboss-card"
+        onclick="location.href='bigboss3.html'"
+    >
+
+        <img
+            src="bigboss3.jpg"
+            alt="బిగ్ బాస్ తెలుగు"
+        >
+
+        <h3>
+            బిగ్ బాస్ హౌస్‌లో మరో ట్విస్ట్.. కంటెస్టెంట్స్‌కు షాక్
+        </h3>
+
+    </article>
+
+
+    <!-- Bigg Boss Article 4 -->
+    <article
+        class="bigboss-card"
+        onclick="location.href='bigboss4.html'"
+    >
+
+        <img
+            src="bigboss4.jpg"
+            alt="బిగ్ బాస్ తెలుగు"
+        >
+
+        <h3>
+            బిగ్ బాస్ తెలుగు 10.. ఈ వారం ఎవరు ఎలిమినేట్ అవుతారు?
+        </h3>
+
+    </article>
+
+
+    <!-- Bigg Boss Article 5 -->
+    <article
+        class="bigboss-card"
+        onclick="location.href='bigboss5.html'"
+    >
+
+        <img
+            src="bigboss5.jpg"
+            alt="బిగ్ బాస్ తెలుగు"
+        >
+
+        <h3>
+            బిగ్ బాస్‌లో కొత్త టాస్క్.. కంటెస్టెంట్స్ మధ్య పోటీ
+        </h3>
+
+    </article>
+
 </div>
-</div>
+
 </section><style>
 
 /* ================= BIGG BOSS SECTION ================= */
 
 .bigboss-section {
     width: 100%;
-    background: #000;
+    background-image: url("bigboss-bg.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     padding: 20px 0 24px;
     margin: 25px 0;
     overflow: hidden;
 }
-
+    
 
 /* ================= HEADING ================= */
 
@@ -864,19 +936,18 @@ body.dark-mode .bs-navigation a:hover {
 
 
 /* ================= CARD ================= */
-.bigboss-section {
-    width: 100%;
 
-    background-image: url("bigboss-bg.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+.bigboss-card {
+    flex: 0 0 250px;
 
-    padding: 20px 0 24px;
-    margin: 25px 0;
+    background: transparent;
 
-    overflow: hidden;
+    cursor: pointer;
+
+    transition: transform 0.2s ease;
 }
+    
+
 /* ================= IMAGE ================= */
 
 .bigboss-card img {
@@ -954,8 +1025,7 @@ body.dark-mode .bs-navigation a:hover {
 
 }
 
-</style>
-    
+</style>   
 
     
 <!-- ===================================================== 
