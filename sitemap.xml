@@ -1,39 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset
+xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <url>
-        <loc>https://suryabhai941.github.io/suresh/</loc>
-        <changefreq>daily</changefreq>
-        <priority>1.0</priority>
+        <loc>https://bs360news.com/</loc>
+        <lastmod>2026-10-05</lastmod>
     </url>
 
     <url>
-        <loc>https://suryabhai941.github.io/suresh/news1.html</loc>
+        <loc>https://bs360news.com/MOVIES.html</loc>
+        <lastmod>2026-10-05</lastmod>
     </url>
 
     <url>
-        <loc>https://suryabhai941.github.io/suresh/movie1.html</loc>
+        <loc>https://bs360news.com/SPORTS.html</loc>
+        <lastmod>2026-10-05</lastmod>
     </url>
 
     <url>
-        <loc>https://suryabhai941.github.io/suresh/movie2.html</loc>
+        <loc>https://bs360news.com/AP%26TS.html</loc>
+        <lastmod>2026-10-05</lastmod>
     </url>
 
     <url>
-        <loc>https://suryabhai941.github.io/suresh/movie3.html</loc>
+        <loc>https://bs360news.com/business.html</loc>
+        <lastmod>2026-10-05</lastmod>
     </url>
 
     <url>
-        <loc>https://suryabhai941.github.io/suresh/sports1.html</loc>
+        <loc>https://bs360news.com/bhuvneshwar-kumar-hong-kong-sixes-2026/</loc>
+        <lastmod>2026-10-05</lastmod>
     </url>
 
     <url>
-        <loc>https://suryabhai941.github.io/suresh/rvs.html</loc>
+        <loc>https://bs360news.com/rishab-shetty-chidambaram-combo/</loc>
+        <lastmod>2026-10-05</lastmod>
     </url>
 
     <url>
-        <loc>https://suryabhai941.github.io/suresh/saho.html</loc>
+        <loc>https://bs360news.com/janhvi-kapoor-chuttamalle-ai-video-controversy/</loc>
+        <lastmod>2026-10-05</lastmod>
     </url>
 
 </urlset>
