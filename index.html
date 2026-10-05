@@ -1,312 +1,372 @@
+\<!doctype html>
 
-<!doctype html>
-<html lang="te">
+\<html lang="te">
 
-<head>
+\<head>
 
-<meta charset="utf-8">
 
-<meta
+
+\<meta charset="utf-8">
+
+\<meta
     name="viewport"
     content="width=device-width,initial-scale=1"
->
+\>
 
-<title>BS 360 NEWS | Fast | Fair | Fearless</title>
+\<title>BS 360 NEWS | Fast | Fair | Fearless\</title>
 
-<meta
+\<meta
     name="description"
     content="BS 360 NEWS - తెలుగు రాష్ట్రాలు, సినిమా, క్రికెట్, స్పోర్ట్స్, బిజినెస్ మరియు జాతీయ వార్తల తాజా అప్‌డేట్స్."
->
+\>
 
-<meta
+\<meta
     name="google-adsense-account"
     content="ca-pub-7586406136288714"
->
+\>
 
-<link
+\<link
     rel="icon"
     href="dp.png.png"
->
+\>
 
-<link
+\<link
     rel="apple-touch-icon"
     href="dp.png.png"
->
+\>
 
-<link
+\<link
     rel="canonical"
-    href="https://bs360news.com/"
->
+    href="[https://bs360news.com/](https://bs360news.com/)"
+\>
 
-<link
+\<link
     rel="stylesheet"
     href="style.css?v=20261005"
->
+\>
 
-<!-- Google Analytics -->
+\<!-- Google Analytics -->
 
-<script
+\<script
     async
-    src="https://www.googletagmanager.com/gtag/js?id=G-EWXPS1N2TL"
-></script>
+    src="[https://www.googletagmanager.com/gtag/js?id=G-EWXPS1N2TL](https://www.googletagmanager.com/gtag/js?id=G-EWXPS1N2TL)"
+\>\</script>
 
-<script>
+\<script>
 
-window.dataLayer = window.dataLayer || [];
+    window\.dataLayer = window\.dataLayer || [];
 
-function gtag(){
-    dataLayer.push(arguments);
-}
+    function gtag(){
+        dataLayer.push(arguments);
+    }
 
-gtag("js", new Date());
+    gtag("js", new Date());
 
-gtag("config", "G-EWXPS1N2TL");
+    gtag("config", "G-EWXPS1N2TL");
 
-</script>
+\</script>
 
 
-<!-- Google AdSense -->
 
-<script
+\<!-- Google AdSense -->
+
+\<script
     async
-    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7586406136288714"
+    src="[https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7586406136288714](https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7586406136288714)"
     crossorigin="anonymous"
-></script>
+\>\</script>
 
 
-<!-- =====================================================
+
+\<!-- =====================================================
      CATEGORY SECTION LAYOUT
-     
-     DESKTOP / LAPTOP:
-
-     AP & TS       | SPORTS
-     ENTERTAINMENT | BUSINESS
+     DESKTOP:
+     AP & TS  | SPORTS
+     MOVIES   | BUSINESS
 
      MOBILE:
-
      AP & TS
      SPORTS
-     ENTERTAINMENT
+     MOVIES
      BUSINESS
-====================================================== -->
+\====================================================== -->
 
-<style>
+\<style>
 
-/* =====================================================
-   CATEGORY WRAPPER
-===================================================== */
+    /\* ================================
+       DESKTOP / LAPTOP
+    \================================= \*/
 
-.category-sections{
-    display:grid;
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:24px;
-    width:100%;
-    margin:0 0 35px;
-}
+    @media (min-width:701px){
 
+        \#aptsSection,
+        \#sportsSection,
+        \#cinemaSection,
+        \#businessSection{
 
-/* =====================================================
-   EACH CATEGORY
-===================================================== */
+            width:50% !important;
 
-.category-sections > section{
-    width:100% !important;
-    min-width:0;
-    box-sizing:border-box;
-    display:block !important;
-    margin:0 !important;
-    padding:0 !important;
-}
+            float\:left !important;
+
+            box-sizing\:border-box;
+
+            display\:block !important;
+
+            margin-bottom:35px;
+
+        }
 
 
-/* =====================================================
-   MAKE SURE NEWS GRID DOES NOT FORCE SECTION WIDTH
-===================================================== */
 
-.category-sections .news-slider{
-    width:100%;
-    max-width:100%;
-    box-sizing:border-box;
-}
+        /\* LEFT COLUMN \*/
+
+        \#aptsSection,
+        \#cinemaSection{
+
+            padding-right:12px;
+
+        }
 
 
-/* =====================================================
-   LAPTOP / DESKTOP
-===================================================== */
 
-@media (min-width:701px){
+        /\* RIGHT COLUMN \*/
 
-    .category-sections{
-        grid-template-columns:repeat(2,minmax(0,1fr));
-        align-items:start;
+        \#sportsSection,
+        \#businessSection{
+
+            padding-left:12px;
+
+        }
+
+
+
+        /\* SECOND ROW START \*/
+
+        \#cinemaSection{
+
+            clear\:left !important;
+
+        }
+
+
+
+        \#sportsSection{
+
+            clear\:none !important;
+
+        }
+
+
+
+        \#businessSection{
+
+            clear\:none !important;
+
+        }
+
+
+
+        /\* Sections after four categories \*/
+
+        \#bigbossSection,
+        .trending-section,
+        .most-read-section,
+        .after-category-section,
+        .photo-gallery-section,
+        .video-news-section{
+
+            clear\:both !important;
+
+        }
+
     }
 
-}
 
 
-/* =====================================================
-   MOBILE
-===================================================== */
+    /\* ================================
+       MOBILE
+    \================================= \*/
 
-@media (max-width:700px){
+    @media (max-width:700px){
 
-    .category-sections{
-        display:block;
-        width:100%;
-        margin-bottom:35px;
+        \#aptsSection,
+        \#sportsSection,
+        \#cinemaSection,
+        \#businessSection{
+
+            width:100% !important;
+
+            float\:none !important;
+
+            clear\:both !important;
+
+            display\:block !important;
+
+            padding-left:0 !important;
+
+            padding-right:0 !important;
+
+            margin-left:0 !important;
+
+            margin-right:0 !important;
+
+            margin-bottom:35px !important;
+
+        }
+
     }
 
-    .category-sections > section{
-        width:100% !important;
-        margin:0 0 35px !important;
-        padding:0 !important;
-    }
+\</style>
+\`\`\`
 
-}
+\</head>
 
-</style>
+\<body>
 
-</head>
-
-
-<body>
-
-
-<!-- =====================================================
+\<!-- =====================================================
      HEADER
-===================================================== -->
+\===================================================== -->
 
-<header class="brand-header">
+\<header class="brand-header">
 
-<div class="container brand-inner">
+\`\`\`
+\<div class="container brand-inner">
 
 
-    <!-- LOGO -->
 
-    <a
+    \<!-- LOGO -->
+
+    \<a
         href="index.html"
         class="brand-logo"
-    >
+    \>
 
-        <div class="logo-mark">
+        \<div class="logo-mark">
 
-            <img
+            \<img
                 src="dp.png.png"
                 alt="BS 360 NEWS"
-            >
+            \>
 
-        </div>
+        \</div>
 
 
-        <div class="logo-name">
 
-            <div>
+        \<div class="logo-name">
 
-                <span>BS</span>
+            \<div>
 
-                <span class="logo-red">
+                \<span>BS\</span>
+
+                \<span class="logo-red">
                     360
-                </span>
+                \</span>
 
-                <span>
+                \<span>
                     NEWS
-                </span>
+                \</span>
 
-            </div>
+            \</div>
 
 
-            <span class="logo-tagline">
+
+            \<span class="logo-tagline">
                 Fast | Fair | Fearless
-            </span>
+            \</span>
 
-        </div>
+        \</div>
 
-    </a>
+    \</a>
 
 
-    <!-- HEADER ACTIONS -->
 
-    <div class="header-actions">
+    \<!-- HEADER ACTIONS -->
 
-        <button
+    \<div class="header-actions">
+
+        \<button
             type="button"
             class="theme-button"
             id="themeButton"
             onclick="toggleTheme()"
-        >
+        \>
             🌙 Dark
-        </button>
+        \</button>
 
-    </div>
+    \</div>
 
 
-    <!-- MOBILE MENU -->
 
-    <button
+    \<!-- MOBILE MENU -->
+
+    \<button
         type="button"
         class="mobile-menu-toggle"
         onclick="toggleMobileNav()"
         aria-label="Menu"
-    >
+    \>
         ☰
-    </button>
+    \</button>
 
-</div>
+\</div>
 
 
-<!-- NAVIGATION -->
 
-<nav class="main-nav">
+\<!-- NAVIGATION -->
 
-    <div
+\<nav class="main-nav">
+
+    \<div
         class="container nav-links"
         id="navLinks"
-    >
+    \>
 
-        <a href="index.html">
+        \<a href="index.html">
             HOME
-        </a>
+        \</a>
 
-        <a href="MOVIES.html">
+        \<a href="MOVIES.html">
             ENTERTAINMENT
-        </a>
+        \</a>
 
-        <a href="SPORTS.html">
+        \<a href="SPORTS.html">
             SPORTS
-        </a>
+        \</a>
 
-        <a href="AP&TS.html">
+        \<a href="AP&TS.html">
             AP & TS
-        </a>
+        \</a>
 
-        <a href="business.html">
+        \<a href="business.html">
             BUSINESS
-        </a>
+        \</a>
 
-        <a href="BIGBOSS10.html">
+        \<a href="BIGBOSS10.html">
             BIGG BOSS 10
-        </a>
+        \</a>
 
-    </div>
+    \</div>
 
-</nav>
+\</nav>
+\`\`\`
 
-</header>
+\</header>
 
-
-<!-- =====================================================
+\<!-- =====================================================
      TOP HEADLINES
-===================================================== -->
+\===================================================== -->
 
-<section class="headlines-bar">
+\<section class="headlines-bar">
 
-<div class="container">
 
-    <div class="headlines-label">
-        TOP HEADLINES
-    </div>
 
-    <div class="headlines-text">
+\<div class="container">
+
+    \<div class="headlines-label">
+         TOP HEADLINES
+    \</div>
+
+    \<div class="headlines-text">
 
         భారత్ వెస్టిండీస్ రెండో వన్డేలో బ్యాటర్ల జోరు
 
@@ -318,1045 +378,1138 @@ gtag("config", "G-EWXPS1N2TL");
 
         బిగ్ బాస్ 10లో కెప్టెన్సీ టాస్క్ కోసం పోటీ
 
-    </div>
+    \</div>
 
-</div>
-
-</section>
+\</div>
 
 
-<!-- =====================================================
+
+\</section>
+
+\<!-- =====================================================
      MAIN
-===================================================== -->
+\===================================================== -->
 
-<main class="container portal-wrap">
+\<main class="container portal-wrap">
 
 
-<!-- =================================================
+
+
+
+\<!-- =================================================
      LATEST NEWS
-================================================== -->
+\================================================== -->
 
-<section class="homepage-section latest-section">
+\<section class="homepage-section latest-section">
 
-    <div class="section-title-row">
+    \<div class="section-title-row">
 
-        <h2>
+        \<h2>
             Latest News
-        </h2>
+        \</h2>
 
-        <span>
+        \<span>
             తాజా వార్తలు
-        </span>
+        \</span>
 
-    </div>
+    \</div>
 
 
-    <div id="topStory">
 
-        <p>
+    \<div id="topStory">
+
+        \<p>
             వార్తలు లోడ్ అవుతున్నాయి...
-        </p>
+        \</p>
 
-    </div>
+    \</div>
 
-</section>
-
-
-<!-- =================================================
-     CATEGORY SECTIONS
-     
-     DESKTOP:
-
-     AP & TS       | SPORTS
-     ENTERTAINMENT | BUSINESS
-================================================== -->
-
-<div class="category-sections">
+\</section>
 
 
-<!-- =================================================
+
+
+
+\<!-- =================================================
      AP & TELANGANA
-================================================== -->
+     DESKTOP LEFT
+\================================================== -->
 
-<section id="aptsSection">
+\<section id="aptsSection">
 
-    <div class="section-title-row">
+    \<div class="section-title-row">
 
-        <h2>
+        \<h2>
             AP & Telangana
-        </h2>
+        \</h2>
 
-        <a
+
+
+        \<a
             href="AP&TS.html"
             class="view-all"
-        >
+        \>
             View All
-        </a>
+        \</a>
 
-    </div>
+    \</div>
 
 
-    <div
+
+    \<div
         class="news-slider"
         id="sliderTrack"
-    >
+    \>
 
-        <p>
+        \<p>
             వార్తలు లోడ్ అవుతున్నాయి...
-        </p>
+        \</p>
 
-    </div>
+    \</div>
 
-</section>
+\</section>
 
 
-<!-- =================================================
+
+
+
+\<!-- =================================================
      SPORTS
-================================================== -->
+     DESKTOP RIGHT
+\================================================== -->
 
-<section id="sportsSection">
+\<section id="sportsSection">
 
-    <div class="section-title-row">
+    \<div class="section-title-row">
 
-        <h2>
-            Sports
-        </h2>
+        \<h2>
+         Sports
+        \</h2>
 
-        <a
+
+
+        \<a
             href="SPORTS.html"
             class="view-all"
-        >
+        \>
             View All
-        </a>
+        \</a>
 
-    </div>
+    \</div>
 
 
-    <div
+
+    \<div
         class="news-slider"
         id="sportsGrid"
-    >
+    \>
 
-        <p>
+        \<p>
             వార్తలు లోడ్ అవుతున్నాయి...
-        </p>
+        \</p>
 
-    </div>
+    \</div>
 
-</section>
+\</section>
 
 
-<!-- =================================================
-     ENTERTAINMENT
-================================================== -->
 
-<section id="cinemaSection">
 
-    <div class="section-title-row">
 
-        <h2>
-            Entertainment
-        </h2>
+\<!-- =================================================
+     MOVIES
+     DESKTOP LEFT - SECOND ROW
+\================================================== -->
 
-        <a
+\<section id="cinemaSection">
+
+    \<div class="section-title-row">
+
+        \<h2>
+             Entertainment
+        \</h2>
+
+
+
+        \<a
             href="MOVIES.html"
             class="view-all"
-        >
+        \>
             View All
-        </a>
+        \</a>
 
-    </div>
+    \</div>
 
 
-    <div
+
+    \<div
         class="news-slider"
         id="cinemaGrid"
-    >
+    \>
 
-        <p>
+        \<p>
             వార్తలు లోడ్ అవుతున్నాయి...
-        </p>
+        \</p>
 
-    </div>
+    \</div>
 
-</section>
+\</section>
 
 
-<!-- =================================================
+
+
+
+\<!-- =================================================
      BUSINESS
-================================================== -->
+     DESKTOP RIGHT - SECOND ROW
+\================================================== -->
 
-<section id="businessSection">
+\<section id="businessSection">
 
-    <div class="section-title-row">
+    \<div class="section-title-row">
 
-        <h2>
-            Business
-        </h2>
+        \<h2>
+             Business
+        \</h2>
 
-        <a
+
+
+        \<a
             href="business.html"
             class="view-all"
-        >
+        \>
             View All
-        </a>
+        \</a>
 
-    </div>
+    \</div>
 
 
-    <div
+
+    \<div
         class="news-slider"
         id="businessGrid"
-    >
+    \>
 
-        <p>
+        \<p>
             వార్తలు లోడ్ అవుతున్నాయి...
-        </p>
+        \</p>
 
-    </div>
+    \</div>
 
-</section>
-
-
-</div>
-<!-- END CATEGORY SECTIONS -->
+\</section>
 
 
-<!-- =================================================
+
+
+
+
+
+
+
+
+
+\<!-- =================================================
      TRENDING
-================================================== -->
+\================================================== -->
 
-<section class="trending-section">
+\<section class="trending-section">
 
-    <div class="section-title-row">
+    \<div class="section-title-row">
 
-        <h2>
+        \<h2>
             Trending News
-        </h2>
+        \</h2>
 
-        <span>
+        \<span>
             వైరల్ అవుతున్న వార్తలు
-        </span>
+        \</span>
 
-    </div>
+    \</div>
 
 
-    <div
+
+    \<div
         id="trendingGrid"
         class="trending-grid"
-    >
+    \>
 
-        <a
+        \<a
             href="shubman-gill-62-ball-century/"
             class="trending-card"
-        >
+        \>
 
-            <img
+            \<img
                 src="shubman-gill-62-ball-century.png"
                 alt="శుభ్‌మన్ గిల్ సెంచరీతో భారత్‌కు భారీ విజయం"
                 loading="lazy"
-            >
+            \>
 
-            <h3>
+            \<h3>
                 శుభ్‌మన్ గిల్ సెంచరీతో భారత్‌కు భారీ విజయం
-            </h3>
+            \</h3>
 
-        </a>
+        \</a>
 
 
-        <a
+
+        \<a
             href="nirmala-sitharaman-economy-growth/"
             class="trending-card"
-        >
+        \>
 
-            <img
+            \<img
                 src="nirmala-sitharaman-economy-growth.jpg"
                 alt="భారత ఆర్థిక వ్యవస్థపై నిర్మలా సీతారామన్ కీలక వ్యాఖ్యలు"
                 loading="lazy"
-            >
+            \>
 
-            <h3>
+            \<h3>
                 భారత ఆర్థిక వ్యవస్థపై నిర్మలా సీతారామన్ కీలక వ్యాఖ్యలు
-            </h3>
+            \</h3>
 
-        </a>
+        \</a>
 
 
-        <a
+
+        \<a
             href="gandhi-jayanti-walking-fitness/"
             class="trending-card"
-        >
+        \>
 
-            <img
+            \<img
                 src="gandhi-jayanti.jpg"
                 alt="గాంధీ జయంతి సందర్భంగా ఆరోగ్యంపై ప్రత్యేక సందేశం"
                 loading="lazy"
-            >
+            \>
 
-            <h3>
+            \<h3>
                 గాంధీ జయంతి సందర్భంగా ఆరోగ్యంపై ప్రత్యేక సందేశం
-            </h3>
+            \</h3>
 
-        </a>
+        \</a>
 
 
-        <a
+
+        \<a
             href="andhra-pradesh-latest-news/"
             class="trending-card"
-        >
+        \>
 
-            <img
+            \<img
                 src="ap-news.jpg"
                 alt="ఆంధ్రప్రదేశ్ తాజా వార్తలు"
                 loading="lazy"
-            >
+            \>
 
-            <h3>
+            \<h3>
                 ఆంధ్రప్రదేశ్ తాజా వార్తలు
-            </h3>
+            \</h3>
 
-        </a>
+        \</a>
 
-    </div>
+    \</div>
 
-</section>
+\</section>
 
 
-<!-- =================================================
+
+
+
+\<!-- =================================================
      MOST READ
-================================================== -->
+\================================================== -->
 
-<section class="most-read-section">
+\<section class="most-read-section">
 
-    <div class="section-title-row">
+    \<div class="section-title-row">
 
-        <h2>
+        \<h2>
             Most Read
-        </h2>
+        \</h2>
 
-        <span>
+        \<span>
             ఎక్కువగా చదివిన వార్తలు
-        </span>
+        \</span>
 
-    </div>
+    \</div>
 
 
-    <div
+
+    \<div
         id="mostReadList"
         class="most-read-list"
-    >
+    \>
 
-        <a
+        \<a
             href="lal-bahadur-shastri/"
             class="most-read-item"
-        >
+        \>
 
-            <div class="most-read-text">
+            \<div class="most-read-text">
 
-                <h3>
+                \<h3>
                     లాల్ బహదూర్ శాస్త్రి జయంతి సందర్భంగా ప్రత్యేక కథనం
-                </h3>
+                \</h3>
 
-            </div>
+            \</div>
 
 
-            <img
+
+            \<img
                 src="lal-bahadur-shastri.jpg"
                 alt="లాల్ బహదూర్ శాస్త్రి"
                 loading="lazy"
-            >
+            \>
 
-        </a>
+        \</a>
 
 
-        <a
+
+        \<a
             href="nani-the-paradise-box-office-collections/"
             class="most-read-item"
-        >
+        \>
 
-            <div class="most-read-text">
+            \<div class="most-read-text">
 
-                <h3>
+                \<h3>
                     నాని ది ప్యారడైజ్ బాక్సాఫీస్ వద్ద జోరు
-                </h3>
+                \</h3>
 
-            </div>
+            \</div>
 
 
-            <img
+
+            \<img
                 src="nani-the-paradise-box-office-collections.png"
                 alt="నాని ది ప్యారడైజ్"
                 loading="lazy"
-            >
+            \>
 
-        </a>
+        \</a>
 
-    </div>
+    \</div>
 
-</section>
+\</section>
 
 
-<!-- =================================================
+
+
+
+\<!-- =================================================
      AFTER AP & TS
-================================================== -->
+\================================================== -->
 
-<section class="after-category-section">
+\<section class="after-category-section">
 
-    <div
+    \<div
         id="afterApTsGrid"
         class="three-column-news-grid"
-    ></div>
+    \>\</div>
 
-</section>
+\</section>
 
 
-<!-- =================================================
+
+
+
+\<!-- =================================================
      AFTER SPORTS
-================================================== -->
+\================================================== -->
 
-<section class="after-category-section">
+\<section class="after-category-section">
 
-    <div
+    \<div
         id="afterSportsGrid"
         class="three-column-news-grid"
-    ></div>
+    \>\</div>
 
-</section>
+\</section>
 
 
-<!-- =================================================
+
+
+
+\<!-- =================================================
      AFTER ENTERTAINMENT
-================================================== -->
+\================================================== -->
 
-<section class="after-category-section">
+\<section class="after-category-section">
 
-    <div
+    \<div
         id="afterEntertainmentGrid"
         class="three-column-news-grid"
-    ></div>
+    \>\</div>
 
-</section>
+\</section>
 
 
-<!-- =================================================
+
+
+
+\<!-- =================================================
      AFTER BUSINESS
-================================================== -->
+\================================================== -->
 
-<section class="after-category-section">
+\<section class="after-category-section">
 
-    <div
+    \<div
         id="afterBusinessGrid"
         class="three-column-news-grid"
-    ></div>
+    \>\</div>
 
-</section>
+\</section>
 
 
-<!-- =================================================
+
+
+
+\<!-- =================================================
      PHOTO GALLERY
-================================================== -->
+\================================================== -->
 
-<section class="photo-gallery-section">
+\<section class="photo-gallery-section">
 
-    <div class="section-title-row">
+    \<div class="section-title-row">
 
-        <h2>
-            Photo Gallery
-        </h2>
+        \<h2>
+             Photo Gallery
+        \</h2>
 
-    </div>
+    \</div>
 
 
-    <div
+
+    \<div
         id="photoGallery"
         class="photo-gallery-scroll"
-    ></div>
+    \>\</div>
 
-</section>
+\</section>
 
 
-<!-- =================================================
+
+
+
+\<!-- =================================================
      VIDEO NEWS
-================================================== -->
+\================================================== -->
 
-<section class="video-news-section">
+\<section class="video-news-section">
 
-    <div class="section-title-row">
+    \<div class="section-title-row">
 
-        <h2>
+        \<h2>
             Video News
-        </h2>
+        \</h2>
 
-    </div>
+    \</div>
 
 
-    <div
+
+    \<div
         id="videoNewsGrid"
         class="video-news-grid"
-    ></div>
+    \>\</div>
 
-</section>
+\</section>
 
 
-<!-- =================================================
+
+
+
+\<!-- =================================================
      ADVERTISEMENT
-================================================== -->
+\================================================== -->
 
-<div class="ad-space">
+\<div class="ad-space">
     Advertisement
-</div>
+\</div>
 
 
-</main>
 
+\</main>
 
-<!-- =====================================================
+\<!-- =====================================================
      HIDDEN ARTICLE SOURCE
-===================================================== -->
+\===================================================== -->
 
-<div
+\<div
     id="legacyNewsSource"
     class="legacy-news-source"
->
+\>
 
+\<!-- SPORTS -->
 
-<!-- SPORTS -->
-
-<article
+\<article
     class="news-item post"
     data-category="sports"
     data-url="india-vs-west-indies-2nd-odi-guwahati/"
->
+\>
 
-    <img
+    \<img
         src="india-vs-west-indies-2nd-odi-guwahati.png"
         alt="భారత్ వెస్టిండీస్ రెండో వన్డేలో బ్యాటర్ల జోరు"
-    >
+    \>
 
-    <div class="news-content">
+    \<div class="news-content">
 
-        <p>
+        \<p>
             భారత్ వెస్టిండీస్ రెండో వన్డేలో బ్యాటర్ల జోరు
-        </p>
+        \</p>
 
-    </div>
+    \</div>
 
-</article>
+\</article>
 
 
-<article
+
+\<article
     class="news-item post"
     data-category="sports"
     data-url="shubman-gill-62-ball-century/"
->
+\>
 
-    <img
+    \<img
         src="shubman-gill-62-ball-century.png"
         alt="శుభ్‌మన్ గిల్ సెంచరీతో భారత్‌కు భారీ విజయం"
-    >
+    \>
 
-    <div class="news-content">
+    \<div class="news-content">
 
-        <p>
+        \<p>
             శుభ్‌మన్ గిల్ సెంచరీతో భారత్‌కు భారీ విజయం
-        </p>
+        \</p>
 
-    </div>
+    \</div>
 
-</article>
+\</article>
 
 
-<!-- MOVIES -->
 
-<article
+
+
+\<!-- MOVIES -->
+
+\<article
     class="news-item post"
     data-category="entertainment"
     data-url="dasara-venkatesh-rajinikanth-vijay-deverakonda-movies/"
->
+\>
 
-    <img
+    \<img
         src="dasara-venkatesh-rajinikanth-vijay-deverakonda-movies.png"
         alt="దసరా బరిలో ముగ్గురు స్టార్ హీరోలు.. వెంకటేష్, రజినీకాంత్, విజయ్ దేవరకొండ సినిమాలపై ఆసక్తి"
-    >
+    \>
 
-    <div class="news-content">
+    \<div class="news-content">
 
-        <p>
+        \<p>
             దసరా బరిలో ముగ్గురు స్టార్ హీరోలు.. వెంకటేష్, రజినీకాంత్, విజయ్ దేవరకొండ సినిమాలపై ఆసక్తి
-        </p>
+        \</p>
 
-    </div>
+    \</div>
 
-</article>
+\</article>
 
 
-<article
+
+\<article
     class="news-item post"
     data-category="entertainment"
     data-url="nani-the-paradise-box-office-collections/"
->
+\>
 
-    <img
+    \<img
         src="nani-the-paradise-box-office-collections.png"
         alt="భారీ వసూళ్లతో దూసుకెళ్తున్న నాని ‘ది ప్యారడైజ్’.. బాక్సాఫీస్ వద్ద జోరు"
-    >
+    \>
 
-    <div class="news-content">
+    \<div class="news-content">
 
-        <p>
+        \<p>
             భారీ వసూళ్లతో దూసుకెళ్తున్న నాని ‘ది ప్యారడైజ్’.. బాక్సాఫీస్ వద్ద జోరు
-        </p>
+        \</p>
 
-    </div>
+    \</div>
 
-</article>
+\</article>
 
 
-<article
+
+\<article
     class="news-item post"
     data-category="entertainment"
     data-url="fahadh-faasil-dont-trouble-the-trouble/"
->
+\>
 
-    <img
+    \<img
         src="fahadh-faasil-dont-trouble-the-trouble.png"
         alt="యువ టీమ్‌తో ఫహాద్ ఫాజిల్.."
-    >
+    \>
 
-    <div class="news-content">
+    \<div class="news-content">
 
-        <p>
+        \<p>
             యువ టీమ్‌తో ఫహాద్ ఫాజిల్..
-        </p>
+        \</p>
 
-    </div>
+    \</div>
 
-</article>
+\</article>
 
 
-<article
+
+\<article
     class="news-item post"
     data-category="entertainment"
     data-url="master-bharath-venky-child-artist-doctor/"
->
+\>
 
-    <img
+    \<img
         src="master-bharath-venky-child-artist-doctor.png"
         alt="తల్లి చివరి కోరిక కోసం సినిమాలకు గుడ్‌బై.. డాక్టర్‌గా మారిన వెంకీ చైల్డ్ ఆర్టిస్ట్ భరత్"
-    >
+    \>
 
-    <div class="news-content">
+    \<div class="news-content">
 
-        <p>
+        \<p>
             తల్లి చివరి కోరిక కోసం సినిమాలకు గుడ్‌బై.. డాక్టర్‌గా మారిన ‘వెంకీ’ చైల్డ్ ఆర్టిస్ట్ భరత్!
-        </p>
+        \</p>
 
-    </div>
+    \</div>
 
-</article>
+\</article>
 
 
-<article
+
+\<article
     class="news-item post"
     data-category="entertainment"
     data-url="rajamouli-suriya-combination-update/"
->
+\>
 
-    <img
+    \<img
         src="rajamouli-suriya-combination-update.png"
         alt="సూర్యతో రాజమౌళి సినిమా ఎప్పుడు? ఒక్క మాటతో ఆసక్తి పెంచిన జక్కన్న"
-    >
+    \>
 
-    <div class="news-content">
+    \<div class="news-content">
 
-        <p>
+        \<p>
             సూర్యతో రాజమౌళి సినిమా ఎప్పుడు? ఒక్క మాటతో ఆసక్తి పెంచిన జక్కన్న
-        </p>
+        \</p>
 
-    </div>
+    \</div>
 
-</article>
+\</article>
 
 
-<article
+
+\<article
     class="news-item post"
     data-category="entertainment"
     data-url="venkatesh-aadarsha-kutumbam-press-meet/"
->
+\>
 
-    <img
+    \<img
         src="venkatesh-aadarsha-kutumbam-press-meet..png"
         alt="20 ఏళ్ల తర్వాత త్రివిక్రమ్‌తో వెంకటేష్.. ‘పెళ్లికాని ప్రసాద్’ కాలం పోయింది"
-    >
+    \>
 
-    <div class="news-content">
+    \<div class="news-content">
 
-        <p>
+        \<p>
             20 ఏళ్ల తర్వాత త్రివిక్రమ్‌తో వెంకటేష్.. ‘పెళ్లికాని ప్రసాద్’ కాలం పోయింది
-        </p>
+        \</p>
 
-    </div>
+    \</div>
 
-</article>
+\</article>
 
 
-<article
+
+\<article
     class="news-item post"
     data-category="entertainment"
     data-url="trivikram-aadarsha-kutumbam-press-meet/"
->
+\>
 
-    <img
+    \<img
         src="trivikram-aadarsha-kutumbam-press-meet..png"
         alt="వెంకటేష్ అంటే ఇప్పటికీ ఆ గౌరవంతో కూడిన భయం.. త్రివిక్రమ్ ఆసక్తికర వ్యాఖ్యలు"
-    >
+    \>
 
-    <div class="news-content">
+    \<div class="news-content">
 
-        <p>
+        \<p>
             వెంకటేష్ అంటే ఇప్పటికీ ఆ గౌరవంతో కూడిన భయం.. త్రివిక్రమ్ ఆసక్తికర వ్యాఖ్యలు
-        </p>
+        \</p>
 
-    </div>
+    \</div>
 
-</article>
+\</article>
 
 
-<!-- BUSINESS -->
 
-<article
+
+
+\<!-- BUSINESS -->
+
+\<article
     class="news-item post"
     data-category="business"
     data-url="nirmala-sitharaman-economy-growth/"
->
+\>
 
-    <img
+    \<img
         src="nirmala-sitharaman-economy-growth.jpg"
         alt="భారత ఆర్థిక వ్యవస్థపై నిర్మలా సీతారామన్ కీలక వ్యాఖ్యలు"
-    >
+    \>
 
-    <div class="news-content">
+    \<div class="news-content">
 
-        <p>
+        \<p>
             భారత ఆర్థిక వ్యవస్థపై నిర్మలా సీతారామన్ కీలక వ్యాఖ్యలు
-        </p>
+        \</p>
 
-    </div>
+    \</div>
 
-</article>
+\</article>
 
 
-<!-- AP & TELANGANA -->
 
-<article
+
+
+\<!-- AP & TELANGANA -->
+
+\<article
     class="news-item post"
     data-category="apts"
     data-url="telangana-latest-news/"
->
+\>
 
-    <img
+    \<img
         src="telangana-news.jpg"
         alt="తెలంగాణ తాజా వార్తలు"
-    >
+    \>
 
-    <div class="news-content">
+    \<div class="news-content">
 
-        <p>
+        \<p>
             తెలంగాణ తాజా వార్తలు
-        </p>
+        \</p>
 
-    </div>
+    \</div>
 
-</article>
+\</article>
 
 
-<article
+
+\<article
     class="news-item post"
     data-category="apts"
     data-url="andhra-pradesh-latest-news/"
->
+\>
 
-    <img
+    \<img
         src="ap-news.jpg"
         alt="ఆంధ్రప్రదేశ్ తాజా వార్తలు"
-    >
+    \>
 
-    <div class="news-content">
+    \<div class="news-content">
 
-        <p>
+        \<p>
             ఆంధ్రప్రదేశ్ తాజా వార్తలు
-        </p>
+        \</p>
 
-    </div>
+    \</div>
 
-</article>
+\</article>
 
 
-<!-- BIGG BOSS -->
 
-<article
+
+
+\<!-- BIGG BOSS -->
+
+\<article
     class="news-item post"
     data-category="bigboss10"
     data-url="bigboss10-captaincy-task/"
->
+\>
 
-    <img
+    \<img
         src="bigboss10.jpg"
         alt="బిగ్ బాస్ 10లో కెప్టెన్సీ టాస్క్ కోసం పోటీ"
-    >
+    \>
 
-    <div class="news-content">
+    \<div class="news-content">
 
-        <p>
+        \<p>
             బిగ్ బాస్ 10లో కెప్టెన్సీ టాస్క్ కోసం పోటీ
-        </p>
+        \</p>
 
-    </div>
+    \</div>
 
-</article>
+\</article>
 
 
-<article
+
+\<article
     class="news-item post"
     data-category="bigboss10"
     data-url="bigboss10-naresh-comedy/"
->
+\>
 
-    <img
+    \<img
         src="bigboss10.jpg"
         alt="బిగ్ బాస్ హౌస్‌లో నరేష్ కామెడీ"
-    >
+    \>
 
-    <div class="news-content">
+    \<div class="news-content">
 
-        <p>
+        \<p>
             బిగ్ బాస్ హౌస్‌లో నరేష్ కామెడీ
-        </p>
+        \</p>
 
-    </div>
+    \</div>
 
-</article>
+\</article>
 
 
-<!-- NATIONAL -->
 
-<article
+
+
+\<!-- NATIONAL -->
+
+\<article
     class="news-item post"
     data-category="national"
     data-url="gandhi-jayanti-walking-fitness/"
->
+\>
 
-    <img
+    \<img
         src="gandhi-jayanti.jpg"
         alt="గాంధీ జయంతి సందర్భంగా ఆరోగ్యంపై ప్రత్యేక సందేశం"
-    >
+    \>
 
-    <div class="news-content">
+    \<div class="news-content">
 
-        <p>
+        \<p>
             గాంధీ జయంతి సందర్భంగా ఆరోగ్యంపై ప్రత్యేక సందేశం
-        </p>
+        \</p>
 
-    </div>
+    \</div>
 
-</article>
+\</article>
 
 
-<article
+
+\<article
     class="news-item post"
     data-category="national"
     data-url="lal-bahadur-shastri/"
->
+\>
 
-    <img
+    \<img
         src="lal-bahadur-shastri.jpg"
         alt="లాల్ బహదూర్ శాస్త్రి జయంతి సందర్భంగా ప్రత్యేక కథనం"
-    >
+    \>
 
-    <div class="news-content">
+    \<div class="news-content">
 
-        <p>
+        \<p>
             లాల్ బహదూర్ శాస్త్రి జయంతి సందర్భంగా ప్రత్యేక కథనం
-        </p>
+        \</p>
 
-    </div>
+    \</div>
 
-</article>
-
-
-</div>
+\</article>
 
 
-<!-- =====================================================
+
+\</div>
+
+\<!-- =====================================================
      SEPARATE SOURCES
-===================================================== -->
+\===================================================== -->
 
-<div
+\<div
     id="latestNewsSource"
-    style="display:none;"
-></div>
+    style="display\:none;"
+\>\</div>
 
-
-<div
+\<div
     id="trendingSource"
-    style="display:none;"
-></div>
+    style="display\:none;"
+\>\</div>
 
-
-<div
+\<div
     id="mostReadSource"
-    style="display:none;"
-></div>
+    style="display\:none;"
+\>\</div>
 
-
-<div
+\<div
     id="aptsSource"
-    style="display:none;"
-></div>
+    style="display\:none;"
+\>\</div>
 
-
-<div
+\<div
     id="sportsSource"
-    style="display:none;"
-></div>
+    style="display\:none;"
+\>\</div>
 
-
-<div
+\<div
     id="entertainmentSource"
-    style="display:none;"
-></div>
+    style="display\:none;"
+\>\</div>
 
-
-<div
+\<div
     id="businessSource"
-    style="display:none;"
-></div>
+    style="display\:none;"
+\>\</div>
 
-
-<!-- =====================================================
+\<!-- =====================================================
      FOOTER
-===================================================== -->
+\===================================================== -->
 
-<footer class="site-footer">
+\<footer class="site-footer">
 
-<div class="footer-inner">
+\<div class="footer-inner">
 
 
-    <div class="footer-column">
 
-        <h3>
+    \<div class="footer-column">
+
+        \<h3>
             ముఖ్యమైన లింకులు
-        </h3>
+        \</h3>
 
 
-        <div class="footer-links">
 
-            <a href="advertise.html">
+        \<div class="footer-links">
+
+            \<a href="advertise.html">
                 Advertise With Us
-            </a>
+            \</a>
 
 
-            <a href="about.html">
+
+            \<a href="about.html">
                 About Us
-            </a>
+            \</a>
 
 
-            <a href="contact.html">
+
+            \<a href="contact.html">
                 Contact Us
-            </a>
+            \</a>
 
 
-            <a href="Privacy Policy.html">
+
+            \<a href="Privacy Policy.html">
                 Privacy Policy
-            </a>
+            \</a>
 
 
-            <a href="disclaimer.html">
+
+            \<a href="disclaimer.html">
                 Disclaimer
-            </a>
+            \</a>
 
 
-            <a href="terms.html">
+
+            \<a href="terms.html">
                 Terms & Conditions
-            </a>
+            \</a>
 
-        </div>
+        \</div>
 
-    </div>
+    \</div>
 
 
-    <div class="footer-contact">
 
-        <h3>
+
+
+    \<div class="footer-contact">
+
+        \<h3>
             Contact
-        </h3>
+        \</h3>
 
 
-        <p>
-            newsb386@gmail.com
-        </p>
+
+        \<p>
+            newsb386\@gmail.com
+        \</p>
 
 
-        <p>
+
+        \<p>
             Follow us for latest updates.
-        </p>
+        \</p>
 
-    </div>
+    \</div>
 
-</div>
+\</div>
 
 
-<div class="copyright">
+
+\<div class="copyright">
     © 2026 BS 360 NEWS. All Rights Reserved.
-</div>
+\</div>
 
 
-</footer>
 
+\</footer>
 
-<!-- =====================================================
+\<!-- =====================================================
      MOBILE BOTTOM NAV
-===================================================== -->
+\===================================================== -->
 
-<nav class="mobile-bottom">
+\<nav class="mobile-bottom">
 
-<a href="index.html">
-    <small>Home</small>
-</a>
-
-
-<a href="MOVIES.html">
-    <small>Movies</small>
-</a>
+\<a href="index.html">
+    \<small>Home\</small>
+\</a>
 
 
-<a href="SPORTS.html">
-    <small>Sports</small>
-</a>
+
+\<a href="MOVIES.html">
+    \<small>Movies\</small>
+\</a>
 
 
-<a href="AP&TS.html">
-    <small>AP & TS</small>
-</a>
+
+\<a href="SPORTS.html">
+    \<small>Sports\</small>
+\</a>
 
 
-<a href="business.html">
-    <small>Business</small>
-</a>
+
+\<a href="AP&TS.html">
+    \<small>AP & TS\</small>
+\</a>
 
 
-</nav>
+
+\<a href="business.html">
+    \<small>Business\</small>
+\</a>
 
 
-<!-- =====================================================
+
+\</nav>
+
+\<!-- =====================================================
      JAVASCRIPT
-===================================================== -->
+\===================================================== -->
 
-<script src="script.js?v=20261005"></script>
+\<script src="script.js?v=20261005">\</script>
 
+\</body>
 
-</body>
-
-</html>
+\</html>
 
 
