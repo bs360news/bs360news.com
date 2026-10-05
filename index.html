@@ -5,10 +5,7 @@
 
     <meta charset="utf-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width,initial-scale=1"
-    >
+    <meta name="viewport" content="width=device-width,initial-scale=1">
 
     <title>BS 360 NEWS | Fast | Fair | Fearless</title>
 
@@ -22,15 +19,8 @@
         content="ca-pub-7586406136288714"
     >
 
-    <link
-        rel="icon"
-        href="dp.png.png"
-    >
-
-    <link
-        rel="apple-touch-icon"
-        href="dp.png.png"
-    >
+    <link rel="icon" href="dp.png.png">
+    <link rel="apple-touch-icon" href="dp.png.png">
 
     <link
         rel="canonical"
@@ -41,6 +31,7 @@
         rel="stylesheet"
         href="style.css?v=20261005"
     >
+
 
     <!-- Google Analytics -->
     <script
@@ -55,16 +46,10 @@
             dataLayer.push(arguments);
         }
 
-        gtag(
-            "js",
-            new Date()
-        );
-
-        gtag(
-            "config",
-            "G-EWXPS1N2TL"
-        );
+        gtag("js", new Date());
+        gtag("config", "G-EWXPS1N2TL");
     </script>
+
 
     <!-- Google AdSense -->
     <script
@@ -72,6 +57,90 @@
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7586406136288714"
         crossorigin="anonymous"
     ></script>
+
+
+    <!-- =====================================================
+         HOMEPAGE SECTION FIX
+    ====================================================== -->
+
+    <style>
+
+        /* Every major section separate and full width */
+
+        #aptsSection,
+        #sportsSection,
+        #cinemaSection,
+        #businessSection,
+        #bigbossSection,
+        .trending-section,
+        .most-read-section,
+        .photo-gallery-section,
+        .video-news-section,
+        .after-category-section {
+
+            width: 100% !important;
+            float: none !important;
+            clear: both !important;
+            display: block !important;
+
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+            margin-bottom: 35px !important;
+        }
+
+
+        /* Category content */
+
+        #aptsSection .category-news-layout,
+        #sportsSection .category-news-layout,
+        #cinemaSection .category-news-layout,
+        #businessSection .category-news-layout {
+
+            width: 100% !important;
+            clear: both !important;
+        }
+
+
+        /* Desktop */
+
+        @media (min-width: 701px) {
+
+            #aptsSection,
+            #sportsSection,
+            #cinemaSection,
+            #businessSection {
+
+                width: 100% !important;
+                float: none !important;
+                clear: both !important;
+            }
+
+        }
+
+
+        /* Mobile */
+
+        @media (max-width: 700px) {
+
+            #aptsSection,
+            #sportsSection,
+            #cinemaSection,
+            #businessSection,
+            #bigbossSection,
+            .trending-section,
+            .most-read-section,
+            .photo-gallery-section,
+            .video-news-section {
+
+                width: 100% !important;
+                float: none !important;
+                clear: both !important;
+                display: block !important;
+            }
+
+        }
+
+    </style>
 
 </head>
 
@@ -86,8 +155,6 @@
 <header class="brand-header">
 
     <div class="container brand-inner">
-
-        <!-- LOGO -->
 
         <a
             href="index.html"
@@ -121,8 +188,6 @@
         </a>
 
 
-        <!-- HEADER ACTIONS -->
-
         <div class="header-actions">
 
             <button
@@ -137,8 +202,6 @@
         </div>
 
 
-        <!-- MOBILE MENU -->
-
         <button
             type="button"
             class="mobile-menu-toggle"
@@ -151,9 +214,7 @@
     </div>
 
 
-    <!-- =================================================
-         NAVIGATION
-    ================================================== -->
+    <!-- NAVIGATION -->
 
     <nav class="main-nav">
 
@@ -195,7 +256,7 @@
 
 
 <!-- =====================================================
-     BREAKING / TOP HEADLINES
+     TOP HEADLINES
 ===================================================== -->
 
 <section class="headlines-bar">
@@ -210,8 +271,10 @@
 
             భారత్ వెస్టిండీస్ రెండో వన్డేలో బ్యాటర్ల జోరు
             &nbsp; • &nbsp;
+
             నాని ది ప్యారడైజ్ బాక్సాఫీస్ వద్ద జోరు
             &nbsp; • &nbsp;
+
             బిగ్ బాస్ 10లో కెప్టెన్సీ టాస్క్ కోసం పోటీ
 
         </div>
@@ -229,9 +292,7 @@
 <main class="container portal-wrap">
 
 
-    <!-- =================================================
-         SEARCH
-    ================================================== -->
+    <!-- SEARCH -->
 
     <div class="search-container">
 
@@ -271,18 +332,15 @@
 
 
     <!-- =================================================
-         LATEST NEWS
-
-         IMPORTANT:
-         JS -> #topStory
+         1. LATEST NEWS
     ================================================== -->
 
-    <section>
+    <section class="homepage-section latest-section">
 
         <div class="section-title-row">
 
             <h2>
-              Latest News
+                Latest News
             </h2>
 
             <span>
@@ -305,7 +363,7 @@
 
 
     <!-- =================================================
-         AP & TS
+         2. AP & TELANGANA
     ================================================== -->
 
     <section id="aptsSection">
@@ -342,7 +400,7 @@
 
 
     <!-- =================================================
-         SPORTS
+         3. SPORTS
     ================================================== -->
 
     <section id="sportsSection">
@@ -379,7 +437,7 @@
 
 
     <!-- =================================================
-         MOVIES
+         4. MOVIES / ENTERTAINMENT
     ================================================== -->
 
     <section id="cinemaSection">
@@ -416,7 +474,7 @@
 
 
     <!-- =================================================
-         BUSINESS
+         5. BUSINESS
     ================================================== -->
 
     <section id="businessSection">
@@ -453,10 +511,7 @@
 
 
     <!-- =================================================
-         BIGG BOSS 10
-
-         Current JS doesn't render this section.
-         Therefore direct HTML.
+         6. BIGG BOSS 10
     ================================================== -->
 
     <section id="bigbossSection">
@@ -481,7 +536,6 @@
             id="bigbossTrack"
             class="latest-news-grid"
         >
-
 
             <a
                 href="bigboss10-captaincy-task/"
@@ -525,7 +579,7 @@
 
 
     <!-- =================================================
-         TRENDING
+         7. TRENDING NEWS
     ================================================== -->
 
     <section class="trending-section">
@@ -547,13 +601,6 @@
             id="trendingGrid"
             class="trending-grid"
         >
-
-
-            <!--
-                Current JS will preserve this area
-                because #trendingSource is empty.
-            -->
-
 
             <a
                 href="shubman-gill-62-ball-century/"
@@ -633,7 +680,7 @@
 
 
     <!-- =================================================
-         MOST READ
+         8. MOST READ
     ================================================== -->
 
     <section class="most-read-section">
@@ -655,7 +702,6 @@
             id="mostReadList"
             class="most-read-list"
         >
-
 
             <a
                 href="lal-bahadur-shastri/"
@@ -707,10 +753,18 @@
 
 
     <!-- =================================================
-         AFTER CATEGORY GRIDS
+         9. AP & TS EXTRA NEWS
     ================================================== -->
 
     <section class="after-category-section">
+
+        <div class="section-title-row">
+
+            <h2>
+                AP & Telangana Latest
+            </h2>
+
+        </div>
 
         <div
             id="afterApTsGrid"
@@ -720,7 +774,20 @@
     </section>
 
 
+
+    <!-- =================================================
+         10. SPORTS EXTRA NEWS
+    ================================================== -->
+
     <section class="after-category-section">
+
+        <div class="section-title-row">
+
+            <h2>
+                Sports Latest
+            </h2>
+
+        </div>
 
         <div
             id="afterSportsGrid"
@@ -730,7 +797,20 @@
     </section>
 
 
+
+    <!-- =================================================
+         11. ENTERTAINMENT EXTRA NEWS
+    ================================================== -->
+
     <section class="after-category-section">
+
+        <div class="section-title-row">
+
+            <h2>
+                Entertainment Latest
+            </h2>
+
+        </div>
 
         <div
             id="afterEntertainmentGrid"
@@ -740,7 +820,20 @@
     </section>
 
 
+
+    <!-- =================================================
+         12. BUSINESS EXTRA NEWS
+    ================================================== -->
+
     <section class="after-category-section">
+
+        <div class="section-title-row">
+
+            <h2>
+                Business Latest
+            </h2>
+
+        </div>
 
         <div
             id="afterBusinessGrid"
@@ -799,14 +892,10 @@
 
 
 
-    <!-- =================================================
-         AD
-    ================================================== -->
+    <!-- ADVERTISEMENT -->
 
     <div class="ad-space">
-
         Advertisement
-
     </div>
 
 
@@ -816,7 +905,6 @@
 
 <!-- =====================================================
      HIDDEN ARTICLE SOURCE
-     JS READS ARTICLES FROM HERE
 ===================================================== -->
 
 <div
@@ -873,106 +961,137 @@
 
 
     <!-- MOVIES -->
-<article class="news-item post" data-url="dasara-venkatesh-rajinikanth-vijay-deverakonda-movies/">
 
-    <img
-        src="dasara-venkatesh-rajinikanth-vijay-deverakonda-movies.png"
-        alt="దసరా బరిలో ముగ్గురు స్టార్ హీరోలు.. వెంకటేష్, రజినీకాంత్, విజయ్ దేవరకొండ సినిమాలపై ఆసక్తి"
+    <article
+        class="news-item post"
+        data-category="cinema"
+        data-url="dasara-venkatesh-rajinikanth-vijay-deverakonda-movies/"
     >
 
-    <div class="news-content">
+        <img
+            src="dasara-venkatesh-rajinikanth-vijay-deverakonda-movies.png"
+            alt="దసరా బరిలో ముగ్గురు స్టార్ హీరోలు.. వెంకటేష్, రజినీకాంత్, విజయ్ దేవరకొండ సినిమాలపై ఆసక్తి"
+        >
 
-        <p>
-            దసరా బరిలో ముగ్గురు స్టార్ హీరోలు.. వెంకటేష్, రజినీకాంత్, విజయ్ దేవరకొండ సినిమాలపై ఆసక్తి
-        </p>
+        <div class="news-content">
 
-    </div>
+            <p>
+                దసరా బరిలో ముగ్గురు స్టార్ హీరోలు.. వెంకటేష్, రజినీకాంత్, విజయ్ దేవరకొండ సినిమాలపై ఆసక్తి
+            </p>
 
-</article>
+        </div>
 
-   <article class="news-item post" data-url="nani-the-paradise-box-office-collections/">
+    </article>
 
-    <img
-        src="nani-the-paradise-box-office-collections.png"
-        alt="భారీ వసూళ్లతో దూసుకెళ్తున్న నాని ‘ది ప్యారడైజ్’.. బాక్సాఫీస్ వద్ద జోరు"
+
+    <article
+        class="news-item post"
+        data-category="cinema"
+        data-url="nani-the-paradise-box-office-collections/"
     >
 
-    <div class="news-content">
+        <img
+            src="nani-the-paradise-box-office-collections.png"
+            alt="భారీ వసూళ్లతో దూసుకెళ్తున్న నాని ‘ది ప్యారడైజ్’.. బాక్సాఫీస్ వద్ద జోరు"
+        >
 
-        <p>
-            భారీ వసూళ్లతో దూసుకెళ్తున్న నాని ‘ది ప్యారడైజ్’.. బాక్సాఫీస్ వద్ద జోరు
-        </p>
+        <div class="news-content">
 
-    </div>
+            <p>
+                భారీ వసూళ్లతో దూసుకెళ్తున్న నాని ‘ది ప్యారడైజ్’.. బాక్సాఫీస్ వద్ద జోరు
+            </p>
 
-   </article>
-   
-<article class="news-item post" data-url="fahadh-faasil-dont-trouble-the-trouble/">
+        </div>
 
-    <img
-        src="fahadh-faasil-dont-trouble-the-trouble.png"
-        alt="యువ టీమ్‌తో ఫహాద్ ఫాజిల్.."
+    </article>
+
+
+    <article
+        class="news-item post"
+        data-category="cinema"
+        data-url="fahadh-faasil-dont-trouble-the-trouble/"
     >
 
-    <div class="news-content">
+        <img
+            src="fahadh-faasil-dont-trouble-the-trouble.png"
+            alt="యువ టీమ్‌తో ఫహాద్ ఫాజిల్"
+        >
 
-        <p>
-            యువ టీమ్‌తో ఫహాద్ ఫాజిల్..
-        </p>
+        <div class="news-content">
 
-    </div>
+            <p>
+                యువ టీమ్‌తో ఫహాద్ ఫాజిల్..
+            </p>
 
-</article>
-<article class="news-item post" data-url="master-bharath-venky-child-artist-doctor/">
+        </div>
 
-    <img
-        src="master-bharath-venky-child-artist-doctor.png"
-        alt="తల్లి చివరి కోరిక కోసం సినిమాలకు గుడ్‌బై.. డాక్టర్‌గా మారిన వెంకీ చైల్డ్ ఆర్టిస్ట్ భరత్"
+    </article>
+
+
+    <article
+        class="news-item post"
+        data-category="cinema"
+        data-url="master-bharath-venky-child-artist-doctor/"
     >
 
-    <div class="news-content">
+        <img
+            src="master-bharath-venky-child-artist-doctor.png"
+            alt="తల్లి చివరి కోరిక కోసం సినిమాలకు గుడ్‌బై.. డాక్టర్‌గా మారిన వెంకీ చైల్డ్ ఆర్టిస్ట్ భరత్"
+        >
 
-        <p>
-            తల్లి చివరి కోరిక కోసం సినిమాలకు గుడ్‌బై.. డాక్టర్‌గా మారిన ‘వెంకీ’ చైల్డ్ ఆర్టిస్ట్ భరత్!
-        </p>
+        <div class="news-content">
 
-    </div>
+            <p>
+                తల్లి చివరి కోరిక కోసం సినిమాలకు గుడ్‌బై.. డాక్టర్‌గా మారిన ‘వెంకీ’ చైల్డ్ ఆర్టిస్ట్ భరత్!
+            </p>
 
-</article>
-   
-<article class="news-item post" data-url="rajamouli-suriya-combination-update/">
+        </div>
 
-    <img
-        src="rajamouli-suriya-combination-update.png"
-        alt="సూర్యతో రాజమౌళి సినిమా ఎప్పుడు? ఒక్క మాటతో ఆసక్తి పెంచిన జక్కన్న"
+    </article>
+
+
+    <article
+        class="news-item post"
+        data-category="cinema"
+        data-url="rajamouli-suriya-combination-update/"
     >
 
-    <div class="news-content">
+        <img
+            src="rajamouli-suriya-combination-update.png"
+            alt="సూర్యతో రాజమౌళి సినిమా ఎప్పుడు? ఒక్క మాటతో ఆసక్తి పెంచిన జక్కన్న"
+        >
 
-        <p>
-            సూర్యతో రాజమౌళి సినిమా ఎప్పుడు? ఒక్క మాటతో ఆసక్తి పెంచిన జక్కన్న
-        </p>
+        <div class="news-content">
 
-    </div>
+            <p>
+                సూర్యతో రాజమౌళి సినిమా ఎప్పుడు? ఒక్క మాటతో ఆసక్తి పెంచిన జక్కన్న
+            </p>
 
-</article>
+        </div>
 
-<article class="news-item post" data-url="venkatesh-aadarsha-kutumbam-press-meet/">
+    </article>
 
-    <img
-        src="venkatesh-aadarsha-kutumbam-press-meet..png"
-        alt="20 ఏళ్ల తర్వాత త్రివిక్రమ్‌తో వెంకటేష్.. ‘పెళ్లికాని ప్రసాద్’ కాలం పోయింది"
+
+    <article
+        class="news-item post"
+        data-category="cinema"
+        data-url="venkatesh-aadarsha-kutumbam-press-meet/"
     >
 
-    <div class="news-content">
+        <img
+            src="venkatesh-aadarsha-kutumbam-press-meet..png"
+            alt="20 ఏళ్ల తర్వాత త్రివిక్రమ్‌తో వెంకటేష్.. ‘పెళ్లికాని ప్రసాద్’ కాలం పోయింది"
+        >
 
-        <p>
-            20 ఏళ్ల తర్వాత త్రివిక్రమ్‌తో వెంకటేష్.. ‘పెళ్లికాని ప్రసాద్’ కాలం పోయింది
-        </p>
+        <div class="news-content">
 
-    </div>
+            <p>
+                20 ఏళ్ల తర్వాత త్రివిక్రమ్‌తో వెంకటేష్.. ‘పెళ్లికాని ప్రసాద్’ కాలం పోయింది
+            </p>
 
-</article>
+        </div>
+
+    </article>
 
 
 
@@ -1147,9 +1266,6 @@
 
 <!-- =====================================================
      SEPARATE SOURCES
-
-     EMPTY FOR NOW
-     Keeping them because JS expects these IDs.
 ===================================================== -->
 
 <div
@@ -1157,30 +1273,36 @@
     style="display:none;"
 ></div>
 
+
 <div
     id="trendingSource"
     style="display:none;"
 ></div>
+
 
 <div
     id="mostReadSource"
     style="display:none;"
 ></div>
 
+
 <div
     id="aptsSource"
     style="display:none;"
 ></div>
+
 
 <div
     id="sportsSource"
     style="display:none;"
 ></div>
 
+
 <div
     id="entertainmentSource"
     style="display:none;"
 ></div>
+
 
 <div
     id="businessSource"
@@ -1196,7 +1318,6 @@
 <footer class="site-footer">
 
     <div class="footer-inner">
-
 
         <div class="footer-column">
 
@@ -1262,7 +1383,6 @@
 
 
 
-
 <!-- =====================================================
      MOBILE BOTTOM NAV
 ===================================================== -->
@@ -1270,27 +1390,22 @@
 <nav class="mobile-bottom">
 
     <a href="index.html">
-        
         <small>Home</small>
     </a>
 
     <a href="MOVIES.html">
-        
         <small>Movies</small>
     </a>
 
     <a href="SPORTS.html">
-        
         <small>Sports</small>
     </a>
 
     <a href="AP&TS.html">
-      
         <small>AP & TS</small>
     </a>
 
     <a href="business.html">
-     
         <small>Business</small>
     </a>
 
