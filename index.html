@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="te">
 
 <head>
@@ -131,12 +130,28 @@ gtag('config', 'G-EWXPS1N2TL');
 
 
 <!-- =====================================================
+     ADSENSE
+===================================================== -->
+
+<meta
+    name="google-adsense-account"
+    content="ca-pub-7586406136288714"
+>
+
+<script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7586406136288714"
+    crossorigin="anonymous"
+></script>
+
+
+<!-- =====================================================
      MAIN CSS
 ===================================================== -->
 
 <link
     rel="stylesheet"
-    href="style.css?v=20260914"
+    href="style.css?v=20260918"
 >
 
 
@@ -235,6 +250,69 @@ gtag('config', 'G-EWXPS1N2TL');
 
 
 /* =====================================================
+   CATEGORY SECTION
+===================================================== */
+
+.category-section {
+    margin-top: 24px;
+}
+
+.category-section .horizontal-carousel {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    overflow: visible !important;
+}
+
+
+/* =====================================================
+   BUSINESS
+===================================================== */
+
+.business-section {
+    margin-top: 24px;
+}
+
+
+/* =====================================================
+   ARTICLE CARD
+===================================================== */
+
+.category-section .news-item {
+    display: block;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 2px 8px rgba(0,0,0,.06);
+}
+
+.category-section .news-item img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+.category-section .news-content {
+    padding: 12px;
+}
+
+.category-section .news-content h3 {
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.45;
+    color: #111827;
+}
+
+.category-section .news-content p {
+    margin: 7px 0 0;
+    color: #555;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+
+/* =====================================================
    MOBILE
 ===================================================== */
 
@@ -284,6 +362,30 @@ gtag('config', 'G-EWXPS1N2TL');
         padding: 5px 8px !important;
         white-space: nowrap !important;
     }
+
+
+    .category-section .horizontal-carousel {
+        display: flex !important;
+        gap: 12px;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        padding-bottom: 5px;
+        scroll-snap-type: x mandatory;
+    }
+
+    .category-section .news-item {
+        flex: 0 0 82%;
+        scroll-snap-align: start;
+    }
+
+    .category-section .news-content h3 {
+        font-size: 16px;
+    }
+
+    .category-section .news-content p {
+        font-size: 13px;
+    }
+
 }
 
 
@@ -296,6 +398,10 @@ gtag('config', 'G-EWXPS1N2TL');
     .nav-links a {
         font-size: 11px !important;
         padding: 5px 6px !important;
+    }
+
+    .category-section .news-item {
+        flex-basis: 88%;
     }
 
 }
@@ -588,11 +694,11 @@ gtag('config', 'G-EWXPS1N2TL');
 
 
 <!-- =====================================================
-     AP & TS NEWS
+     AP & TS NEWS - 3 ARTICLES
 ===================================================== -->
 
 <section
-    class="slider-section"
+    class="category-section"
     id="aptsSection"
 >
 
@@ -616,39 +722,90 @@ gtag('config', 'G-EWXPS1N2TL');
     </div>
 
 
-    <div class="carousel-wrap">
+    <div
+        id="aptsGrid"
+        class="horizontal-carousel"
+    >
 
-        <button
-            class="carousel-btn prev"
-            id="sliderPrev"
-            type="button"
-            aria-label="Previous AP TS News"
-        >
-            ‹
-        </button>
-
-
-        <div
-            class="news-slider"
-            id="newsSlider"
+        <article
+            class="news-item post"
+            data-category="ap"
+            data-url="babu.html"
         >
 
-            <div
-                class="slider-track"
-                id="sliderTrack"
-            ></div>
+            <img
+                src="babu.webp"
+                alt="ఏపీ కలెక్టర్ల కాన్ఫరెన్స్"
+                loading="lazy"
+            >
 
-        </div>
+            <div class="news-content">
+
+                <h3>
+                    ఏపీ కలెక్టర్ల కాన్ఫరెన్స్‌పై చంద్రబాబు ఫోకస్.. జిల్లాల అభివృద్ధిపై కీలక సమీక్ష
+                </h3>
+
+                <p>
+                    ఏపీ అభివృద్ధి, జిల్లాల పనితీరుపై ప్రభుత్వం కీలకంగా దృష్టి సారించింది.
+                </p>
+
+            </div>
+
+        </article>
 
 
-        <button
-            class="carousel-btn next"
-            id="sliderNext"
-            type="button"
-            aria-label="Next AP TS News"
+        <article
+            class="news-item post"
+            data-category="ap"
+            data-url="laddu.html"
         >
-            ›
-        </button>
+
+            <img
+                src="laddu.jpg"
+                alt="తిరుమల లడ్డూ నెయ్యి అంశం"
+                loading="lazy"
+            >
+
+            <div class="news-content">
+
+                <h3>
+                    తిరుమల లడ్డూ నెయ్యి అంశంపై అసెంబ్లీలో వేడెక్కిన చర్చ
+                </h3>
+
+                <p>
+                    తిరుమల లడ్డూ నెయ్యి అంశంపై అసెంబ్లీలో కీలక చర్చ జరిగింది.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <article
+            class="news-item post"
+            data-category="ts"
+            data-url="ts2.html"
+        >
+
+            <img
+                src="ts2.jpeg"
+                alt="తెలంగాణ అసెంబ్లీలో సెంట్రల్ హాల్"
+                loading="lazy"
+            >
+
+            <div class="news-content">
+
+                <h3>
+                    తెలంగాణ అసెంబ్లీలో దుద్దిళ్ల శ్రీపాదరావు సెంట్రల్ హాల్ ప్రారంభం
+                </h3>
+
+                <p>
+                    తెలంగాణ అసెంబ్లీలో సెంట్రల్ హాల్‌ను ఘనంగా ప్రారంభించారు.
+                </p>
+
+            </div>
+
+        </article>
 
     </div>
 
@@ -656,11 +813,11 @@ gtag('config', 'G-EWXPS1N2TL');
 
 
 <!-- =====================================================
-     SPORTS
+     SPORTS - 3 ARTICLES
 ===================================================== -->
 
 <section
-    class="sports-section"
+    class="category-section"
     id="sportsSection"
 >
 
@@ -685,15 +842,97 @@ gtag('config', 'G-EWXPS1N2TL');
 
 
     <div
-        class="horizontal-carousel"
         id="sportsGrid"
-    ></div>
+        class="horizontal-carousel"
+    >
+
+        <article
+            class="news-item post"
+            data-category="sports"
+            data-url="bhumrha.html"
+        >
+
+            <img
+                src="bhumrha.jpg"
+                alt="బుమ్రా ఎంపికపై చర్చ"
+                loading="lazy"
+            >
+
+            <div class="news-content">
+
+                <h3>
+                    బుమ్రా ఎంపికపై పెరుగుతున్న చర్చ.. సెలక్షన్ విధానంపై మాజీ క్రికెటర్ల ప్రశ్నలు
+                </h3>
+
+                <p>
+                    భారత క్రికెట్ జట్టులో బుమ్రా ఎంపికపై కీలక చర్చ కొనసాగుతోంది.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <article
+            class="news-item post"
+            data-category="sports"
+            data-url="hardik97.html"
+        >
+
+            <img
+                src="hardik.jpg"
+                alt="హార్దిక్ పాండ్యా"
+                loading="lazy"
+            >
+
+            <div class="news-content">
+
+                <h3>
+                    హార్దిక్ పాండ్యాకు మళ్లీ అవకాశం.. ఆస్ట్రేలియా Aతో సిరీస్‌కు ఎంపిక
+                </h3>
+
+                <p>
+                    హార్దిక్ పాండ్యా ఎంపికపై తాజా క్రికెట్ అప్‌డేట్ వెలువడింది.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <article
+            class="news-item post"
+            data-category="sports"
+            data-url="dhoni7.html"
+        >
+
+            <img
+                src="dhoni7.jpg"
+                alt="ధోనీ IPL 2027"
+                loading="lazy"
+            >
+
+            <div class="news-content">
+
+                <h3>
+                    ధోనీ IPL 2027 ఆడతాడా? మాజీ CSK ఆటగాడి కీలక వ్యాఖ్యలు
+                </h3>
+
+                <p>
+                    IPLలో ధోనీ భవిష్యత్తుపై మరోసారి చర్చ మొదలైంది.
+                </p>
+
+            </div>
+
+        </article>
+
+    </div>
 
 </section>
 
 
 <!-- =====================================================
-     ENTERTAINMENT
+     ENTERTAINMENT - 3 ARTICLES
 ===================================================== -->
 
 <section
@@ -722,15 +961,97 @@ gtag('config', 'G-EWXPS1N2TL');
 
 
     <div
-        class="horizontal-carousel"
         id="cinemaGrid"
-    ></div>
+        class="horizontal-carousel"
+    >
+
+        <article
+            class="news-item post"
+            data-category="cinema"
+            data-url="n1.html"
+        >
+
+            <img
+                src="n1.jpg"
+                alt="డేవిడ్ రెడ్డి"
+                loading="lazy"
+            >
+
+            <div class="news-content">
+
+                <h3>
+                    డేవిడ్ రెడ్డిలో రమ్యకృష్ణ.. కమలా రెడ్డిగా పవర్‌ఫుల్ ఫస్ట్ లుక్
+                </h3>
+
+                <p>
+                    ఈ సినిమాకు సంబంధించిన కొత్త లుక్ ప్రేక్షకుల్లో ఆసక్తిని పెంచుతోంది.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <article
+            class="news-item post"
+            data-category="cinema"
+            data-url="sardar.html"
+        >
+
+            <img
+                src="sardar.jpg"
+                alt="సర్దార్ 2 కార్తీ"
+                loading="lazy"
+            >
+
+            <div class="news-content">
+
+                <h3>
+                    సర్దార్ 2పై కార్తీ ఆసక్తికర వ్యాఖ్యలు.. పది రెట్లు ఎక్కువ ఇంపాక్ట్ ఉంటుందంటూ హామీ
+                </h3>
+
+                <p>
+                    సర్దార్ 2పై హీరో కార్తీ చేసిన వ్యాఖ్యలు ఆసక్తిని పెంచుతున్నాయి.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <article
+            class="news-item post"
+            data-category="cinema"
+            data-url="tamana.html"
+        >
+
+            <img
+                src="tamanna.jpg"
+                alt="తమన్నా భాటియా సిద్ధార్థ్ మల్హోత్రా"
+                loading="lazy"
+            >
+
+            <div class="news-content">
+
+                <h3>
+                    తమన్నా భాటియా, సిద్ధార్థ్ మల్హోత్రా జోడీ.. ‘The Vvaan’పై పెరుగుతున్న ఆసక్తి
+                </h3>
+
+                <p>
+                    కొత్త సినిమాపై ప్రేక్షకుల్లో అంచనాలు పెరుగుతున్నాయి.
+                </p>
+
+            </div>
+
+        </article>
+
+    </div>
 
 </section>
 
 
 <!-- =====================================================
-     BUSINESS
+     BUSINESS - 3 ARTICLES
 ===================================================== -->
 
 <section
@@ -759,9 +1080,91 @@ gtag('config', 'G-EWXPS1N2TL');
 
 
     <div
-        class="horizontal-carousel"
         id="businessGrid"
-    ></div>
+        class="horizontal-carousel"
+    >
+
+        <article
+            class="news-item post"
+            data-category="business"
+            data-url="msd.html"
+        >
+
+            <img
+                src="msd.png"
+                alt="హైదరాబాద్‌లో MSD టెక్నాలజీ సెంటర్"
+                loading="lazy"
+            >
+
+            <div class="news-content">
+
+                <h3>
+                    హైదరాబాద్‌లో MSD భారీ టెక్నాలజీ సెంటర్.. 2.5 లక్షల చదరపు అడుగుల్లో విస్తరణ
+                </h3>
+
+                <p>
+                    హైదరాబాద్‌లో టెక్నాలజీ రంగానికి సంబంధించిన కీలక విస్తరణపై అప్‌డేట్.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <article
+            class="news-item post"
+            data-category="business"
+            data-url="rbi.html"
+        >
+
+            <img
+                src="rbi.png"
+                alt="ఆర్బీఐ లిక్విడిటీ"
+                loading="lazy"
+            >
+
+            <div class="news-content">
+
+                <h3>
+                    బ్యాంకింగ్ వ్యవస్థలో భారీ లిక్విడిటీ ఉపసంహరణ.. ₹6.12 లక్షల కోట్ల నగదును తగ్గించిన ఆర్బీఐ
+                </h3>
+
+                <p>
+                    బ్యాంకింగ్ వ్యవస్థలో లిక్విడిటీకి సంబంధించి ఆర్బీఐ కీలక చర్యలు చేపట్టింది.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <article
+            class="news-item post"
+            data-category="business"
+            data-url="ind98.html"
+        >
+
+            <img
+                src="ind98.png"
+                alt="భారత్ ఆర్థిక వ్యవస్థ"
+                loading="lazy"
+            >
+
+            <div class="news-content">
+
+                <h3>
+                    భారత్ ఆర్థిక వ్యవస్థకు భారీ బూస్ట్.. జపాన్ JCRA రేటింగ్‌ను A-కి పెంచింది
+                </h3>
+
+                <p>
+                    భారత ఆర్థిక వ్యవస్థకు సంబంధించి అంతర్జాతీయంగా కీలక అప్‌డేట్ వెలువడింది.
+                </p>
+
+            </div>
+
+        </article>
+
+    </div>
 
 </section>
 
@@ -813,7 +1216,7 @@ gtag('config', 'G-EWXPS1N2TL');
             >
 
             <h3>
-                డేవిడ్ రెడ్డిలో రమ్యకృష్ణ.. కమలా రెడ్డిగా పవర్‌ఫుల్ ఫస్ట్ లుక్..
+                డేవిడ్ రెడ్డిలో రమ్యకృష్ణ.. కమలా రెడ్డిగా పవర్‌ఫుల్ ఫస్ట్ లుక్
             </h3>
 
         </a>
@@ -907,7 +1310,6 @@ gtag('config', 'G-EWXPS1N2TL');
             </h3>
 
         </a>
-
 
     </div>
 
@@ -1039,982 +1441,364 @@ gtag('config', 'G-EWXPS1N2TL');
 
         </a>
 
-
     </div>
 
 </section>
 
-
-<!-- =====================================================
-     CATEGORY GRID AFTER MOST READ
-===================================================== -->
-
-<section class="after-most-read">
-
-
-<!-- AP & TS -->
-
-<div class="after-category-section">
-
-    <div class="after-category-heading">
-
-        <h2>
-            🏛️ AP & TS News
-        </h2>
-
-        <a href="AP&TS.html">
-            SEE MORE →
-        </a>
-
-    </div>
-
-    <div
-        id="afterApTsGrid"
-        class="three-column-news-grid"
-    ></div>
-
-</div>
-
-
-<!-- SPORTS -->
-
-<div class="after-category-section">
-
-    <div class="after-category-heading">
-
-        <h2>
-            Sports
-        </h2>
-
-        <a href="SPORTS.html">
-            SEE MORE →
-        </a>
-
-    </div>
-
-    <div
-        id="afterSportsGrid"
-        class="three-column-news-grid"
-    ></div>
-
-</div>
-
-
-<!-- ENTERTAINMENT -->
-
-<div class="after-category-section">
-
-    <div class="after-category-heading">
-
-        <h2>
-            Entertainment
-        </h2>
-
-        <a href="MOVIES.html">
-            SEE MORE →
-        </a>
-
-    </div>
-
-    <div
-        id="afterEntertainmentGrid"
-        class="three-column-news-grid"
-    ></div>
-
-</div>
-
-
-<!-- BUSINESS -->
-
-<div class="after-category-section">
-
-    <div class="after-category-heading">
-
-        <h2>
-            Business
-        </h2>
-
-        <a href="business.html">
-            SEE MORE →
-        </a>
-
-    </div>
-
-    <div
-        id="afterBusinessGrid"
-        class="three-column-news-grid"
-    ></div>
-
-</div>
-
-
-</section>
-
-
-<section class="section">
-
-    <div class="section-head">
-
-        <h2>
-            <span>BUSINESS</span> News
-        </h2>
-
-    </div>
-
-    <div
-        id="businessGrid"
-        class="movies-grid"
-    >
-
-        <!-- BUSINESS ARTICLE 1 -->
-        <article
-            class="news-item post"
-            data-category="business"
-            data-url="business-news-1/"
-        >
-
-            <img
-                src="business-news-1.jpg"
-                alt="బిజినెస్ రంగంలో కీలక పరిణామం"
-            >
-
-            <div class="news-content">
-
-                <h3>
-                    బిజినెస్ రంగంలో కీలక పరిణామం.. తాజా అప్‌డేట్
-                </h3>
-
-                <p>
-                    వ్యాపార రంగానికి సంబంధించిన తాజా పరిణామాలు, మార్కెట్‌లో చోటుచేసుకుంటున్న ముఖ్యమైన మార్పులు ఇవే..
-                </p>
-
-            </div>
-
-        </article>
-
-
-        <!-- BUSINESS ARTICLE 2 -->
-        <article
-            class="news-item post"
-            data-category="business"
-            data-url="business-news-2/"
-        >
-
-            <img
-                src="business-news-2.jpg"
-                alt="భారత ఆర్థిక వ్యవస్థకు సంబంధించిన తాజా వార్త"
-            >
-
-            <div class="news-content">
-
-                <h3>
-                    భారత ఆర్థిక వ్యవస్థపై కీలక అప్‌డేట్.. నిపుణుల అంచనాలు
-                </h3>
-
-                <p>
-                    దేశ ఆర్థిక పరిస్థితులు, మార్కెట్ కదలికలకు సంబంధించిన తాజా వివరాలు వెలువడ్డాయి.
-                </p>
-
-            </div>
-
-        </article>
-
-
-        <!-- BUSINESS ARTICLE 3 -->
-        <article
-            class="news-item post"
-            data-category="business"
-            data-url="business-news-3/"
-        >
-
-            <img
-                src="business-news-3.jpg"
-                alt="షేర్ మార్కెట్ తాజా అప్‌డేట్"
-            >
-
-            <div class="news-content">
-
-                <h3>
-                    షేర్ మార్కెట్‌లో కీలక కదలికలు.. ఇన్వెస్టర్ల ఫోకస్
-                </h3>
-
-                <p>
-                    మార్కెట్‌లో నమోదైన తాజా పరిణామాలు, ఇన్వెస్టర్లను ప్రభావితం చేస్తున్న అంశాలపై పూర్తి వివరాలు.
-                </p>
-
-            </div>
-
-        </article>
-
-    </div>
-
-</section>
 
 <!-- =====================================================
      LEGACY NEWS SOURCE
+     Hidden source for existing script.js
 ===================================================== -->
 
 <div
     id="legacyNewsSource"
     class="legacy-news-source"
+    style="display:none;"
 >
 
 
-<!-- BUSINESS / MOVIES -->
+    <!-- AP -->
 
-<article
-    class="news-item post"
-    data-category="cenima"
-    data-url="n1.html"
->
-
-    <img
-        src="n1.jpg"
-        alt="డేవిడ్ రెడ్డి"
+    <article
+        class="news-item post"
+        data-category="ap"
+        data-url="babu.html"
     >
 
-    <div class="news-content">
+        <img
+            src="babu.webp"
+            alt="ఏపీ కలెక్టర్ల కాన్ఫరెన్స్"
+        >
 
-        <p>
-            డేవిడ్ రెడ్డి లో రమ్యకృష్ణ.. కమలా రెడ్డిగా పవర్‌ఫుల్ ఫస్ట్ లుక్...
-        </p>
+        <div class="news-content">
 
-    </div>
+            <p>
+                ఏపీ కలెక్టర్ల కాన్ఫరెన్స్‌పై చంద్రబాబు ఫోకస్.. జిల్లాల అభివృద్ధిపై కీలక సమీక్ష
+            </p>
 
-</article>
+        </div>
+
+    </article>
 
 
-<!-- BIGG BOSS -->
-
-<article
-    class="news-item post"
-    data-category="bigboss10"
-    data-url="bbday3.html"
->
-
-    <img
-        src="bbday3.webp"
-        alt="బిగ్‌బాస్ తెలుగు 10లో ఊహించని ట్విస్ట్"
+    <article
+        class="news-item post"
+        data-category="ap"
+        data-url="laddu.html"
     >
 
-    <div class="news-content">
+        <img
+            src="laddu.jpg"
+            alt="తిరుమల లడ్డూ నెయ్యి అంశం"
+        >
 
-        <p>
-            📺 బిగ్‌బాస్ తెలుగు 10లో ఊహించని ట్విస్ట్.. చరణ్ ఎలిమినేషన్‌తో హౌస్‌లో షాక్
-        </p>
+        <div class="news-content">
 
-    </div>
+            <p>
+                తిరుమల లడ్డూ నెయ్యి అంశంపై అసెంబ్లీలో వేడెక్కిన చర్చ
+            </p>
 
-</article>
+        </div>
+
+    </article>
 
 
-<!-- BUSINESS -->
-
-<article
-    class="news-item post"
-    data-category="business"
-    data-url="msd.html"
->
-
-    <img
-        src="msd.png"
-        alt="హైదరాబాద్‌లో MSD భారీ టెక్నాలజీ సెంటర్"
+    <article
+        class="news-item post"
+        data-category="ts"
+        data-url="ts2.html"
     >
 
-    <div class="news-content">
+        <img
+            src="ts2.jpeg"
+            alt="తెలంగాణ అసెంబ్లీ"
+        >
 
-        <p>
-            🏢 హైదరాబాద్‌లో MSD భారీ టెక్నాలజీ సెంటర్.. 2.5 లక్షల చదరపు అడుగుల్లో విస్తరణ
-        </p>
+        <div class="news-content">
 
-    </div>
+            <p>
+                తెలంగాణ అసెంబ్లీలో దుద్దిళ్ల శ్రీపాదరావు సెంట్రల్ హాల్ ప్రారంభం
+            </p>
 
-</article>
+        </div>
+
+    </article>
 
 
-<!-- SPORTS -->
+    <!-- SPORTS -->
 
-<article
-    class="news-item post"
-    data-category="sports"
-    data-url="bhumrha.html"
->
-
-    <img
-        src="bhumrha.jpg"
-        alt="బుమ్రా ఎంపికపై పెరుగుతున్న చర్చ"
+    <article
+        class="news-item post"
+        data-category="sports"
+        data-url="bhumrha.html"
     >
 
-    <div class="news-content">
+        <img
+            src="bhumrha.jpg"
+            alt="బుమ్రా"
+        >
 
-        <p>
-            🏏 బుమ్రా ఎంపికపై పెరుగుతున్న చర్చ.. సెలక్షన్ విధానంపై మాజీ క్రికెటర్ల ప్రశ్నలు
-        </p>
+        <div class="news-content">
 
-    </div>
+            <p>
+                బుమ్రా ఎంపికపై పెరుగుతున్న చర్చ.. సెలక్షన్ విధానంపై మాజీ క్రికెటర్ల ప్రశ్నలు
+            </p>
 
-</article>
+        </div>
+
+    </article>
 
 
-<article
-    class="news-item post"
-    data-category="sports"
-    data-url="hardik97.html"
->
-
-    <img
-        src="hardik.jpg"
-        alt="హార్దిక్ పాండ్యాకు మళ్లీ అవకాశం"
+    <article
+        class="news-item post"
+        data-category="sports"
+        data-url="hardik97.html"
     >
 
-    <div class="news-content">
+        <img
+            src="hardik.jpg"
+            alt="హార్దిక్ పాండ్యా"
+        >
 
-        <p>
-            🏏 హార్దిక్ పాండ్యాకు మళ్లీ అవకాశం.. ఆస్ట్రేలియా Aతో సిరీస్‌కు ఎంపిక
-        </p>
+        <div class="news-content">
 
-    </div>
+            <p>
+                హార్దిక్ పాండ్యాకు మళ్లీ అవకాశం.. ఆస్ట్రేలియా Aతో సిరీస్‌కు ఎంపిక
+            </p>
 
-</article>
+        </div>
+
+    </article>
 
 
-<!-- ENTERTAINMENT -->
-
-<article
-    class="news-item post"
-    data-category="cinema"
-    data-url="hm.html"
->
-
-    <img
-        src="hm.jpg"
-        alt="హనుమాన్ అంష్ సినిమా"
+    <article
+        class="news-item post"
+        data-category="sports"
+        data-url="dhoni7.html"
     >
 
-    <div class="news-content">
+        <img
+            src="dhoni7.jpg"
+            alt="ధోనీ IPL 2027"
+        >
 
-        <p>
-            🎬 అనుకోకుండా హీరోగా మారిన అసిస్టెంట్ డైరెక్టర్.. ‘హనుమాన్ అంష్’ వెనుక అసలు కథ ఇదే!
-        </p>
+        <div class="news-content">
 
-    </div>
+            <p>
+                ధోనీ IPL 2027 ఆడతాడా? మాజీ CSK ఆటగాడి కీలక వ్యాఖ్యలు
+            </p>
 
-</article>
+        </div>
+
+    </article>
 
 
-<!-- SPORTS -->
+    <!-- ENTERTAINMENT -->
 
-<article
-    class="news-item post"
-    data-category="sports"
-    data-url="bcci.html"
->
-
-    <img
-        src="bcci.webp"
-        alt="భారత్ అఫ్గానిస్థాన్ టీ20 సిరీస్"
+    <article
+        class="news-item post"
+        data-category="cinema"
+        data-url="n1.html"
     >
 
-    <div class="news-content">
+        <img
+            src="n1.jpg"
+            alt="డేవిడ్ రెడ్డి"
+        >
 
-        <p>
-            🏏 భారత్–అఫ్గానిస్థాన్ టీ20 సిరీస్‌కు రంగం సిద్ధం.. సెప్టెంబర్ 13 నుంచి ఢిల్లీలో హోరాహోరీ పోరు
-        </p>
+        <div class="news-content">
 
-    </div>
+            <p>
+                డేవిడ్ రెడ్డిలో రమ్యకృష్ణ.. కమలా రెడ్డిగా పవర్‌ఫుల్ ఫస్ట్ లుక్
+            </p>
 
-</article>
+        </div>
+
+    </article>
 
 
-<!-- BIGG BOSS -->
-
-<article
-    class="news-item post"
-    data-category="bigboss10"
-    data-url="bbnomination.html"
->
-
-    <img
-        src="bbnomination1.png"
-        alt="బిగ్‌బాస్ తెలుగు 10 మొదటి వారంలో నామినేషన్స్"
+    <article
+        class="news-item post"
+        data-category="cinema"
+        data-url="sardar.html"
     >
 
-    <div class="news-content">
+        <img
+            src="sardar.jpg"
+            alt="సర్దార్ 2 కార్తీ"
+        >
 
-        <p>
-            📺 బిగ్‌బాస్ తెలుగు 10: మొదటి వారంలోనే ఏడుగురికి షాక్.. ఎవరిని ఎందుకు నామినేట్ చేశారు?
-        </p>
+        <div class="news-content">
 
-    </div>
+            <p>
+                సర్దార్ 2పై కార్తీ ఆసక్తికర వ్యాఖ్యలు.. పది రెట్లు ఎక్కువ ఇంపాక్ట్ ఉంటుందంటూ హామీ
+            </p>
 
-</article>
+        </div>
+
+    </article>
 
 
-<!-- BUSINESS -->
-
-<article
-    class="news-item post"
-    data-category="business"
-    data-url="rbi.html"
->
-
-    <img
-        src="rbi.png"
-        alt="బ్యాంకింగ్ వ్యవస్థలో లిక్విడిటీ ఉపసంహరణ"
+    <article
+        class="news-item post"
+        data-category="cinema"
+        data-url="tamana.html"
     >
 
-    <div class="news-content">
+        <img
+            src="tamanna.jpg"
+            alt="తమన్నా భాటియా"
+        >
 
-        <p>
-            బ్యాంకింగ్ వ్యవస్థలో భారీ లిక్విడిటీ ఉపసంహరణ.. ₹6.12 లక్షల కోట్ల నగదును తగ్గించిన ఆర్బీఐ
-        </p>
+        <div class="news-content">
 
-    </div>
+            <p>
+                తమన్నా భాటియా, సిద్ధార్థ్ మల్హోత్రా జోడీ.. ‘The Vvaan’పై పెరుగుతున్న ఆసక్తి
+            </p>
 
-</article>
+        </div>
+
+    </article>
 
 
-<!-- ENTERTAINMENT -->
+    <!-- BUSINESS -->
 
-<article
-    class="news-item post"
-    data-category="cinema"
-    data-url="sardar.html"
->
-
-    <img
-        src="sardar.jpg"
-        alt="సర్దార్ 2 కార్తీ"
+    <article
+        class="news-item post"
+        data-category="business"
+        data-url="msd.html"
     >
 
-    <div class="news-content">
+        <img
+            src="msd.png"
+            alt="MSD టెక్నాలజీ సెంటర్"
+        >
 
-        <p>
-            🎬 సర్దార్ 2పై కార్తీ ఆసక్తికర వ్యాఖ్యలు.. పది రెట్లు ఎక్కువ ఇంపాక్ట్ ఉంటుందంటూ హామీ
-        </p>
+        <div class="news-content">
 
-    </div>
+            <p>
+                హైదరాబాద్‌లో MSD భారీ టెక్నాలజీ సెంటర్.. 2.5 లక్షల చదరపు అడుగుల్లో విస్తరణ
+            </p>
 
-</article>
+        </div>
+
+    </article>
 
 
-<!-- BIGG BOSS -->
-
-<article
-    class="news-item post"
-    data-category="bigboss10"
-    data-url="bb2.html"
->
-
-    <img
-        src="bb2.png"
-        alt="బిగ్‌బాస్ తెలుగు 10 రెండో రోజు"
+    <article
+        class="news-item post"
+        data-category="business"
+        data-url="rbi.html"
     >
 
-    <div class="news-content">
+        <img
+            src="rbi.png"
+            alt="ఆర్బీఐ"
+        >
 
-        <p>
-            📺 బిగ్‌బాస్ తెలుగు 10లో రెండో రోజే రచ్చ.. త్రిగుణ్, రోహిత్ మధ్య మాటల యుద్ధం.. మ్యాజిక్ కీస్‌తో మారిన గేమ్
-        </p>
+        <div class="news-content">
 
-    </div>
+            <p>
+                బ్యాంకింగ్ వ్యవస్థలో భారీ లిక్విడిటీ ఉపసంహరణ.. ₹6.12 లక్షల కోట్ల నగదును తగ్గించిన ఆర్బీఐ
+            </p>
 
-</article>
+        </div>
+
+    </article>
 
 
-<!-- LIFESTYLE -->
-
-<article
-    class="news-item post"
-    data-category="lifestyle"
-    data-url="world1.html"
->
-
-    <img
-        src="world1.jpg"
-        alt="మిస్ వరల్డ్ కిరీటాన్ని అందుకున్న భారతీయ అందాల రాణులు"
+    <article
+        class="news-item post"
+        data-category="business"
+        data-url="ind98.html"
     >
 
-    <div class="news-content">
+        <img
+            src="ind98.png"
+            alt="భారత్ ఆర్థిక వ్యవస్థ"
+        >
 
-        <p>
-            👑 మిస్ వరల్డ్ కిరీటాన్ని అందుకున్న భారతీయ అందాల రాణులు.. వీరే ఆ ఆరుగురు!
-        </p>
+        <div class="news-content">
 
-    </div>
+            <p>
+                భారత్ ఆర్థిక వ్యవస్థకు భారీ బూస్ట్.. జపాన్ JCRA రేటింగ్‌ను A-కి పెంచింది
+            </p>
 
-</article>
+        </div>
+
+    </article>
 
 
-<!-- BIGG BOSS -->
+    <!-- BIGG BOSS -->
 
-<article
-    class="news-item post"
-    data-category="bigboss10"
-    data-url="bigbossmp.html"
->
-
-    <img
-        src="bigbossmp.png"
-        alt="బిగ్‌బాస్ తెలుగు 10 మహాపరీక్ష"
+    <article
+        class="news-item post"
+        data-category="bigboss10"
+        data-url="bbday3.html"
     >
 
-    <div class="news-content">
+        <img
+            src="bbday3.webp"
+            alt="బిగ్‌బాస్ తెలుగు 10"
+        >
 
-        <p>
-            📺 బిగ్‌బాస్ తెలుగు 10లో అసలు ఆట మొదలు.. ‘మహాపరీక్ష’లో కీస్ కోసం కంటెస్టెంట్ల పోటీ
-        </p>
+        <div class="news-content">
 
-    </div>
+            <p>
+                బిగ్‌బాస్ తెలుగు 10లో ఊహించని ట్విస్ట్.. చరణ్ ఎలిమినేషన్‌తో హౌస్‌లో షాక్
+            </p>
 
-</article>
+        </div>
+
+    </article>
 
 
-<!-- TELANGANA -->
-
-<article
-    class="news-item post"
-    data-category="ts"
-    data-url="ts2.html"
->
-
-    <img
-        src="ts2.jpeg"
-        alt="తెలంగాణ అసెంబ్లీలో దుద్దిళ్ల శ్రీపాదరావు సెంట్రల్ హాల్"
+    <article
+        class="news-item post"
+        data-category="bigboss10"
+        data-url="bbnomination.html"
     >
 
-    <div class="news-content">
+        <img
+            src="bbnomination1.png"
+            alt="బిగ్‌బాస్ తెలుగు 10 నామినేషన్స్"
+        >
 
-        <p>
-            🏛️ తెలంగాణ అసెంబ్లీలో దుద్దిళ్ల శ్రీపాదరావు సెంట్రల్ హాల్ ప్రారంభం.. సీఎం రేవంత్‌రెడ్డి చేతుల మీదుగా ప్రారంభోత్సవం
-        </p>
+        <div class="news-content">
 
-    </div>
+            <p>
+                బిగ్‌బాస్ తెలుగు 10: మొదటి వారంలోనే ఏడుగురికి షాక్
+            </p>
 
-</article>
+        </div>
+
+    </article>
 
 
-<article
-    class="news-item post"
-    data-category="ts"
-    data-url="ts.html"
->
-
-    <img
-        src="ts.jpg"
-        alt="అసెంబ్లీ గేటు వద్ద ఉద్రిక్తత"
+    <article
+        class="news-item post"
+        data-category="bigboss10"
+        data-url="bigbossmp.html"
     >
 
-    <div class="news-content">
+        <img
+            src="bigbossmp.png"
+            alt="బిగ్‌బాస్ తెలుగు 10"
+        >
 
-        <p>
-            🏛️ అసెంబ్లీ గేటు వద్ద ఉద్రిక్తత.. కేటీఆర్, హరీశ్‌రావు సహా బీఆర్‌ఎస్ నేతలను అదుపులోకి తీసుకున్న పోలీసులు
-        </p>
+        <div class="news-content">
 
-    </div>
+            <p>
+                బిగ్‌బాస్ తెలుగు 10లో అసలు ఆట మొదలు.. మహాపరీక్షలో కీస్ కోసం పోటీ
+            </p>
 
-</article>
+        </div>
 
+    </article>
 
-<!-- BUSINESS -->
 
-<article
-    class="news-item post"
-    data-category="business"
-    data-url="stock98.html"
->
-
-    <img
-        src="stock98.jpg"
-        alt="భారత స్టాక్ మార్కెట్లు"
-    >
-
-    <div class="news-content">
-
-        <p>
-            📉 మధ్యప్రాచ్య ఉద్రిక్తతలు.. అమెరికా వడ్డీ రేట్ల అంచనాలతో నష్టాల్లో భారత స్టాక్ మార్కెట్లు
-        </p>
-
-    </div>
-
-</article>
-
-
-<!-- AP -->
-
-<article
-    class="news-item post"
-    data-category="ap"
-    data-url="babu.html"
->
-
-    <img
-        src="babu.webp"
-        alt="ఏపీ కలెక్టర్ల కాన్ఫరెన్స్"
-    >
-
-    <div class="news-content">
-
-        <p>
-            🏛️ ఏపీ కలెక్టర్ల కాన్ఫరెన్స్‌పై చంద్రబాబు ఫోకస్.. జిల్లాల అభివృద్ధిపై కీలక సమీక్ష
-        </p>
-
-    </div>
-
-</article>
-
-
-<article
-    class="news-item post"
-    data-category="ap"
-    data-url="laddu.html"
->
-
-    <img
-        src="laddu.jpg"
-        alt="తిరుమల లడ్డూ నెయ్యి అంశం"
-    >
-
-    <div class="news-content">
-
-        <p>
-            🛕 తిరుమల లడ్డూ నెయ్యి అంశంపై అసెంబ్లీలో వేడెక్కిన చర్చ.. సమగ్ర విచారణ అవసరమన్న చంద్రబాబు, పవన్
-        </p>
-
-    </div>
-
-</article>
-
-
-<!-- BIGG BOSS -->
-
-<article
-    class="news-item post"
-    data-category="bigboss10"
-    data-url="bbnag.html"
->
-
-    <img
-        src="bbnag.jpg"
-        alt="బిగ్‌బాస్ తెలుగు 10 గ్రాండ్ లాంచ్"
-    >
-
-    <div class="news-content">
-
-        <p>
-            📺 బిగ్‌బాస్ తెలుగు 10 గ్రాండ్ లాంచ్.. ‘దశావతారం’ థీమ్‌తో ఇంట్లోకి కంటెస్టెంట్లు.. నాగార్జునతో అదిరిపోయిన ఎంట్రీలు
-        </p>
-
-    </div>
-
-</article>
-
-
-<article
-    class="news-item post"
-    data-category="bigboss10"
-    data-url="bigbossnag.html"
->
-
-    <img
-        src="bigbossnag.jpg"
-        alt="Bigg Boss Telugu 10 నాగార్జున గ్రాండ్ లాంచ్"
-    >
-
-    <div class="news-content">
-
-        <p>
-            📺 Bigg Boss Telugu 10: ఈరోజే గ్రాండ్ లాంచ్.. నాగార్జునతో కొత్త ఆట మొదలు
-        </p>
-
-    </div>
-
-</article>
-
-
-<!-- SPORTS -->
-
-<article
-    class="news-item post"
-    data-category="sports"
-    data-url="indiagirls.html"
->
-
-    <img
-        src="indiagirls.jpg"
-        alt="భారత్ మహిళల జట్టు పాకిస్థాన్‌పై విజయం"
-    >
-
-    <div class="news-content">
-
-        <p>
-            🏏 భారత్ మహిళల జట్టు అద్భుత బౌలింగ్.. పాకిస్థాన్ 55 పరుగులకే ఆలౌట్
-        </p>
-
-    </div>
-
-</article>
-
-
-<!-- BIGG BOSS -->
-
-<article
-    class="news-item post"
-    data-category="bigboss10"
-    data-url="bigbossadhitharun.html"
->
-
-    <img
-        src="bigbossadhitharun.jpg"
-        alt="Bigg Boss Telugu 10 ఆదిత్ అరుణ్"
-    >
-
-    <div class="news-content">
-
-        <p>
-            📺 Bigg Boss Telugu 10: ఆదిత్ అరుణ్ ఎంట్రీ? బిగ్ బాస్ లిస్ట్‌లో ఈ పేరు వైరల్
-        </p>
-
-    </div>
-
-</article>
-
-
-<article
-    class="news-item post"
-    data-category="bigboss10"
-    data-url="nareshbigboss.html"
->
-
-    <img
-        src="nareshbigboss.jpg"
-        alt="Bigg Boss Telugu 10 జబర్దస్త్ నరేష్"
-    >
-
-    <div class="news-content">
-
-        <p>
-            📺 Bigg Boss Telugu 10: జబర్దస్త్ నరేష్ ఎంట్రీ? బిగ్ బాస్ లిస్ట్‌లో ఈ పేరు వైరల్
-        </p>
-
-    </div>
-
-</article>
-
-
-<article
-    class="news-item post"
-    data-category="bigboss10"
-    data-url="varshinibigboss.html"
->
-
-    <img
-        src="image.png"
-        alt="Bigg Boss Telugu 10 వర్షిణి సౌందరాజన్"
-    >
-
-    <div class="news-content">
-
-        <p>
-            📺 Bigg Boss Telugu 10: వర్షిణి సౌందరాజన్ ఎంట్రీ? వైరల్ అవుతున్న వార్త ఇదే
-        </p>
-
-    </div>
-
-</article>
-
-
-<!-- ENTERTAINMENT -->
-
-<article
-    class="news-item post"
-    data-category="cinema"
-    data-url="tamana.html"
->
-
-    <img
-        src="tamanna.jpg"
-        alt="తమన్నా భాటియా సిద్ధార్థ్ మల్హోత్రా The Vvaan"
-    >
-
-    <div class="news-content">
-
-        <p>
-            🎬 తమన్నా భాటియా, సిద్ధార్థ్ మల్హోత్రా జోడీ.. ‘The Vvaan’పై పెరుగుతున్న ఆసక్తి.. సెప్టెంబర్ 25న థియేటర్లలోకి!
-        </p>
-
-    </div>
-
-</article>
-
-
-<!-- AGRICULTURE -->
-
-<article
-    class="news-item post"
-    data-category="agriculture"
-    data-url="vari.html"
->
-
-    <img
-        src="vari.png"
-        alt="సెప్టెంబర్ వర్షాలు రైతులకు కీలకం"
-    >
-
-    <div class="news-content">
-
-        <p>
-            🌧️ రైతులకు కీలకంగా మారిన సెప్టెంబర్ వర్షాలు.. పంటలపై పెరుగుతున్న ఆందోళన
-        </p>
-
-    </div>
-
-</article>
-
-
-<!-- AUTOMOBILES -->
-
-<article
-    class="news-item post"
-    data-category="automobiles"
-    data-url="ev1.html"
->
-
-    <img
-        src="ev1.png"
-        alt="ఎలక్ట్రిక్ వెహికల్ కొనుగోలు ముందు తెలుసుకోవాల్సిన విషయాలు"
-    >
-
-    <div class="news-content">
-
-        <p>
-            🚗 ఎలక్ట్రిక్ వెహికల్ కొంటున్నారా? అయితే ఈ విషయాలు తప్పక తెలుసుకోండి
-        </p>
-
-    </div>
-
-</article>
-
-
-<!-- HUMAN INTEREST -->
-
-<article
-    class="news-item post"
-    data-category="human-interest"
-    data-url="watch.html"
->
-
-    <img
-        src="watch.png"
-        alt="వాచ్‌మెన్ రూంలో ఐదు అడుగుల నాగుపాము"
-    >
-
-    <div class="news-content">
-
-        <p>
-            🐍 వాచ్‌మెన్‌ రూంలో వింత శబ్దాలు.. వెళ్లి చూస్తే గుండె జారిపోయింది.. ఐదు అడుగుల నాగుపాము
-        </p>
-
-    </div>
-
-</article>
-
-
-<!-- SPORTS -->
-
-<article
-    class="news-item post"
-    data-category="sports"
-    data-url="indg99.html"
->
-
-    <img
-        src="indg99.webp"
-        alt="మహిళల ఆసియా కప్‌లో భారత్ హాంకాంగ్‌పై విజయం"
-    >
-
-    <div class="news-content">
-
-        <p>
-            🏏 మహిళల ఆసియా కప్‌లో భారత్ ఘన విజయం.. హాంకాంగ్‌పై 137 పరుగుల తేడాతో గెలుపు
-        </p>
-
-    </div>
-
-</article>
-
-
-<!-- TELANGANA -->
-
-<article
-    class="news-item post"
-    data-category="ts"
-    data-url="kang.html"
->
-
-    <img
-        src="kang.png"
-        alt="కొండా సురేఖపై రేవంత్ రెడ్డి నిర్ణయం"
-    >
-
-    <div class="news-content">
-
-        <p>
-            🏛️ కొండా సురేఖపై రేవంత్ రెడ్డి కీలక నిర్ణయం.. తెలంగాణ కాంగ్రెస్‌లో మరోసారి కలకలం
-        </p>
-
-    </div>
-
-</article>
-
-
-<!-- BUSINESS -->
-
-<article
-    class="news-item post"
-    data-category="business"
-    data-url="ind98.html"
->
-
-    <img
-        src="ind98.png"
-        alt="భారత్ ఆర్థిక వ్యవస్థకు జపాన్ రేటింగ్"
-    >
-
-    <div class="news-content">
-
-        <p>
-            🇮🇳 భారత్ ఆర్థిక వ్యవస్థకు భారీ బూస్ట్.. జపాన్ JCRA రేటింగ్‌ను A-కి పెంచింది — 35 ఏళ్ల తర్వాత A-rated క్లబ్‌లోకి భారత్
-        </p>
-
-    </div>
-
-</article>
-
-
-<!-- SPORTS -->
-
-<article
-    class="news-item post"
-    data-category="sports"
-    data-url="dhoni7.html"
->
-
-    <img
-        src="dhoni7.jpg"
-        alt="ధోనీ IPL 2027"
-    >
-
-    <div class="news-content">
-
-        <p>
-            🏏 ధోనీ IPL 2027 ఆడతాడా? ఇంపాక్ట్ ప్లేయర్‌గా మాత్రం వద్దంటున్న ధోనీ.. మాజీ CSK ఆటగాడి కీలక వ్యాఖ్యలు
-        </p>
-
-    </div>
-
-</article>
-
+</div>
 
 </section>
 
@@ -2099,7 +1883,8 @@ gtag('config', 'G-EWXPS1N2TL');
      JAVASCRIPT
 ===================================================== -->
 
-<script src="script.js?v=20260914"></script>
+<script src="script.js?v=20260918"></script>
 
 </body>
+
 </html>
