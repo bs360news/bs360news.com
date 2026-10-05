@@ -1,84 +1,47 @@
-```html
-<!doctype html>
+<!DOCTYPE html>
 <html lang="te">
-
 <head>
+<meta charset="UTF-8">
 
-    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="viewport"
-        content="width=device-width,initial-scale=1"
-    >
+<title>BS 360 NEWS | Fast | Fair | Fearless</title>
 
-    <title>BS 360 NEWS | Fast | Fair | Fearless</title>
+<meta name="description"
+      content="తెలుగు రాష్ట్రాలు, సినిమా, క్రికెట్, స్పోర్ట్స్, బిజినెస్ మరియు జాతీయ వార్తల తాజా అప్‌డేట్స్.">
 
-    <meta
-        name="description"
-        content="BS 360 NEWS - తెలుగు రాష్ట్రాలు, సినిమా, క్రికెట్, స్పోర్ట్స్, బిజినెస్ మరియు జాతీయ వార్తల తాజా అప్‌డేట్స్."
-    >
+<meta name="google-adsense-account"
+      content="ca-pub-7586406136288714">
 
-    <meta
-        name="google-adsense-account"
-        content="ca-pub-7586406136288714"
-    >
+<link rel="icon" href="dp.png.png">
+<link rel="apple-touch-icon" href="dp.png.png">
 
-    <link
-        rel="icon"
-        href="dp.png.png"
-    >
+<link rel="canonical" href="https://bs360news.com/">
 
-    <link
-        rel="apple-touch-icon"
-        href="dp.png.png"
-    >
+<link rel="stylesheet" href="style.css?v=20261005">
 
-    <link
-        rel="canonical"
-        href="https://bs360news.com/"
-    >
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWXPS1N2TL"></script>
 
-    <link
-        rel="stylesheet"
-        href="style.css?v=20261005"
-    >
+<script>
+window.dataLayer = window.dataLayer || [];
 
+function gtag(){
+    dataLayer.push(arguments);
+}
 
-    <!-- ================= GOOGLE ANALYTICS ================= -->
+gtag('js', new Date());
+gtag('config', 'G-EWXPS1N2TL');
+</script>
 
-    <script
-        async
-        src="https://www.googletagmanager.com/gtag/js?id=G-EWXPS1N2TL"
-    ></script>
-
-    <script>
-
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag(){
-            dataLayer.push(arguments);
-        }
-
-        gtag("js", new Date());
-
-        gtag("config", "G-EWXPS1N2TL");
-
-    </script>
-
-
-    <!-- ================= GOOGLE ADSENSE ================= -->
-
-    <script
-        async
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7586406136288714"
-        crossorigin="anonymous"
-    ></script>
+<!-- Google AdSense -->
+<script async
+src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7586406136288714"
+crossorigin="anonymous"></script>
 
 </head>
 
-
 <body>
-
 
 <!-- =====================================================
      HEADER
@@ -88,37 +51,17 @@
 
     <div class="container brand-inner">
 
-        <!-- LOGO -->
-
-        <a
-            href="index.html"
-            class="brand-logo"
-        >
+        <a href="index.html" class="brand-logo">
 
             <div class="logo-mark">
-
-                <img
-                    src="dp.png.png"
-                    alt="BS 360 NEWS"
-                >
-
+                <img src="dp.png.png"
+                     alt="BS 360 NEWS">
             </div>
-
 
             <div class="logo-name">
 
                 <div>
-
-                    <span>BS</span>
-
-                    <span class="logo-red">
-                        360
-                    </span>
-
-                    <span>
-                        NEWS
-                    </span>
-
+                    BS <span class="logo-red">360</span> NEWS
                 </div>
 
                 <span class="logo-tagline">
@@ -130,48 +73,42 @@
         </a>
 
 
-        <!-- HEADER ACTION -->
-
         <div class="header-actions">
 
-            <button
-                type="button"
-                class="theme-button"
-                id="themeButton"
-                onclick="toggleTheme()"
-            >
+            <button class="theme-button"
+                    onclick="toggleTheme()">
                 🌙 Dark
+            </button>
+
+            <button class="live-button">
+                <span class="live-dot"></span>
+                LIVE
             </button>
 
         </div>
 
 
-        <!-- MOBILE MENU -->
-
-        <button
-            type="button"
-            class="mobile-menu-toggle"
-            onclick="toggleMobileNav()"
-            aria-label="Menu"
-        >
+        <button class="mobile-menu-toggle"
+                onclick="toggleMobileNav()">
             ☰
         </button>
 
     </div>
 
+</header>
 
-    <!-- ================= NAVIGATION ================= -->
 
-    <nav class="main-nav">
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
 
-        <div
-            class="container nav-links"
-            id="navLinks"
-        >
+<nav class="main-nav">
 
-            <a href="index.html">
-                HOME
-            </a>
+    <div class="container">
+
+        <div class="nav-links" id="mobileNav">
+
+            <a href="index.html">HOME</a>
 
             <a href="MOVIES.html">
                 ENTERTAINMENT
@@ -195,35 +132,126 @@
 
         </div>
 
-    </nav>
+    </div>
 
-</header>
-
+</nav>
 
 
 <!-- =====================================================
-     TOP HEADLINES
+     HEADLINES
 ===================================================== -->
 
-<section class="headlines-bar">
+<div class="headlines-bar">
 
     <div class="container">
 
         <div class="headlines-label">
-            📰 TOP HEADLINES
+            TOP HEADLINES
         </div>
 
         <div class="headlines-text">
+            తెలుగు రాష్ట్రాలు, సినిమా, క్రికెట్, స్పోర్ట్స్,
+            బిజినెస్ మరియు జాతీయ వార్తల తాజా అప్‌డేట్స్
+        </div>
 
-            భారత్ వెస్టిండీస్ రెండో వన్డేలో బ్యాటర్ల జోరు
+    </div>
 
-            &nbsp; • &nbsp;
+</div>
 
-            నాని ది ప్యారడైజ్ బాక్సాఫీస్ వద్ద జోరు
 
-            &nbsp; • &nbsp;
+<main class="portal-wrap">
 
-            బిగ్ బాస్ 10లో కెప్టెన్సీ టాస్క్ కోసం పోటీ
+<div class="container">
+
+
+<!-- =====================================================
+     SEARCH
+===================================================== -->
+
+<div class="search-container">
+
+    <button class="search-icon"
+            onclick="toggleSearch()">
+        🔍
+    </button>
+
+    <div class="search-box" id="searchBox">
+
+        <input type="text"
+               id="searchInput"
+               placeholder="వార్తలు వెతకండి..."
+               onkeydown="if(event.key==='Enter') searchNews()">
+
+        <button onclick="searchNews()">
+            Search
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     1. LATEST NEWS
+===================================================== -->
+
+<section id="latestSection">
+
+    <div class="section-title-row">
+
+        <h2>తాజా వార్తలు</h2>
+
+        <span>
+            Latest News
+        </span>
+
+        <a href="#" class="view-all">
+            View All
+        </a>
+
+    </div>
+
+
+    <div id="latestGrid"
+         class="latest-news-grid">
+
+        <!-- JS will insert latest news -->
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     2. AP & TELANGANA
+===================================================== -->
+
+<section id="aptsSection">
+
+    <div class="section-title-row">
+
+        <h2>AP & TS</h2>
+
+        <span>
+            ఆంధ్రప్రదేశ్ & తెలంగాణ
+        </span>
+
+        <a href="AP&TS.html"
+           class="view-all">
+            View All
+        </a>
+
+    </div>
+
+
+    <div class="news-slider">
+
+        <div id="sliderTrack"
+             class="category-news-layout">
+
+            <!-- JS will insert AP & TS -->
 
         </div>
 
@@ -234,474 +262,325 @@
 
 
 <!-- =====================================================
-     MAIN
+     3. SPORTS
 ===================================================== -->
 
-<main class="container portal-wrap">
+<section id="sportsSection">
+
+    <div class="section-title-row">
+
+        <h2>స్పోర్ట్స్</h2>
+
+        <span>
+            Sports News
+        </span>
+
+        <a href="SPORTS.html"
+           class="view-all">
+            View All
+        </a>
+
+    </div>
 
 
-    <!-- =================================================
-         SEARCH
-    ================================================== -->
+    <div class="news-slider">
 
-    <div class="search-container">
+        <div id="sportsGrid"
+             class="category-news-layout">
 
-        <button
-            type="button"
-            class="search-icon"
-            onclick="toggleSearch()"
-            aria-label="Search"
-        >
-            🔍
-        </button>
-
-
-        <div
-            class="search-box"
-            id="searchBox"
-        >
-
-            <input
-                type="search"
-                id="searchInput"
-                placeholder="వార్తలు వెతకండి..."
-                autocomplete="off"
-            >
-
-            <button
-                type="button"
-                onclick="searchNews()"
-            >
-                Search
-            </button>
+            <!-- JS will insert Sports -->
 
         </div>
 
     </div>
 
-
-
-    <!-- =================================================
-         ALL SEPARATE NEWS SECTIONS
-    ================================================== -->
-
-    <div class="separate-news-sections">
-
-
-        <!-- =================================================
-             LATEST NEWS
-        ================================================== -->
-
-        <section
-            class="news-section"
-            id="latestSection"
-        >
-
-            <div class="section-title-row">
-
-                <h2>
-                    తాజా వార్తలు
-                </h2>
-
-                <span>
-                    Latest News
-                </span>
-
-            </div>
-
-
-            <div
-                class="news-grid"
-                id="latestGrid"
-            >
-
-                <p class="section-loading">
-                    వార్తలు లోడ్ అవుతున్నాయి...
-                </p>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =================================================
-             MOVIES
-        ================================================== -->
-
-        <section
-            class="news-section"
-            id="moviesSection"
-        >
-
-            <div class="section-title-row">
-
-                <h2>
-                    🎬 సినిమా వార్తలు
-                </h2>
-
-                <a
-                    href="MOVIES.html"
-                    class="view-all"
-                >
-                    View All
-                </a>
-
-            </div>
-
-
-            <div
-                class="news-grid"
-                id="moviesGrid"
-            >
-
-                <p class="section-loading">
-                    వార్తలు లోడ్ అవుతున్నాయి...
-                </p>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =================================================
-             SPORTS
-        ================================================== -->
-
-        <section
-            class="news-section"
-            id="sportsSection"
-        >
-
-            <div class="section-title-row">
-
-                <h2>
-                    🏏 స్పోర్ట్స్ వార్తలు
-                </h2>
-
-                <a
-                    href="SPORTS.html"
-                    class="view-all"
-                >
-                    View All
-                </a>
-
-            </div>
-
-
-            <div
-                class="news-grid"
-                id="sportsGrid"
-            >
-
-                <p class="section-loading">
-                    వార్తలు లోడ్ అవుతున్నాయి...
-                </p>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =================================================
-             AP & TELANGANA
-        ================================================== -->
-
-        <section
-            class="news-section"
-            id="aptsSection"
-        >
-
-            <div class="section-title-row">
-
-                <h2>
-                    🌐 AP & Telangana వార్తలు
-                </h2>
-
-                <a
-                    href="AP&TS.html"
-                    class="view-all"
-                >
-                    View All
-                </a>
-
-            </div>
-
-
-            <div
-                class="news-grid"
-                id="aptsGrid"
-            >
-
-                <p class="section-loading">
-                    వార్తలు లోడ్ అవుతున్నాయి...
-                </p>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =================================================
-             BUSINESS
-        ================================================== -->
-
-        <section
-            class="news-section"
-            id="businessSection"
-        >
-
-            <div class="section-title-row">
-
-                <h2>
-                    💼 బిజినెస్ వార్తలు
-                </h2>
-
-                <a
-                    href="business.html"
-                    class="view-all"
-                >
-                    View All
-                </a>
-
-            </div>
-
-
-            <div
-                class="news-grid"
-                id="businessGrid"
-            >
-
-                <p class="section-loading">
-                    వార్తలు లోడ్ అవుతున్నాయి...
-                </p>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =================================================
-             BIGG BOSS 10
-        ================================================== -->
-
-        <section
-            class="news-section"
-            id="bigbossSection"
-        >
-
-            <div class="section-title-row">
-
-                <h2>
-                    👑 Bigg Boss 10
-                </h2>
-
-                <a
-                    href="BIGBOSS10.html"
-                    class="view-all"
-                >
-                    View All
-                </a>
-
-            </div>
-
-
-            <div
-                class="news-grid"
-                id="bigbossGrid"
-            >
-
-                <p class="section-loading">
-                    వార్తలు లోడ్ అవుతున్నాయి...
-                </p>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =================================================
-             TRENDING
-        ================================================== -->
-
-        <section
-            class="news-section"
-            id="trendingSection"
-        >
-
-            <div class="section-title-row">
-
-                <h2>
-                    🔥 ట్రెండింగ్ వార్తలు
-                </h2>
-
-                <span>
-                    Trending News
-                </span>
-
-            </div>
-
-
-            <div
-                class="news-grid"
-                id="trendingGrid"
-            >
-
-                <p class="section-loading">
-                    వార్తలు లోడ్ అవుతున్నాయి...
-                </p>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =================================================
-             MOST READ
-        ================================================== -->
-
-        <section
-            class="news-section"
-            id="mostReadSection"
-        >
-
-            <div class="section-title-row">
-
-                <h2>
-                    ⭐ ఎక్కువగా చదివిన వార్తలు
-                </h2>
-
-                <span>
-                    Most Read
-                </span>
-
-            </div>
-
-
-            <div
-                class="most-read-list"
-                id="mostReadGrid"
-            >
-
-                <p class="section-loading">
-                    వార్తలు లోడ్ అవుతున్నాయి...
-                </p>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =================================================
-             PHOTO GALLERY
-        ================================================== -->
-
-        <section
-            class="photo-gallery-section"
-            id="photoGallerySection"
-        >
-
-            <div class="section-title-row">
-
-                <h2>
-                    📸 Photo Gallery
-                </h2>
-
-            </div>
-
-
-            <div
-                id="photoGallery"
-                class="photo-gallery-scroll"
-            ></div>
-
-        </section>
-
-
-
-        <!-- =================================================
-             VIDEO NEWS
-        ================================================== -->
-
-        <section
-            class="video-news-section"
-            id="videoSection"
-        >
-
-            <div class="section-title-row">
-
-                <h2>
-                    ▶️ Video News
-                </h2>
-
-            </div>
-
-
-            <div
-                id="videoNewsGrid"
-                class="video-news-grid"
-            ></div>
-
-        </section>
-
-
-
-        <!-- =================================================
-             ADVERTISEMENT
-        ================================================== -->
-
-        <div class="ad-space">
-            Advertisement
-        </div>
-
-
-    </div>
-
-</main>
+</section>
 
 
 
 <!-- =====================================================
-     HIDDEN ARTICLE SOURCE
-     
-     IMPORTANT:
-     All articles stay here.
-     JavaScript below automatically separates them.
+     4. MOVIES
 ===================================================== -->
 
-<div
-    id="legacyNewsSource"
-    class="legacy-news-source"
->
+<section id="cinemaSection">
+
+    <div class="section-title-row">
+
+        <h2>సినిమా</h2>
+
+        <span>
+            Entertainment
+        </span>
+
+        <a href="MOVIES.html"
+           class="view-all">
+            View All
+        </a>
+
+    </div>
 
 
-    <!-- =================================================
-         SPORTS
-    ================================================== -->
+    <div class="news-slider">
 
-    <article
-        class="news-item post"
-        data-category="sports"
-        data-url="india-vs-west-indies-2nd-odi-guwahati/"
-    >
+        <div id="cinemaGrid"
+             class="category-news-layout">
 
-        <img
-            src="india-vs-west-indies-2nd-odi-guwahati.png"
-            alt="భారత్ వెస్టిండీస్ రెండో వన్డేలో బ్యాటర్ల జోరు"
-        >
+            <!-- JS will insert Movies -->
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     5. BUSINESS
+===================================================== -->
+
+<section id="businessSection">
+
+    <div class="section-title-row">
+
+        <h2>బిజినెస్</h2>
+
+        <span>
+            Business News
+        </span>
+
+        <a href="business.html"
+           class="view-all">
+            View All
+        </a>
+
+    </div>
+
+
+    <div class="news-slider">
+
+        <div id="businessGrid"
+             class="category-news-layout">
+
+            <!-- JS will insert Business -->
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CLEAR FLOATS
+===================================================== -->
+
+<div style="clear:both;"></div>
+
+
+
+<!-- =====================================================
+     6. BIGG BOSS 10
+===================================================== -->
+
+<section id="bigbossSection">
+
+    <div class="section-title-row">
+
+        <h2>బిగ్ బాస్ 10</h2>
+
+        <span>
+            Bigg Boss Telugu 10
+        </span>
+
+        <a href="BIGBOSS10.html"
+           class="view-all">
+            View All
+        </a>
+
+    </div>
+
+
+    <div class="category-news-layout"
+         id="bigbossGrid">
+
+        <!-- JS will insert Bigg Boss -->
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     7. TRENDING
+===================================================== -->
+
+<section id="trendingSection"
+         class="trending-section">
+
+    <div class="section-title-row">
+
+        <h2>ట్రెండింగ్</h2>
+
+        <span>
+            Trending News
+        </span>
+
+    </div>
+
+
+    <div id="trendingGrid"
+         class="trending-grid">
+
+        <!-- JS will insert trending -->
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     8. MOST READ
+===================================================== -->
+
+<section id="mostReadSection"
+         class="most-read-section">
+
+    <div class="section-title-row">
+
+        <h2>మోస్ట్ రీడ్</h2>
+
+        <span>
+            Most Read
+        </span>
+
+    </div>
+
+
+    <div id="mostReadList"
+         class="most-read-list">
+
+        <!-- JS will insert most read -->
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PHOTO GALLERY
+===================================================== -->
+
+<section class="photo-gallery-section">
+
+    <div class="extra-section-heading">
+
+        <h2>ఫోటో గ్యాలరీ</h2>
+
+        <a href="#">
+            View All
+        </a>
+
+    </div>
+
+
+    <div class="photo-gallery-scroll"
+         id="photoGallery">
+
+        <!-- Gallery items -->
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     VIDEO NEWS
+===================================================== -->
+
+<section class="video-news-section">
+
+    <div class="extra-section-heading">
+
+        <h2>వీడియో న్యూస్</h2>
+
+        <a href="#">
+            View All
+        </a>
+
+    </div>
+
+
+    <div id="videoNewsGrid"
+         class="video-news-grid">
+
+        <!-- Video items -->
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ADVERTISEMENT
+===================================================== -->
+
+<div class="ad-space">
+
+    Advertisement
+
+</div>
+
+
+
+<!-- =====================================================
+     HIDDEN NEWS SOURCE
+===================================================== -->
+
+<div id="legacyNewsSource"
+     class="legacy-news-source">
+
+
+    <!-- SPORTS -->
+
+    <article class="news-item post"
+             data-category="sports"
+             data-url="india-vs-west-indies-2nd-odi-guwahati/">
+
+        <img src="india-vs-west-indies-2nd-odi-guwahati.png"
+             alt="India vs West Indies 2nd ODI Guwahati">
 
         <div class="news-content">
 
-            <p>
-                భారత్ వెస్టిండీస్ రెండో వన్డేలో బ్యాటర్ల జోరు
-            </p>
+            <h3>
+                భారత్ - వెస్టిండీస్ రెండో వన్డేలో
+                గువాహటి పోరుకు రంగం సిద్ధం
+            </h3>
+
+        </div>
+
+    </article>
+
+
+    <article class="news-item post"
+             data-category="sports"
+             data-url="shubman-gill-62-ball-century/">
+
+        <img src="shubman-gill-62-ball-century.png"
+             alt="Shubman Gill 62 Ball Century">
+
+        <div class="news-content">
+
+            <h3>
+                62 బంతుల్లో సెంచరీ.. రికార్డు
+                సృష్టించిన శుభ్‌మన్ గిల్
+            </h3>
 
         </div>
 
@@ -709,22 +588,116 @@
 
 
 
-    <article
-        class="news-item post"
-        data-category="sports"
-        data-url="shubman-gill-62-ball-century/"
-    >
+    <!-- MOVIES -->
 
-        <img
-            src="shubman-gill-62-ball-century.png"
-            alt="శుభ్‌మన్ గిల్ సెంచరీతో భారత్‌కు భారీ విజయం"
-        >
+    <article class="news-item post"
+             data-category="cinema"
+             data-url="dasara-venkatesh-rajinikanth-vijay-deverakonda-movies/">
+
+        <img src="dasara-venkatesh-rajinikanth-vijay-deverakonda-movies.png"
+             alt="Dasara Movies">
 
         <div class="news-content">
 
-            <p>
-                శుభ్‌మన్ గిల్ సెంచరీతో భారత్‌కు భారీ విజయం
-            </p>
+            <h3>
+                దసరా బరిలో స్టార్ హీరోల సినిమాలు..
+                ప్రేక్షకుల్లో భారీ అంచనాలు
+            </h3>
+
+        </div>
+
+    </article>
+
+
+    <article class="news-item post"
+             data-category="cinema"
+             data-url="nani-the-paradise-box-office-collections/">
+
+        <img src="nani-the-paradise-box-office-collections.png"
+             alt="Nani The Paradise Box Office">
+
+        <div class="news-content">
+
+            <h3>
+                భారీ వసూళ్లతో దూసుకెళ్తున్న
+                నాని ‘ది ప్యారడైజ్’
+            </h3>
+
+        </div>
+
+    </article>
+
+
+    <article class="news-item post"
+             data-category="cinema"
+             data-url="fahadh-faasil-dont-trouble-the-trouble/">
+
+        <img src="fahadh-faasil-dont-trouble-the-trouble.png"
+             alt="Fahadh Faasil">
+
+        <div class="news-content">
+
+            <h3>
+                ఫహాద్ ఫాజిల్ ‘డోంట్ ట్రబుల్
+                ది ట్రబుల్’పై ఆసక్తికర అప్‌డేట్
+            </h3>
+
+        </div>
+
+    </article>
+
+
+    <article class="news-item post"
+             data-category="cinema"
+             data-url="master-bharath-venky-child-artist-doctor/">
+
+        <img src="master-bharath-venky-child-artist-doctor.png"
+             alt="Master Bharath">
+
+        <div class="news-content">
+
+            <h3>
+                చైల్డ్ ఆర్టిస్ట్ నుంచి డాక్టర్‌గా..
+                మాస్టర్ భరత్ ప్రయాణం
+            </h3>
+
+        </div>
+
+    </article>
+
+
+    <article class="news-item post"
+             data-category="cinema"
+             data-url="rajamouli-suriya-combination-update/">
+
+        <img src="rajamouli-suriya-combination-update.png"
+             alt="Rajamouli Suriya">
+
+        <div class="news-content">
+
+            <h3>
+                రాజమౌళి - సూర్య కాంబినేషన్‌పై
+                మరో ఆసక్తికర అప్‌డేట్
+            </h3>
+
+        </div>
+
+    </article>
+
+
+    <article class="news-item post"
+             data-category="cinema"
+             data-url="venkatesh-aadarsha-kutumbam-press-meet/">
+
+        <img src="venkatesh-aadarsha-kutumbam-press-meet.png"
+             alt="Venkatesh Aadarsha Kutumbam">
+
+        <div class="news-content">
+
+            <h3>
+                వెంకటేష్ ‘ఆదర్శ కుటుంబం’పై
+                కీలక వ్యాఖ్యలు
+            </h3>
 
         </div>
 
@@ -732,26 +705,21 @@
 
 
 
-    <!-- =================================================
-         MOVIES
-    ================================================== -->
+    <!-- BUSINESS -->
 
-    <article
-        class="news-item post"
-        data-category="cinema"
-        data-url="dasara-venkatesh-rajinikanth-vijay-deverakonda-movies/"
-    >
+    <article class="news-item post"
+             data-category="business"
+             data-url="nirmala-sitharaman-economy-growth/">
 
-        <img
-            src="dasara-venkatesh-rajinikanth-vijay-deverakonda-movies.png"
-            alt="దసరా బరిలో ముగ్గురు స్టార్ హీరోలు"
-        >
+        <img src="nirmala-sitharaman-economy-growth.png"
+             alt="Nirmala Sitharaman Economy">
 
         <div class="news-content">
 
-            <p>
-                దసరా బరిలో ముగ్గురు స్టార్ హీరోలు.. వెంకటేష్, రజినీకాంత్, విజయ్ దేవరకొండ సినిమాలపై ఆసక్తి
-            </p>
+            <h3>
+                దాదాపు 8 శాతం వృద్ధి దిశగా
+                భారత ఆర్థిక వ్యవస్థ
+            </h3>
 
         </div>
 
@@ -759,22 +727,40 @@
 
 
 
-    <article
-        class="news-item post"
-        data-category="cinema"
-        data-url="nani-the-paradise-box-office-collections/"
-    >
+    <!-- AP & TS -->
 
-        <img
-            src="nani-the-paradise-box-office-collections.png"
-            alt="భారీ వసూళ్లతో దూసుకెళ్తున్న నాని ది ప్యారడైజ్"
-        >
+    <article class="news-item post"
+             data-category="apts"
+             data-url="telangana-latest-news/">
+
+        <img src="telangana-latest-news.png"
+             alt="Telangana Latest News">
 
         <div class="news-content">
 
-            <p>
-                భారీ వసూళ్లతో దూసుకెళ్తున్న నాని ‘ది ప్యారడైజ్’.. బాక్సాఫీస్ వద్ద జోరు
-            </p>
+            <h3>
+                తెలంగాణలో తాజా పరిణామాలు..
+                ముఖ్యమైన వార్తలు
+            </h3>
+
+        </div>
+
+    </article>
+
+
+    <article class="news-item post"
+             data-category="apts"
+             data-url="andhra-pradesh-latest-news/">
+
+        <img src="andhra-pradesh-latest-news.png"
+             alt="Andhra Pradesh Latest News">
+
+        <div class="news-content">
+
+            <h3>
+                ఆంధ్రప్రదేశ్‌లో తాజా అప్‌డేట్స్..
+                ముఖ్యమైన వార్తలు
+            </h3>
 
         </div>
 
@@ -782,22 +768,40 @@
 
 
 
-    <article
-        class="news-item post"
-        data-category="cinema"
-        data-url="fahadh-faasil-dont-trouble-the-trouble/"
-    >
+    <!-- BIGG BOSS -->
 
-        <img
-            src="fahadh-faasil-dont-trouble-the-trouble.png"
-            alt="యువ టీమ్‌తో ఫహాద్ ఫాజిల్"
-        >
+    <article class="news-item post"
+             data-category="bigboss10"
+             data-url="bigboss10-captaincy-task/">
+
+        <img src="bigboss10-captaincy-task.png"
+             alt="Bigg Boss Telugu 10 Captaincy Task">
 
         <div class="news-content">
 
-            <p>
-                యువ టీమ్‌తో ఫహాద్ ఫాజిల్..
-            </p>
+            <h3>
+                బిగ్ బాస్ హౌస్‌లో కెప్టెన్సీ టాస్క్..
+                పోటీ మొదలు
+            </h3>
+
+        </div>
+
+    </article>
+
+
+    <article class="news-item post"
+             data-category="bigboss10"
+             data-url="bigboss10-naresh-comedy/">
+
+        <img src="bigboss10-naresh-comedy.png"
+             alt="Bigg Boss Telugu 10 Naresh Comedy">
+
+        <div class="news-content">
+
+            <h3>
+                టెన్షన్ మధ్య నరేష్ కామెడీ..
+                ఎపిసోడ్‌లో రిలీఫ్
+            </h3>
 
         </div>
 
@@ -805,245 +809,40 @@
 
 
 
-    <article
-        class="news-item post"
-        data-category="cinema"
-        data-url="master-bharath-venky-child-artist-doctor/"
-    >
+    <!-- NATIONAL -->
 
-        <img
-            src="master-bharath-venky-child-artist-doctor.png"
-            alt="వెంకీ చైల్డ్ ఆర్టిస్ట్ భరత్"
-        >
+    <article class="news-item post"
+             data-category="national"
+             data-url="gandhi-jayanti-walking-fitness/">
+
+        <img src="gandhi-jayanti-walking-fitness.png"
+             alt="Gandhi Jayanti Walking Fitness">
 
         <div class="news-content">
 
-            <p>
-                తల్లి చివరి కోరిక కోసం సినిమాలకు గుడ్‌బై.. డాక్టర్‌గా మారిన ‘వెంకీ’ చైల్డ్ ఆర్టిస్ట్ భరత్!
-            </p>
+            <h3>
+                గాంధీ జయంతి సందర్భంగా ఆరోగ్యంపై
+                ప్రత్యేక సందేశం
+            </h3>
 
         </div>
 
     </article>
 
 
+    <article class="news-item post"
+             data-category="national"
+             data-url="lal-bahadur-shastri/">
 
-    <article
-        class="news-item post"
-        data-category="cinema"
-        data-url="rajamouli-suriya-combination-update/"
-    >
-
-        <img
-            src="rajamouli-suriya-combination-update.png"
-            alt="సూర్యతో రాజమౌళి సినిమా"
-        >
+        <img src="lal-bahadur-shastri.png"
+             alt="Lal Bahadur Shastri">
 
         <div class="news-content">
 
-            <p>
-                సూర్యతో రాజమౌళి సినిమా ఎప్పుడు? ఒక్క మాటతో ఆసక్తి పెంచిన జక్కన్న
-            </p>
-
-        </div>
-
-    </article>
-
-
-
-    <article
-        class="news-item post"
-        data-category="cinema"
-        data-url="venkatesh-aadarsha-kutumbam-press-meet/"
-    >
-
-        <img
-            src="venkatesh-aadarsha-kutumbam-press-meet..png"
-            alt="20 ఏళ్ల తర్వాత త్రివిక్రమ్‌తో వెంకటేష్"
-        >
-
-        <div class="news-content">
-
-            <p>
-                20 ఏళ్ల తర్వాత త్రివిక్రమ్‌తో వెంకటేష్.. ‘పెళ్లికాని ప్రసాద్’ కాలం పోయింది
-            </p>
-
-        </div>
-
-    </article>
-
-
-
-    <!-- =================================================
-         BUSINESS
-    ================================================== -->
-
-    <article
-        class="news-item post"
-        data-category="business"
-        data-url="nirmala-sitharaman-economy-growth/"
-    >
-
-        <img
-            src="nirmala-sitharaman-economy-growth.jpg"
-            alt="భారత ఆర్థిక వ్యవస్థపై నిర్మలా సీతారామన్ కీలక వ్యాఖ్యలు"
-        >
-
-        <div class="news-content">
-
-            <p>
-                భారత ఆర్థిక వ్యవస్థపై నిర్మలా సీతారామన్ కీలక వ్యాఖ్యలు
-            </p>
-
-        </div>
-
-    </article>
-
-
-
-    <!-- =================================================
-         AP & TELANGANA
-    ================================================== -->
-
-    <article
-        class="news-item post"
-        data-category="apts"
-        data-url="telangana-latest-news/"
-    >
-
-        <img
-            src="telangana-news.jpg"
-            alt="తెలంగాణ తాజా వార్తలు"
-        >
-
-        <div class="news-content">
-
-            <p>
-                తెలంగాణ తాజా వార్తలు
-            </p>
-
-        </div>
-
-    </article>
-
-
-
-    <article
-        class="news-item post"
-        data-category="apts"
-        data-url="andhra-pradesh-latest-news/"
-    >
-
-        <img
-            src="ap-news.jpg"
-            alt="ఆంధ్రప్రదేశ్ తాజా వార్తలు"
-        >
-
-        <div class="news-content">
-
-            <p>
-                ఆంధ్రప్రదేశ్ తాజా వార్తలు
-            </p>
-
-        </div>
-
-    </article>
-
-
-
-    <!-- =================================================
-         BIGG BOSS 10
-    ================================================== -->
-
-    <article
-        class="news-item post"
-        data-category="bigboss10"
-        data-url="bigboss10-captaincy-task/"
-    >
-
-        <img
-            src="bigboss10.jpg"
-            alt="బిగ్ బాస్ 10లో కెప్టెన్సీ టాస్క్ కోసం పోటీ"
-        >
-
-        <div class="news-content">
-
-            <p>
-                బిగ్ బాస్ 10లో కెప్టెన్సీ టాస్క్ కోసం పోటీ
-            </p>
-
-        </div>
-
-    </article>
-
-
-
-    <article
-        class="news-item post"
-        data-category="bigboss10"
-        data-url="bigboss10-naresh-comedy/"
-    >
-
-        <img
-            src="bigboss10.jpg"
-            alt="బిగ్ బాస్ హౌస్‌లో నరేష్ కామెడీ"
-        >
-
-        <div class="news-content">
-
-            <p>
-                బిగ్ బాస్ హౌస్‌లో నరేష్ కామెడీ
-            </p>
-
-        </div>
-
-    </article>
-
-
-
-    <!-- =================================================
-         NATIONAL
-    ================================================== -->
-
-    <article
-        class="news-item post"
-        data-category="national"
-        data-url="gandhi-jayanti-walking-fitness/"
-    >
-
-        <img
-            src="gandhi-jayanti.jpg"
-            alt="గాంధీ జయంతి సందర్భంగా ఆరోగ్యంపై ప్రత్యేక సందేశం"
-        >
-
-        <div class="news-content">
-
-            <p>
-                గాంధీ జయంతి సందర్భంగా ఆరోగ్యంపై ప్రత్యేక సందేశం
-            </p>
-
-        </div>
-
-    </article>
-
-
-
-    <article
-        class="news-item post"
-        data-category="national"
-        data-url="lal-bahadur-shastri/"
-    >
-
-        <img
-            src="lal-bahadur-shastri.jpg"
-            alt="లాల్ బహదూర్ శాస్త్రి జయంతి సందర్భంగా ప్రత్యేక కథనం"
-        >
-
-        <div class="news-content">
-
-            <p>
-                లాల్ బహదూర్ శాస్త్రి జయంతి సందర్భంగా ప్రత్యేక కథనం
-            </p>
+            <h3>
+                లాల్ బహదూర్ శాస్త్రి గురించి
+                తెలుసుకోవాల్సిన విషయాలు
+            </h3>
 
         </div>
 
@@ -1053,24 +852,8 @@
 </div>
 
 
-
-<!-- =====================================================
-     SEPARATE SOURCE IDs
-===================================================== -->
-
-<div id="latestNewsSource" style="display:none;"></div>
-
-<div id="trendingSource" style="display:none;"></div>
-
-<div id="mostReadSource" style="display:none;"></div>
-
-<div id="aptsSource" style="display:none;"></div>
-
-<div id="sportsSource" style="display:none;"></div>
-
-<div id="entertainmentSource" style="display:none;"></div>
-
-<div id="businessSource" style="display:none;"></div>
+</div>
+</main>
 
 
 
@@ -1080,46 +863,27 @@
 
 <footer class="site-footer">
 
-    <div class="footer-inner">
+    <div class="container footer-inner">
 
-        <div class="footer-column">
+        <div>
 
             <h3>
-                ముఖ్యమైన లింకులు
+                BS 360 NEWS
             </h3>
 
-            <div class="footer-links">
+            <p>
+                Fast | Fair | Fearless
+            </p>
 
-                <a href="advertise.html">
-                    Advertise With Us
-                </a>
-
-                <a href="about.html">
-                    About Us
-                </a>
-
-                <a href="contact.html">
-                    Contact Us
-                </a>
-
-                <a href="Privacy Policy.html">
-                    Privacy Policy
-                </a>
-
-                <a href="disclaimer.html">
-                    Disclaimer
-                </a>
-
-                <a href="terms.html">
-                    Terms &amp; Conditions
-                </a>
-
-            </div>
+            <p>
+                తెలుగు రాష్ట్రాలు, సినిమా, స్పోర్ట్స్,
+                బిజినెస్ మరియు జాతీయ వార్తల తాజా అప్‌డేట్స్.
+            </p>
 
         </div>
 
 
-        <div class="footer-contact">
+        <div>
 
             <h3>
                 Contact
@@ -1129,17 +893,36 @@
                 newsb386@gmail.com
             </p>
 
-            <p>
-                Follow us for latest updates.
-            </p>
+            <div class="footer-links">
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="MOVIES.html">
+                    Movies
+                </a>
+
+                <a href="SPORTS.html">
+                    Sports
+                </a>
+
+                <a href="AP&TS.html">
+                    AP & TS
+                </a>
+
+                <a href="business.html">
+                    Business
+                </a>
+
+                <a href="BIGBOSS10.html">
+                    Bigg Boss 10
+                </a>
+
+            </div>
 
         </div>
 
-    </div>
-
-
-    <div class="copyright">
-        © 2026 BS 360 NEWS. All Rights Reserved.
     </div>
 
 </footer>
@@ -1150,382 +933,67 @@
      MOBILE BOTTOM NAV
 ===================================================== -->
 
-<nav class="mobile-bottom">
+<div class="mobile-bottom-nav">
 
     <a href="index.html">
-        <small>Home</small>
+        🏠
+        <span>Home</span>
     </a>
 
     <a href="MOVIES.html">
-        <small>Movies</small>
+        🎬
+        <span>Movies</span>
     </a>
 
     <a href="SPORTS.html">
-        <small>Sports</small>
+        🏏
+        <span>Sports</span>
     </a>
 
     <a href="AP&TS.html">
-        <small>AP &amp; TS</small>
+        📰
+        <span>AP & TS</span>
     </a>
 
     <a href="business.html">
-        <small>Business</small>
+        💼
+        <span>Business</span>
     </a>
 
-</nav>
+</div>
 
 
 
 <!-- =====================================================
-     SEPARATE SECTION JAVASCRIPT
+     CATEGORY RENDER SCRIPT
 ===================================================== -->
 
 <script>
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function(){
+
+    const source =
+        document.querySelector("#legacyNewsSource");
+
+    if(!source) return;
 
 
-    /* =====================================================
-       GET SOURCE ARTICLES
-    ===================================================== */
-
-    const source = document.getElementById("legacyNewsSource");
-
-    if (!source) {
-        console.error("legacyNewsSource not found");
-        return;
-    }
-
-
-    const articles = Array.from(
-        source.querySelectorAll(".news-item.post")
-    );
-
-
-    /* =====================================================
-       GET TARGET GRIDS
-    ===================================================== */
-
-    const latestGrid   = document.getElementById("latestGrid");
-
-    const moviesGrid   = document.getElementById("moviesGrid");
-
-    const sportsGrid   = document.getElementById("sportsGrid");
-
-    const aptsGrid     = document.getElementById("aptsGrid");
-
-    const businessGrid = document.getElementById("businessGrid");
-
-    const bigbossGrid  = document.getElementById("bigbossGrid");
-
-    const trendingGrid = document.getElementById("trendingGrid");
-
-    const mostReadGrid = document.getElementById("mostReadGrid");
-
-
-    /* =====================================================
-       ARTICLE CARD
-    ===================================================== */
-
-    function createCard(article) {
-
-        const image = article.querySelector("img");
-
-        const titleElement = article.querySelector(".news-content p");
-
-        if (!image || !titleElement) {
-            return null;
-        }
-
-
-        const imageSrc = image.getAttribute("src") || "";
-
-        const imageAlt = image.getAttribute("alt") || "";
-
-        const title = titleElement.textContent.trim();
-
-        const url = article.getAttribute("data-url") || "#";
-
-
-        const card = document.createElement("a");
-
-        card.className = "news-card";
-
-        card.href = url;
-
-
-        card.innerHTML = `
-
-            <img
-                src="${imageSrc}"
-                alt="${imageAlt || title}"
-                loading="lazy"
-            >
-
-            <div class="news-content">
-
-                <h3>
-                    ${title}
-                </h3>
-
-            </div>
-
-        `;
-
-
-        return card;
-
-    }
-
-
-    /* =====================================================
-       RENDER ARTICLES
-    ===================================================== */
-
-    function renderGrid(grid, list) {
-
-        if (!grid) {
-            return;
-        }
-
-
-        grid.innerHTML = "";
-
-
-        if (!list.length) {
-
-            grid.innerHTML = `
-                <p class="no-news">
-                    ప్రస్తుతం వార్తలు అందుబాటులో లేవు.
-                </p>
-            `;
-
-            return;
-        }
-
-
-        list.forEach(function (article) {
-
-            const card = createCard(article);
-
-            if (card) {
-                grid.appendChild(card);
-            }
-
-        });
-
-    }
-
-
-    /* =====================================================
-       CATEGORY FILTER
-    ===================================================== */
-
-    const sportsArticles = articles.filter(function (article) {
-
-        return (
-            article.dataset.category &&
-            article.dataset.category.toLowerCase() === "sports"
+    const posts =
+        Array.from(
+            source.querySelectorAll(".news-item.post")
         );
 
-    });
 
+    /* ---------------------------------------------
+       GET CATEGORY
+    --------------------------------------------- */
 
-    const movieArticles = articles.filter(function (article) {
+    function getPosts(category){
 
-        return (
-            article.dataset.category &&
-            article.dataset.category.toLowerCase() === "cinema"
-        );
+        return posts.filter(post => {
 
-    });
-
-
-    const aptsArticles = articles.filter(function (article) {
-
-        return (
-            article.dataset.category &&
-            article.dataset.category.toLowerCase() === "apts"
-        );
-
-    });
-
-
-    const businessArticles = articles.filter(function (article) {
-
-        return (
-            article.dataset.category &&
-            article.dataset.category.toLowerCase() === "business"
-        );
-
-    });
-
-
-    const bigbossArticles = articles.filter(function (article) {
-
-        return (
-            article.dataset.category &&
-            article.dataset.category.toLowerCase() === "bigboss10"
-        );
-
-    });
-
-
-    const nationalArticles = articles.filter(function (article) {
-
-        return (
-            article.dataset.category &&
-            article.dataset.category.toLowerCase() === "national"
-        );
-
-    });
-
-
-    /* =====================================================
-       LATEST NEWS
-       
-       Latest = all available articles
-       Newest/source order is preserved.
-    ===================================================== */
-
-    const latestArticles = articles.slice();
-
-
-    /* =====================================================
-       TRENDING
-       
-       Use selected latest articles.
-    ===================================================== */
-
-    const trendingArticles = [
-
-        ...sportsArticles.slice(0, 1),
-
-        ...businessArticles.slice(0, 1),
-
-        ...nationalArticles.slice(0, 1),
-
-        ...aptsArticles.slice(0, 1)
-
-    ];
-
-
-    /* =====================================================
-       MOST READ
-    ===================================================== */
-
-    const mostReadArticles = [
-
-        ...nationalArticles.slice(0, 1),
-
-        ...movieArticles.slice(0, 1),
-
-        ...sportsArticles.slice(0, 1),
-
-        ...businessArticles.slice(0, 1)
-
-    ];
-
-
-    /* =====================================================
-       REMOVE DUPLICATES
-    ===================================================== */
-
-    function uniqueArticles(list) {
-
-        const seen = new Set();
-
-        return list.filter(function (article) {
-
-            const url = article.getAttribute("data-url");
-
-            if (!url || seen.has(url)) {
-                return false;
-            }
-
-            seen.add(url);
-
-            return true;
-
-        });
-
-    }
-
-
-    /* =====================================================
-       FINAL RENDER
-    ===================================================== */
-
-    renderGrid(
-        latestGrid,
-        uniqueArticles(latestArticles)
-    );
-
-
-    renderGrid(
-        moviesGrid,
-        uniqueArticles(movieArticles)
-    );
-
-
-    renderGrid(
-        sportsGrid,
-        uniqueArticles(sportsArticles)
-    );
-
-
-    renderGrid(
-        aptsGrid,
-        uniqueArticles(aptsArticles)
-    );
-
-
-    renderGrid(
-        businessGrid,
-        uniqueArticles(businessArticles)
-    );
-
-
-    renderGrid(
-        bigbossGrid,
-        uniqueArticles(bigbossArticles)
-    );
-
-
-    renderGrid(
-        trendingGrid,
-        uniqueArticles(trendingArticles)
-    );
-
-
-    renderGrid(
-        mostReadGrid,
-        uniqueArticles(mostReadArticles)
-    );
-
-
-    /* =====================================================
-       COPY DATA INTO OLD SOURCE CONTAINERS
-       
-       This keeps compatibility with existing script.js.
-    ===================================================== */
-
-    function copyArticles(targetId, list) {
-
-        const target = document.getElementById(targetId);
-
-        if (!target) {
-            return;
-        }
-
-
-        target.innerHTML = "";
-
-
-        list.forEach(function (article) {
-
-            target.appendChild(
-                article.cloneNode(true)
+            return (
+                post.dataset.category === category
             );
 
         });
@@ -1533,283 +1001,598 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    copyArticles(
-        "sportsSource",
-        sportsArticles
+    /* ---------------------------------------------
+       GET URL
+    --------------------------------------------- */
+
+    function getUrl(post){
+
+        return post.dataset.url || "#";
+
+    }
+
+
+    /* ---------------------------------------------
+       GET IMAGE
+    --------------------------------------------- */
+
+    function getImage(post){
+
+        const img =
+            post.querySelector("img");
+
+        return img ? img.src : "";
+
+    }
+
+
+    /* ---------------------------------------------
+       GET TITLE
+    --------------------------------------------- */
+
+    function getTitle(post){
+
+        const title =
+            post.querySelector("h3, h2, p");
+
+        return title
+            ? title.textContent.trim()
+            : "";
+
+    }
+
+
+    /* =================================================
+       LATEST CARD
+    ================================================= */
+
+    function createLatestCard(post){
+
+        const card =
+            document.createElement("a");
+
+        card.className =
+            "latest-news-card";
+
+        card.href =
+            getUrl(post);
+
+        card.innerHTML = `
+
+            <img
+                src="${getImage(post)}"
+                alt="${getTitle(post)}"
+                loading="lazy"
+            >
+
+            <h3>
+                ${getTitle(post)}
+            </h3>
+
+        `;
+
+        return card;
+
+    }
+
+
+    /* =================================================
+       CATEGORY CARD
+    ================================================= */
+
+    function createCategoryCard(post){
+
+        const card =
+            document.createElement("a");
+
+        card.className =
+            "category-card";
+
+        card.href =
+            getUrl(post);
+
+        card.innerHTML = `
+
+            <img
+                src="${getImage(post)}"
+                alt="${getTitle(post)}"
+                loading="lazy"
+            >
+
+            <div class="category-card-content">
+
+                <h3>
+                    ${getTitle(post)}
+                </h3>
+
+            </div>
+
+        `;
+
+        return card;
+
+    }
+
+
+    /* =================================================
+       CATEGORY FEATURE
+    ================================================= */
+
+    function createFeature(post){
+
+        const feature =
+            document.createElement("a");
+
+        feature.className =
+            "category-feature";
+
+        feature.href =
+            getUrl(post);
+
+        feature.innerHTML = `
+
+            <img
+                src="${getImage(post)}"
+                alt="${getTitle(post)}"
+                loading="lazy"
+            >
+
+            <div class="category-feature-content">
+
+                <h3>
+                    ${getTitle(post)}
+                </h3>
+
+            </div>
+
+        `;
+
+        return feature;
+
+    }
+
+
+    /* =================================================
+       CATEGORY RENDER
+    ================================================= */
+
+    function renderCategory(
+        category,
+        selector
+    ){
+
+        const container =
+            document.querySelector(selector);
+
+        if(!container) return;
+
+
+        const items =
+            getPosts(category);
+
+
+        container.innerHTML = "";
+
+
+        if(items.length === 0){
+
+            return;
+
+        }
+
+
+        /*
+         * First article = BIG FEATURE
+         */
+
+        container.appendChild(
+            createFeature(items[0])
+        );
+
+
+        /*
+         * Remaining articles = SMALL CARDS
+         */
+
+        items.slice(1).forEach(post => {
+
+            container.appendChild(
+                createCategoryCard(post)
+            );
+
+        });
+
+    }
+
+
+    /* =================================================
+       LATEST
+    ================================================= */
+
+    const latestGrid =
+        document.querySelector("#latestGrid");
+
+
+    if(latestGrid){
+
+        latestGrid.innerHTML = "";
+
+
+        posts.forEach(post => {
+
+            latestGrid.appendChild(
+                createLatestCard(post)
+            );
+
+        });
+
+    }
+
+
+
+    /* =================================================
+       AP & TS
+    ================================================= */
+
+    renderCategory(
+        "apts",
+        "#sliderTrack"
     );
 
 
-    copyArticles(
-        "entertainmentSource",
-        movieArticles
+
+    /* =================================================
+       SPORTS
+    ================================================= */
+
+    renderCategory(
+        "sports",
+        "#sportsGrid"
     );
 
 
-    copyArticles(
-        "aptsSource",
-        aptsArticles
+
+    /* =================================================
+       MOVIES
+    ================================================= */
+
+    renderCategory(
+        "cinema",
+        "#cinemaGrid"
     );
 
 
-    copyArticles(
-        "businessSource",
-        businessArticles
+
+    /* =================================================
+       BUSINESS
+    ================================================= */
+
+    renderCategory(
+        "business",
+        "#businessGrid"
     );
 
 
-    copyArticles(
-        "trendingSource",
-        trendingArticles
+
+    /* =================================================
+       BIGG BOSS
+    ================================================= */
+
+    renderCategory(
+        "bigboss10",
+        "#bigbossGrid"
     );
 
 
-    copyArticles(
-        "mostReadSource",
-        mostReadArticles
-    );
+
+    /* =================================================
+       TRENDING
+    ================================================= */
+
+    const trendingGrid =
+        document.querySelector("#trendingGrid");
 
 
-    copyArticles(
-        "latestNewsSource",
-        latestArticles
-    );
+    if(trendingGrid){
+
+        trendingGrid.innerHTML = "";
+
+
+        const trendingPosts = [
+
+            ...getPosts("sports"),
+
+            ...getPosts("business"),
+
+            ...getPosts("national"),
+
+            ...getPosts("apts")
+
+        ];
+
+
+        const unique =
+            [];
+
+        const seen =
+            new Set();
+
+
+        trendingPosts.forEach(post => {
+
+            const url =
+                getUrl(post);
+
+
+            if(!seen.has(url)){
+
+                seen.add(url);
+
+                unique.push(post);
+
+            }
+
+        });
+
+
+        unique
+            .slice(0,12)
+            .forEach(post => {
+
+                const card =
+                    document.createElement("a");
+
+                card.className =
+                    "trending-card";
+
+                card.href =
+                    getUrl(post);
+
+                card.innerHTML = `
+
+                    <img
+                        src="${getImage(post)}"
+                        alt="${getTitle(post)}"
+                        loading="lazy"
+                    >
+
+                    <h3>
+                        ${getTitle(post)}
+                    </h3>
+
+                `;
+
+                trendingGrid.appendChild(card);
+
+            });
+
+    }
+
+
+
+    /* =================================================
+       MOST READ
+    ================================================= */
+
+    const mostReadList =
+        document.querySelector("#mostReadList");
+
+
+    if(mostReadList){
+
+        mostReadList.innerHTML = "";
+
+
+        const mostReadPosts = [
+
+            ...getPosts("national"),
+
+            ...getPosts("cinema"),
+
+            ...getPosts("sports"),
+
+            ...getPosts("business")
+
+        ];
+
+
+        const unique =
+            [];
+
+        const seen =
+            new Set();
+
+
+        mostReadPosts.forEach(post => {
+
+            const url =
+                getUrl(post);
+
+
+            if(!seen.has(url)){
+
+                seen.add(url);
+
+                unique.push(post);
+
+            }
+
+        });
+
+
+        unique
+            .slice(0,6)
+            .forEach((post,index) => {
+
+                const item =
+                    document.createElement("a");
+
+                item.className =
+                    "most-read-item";
+
+                item.href =
+                    getUrl(post);
+
+
+                item.innerHTML = `
+
+                    <div class="most-read-text">
+
+                        <h3>
+                            ${getTitle(post)}
+                        </h3>
+
+                    </div>
+
+
+                    <img
+                        src="${getImage(post)}"
+                        alt="${getTitle(post)}"
+                        loading="lazy"
+                    >
+
+                `;
+
+
+                mostReadList.appendChild(item);
+
+            });
+
+    }
 
 
 });
 
 
+/* =====================================================
+   SEARCH
+===================================================== */
+
+function toggleSearch(){
+
+    const box =
+        document.querySelector("#searchBox");
+
+    if(box){
+
+        box.classList.toggle("show");
+
+    }
+
+}
+
+
+function searchNews(){
+
+    const input =
+        document.querySelector("#searchInput");
+
+    if(!input) return;
+
+
+    const query =
+        input.value.trim().toLowerCase();
+
+
+    if(!query) return;
+
+
+    const posts =
+        document.querySelectorAll(
+            "#legacyNewsSource .news-item.post"
+        );
+
+
+    posts.forEach(post => {
+
+        const text =
+            post.textContent.toLowerCase();
+
+        if(text.includes(query)){
+
+            const url =
+                post.dataset.url;
+
+            if(url){
+
+                window.location.href =
+                    url;
+
+            }
+
+        }
+
+    });
+
+}
+
+
+/* =====================================================
+   MOBILE NAV
+===================================================== */
+
+function toggleMobileNav(){
+
+    const nav =
+        document.querySelector("#mobileNav");
+
+    if(nav){
+
+        nav.classList.toggle("mobile-open");
+
+    }
+
+}
+
+
+/* =====================================================
+   DARK MODE
+===================================================== */
+
+function toggleTheme(){
+
+    document.body.classList.toggle(
+        "dark-mode"
+    );
+
+
+    const enabled =
+        document.body.classList.contains(
+            "dark-mode"
+        );
+
+
+    localStorage.setItem(
+        "bs360-dark-mode",
+        enabled ? "1" : "0"
+    );
+
+}
+
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        if(
+            localStorage.getItem(
+                "bs360-dark-mode"
+            ) === "1"
+        ){
+
+            document.body.classList.add(
+                "dark-mode"
+            );
+
+        }
+
+    }
+);
+
 </script>
 
 
-
-<!-- =====================================================
-     BASIC SEPARATE SECTION CSS
-===================================================== -->
-
-<style>
-
-.separate-news-sections {
-    width: 100%;
-}
-
-
-.news-section {
-    width: 100%;
-    margin: 0 0 38px;
-    padding: 0;
-}
-
-
-.news-section .section-title-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    margin-bottom: 15px;
-    padding-bottom: 9px;
-    border-bottom: 2px solid #075aaa;
-}
-
-
-.news-section .section-title-row h2 {
-    margin: 0;
-    font-size: 24px;
-    line-height: 1.35;
-}
-
-
-.news-section .section-title-row span {
-    color: #6b7280;
-    font-size: 14px;
-}
-
-
-.news-grid {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 18px;
-}
-
-
-.news-card {
-    display: block;
-    background: #fff;
-    color: inherit;
-    text-decoration: none;
-    overflow: hidden;
-    border: 1px solid #e5e7eb;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,.06);
-    transition: transform .2s ease, box-shadow .2s ease;
-}
-
-
-.news-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 16px rgba(0,0,0,.10);
-}
-
-
-.news-card > img {
-    display: block;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-}
-
-
-.news-card .news-content {
-    padding: 11px;
-}
-
-
-.news-card h3 {
-    margin: 0;
-    color: #111827;
-    font-size: 17px;
-    line-height: 1.5;
-    font-weight: 700;
-}
-
-
-.section-loading,
-.no-news {
-    margin: 10px 0;
-    color: #6b7280;
-}
-
-
-.most-read-list {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 14px;
-}
-
-
-.most-read-list .news-card {
-    display: flex;
-    align-items: center;
-    min-height: 110px;
-}
-
-
-.most-read-list .news-card > img {
-    width: 150px;
-    min-width: 150px;
-    height: 100px;
-    aspect-ratio: auto;
-}
-
-
-.most-read-list .news-card .news-content {
-    padding: 12px;
-}
-
-
-.most-read-list .news-card h3 {
-    font-size: 16px;
-}
-
-
-/* ================= TABLET ================= */
-
-@media (max-width: 1000px) {
-
-    .news-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-}
-
-
-/* ================= MOBILE ================= */
-
-@media (max-width: 600px) {
-
-    .news-section {
-        margin-bottom: 30px;
-    }
-
-
-    .news-section .section-title-row {
-        margin-bottom: 12px;
-    }
-
-
-    .news-section .section-title-row h2 {
-        font-size: 19px;
-    }
-
-
-    .news-section .section-title-row span {
-        font-size: 12px;
-    }
-
-
-    .news-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 10px;
-    }
-
-
-    .news-card {
-        border-radius: 7px;
-    }
-
-
-    .news-card .news-content {
-        padding: 8px;
-    }
-
-
-    .news-card h3 {
-        font-size: 14px;
-        line-height: 1.4;
-    }
-
-
-    .most-read-list {
-        grid-template-columns: 1fr;
-        gap: 10px;
-    }
-
-
-    .most-read-list .news-card > img {
-        width: 110px;
-        min-width: 110px;
-        height: 75px;
-    }
-
-
-    .most-read-list .news-card h3 {
-        font-size: 14px;
-    }
-
-}
-
-
-/* ================= HIDDEN SOURCE ================= */
-
-.legacy-news-source {
-    display: none !important;
-}
-
-</style>
-
-
-
-<!-- =====================================================
-     EXISTING SITE JAVASCRIPT
-===================================================== -->
-
-<script
-    src="script.js?v=20261005"
-></script>
-
+<script src="script.js?v=20261005"></script>
 
 </body>
-
 </html>
-```
