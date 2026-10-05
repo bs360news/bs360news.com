@@ -825,4 +825,146 @@ body.dark .most h3 {
         height: 52px;
     }
 
-    .side h3
+    .side h3 {
+        font-size: 10px;
+    }
+
+    .side small {
+        font-size: 7px;
+    }
+
+    .top-read span {
+        font-size: 9px;
+    }
+
+    .section-head h2 {
+        font-size: 17px;
+    }
+
+    .latest-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 9px;
+    }
+
+    .news-card h3,
+    .category-card h3 {
+        font-size: 12px;
+    }
+
+    .category-layout {
+        grid-template-columns: 1fr;
+        gap: 29px;
+    }
+
+    .category-grid {
+        gap: 8px;
+    }
+
+    .category-card:first-child h3 {
+        font-size: 16px;
+    }
+
+    .bigboss {
+        padding: 11px;
+    }
+
+    .bigboss-grid {
+        display: flex;
+        overflow-x: auto;
+        gap: 9px;
+    }
+
+    .bb-card {
+        min-width: 165px;
+    }
+
+    .bb-card h3 {
+        font-size: 11px;
+    }
+
+    .trending-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+
+    .trend h3 {
+        font-size: 10px;
+    }
+
+    .most {
+        grid-template-columns: 25px 1fr 92px;
+        gap: 7px;
+    }
+
+    .most > b {
+        font-size: 18px;
+    }
+
+    .most h3 {
+        font-size: 12px;
+    }
+
+    .most img {
+        width: 92px;
+        height: 63px;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 17px;
+        padding: 24px 0;
+    }
+
+    .mobile-bottom {
+        position: fixed;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 61px;
+        background: #075aaa;
+        z-index: 2000;
+        box-shadow: 0 -3px 12px #0003;
+    }
+
+    .mobile-bottom a {
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: 17px;
+    }
+
+    .mobile-bottom span {
+        font-size: 8px;
+        font-weight: 800;
+    }
+
+    .mobile-bottom .active {
+        background: #064b8d;
+    }
+
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 420px) {
+
+    .header-search {
+        width: 118px;
+    }
+
+    .brand strong {
+        font-size: 16px;
+    }
+
+    .hero h1 {
+        font-size: 16px;
+    }
+
+}
