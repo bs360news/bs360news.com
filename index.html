@@ -1,47 +1,60 @@
 <!DOCTYPE html>
 <html lang="te">
+
 <head>
-<meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
 
-<title>BS 360 NEWS | Fast | Fair | Fearless</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="description"
-      content="తెలుగు రాష్ట్రాలు, సినిమా, క్రికెట్, స్పోర్ట్స్, బిజినెస్ మరియు జాతీయ వార్తల తాజా అప్‌డేట్స్.">
+    <title>BS 360 NEWS | Fast | Fair | Fearless</title>
 
-<meta name="google-adsense-account"
-      content="ca-pub-7586406136288714">
+    <meta name="description"
+          content="తెలుగు రాష్ట్రాలు, సినిమా, క్రికెట్, స్పోర్ట్స్, బిజినెస్ మరియు జాతీయ వార్తల తాజా అప్‌డేట్స్.">
 
-<link rel="icon" href="dp.png.png">
-<link rel="apple-touch-icon" href="dp.png.png">
+    <meta name="google-adsense-account"
+          content="ca-pub-7586406136288714">
 
-<link rel="canonical" href="https://bs360news.com/">
+    <link rel="icon" href="dp.png.png">
+    <link rel="apple-touch-icon" href="dp.png.png">
 
-<link rel="stylesheet" href="style.css?v=20261005">
+    <link rel="canonical" href="https://bs360news.com/">
 
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EWXPS1N2TL"></script>
+    <link rel="stylesheet" href="style.css?v=20261005">
 
-<script>
-window.dataLayer = window.dataLayer || [];
 
-function gtag(){
-    dataLayer.push(arguments);
-}
+    <!-- Google Analytics -->
 
-gtag('js', new Date());
-gtag('config', 'G-EWXPS1N2TL');
-</script>
+    <script async
+            src="https://www.googletagmanager.com/gtag/js?id=G-EWXPS1N2TL"></script>
 
-<!-- Google AdSense -->
-<script async
-src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7586406136288714"
-crossorigin="anonymous"></script>
+    <script>
+
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag(){
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-EWXPS1N2TL');
+
+    </script>
+
+
+    <!-- Google AdSense -->
+
+    <script async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7586406136288714"
+            crossorigin="anonymous">
+    </script>
 
 </head>
 
+
 <body>
+
 
 <!-- =====================================================
      HEADER
@@ -54,9 +67,12 @@ crossorigin="anonymous"></script>
         <a href="index.html" class="brand-logo">
 
             <div class="logo-mark">
+
                 <img src="dp.png.png"
                      alt="BS 360 NEWS">
+
             </div>
+
 
             <div class="logo-name">
 
@@ -77,12 +93,18 @@ crossorigin="anonymous"></script>
 
             <button class="theme-button"
                     onclick="toggleTheme()">
+
                 🌙 Dark
+
             </button>
 
+
             <button class="live-button">
+
                 <span class="live-dot"></span>
+
                 LIVE
+
             </button>
 
         </div>
@@ -90,12 +112,15 @@ crossorigin="anonymous"></script>
 
         <button class="mobile-menu-toggle"
                 onclick="toggleMobileNav()">
+
             ☰
+
         </button>
 
     </div>
 
 </header>
+
 
 
 <!-- =====================================================
@@ -108,7 +133,9 @@ crossorigin="anonymous"></script>
 
         <div class="nav-links" id="mobileNav">
 
-            <a href="index.html">HOME</a>
+            <a href="index.html">
+                HOME
+            </a>
 
             <a href="MOVIES.html">
                 ENTERTAINMENT
@@ -137,6 +164,7 @@ crossorigin="anonymous"></script>
 </nav>
 
 
+
 <!-- =====================================================
      HEADLINES
 ===================================================== -->
@@ -159,9 +187,11 @@ crossorigin="anonymous"></script>
 </div>
 
 
+
 <main class="portal-wrap">
 
 <div class="container">
+
 
 
 <!-- =====================================================
@@ -172,18 +202,25 @@ crossorigin="anonymous"></script>
 
     <button class="search-icon"
             onclick="toggleSearch()">
+
         🔍
+
     </button>
 
-    <div class="search-box" id="searchBox">
+
+    <div class="search-box"
+         id="searchBox">
 
         <input type="text"
                id="searchInput"
                placeholder="వార్తలు వెతకండి..."
                onkeydown="if(event.key==='Enter') searchNews()">
 
+
         <button onclick="searchNews()">
+
             Search
+
         </button>
 
     </div>
@@ -196,18 +233,22 @@ crossorigin="anonymous"></script>
      1. LATEST NEWS
 ===================================================== -->
 
-<section id="latestSection">
+<section id="latestSection"
+         class="section">
 
-    <div class="section-title-row">
+    <div class="section-head">
 
-        <h2>తాజా వార్తలు</h2>
+        <h2>
 
-        <span>
-            Latest News
-        </span>
+            <span>తాజా</span> వార్తలు
 
-        <a href="#" class="view-all">
+        </h2>
+
+        <a href="#"
+           class="view-all">
+
             View All
+
         </a>
 
     </div>
@@ -216,7 +257,9 @@ crossorigin="anonymous"></script>
     <div id="latestGrid"
          class="latest-news-grid">
 
-        <!-- JS will insert latest news -->
+        <div class="loading">
+            Latest News Loading...
+        </div>
 
     </div>
 
@@ -225,34 +268,36 @@ crossorigin="anonymous"></script>
 
 
 <!-- =====================================================
-     2. AP & TELANGANA
+     2. AP & TS
 ===================================================== -->
 
-<section id="aptsSection">
+<section id="aptsSection"
+         class="section">
 
-    <div class="section-title-row">
+    <div class="section-head">
 
-        <h2>AP & TS</h2>
+        <h2>
 
-        <span>
-            ఆంధ్రప్రదేశ్ & తెలంగాణ
-        </span>
+            <span>AP & TS</span> News
+
+        </h2>
+
 
         <a href="AP&TS.html"
            class="view-all">
+
             View All
+
         </a>
 
     </div>
 
 
-    <div class="news-slider">
+    <div id="aptsGrid"
+         class="movies-grid category-news-layout">
 
-        <div id="sliderTrack"
-             class="category-news-layout">
-
-            <!-- JS will insert AP & TS -->
-
+        <div class="loading">
+            AP & TS News Loading...
         </div>
 
     </div>
@@ -265,31 +310,33 @@ crossorigin="anonymous"></script>
      3. SPORTS
 ===================================================== -->
 
-<section id="sportsSection">
+<section id="sportsSection"
+         class="section">
 
-    <div class="section-title-row">
+    <div class="section-head">
 
-        <h2>స్పోర్ట్స్</h2>
+        <h2>
 
-        <span>
-            Sports News
-        </span>
+            <span>ALL</span> Sports
+
+        </h2>
+
 
         <a href="SPORTS.html"
            class="view-all">
+
             View All
+
         </a>
 
     </div>
 
 
-    <div class="news-slider">
+    <div id="sportsGrid"
+         class="movies-grid category-news-layout">
 
-        <div id="sportsGrid"
-             class="category-news-layout">
-
-            <!-- JS will insert Sports -->
-
+        <div class="loading">
+            Sports News Loading...
         </div>
 
     </div>
@@ -302,31 +349,33 @@ crossorigin="anonymous"></script>
      4. MOVIES
 ===================================================== -->
 
-<section id="cinemaSection">
+<section id="cinemaSection"
+         class="section">
 
-    <div class="section-title-row">
+    <div class="section-head">
 
-        <h2>సినిమా</h2>
+        <h2>
 
-        <span>
-            Entertainment
-        </span>
+            <span>ENTERTAINMENT</span> News
+
+        </h2>
+
 
         <a href="MOVIES.html"
            class="view-all">
+
             View All
+
         </a>
 
     </div>
 
 
-    <div class="news-slider">
+    <div id="cinemaGrid"
+         class="movies-grid category-news-layout">
 
-        <div id="cinemaGrid"
-             class="category-news-layout">
-
-            <!-- JS will insert Movies -->
-
+        <div class="loading">
+            Entertainment News Loading...
         </div>
 
     </div>
@@ -339,31 +388,33 @@ crossorigin="anonymous"></script>
      5. BUSINESS
 ===================================================== -->
 
-<section id="businessSection">
+<section id="businessSection"
+         class="section">
 
-    <div class="section-title-row">
+    <div class="section-head">
 
-        <h2>బిజినెస్</h2>
+        <h2>
 
-        <span>
-            Business News
-        </span>
+            <span>BUSINESS</span> News
+
+        </h2>
+
 
         <a href="business.html"
            class="view-all">
+
             View All
+
         </a>
 
     </div>
 
 
-    <div class="news-slider">
+    <div id="businessGrid"
+         class="movies-grid category-news-layout">
 
-        <div id="businessGrid"
-             class="category-news-layout">
-
-            <!-- JS will insert Business -->
-
+        <div class="loading">
+            Business News Loading...
         </div>
 
     </div>
@@ -372,9 +423,7 @@ crossorigin="anonymous"></script>
 
 
 
-<!-- =====================================================
-     CLEAR FLOATS
-===================================================== -->
+<!-- CLEAR FLOATS -->
 
 <div style="clear:both;"></div>
 
@@ -384,28 +433,34 @@ crossorigin="anonymous"></script>
      6. BIGG BOSS 10
 ===================================================== -->
 
-<section id="bigbossSection">
+<section id="bigbossSection"
+         class="section">
 
-    <div class="section-title-row">
+    <div class="section-head">
 
-        <h2>బిగ్ బాస్ 10</h2>
+        <h2>
 
-        <span>
-            Bigg Boss Telugu 10
-        </span>
+            <span>బిగ్ బాస్ 10</span> News
+
+        </h2>
+
 
         <a href="BIGBOSS10.html"
            class="view-all">
+
             View All
+
         </a>
 
     </div>
 
 
-    <div class="category-news-layout"
-         id="bigbossGrid">
+    <div id="bigbossGrid"
+         class="movies-grid category-news-layout">
 
-        <!-- JS will insert Bigg Boss -->
+        <div class="loading">
+            Bigg Boss News Loading...
+        </div>
 
     </div>
 
@@ -418,15 +473,15 @@ crossorigin="anonymous"></script>
 ===================================================== -->
 
 <section id="trendingSection"
-         class="trending-section">
+         class="trending-section section">
 
-    <div class="section-title-row">
+    <div class="section-head">
 
-        <h2>ట్రెండింగ్</h2>
+        <h2>
 
-        <span>
-            Trending News
-        </span>
+            <span>ట్రెండింగ్</span> News
+
+        </h2>
 
     </div>
 
@@ -434,7 +489,9 @@ crossorigin="anonymous"></script>
     <div id="trendingGrid"
          class="trending-grid">
 
-        <!-- JS will insert trending -->
+        <div class="loading">
+            Trending News Loading...
+        </div>
 
     </div>
 
@@ -447,15 +504,15 @@ crossorigin="anonymous"></script>
 ===================================================== -->
 
 <section id="mostReadSection"
-         class="most-read-section">
+         class="most-read-section section">
 
-    <div class="section-title-row">
+    <div class="section-head">
 
-        <h2>మోస్ట్ రీడ్</h2>
+        <h2>
 
-        <span>
-            Most Read
-        </span>
+            <span>మోస్ట్ రీడ్</span> News
+
+        </h2>
 
     </div>
 
@@ -463,7 +520,9 @@ crossorigin="anonymous"></script>
     <div id="mostReadList"
          class="most-read-list">
 
-        <!-- JS will insert most read -->
+        <div class="loading">
+            Most Read Loading...
+        </div>
 
     </div>
 
@@ -479,7 +538,10 @@ crossorigin="anonymous"></script>
 
     <div class="extra-section-heading">
 
-        <h2>ఫోటో గ్యాలరీ</h2>
+        <h2>
+            ఫోటో గ్యాలరీ
+        </h2>
+
 
         <a href="#">
             View All
@@ -507,7 +569,10 @@ crossorigin="anonymous"></script>
 
     <div class="extra-section-heading">
 
-        <h2>వీడియో న్యూస్</h2>
+        <h2>
+            వీడియో న్యూస్
+        </h2>
+
 
         <a href="#">
             View All
@@ -547,7 +612,10 @@ crossorigin="anonymous"></script>
      class="legacy-news-source">
 
 
-    <!-- SPORTS -->
+
+    <!-- =================================================
+         SPORTS
+    ================================================= -->
 
     <article class="news-item post"
              data-category="sports"
@@ -566,6 +634,7 @@ crossorigin="anonymous"></script>
         </div>
 
     </article>
+
 
 
     <article class="news-item post"
@@ -588,7 +657,9 @@ crossorigin="anonymous"></script>
 
 
 
-    <!-- MOVIES -->
+    <!-- =================================================
+         MOVIES
+    ================================================= -->
 
     <article class="news-item post"
              data-category="cinema"
@@ -607,6 +678,7 @@ crossorigin="anonymous"></script>
         </div>
 
     </article>
+
 
 
     <article class="news-item post"
@@ -628,6 +700,7 @@ crossorigin="anonymous"></script>
     </article>
 
 
+
     <article class="news-item post"
              data-category="cinema"
              data-url="fahadh-faasil-dont-trouble-the-trouble/">
@@ -645,6 +718,7 @@ crossorigin="anonymous"></script>
         </div>
 
     </article>
+
 
 
     <article class="news-item post"
@@ -666,6 +740,7 @@ crossorigin="anonymous"></script>
     </article>
 
 
+
     <article class="news-item post"
              data-category="cinema"
              data-url="rajamouli-suriya-combination-update/">
@@ -683,6 +758,7 @@ crossorigin="anonymous"></script>
         </div>
 
     </article>
+
 
 
     <article class="news-item post"
@@ -705,7 +781,9 @@ crossorigin="anonymous"></script>
 
 
 
-    <!-- BUSINESS -->
+    <!-- =================================================
+         BUSINESS
+    ================================================= -->
 
     <article class="news-item post"
              data-category="business"
@@ -727,7 +805,9 @@ crossorigin="anonymous"></script>
 
 
 
-    <!-- AP & TS -->
+    <!-- =================================================
+         AP & TS
+    ================================================= -->
 
     <article class="news-item post"
              data-category="apts"
@@ -746,6 +826,7 @@ crossorigin="anonymous"></script>
         </div>
 
     </article>
+
 
 
     <article class="news-item post"
@@ -768,7 +849,9 @@ crossorigin="anonymous"></script>
 
 
 
-    <!-- BIGG BOSS -->
+    <!-- =================================================
+         BIGG BOSS
+    ================================================= -->
 
     <article class="news-item post"
              data-category="bigboss10"
@@ -787,6 +870,7 @@ crossorigin="anonymous"></script>
         </div>
 
     </article>
+
 
 
     <article class="news-item post"
@@ -809,7 +893,9 @@ crossorigin="anonymous"></script>
 
 
 
-    <!-- NATIONAL -->
+    <!-- =================================================
+         NATIONAL
+    ================================================= -->
 
     <article class="news-item post"
              data-category="national"
@@ -828,6 +914,7 @@ crossorigin="anonymous"></script>
         </div>
 
     </article>
+
 
 
     <article class="news-item post"
@@ -871,9 +958,11 @@ crossorigin="anonymous"></script>
                 BS 360 NEWS
             </h3>
 
+
             <p>
                 Fast | Fair | Fearless
             </p>
+
 
             <p>
                 తెలుగు రాష్ట్రాలు, సినిమా, స్పోర్ట్స్,
@@ -889,9 +978,11 @@ crossorigin="anonymous"></script>
                 Contact
             </h3>
 
+
             <p>
                 newsb386@gmail.com
             </p>
+
 
             <div class="footer-links">
 
@@ -936,28 +1027,57 @@ crossorigin="anonymous"></script>
 <div class="mobile-bottom-nav">
 
     <a href="index.html">
+
         🏠
-        <span>Home</span>
+
+        <span>
+            Home
+        </span>
+
     </a>
+
 
     <a href="MOVIES.html">
+
         🎬
-        <span>Movies</span>
+
+        <span>
+            Movies
+        </span>
+
     </a>
+
 
     <a href="SPORTS.html">
+
         🏏
-        <span>Sports</span>
+
+        <span>
+            Sports
+        </span>
+
     </a>
+
 
     <a href="AP&TS.html">
+
         📰
-        <span>AP & TS</span>
+
+        <span>
+            AP & TS
+        </span>
+
     </a>
 
+
     <a href="business.html">
+
         💼
-        <span>Business</span>
+
+        <span>
+            Business
+        </span>
+
     </a>
 
 </div>
@@ -984,26 +1104,24 @@ document.addEventListener("DOMContentLoaded", function(){
         );
 
 
-    /* ---------------------------------------------
+    /* =================================================
        GET CATEGORY
-    --------------------------------------------- */
+    ================================================= */
 
     function getPosts(category){
 
-        return posts.filter(post => {
+        return posts.filter(function(post){
 
-            return (
-                post.dataset.category === category
-            );
+            return post.dataset.category === category;
 
         });
 
     }
 
 
-    /* ---------------------------------------------
+    /* =================================================
        GET URL
-    --------------------------------------------- */
+    ================================================= */
 
     function getUrl(post){
 
@@ -1012,9 +1130,9 @@ document.addEventListener("DOMContentLoaded", function(){
     }
 
 
-    /* ---------------------------------------------
+    /* =================================================
        GET IMAGE
-    --------------------------------------------- */
+    ================================================= */
 
     function getImage(post){
 
@@ -1026,9 +1144,9 @@ document.addEventListener("DOMContentLoaded", function(){
     }
 
 
-    /* ---------------------------------------------
+    /* =================================================
        GET TITLE
-    --------------------------------------------- */
+    ================================================= */
 
     function getTitle(post){
 
@@ -1176,25 +1294,32 @@ document.addEventListener("DOMContentLoaded", function(){
 
         if(items.length === 0){
 
+            const loading =
+                document.createElement("div");
+
+            loading.className =
+                "loading";
+
+            loading.textContent =
+                "News Loading...";
+
+            container.appendChild(loading);
+
             return;
 
         }
 
 
-        /*
-         * First article = BIG FEATURE
-         */
+        /* FIRST ARTICLE = FEATURE */
 
         container.appendChild(
             createFeature(items[0])
         );
 
 
-        /*
-         * Remaining articles = SMALL CARDS
-         */
+        /* REMAINING = SMALL CARDS */
 
-        items.slice(1).forEach(post => {
+        items.slice(1).forEach(function(post){
 
             container.appendChild(
                 createCategoryCard(post)
@@ -1218,7 +1343,7 @@ document.addEventListener("DOMContentLoaded", function(){
         latestGrid.innerHTML = "";
 
 
-        posts.forEach(post => {
+        posts.forEach(function(post){
 
             latestGrid.appendChild(
                 createLatestCard(post)
@@ -1229,16 +1354,14 @@ document.addEventListener("DOMContentLoaded", function(){
     }
 
 
-
     /* =================================================
        AP & TS
     ================================================= */
 
     renderCategory(
         "apts",
-        "#sliderTrack"
+        "#aptsGrid"
     );
-
 
 
     /* =================================================
@@ -1251,7 +1374,6 @@ document.addEventListener("DOMContentLoaded", function(){
     );
 
 
-
     /* =================================================
        MOVIES
     ================================================= */
@@ -1260,7 +1382,6 @@ document.addEventListener("DOMContentLoaded", function(){
         "cinema",
         "#cinemaGrid"
     );
-
 
 
     /* =================================================
@@ -1273,7 +1394,6 @@ document.addEventListener("DOMContentLoaded", function(){
     );
 
 
-
     /* =================================================
        BIGG BOSS
     ================================================= */
@@ -1282,7 +1402,6 @@ document.addEventListener("DOMContentLoaded", function(){
         "bigboss10",
         "#bigbossGrid"
     );
-
 
 
     /* =================================================
@@ -1306,19 +1425,19 @@ document.addEventListener("DOMContentLoaded", function(){
 
             ...getPosts("national"),
 
-            ...getPosts("apts")
+            ...getPosts("apts"),
+
+            ...getPosts("cinema")
 
         ];
 
 
-        const unique =
-            [];
+        const unique = [];
 
-        const seen =
-            new Set();
+        const seen = new Set();
 
 
-        trendingPosts.forEach(post => {
+        trendingPosts.forEach(function(post){
 
             const url =
                 getUrl(post);
@@ -1336,8 +1455,8 @@ document.addEventListener("DOMContentLoaded", function(){
 
 
         unique
-            .slice(0,12)
-            .forEach(post => {
+            .slice(0, 12)
+            .forEach(function(post){
 
                 const card =
                     document.createElement("a");
@@ -1369,7 +1488,6 @@ document.addEventListener("DOMContentLoaded", function(){
     }
 
 
-
     /* =================================================
        MOST READ
     ================================================= */
@@ -1391,19 +1509,19 @@ document.addEventListener("DOMContentLoaded", function(){
 
             ...getPosts("sports"),
 
-            ...getPosts("business")
+            ...getPosts("business"),
+
+            ...getPosts("apts")
 
         ];
 
 
-        const unique =
-            [];
+        const unique = [];
 
-        const seen =
-            new Set();
+        const seen = new Set();
 
 
-        mostReadPosts.forEach(post => {
+        mostReadPosts.forEach(function(post){
 
             const url =
                 getUrl(post);
@@ -1421,8 +1539,8 @@ document.addEventListener("DOMContentLoaded", function(){
 
 
         unique
-            .slice(0,6)
-            .forEach((post,index) => {
+            .slice(0, 6)
+            .forEach(function(post, index){
 
                 const item =
                     document.createElement("a");
@@ -1460,8 +1578,8 @@ document.addEventListener("DOMContentLoaded", function(){
 
     }
 
-
 });
+
 
 
 /* =====================================================
@@ -1503,20 +1621,29 @@ function searchNews(){
         );
 
 
-    posts.forEach(post => {
+    let found = false;
+
+
+    posts.forEach(function(post){
+
+        if(found) return;
+
 
         const text =
             post.textContent.toLowerCase();
+
 
         if(text.includes(query)){
 
             const url =
                 post.dataset.url;
 
+
             if(url){
 
-                window.location.href =
-                    url;
+                found = true;
+
+                window.location.href = url;
 
             }
 
@@ -1525,6 +1652,7 @@ function searchNews(){
     });
 
 }
+
 
 
 /* =====================================================
@@ -1536,13 +1664,17 @@ function toggleMobileNav(){
     const nav =
         document.querySelector("#mobileNav");
 
+
     if(nav){
 
-        nav.classList.toggle("mobile-open");
+        nav.classList.toggle(
+            "mobile-open"
+        );
 
     }
 
 }
+
 
 
 /* =====================================================
@@ -1592,7 +1724,10 @@ document.addEventListener(
 </script>
 
 
+
 <script src="script.js?v=20261005"></script>
 
+
 </body>
+
 </html>
