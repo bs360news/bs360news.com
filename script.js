@@ -1,20 +1,27 @@
 /* =========================================================
-   BS 360 NEWS - HOMEPAGE JAVASCRIPT
-   FIXED CATEGORY + EXACT ARTICLE COUNTS
+   BS 360 NEWS - NEW HOMEPAGE JAVASCRIPT
+   Version: 2026-10-04
 
-   SEPARATE ARTICLE SOURCES
-   Latest       -> #latestNewsSource
-   Trending     -> #trendingSource
-   Most Read    -> #mostReadSource
-   AP & TS      -> #aptsSource
-   Sports       -> #sportsSource
-   Entertainment -> #entertainmentSource
-   Business     -> #businessSource
-
-   OLD STRUCTURE + OLD STYLE PRESERVED
+   Works with:
+   - New index.html
+   - Separate article sections
+   - Legacy .post source
+   - Hero
+   - Headlines
+   - Latest
+   - Movies
+   - Sports
+   - AP & Telangana
+   - Business
+   - Bigg Boss 10
+   - Trending
+   - Most Read
+   - Search
+   - Dark mode
+   - Mobile menu
 ========================================================= */
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
 
     "use strict";
 
@@ -30,63 +37,127 @@ document.addEventListener("DOMContentLoaded", function () {
         Array.from(parent.querySelectorAll(selector));
 
 
+    const safeText = value =>
+        String(value || "").trim();
+
+
+    const normalizeCategory = category => {
+
+        const value = safeText(category)
+            .toLowerCase()
+            .replace(/\s+/g, "")
+            .replace(/_/g, "")
+            .replace(/-/g, "");
+
+
+        if (
+            [
+                "ap",
+                "ts",
+                "apts",
+                "ap/ts",
+                "ap&ts",
+                "apandts"
+            ].includes(value)
+        ) {
+            return "apts";
+        }
+
+
+        if (
+            [
+                "sports",
+                "sport"
+            ].includes(value)
+        ) {
+            return "sports";
+        }
+
+
+        if (
+            [
+                "cinema",
+                "movies",
+                "movie",
+                "entertainment"
+            ].includes(value)
+        ) {
+            return "entertainment";
+        }
+
+
+        if (
+            [
+                "business",
+                "businessnews"
+            ].includes(value)
+        ) {
+            return "business";
+        }
+
+
+        if (
+            [
+                "bigboss",
+                "bigboss10"
+            ].includes(value)
+        ) {
+            return "bigboss";
+        }
+
+
+        return value;
+    };
+
+
     /* =====================================================
-       MAIN OLD SOURCE
-       OLD HTML COMPATIBILITY
+       READ ARTICLE SOURCE
     ===================================================== */
 
-    const source =
-        $("#legacyNewsSource");
-
-
-    /* =====================================================
-       READ ARTICLES FROM SOURCE
-    ===================================================== */
-
-    function readArticlesFromSource(sourceElement) {
+    function readArticles(sourceElement) {
 
         if (!sourceElement) {
             return [];
         }
 
 
-        return $$(".news-item.post", sourceElement)
+        return $$(".news-item.post, .post", sourceElement)
             .map(item => {
 
-                const image =
-                    $("img", item);
+                const image = $("img", item);
 
                 const title =
-                    $(".news-content p", item);
+                    safeText(
+                        item.dataset.title ||
+                        $(".news-content p", item)?.textContent ||
+                        image?.getAttribute("alt") ||
+                        ""
+                    );
 
 
                 return {
 
-                    category:
-                        (item.dataset.category || "")
-                            .trim()
-                            .toLowerCase(),
+                    title,
+
+                    image:
+                        image?.getAttribute("src") || "",
+
+                    alt:
+                        image?.getAttribute("alt") ||
+                        title,
 
                     url:
                         item.dataset.url || "#",
 
-                    image:
-                        image
-                            ? image.getAttribute("src")
-                            : "",
+                    category:
+                        normalizeCategory(
+                            item.dataset.category || ""
+                        ),
 
-                    alt:
-                        image
-                            ? (
-                                image.getAttribute("alt") ||
-                                ""
-                            )
-                            : "",
-
-                    title:
-                        title
-                            ? title.textContent.trim()
-                            : ""
+                    section:
+                        safeText(
+                            item.dataset.section
+                        ).toLowerCase()
 
                 };
 
@@ -95,334 +166,222 @@ document.addEventListener("DOMContentLoaded", function () {
                 article.title &&
                 article.image
             );
-
     }
 
 
     /* =====================================================
-       READ SEPARATE SOURCE
+       MAIN SOURCE
     ===================================================== */
 
-    function readSeparateSource(id) {
-
-        const separateSource =
-            document.getElementById(id);
+    const legacySource =
+        $("#legacyNewsSource");
 
 
-        if (!separateSource) {
-            return [];
-        }
-
-
-        return readArticlesFromSource(
-            separateSource
-        );
-
-    }
-
-
-    /* =====================================================
-       OLD LEGACY ARTICLES
-    ===================================================== */
-
-    const articles =
-        source
-            ? readArticlesFromSource(source)
-            : [];
+    const allArticles =
+        readArticles(legacySource);
 
 
     console.log(
-        "BS360 OLD ARTICLES LOADED:",
-        articles.length
+        "BS360 ARTICLES:",
+        allArticles.length
     );
-
-
-    /* =====================================================
-       CATEGORY NORMALIZER
-    ===================================================== */
-
-    function normalizeCategory(category) {
-
-        const value =
-            (category || "")
-                .trim()
-                .toLowerCase()
-                .replace(/\s+/g, "");
-
-
-        if (
-            value === "ap" ||
-            value === "ts" ||
-            value === "apts" ||
-            value === "ap/ts" ||
-            value === "ap-ts" ||
-            value === "ap&ts" ||
-            value === "apandts"
-        ) {
-
-            return "apts";
-
-        }
-
-
-        if (
-            value === "sports" ||
-            value === "sport"
-        ) {
-
-            return "sports";
-
-        }
-
-
-        if (
-            value === "cinema" ||
-            value === "movies" ||
-            value === "movie" ||
-            value === "entertainment"
-        ) {
-
-            return "cinema";
-
-        }
-
-
-        if (
-            value === "business" ||
-            value === "businessnews"
-        ) {
-
-            return "business";
-
-        }
-
-
-        if (
-            value === "bigboss10" ||
-            value === "bigboss"
-        ) {
-
-            return "bigboss10";
-
-        }
-
-
-        return value;
-    }
 
 
     /* =====================================================
        UNIQUE ARTICLES
     ===================================================== */
 
-    function uniqueArticles(data) {
+    function uniqueArticles(list) {
 
-        const usedUrls =
-            new Set();
-
-
-        return data.filter(article => {
-
-            const url =
-                String(article.url || "")
-                    .trim()
-                    .toLowerCase();
+        const used = new Set();
 
 
-            if (usedUrls.has(url)) {
+        return list.filter(article => {
+
+            const key =
+                safeText(article.url)
+                    .toLowerCase()
+                    .replace(/\/+$/, "");
+
+
+            if (!key || used.has(key)) {
                 return false;
             }
 
 
-            usedUrls.add(url);
+            used.add(key);
 
             return true;
-
         });
-
     }
 
 
     /* =====================================================
-       GET CATEGORY ARTICLES
+       SEPARATE SOURCES
+       
+       Future-proof:
+       If you add these IDs later, JS automatically uses them.
     ===================================================== */
 
-    function getCategoryArticles(category) {
+    function readSeparate(id) {
 
-        const used =
-            new Set();
-
-
-        return articles.filter(article => {
-
-            const normalized =
-                normalizeCategory(
-                    article.category
-                );
+        const element =
+            document.getElementById(id);
 
 
-            if (
-                normalized !== category
-            ) {
-
-                return false;
-
-            }
-
-
-            if (
-                used.has(article.url)
-            ) {
-
-                return false;
-
-            }
-
-
-            used.add(article.url);
-
-            return true;
-
-        });
-
+        return element
+            ? readArticles(element)
+            : [];
     }
-
-
-    /* =====================================================
-       CATEGORY DATA
-       
-       OLD STRUCTURE PRESERVED
-    ===================================================== */
-
-    let apTsArticles =
-        getCategoryArticles("apts");
-
-
-    let sportsArticles =
-        getCategoryArticles("sports");
-
-
-    let entertainmentArticles =
-        getCategoryArticles("cinema");
-
-
-    let businessArticles =
-        getCategoryArticles("business");
-
-
-    /* =====================================================
-       SEPARATE CATEGORY SOURCES
-       
-       IF THEY EXIST, THEY WILL BE USED.
-       
-       OTHERWISE OLD LEGACY CATEGORY ARTICLES CONTINUE.
-    ===================================================== */
-
-    const separateApTs =
-        readSeparateSource("aptsSource");
-
-
-    const separateSports =
-        readSeparateSource("sportsSource");
-
-
-    const separateEntertainment =
-        readSeparateSource(
-            "entertainmentSource"
-        );
-
-
-    const separateBusiness =
-        readSeparateSource(
-            "businessSource"
-        );
-
-
-    if (separateApTs.length) {
-
-        apTsArticles =
-            uniqueArticles(
-                separateApTs
-            );
-
-    }
-
-
-    if (separateSports.length) {
-
-        sportsArticles =
-            uniqueArticles(
-                separateSports
-            );
-
-    }
-
-
-    if (separateEntertainment.length) {
-
-        entertainmentArticles =
-            uniqueArticles(
-                separateEntertainment
-            );
-
-    }
-
-
-    if (separateBusiness.length) {
-
-        businessArticles =
-            uniqueArticles(
-                separateBusiness
-            );
-
-    }
-
-
-    /* =====================================================
-       NON BIGBOSS ARTICLES
-       
-       OLD STRUCTURE PRESERVED
-    ===================================================== */
-
-    const normalArticles =
-        articles.filter(article =>
-            normalizeCategory(
-                article.category
-            ) !== "bigboss10"
-        );
-
-
-    /* =====================================================
-       LATEST NEWS
-       
-       IMPORTANT:
-       Latest uses ONLY #latestNewsSource
-       
-       If source does not exist,
-       OLD legacy behavior is used.
-    ===================================================== */
-
-    const latestTarget =
-        $("#topStory");
 
 
     const separateLatest =
-        readSeparateSource(
-            "latestNewsSource"
+        readSeparate("latestNewsSource");
+
+
+    const separateTrending =
+        readSeparate("trendingSource");
+
+
+    const separateMostRead =
+        readSeparate("mostReadSource");
+
+
+    const separateApTs =
+        readSeparate("aptsSource");
+
+
+    const separateSports =
+        readSeparate("sportsSource");
+
+
+    const separateEntertainment =
+        readSeparate("entertainmentSource");
+
+
+    const separateBusiness =
+        readSeparate("businessSource");
+
+
+    const separateBigBoss =
+        readSeparate("bigbossSource");
+
+
+    /* =====================================================
+       SECTION DATA
+    ===================================================== */
+
+    function categoryData(category) {
+
+        return uniqueArticles(
+            allArticles.filter(article =>
+                article.category === category
+            )
         );
+    }
 
 
-    function createLatestCard(article) {
+    let latestData =
+        separateLatest.length
+            ? uniqueArticles(separateLatest)
+            : uniqueArticles(
+                allArticles.filter(
+                    article =>
+                        article.section === "latest"
+                )
+            );
+
+
+    let trendingData =
+        separateTrending.length
+            ? uniqueArticles(separateTrending)
+            : uniqueArticles(
+                allArticles.filter(
+                    article =>
+                        article.section === "trending"
+                )
+            );
+
+
+    let mostReadData =
+        separateMostRead.length
+            ? uniqueArticles(separateMostRead)
+            : uniqueArticles(
+                allArticles.filter(
+                    article =>
+                        article.section === "mostread" ||
+                        article.section === "most-read"
+                )
+            );
+
+
+    let moviesData =
+        separateEntertainment.length
+            ? uniqueArticles(separateEntertainment)
+            : categoryData("entertainment");
+
+
+    let sportsData =
+        separateSports.length
+            ? uniqueArticles(separateSports)
+            : categoryData("sports");
+
+
+    let apTsData =
+        separateApTs.length
+            ? uniqueArticles(separateApTs)
+            : categoryData("apts");
+
+
+    let businessData =
+        separateBusiness.length
+            ? uniqueArticles(separateBusiness)
+            : categoryData("business");
+
+
+    let bigBossData =
+        separateBigBoss.length
+            ? uniqueArticles(separateBigBoss)
+            : uniqueArticles(
+                allArticles.filter(
+                    article =>
+                        article.category === "bigboss" ||
+                        article.section === "bigboss"
+                )
+            );
+
+
+    /* =====================================================
+       FALLBACK LATEST
+    ===================================================== */
+
+    if (!latestData.length) {
+
+        latestData =
+            uniqueArticles(
+                allArticles.filter(
+                    article =>
+                        article.category !== "bigboss"
+                )
+            );
+    }
+
+
+    /* =====================================================
+       CARD GENERATORS
+    ===================================================== */
+
+    function normalCard(article) {
 
         return `
             <a
+                class="news-card"
                 href="${article.url}"
-                class="latest-news-card"
             >
 
                 <img
                     src="${article.image}"
-                    alt="${article.alt || article.title}"
+                    alt="${article.alt}"
                     loading="lazy"
                 >
 
@@ -432,129 +391,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
             </a>
         `;
-
     }
 
 
-    function renderLatestNews() {
-
-        if (!latestTarget) {
-            return;
-        }
-
-
-        /*
-         * Separate Latest source exists
-         * -> ONLY those articles
-         */
-
-        let latestArticles;
-
-
-        if (separateLatest.length) {
-
-            latestArticles =
-                uniqueArticles(
-                    separateLatest
-                ).slice(0, 6);
-
-        }
-
-        /*
-         * Separate Latest source doesn't exist
-         * -> OLD system continues
-         */
-
-        else {
-
-            latestArticles =
-                uniqueArticles(
-                    normalArticles
-                ).slice(0, 6);
-
-        }
-
-
-        if (!latestArticles.length) {
-
-            latestTarget.innerHTML = `
-                <p class="latest-empty">
-                    తాజా వార్తలు అందుబాటులో లేవు
-                </p>
-            `;
-
-            return;
-
-        }
-
-
-        latestTarget.innerHTML = `
-            <div class="latest-news-grid">
-
-                ${latestArticles
-                    .map(createLatestCard)
-                    .join("")}
-
-            </div>
-        `;
-
-    }
-
-
-    renderLatestNews();
-
-
-    /* =====================================================
-       CATEGORY BIG CARD
-       
-       SAME OLD DESIGN
-    ===================================================== */
-
-    function createCategoryFeature(article) {
+    function categoryCard(article) {
 
         return `
             <a
-                href="${article.url}"
-                class="category-feature"
-            >
-
-                <img
-                    src="${article.image}"
-                    alt="${article.alt || article.title}"
-                    loading="lazy"
-                >
-
-                <div class="category-feature-content">
-
-                    <h3>
-                        ${article.title}
-                    </h3>
-
-                </div>
-
-            </a>
-        `;
-
-    }
-
-
-    /* =====================================================
-       CATEGORY SMALL CARD
-       
-       SAME OLD DESIGN
-    ===================================================== */
-
-    function createCategoryCard(article) {
-
-        return `
-            <a
-                href="${article.url}"
                 class="category-card"
+                href="${article.url}"
             >
 
                 <img
                     src="${article.image}"
-                    alt="${article.alt || article.title}"
+                    alt="${article.alt}"
                     loading="lazy"
                 >
 
@@ -568,327 +418,235 @@ document.addEventListener("DOMContentLoaded", function () {
 
             </a>
         `;
+    }
 
+
+    function bigBossCard(article) {
+
+        return `
+            <a
+                class="bb-card"
+                href="${article.url}"
+            >
+
+                <img
+                    src="${article.image}"
+                    alt="${article.alt}"
+                    loading="lazy"
+                >
+
+                <div class="bb-overlay">
+
+                    <h3>
+                        ${article.title}
+                    </h3>
+
+                </div>
+
+            </a>
+        `;
+    }
+
+
+    /* =====================================================
+       HERO
+       
+       1 BIG + 4 SIDE STORIES
+    ===================================================== */
+
+    const heroMain =
+        $("#heroMain");
+
+    const heroSide =
+        $("#heroSide");
+
+
+    if (heroMain && latestData.length) {
+
+        const hero =
+            latestData[0];
+
+
+        heroMain.innerHTML = `
+            <a
+                class="hero"
+                href="${hero.url}"
+            >
+
+                <img
+                    src="${hero.image}"
+                    alt="${hero.alt}"
+                >
+
+                <span class="hero-label">
+                    BREAKING
+                </span>
+
+                <div class="hero-content">
+
+                    <h1>
+                        ${hero.title}
+                    </h1>
+
+                    <span>
+                        READ MORE →
+                    </span>
+
+                </div>
+
+            </a>
+        `;
+    }
+
+
+    if (heroSide) {
+
+        heroSide.innerHTML =
+            latestData
+                .slice(1, 5)
+                .map(article => `
+
+                    <a
+                        class="side"
+                        href="${article.url}"
+                    >
+
+                        <img
+                            src="${article.image}"
+                            alt="${article.alt}"
+                            loading="lazy"
+                        >
+
+                        <div>
+
+                            <h3>
+                                ${article.title}
+                            </h3>
+
+                            <small>
+                                తాజా అప్‌డేట్
+                            </small>
+
+                        </div>
+
+                    </a>
+
+                `)
+                .join("");
+    }
+
+
+    /* =====================================================
+       TOP HEADLINES
+    ===================================================== */
+
+    const headlineTrack =
+        $("#headlineTrack");
+
+
+    if (headlineTrack) {
+
+        const headlineData =
+            uniqueArticles([
+                ...latestData,
+                ...trendingData
+            ]);
+
+
+        headlineTrack.innerHTML =
+            headlineData
+                .slice(0, 8)
+                .map(article => `
+
+                    <a
+                        href="${article.url}"
+                    >
+                        ${article.title}
+                    </a>
+
+                `)
+                .join(
+                    '<i>•</i>'
+                );
+    }
+
+
+    /* =====================================================
+       LATEST NEWS
+       EXACTLY 6
+    ===================================================== */
+
+    const latestGrid =
+        $("#latestGrid");
+
+
+    if (latestGrid) {
+
+        latestGrid.innerHTML =
+            latestData
+                .slice(0, 6)
+                .map(normalCard)
+                .join("");
+
+
+        if (!latestData.length) {
+
+            latestGrid.innerHTML = `
+                <p class="empty-message">
+                    తాజా వార్తలు అందుబాటులో లేవు
+                </p>
+            `;
+        }
     }
 
 
     /* =====================================================
        CATEGORY RENDER
        
-       EXACTLY 5
        1 BIG + 4 SMALL
-
-       SAME OLD STRUCTURE
+       New CSS can control layout.
     ===================================================== */
 
-    function renderCategory(
-        target,
+    function renderCategoryGrid(
+        targetId,
         data
     ) {
+
+        const target =
+            document.getElementById(targetId);
+
 
         if (!target) {
             return;
         }
 
 
-        const categoryArticles =
+        const items =
             uniqueArticles(data)
                 .slice(0, 5);
 
 
-        target.innerHTML = "";
-
-
-        if (!categoryArticles.length) {
-
-            target.innerHTML = `
-                <p class="category-empty">
-                    వార్తలు అందుబాటులో లేవు
-                </p>
-            `;
-
-            return;
-        }
-
-
-        const wrapper =
-            document.createElement(
-                "div"
-            );
-
-
-        wrapper.className =
-            "category-news-layout";
-
-
-        /* =================================================
-           BIG ARTICLE
-        ================================================= */
-
-        wrapper.insertAdjacentHTML(
-            "beforeend",
-            createCategoryFeature(
-                categoryArticles[0]
-            )
-        );
-
-
-        /* =================================================
-           4 SMALL ARTICLES
-        ================================================= */
-
-        categoryArticles
-            .slice(1, 5)
-            .forEach(article => {
-
-                wrapper.insertAdjacentHTML(
-                    "beforeend",
-                    createCategoryCard(
-                        article
-                    )
-                );
-
-            });
-
-
-        target.appendChild(wrapper);
-
-    }
-
-
-    /* =====================================================
-       AP & TS
-       ONLY AP & TS ARTICLES
-    ===================================================== */
-
-    renderCategory(
-        $("#sliderTrack"),
-        apTsArticles
-    );
-
-
-    /* =====================================================
-       SPORTS
-       ONLY SPORTS ARTICLES
-    ===================================================== */
-
-    renderCategory(
-        $("#sportsGrid"),
-        sportsArticles
-    );
-
-
-    /* =====================================================
-       ENTERTAINMENT
-       ONLY ENTERTAINMENT ARTICLES
-    ===================================================== */
-
-    renderCategory(
-        $("#cinemaGrid"),
-        entertainmentArticles
-    );
-
-
-    /* =====================================================
-       BUSINESS
-       ONLY BUSINESS ARTICLES
-    ===================================================== */
-
-    renderCategory(
-        $("#businessGrid"),
-        businessArticles
-    );
-
-
-    /* =====================================================
-       AFTER MOST READ
-       
-       EXISTING STRUCTURE PRESERVED
-    ===================================================== */
-
-    function createThreeColumnCard(
-        article
-    ) {
-
-        return `
-            <a
-                href="${article.url}"
-                class="three-column-news-card"
-            >
-
-                <img
-                    src="${article.image}"
-                    alt="${article.alt || article.title}"
-                    loading="lazy"
-                >
-
-                <h3>
-                    ${article.title}
-                </h3>
-
-            </a>
-        `;
-
-    }
-
-
-    function renderThreeColumnGrid(
-        target,
-        data
-    ) {
-
-        if (!target) {
-            return;
-        }
-
-
-        const finalData =
-            uniqueArticles(data)
-                .slice(0, 9);
-
-
         target.innerHTML =
-            finalData
-                .map(
-                    createThreeColumnCard
-                )
-                .join("");
-
-    }
-
-
-    renderThreeColumnGrid(
-        $("#afterApTsGrid"),
-        apTsArticles
-    );
-
-
-    renderThreeColumnGrid(
-        $("#afterSportsGrid"),
-        sportsArticles
-    );
-
-
-    renderThreeColumnGrid(
-        $("#afterEntertainmentGrid"),
-        entertainmentArticles
-    );
-
-
-    renderThreeColumnGrid(
-        $("#afterBusinessGrid"),
-        businessArticles
-    );
-
-
-    /* =====================================================
-       TRENDING NEWS
-       
-       IMPORTANT:
-       ONLY #trendingSource
-
-       If separate source does NOT exist,
-       EXISTING HTML CARDS ARE PRESERVED.
-
-       JS WILL NOT MIX LATEST ARTICLES HERE.
-    ===================================================== */
-
-    const trendingTarget =
-        $("#trendingGrid");
-
-
-    const separateTrending =
-        readSeparateSource(
-            "trendingSource"
-        );
-
-
-    if (
-        trendingTarget &&
-        separateTrending.length
-    ) {
-
-        const trendingArticles =
-            uniqueArticles(
-                separateTrending
-            ).slice(0, 12);
-
-
-        trendingTarget.innerHTML =
-            trendingArticles
-                .map(article => {
+            items
+                .map((article, index) => {
 
                     return `
                         <a
+                            class="category-card ${
+                                index === 0
+                                    ? "featured"
+                                    : ""
+                            }"
                             href="${article.url}"
-                            class="trending-card"
                         >
 
                             <img
                                 src="${article.image}"
-                                alt="${article.alt || article.title}"
+                                alt="${article.alt}"
                                 loading="lazy"
                             >
 
-                            <h3>
-                                ${article.title}
-                            </h3>
-
-                        </a>
-                    `;
-
-                })
-                .join("");
-
-    }
-
-
-    /* =====================================================
-       MOST READ
-       
-       IMPORTANT:
-       ONLY #mostReadSource
-
-       If separate source does NOT exist,
-       EXISTING HTML CARDS ARE PRESERVED.
-
-       JS WILL NOT MIX LATEST ARTICLES HERE.
-    ===================================================== */
-
-    const mostReadTarget =
-        $("#mostReadList");
-
-
-    const separateMostRead =
-        readSeparateSource(
-            "mostReadSource"
-        );
-
-
-    if (
-        mostReadTarget &&
-        separateMostRead.length
-    ) {
-
-        const mostReadArticles =
-            uniqueArticles(
-                separateMostRead
-            ).slice(0, 8);
-
-
-        mostReadTarget.innerHTML =
-            mostReadArticles
-                .map(article => {
-
-                    return `
-                        <a
-                            href="${article.url}"
-                            class="most-read-item"
-                        >
-
-                            <div
-                                class="most-read-text"
-                            >
+                            <div class="category-card-content">
 
                                 <h3>
                                     ${article.title}
@@ -896,269 +654,378 @@ document.addEventListener("DOMContentLoaded", function () {
 
                             </div>
 
-                            <img
-                                src="${article.image}"
-                                alt="${article.alt || article.title}"
-                                loading="lazy"
-                            >
-
                         </a>
                     `;
-
                 })
                 .join("");
 
+
+        if (!items.length) {
+
+            target.innerHTML = `
+                <p class="empty-message">
+                    వార్తలు అందుబాటులో లేవు
+                </p>
+            `;
+        }
+    }
+
+
+    renderCategoryGrid(
+        "moviesGrid",
+        moviesData
+    );
+
+
+    renderCategoryGrid(
+        "sportsGrid",
+        sportsData
+    );
+
+
+    renderCategoryGrid(
+        "aptsGrid",
+        apTsData
+    );
+
+
+    renderCategoryGrid(
+        "businessGrid",
+        businessData
+    );
+
+
+    /* =====================================================
+       BIGG BOSS 10
+    ===================================================== */
+
+    const bigbossTrack =
+        $("#bigbossTrack");
+
+
+    if (bigbossTrack) {
+
+        bigbossTrack.innerHTML =
+            bigBossData
+                .slice(0, 10)
+                .map(bigBossCard)
+                .join("");
+
+
+        if (!bigBossData.length) {
+
+            bigbossTrack.innerHTML = `
+                <p class="empty-message">
+                    బిగ్ బాస్ వార్తలు అందుబాటులో లేవు
+                </p>
+            `;
+        }
     }
 
 
     /* =====================================================
-       PHOTO GALLERY
+       BIGG BOSS AUTO SCROLL
        
-       OLD FUNCTION PRESERVED
+       Works only if horizontal overflow exists.
     ===================================================== */
 
-    const photoTarget =
-        $("#photoGallery");
+    if (
+        bigbossTrack &&
+        bigBossData.length > 4
+    ) {
+
+        let bbPosition = 0;
 
 
-    if (photoTarget) {
+        setInterval(() => {
 
-        const photoArticles =
-            uniqueArticles(
-                normalArticles
-            ).slice(0, 8);
-
-
-        photoTarget.innerHTML =
-            photoArticles
-                .map(article => {
-
-                    return `
-                        <a
-                            href="${article.url}"
-                            class="photo-gallery-card"
-                        >
-
-                            <img
-                                src="${article.image}"
-                                alt="${article.alt || article.title}"
-                                loading="lazy"
-                            >
-
-                            <h3>
-                                ${article.title}
-                            </h3>
-
-                        </a>
-                    `;
-
-                })
-                .join("");
-
-    }
-
-
-    /* =====================================================
-       VIDEO NEWS
-       
-       OLD FUNCTION PRESERVED
-    ===================================================== */
-
-    const videoTarget =
-        $("#videoNewsGrid");
-
-
-    if (videoTarget) {
-
-        const videoArticles =
-            uniqueArticles(
-                normalArticles
-            ).slice(0, 6);
-
-
-        videoTarget.innerHTML =
-            videoArticles
-                .map(article => {
-
-                    return `
-                        <a
-                            href="${article.url}"
-                            class="video-news-card"
-                        >
-
-                            <div
-                                class="video-thumbnail"
-                            >
-
-                                <img
-                                    src="${article.image}"
-                                    alt="${article.alt || article.title}"
-                                    loading="lazy"
-                                >
-
-                                <span
-                                    class="video-play"
-                                >
-                                    ▶
-                                </span>
-
-                            </div>
-
-                            <h3>
-                                ${article.title}
-                            </h3>
-
-                        </a>
-                    `;
-
-                })
-                .join("");
-
-    }
-
-
-    /* =====================================================
-       SEARCH OPEN / CLOSE
-       
-       OLD FUNCTION
-    ===================================================== */
-
-    window.toggleSearch =
-        function () {
-
-            const box =
-                $("#searchBox");
-
-
-            if (!box) {
+            if (
+                bigbossTrack.scrollWidth <=
+                bigbossTrack.clientWidth
+            ) {
                 return;
             }
 
 
-            box.classList.toggle(
-                "show"
-            );
+            bbPosition +=
+                bigbossTrack.clientWidth * 0.75;
 
 
             if (
-                box.classList.contains(
-                    "show"
-                )
+                bbPosition >=
+                bigbossTrack.scrollWidth -
+                bigbossTrack.clientWidth
             ) {
 
-                const input =
-                    $("#searchInput");
-
-
-                if (input) {
-
-                    setTimeout(
-                        () =>
-                            input.focus(),
-                        100
-                    );
-
-                }
-
+                bbPosition = 0;
             }
 
-        };
+
+            bigbossTrack.scrollTo({
+                left: bbPosition,
+                behavior: "smooth"
+            });
+
+        }, 5000);
+    }
 
 
     /* =====================================================
-       SEARCH NEWS
-       
-       SEARCH ALL ARTICLES
+       TRENDING
+       EXACTLY 12
     ===================================================== */
 
-    window.searchNews =
-        function () {
-
-            const input =
-                $("#searchInput");
+    const trendingGrid =
+        $("#trendingGrid");
 
 
-            if (!input) {
-                return;
-            }
+    if (trendingGrid) {
+
+        trendingGrid.innerHTML =
+            trendingData
+                .slice(0, 12)
+                .map((article, index) => `
+
+                    <a
+                        class="trend"
+                        href="${article.url}"
+                    >
+
+                        <b>
+                            ${index + 1}
+                        </b>
+
+                        <img
+                            src="${article.image}"
+                            alt="${article.alt}"
+                            loading="lazy"
+                        >
+
+                        <h3>
+                            ${article.title}
+                        </h3>
+
+                    </a>
+
+                `)
+                .join("");
 
 
-            const query =
-                input.value
-                    .trim()
-                    .toLowerCase();
+        if (!trendingData.length) {
 
-
-            if (!query) {
-                return;
-            }
-
-
-            /*
-             * Include separate source articles
-             * also in search.
-             */
-
-            const allSearchArticles =
-                uniqueArticles([
-
-                    ...articles,
-
-                    ...separateLatest,
-
-                    ...separateTrending,
-
-                    ...separateMostRead,
-
-                    ...separateApTs,
-
-                    ...separateSports,
-
-                    ...separateEntertainment,
-
-                    ...separateBusiness
-
-                ]);
-
-
-            const result =
-                allSearchArticles.find(
-                    article =>
-                        article.title
-                            .toLowerCase()
-                            .includes(query)
-                );
-
-
-            if (result) {
-
-                window.location.href =
-                    result.url;
-
-            } else {
-
-                alert(
-                    "ఈ వార్త ప్రస్తుతం అందుబాటులో లేదు."
-                );
-
-            }
-
-        };
+            trendingGrid.innerHTML = `
+                <p class="empty-message">
+                    ట్రెండింగ్ వార్తలు అందుబాటులో లేవు
+                </p>
+            `;
+        }
+    }
 
 
     /* =====================================================
-       SEARCH ENTER
+       MOST READ
+       EXACTLY 8
+    ===================================================== */
+
+    const mostReadList =
+        $("#mostReadList");
+
+
+    if (mostReadList) {
+
+        mostReadList.innerHTML =
+            mostReadData
+                .slice(0, 8)
+                .map((article, index) => `
+
+                    <a
+                        class="most"
+                        href="${article.url}"
+                    >
+
+                        <b>
+                            ${index + 1}
+                        </b>
+
+                        <div>
+
+                            <h3>
+                                ${article.title}
+                            </h3>
+
+                            <small>
+                                Readers are viewing
+                            </small>
+
+                        </div>
+
+                        <img
+                            src="${article.image}"
+                            alt="${article.alt}"
+                            loading="lazy"
+                        >
+
+                    </a>
+
+                `)
+                .join("");
+
+
+        if (!mostReadData.length) {
+
+            mostReadList.innerHTML = `
+                <p class="empty-message">
+                    Most Read వార్తలు అందుబాటులో లేవు
+                </p>
+            `;
+        }
+    }
+
+
+    /* =====================================================
+       MOST READ TOP
+       TOP 5
+    ===================================================== */
+
+    const mostReadTop =
+        $("#mostReadTop");
+
+
+    if (mostReadTop) {
+
+        mostReadTop.innerHTML =
+            mostReadData
+                .slice(0, 5)
+                .map((article, index) => `
+
+                    <a
+                        class="top-read"
+                        href="${article.url}"
+                    >
+
+                        <b>
+                            ${index + 1}
+                        </b>
+
+                        <img
+                            src="${article.image}"
+                            alt="${article.alt}"
+                            loading="lazy"
+                        >
+
+                        <span>
+                            ${article.title}
+                        </span>
+
+                    </a>
+
+                `)
+                .join("");
+
+
+        if (!mostReadData.length) {
+
+            mostReadTop.innerHTML = `
+                <p class="empty-message">
+                    Most Read వార్తలు అందుబాటులో లేవు
+                </p>
+            `;
+        }
+    }
+
+
+    /* =====================================================
+       SEARCH
+       
+       Searches:
+       - Legacy
+       - Latest
+       - Trending
+       - Most Read
+       - Movies
+       - Sports
+       - AP TS
+       - Business
+       - Bigg Boss
     ===================================================== */
 
     const searchInput =
         $("#searchInput");
+
+    const searchBtn =
+        $("#searchBtn");
+
+
+    const searchArticles =
+        uniqueArticles([
+            ...allArticles,
+            ...separateLatest,
+            ...separateTrending,
+            ...separateMostRead,
+            ...separateApTs,
+            ...separateSports,
+            ...separateEntertainment,
+            ...separateBusiness,
+            ...separateBigBoss
+        ]);
+
+
+    function performSearch() {
+
+        if (!searchInput) {
+            return;
+        }
+
+
+        const query =
+            safeText(searchInput.value)
+                .toLowerCase();
+
+
+        if (!query) {
+
+            searchInput.focus();
+
+            return;
+        }
+
+
+        const result =
+            searchArticles.find(article =>
+                article.title
+                    .toLowerCase()
+                    .includes(query)
+            );
+
+
+        if (result) {
+
+            window.location.href =
+                result.url;
+
+        } else {
+
+            alert(
+                "వార్త దొరకలేదు. మరో పదంతో వెతకండి."
+            );
+        }
+    }
+
+
+    if (searchBtn) {
+
+        searchBtn.addEventListener(
+            "click",
+            performSearch
+        );
+    }
 
 
     if (searchInput) {
 
         searchInput.addEventListener(
             "keydown",
-            function (event) {
+            event => {
 
                 if (
                     event.key === "Enter"
@@ -1166,72 +1033,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     event.preventDefault();
 
-                    window.searchNews();
-
+                    performSearch();
                 }
-
             }
         );
-
     }
 
 
     /* =====================================================
        DARK MODE
-       OLD FUNCTION
+       
+       Supports both:
+       .dark
+       .dark-mode
+       
+       So CSS can use either.
     ===================================================== */
 
-    window.toggleTheme =
-        function () {
+    const darkToggle =
+        $("#darkToggle");
 
-            document.body.classList.toggle(
-                "dark-mode"
-            );
-
-
-            const button =
-                $("#themeButton");
-
-
-            if (!button) {
-                return;
-            }
-
-
-            if (
-                document.body.classList.contains(
-                    "dark-mode"
-                )
-            ) {
-
-                button.textContent =
-                    "☀️ Light";
-
-
-                localStorage.setItem(
-                    "bs360-theme",
-                    "dark"
-                );
-
-            } else {
-
-                button.textContent =
-                    "🌙 Dark";
-
-
-                localStorage.setItem(
-                    "bs360-theme",
-                    "light"
-                );
-
-            }
-
-        };
-
-
-    /* =====================================================
-       LOAD SAVED THEME
-    ===================================================== */
 
     const savedTheme =
         localStorage.getItem(
@@ -1239,150 +1060,227 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
 
-    if (
-        savedTheme === "dark"
-    ) {
+    function applyTheme(theme) {
 
-        document.body.classList.add(
-            "dark-mode"
+        const dark =
+            theme === "dark";
+
+
+        document.body.classList.toggle(
+            "dark",
+            dark
         );
 
 
-        const button =
-            $("#themeButton");
+        document.body.classList.toggle(
+            "dark-mode",
+            dark
+        );
 
 
-        if (button) {
+        if (darkToggle) {
 
-            button.textContent =
-                "☀️ Light";
+            darkToggle.textContent =
+                dark
+                    ? "☀️"
+                    : "🌙";
 
+            darkToggle.setAttribute(
+                "aria-label",
+                dark
+                    ? "Light mode"
+                    : "Dark mode"
+            );
         }
+    }
 
+
+    applyTheme(
+        savedTheme === "dark"
+            ? "dark"
+            : "light"
+    );
+
+
+    if (darkToggle) {
+
+        darkToggle.addEventListener(
+            "click",
+            () => {
+
+                const dark =
+                    document.body.classList.contains(
+                        "dark"
+                    );
+
+
+                const newTheme =
+                    dark
+                        ? "light"
+                        : "dark";
+
+
+                applyTheme(
+                    newTheme
+                );
+
+
+                localStorage.setItem(
+                    "bs360-theme",
+                    newTheme
+                );
+            }
+        );
     }
 
 
     /* =====================================================
-       MOBILE NAV
-       OLD FUNCTION
+       MOBILE MENU
     ===================================================== */
 
-    window.toggleMobileNav =
-        function () {
+    const menuToggle =
+        $("#menuToggle");
 
-            const nav =
-                $("#navLinks");
+    const navMenu =
+        $("#navMenu");
 
 
-            if (!nav) {
-                return;
+    if (
+        menuToggle &&
+        navMenu
+    ) {
+
+        menuToggle.addEventListener(
+            "click",
+            () => {
+
+                navMenu.classList.toggle(
+                    "open"
+                );
+
+
+                menuToggle.classList.toggle(
+                    "active"
+                );
             }
+        );
 
 
-            nav.classList.toggle(
-                "mobile-open"
+        /* Close menu after clicking link */
+
+        $$("#navMenu a").forEach(link => {
+
+            link.addEventListener(
+                "click",
+                () => {
+
+                    navMenu.classList.remove(
+                        "open"
+                    );
+
+                    menuToggle.classList.remove(
+                        "active"
+                    );
+                }
             );
-
-        };
+        });
+    }
 
 
     /* =====================================================
-       ESC KEY
-       OLD FUNCTION
+       ESCAPE
     ===================================================== */
 
     document.addEventListener(
         "keydown",
-        function (event) {
+        event => {
 
             if (
                 event.key !== "Escape"
             ) {
-
                 return;
-
             }
-
-
-            const search =
-                $("#searchBox");
 
 
             if (
-                search &&
-                search.classList.contains(
-                    "show"
+                navMenu &&
+                navMenu.classList.contains(
+                    "open"
                 )
             ) {
 
-                search.classList.remove(
-                    "show"
+                navMenu.classList.remove(
+                    "open"
                 );
 
-            }
 
+                menuToggle?.classList.remove(
+                    "active"
+                );
+            }
         }
     );
 
 
     /* =====================================================
        DEBUG
-       
-       CHECK WHICH SECTIONS HAVE ARTICLES
     ===================================================== */
 
     console.log(
-        "========================================"
+        "===================================="
     );
 
     console.log(
-        "BS360 SEPARATE ARTICLE SYSTEM"
+        "BS 360 NEWS - NEW HOMEPAGE"
+    );
+
+    console.log(
+        "All Articles:",
+        allArticles.length
     );
 
     console.log(
         "Latest:",
-        separateLatest.length
-            ? separateLatest.length
-            : "OLD LEGACY"
+        latestData.length
     );
 
     console.log(
         "Trending:",
-        separateTrending.length
-            ? separateTrending.length
-            : "HTML CARDS"
+        trendingData.length
     );
 
     console.log(
         "Most Read:",
-        separateMostRead.length
-            ? separateMostRead.length
-            : "HTML CARDS"
+        mostReadData.length
     );
 
     console.log(
-        "AP & TS:",
-        apTsArticles.length
+        "Movies:",
+        moviesData.length
     );
 
     console.log(
         "Sports:",
-        sportsArticles.length
+        sportsData.length
     );
 
     console.log(
-        "Entertainment:",
-        entertainmentArticles.length
+        "AP & TS:",
+        apTsData.length
     );
 
     console.log(
         "Business:",
-        businessArticles.length
+        businessData.length
     );
 
     console.log(
-        "========================================"
+        "Bigg Boss:",
+        bigBossData.length
     );
 
+    console.log(
+        "===================================="
+    );
 
 });
