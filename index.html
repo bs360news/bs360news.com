@@ -1,9 +1,8 @@
+```html
 <!doctype html>
-
 <html lang="te">
 
 <head>
-
 
 <meta charset="utf-8">
 
@@ -53,15 +52,15 @@
 
 <script>
 
-    window.dataLayer = window.dataLayer || [];
+window.dataLayer = window.dataLayer || [];
 
-    function gtag(){
-        dataLayer.push(arguments);
-    }
+function gtag(){
+    dataLayer.push(arguments);
+}
 
-    gtag("js", new Date());
+gtag("js", new Date());
 
-    gtag("config", "G-EWXPS1N2TL");
+gtag("config", "G-EWXPS1N2TL");
 
 </script>
 
@@ -77,141 +76,101 @@
 
 <!-- =====================================================
      CATEGORY SECTION LAYOUT
-     DESKTOP:
-     AP & TS  | SPORTS
-     MOVIES   | BUSINESS
+     
+     DESKTOP / LAPTOP:
+
+     AP & TS       | SPORTS
+     ENTERTAINMENT | BUSINESS
 
      MOBILE:
+
      AP & TS
      SPORTS
-     MOVIES
+     ENTERTAINMENT
      BUSINESS
 ====================================================== -->
 
 <style>
 
-    /* ================================
-       DESKTOP / LAPTOP
-    ================================= */
+/* =====================================================
+   CATEGORY WRAPPER
+===================================================== */
 
-    @media (min-width:701px){
-
-        #aptsSection,
-        #sportsSection,
-        #cinemaSection,
-        #businessSection{
-
-            width:50% !important;
-
-            float:left !important;
-
-            box-sizing:border-box;
-
-            display:block !important;
-
-            margin-bottom:35px;
-
-        }
+.category-sections{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:24px;
+    width:100%;
+    margin:0 0 35px;
+}
 
 
-        /* LEFT COLUMN */
+/* =====================================================
+   EACH CATEGORY
+===================================================== */
 
-        #aptsSection,
-        #cinemaSection{
-
-            padding-right:12px;
-
-        }
-
-
-        /* RIGHT COLUMN */
-
-        #sportsSection,
-        #businessSection{
-
-            padding-left:12px;
-
-        }
+.category-sections > section{
+    width:100% !important;
+    min-width:0;
+    box-sizing:border-box;
+    display:block !important;
+    margin:0 !important;
+    padding:0 !important;
+}
 
 
-        /* SECOND ROW START */
+/* =====================================================
+   MAKE SURE NEWS GRID DOES NOT FORCE SECTION WIDTH
+===================================================== */
 
-        #cinemaSection{
-
-            clear:left !important;
-
-        }
-
-
-        #sportsSection{
-
-            clear:none !important;
-
-        }
+.category-sections .news-slider{
+    width:100%;
+    max-width:100%;
+    box-sizing:border-box;
+}
 
 
-        #businessSection{
+/* =====================================================
+   LAPTOP / DESKTOP
+===================================================== */
 
-            clear:none !important;
+@media (min-width:701px){
 
-        }
-
-
-        /* Sections after four categories */
-
-        #bigbossSection,
-        .trending-section,
-        .most-read-section,
-        .after-category-section,
-        .photo-gallery-section,
-        .video-news-section{
-
-            clear:both !important;
-
-        }
-
+    .category-sections{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+        align-items:start;
     }
 
+}
 
-    /* ================================
-       MOBILE
-    ================================= */
 
-    @media (max-width:700px){
+/* =====================================================
+   MOBILE
+===================================================== */
 
-        #aptsSection,
-        #sportsSection,
-        #cinemaSection,
-        #businessSection{
+@media (max-width:700px){
 
-            width:100% !important;
-
-            float:none !important;
-
-            clear:both !important;
-
-            display:block !important;
-
-            padding-left:0 !important;
-
-            padding-right:0 !important;
-
-            margin-left:0 !important;
-
-            margin-right:0 !important;
-
-            margin-bottom:35px !important;
-
-        }
-
+    .category-sections{
+        display:block;
+        width:100%;
+        margin-bottom:35px;
     }
+
+    .category-sections > section{
+        width:100% !important;
+        margin:0 0 35px !important;
+        padding:0 !important;
+    }
+
+}
 
 </style>
-```
 
 </head>
 
+
 <body>
+
 
 <!-- =====================================================
      HEADER
@@ -219,7 +178,6 @@
 
 <header class="brand-header">
 
-```
 <div class="container brand-inner">
 
 
@@ -332,9 +290,9 @@
     </div>
 
 </nav>
-```
 
 </header>
+
 
 <!-- =====================================================
      TOP HEADLINES
@@ -342,11 +300,10 @@
 
 <section class="headlines-bar">
 
-
 <div class="container">
 
     <div class="headlines-label">
-         TOP HEADLINES
+        TOP HEADLINES
     </div>
 
     <div class="headlines-text">
@@ -365,15 +322,14 @@
 
 </div>
 
-
 </section>
+
 
 <!-- =====================================================
      MAIN
 ===================================================== -->
 
 <main class="container portal-wrap">
-
 
 
 <!-- =================================================
@@ -406,10 +362,20 @@
 </section>
 
 
+<!-- =================================================
+     CATEGORY SECTIONS
+     
+     DESKTOP:
+
+     AP & TS       | SPORTS
+     ENTERTAINMENT | BUSINESS
+================================================== -->
+
+<div class="category-sections">
+
 
 <!-- =================================================
      AP & TELANGANA
-     DESKTOP LEFT
 ================================================== -->
 
 <section id="aptsSection">
@@ -419,7 +385,6 @@
         <h2>
             AP & Telangana
         </h2>
-
 
         <a
             href="AP&TS.html"
@@ -445,10 +410,8 @@
 </section>
 
 
-
 <!-- =================================================
      SPORTS
-     DESKTOP RIGHT
 ================================================== -->
 
 <section id="sportsSection">
@@ -456,9 +419,8 @@
     <div class="section-title-row">
 
         <h2>
-         Sports
+            Sports
         </h2>
-
 
         <a
             href="SPORTS.html"
@@ -484,10 +446,8 @@
 </section>
 
 
-
 <!-- =================================================
-     MOVIES
-     DESKTOP LEFT - SECOND ROW
+     ENTERTAINMENT
 ================================================== -->
 
 <section id="cinemaSection">
@@ -495,9 +455,8 @@
     <div class="section-title-row">
 
         <h2>
-             Entertainment
+            Entertainment
         </h2>
-
 
         <a
             href="MOVIES.html"
@@ -523,10 +482,8 @@
 </section>
 
 
-
 <!-- =================================================
      BUSINESS
-     DESKTOP RIGHT - SECOND ROW
 ================================================== -->
 
 <section id="businessSection">
@@ -534,9 +491,8 @@
     <div class="section-title-row">
 
         <h2>
-             Business
+            Business
         </h2>
-
 
         <a
             href="business.html"
@@ -562,8 +518,8 @@
 </section>
 
 
-
-
+</div>
+<!-- END CATEGORY SECTIONS -->
 
 
 <!-- =================================================
@@ -666,7 +622,6 @@
 </section>
 
 
-
 <!-- =================================================
      MOST READ
 ================================================== -->
@@ -741,7 +696,6 @@
 </section>
 
 
-
 <!-- =================================================
      AFTER AP & TS
 ================================================== -->
@@ -754,7 +708,6 @@
     ></div>
 
 </section>
-
 
 
 <!-- =================================================
@@ -771,7 +724,6 @@
 </section>
 
 
-
 <!-- =================================================
      AFTER ENTERTAINMENT
 ================================================== -->
@@ -784,7 +736,6 @@
     ></div>
 
 </section>
-
 
 
 <!-- =================================================
@@ -801,7 +752,6 @@
 </section>
 
 
-
 <!-- =================================================
      PHOTO GALLERY
 ================================================== -->
@@ -811,7 +761,7 @@
     <div class="section-title-row">
 
         <h2>
-             Photo Gallery
+            Photo Gallery
         </h2>
 
     </div>
@@ -823,7 +773,6 @@
     ></div>
 
 </section>
-
 
 
 <!-- =================================================
@@ -849,7 +798,6 @@
 </section>
 
 
-
 <!-- =================================================
      ADVERTISEMENT
 ================================================== -->
@@ -861,6 +809,7 @@
 
 </main>
 
+
 <!-- =====================================================
      HIDDEN ARTICLE SOURCE
 ===================================================== -->
@@ -869,6 +818,7 @@
     id="legacyNewsSource"
     class="legacy-news-source"
 >
+
 
 <!-- SPORTS -->
 
@@ -914,7 +864,6 @@
     </div>
 
 </article>
-
 
 
 <!-- MOVIES -->
@@ -1073,7 +1022,6 @@
 </article>
 
 
-
 <!-- BUSINESS -->
 
 <article
@@ -1096,7 +1044,6 @@
     </div>
 
 </article>
-
 
 
 <!-- AP & TELANGANA -->
@@ -1145,7 +1092,6 @@
 </article>
 
 
-
 <!-- BIGG BOSS -->
 
 <article
@@ -1190,7 +1136,6 @@
     </div>
 
 </article>
-
 
 
 <!-- NATIONAL -->
@@ -1241,6 +1186,7 @@
 
 </div>
 
+
 <!-- =====================================================
      SEPARATE SOURCES
 ===================================================== -->
@@ -1250,35 +1196,42 @@
     style="display:none;"
 ></div>
 
+
 <div
     id="trendingSource"
     style="display:none;"
 ></div>
+
 
 <div
     id="mostReadSource"
     style="display:none;"
 ></div>
 
+
 <div
     id="aptsSource"
     style="display:none;"
 ></div>
+
 
 <div
     id="sportsSource"
     style="display:none;"
 ></div>
 
+
 <div
     id="entertainmentSource"
     style="display:none;"
 ></div>
 
+
 <div
     id="businessSource"
     style="display:none;"
 ></div>
+
 
 <!-- =====================================================
      FOOTER
@@ -1332,7 +1285,6 @@
     </div>
 
 
-
     <div class="footer-contact">
 
         <h3>
@@ -1360,6 +1312,7 @@
 
 
 </footer>
+
 
 <!-- =====================================================
      MOBILE BOTTOM NAV
@@ -1394,13 +1347,16 @@
 
 </nav>
 
+
 <!-- =====================================================
      JAVASCRIPT
 ===================================================== -->
 
 <script src="script.js?v=20261005"></script>
 
+
 </body>
 
 </html>
+
 
