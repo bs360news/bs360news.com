@@ -22,6 +22,7 @@
 <link rel="icon" type="image/png" href="dp.png.png">
 <link rel="apple-touch-icon" href="dp.png.png">
 
+
 <style>
 
 *{
@@ -53,7 +54,9 @@ a{
 }
 
 
-/* HEADER */
+/* =====================================================
+   HEADER
+===================================================== */
 
 .top-header{
     background:#fff;
@@ -81,20 +84,10 @@ a{
     color:#e50914;
 }
 
-.home-btn{
-    background:#e50914;
-    color:#fff;
-    padding:8px 16px;
-    border-radius:6px;
-    font-weight:700;
-}
 
-.home-btn:hover{
-    background:#c7000b;
-}
-
-
-/* NAVIGATION */
+/* =====================================================
+   NAVIGATION
+===================================================== */
 
 .nav-bar{
     background:#fff;
@@ -138,7 +131,9 @@ a{
 }
 
 
-/* BREAKING NEWS */
+/* =====================================================
+   BREAKING NEWS
+===================================================== */
 
 .breaking{
     width:min(1400px,96%);
@@ -170,7 +165,9 @@ a{
 }
 
 
-/* PAGE */
+/* =====================================================
+   PAGE
+===================================================== */
 
 .page{
     width:min(1400px,96%);
@@ -187,7 +184,9 @@ a{
 }
 
 
-/* MAIN LAYOUT */
+/* =====================================================
+   MAIN LAYOUT
+===================================================== */
 
 .main-layout{
     display:grid;
@@ -197,7 +196,9 @@ a{
 }
 
 
-/* SECTION */
+/* =====================================================
+   SECTION
+===================================================== */
 
 .section{
     margin-bottom:30px;
@@ -224,7 +225,9 @@ a{
 }
 
 
-/* ALL ARTICLE GRIDS */
+/* =====================================================
+   ARTICLE GRID
+===================================================== */
 
 .movies-grid{
     display:grid;
@@ -233,7 +236,9 @@ a{
 }
 
 
-/* ARTICLE CARD */
+/* =====================================================
+   ARTICLE CARD
+===================================================== */
 
 .movie-card{
     display:block;
@@ -272,7 +277,9 @@ a{
 }
 
 
-/* SIDEBAR */
+/* =====================================================
+   SIDEBAR
+===================================================== */
 
 .article-sidebar{
     display:flex;
@@ -298,7 +305,9 @@ a{
 }
 
 
-/* SIDEBAR ARTICLE */
+/* =====================================================
+   SIDEBAR ARTICLE
+===================================================== */
 
 .sidebar-item{
     display:flex;
@@ -333,7 +342,9 @@ a{
 }
 
 
-/* MOST READ */
+/* =====================================================
+   MOST READ
+===================================================== */
 
 .most-read-item{
     display:flex;
@@ -369,7 +380,9 @@ a{
 }
 
 
-/* LOADING */
+/* =====================================================
+   LOADING
+===================================================== */
 
 .loading{
     grid-column:1 / -1;
@@ -381,7 +394,9 @@ a{
 }
 
 
-/* FOOTER */
+/* =====================================================
+   FOOTER
+===================================================== */
 
 .site-footer{
     background:#111827;
@@ -436,7 +451,9 @@ a{
 }
 
 
-/* DARK MODE */
+/* =====================================================
+   DARK MODE
+===================================================== */
 
 body.dark-mode{
     background:#0b1120;
@@ -471,7 +488,9 @@ body.dark-mode .most-read-item{
 }
 
 
-/* TABLET */
+/* =====================================================
+   TABLET
+===================================================== */
 
 @media(min-width:601px) and (max-width:1100px){
 
@@ -494,8 +513,6 @@ body.dark-mode .most-read-item{
 
 /* =====================================================
    MOBILE
-   ONLY MOBILE CARD LAYOUT CHANGED
-   TEXT LEFT + IMAGE RIGHT
 ===================================================== */
 
 @media(max-width:600px){
@@ -506,11 +523,6 @@ body.dark-mode .most-read-item{
 
     .logo{
         font-size:22px;
-    }
-
-    .home-btn{
-        padding:6px 11px;
-        font-size:13px;
     }
 
     .nav-inner a{
@@ -546,85 +558,48 @@ body.dark-mode .most-read-item{
         display:block;
     }
 
-
-    /* =========================================
-       MOBILE NEWS GRID
-       ONE CARD PER ROW
-    ========================================= */
-
     .movies-grid{
         grid-template-columns:1fr;
         gap:8px;
     }
 
 
-    /* =========================================
-       MOBILE NEWS CARD
-       TEXT = LEFT
-       IMAGE = RIGHT
-    ========================================= */
+    /* MOBILE CARD */
 
     .movie-card{
         display:flex;
-
         flex-direction:row-reverse;
-
         align-items:stretch;
-
         width:100%;
-
         min-height:92px;
-
         border-radius:6px;
     }
 
-
-    /* RIGHT SIDE IMAGE */
-
     .movie-card img{
         order:1;
-
         width:115px;
         min-width:115px;
-
         height:92px;
-
         aspect-ratio:auto;
-
         object-fit:cover;
-
         flex-shrink:0;
     }
 
-
-    /* LEFT SIDE TEXT */
-
     .movie-card-content{
         order:2;
-
         width:calc(100% - 115px);
-
         min-width:0;
-
         padding:9px 10px;
-
         display:flex;
-
         align-items:center;
-
         justify-content:center;
     }
 
-
     .movie-card-title{
         margin:0;
-
         width:100%;
-
         font-size:13px;
-
         line-height:1.45;
-
         -webkit-line-clamp:4;
     }
 
@@ -678,7 +653,9 @@ body.dark-mode .most-read-item{
 }
 
 
-/* SMALL MOBILE */
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
 
 @media(max-width:380px){
 
@@ -718,6 +695,10 @@ body.dark-mode .most-read-item{
 <body>
 
 
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
 <header class="top-header">
 
     <div class="header-inner">
@@ -726,26 +707,29 @@ body.dark-mode .most-read-item{
             BS <span>360</span> NEWS
         </div>
 
-       
     </div>
 
 </header>
 
+
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
 
 <nav class="nav-bar">
 
     <div class="nav-inner">
 
         <a href="index.html">
-            హోమ్ 
+            హోమ్
         </a>
 
         <a href="MOVIES.html">
-            మూవీస్ 
+            మూవీస్
         </a>
 
         <a href="SPORTS.html">
-            స్పోర్ట్స్ 
+            స్పోర్ట్స్
         </a>
 
         <a href="AP&TS.html">
@@ -753,13 +737,17 @@ body.dark-mode .most-read-item{
         </a>
 
         <a href="business.html" class="active">
-            బిజినెస్ 
+            బిజినెస్
         </a>
 
     </div>
 
 </nav>
 
+
+<!-- =====================================================
+     BREAKING NEWS
+===================================================== -->
 
 <div class="breaking">
 
@@ -774,10 +762,15 @@ body.dark-mode .most-read-item{
 </div>
 
 
+<!-- =====================================================
+     PAGE
+===================================================== -->
+
 <main class="page">
 
     <div class="page-title">
-     ALL  Business News
+        బిజినెస్ 
+     
     </div>
 
 
@@ -787,9 +780,10 @@ body.dark-mode .most-read-item{
         <div class="movies-main">
 
 
-            <!-- =====================================================
-                 DIRECT BUSINESS ARTICLES
-            ====================================================== -->
+            <!-- =================================================
+                 LOCAL BUSINESS SOURCE
+                 THESE ARTICLES WILL SHOW DIRECTLY
+            ================================================== -->
 
             <div id="localBusinessSource" hidden>
 
@@ -1008,19 +1002,49 @@ body.dark-mode .most-read-item{
             </div>
 
 
-     
-
-            <!-- MOVIES -->
+            <!-- =================================================
+                 BUSINESS ARTICLES
+            ================================================== -->
 
             <section class="section">
 
                 <div class="section-head">
 
                     <h2>
-                        <span>LATEST</span> Movies
+                        <span>బిజినెస్</span>  న్యూస్ 
                     </h2>
 
                 </div>
+
+
+                <div
+                    id="businessGrid"
+                    class="movies-grid"
+                >
+
+                    <div class="loading">
+                        Business News Loading...
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 MOVIES
+            ================================================== -->
+
+            <section class="section">
+
+                <div class="section-head">
+
+                    <h2>
+                        <span>మూవీస్ </span> న్యూస్
+                    </h2>
+
+                </div>
+
 
                 <div
                     id="moviesGrid"
@@ -1036,17 +1060,20 @@ body.dark-mode .most-read-item{
             </section>
 
 
-            <!-- SPORTS -->
+            <!-- =================================================
+                 SPORTS
+            ================================================== -->
 
             <section class="section">
 
                 <div class="section-head">
 
                     <h2>
-                        <span>LATEST</span> Sports
+                        <span>స్పోర్ట్స్</span> న్యూస్
                     </h2>
 
                 </div>
+
 
                 <div
                     id="sportsGrid"
@@ -1062,17 +1089,20 @@ body.dark-mode .most-read-item{
             </section>
 
 
-            <!-- AP & TS -->
+            <!-- =================================================
+                 AP & TS
+            ================================================== -->
 
             <section class="section">
 
                 <div class="section-head">
 
                     <h2>
-                        <span>AP & TS</span> News
+                        <span> ఏపీ & టీస్ </span> న్యూస్
                     </h2>
 
                 </div>
+
 
                 <div
                     id="aptsGrid"
@@ -1091,7 +1121,9 @@ body.dark-mode .most-read-item{
         </div>
 
 
-        <!-- SIDEBAR -->
+        <!-- =====================================================
+             SIDEBAR
+        ====================================================== -->
 
         <aside class="article-sidebar">
 
@@ -1099,10 +1131,16 @@ body.dark-mode .most-read-item{
             <div class="sidebar-box">
 
                 <div class="sidebar-title">
-                    Most Read
+                    మోస్ట్ రీడ్ న్యూస్
                 </div>
 
-                <div id="mostReadSidebar"></div>
+                <div id="mostReadSidebar">
+
+                    <div class="loading">
+                        Loading...
+                    </div>
+
+                </div>
 
             </div>
 
@@ -1110,10 +1148,16 @@ body.dark-mode .most-read-item{
             <div class="sidebar-box">
 
                 <div class="sidebar-title">
-                    Trending News
+                    ట్రేండింగ్ న్యూస్ 
                 </div>
 
-                <div id="trendingSidebar"></div>
+                <div id="trendingSidebar">
+
+                    <div class="loading">
+                        Loading...
+                    </div>
+
+                </div>
 
             </div>
 
@@ -1121,10 +1165,16 @@ body.dark-mode .most-read-item{
             <div class="sidebar-box">
 
                 <div class="sidebar-title">
-                    Latest News
+                    లేటెస్ట్ న్యూస్ 
                 </div>
 
-                <div id="latestSidebar"></div>
+                <div id="latestSidebar">
+
+                    <div class="loading">
+                        Loading...
+                    </div>
+
+                </div>
 
             </div>
 
@@ -1137,6 +1187,10 @@ body.dark-mode .most-read-item{
 </main>
 
 
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
 <footer class="site-footer">
 
     <div class="footer-inner">
@@ -1147,6 +1201,7 @@ body.dark-mode .most-read-item{
             <h3>
                 ముఖ్యమైన లింకులు
             </h3>
+
 
             <div class="footer-links">
 
@@ -1209,578 +1264,683 @@ body.dark-mode .most-read-item{
 
 document.addEventListener("DOMContentLoaded", function(){
 
-    "use strict";
+"use strict";
 
 
-    /* =====================================================
-       HELPERS
-    ===================================================== */
+/* =====================================================
+   CLEAN TEXT
+===================================================== */
 
-    function cleanText(text){
+function cleanText(text){
 
-        return String(text || "")
-            .replace(/\s+/g," ")
-            .trim();
+    return String(text || "")
+        .replace(/\s+/g," ")
+        .trim();
 
+}
+
+
+/* =====================================================
+   GET ARTICLES
+===================================================== */
+
+function getArticles(source){
+
+    if(!source){
+        return [];
     }
 
-
-    /* =====================================================
-       GET ARTICLES
-    ===================================================== */
-
-    function getArticles(source){
-
-        if(!source){
-            return [];
-        }
-
-        return Array.from(
-            source.querySelectorAll(".news-item.post")
-        )
-
-        .map(function(item){
-
-            const image =
-                item.querySelector("img");
-
-            const title =
-                item.querySelector(".news-content p") ||
-                item.querySelector(".news-content h3") ||
-                item.querySelector("p");
-
-            return {
-
-                title:
-                    cleanText(
-                        title
-                            ? title.textContent
-                            : ""
-                    ),
-
-                image:
-                    image
-                        ? image.getAttribute("src") || ""
-                        : "",
-
-                alt:
-                    image
-                        ? image.getAttribute("alt") || ""
-                        : "",
-
-                url:
-                    item.getAttribute("data-url") || ""
-
-            };
-
-        })
-
-        .filter(function(article){
-
-            return (
-                article.title &&
-                article.image &&
-                article.url
-            );
-
-        });
-
-    }
-
-
-    /* =====================================================
-       NORMAL CARD
-    ===================================================== */
-
-    function cardHTML(article){
-
-        return `
-
-            <a
-                href="${article.url}"
-                class="movie-card"
-            >
-
-                <img
-                    src="${article.image}"
-                    alt="${article.alt || article.title}"
-                    loading="lazy"
-                >
-
-                <div class="movie-card-content">
-
-                    <h3 class="movie-card-title">
-                        ${article.title}
-                    </h3>
-
-                </div>
-
-            </a>
-
-        `;
-
-    }
-
-
-    /* =====================================================
-       SIDEBAR
-    ===================================================== */
-
-    function sidebarHTML(article){
-
-        return `
-
-            <a
-                href="${article.url}"
-                class="sidebar-item"
-            >
-
-                <img
-                    src="${article.image}"
-                    alt="${article.alt || article.title}"
-                    loading="lazy"
-                >
-
-                <div class="sidebar-item-title">
-                    ${article.title}
-                </div>
-
-            </a>
-
-        `;
-
-    }
-
-
-    /* =====================================================
-       MOST READ
-    ===================================================== */
-
-    function mostReadHTML(article){
-
-        return `
-
-            <a
-                href="${article.url}"
-                class="most-read-item"
-            >
-
-                <img
-                    src="${article.image}"
-                    alt="${article.alt || article.title}"
-                    loading="lazy"
-                >
-
-                <div class="most-read-title">
-                    ${article.title}
-                </div>
-
-            </a>
-
-        `;
-
-    }
-
-
-    /* =====================================================
-       SHOW
-    ===================================================== */
-
-    function show(id,html){
-
-        const element =
-            document.getElementById(id);
-
-        if(element){
-            element.innerHTML = html;
-        }
-
-    }
-
-
-    /* =====================================================
-       LOAD INDEX
-    ===================================================== */
-
-    fetch(
-        "index.html?v=" + Date.now(),
-        {
-            cache:"no-store"
-        }
+    return Array.from(
+        source.querySelectorAll(".news-item.post")
     )
 
-    .then(function(response){
+    .map(function(item){
 
-        if(!response.ok){
+        const image =
+            item.querySelector("img");
 
-            throw new Error(
-                "index.html load failed"
-            );
+        const title =
+            item.querySelector(".news-content p") ||
+            item.querySelector(".news-content h3") ||
+            item.querySelector("p");
 
-        }
+        return {
 
-        return response.text();
+            title:
+                cleanText(
+                    title
+                        ? title.textContent
+                        : ""
+                ),
+
+            image:
+                image
+                    ? image.getAttribute("src") || ""
+                    : "",
+
+            alt:
+                image
+                    ? image.getAttribute("alt") || ""
+                    : "",
+
+            url:
+                item.getAttribute("data-url") || ""
+
+        };
 
     })
 
-
-    .then(function(html){
-
-        const parser =
-            new DOMParser();
-
-        const home =
-            parser.parseFromString(
-                html,
-                "text/html"
-            );
-
-
-        /* =================================================
-           HOME MOVIES
-        ================================================= */
-
-        const movies =
-            getArticles(
-                home.getElementById(
-                    "entertainmentSource"
-                )
-            );
-
-
-        /* =================================================
-           HOME SPORTS
-        ================================================= */
-
-        const sports =
-            getArticles(
-                home.getElementById(
-                    "sportsSource"
-                )
-            );
-
-
-        /* =================================================
-           HOME AP & TS
-        ================================================= */
-
-        const apts =
-            getArticles(
-                home.getElementById(
-                    "aptsSource"
-                )
-            );
-
-
-        /* =================================================
-           BUSINESS
-        ================================================= */
-
-        const indexBusiness =
-            getArticles(
-                home.getElementById(
-                    "businessSource"
-                )
-            );
-
-
-        const localBusiness =
-            getArticles(
-                document.getElementById(
-                    "localBusinessSource"
-                )
-            );
-
-
-        const business = [
-
-            ...localBusiness,
-            ...indexBusiness
-
-        ]
-
-        .filter(function(article,index,array){
-
-            return array.findIndex(function(item){
-
-                return item.url === article.url;
-
-            }) === index;
-
-        });
-
-
-        /* =================================================
-           LATEST
-        ================================================= */
-
-        const latest =
-            getArticles(
-                home.getElementById(
-                    "latestNewsSource"
-                )
-            );
-
-
-        /* =================================================
-           TRENDING
-        ================================================= */
-
-        const trending =
-            getArticles(
-                home.getElementById(
-                    "trendingSource"
-                )
-            );
-
-
-        /* =================================================
-           MOST READ
-        ================================================= */
-
-        const mostRead =
-            getArticles(
-                home.getElementById(
-                    "mostReadSource"
-                )
-            );
-
-
-        /* =================================================
-           BUSINESS
-        ================================================= */
-
-        show(
-
-            "businessGrid",
-
-            business
-                .map(cardHTML)
-                .join("")
-
-        );
-
-
-        /* =================================================
-           MOVIES
-        ================================================= */
-
-        show(
-
-            "moviesGrid",
-
-            movies
-                .map(cardHTML)
-                .join("")
-
-        );
-
-
-        /* =================================================
-           SPORTS
-        ================================================= */
-
-        show(
-
-            "sportsGrid",
-
-            sports
-                .map(cardHTML)
-                .join("")
-
-        );
-
-
-        /* =================================================
-           AP & TS
-        ================================================= */
-
-        show(
-
-            "aptsGrid",
-
-            apts
-                .map(cardHTML)
-                .join("")
-
-        );
-
-
-        /* =================================================
-           MOST READ
-        ================================================= */
-
-        show(
-
-            "mostReadSidebar",
-
-            mostRead
-                .slice(0,8)
-                .map(mostReadHTML)
-                .join("")
-
-        );
-
-
-        /* =================================================
-           TRENDING
-        ================================================= */
-
-        show(
-
-            "trendingSidebar",
-
-            trending
-                .slice(0,8)
-                .map(sidebarHTML)
-                .join("")
-
-        );
-
-
-        /* =================================================
-           LATEST
-        ================================================= */
-
-        show(
-
-            "latestSidebar",
-
-            latest
-                .slice(0,8)
-                .map(sidebarHTML)
-                .join("")
-
-        );
-
-
-        /* =================================================
-           CONSOLE
-        ================================================= */
-
-        console.log(
-            "================================"
-        );
-
-        console.log(
-            "BS360 BUSINESS PAGE LOADED"
-        );
-
-        console.log(
-            "Local Business:",
-            localBusiness.length
-        );
-
-        console.log(
-            "Business:",
-            business.length
-        );
-
-        console.log(
-            "Movies:",
-            movies.length
-        );
-
-        console.log(
-            "Sports:",
-            sports.length
-        );
-
-        console.log(
-            "AP & TS:",
-            apts.length
-        );
-
-        console.log(
-            "Latest:",
-            latest.length
-        );
-
-        console.log(
-            "Trending:",
-            trending.length
-        );
-
-        console.log(
-            "Most Read:",
-            mostRead.length
-        );
-
-        console.log(
-            "================================"
-        );
-
-    })
-
-
-    .catch(function(error){
-
-        console.error(
-            "BS360 BUSINESS ERROR:",
-            error
-        );
-
-
-        show(
-            "businessGrid",
-            `
-                <div class="loading">
-                    Business News load కాలేదు.
-                </div>
-            `
-        );
-
-
-        show(
-            "moviesGrid",
-            `
-                <div class="loading">
-                    Movies News load కాలేదు.
-                </div>
-            `
-        );
-
-
-        show(
-            "sportsGrid",
-            `
-                <div class="loading">
-                    Sports News load కాలేదు.
-                </div>
-            `
-        );
-
-
-        show(
-            "aptsGrid",
-            `
-                <div class="loading">
-                    AP & TS News load కాలేదు.
-                </div>
-            `
+    .filter(function(article){
+
+        return (
+            article.title &&
+            article.image &&
+            article.url
         );
 
     });
 
+}
 
-    /* =====================================================
-       DISABLE IMAGE DRAGGING
-    ===================================================== */
 
-    document
-        .querySelectorAll("img")
-        .forEach(function(img){
+/* =====================================================
+   REMOVE DUPLICATES
+===================================================== */
 
-            img.addEventListener(
-                "dragstart",
-                function(e){
+function uniqueArticles(articles){
 
-                    e.preventDefault();
+    const seen = new Set();
 
-                }
-            );
+    return articles.filter(function(article){
 
-        });
+        if(seen.has(article.url)){
+            return false;
+        }
+
+        seen.add(article.url);
+
+        return true;
+
+    });
+
+}
+
+
+/* =====================================================
+   CARD HTML
+===================================================== */
+
+function cardHTML(article){
+
+    return `
+
+        <a
+            href="${article.url}"
+            class="movie-card"
+        >
+
+            <img
+                src="${article.image}"
+                alt="${article.alt || article.title}"
+                loading="lazy"
+                draggable="false"
+            >
+
+            <div class="movie-card-content">
+
+                <h3 class="movie-card-title">
+                    ${article.title}
+                </h3>
+
+            </div>
+
+        </a>
+
+    `;
+
+}
+
+
+/* =====================================================
+   SIDEBAR HTML
+===================================================== */
+
+function sidebarHTML(article){
+
+    return `
+
+        <a
+            href="${article.url}"
+            class="sidebar-item"
+        >
+
+            <img
+                src="${article.image}"
+                alt="${article.alt || article.title}"
+                loading="lazy"
+                draggable="false"
+            >
+
+            <div class="sidebar-item-title">
+                ${article.title}
+            </div>
+
+        </a>
+
+    `;
+
+}
+
+
+/* =====================================================
+   MOST READ HTML
+===================================================== */
+
+function mostReadHTML(article){
+
+    return `
+
+        <a
+            href="${article.url}"
+            class="most-read-item"
+        >
+
+            <img
+                src="${article.image}"
+                alt="${article.alt || article.title}"
+                loading="lazy"
+                draggable="false"
+            >
+
+            <div class="most-read-title">
+                ${article.title}
+            </div>
+
+        </a>
+
+    `;
+
+}
+
+
+/* =====================================================
+   SHOW
+===================================================== */
+
+function show(id,html){
+
+    const element =
+        document.getElementById(id);
+
+    if(element){
+
+        element.innerHTML =
+            html || `
+                <div class="loading">
+                    Articles లేవు.
+                </div>
+            `;
+
+    }
+
+}
+
+
+/* =====================================================
+   LOCAL BUSINESS ARTICLES
+   IMPORTANT:
+   THESE SHOW WITHOUT index.html
+===================================================== */
+
+const localBusiness =
+    getArticles(
+        document.getElementById(
+            "localBusinessSource"
+        )
+    );
+
+
+/* =====================================================
+   FIRST SHOW LOCAL BUSINESS
+===================================================== */
+
+show(
+
+    "businessGrid",
+
+    localBusiness
+        .map(cardHTML)
+        .join("")
+
+);
+
+
+/* =====================================================
+   LOAD INDEX.HTML
+===================================================== */
+
+fetch(
+    "index.html?v=" + Date.now(),
+    {
+        cache:"no-store"
+    }
+)
+
+.then(function(response){
+
+    if(!response.ok){
+
+        throw new Error(
+            "index.html load failed: " +
+            response.status
+        );
+
+    }
+
+    return response.text();
+
+})
+
+
+.then(function(html){
+
+    const parser =
+        new DOMParser();
+
+    const home =
+        parser.parseFromString(
+            html,
+            "text/html"
+        );
+
+
+    /* =================================================
+       MOVIES
+    ================================================= */
+
+    const movies =
+        getArticles(
+            home.getElementById(
+                "entertainmentSource"
+            )
+        );
+
+
+    /* =================================================
+       SPORTS
+    ================================================= */
+
+    const sports =
+        getArticles(
+            home.getElementById(
+                "sportsSource"
+            )
+        );
+
+
+    /* =================================================
+       AP & TS
+    ================================================= */
+
+    const apts =
+        getArticles(
+            home.getElementById(
+                "aptsSource"
+            )
+        );
+
+
+    /* =================================================
+       BUSINESS FROM INDEX
+    ================================================= */
+
+    const indexBusiness =
+        getArticles(
+            home.getElementById(
+                "businessSource"
+            )
+        );
+
+
+    /* =================================================
+       COMBINE BUSINESS
+    ================================================= */
+
+    const business =
+        uniqueArticles([
+
+            ...localBusiness,
+            ...indexBusiness
+
+        ]);
+
+
+    /* =================================================
+       LATEST
+    ================================================= */
+
+    const latest =
+        getArticles(
+            home.getElementById(
+                "latestNewsSource"
+            )
+        );
+
+
+    /* =================================================
+       TRENDING
+    ================================================= */
+
+    const trending =
+        getArticles(
+            home.getElementById(
+                "trendingSource"
+            )
+        );
+
+
+    /* =================================================
+       MOST READ
+    ================================================= */
+
+    const mostRead =
+        getArticles(
+            home.getElementById(
+                "mostReadSource"
+            )
+        );
+
+
+    /* =================================================
+       SHOW BUSINESS
+    ================================================= */
+
+    show(
+
+        "businessGrid",
+
+        business
+            .map(cardHTML)
+            .join("")
+
+    );
+
+
+    /* =================================================
+       SHOW MOVIES
+    ================================================= */
+
+    show(
+
+        "moviesGrid",
+
+        movies
+            .map(cardHTML)
+            .join("")
+
+    );
+
+
+    /* =================================================
+       SHOW SPORTS
+    ================================================= */
+
+    show(
+
+        "sportsGrid",
+
+        sports
+            .map(cardHTML)
+            .join("")
+
+    );
+
+
+    /* =================================================
+       SHOW AP & TS
+    ================================================= */
+
+    show(
+
+        "aptsGrid",
+
+        apts
+            .map(cardHTML)
+            .join("")
+
+    );
+
+
+    /* =================================================
+       MOST READ
+    ================================================= */
+
+    show(
+
+        "mostReadSidebar",
+
+        mostRead
+            .slice(0,8)
+            .map(mostReadHTML)
+            .join("")
+
+    );
+
+
+    /* =================================================
+       TRENDING
+    ================================================= */
+
+    show(
+
+        "trendingSidebar",
+
+        trending
+            .slice(0,8)
+            .map(sidebarHTML)
+            .join("")
+
+    );
+
+
+    /* =================================================
+       LATEST
+    ================================================= */
+
+    show(
+
+        "latestSidebar",
+
+        latest
+            .slice(0,8)
+            .map(sidebarHTML)
+            .join("")
+
+    );
+
+
+    /* =================================================
+       DEBUG
+    ================================================= */
+
+    console.log(
+        "================================"
+    );
+
+    console.log(
+        "BS360 BUSINESS PAGE LOADED"
+    );
+
+    console.log(
+        "Local Business:",
+        localBusiness.length
+    );
+
+    console.log(
+        "Index Business:",
+        indexBusiness.length
+    );
+
+    console.log(
+        "Total Business:",
+        business.length
+    );
+
+    console.log(
+        "Movies:",
+        movies.length
+    );
+
+    console.log(
+        "Sports:",
+        sports.length
+    );
+
+    console.log(
+        "AP & TS:",
+        apts.length
+    );
+
+    console.log(
+        "Latest:",
+        latest.length
+    );
+
+    console.log(
+        "Trending:",
+        trending.length
+    );
+
+    console.log(
+        "Most Read:",
+        mostRead.length
+    );
+
+    console.log(
+        "================================"
+    );
+
+})
+
+
+/* =====================================================
+   FETCH ERROR
+===================================================== */
+
+.catch(function(error){
+
+    console.error(
+        "BS360 BUSINESS ERROR:",
+        error
+    );
+
+
+    /*
+       IMPORTANT:
+       BUSINESS ARTICLES ARE NOT REMOVED.
+
+       localBusiness already rendered above.
+    */
+
+
+    show(
+
+        "moviesGrid",
+
+        `
+            <div class="loading">
+                Movies News load కాలేదు.
+            </div>
+        `
+
+    );
+
+
+    show(
+
+        "sportsGrid",
+
+        `
+            <div class="loading">
+                Sports News load కాలేదు.
+            </div>
+        `
+
+    );
+
+
+    show(
+
+        "aptsGrid",
+
+        `
+            <div class="loading">
+                AP & TS News load కాలేదు.
+            </div>
+        `
+
+    );
+
+
+    show(
+
+        "mostReadSidebar",
+
+        `
+            <div class="loading">
+                Latest data load కాలేదు.
+            </div>
+        `
+
+    );
+
+
+    show(
+
+        "trendingSidebar",
+
+        `
+            <div class="loading">
+                Trending data load కాలేదు.
+            </div>
+        `
+
+    );
+
+
+    show(
+
+        "latestSidebar",
+
+        `
+            <div class="loading">
+                Latest data load కాలేదు.
+            </div>
+        `
+
+    );
+
+});
+
+
+/* =====================================================
+   DISABLE IMAGE DRAGGING
+===================================================== */
+
+document
+    .querySelectorAll("img")
+    .forEach(function(img){
+
+        img.addEventListener(
+            "dragstart",
+            function(e){
+
+                e.preventDefault();
+
+            }
+        );
+
+    });
 
 });
 
