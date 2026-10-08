@@ -492,7 +492,11 @@ body.dark-mode .most-read-item{
 }
 
 
-/* MOBILE */
+/* =====================================================
+   MOBILE
+   ONLY MOBILE CARD LAYOUT CHANGED
+   TEXT LEFT + IMAGE RIGHT
+===================================================== */
 
 @media(max-width:600px){
 
@@ -542,24 +546,90 @@ body.dark-mode .most-read-item{
         display:block;
     }
 
+
+    /* =========================================
+       MOBILE NEWS GRID
+       ONE CARD PER ROW
+    ========================================= */
+
     .movies-grid{
-        grid-template-columns:repeat(3,minmax(0,1fr));
-        gap:7px;
+        grid-template-columns:1fr;
+        gap:8px;
     }
+
+
+    /* =========================================
+       MOBILE NEWS CARD
+       TEXT = LEFT
+       IMAGE = RIGHT
+    ========================================= */
 
     .movie-card{
-        border-radius:5px;
+        display:flex;
+
+        flex-direction:row-reverse;
+
+        align-items:stretch;
+
+        width:100%;
+
+        min-height:92px;
+
+        border-radius:6px;
     }
+
+
+    /* RIGHT SIDE IMAGE */
+
+    .movie-card img{
+        order:1;
+
+        width:115px;
+        min-width:115px;
+
+        height:92px;
+
+        aspect-ratio:auto;
+
+        object-fit:cover;
+
+        flex-shrink:0;
+    }
+
+
+    /* LEFT SIDE TEXT */
 
     .movie-card-content{
-        padding:6px;
+        order:2;
+
+        width:calc(100% - 115px);
+
+        min-width:0;
+
+        padding:9px 10px;
+
+        display:flex;
+
+        align-items:center;
+
+        justify-content:center;
     }
 
+
     .movie-card-title{
-        font-size:10px;
-        line-height:1.35;
+        margin:0;
+
+        width:100%;
+
+        font-size:13px;
+
+        line-height:1.45;
+
         -webkit-line-clamp:4;
     }
+
+
+    /* SIDEBAR */
 
     .article-sidebar{
         margin-top:22px;
@@ -592,6 +662,9 @@ body.dark-mode .most-read-item{
         font-size:13px;
     }
 
+
+    /* FOOTER */
+
     .footer-inner{
         grid-template-columns:1fr;
         gap:22px;
@@ -610,17 +683,29 @@ body.dark-mode .most-read-item{
 @media(max-width:380px){
 
     .movies-grid{
-        grid-template-columns:repeat(3,minmax(0,1fr));
-        gap:5px;
+        grid-template-columns:1fr;
+        gap:7px;
+    }
+
+    .movie-card{
+        min-height:86px;
+    }
+
+    .movie-card img{
+        width:105px;
+        min-width:105px;
+        height:86px;
     }
 
     .movie-card-content{
-        padding:5px;
+        width:calc(100% - 105px);
+        padding:8px;
     }
 
     .movie-card-title{
-        font-size:9px;
-        line-height:1.3;
+        font-size:12px;
+        line-height:1.4;
+        -webkit-line-clamp:4;
     }
 
 }
@@ -641,10 +726,7 @@ body.dark-mode .most-read-item{
             BS <span>360</span> NEWS
         </div>
 
-        <a href="index.html" class="home-btn">
-            Home
-        </a>
-
+       
     </div>
 
 </header>
@@ -695,7 +777,7 @@ body.dark-mode .most-read-item{
 <main class="page">
 
     <div class="page-title">
-        Business News
+     ALL  Business News
     </div>
 
 
@@ -707,176 +789,199 @@ body.dark-mode .most-read-item{
 
             <!-- =====================================================
                  DIRECT BUSINESS ARTICLES
-
-                 >>>>>> 2 ARTICLES IKKADA PETTALI <<<<<<
-
-                 Article 1
-                 Article 2
             ====================================================== -->
 
             <div id="localBusinessSource" hidden>
 
 
-                <!-- =========================
-                     BUSINESS ARTICLE 1
-                ========================== -->
-                <article class="news-item post" data-url="china-india-private-investment/">
+                <article
+                    class="news-item post"
+                    data-url="china-india-private-investment/"
+                >
 
-    <img
-        src="china-india-private-investment.png"
-        alt="చైనాకు పోటీగా భారత్.. FY27లో ప్రైవేట్ పెట్టుబడులు ₹3.2 లక్షల కోట్లకు?"
-    >
+                    <img
+                        src="china-india-private-investment.png"
+                        alt="చైనాకు పోటీగా భారత్.. FY27లో ప్రైవేట్ పెట్టుబడులు ₹3.2 లక్షల కోట్లకు?"
+                    >
 
-    <div class="news-content">
+                    <div class="news-content">
 
-        <p>
-            చైనాకు పోటీగా భారత్.. FY27లో ప్రైవేట్ పెట్టుబడులు ₹3.2 లక్షల కోట్లకు?
-        </p>
+                        <p>
+                            చైనాకు పోటీగా భారత్.. FY27లో ప్రైవేట్ పెట్టుబడులు ₹3.2 లక్షల కోట్లకు?
+                        </p>
 
-    </div>
+                    </div>
 
-</article>
-   
-    <article class="news-item post" data-url="phonepe-upi-mdr-expansion/">
-
-    <img
-        src="phonepe-upi-mdr-expansion.png"
-        alt="UPIలో MDR మార్పులు.. గ్రామీణ మార్కెట్‌పై PhonePe భారీ ఫోకస్"
-    >
-
-    <div class="news-content">
-
-        <p>
-            UPIలో MDR మార్పులు.. గ్రామీణ మార్కెట్‌పై PhonePe భారీ ఫోకస్
-        </p>
-
-    </div>
-
-</article>
-    
-<article class="news-item post" data-url="containe-technologies-rights-issue/">
-
-    <img
-        src="containe-technologies-rights-issue.png"
-        alt="కంటెయిన్ టెక్నాలజీస్ రైట్స్ ఇష్యూ.. రూ.20.98 కోట్ల సమీకరణకు నేడు చివరి రోజు"
-    >
-
-    <div class="news-content">
-
-        <p>
-            కంటెయిన్ టెక్నాలజీస్ రైట్స్ ఇష్యూ.. రూ.20.98 కోట్ల సమీకరణకు నేడు చివరి రోజు
-        </p>
-
-    </div>
-
-</article>
-    
-
-<article class="news-item post" data-url="nirmala-sitharaman-economy-growth/">
-
-    <img
-        src="nirmala-sitharaman-economy-growth.jpg"
-        alt="దాదాపు 8 శాతం వృద్ధి దిశగా భారత ఆర్థిక వ్యవస్థ.. నిర్మలా సీతారామన్ కీలక వ్యాఖ్యలు"
-    >
-
-    <div class="news-content">
-
-        <p>
-            దాదాపు 8 శాతం వృద్ధి దిశగా భారత ఆర్థిక వ్యవస్థ.. నిర్మలా సీతారామన్ కీలక వ్యాఖ్యలు
-        </p>
-
-    </div>
-
-</article>
-    
- <article class="news-item post" data-url="blog.html">
-
-    <img
-        src="blog.jpg"
-        alt="వడ్డీ రేట్లు పెరిగే అవకాశాలు"
-    >
-
-    <div class="news-content">
-
-        <p>
-            వడ్డీ రేట్లు పెరిగే అవకాశాలు.. బాండ్ల ద్వారా భారీగా నిధులు సమీకరిస్తున్న భారత కంపెనీలు
-        </p>
-
-    </div>
-
-</article>
-    
-    
-    <article class="news-item post" data-url="nifty.html">
-
-    <img
-        src="nifty.jpg"
-        alt=" RVNL, Lenskart, Mazagon Dock, Maruti Suzuki, Nestlé Indiaపై దృష్టి"
-    >
-
-    <div class="news-content">
-
-        <p>
-            ఈరోజు మార్కెట్‌లో ఫోకస్‌లో ఉన్న షేర్లు.. RVNL, Lenskart, Mazagon Dock, Maruti Suzuki, Nestlé Indiaపై దృష్టి
-        </p>
-
-    </div>
-
-</article>
+                </article>
 
 
-    <article class="news-item post" data-url="gold9.html">
+                <article
+                    class="news-item post"
+                    data-url="phonepe-upi-mdr-expansion/"
+                >
 
-    <img
-        src="gold9.jpg"
-        alt="
-            బంగారం ధరల్లో స్వల్ప తగ్గుదల.."
-    >
+                    <img
+                        src="phonepe-upi-mdr-expansion.png"
+                        alt="UPIలో MDR మార్పులు.. గ్రామీణ మార్కెట్‌పై PhonePe భారీ ఫోకస్"
+                    >
 
-    <div class="news-content">
+                    <div class="news-content">
 
-        <p>
-            బంగారం ధరల్లో స్వల్ప తగ్గుదల.. మార్కెట్‌లో కొనసాగుతున్న హెచ్చుతగ్గులు 
-        </p>
+                        <p>
+                            UPIలో MDR మార్పులు.. గ్రామీణ మార్కెట్‌పై PhonePe భారీ ఫోకస్
+                        </p>
 
-    </div>
+                    </div>
 
-</article>
+                </article>
 
-    
-<article class="news-item post" data-url="tata.html">
 
-    <img
-        src="tata.jpg"
-        alt="టాటా గ్రూప్‌లో కీలక పరిణామం."
-    >
+                <article
+                    class="news-item post"
+                    data-url="containe-technologies-rights-issue/"
+                >
 
-    <div class="news-content">
+                    <img
+                        src="containe-technologies-rights-issue.png"
+                        alt="కంటెయిన్ టెక్నాలజీస్ రైట్స్ ఇష్యూ.. రూ.20.98 కోట్ల సమీకరణకు నేడు చివరి రోజు"
+                    >
 
-        <p>
-           టాటా గ్రూప్‌లో కీలక పరిణామం.. చంద్రశేఖరన్ పునర్నియామకంపై టాటా ట్రస్ట్స్ అభ్యంతరం 
-        </p>
+                    <div class="news-content">
 
-    </div>
+                        <p>
+                            కంటెయిన్ టెక్నాలజీస్ రైట్స్ ఇష్యూ.. రూ.20.98 కోట్ల సమీకరణకు నేడు చివరి రోజు
+                        </p>
 
-</article>
+                    </div>
 
-<article class="news-item post" data-url="ag.html">
+                </article>
 
-    <img
-        src="ag.png"
-        alt="భారత ఆర్థిక వ్యవస్థ GDP వృద్ధి"
-    >
 
-    <div class="news-content">
+                <article
+                    class="news-item post"
+                    data-url="nirmala-sitharaman-economy-growth/"
+                >
 
-        <p>
-            భారత ఆర్థిక వ్యవస్థకు బలం.. తొలి త్రైమాసికంలో 7.8 శాతం GDP వృద్ధి
-        </p>
+                    <img
+                        src="nirmala-sitharaman-economy-growth.jpg"
+                        alt="దాదాపు 8 శాతం వృద్ధి దిశగా భారత ఆర్థిక వ్యవస్థ.. నిర్మలా సీతారామన్ కీలక వ్యాఖ్యలు"
+                    >
 
-    </div>
+                    <div class="news-content">
 
-</article>
+                        <p>
+                            దాదాపు 8 శాతం వృద్ధి దిశగా భారత ఆర్థిక వ్యవస్థ.. నిర్మలా సీతారామన్ కీలక వ్యాఖ్యలు
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article
+                    class="news-item post"
+                    data-url="blog.html"
+                >
+
+                    <img
+                        src="blog.jpg"
+                        alt="వడ్డీ రేట్లు పెరిగే అవకాశాలు"
+                    >
+
+                    <div class="news-content">
+
+                        <p>
+                            వడ్డీ రేట్లు పెరిగే అవకాశాలు.. బాండ్ల ద్వారా భారీగా నిధులు సమీకరిస్తున్న భారత కంపెనీలు
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article
+                    class="news-item post"
+                    data-url="nifty.html"
+                >
+
+                    <img
+                        src="nifty.jpg"
+                        alt="RVNL, Lenskart, Mazagon Dock, Maruti Suzuki, Nestlé Indiaపై దృష్టి"
+                    >
+
+                    <div class="news-content">
+
+                        <p>
+                            ఈరోజు మార్కెట్‌లో ఫోకస్‌లో ఉన్న షేర్లు.. RVNL, Lenskart, Mazagon Dock, Maruti Suzuki, Nestlé Indiaపై దృష్టి
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article
+                    class="news-item post"
+                    data-url="gold9.html"
+                >
+
+                    <img
+                        src="gold9.jpg"
+                        alt="బంగారం ధరల్లో స్వల్ప తగ్గుదల"
+                    >
+
+                    <div class="news-content">
+
+                        <p>
+                            బంగారం ధరల్లో స్వల్ప తగ్గుదల.. మార్కెట్‌లో కొనసాగుతున్న హెచ్చుతగ్గులు
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article
+                    class="news-item post"
+                    data-url="tata.html"
+                >
+
+                    <img
+                        src="tata.jpg"
+                        alt="టాటా గ్రూప్‌లో కీలక పరిణామం"
+                    >
+
+                    <div class="news-content">
+
+                        <p>
+                            టాటా గ్రూప్‌లో కీలక పరిణామం.. చంద్రశేఖరన్ పునర్నియామకంపై టాటా ట్రస్ట్స్ అభ్యంతరం
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article
+                    class="news-item post"
+                    data-url="ag.html"
+                >
+
+                    <img
+                        src="ag.png"
+                        alt="భారత ఆర్థిక వ్యవస్థ GDP వృద్ధి"
+                    >
+
+                    <div class="news-content">
+
+                        <p>
+                            భారత ఆర్థిక వ్యవస్థకు బలం.. తొలి త్రైమాసికంలో 7.8 శాతం GDP వృద్ధి
+                        </p>
+
+                    </div>
+
+                </article>
+
 
                 <article
                     class="news-item post"
@@ -886,13 +991,13 @@ body.dark-mode .most-read-item{
 
                     <img
                         src="america.png"
-                        alt="అమెరికా ఆంక్షలతో ఇరాన్‌కు భారీ దెబ్బ.."
+                        alt="అమెరికా ఆంక్షలతో ఇరాన్‌కు భారీ దెబ్బ"
                     >
 
                     <div class="news-content">
 
                         <p>
-                           అమెరికా ఆంక్షలతో ఇరాన్‌కు భారీ దెబ్బ.. 66% ద్రవ్యోల్బణం, 35% పడిపోయిన వాణిజ్యం!
+                            అమెరికా ఆంక్షలతో ఇరాన్‌కు భారీ దెబ్బ.. 66% ద్రవ్యోల్బణం, 35% పడిపోయిన వాణిజ్యం!
                         </p>
 
                     </div>
@@ -900,40 +1005,10 @@ body.dark-mode .most-read-item{
                 </article>
 
 
-                <!-- =========================
-                     BUSINESS ARTICLE 2
-                ========================== -->
-
-
-
             </div>
 
 
-            <!-- BUSINESS -->
-
-            <section class="section">
-
-                <div class="section-head">
-
-                    <h2>
-                        <span>ALL</span> BUSINESS
-                    </h2>
-
-                </div>
-
-                <div
-                    id="businessGrid"
-                    class="movies-grid"
-                >
-
-                    <div class="loading">
-                        Business News Loading...
-                    </div>
-
-                </div>
-
-            </section>
-
+     
 
             <!-- MOVIES -->
 
@@ -1399,11 +1474,6 @@ document.addEventListener("DOMContentLoaded", function(){
 
         /* =================================================
            BUSINESS
-
-           LOCAL 2 ARTICLES FIRST
-           THEN INDEX BUSINESS ARTICLES
-
-           DUPLICATE URL REMOVE
         ================================================= */
 
         const indexBusiness =
