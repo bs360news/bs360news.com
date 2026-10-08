@@ -542,24 +542,57 @@ body.dark-mode .most-read-item{
         display:block;
     }
 
+
+    /* MOBILE NEWS CARDS */
+
     .movies-grid{
-        grid-template-columns:repeat(3,minmax(0,1fr));
-        gap:7px;
+        grid-template-columns:1fr;
+        gap:8px;
     }
 
     .movie-card{
-        border-radius:5px;
+        display:flex;
+        flex-direction:row-reverse;
+        align-items:stretch;
+        width:100%;
+        min-height:92px;
+        border-radius:6px;
     }
 
+
+    /* IMAGE RIGHT */
+
+    .movie-card img{
+        order:1;
+        width:115px;
+        min-width:115px;
+        height:92px;
+        aspect-ratio:auto;
+        object-fit:cover;
+        flex-shrink:0;
+    }
+
+
+    /* TEXT LEFT */
+
     .movie-card-content{
-        padding:6px;
+        order:2;
+        width:calc(100% - 115px);
+        min-width:0;
+        padding:9px 10px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
     }
 
     .movie-card-title{
-        font-size:10px;
-        line-height:1.35;
+        margin:0;
+        width:100%;
+        font-size:13px;
+        line-height:1.45;
         -webkit-line-clamp:4;
     }
+
 
     .article-sidebar{
         margin-top:22px;
@@ -610,17 +643,29 @@ body.dark-mode .most-read-item{
 @media(max-width:380px){
 
     .movies-grid{
-        grid-template-columns:repeat(3,minmax(0,1fr));
-        gap:5px;
+        grid-template-columns:1fr;
+        gap:7px;
+    }
+
+    .movie-card{
+        min-height:86px;
+    }
+
+    .movie-card img{
+        width:105px;
+        min-width:105px;
+        height:86px;
     }
 
     .movie-card-content{
-        padding:5px;
+        width:calc(100% - 105px);
+        padding:8px;
     }
 
     .movie-card-title{
-        font-size:9px;
-        line-height:1.3;
+        font-size:12px;
+        line-height:1.4;
+        -webkit-line-clamp:4;
     }
 
 }
@@ -641,9 +686,7 @@ body.dark-mode .most-read-item{
             BS <span>360</span> NEWS
         </div>
 
-        <a href="index.html" class="home-btn">
-            Home
-        </a>
+        
 
     </div>
 
@@ -705,370 +748,396 @@ body.dark-mode .most-read-item{
         <div class="movies-main">
 
 
-           
-
             <div id="localAptsSource" hidden>
 
 
-                <!-- =========================
-                     AP & TS ARTICLE 1
-                ========================== -->
+                <article
+                    class="news-item post"
+                    data-category="news ap"
+                    data-url="telangana-drought-rainfall-deficit/"
+                >
 
-<article
-    class="news-item post"
-    data-category="news ap"
-    data-url="telangana-drought-rainfall-deficit/"
->
+                    <img
+                        src="telangana-drought-rainfall-deficit.png"
+                        alt="తెలంగాణలో కరువు పరిస్థితులపై అలర్ట్.. 17 శాతం వర్షపాతం లోటు"
+                    >
 
-    <img
-        src="telangana-drought-rainfall-deficit.png"
-        alt="తెలంగాణలో కరువు పరిస్థితులపై అలర్ట్.. 17 శాతం వర్షపాతం లోటు"
-    >
+                    <div class="news-content">
 
-    <div class="news-content">
+                        <p>
+                            తెలంగాణలో కరువు పరిస్థితులపై ప్రభుత్వం అప్రమత్తమైంది. 2026 నైరుతి రుతుపవనాల సీజన్‌లో read more
+                        </p>
 
-        <p>
-            తెలంగాణలో కరువు పరిస్థితులపై ప్రభుత్వం అప్రమత్తమైంది. 2026 నైరుతి రుతుపవనాల సీజన్‌లో read more
+                    </div>
 
-    </div>
+                </article>
 
-</article>
-<article class="news-item post" data-url="andhra-medical-college-visakhapatnam-investigation/">
 
-    <img
-        src="andhra-medical-college-visakhapatnam-investigation.png"
-        alt="విశాఖలో ఆంధ్ర మెడికల్ కాలేజీలో విషాదం.. ఐదు రోజుల్లో ఇద్దరు మహిళా PG విద్యార్థుల మృతి"
-    >
+                <article
+                    class="news-item post"
+                    data-url="andhra-medical-college-visakhapatnam-investigation/"
+                >
 
-    <div class="news-content">
+                    <img
+                        src="andhra-medical-college-visakhapatnam-investigation.png"
+                        alt="విశాఖలో ఆంధ్ర మెడికల్ కాలేజీలో విషాదం.. ఐదు రోజుల్లో ఇద్దరు మహిళా PG విద్యార్థుల మృతి"
+                    >
 
-        <p>
-            విశాఖలో ఆంధ్ర మెడికల్ కాలేజీలో విషాదం.. ఐదు రోజుల్లో ఇద్దరు మహిళా PG విద్యార్థుల మృతి
-        </p>
+                    <div class="news-content">
 
-    </div>
+                        <p>
+                            విశాఖలో ఆంధ్ర మెడికల్ కాలేజీలో విషాదం.. ఐదు రోజుల్లో ఇద్దరు మహిళా PG విద్యార్థుల మృతి
+                        </p>
 
-</article>
-   
-<article class="news-item post" data-url="palle-panduga-3-rural-development-works/">
+                    </div>
 
-    <img
-        src="palle-panduga-3-rural-development-works.png"
-        alt="ఏపీలో ₹11,085 కోట్ల గ్రామీణాభివృద్ధి పనులు.. ‘పల్లె పండుగ 3.0’కు శ్రీకారం"
-    >
+                </article>
 
-    <div class="news-content">
 
-        <p>
-            ఏపీలో ₹11,085 కోట్ల గ్రామీణాభివృద్ధి పనులు.. ‘పల్లె పండుగ 3.0’కు శ్రీకారం
-        </p>
+                <article
+                    class="news-item post"
+                    data-url="palle-panduga-3-rural-development-works/"
+                >
 
-    </div>
+                    <img
+                        src="palle-panduga-3-rural-development-works.png"
+                        alt="ఏపీలో ₹11,085 కోట్ల గ్రామీణాభివృద్ధి పనులు.. ‘పల్లె పండుగ 3.0’కు శ్రీకారం"
+                    >
 
-</article>
-   
-<article class="news-item post" data-url="ap-rural-infrastructure-palle-panduga-3/">
+                    <div class="news-content">
 
-    <img
-        src="ap-rural-infrastructure-palle-panduga-3.png"
-        alt="ఏపీలో గ్రామీణ అభివృద్ధికి భారీ ప్రణాళిక.. రూ.11,085 కోట్లతో పల్లె పండుగ 3.0"
-    >
+                        <p>
+                            ఏపీలో ₹11,085 కోట్ల గ్రామీణాభివృద్ధి పనులు.. ‘పల్లె పండుగ 3.0’కు శ్రీకారం
+                        </p>
 
-    <div class="news-content">
+                    </div>
 
-        <p>
-            ఏపీలో గ్రామీణ అభివృద్ధికి భారీ ప్రణాళిక.. రూ.11,085 కోట్లతో ‘పల్లె పండుగ 3.0’
-        </p>
+                </article>
 
-    </div>
 
-</article>
-          
+                <article
+                    class="news-item post"
+                    data-url="ap-rural-infrastructure-palle-panduga-3/"
+                >
 
-<article class="news-item post" data-url="mission-karmayogi-sadhana-shrinkhla-2026-vijayawada/">
+                    <img
+                        src="ap-rural-infrastructure-palle-panduga-3.png"
+                        alt="ఏపీలో గ్రామీణ అభివృద్ధికి భారీ ప్రణాళిక.. రూ.11,085 కోట్లతో పల్లె పండుగ 3.0"
+                    >
 
-    <img
-        src="mission-karmayogi-sadhana-shrinkhla-2026-vijayawada.png"
-        alt="విజయవాడలో సెప్టెంబర్ 29న జాతీయ స్థాయి కార్యక్రమం.. ‘సాధన శ్రేణి 2026’ సదస్సు"
-    >
+                    <div class="news-content">
 
-    <div class="news-content">
+                        <p>
+                            ఏపీలో గ్రామీణ అభివృద్ధికి భారీ ప్రణాళిక.. రూ.11,085 కోట్లతో ‘పల్లె పండుగ 3.0’
+                        </p>
 
-        <p>
-            విజయవాడలో సెప్టెంబర్ 29న జాతీయ స్థాయి కార్యక్రమం.. ‘సాధన శ్రేణి 2026’ సదస్సు
-        </p>
+                    </div>
 
-    </div>
+                </article>
 
-</article>
-   
-   
-<article class="news-item post" data-url="amaravati-ap-capital-high-court/">
 
-    <img
-        src="amaravati-ap-capital-high-court.jpg"
-        alt="మూడు రాజధానుల పిటిషన్లకు ముగింపు దిశగా.. అమరావతిపై హైకోర్టు కీలక వ్యాఖ్యలు"
-    >
+                <article
+                    class="news-item post"
+                    data-url="mission-karmayogi-sadhana-shrinkhla-2026-vijayawada/"
+                >
 
-    <div class="news-content">
+                    <img
+                        src="mission-karmayogi-sadhana-shrinkhla-2026-vijayawada.png"
+                        alt="విజయవాడలో సెప్టెంబర్ 29న జాతీయ స్థాయి కార్యక్రమం.. ‘సాధన శ్రేణి 2026’ సదస్సు"
+                    >
 
-        <p>
-            మూడు రాజధానుల పిటిషన్లకు ముగింపు దిశగా.. అమరావతిపై హైకోర్టు కీలక వ్యాఖ్యలు
-        </p>
+                    <div class="news-content">
 
-    </div>
+                        <p>
+                            విజయవాడలో సెప్టెంబర్ 29న జాతీయ స్థాయి కార్యక్రమం.. ‘సాధన శ్రేణి 2026’ సదస్సు
+                        </p>
 
-</article>
-   
-<article class="news-item post" data-url="nh65-patancheru-sangareddy-traffic-diversion/">
+                    </div>
 
-    <img
-        src="nh65-patancheru-sangareddy-traffic-diversion.png"
-        alt="NH-65పై ట్రాఫిక్ డైవర్షన్.. పటాన్‌చెరు–సంగారెడ్డి మధ్య రోడ్డు పనులు"
-    >
+                </article>
 
-    <div class="news-content">
 
-        <p>
-            NH-65పై ట్రాఫిక్ డైవర్షన్.. పటాన్‌చెరు–సంగారెడ్డి మధ్య రోడ్డు పనుల కారణంగా సెప్టెంబర్ 26 నుంచి మార్గం మారనుంది
-        </p>
+                <article
+                    class="news-item post"
+                    data-url="amaravati-ap-capital-high-court/"
+                >
 
-    </div>
+                    <img
+                        src="amaravati-ap-capital-high-court.jpg"
+                        alt="మూడు రాజధానుల పిటిషన్లకు ముగింపు దిశగా.. అమరావతిపై హైకోర్టు కీలక వ్యాఖ్యలు"
+                    >
 
-</article>
+                    <div class="news-content">
 
-   
-<article class="news-item post" data-url="telangana-aarogyasri-dues/">
+                        <p>
+                            మూడు రాజధానుల పిటిషన్లకు ముగింపు దిశగా.. అమరావతిపై హైకోర్టు కీలక వ్యాఖ్యలు
+                        </p>
 
-    <img
-        src="telangana-aarogyasri-dues.png"
-        alt="తెలంగాణలో ఆరోగ్య పథకాలకు ఆర్థిక ఇబ్బందులు.. ప్రైవేట్ ఆస్పత్రులకు రూ.2,000 కోట్లకు పైగా బకాయిలు"
-    >
+                    </div>
 
-    <div class="news-content">
+                </article>
 
-        <p>
-            తెలంగాణలో ఆరోగ్య పథకాలకు ఆర్థిక ఇబ్బందులు.. ప్రైవేట్ ఆస్పత్రులకు రూ.2,000 కోట్లకు పైగా బకాయిలు
-        </p>
 
-    </div>
+                <article
+                    class="news-item post"
+                    data-url="nh65-patancheru-sangareddy-traffic-diversion/"
+                >
 
-</article>
-   
-<article class="news-item post" data-url="jagan-municipal-elections/">
+                    <img
+                        src="nh65-patancheru-sangareddy-traffic-diversion.png"
+                        alt="NH-65పై ట్రాఫిక్ డైవర్షన్.. పటాన్‌చెరు–సంగారెడ్డి మధ్య రోడ్డు పనులు"
+                    >
 
-    <img
-        src="jagan-municipal-elections.png"
-        alt="ఎన్నికల్లో యుద్ధం చేయండి.. కార్యకర్తలకు జగన్ పిలుపు"
-    >
+                    <div class="news-content">
 
-    <div class="news-content">
+                        <p>
+                            NH-65పై ట్రాఫిక్ డైవర్షన్.. పటాన్‌చెరు–సంగారెడ్డి మధ్య రోడ్డు పనుల కారణంగా సెప్టెంబర్ 26 నుంచి మార్గం మారనుంది
+                        </p>
 
-        <p>
-            ఎన్నికల్లో యుద్ధం చేయండి.. కార్యకర్తలకు జగన్ పిలుపు
-        </p>
+                    </div>
 
-    </div>
+                </article>
 
-</article>
-    
-<article class="news-item post" data-url="balapur-ganesh-laddu-39-lakh/">
 
-    <img
-        src="balapur-ganesh-laddu-39-lakh.jpg"
-        alt="బాలాపూర్ లడ్డూ రికార్డు ధర.. రూ.39 లక్షలకు అమ్ముడైన గణేశుడి ప్రసాదం"
-    >
+                <article
+                    class="news-item post"
+                    data-url="telangana-aarogyasri-dues/"
+                >
 
-    <div class="news-content">
+                    <img
+                        src="telangana-aarogyasri-dues.png"
+                        alt="తెలంగాణలో ఆరోగ్య పథకాలకు ఆర్థిక ఇబ్బందులు.. ప్రైవేట్ ఆస్పత్రులకు రూ.2,000 కోట్లకు పైగా బకాయిలు"
+                    >
 
-        <p>
-            బాలాపూర్ లడ్డూ రికార్డు ధర.. రూ.39 లక్షలకు అమ్ముడైన గణేశుడి ప్రసాదం
-        </p>
+                    <div class="news-content">
 
-    </div>
+                        <p>
+                            తెలంగాణలో ఆరోగ్య పథకాలకు ఆర్థిక ఇబ్బందులు.. ప్రైవేట్ ఆస్పత్రులకు రూ.2,000 కోట్లకు పైగా బకాయిలు
+                        </p>
 
-</article>
-    
+                    </div>
 
-    
-<article class="news-item post" data-url="khairatabad-ganesh-immersion/">
+                </article>
 
-    <img
-        src="khairatabad-ganesh-immersion.png"
-        alt="తెలంగాణలో గణేశ్ నిమజ్జనం.. ఖైరతాబాద్ బడా గణేశుడి శోభాయాత్రకు భారీ బందోబస్తు"
-    >
 
-    <div class="news-content">
+                <article
+                    class="news-item post"
+                    data-url="jagan-municipal-elections/"
+                >
 
-        <p>
-            తెలంగాణలో గణేశ్ నిమజ్జనం.. ఖైరతాబాద్ బడా గణేశుడి శోభాయాత్రకు భారీ బందోబస్తు
-        </p>
+                    <img
+                        src="jagan-municipal-elections.png"
+                        alt="ఎన్నికల్లో యుద్ధం చేయండి.. కార్యకర్తలకు జగన్ పిలుపు"
+                    >
 
-    </div>
+                    <div class="news-content">
 
-</article>
-    
+                        <p>
+                            ఎన్నికల్లో యుద్ధం చేయండి.. కార్యకర్తలకు జగన్ పిలుపు
+                        </p>
 
-    
-<article class="news-item post" data-url="telangana-govt-employees-da/">
+                    </div>
 
-    <img
-        src="telangana-govt-employees-da.jpg"
-        alt="తెలంగాణ ప్రభుత్వ ఉద్యోగులకు 2 డీఏలు.. ప్రాథమిక అంగీకారం"
-    >
+                </article>
 
-    <div class="news-content">
 
-        <p>
-            తెలంగాణ ప్రభుత్వ ఉద్యోగులకు 2 డీఏలు.. ప్రాథమిక అంగీకారం, ఎప్పుడు చెల్లిస్తారంటే?
-        </p>
+                <article
+                    class="news-item post"
+                    data-url="balapur-ganesh-laddu-39-lakh/"
+                >
 
-    </div>
+                    <img
+                        src="balapur-ganesh-laddu-39-lakh.jpg"
+                        alt="బాలాపూర్ లడ్డూ రికార్డు ధర.. రూ.39 లక్షలకు అమ్ముడైన గణేశుడి ప్రసాదం"
+                    >
 
-</article>      
-<article
-    class="news-item post"
-    data-category="apts"
-    data-url="ttd2.html"
->
-    <img
-        src="ttd2.png"
-        alt="తిరుమల బ్రహ్మోత్సవాలు.. ఏడో రోజుకు చేరుకున్న శ్రీవారి ఉత్సవాలు"
-        loading="lazy"
-    >
+                    <div class="news-content">
 
-    <div class="news-content">
-        <p>
-            తిరుమల బ్రహ్మోత్సవాలు.. ఏడో రోజుకు చేరుకున్న శ్రీవారి ఉత్సవాలు
-        </p>
-    </div>
-</article>
-    
-       <article class="news-item post" data-url="rain.html">
+                        <p>
+                            బాలాపూర్ లడ్డూ రికార్డు ధర.. రూ.39 లక్షలకు అమ్ముడైన గణేశుడి ప్రసాదం
+                        </p>
 
-    <img
-        src="rain.jpg"
-        alt="ఏపీలో వర్షాలపై అలర్ట్.."
-    >
+                    </div>
 
-    <div class="news-content">
+                </article>
 
-        <p>
-            ఏపీలో వర్షాలపై అలర్ట్.. బంగాళాఖాతంలో బలపడుతున్న వాతావరణ వ్యవస్థ
-        </p>
 
-    </div>
+                <article
+                    class="news-item post"
+                    data-url="khairatabad-ganesh-immersion/"
+                >
 
-    </article>
-       <article class="news-item post" data-url="kapam.html">
+                    <img
+                        src="khairatabad-ganesh-immersion.png"
+                        alt="తెలంగాణలో గణేశ్ నిమజ్జనం.. ఖైరతాబాద్ బడా గణేశుడి శోభాయాత్రకు భారీ బందోబస్తు"
+                    >
 
-    <img
-        src="kapam.png"
-        alt="చంద్రబాబు కుప్పం పర్యటన.."
-    >
+                    <div class="news-content">
 
-    <div class="news-content">
+                        <p>
+                            తెలంగాణలో గణేశ్ నిమజ్జనం.. ఖైరతాబాద్ బడా గణేశుడి శోభాయాత్రకు భారీ బందోబస్తు
+                        </p>
 
-        <p>
-            చంద్రబాబు కుప్పం పర్యటన.. హంద్రీ-నీవా జలహారతిపై ఆసక్తి 
-        </p>
+                    </div>
 
-    </div>
+                </article>
 
-    </article>
 
-    
-    <article class="news-item post" data-url="ttd.html">
+                <article
+                    class="news-item post"
+                    data-url="telangana-govt-employees-da/"
+                >
 
-    <img
-        src="ttd.jpg"
-        alt="తిరుమలలో వైభవంగా హనుమంత వాహన సేవ.."
-    >
+                    <img
+                        src="telangana-govt-employees-da.jpg"
+                        alt="తెలంగాణ ప్రభుత్వ ఉద్యోగులకు 2 డీఏలు.. ప్రాథమిక అంగీకారం"
+                    >
 
-    <div class="news-content">
+                    <div class="news-content">
 
-        <p>
-            తిరుమలలో వైభవంగా హనుమంత వాహన సేవ.. కోదండరాముని అలంకారంలో శ్రీమలయప్పస్వామి దివ్యదర్శనం 
-        </p>
+                        <p>
+                            తెలంగాణ ప్రభుత్వ ఉద్యోగులకు 2 డీఏలు.. ప్రాథమిక అంగీకారం, ఎప్పుడు చెల్లిస్తారంటే?
+                        </p>
 
-    </div>
+                    </div>
 
-    </article>
-    
+                </article>
 
 
-    
-<article class="news-item post" data-url="apjob.html">
+                <article
+                    class="news-item post"
+                    data-category="apts"
+                    data-url="ttd2.html"
+                >
 
-    <img
-        src="image.png"
-        alt="ఏపీలో 10 IT ప్రాజెక్టులకు ఆమోదం"
-    >
+                    <img
+                        src="ttd2.png"
+                        alt="తిరుమల బ్రహ్మోత్సవాలు.. ఏడో రోజుకు చేరుకున్న శ్రీవారి ఉత్సవాలు"
+                        loading="lazy"
+                    >
 
-    <div class="news-content">
+                    <div class="news-content">
 
-        <p>
-            ఏపీలో 10 IT ప్రాజెక్టులకు ఆమోదం.. రూ.526.25 కోట్ల పెట్టుబడులు
-        </p>
+                        <p>
+                            తిరుమల బ్రహ్మోత్సవాలు.. ఏడో రోజుకు చేరుకున్న శ్రీవారి ఉత్సవాలు
+                        </p>
 
-    </div>
+                    </div>
 
-</article>
+                </article>
 
 
-<article class="news-item post" data-url="laddu.html">
+                <article
+                    class="news-item post"
+                    data-url="rain.html"
+                >
 
-    <img
-        src="laddu.jpg"
-        alt="తిరుమల లడ్డూ నెయ్యి అంశం"
-    >
+                    <img
+                        src="rain.jpg"
+                        alt="ఏపీలో వర్షాలపై అలర్ట్.."
+                    >
 
-    <div class="news-content">
+                    <div class="news-content">
 
-        <p>
-            తిరుమల లడ్డూ నెయ్యి అంశంపై అసెంబ్లీలో వేడెక్కిన చర్చ.. సమగ్ర విచారణ అవసరమన్న చంద్రబాబు
-        </p>
+                        <p>
+                            ఏపీలో వర్షాలపై అలర్ట్.. బంగాళాఖాతంలో బలపడుతున్న వాతావరణ వ్యవస్థ
+                        </p>
 
-    </div>
+                    </div>
 
-</article>
+                </article>
 
 
-                <!-- =========================
-                     AP & TS ARTICLE 2
-                ========================== -->
+                <article
+                    class="news-item post"
+                    data-url="kapam.html"
+                >
 
-            
+                    <img
+                        src="kapam.png"
+                        alt="చంద్రబాబు కుప్పం పర్యటన.."
+                    >
+
+                    <div class="news-content">
+
+                        <p>
+                            చంద్రబాబు కుప్పం పర్యటన.. హంద్రీ-నీవా జలహారతిపై ఆసక్తి
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article
+                    class="news-item post"
+                    data-url="ttd.html"
+                >
+
+                    <img
+                        src="ttd.jpg"
+                        alt="తిరుమలలో వైభవంగా హనుమంత వాహన సేవ.."
+                    >
+
+                    <div class="news-content">
+
+                        <p>
+                            తిరుమలలో వైభవంగా హనుమంత వాహన సేవ.. కోదండరాముని అలంకారంలో శ్రీమలయప్పస్వామి దివ్యదర్శనం
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article
+                    class="news-item post"
+                    data-url="apjob.html"
+                >
+
+                    <img
+                        src="image.png"
+                        alt="ఏపీలో 10 IT ప్రాజెక్టులకు ఆమోదం"
+                    >
+
+                    <div class="news-content">
+
+                        <p>
+                            ఏపీలో 10 IT ప్రాజెక్టులకు ఆమోదం.. రూ.526.25 కోట్ల పెట్టుబడులు
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article
+                    class="news-item post"
+                    data-url="laddu.html"
+                >
+
+                    <img
+                        src="laddu.jpg"
+                        alt="తిరుమల లడ్డూ నెయ్యి అంశం"
+                    >
+
+                    <div class="news-content">
+
+                        <p>
+                            తిరుమల లడ్డూ నెయ్యి అంశంపై అసెంబ్లీలో వేడెక్కిన చర్చ.. సమగ్ర విచారణ అవసరమన్న చంద్రబాబు
+                        </p>
+
+                    </div>
+
+                </article>
 
 
             </div>
 
 
-            <!-- AP & TS -->
+            
 
-            <section class="section">
-
-                <div class="section-head">
-
-                    <h2>
-                        <span>ALL</span> AP & TS
-                    </h2>
-
-                </div>
-
-                <div
-                    id="aptsGrid"
-                    class="movies-grid"
-                >
-
-                    <div class="loading">
-                        AP & TS News Loading...
-                    </div>
-
-                </div>
-
-            </section>
-
+  
 
             <!-- MOVIES -->
 
@@ -1077,7 +1146,7 @@ body.dark-mode .most-read-item{
                 <div class="section-head">
 
                     <h2>
-                        <span>LATEST</span> Movies
+                        <span></span> Movies
                     </h2>
 
                 </div>
@@ -1103,7 +1172,7 @@ body.dark-mode .most-read-item{
                 <div class="section-head">
 
                     <h2>
-                        <span>LATEST</span> Sports
+                        <span></span> Sports
                     </h2>
 
                 </div>
@@ -1129,7 +1198,7 @@ body.dark-mode .most-read-item{
                 <div class="section-head">
 
                     <h2>
-                        <span>BUSINESS</span> News
+                        <span></span> News
                     </h2>
 
                 </div>
@@ -1522,11 +1591,6 @@ document.addEventListener("DOMContentLoaded", function(){
 
         /* =================================================
            AP & TS
-
-           LOCAL 2 ARTICLES FIRST
-           THEN INDEX AP & TS ARTICLES
-
-           DUPLICATE URL REMOVE
         ================================================= */
 
         const indexApts =
