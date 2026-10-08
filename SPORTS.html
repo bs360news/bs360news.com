@@ -1,43 +1,29 @@
-<!DOCTYPE html>
-<html lang="te">
+<!DOCTYPE html><html lang="te"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Sports News | BS 360 NEWS</title><meta
+name="description"
+content="BS 360 NEWS Sports News - తెలుగు స్పోర్ట్స్ తాజా వార్తలు, క్రికెట్, క్రీడా వార్తలు, ఆటగాళ్ల అప్డేట్స్."
 
-<head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Sports News | BS 360 NEWS</title>
+«»
 
 <meta
-    name="description"
-    content="BS 360 NEWS Sports News - తెలుగు స్పోర్ట్స్ తాజా వార్తలు, క్రికెట్, క్రీడా వార్తలు, ఆటగాళ్ల అప్డేట్స్."
->
+name="robots"
+content="index, follow, max-image-preview:large"
 
-<meta
-    name="robots"
-    content="index, follow, max-image-preview:large"
->
+«»
 
 <link
     rel="icon"
     type="image/png"
     href="dp.png.png"
->
-
-<link
+><link
     rel="apple-touch-icon"
     href="dp.png.png"
->
-
-
-<style>
+><style>
 
 /* =========================================================
    BS 360 NEWS - SPORTS PAGE
-   DESKTOP = 3 COLUMNS + RIGHT SIDEBAR
-   TABLET  = 2 COLUMNS
-   MOBILE  = 2 COLUMNS
+   DESKTOP / LAPTOP = ORIGINAL LAYOUT
+   TABLET = 2 COLUMNS
+   MOBILE = TEXT LEFT + IMAGE RIGHT
 ========================================================= */
 
 *{
@@ -51,7 +37,6 @@ html{
 body{
     margin:0;
     padding:0;
-
     background:#f3f5f7;
     color:#111827;
 
@@ -102,7 +87,6 @@ a{
     font-size:30px;
     font-weight:900;
     letter-spacing:.5px;
-
     color:#111827;
 }
 
@@ -132,23 +116,18 @@ a{
 
 .nav-bar{
     background:#fff;
-
     border-bottom:1px solid #e5e7eb;
 
     position:sticky;
-
     top:0;
-
     z-index:100;
 }
 
 .nav-inner{
     width:min(1400px,96%);
-
     margin:auto;
 
     display:flex;
-
     align-items:center;
 
     gap:5px;
@@ -168,7 +147,6 @@ a{
     padding:11px 15px;
 
     font-size:14px;
-
     font-weight:700;
 
     white-space:nowrap;
@@ -184,7 +162,6 @@ a{
 
 .nav-inner a.active{
     color:#e50914;
-
     border-bottom:3px solid #e50914;
 }
 
@@ -195,13 +172,11 @@ a{
 
 .breaking{
     width:min(1400px,96%);
-
     margin:12px auto 0;
 
     background:#fff;
 
     display:flex;
-
     align-items:center;
 
     overflow:hidden;
@@ -213,13 +188,11 @@ a{
 
 .breaking-title{
     background:#e50914;
-
     color:#fff;
 
     padding:8px 16px;
 
     font-size:13px;
-
     font-weight:900;
 
     white-space:nowrap;
@@ -231,9 +204,7 @@ a{
     font-size:14px;
 
     white-space:nowrap;
-
     overflow:hidden;
-
     text-overflow:ellipsis;
 
     color:#111827;
@@ -246,7 +217,6 @@ a{
 
 .page{
     width:min(1400px,96%);
-
     margin:15px auto 35px;
 }
 
@@ -265,14 +235,12 @@ a{
     margin-bottom:18px;
 
     font-size:24px;
-
     font-weight:900;
 }
 
 
 /* =========================================================
    MAIN LAYOUT
-   LEFT CONTENT + RIGHT SIDEBAR
 ========================================================= */
 
 .main-layout{
@@ -298,9 +266,7 @@ a{
 
 .section-head{
     display:flex;
-
     align-items:center;
-
     justify-content:space-between;
 
     margin-bottom:12px;
@@ -314,7 +280,6 @@ a{
     margin:0;
 
     font-size:21px;
-
     font-weight:900;
 
     color:#111827;
@@ -327,18 +292,16 @@ a{
 
 /* =========================================================
    ARTICLE GRID
-   DESKTOP = 3 COLUMNS
+   DESKTOP / LAPTOP ORIGINAL = 6 COLUMNS
 ========================================================= */
 
 .movies-grid{
-
     display:grid;
 
     grid-template-columns:
         repeat(6,minmax(0,1fr));
 
     column-gap:14px;
-
     row-gap:18px;
 
     width:100%;
@@ -350,7 +313,6 @@ a{
 ========================================================= */
 
 .movie-card{
-
     display:block;
 
     background:#fff;
@@ -367,7 +329,6 @@ a{
 }
 
 .movie-card:hover{
-
     transform:translateY(-3px);
 
     box-shadow:
@@ -375,7 +336,6 @@ a{
 }
 
 .movie-card img{
-
     width:100%;
 
     aspect-ratio:16 / 9;
@@ -384,12 +344,10 @@ a{
 }
 
 .movie-card-content{
-
     padding:9px;
 }
 
 .movie-card-title{
-
     margin:0;
 
     color:#111827;
@@ -415,7 +373,6 @@ a{
 ========================================================= */
 
 .article-sidebar{
-
     display:flex;
 
     flex-direction:column;
@@ -428,7 +385,6 @@ a{
 }
 
 .sidebar-box{
-
     background:#fff;
 
     border-radius:8px;
@@ -439,7 +395,6 @@ a{
 }
 
 .sidebar-title{
-
     font-size:19px;
 
     line-height:1.3;
@@ -461,7 +416,6 @@ a{
 ========================================================= */
 
 .sidebar-item{
-
     display:flex;
 
     gap:10px;
@@ -476,14 +430,11 @@ a{
 }
 
 .sidebar-item:last-child{
-
     border-bottom:none;
 }
 
 .sidebar-item img{
-
     width:100px;
-
     height:65px;
 
     object-fit:cover;
@@ -494,7 +445,6 @@ a{
 }
 
 .sidebar-item-title{
-
     font-size:14px;
 
     line-height:1.4;
@@ -518,7 +468,6 @@ a{
 ========================================================= */
 
 .most-read-item{
-
     display:flex;
 
     align-items:center;
@@ -535,14 +484,11 @@ a{
 }
 
 .most-read-item:last-child{
-
     border-bottom:none;
 }
 
 .most-read-item img{
-
     width:95px;
-
     height:65px;
 
     object-fit:cover;
@@ -553,7 +499,6 @@ a{
 }
 
 .most-read-title{
-
     font-size:14px;
 
     line-height:1.4;
@@ -577,7 +522,6 @@ a{
 ========================================================= */
 
 .loading{
-
     grid-column:1 / -1;
 
     background:#fff;
@@ -597,7 +541,6 @@ a{
 ========================================================= */
 
 .site-footer{
-
     background:#111827;
 
     color:#fff;
@@ -608,7 +551,6 @@ a{
 }
 
 .footer-inner{
-
     width:min(1400px,96%);
 
     margin:auto;
@@ -622,14 +564,12 @@ a{
 
 .footer-column h3,
 .footer-contact h3{
-
     margin:0 0 12px;
 
     font-size:18px;
 }
 
 .footer-links{
-
     display:flex;
 
     flex-wrap:wrap;
@@ -638,19 +578,16 @@ a{
 }
 
 .footer-links a{
-
     color:#d1d5db;
 
     font-size:14px;
 }
 
 .footer-links a:hover{
-
     color:#fff;
 }
 
 .footer-contact p{
-
     margin:5px 0;
 
     color:#d1d5db;
@@ -659,7 +596,6 @@ a{
 }
 
 .copyright{
-
     width:min(1400px,96%);
 
     margin:25px auto 0;
@@ -681,9 +617,7 @@ a{
 ========================================================= */
 
 body.dark-mode{
-
     background:#0b1120;
-
     color:#f9fafb;
 }
 
@@ -693,11 +627,8 @@ body.dark-mode .breaking,
 body.dark-mode .page-title,
 body.dark-mode .movie-card,
 body.dark-mode .sidebar-box{
-
     background:#111827;
-
     color:#f9fafb;
-
     border-color:#374151;
 }
 
@@ -709,13 +640,11 @@ body.dark-mode .movie-card-title,
 body.dark-mode .sidebar-title,
 body.dark-mode .sidebar-item-title,
 body.dark-mode .most-read-title{
-
     color:#f9fafb;
 }
 
 body.dark-mode .sidebar-item,
 body.dark-mode .most-read-item{
-
     border-color:#374151;
 }
 
@@ -728,22 +657,18 @@ body.dark-mode .most-read-item{
 @media(min-width:601px) and (max-width:1100px){
 
     .main-layout{
-
         grid-template-columns:1fr;
     }
 
     .movies-grid{
-
         grid-template-columns:
             repeat(2,minmax(0,1fr));
 
         column-gap:12px;
-
         row-gap:16px;
     }
 
     .article-sidebar{
-
         position:static;
 
         display:grid;
@@ -759,114 +684,157 @@ body.dark-mode .most-read-item{
 
 /* =========================================================
    MOBILE
+   ONLY UNDER 600px
+   TEXT LEFT + IMAGE RIGHT
 ========================================================= */
 
 @media(max-width:600px){
 
     .header-inner{
-
         min-height:58px;
     }
 
     .logo{
-
         font-size:22px;
     }
 
     .home-btn{
-
         padding:6px 11px;
-
         font-size:13px;
     }
 
 
     .nav-inner a{
-
         padding:9px 11px;
-
         font-size:12px;
     }
 
 
     .breaking{
-
         margin-top:8px;
     }
 
     .breaking-title{
-
         padding:7px 10px;
-
         font-size:10px;
     }
 
     .breaking-text{
-
         font-size:12px;
-
         padding:7px 10px;
     }
 
 
     .page{
-
         width:94%;
-
         margin-top:10px;
     }
 
     .page-title{
-
         font-size:20px;
-
         padding:10px 12px;
     }
 
 
     .main-layout{
-
         display:block;
     }
 
 
     /* =========================================
-       MOBILE = 2 COLUMNS
+       MOBILE NEWS CARD
+       LEFT = TEXT
+       RIGHT = IMAGE
     ========================================= */
 
     .movies-grid{
+        display:grid;
 
-        grid-template-columns:
-            repeat(2,minmax(0,1fr));
+        grid-template-columns:1fr;
 
-        column-gap:8px;
+        gap:8px;
 
-        row-gap:12px;
+        width:100%;
     }
 
 
     .movie-card{
+        width:100%;
 
-        border-radius:5px;
+        min-height:92px;
+
+        display:flex;
+
+        flex-direction:row-reverse;
+
+        align-items:stretch;
+
+        border-radius:6px;
+
+        overflow:hidden;
     }
+
+
+    /* RIGHT SIDE IMAGE */
+
+    .movie-card img{
+        width:115px;
+
+        min-width:115px;
+
+        height:92px;
+
+        aspect-ratio:auto;
+
+        object-fit:cover;
+
+        flex-shrink:0;
+    }
+
+
+    /* LEFT SIDE TEXT */
 
     .movie-card-content{
+        width:calc(100% - 115px);
 
-        padding:7px;
+        padding:9px 10px;
+
+        display:flex;
+
+        align-items:flex-start;
+
+        justify-content:center;
+
+        flex-direction:column;
     }
+
 
     .movie-card-title{
+        width:100%;
 
-        font-size:11px;
+        margin:0;
 
-        line-height:1.4;
+        font-size:13px;
+
+        line-height:1.45;
+
+        font-weight:800;
+
+        display:-webkit-box;
 
         -webkit-line-clamp:4;
+
+        -webkit-box-orient:vertical;
+
+        overflow:hidden;
     }
 
 
-    .article-sidebar{
+    /* =========================================
+       SIDEBAR
+    ========================================= */
 
+    .article-sidebar{
         position:static;
 
         margin-top:22px;
@@ -875,50 +843,43 @@ body.dark-mode .most-read-item{
     }
 
     .sidebar-box{
-
         padding:11px;
     }
 
     .sidebar-title{
-
         font-size:17px;
     }
 
     .sidebar-item img{
-
         width:90px;
-
         height:62px;
     }
 
     .sidebar-item-title{
-
         font-size:13px;
     }
 
-
     .most-read-item img{
-
         width:90px;
-
         height:62px;
     }
 
     .most-read-title{
-
         font-size:13px;
     }
 
 
-    .footer-inner{
+    /* =========================================
+       FOOTER
+    ========================================= */
 
+    .footer-inner{
         grid-template-columns:1fr;
 
         gap:22px;
     }
 
     .footer-links{
-
         display:grid;
 
         grid-template-columns:1fr 1fr;
@@ -933,838 +894,809 @@ body.dark-mode .most-read-item{
 
 @media(max-width:380px){
 
-    .movies-grid{
+    .movie-card img{
+        width:105px;
 
-        grid-template-columns:
-            repeat(2,minmax(0,1fr));
+        min-width:105px;
 
-        column-gap:6px;
-
-        row-gap:10px;
+        height:86px;
     }
 
     .movie-card-content{
+        width:calc(100% - 105px);
 
-        padding:6px;
+        padding:8px;
     }
 
     .movie-card-title{
+        font-size:12px;
 
-        font-size:10px;
+        line-height:1.4;
 
-        line-height:1.35;
+        -webkit-line-clamp:4;
+    }
+
+    .movies-grid{
+        gap:7px;
     }
 
 }
 
-</style>
-
-</head>
-
-
-<body>
-
-
-<!-- =====================================================
+</style></head><body><!-- =====================================================
      HEADER
-===================================================== -->
+===================================================== --><header class="top-header"><div class="header-inner">
 
-<header class="top-header">
+    <div class="logo">
+        BS <span>360</span> NEWS
+    </div>
 
-    <div class="header-inner">
+    <a
+        href="index.html"
+        class="home-btn"
+    >
+        Home
+    </a>
 
-        <div class="logo">
+</div>
 
-            BS <span>360</span> NEWS
+</header><!-- =====================================================
+     NAVIGATION
+===================================================== --><nav class="nav-bar"><div class="nav-inner">
+
+    <a href="index.html">
+        హోమ్
+    </a>
+
+    <a href="MOVIES.html">
+        మూవీస్
+    </a>
+
+    <a
+        href="SPORTS.html"
+        class="active"
+    >
+        స్పోర్ట్స్
+    </a>
+
+    <a href="AP&TS.html">
+        ఏపీ & టీస్
+    </a>
+
+    <a href="business.html">
+        బిజినెస్
+    </a>
+
+</div>
+
+</nav><!-- =====================================================
+     BREAKING NEWS
+===================================================== --><div class="breaking"><div class="breaking-title">
+    BREAKING NEWS
+</div>
+
+<div class="breaking-text">
+    క్రికెట్, స్పోర్ట్స్ ప్రపంచంలోని తాజా వార్తలు, మ్యాచ్ అప్డేట్స్, ఆటగాళ్ల వార్తలు...
+</div>
+
+</div><!-- =====================================================
+     MAIN PAGE
+===================================================== --><main class="page"><div class="page-title">
+    Sports News
+</div>
+
+<div class="main-layout">
+
+
+    <!-- =================================================
+         LEFT CONTENT
+    ================================================== -->
+
+    <div class="movies-main">
+
+
+        <!-- SPORTS -->
+
+        <section class="section">
+
+            <div class="section-head">
+
+                <h2>
+                    <span>ALL</span> Sports
+                </h2>
+
+            </div>
+
+            <div
+                id="sportsGrid"
+                class="movies-grid"
+            >
+
+                <div class="loading">
+                    Sports News Loading...
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             LOCAL SPORTS SOURCE
+        ================================================== -->
+
+        <div id="localSportsSource" hidden>
+
+
+            <article
+                class="news-item post"
+                data-url="india-2027-world-cup/"
+            >
+
+                <img
+                    src="india-2027-world-cup.png"
+                    alt="2027 వన్డే ప్రపంచకప్‌లో భారత్ తొలి మ్యాచ్ ఆస్ట్రేలియాతో"
+                >
+
+                <div class="news-content">
+
+                    <p>
+                        2027 వన్డే ప్రపంచకప్‌లో భారత్ తొలి మ్యాచ్ ఆస్ట్రేలియాతో తలపడనుంది. అక్టోబర్ 7న కేప్‌టౌన్‌లో ఈ మ్యాచ్ జరగనుంది.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="news-item post"
+                data-url="gambhir-guwahati-pitch-complaint/"
+            >
+
+                <img
+                    src="gambhir-guwahati-pitch-complaint.png"
+                    alt="గువాహటి పిచ్‌పై గంభీర్ అసంతృప్తి.. 811 పరుగుల మ్యాచ్‌పై కీలక వ్యాఖ్యలు"
+                >
+
+                <div class="news-content">
+
+                    <p>
+                        గువాహటి పిచ్‌పై గంభీర్ అసంతృప్తి.. 811 పరుగుల మ్యాచ్‌పై కీలక వ్యాఖ్యలు
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="news-item post"
+                data-url="india-west-indies-2nd-odi-shubman-gill-double-century-rohit-century/"
+            >
+
+                <img
+                    src="india-west-indies-2nd-odi-shubman-gill-double-century-rohit-century.jpg"
+                    alt="వెస్టిండీస్‌పై భారత్ ఘన విజయం.. గిల్ డబుల్ సెంచరీతో దుమ్మురేపాడు"
+                >
+
+                <div class="news-content">
+
+                    <p>
+                        వెస్టిండీస్‌పై భారత్ ఘన విజయం.. గిల్ డబుల్ సెంచరీతో దుమ్మురేపాడు
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="news-item post"
+                data-url="shubman-gill-62-ball-century/"
+            >
+
+                <img
+                    src="shubman-gill-62-ball-century.png"
+                    alt="గిల్ విధ్వంసం.. 62 బంతుల్లో సెంచరీ"
+                >
+
+                <div class="news-content">
+
+                    <p>
+                        గిల్ విధ్వంసం.. 62 బంతుల్లో సెంచరీ!
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="news-item post"
+                data-url="rohit-sharma-century-72-balls-100-runs/"
+            >
+
+                <img
+                    src="rohit-sharma-century-72-balls-100-runs.png"
+                    alt="రోహిత్ శర్మ విధ్వంసం.. 72 బంతుల్లో సెంచరీ"
+                >
+
+                <div class="news-content">
+
+                    <p>
+                        రోహిత్ శర్మ విధ్వంసం.. 72 బంతుల్లో సెంచరీ
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="news-item post"
+                data-url="india-vs-west-indies-2nd-odi-guwahati/"
+            >
+
+                <img
+                    src="india-vs-west-indies-2nd-odi-guwahati.png"
+                    alt="భారత్ vs వెస్టిండీస్ 2వ వన్డే.. టాస్ గెలిచి బౌలింగ్ ఎంచుకున్న టీమిండియా"
+                >
+
+                <div class="news-content">
+
+                    <p>
+                        భారత్ vs వెస్టిండీస్ 2వ వన్డే.. టాస్ గెలిచి బౌలింగ్ ఎంచుకున్న టీమిండియా
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="news-item post"
+                data-url="esha-singh-25m-pistol-silver-medal/"
+            >
+
+                <img
+                    src="esha-singh-25m-pistol-silver-medal.png"
+                    alt="భారత షూటర్ ఈషా సింగ్‌కు రజత పతకం.. 25 మీటర్ల పిస్టల్‌లో అద్భుత పోరాటం"
+                >
+
+                <div class="news-content">
+
+                    <p>
+                        భారత షూటర్ ఈషా సింగ్‌కు రజత పతకం.. 25 మీటర్ల పిస్టల్‌లో అద్భుత పోరాటం
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="news-item post"
+                data-url="india-asian-games-cricket-semifinal/"
+            >
+
+                <img
+                    src="india-asian-games-cricket-semifinal.png"
+                    alt="భారత్ ఏషియన్ గేమ్స్ క్రికెట్ సెమీఫైనల్‌కు"
+                >
+
+                <div class="news-content">
+
+                    <p>
+                        భారత్ ఏషియన్ గేమ్స్ క్రికెట్ సెమీఫైనల్‌కు.. వర్షంతో అఫ్గాన్‌తో క్వార్టర్‌ఫైనల్ రద్దు
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="news-item post"
+                data-url="india-vs-afghanistan-asian-games-2026/"
+            >
+
+                <img
+                    src="india-vs-afghanistan-asian-games-2026.png"
+                    alt="ఆసియా క్రీడల్లో భారత్‌కు భారీ ఊరట"
+                >
+
+                <div class="news-content">
+
+                    <p>
+                        ఆసియా క్రీడల్లో భారత్‌కు భారీ ఊరట.. అఫ్గానిస్థాన్‌తో మ్యాచ్ రద్దు, సెమీస్‌కు టీమిండియా
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="news-item post"
+                data-url="rohit-sharma-west-indies-odi-record/"
+            >
+
+                <img
+                    src="rohit-sharma-west-indies-odi-record.jpg"
+                    alt="రేపటి నుంచే వన్డేలు.. రోహిత్‌ను ఊరిస్తున్న అరుదైన రికార్డు"
+                >
+
+                <div class="news-content">
+
+                    <p>
+                        రేపటి నుంచే వన్డేలు.. రోహిత్‌ను ఊరిస్తున్న అరుదైన రికార్డు
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="news-item post"
+                data-url="asian-games-india-27-medals/"
+            >
+
+                <img
+                    src="asian-games-india-27-medals.png"
+                    alt="ఏషియన్ గేమ్స్‌లో భారత్ 27 పతకాలు"
+                >
+
+                <div class="news-content">
+
+                    <p>
+                        ఏషియన్ గేమ్స్‌లో భారత్ 27 పతకాలు.. 3 స్వర్ణాలు, 11 రజతాలు, 13 కాంస్యాలు
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="news-item post"
+                data-url="rbi-export-earnings-repatriation/"
+            >
+
+                <img
+                    src="rbi-export-earnings-repatriation.png"
+                    alt="RBI కీలక నిర్ణయం"
+                >
+
+                <div class="news-content">
+
+                    <p>
+                        RBI కీలక నిర్ణయం — ఎగుమతుల ఆదాయాన్ని దేశంలోకి తీసుకురావడంపై సడలింపు ఉపసంహరణ
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="news-item post"
+                data-url="asian-games-india-medals/"
+            >
+
+                <img
+                    src="asian-games-roshibina-devi-silver.png"
+                    alt="ఆసియా గేమ్స్‌లో భారత్‌కు మరో పతకం"
+                >
+
+                <div class="news-content">
+
+                    <p>
+                        ఆసియా గేమ్స్‌లో భారత్‌కు మరో పతకం.. 14కి చేరిన మెడల్స్ సంఖ్య
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="news-item post"
+                data-category="sports"
+                data-url="cwomen1.html"
+            >
+
+                <img
+                    src="cwomen1.jpg"
+                    alt="హాంకాంగ్‌పై భారత్ ఘన విజయం"
+                >
+
+                <div class="news-content">
+
+                    <p>
+                        మంధాన విధ్వంసం.. హాంకాంగ్‌పై భారత్ ఘన విజయం
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="news-item post"
+                data-category="sports"
+                data-url="n3.html"
+            >
+
+                <img
+                    src="n3.jpg"
+                    alt="అఫ్గానిస్థాన్‌పై భారత్ ఘన విజయం"
+                >
+
+                <div class="news-content">
+
+                    <p>
+                        అఫ్గానిస్థాన్‌పై భారత్ ఘన విజయం.. 3-0తో టీ20 సిరీస్ క్లీన్‌స్వీప్
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="news-item post"
+                data-category="sports"
+                data-url="bhumrha.html"
+            >
+
+                <img
+                    src="bhumrha.jpg"
+                    alt="బుమ్రా ఎంపిక"
+                >
+
+                <div class="news-content">
+
+                    <p>
+                        బుమ్రా ఎంపికపై పెరుగుతున్న చర్చ.. సెలక్షన్ విధానంపై మాజీ క్రికెటర్ల ప్రశ్నలు
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="news-item post"
+                data-category="sports"
+                data-url="hardik97.html"
+            >
+
+                <img
+                    src="hardik.jpg"
+                    alt="హార్దిక్ పాండ్యా"
+                >
+
+                <div class="news-content">
+
+                    <p>
+                        హార్దిక్ పాండ్యాకు మళ్లీ అవకాశం.. ఆస్ట్రేలియా Aతో సిరీస్‌కు ఎంపిక
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="news-item post"
+                data-category="sports"
+                data-url="bcci.html"
+            >
+
+                <img
+                    src="bcci.webp"
+                    alt="భారత్ అఫ్గానిస్థాన్ టీ20 సిరీస్"
+                >
+
+                <div class="news-content">
+
+                    <p>
+                        భారత్–అఫ్గానిస్థాన్ టీ20 సిరీస్‌కు రంగం సిద్ధం.. సెప్టెంబర్ 13 నుంచి ఢిల్లీలో హోరాహోరీ పోరు
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="news-item post"
+                data-category="sports"
+                data-url="dhoni4.html"
+            >
+
+                <img
+                    src="dhoni4.jpg"
+                    alt="ఎంఎస్ ధోనీకి CSKలో 25 శాతం వాటా కావాలా?"
+                >
+
+                <div class="news-content">
+
+                    <p>
+                        ఎంఎస్ ధోనీకి CSKలో 25 శాతం వాటా కావాలా? తగ్గించిన డిమాండ్‌తోనూ ముందుకు సాగని చర్చలు!
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="news-item post"
+                data-category="sports"
+                data-url="bhumrha.html"
+            >
+
+                <img
+                    src="bhumrha.jpg"
+                    alt="బుమ్రా ఎంపికపై పెరుగుతున్న చర్చ"
+                >
+
+                <div class="news-content">
+
+                    <p>
+                        బుమ్రా ఎంపికపై పెరుగుతున్న చర్చ.. సెలక్షన్ విధానంపై మాజీ క్రికెటర్ల ప్రశ్న
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="news-item post"
+                data-category="sports"
+                data-url="haki.html"
+            >
+
+                <img
+                    src="haki.jpg"
+                    alt="ఉమెన్స్ హాకీ వరల్డ్ కప్"
+                >
+
+                <div class="news-content">
+
+                    <p>
+                        ఉమెన్స్ హాకీ వరల్డ్ కప్: జర్మనీపై భారత్ ఘన విజయం.. 1974 తర్వాత ఇదే అత్యుత్తమ ప్రదర్శన
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article
+                class="news-item post"
+                data-category="sports"
+                data-url="dhoni7.html"
+            >
+
+                <img
+                    src="dhoni.jpg"
+                    alt="ధోనీ IPL 2027 ఆడతాడా?"
+                >
+
+                <div class="news-content">
+
+                    <p>
+                        ధోనీ IPL 2027 ఆడతాడా? ఇంపాక్ట్ ప్లేయర్‌గా మాత్రం వద్దంటున్న ధోనీ.. మాజీ CSK ఆటగాడి కీలక వ్యాఖ్యలు
+                    </p>
+
+                </div>
+
+            </article>
+
 
         </div>
 
-        <a
-            href="index.html"
-            class="home-btn"
-        >
-            Home
-        </a>
+
+        <!-- MOVIES -->
+
+        <section class="section">
+
+            <div class="section-head">
+
+                <h2>
+                    <span>MOVIES</span> News
+                </h2>
+
+            </div>
+
+            <div
+                id="moviesGrid"
+                class="movies-grid"
+            >
+
+                <div class="loading">
+                    Movies News Loading...
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- AP & TS -->
+
+        <section class="section">
+
+            <div class="section-head">
+
+                <h2>
+                    <span>AP & TS</span> News
+                </h2>
+
+            </div>
+
+            <div
+                id="aptsGrid"
+                class="movies-grid"
+            >
+
+                <div class="loading">
+                    AP & TS News Loading...
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- BUSINESS -->
+
+        <section class="section">
+
+            <div class="section-head">
+
+                <h2>
+                    <span>BUSINESS</span> News
+                </h2>
+
+            </div>
+
+            <div
+                id="businessGrid"
+                class="movies-grid"
+            >
+
+                <div class="loading">
+                    Business News Loading...
+                </div>
+
+            </div>
+
+        </section>
+
 
     </div>
 
-</header>
+
+    <!-- =================================================
+         RIGHT SIDEBAR
+    ================================================== -->
+
+    <aside class="article-sidebar">
 
 
-<!-- =====================================================
-     NAVIGATION
-===================================================== -->
+        <div class="sidebar-box">
 
-<nav class="nav-bar">
+            <div class="sidebar-title">
+                Most Read
+            </div>
 
-    <div class="nav-inner">
+            <div id="mostReadSidebar"></div>
 
-        <a href="index.html">
-            హోమ్ 
-        </a>
+        </div>
 
-        <a href="MOVIES.html">
-            మూవీస్ 
-        </a>
 
-        <a
-            href="SPORTS.html"
-            class="active"
-        >
-            స్పోర్ట్స్ 
-        </a>
+        <div class="sidebar-box">
 
-        <a href="AP&TS.html">
-            ఏపీ & టీస్ 
-        </a>
+            <div class="sidebar-title">
+                Trending News
+            </div>
 
-        <a href="business.html">
-            బిజినెస్ 
-        </a>
+            <div id="trendingSidebar"></div>
+
+        </div>
+
+
+        <div class="sidebar-box">
+
+            <div class="sidebar-title">
+                Latest News
+            </div>
+
+            <div id="latestSidebar"></div>
+
+        </div>
+
+
+    </aside>
+
+
+</div>
+
+</main><!-- =====================================================
+     FOOTER
+===================================================== --><footer class="site-footer"><div class="footer-inner">
+
+
+    <div class="footer-column">
+
+        <h3>
+            ముఖ్యమైన లింకులు
+        </h3>
+
+        <div class="footer-links">
+
+            <a href="advertise.html">
+                Advertise With Us
+            </a>
+
+            <a href="about.html">
+                About Us
+            </a>
+
+            <a href="contact.html">
+                Contact Us
+            </a>
+
+            <a href="Privacy Policy.html">
+                Privacy Policy
+            </a>
+
+            <a href="disclaimer.html">
+                Disclaimer
+            </a>
+
+            <a href="terms.html">
+                Terms & Conditions
+            </a>
+
+        </div>
 
     </div>
 
-</nav>
 
+    <div class="footer-contact">
 
-<!-- =====================================================
-     BREAKING NEWS
-===================================================== -->
+        <h3>
+            Contact
+        </h3>
 
-<div class="breaking">
+        <p>
+            newsb386@gmail.com
+        </p>
 
-    <div class="breaking-title">
-        BREAKING NEWS
-    </div>
+        <p>
+            Follow us for latest updates.
+        </p>
 
-    <div class="breaking-text">
-        క్రికెట్, స్పోర్ట్స్ ప్రపంచంలోని తాజా వార్తలు, మ్యాచ్ అప్డేట్స్, ఆటగాళ్ల వార్తలు...
     </div>
 
 </div>
 
 
-<!-- =====================================================
-     MAIN PAGE
-===================================================== -->
+<div class="copyright">
 
-<main class="page">
+    © 2026 BS 360 NEWS. All Rights Reserved.
 
+</div>
 
-    <div class="page-title">
-        Sports News
-    </div>
-
-
-    <div class="main-layout">
-
-
-        <!-- =================================================
-             LEFT CONTENT
-        ================================================== -->
-
-        <div class="movies-main">
-
-
-            <!-- =================================================
-                 SPORTS
-            ================================================== -->
-
-            <section class="section">
-
-                <div class="section-head">
-
-                    <h2>
-                        <span>ALL</span> Sports
-                    </h2>
-
-                </div>
-
-
-                <div
-                    id="sportsGrid"
-                    class="movies-grid"
-                >
-
-                    <div class="loading">
-                        Sports News Loading...
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <!-- =================================================
-                 LOCAL SPORTS SOURCE
-            ================================================== -->
-
-            <div id="localSportsSource" hidden>
-
-
-                <!-- SPORTS ARTICLE 1 -->
-
-                
-
-    <article class="news-item post" data-url="india-2027-world-cup/">
-
-    <img
-        src="india-2027-world-cup.png"
-        alt="2027 వన్డే ప్రపంచకప్‌లో భారత్ తొలి మ్యాచ్ ఆస్ట్రేలియాతో"
-    >
-
-    <div class="news-content">
-
-        <p>
-            2027 వన్డే ప్రపంచకప్‌లో భారత్ తొలి మ్యాచ్ ఆస్ట్రేలియాతో తలపడనుంది. అక్టోబర్ 7న కేప్‌టౌన్‌లో ఈ మ్యాచ్ జరగనుంది.
-
-    </div>
-
-    </article>
-    
-<article class="news-item post" data-url="gambhir-guwahati-pitch-complaint/">
-
-    <img
-        src="gambhir-guwahati-pitch-complaint.png"
-        alt="గువాహటి పిచ్‌పై గంభీర్ అసంతృప్తి.. 811 పరుగుల మ్యాచ్‌పై కీలక వ్యాఖ్యలు"
-    >
-
-    <div class="news-content">
-
-        <p>
-            గువాహటి పిచ్‌పై గంభీర్ అసంతృప్తి.. 811 పరుగుల మ్యాచ్‌పై కీలక వ్యాఖ్యలు
-        </p>
-
-    </div>
-
-</article>
-   <article class="news-item post" data-url="india-west-indies-2nd-odi-shubman-gill-double-century-rohit-century/">
-
-    <img
-        src="india-west-indies-2nd-odi-shubman-gill-double-century-rohit-century.jpg"
-        alt="వెస్టిండీస్‌పై భారత్ ఘన విజయం.. గిల్ డబుల్ సెంచరీతో దుమ్మురేపాడు"
-    >
-
-    <div class="news-content">
-
-        <p>
-            వెస్టిండీస్‌పై భారత్ ఘన విజయం.. గిల్ డబుల్ సెంచరీతో దుమ్మురేపాడు
-        </p>
-
-    </div>
-
-   </article>
-<article class="news-item post" data-url="shubman-gill-62-ball-century/">
-
-    <img
-        src="shubman-gill-62-ball-century.png"
-        alt="🔥 గిల్ విధ్వంసం.. 62 బంతుల్లో సెంచరీ!"
-    >
-
-    <div class="news-content">
-
-        <p>
-             గిల్ విధ్వంసం.. 62 బంతుల్లో సెంచరీ!
-        </p>
-
-    </div>
-
-</article>
-   
-   
-   <article class="news-item post" data-url="rohit-sharma-century-72-balls-100-runs/">
-
-    <img
-        src="rohit-sharma-century-72-balls-100-runs.png"
-        alt="రోహిత్ శర్మ విధ్వంసం.. 72 బంతుల్లో సెంచరీ"
-    >
-
-    <div class="news-content">
-
-        <p>
-            రోహిత్ శర్మ విధ్వంసం.. 72 బంతుల్లో సెంచరీ
-        </p>
-
-    </div>
-
-</article>
-<article class="news-item post" data-url="india-vs-west-indies-2nd-odi-guwahati/">
-
-    <img
-        src="india-vs-west-indies-2nd-odi-guwahati.png"
-        alt="భారత్ vs వెస్టిండీస్ 2వ వన్డే.. టాస్ గెలిచి బౌలింగ్ ఎంచుకున్న టీమిండియా"
-    >
-
-    <div class="news-content">
-
-        <p>
-            భారత్ vs వెస్టిండీస్ 2వ వన్డే.. టాస్ గెలిచి బౌలింగ్ ఎంచుకున్న టీమిండియా
-        </p>
-
-    </div>
-
-</article>
-
-   <article class="news-item post" data-url="esha-singh-25m-pistol-silver-medal/">
-
-    <img
-        src="esha-singh-25m-pistol-silver-medal.png"
-        alt="భారత షూటర్ ఈషా సింగ్‌కు రజత పతకం.. 25 మీటర్ల పిస్టల్‌లో అద్భుత పోరాటం"
-    >
-
-    <div class="news-content">
-
-        <p>
-            భారత షూటర్ ఈషా సింగ్‌కు రజత పతకం.. 25 మీటర్ల పిస్టల్‌లో అద్భుత పోరాటం
-        </p>
-
-    </div>
-
-   </article>
-
-<article class="news-item post" data-url="india-asian-games-cricket-semifinal/">
-
-    <img
-        src="india-asian-games-cricket-semifinal.png"
-        alt="భారత్ ఏషియన్ గేమ్స్ క్రికెట్ సెమీఫైనల్‌కు.. వర్షంతో అఫ్గాన్‌తో క్వార్టర్‌ఫైనల్ రద్దు"
-    >
-
-    <div class="news-content">
-
-        <p>
-            భారత్ ఏషియన్ గేమ్స్ క్రికెట్ సెమీఫైనల్‌కు.. వర్షంతో అఫ్గాన్‌తో క్వార్టర్‌ఫైనల్ రద్దు
-        </p>
-
-    </div>
-
-</article>
-   
-
-   
-<article class="news-item post" data-url="india-vs-afghanistan-asian-games-2026/">
-
-    <img
-        src="india-vs-afghanistan-asian-games-2026.png"
-        alt="ఆసియా క్రీడల్లో భారత్‌కు భారీ ఊరట.. అఫ్గానిస్థాన్‌తో మ్యాచ్ రద్దు, సెమీస్‌కు టీమిండియా"
-    >
-
-    <div class="news-content">
-
-        <p>
-            ఆసియా క్రీడల్లో భారత్‌కు భారీ ఊరట.. అఫ్గానిస్థాన్‌తో మ్యాచ్ రద్దు, సెమీస్‌కు టీమిండియా
-        </p>
-
-    </div>
-
-</article>
-   
-   <article class="news-item post" data-url="rohit-sharma-west-indies-odi-record/">
-
-    <img
-        src="rohit-sharma-west-indies-odi-record.jpg"
-        alt="రేపటి నుంచే వన్డేలు.. రోహిత్‌ను ఊరిస్తున్న అరుదైన రికార్డు"
-    >
-
-    <div class="news-content">
-
-        <p>
-            రేపటి నుంచే వన్డేలు.. రోహిత్‌ను ఊరిస్తున్న అరుదైన రికార్డు
-        </p>
-
-    </div>
-
-   </article>
-<article class="news-item post" data-url="asian-games-india-27-medals/">
-
-    <img
-        src="asian-games-india-27-medals.png"
-        alt="ఏషియన్ గేమ్స్‌లో భారత్ 27 పతకాలు.. 3 స్వర్ణాలు, 11 రజతాలు, 13 కాంస్యాలు"
-    >
-
-    <div class="news-content">
-
-        <p>
-            ఏషియన్ గేమ్స్‌లో భారత్ 27 పతకాలు.. 3 స్వర్ణాలు, 11 రజతాలు, 13 కాంస్యాలు
-        </p>
-
-    </div>
-
-</article>
-<article class="news-item post" data-url="rbi-export-earnings-repatriation/">
-
-    <img
-        src="rbi-export-earnings-repatriation.png"
-        alt="RBI కీలక నిర్ణయం — ఎగుమతుల ఆదాయాన్ని దేశంలోకి తీసుకురావడంపై సడలింపు ఉపసంహరణ"
-    >
-
-    <div class="news-content">
-
-        <p>
-            RBI కీలక నిర్ణయం — ఎగుమతుల ఆదాయాన్ని దేశంలోకి తీసుకురావడంపై సడలింపు ఉపసంహరణ
-        </p>
-
-    </div>
-
-</article>
-    
-    
-<article class="news-item post" data-url="asian-games-india-medals/">
-
-    <img
-        src="asian-games-roshibina-devi-silver.png"
-        alt="ఆసియా గేమ్స్‌లో భారత్‌కు మరో పతకం.. 14కి చేరిన మెడల్స్ సంఖ్య"
-    >
-
-    <div class="news-content">
-
-        <p>
-            ఆసియా గేమ్స్‌లో భారత్‌కు మరో పతకం.. 14కి చేరిన మెడల్స్ సంఖ్య
-        </p>
-
-    </div>
-
-</article>
-                
-                <article
-                    class="news-item post"
-                    data-category="sports"
-                    data-url="cwomen1.html"
-                >
-
-                    <img
-                        src="cwomen1.jpg"
-                        alt="హాంకాంగ్‌పై భారత్ ఘన విజయం"
-                    >
-
-                    <div class="news-content">
-
-                        <p>
-                            మంధాన విధ్వంసం.. హాంకాంగ్‌పై భారత్ ఘన విజయం
-                        </p>
-
-                    </div>
-
-                </article>
-
-
-                <!-- SPORTS ARTICLE 2 -->
-
-                <article
-                    class="news-item post"
-                    data-category="sports"
-                    data-url="n3.html"
-                >
-
-                    <img
-                        src="n3.jpg"
-                        alt="అఫ్గానిస్థాన్‌పై భారత్ ఘన విజయం"
-                    >
-
-                    <div class="news-content">
-
-                        <p>
-                            అఫ్గానిస్థాన్‌పై భారత్ ఘన విజయం.. 3-0తో టీ20 సిరీస్ క్లీన్‌స్వీప్
-                        </p>
-
-                    </div>
-
-                </article>
-
-
-                <!-- SPORTS ARTICLE 3 -->
-
-                <article
-                    class="news-item post"
-                    data-category="sports"
-                    data-url="bhumrha.html"
-                >
-
-                    <img
-                        src="bhumrha.jpg"
-                        alt="బుమ్రా ఎంపిక"
-                    >
-
-                    <div class="news-content">
-
-                        <p>
-                            బుమ్రా ఎంపికపై పెరుగుతున్న చర్చ.. సెలక్షన్ విధానంపై మాజీ క్రికెటర్ల ప్రశ్నలు
-                        </p>
-
-                    </div>
-
-                </article>
-
-
-                <!-- SPORTS ARTICLE 4 -->
-
-                <article
-                    class="news-item post"
-                    data-category="sports"
-                    data-url="hardik97.html"
-                >
-
-                    <img
-                        src="hardik.jpg"
-                        alt="హార్దిక్ పాండ్యా"
-                    >
-
-                    <div class="news-content">
-
-                        <p>
-                            హార్దిక్ పాండ్యాకు మళ్లీ అవకాశం.. ఆస్ట్రేలియా Aతో సిరీస్‌కు ఎంపిక
-                        </p>
-
-                    </div>
-
-                </article>
-
-
-                <!-- SPORTS ARTICLE 5 -->
-
-                <article
-                    class="news-item post"
-                    data-category="sports"
-                    data-url="bcci.html"
-                >
-
-                    <img
-                        src="bcci.webp"
-                        alt="భారత్ అఫ్గానిస్థాన్ టీ20 సిరీస్"
-                    >
-
-                    <div class="news-content">
-
-                        <p>
-                            భారత్–అఫ్గానిస్థాన్ టీ20 సిరీస్‌కు రంగం సిద్ధం.. సెప్టెంబర్ 13 నుంచి ఢిల్లీలో హోరాహోరీ పోరు
-                        </p>
-
-                    </div>
-
-                </article>
-
-
-                <!-- SPORTS ARTICLE 6 -->
-
-                <article
-                    class="news-item post"
-                    data-category="sports"
-                    data-url="dhoni4.html"
-                >
-
-                    <img
-                        src="dhoni4.jpg"
-                        alt="ఎంఎస్ ధోనీకి CSKలో 25 శాతం వాటా కావాలా?"
-                    >
-
-                    <div class="news-content">
-
-                        <p>
-                            ఎంఎస్ ధోనీకి CSKలో 25 శాతం వాటా కావాలా? తగ్గించిన డిమాండ్‌తోనూ ముందుకు సాగని చర్చలు!
-                        </p>
-
-                    </div>
-
-                </article>
-
-
-                <!-- SPORTS ARTICLE 7 -->
-
-                <article
-                    class="news-item post"
-                    data-category="sports"
-                    data-url="bhumrha.html"
-                >
-
-                    <img
-                        src="bhumrha.jpg"
-                        alt="బుమ్రా ఎంపికపై పెరుగుతున్న చర్చ"
-                    >
-
-                    <div class="news-content">
-
-                        <p>
-                            బుమ్రా ఎంపికపై పెరుగుతున్న చర్చ.. సెలక్షన్ విధానంపై మాజీ క్రికెటర్ల ప్రశ్న
-                        </p>
-
-                    </div>
-
-                </article>
-
-
-                <!-- SPORTS ARTICLE 8 -->
-
-                <article
-                    class="news-item post"
-                    data-category="sports"
-                    data-url="haki.html"
-                >
-
-                    <img
-                        src="haki.jpg"
-                        alt="ఉమెన్స్ హాకీ వరల్డ్ కప్"
-                    >
-
-                    <div class="news-content">
-
-                        <p>
-                            ఉమెన్స్ హాకీ వరల్డ్ కప్: జర్మనీపై భారత్ ఘన విజయం.. 1974 తర్వాత ఇదే అత్యుత్తమ ప్రదర్శన
-                        </p>
-
-                    </div>
-
-                </article>
-
-
-                <!-- SPORTS ARTICLE 9 -->
-
-                <article
-                    class="news-item post"
-                    data-category="sports"
-                    data-url="dhoni7.html"
-                >
-
-                    <img
-                        src="dhoni.jpg"
-                        alt="ధోనీ IPL 2027 ఆడతాడా?"
-                    >
-
-                    <div class="news-content">
-
-                        <p>
-                            ధోనీ IPL 2027 ఆడతాడా? ఇంపాక్ట్ ప్లేయర్‌గా మాత్రం వద్దంటున్న ధోనీ.. మాజీ CSK ఆటగాడి కీలక వ్యాఖ్యలు
-                        </p>
-
-                    </div>
-
-                </article>
-
-
-            </div>
-
-
-            <!-- =================================================
-                 MOVIES
-            ================================================== -->
-
-            <section class="section">
-
-                <div class="section-head">
-
-                    <h2>
-                        <span>MOVIES</span> News
-                    </h2>
-
-                </div>
-
-
-                <div
-                    id="moviesGrid"
-                    class="movies-grid"
-                >
-
-                    <div class="loading">
-                        Movies News Loading...
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <!-- =================================================
-                 AP & TS
-            ================================================== -->
-
-            <section class="section">
-
-                <div class="section-head">
-
-                    <h2>
-                        <span>AP & TS</span> News
-                    </h2>
-
-                </div>
-
-
-                <div
-                    id="aptsGrid"
-                    class="movies-grid"
-                >
-
-                    <div class="loading">
-                        AP & TS News Loading...
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <!-- =================================================
-                 BUSINESS
-            ================================================== -->
-
-            <section class="section">
-
-                <div class="section-head">
-
-                    <h2>
-                        <span>BUSINESS</span> News
-                    </h2>
-
-                </div>
-
-
-                <div
-                    id="businessGrid"
-                    class="movies-grid"
-                >
-
-                    <div class="loading">
-                        Business News Loading...
-                    </div>
-
-                </div>
-
-            </section>
-
-
-        </div>
-
-
-        <!-- =================================================
-             RIGHT SIDEBAR
-        ================================================== -->
-
-        <aside class="article-sidebar">
-
-
-            <!-- MOST READ -->
-
-            <div class="sidebar-box">
-
-                <div class="sidebar-title">
-                    Most Read
-                </div>
-
-                <div id="mostReadSidebar"></div>
-
-            </div>
-
-
-            <!-- TRENDING -->
-
-            <div class="sidebar-box">
-
-                <div class="sidebar-title">
-                    Trending News
-                </div>
-
-                <div id="trendingSidebar"></div>
-
-            </div>
-
-
-            <!-- LATEST -->
-
-            <div class="sidebar-box">
-
-                <div class="sidebar-title">
-                    Latest News
-                </div>
-
-                <div id="latestSidebar"></div>
-
-            </div>
-
-
-        </aside>
-
-
-    </div>
-
-</main>
-
-
-<!-- =====================================================
-     FOOTER
-===================================================== -->
-
-<footer class="site-footer">
-
-    <div class="footer-inner">
-
-
-        <div class="footer-column">
-
-            <h3>
-                ముఖ్యమైన లింకులు
-            </h3>
-
-            <div class="footer-links">
-
-                <a href="advertise.html">
-                    Advertise With Us
-                </a>
-
-                <a href="about.html">
-                    About Us
-                </a>
-
-                <a href="contact.html">
-                    Contact Us
-                </a>
-
-                <a href="Privacy Policy.html">
-                    Privacy Policy
-                </a>
-
-                <a href="disclaimer.html">
-                    Disclaimer
-                </a>
-
-                <a href="terms.html">
-                    Terms & Conditions
-                </a>
-
-            </div>
-
-        </div>
-
-
-        <div class="footer-contact">
-
-            <h3>
-                Contact
-            </h3>
-
-            <p>
-                newsb386@gmail.com
-            </p>
-
-            <p>
-                Follow us for latest updates.
-            </p>
-
-        </div>
-
-    </div>
-
-
-    <div class="copyright">
-
-        © 2026 BS 360 NEWS. All Rights Reserved.
-
-    </div>
-
-</footer>
-
-
-<!-- =====================================================
-     SPORTS PAGE JAVASCRIPT
-===================================================== -->
-
-<script>
+</footer><!-- =====================================================
+     JAVASCRIPT
+===================================================== --><script>
 
 document.addEventListener("DOMContentLoaded", function(){
 
@@ -1791,11 +1723,8 @@ document.addEventListener("DOMContentLoaded", function(){
     function getArticles(source){
 
         if(!source){
-
             return [];
-
         }
-
 
         return Array.from(
 
@@ -1810,18 +1739,14 @@ document.addEventListener("DOMContentLoaded", function(){
             const image =
                 item.querySelector("img");
 
-
             const title =
                 item.querySelector(
                     ".news-content p"
                 ) ||
-
                 item.querySelector(
                     ".news-content h3"
                 ) ||
-
                 item.querySelector("p");
-
 
             return {
 
@@ -1834,22 +1759,16 @@ document.addEventListener("DOMContentLoaded", function(){
 
                 image:
                     image
-                        ? image.getAttribute(
-                            "src"
-                        ) || ""
+                        ? image.getAttribute("src") || ""
                         : "",
 
                 alt:
                     image
-                        ? image.getAttribute(
-                            "alt"
-                        ) || ""
+                        ? image.getAttribute("alt") || ""
                         : "",
 
                 url:
-                    item.getAttribute(
-                        "data-url"
-                    ) || ""
+                    item.getAttribute("data-url") || ""
 
             };
 
@@ -1858,13 +1777,9 @@ document.addEventListener("DOMContentLoaded", function(){
         .filter(function(article){
 
             return (
-
                 article.title &&
-
                 article.image &&
-
                 article.url
-
             );
 
         });
@@ -1894,9 +1809,7 @@ document.addEventListener("DOMContentLoaded", function(){
                 <div class="movie-card-content">
 
                     <h3 class="movie-card-title">
-
                         ${article.title}
-
                     </h3>
 
                 </div>
@@ -1928,9 +1841,7 @@ document.addEventListener("DOMContentLoaded", function(){
                 >
 
                 <div class="sidebar-item-title">
-
                     ${article.title}
-
                 </div>
 
             </a>
@@ -1960,9 +1871,7 @@ document.addEventListener("DOMContentLoaded", function(){
                 >
 
                 <div class="most-read-title">
-
                     ${article.title}
-
                 </div>
 
             </a>
@@ -1981,11 +1890,8 @@ document.addEventListener("DOMContentLoaded", function(){
         const element =
             document.getElementById(id);
 
-
         if(element){
-
             element.innerHTML = html;
-
         }
 
     }
@@ -1996,13 +1902,10 @@ document.addEventListener("DOMContentLoaded", function(){
     ===================================================== */
 
     fetch(
-
         "index.html?v=" + Date.now(),
-
         {
             cache:"no-store"
         }
-
     )
 
     .then(function(response){
@@ -2025,7 +1928,6 @@ document.addEventListener("DOMContentLoaded", function(){
         const parser =
             new DOMParser();
 
-
         const home =
             parser.parseFromString(
                 html,
@@ -2046,7 +1948,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
 
         /* =================================================
-           SPORTS DIRECTLY FROM SPORTS.HTML
+           LOCAL SPORTS
         ================================================= */
 
         const localSports =
@@ -2058,14 +1960,13 @@ document.addEventListener("DOMContentLoaded", function(){
 
 
         /* =================================================
-           LOCAL SPORTS FIRST
-           DUPLICATE URLS REMOVED
+           SPORTS
+           LOCAL FIRST + DUPLICATES REMOVED
         ================================================= */
 
         const sports = [
 
             ...localSports,
-
             ...indexSports
 
         ]
@@ -2167,13 +2068,10 @@ document.addEventListener("DOMContentLoaded", function(){
         ================================================= */
 
         show(
-
             "sportsGrid",
-
             sports
                 .map(cardHTML)
                 .join("")
-
         );
 
 
@@ -2182,13 +2080,10 @@ document.addEventListener("DOMContentLoaded", function(){
         ================================================= */
 
         show(
-
             "moviesGrid",
-
             movies
                 .map(cardHTML)
                 .join("")
-
         );
 
 
@@ -2197,13 +2092,10 @@ document.addEventListener("DOMContentLoaded", function(){
         ================================================= */
 
         show(
-
             "aptsGrid",
-
             apts
                 .map(cardHTML)
                 .join("")
-
         );
 
 
@@ -2212,13 +2104,10 @@ document.addEventListener("DOMContentLoaded", function(){
         ================================================= */
 
         show(
-
             "businessGrid",
-
             business
                 .map(cardHTML)
                 .join("")
-
         );
 
 
@@ -2227,14 +2116,11 @@ document.addEventListener("DOMContentLoaded", function(){
         ================================================= */
 
         show(
-
             "mostReadSidebar",
-
             mostRead
                 .slice(0,8)
                 .map(mostReadHTML)
                 .join("")
-
         );
 
 
@@ -2243,14 +2129,11 @@ document.addEventListener("DOMContentLoaded", function(){
         ================================================= */
 
         show(
-
             "trendingSidebar",
-
             trending
                 .slice(0,8)
                 .map(sidebarHTML)
                 .join("")
-
         );
 
 
@@ -2259,14 +2142,11 @@ document.addEventListener("DOMContentLoaded", function(){
         ================================================= */
 
         show(
-
             "latestSidebar",
-
             latest
                 .slice(0,8)
                 .map(sidebarHTML)
                 .join("")
-
         );
 
 
@@ -2342,54 +2222,42 @@ document.addEventListener("DOMContentLoaded", function(){
 
 
         show(
-
             "sportsGrid",
-
             `
                 <div class="loading">
                     Sports News load కాలేదు.
                 </div>
             `
-
         );
 
 
         show(
-
             "moviesGrid",
-
             `
                 <div class="loading">
                     Movies News load కాలేదు.
                 </div>
             `
-
         );
 
 
         show(
-
             "aptsGrid",
-
             `
                 <div class="loading">
                     AP & TS News load కాలేదు.
                 </div>
             `
-
         );
 
 
         show(
-
             "businessGrid",
-
             `
                 <div class="loading">
                     Business News load కాలేదు.
                 </div>
             `
-
         );
 
     });
@@ -2416,9 +2284,5 @@ document.addEventListener("DOMContentLoaded", function(){
 
 });
 
-</script>
-
-
-</body>
-
+</script></body>
 </html>
