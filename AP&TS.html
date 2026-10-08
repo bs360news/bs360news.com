@@ -53,7 +53,9 @@ a{
 }
 
 
-/* HEADER */
+/* =====================================================
+   HEADER
+===================================================== */
 
 .top-header{
     background:#fff;
@@ -81,20 +83,10 @@ a{
     color:#e50914;
 }
 
-.home-btn{
-    background:#e50914;
-    color:#fff;
-    padding:8px 16px;
-    border-radius:6px;
-    font-weight:700;
-}
 
-.home-btn:hover{
-    background:#c7000b;
-}
-
-
-/* NAVIGATION */
+/* =====================================================
+   NAVIGATION
+===================================================== */
 
 .nav-bar{
     background:#fff;
@@ -138,7 +130,9 @@ a{
 }
 
 
-/* BREAKING NEWS */
+/* =====================================================
+   BREAKING NEWS
+===================================================== */
 
 .breaking{
     width:min(1400px,96%);
@@ -170,7 +164,9 @@ a{
 }
 
 
-/* PAGE */
+/* =====================================================
+   PAGE
+===================================================== */
 
 .page{
     width:min(1400px,96%);
@@ -187,7 +183,9 @@ a{
 }
 
 
-/* MAIN LAYOUT */
+/* =====================================================
+   MAIN LAYOUT
+===================================================== */
 
 .main-layout{
     display:grid;
@@ -197,7 +195,9 @@ a{
 }
 
 
-/* SECTION */
+/* =====================================================
+   SECTION
+===================================================== */
 
 .section{
     margin-bottom:30px;
@@ -224,7 +224,9 @@ a{
 }
 
 
-/* ALL ARTICLE GRIDS */
+/* =====================================================
+   ARTICLE GRID
+===================================================== */
 
 .movies-grid{
     display:grid;
@@ -233,7 +235,9 @@ a{
 }
 
 
-/* ARTICLE CARD */
+/* =====================================================
+   ARTICLE CARD
+===================================================== */
 
 .movie-card{
     display:block;
@@ -241,7 +245,9 @@ a{
     border-radius:7px;
     overflow:hidden;
     min-width:0;
-    transition:transform .2s ease,box-shadow .2s ease;
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
 }
 
 .movie-card:hover{
@@ -265,6 +271,7 @@ a{
     font-size:14px;
     line-height:1.45;
     font-weight:800;
+
     display:-webkit-box;
     -webkit-line-clamp:4;
     -webkit-box-orient:vertical;
@@ -272,7 +279,23 @@ a{
 }
 
 
-/* SIDEBAR */
+/* =====================================================
+   EMPTY MESSAGE
+===================================================== */
+
+.empty-message{
+    grid-column:1 / -1;
+    background:#fff;
+    padding:25px;
+    text-align:center;
+    border-radius:8px;
+    color:#777;
+}
+
+
+/* =====================================================
+   SIDEBAR
+===================================================== */
 
 .article-sidebar{
     display:flex;
@@ -298,7 +321,9 @@ a{
 }
 
 
-/* SIDEBAR ARTICLE */
+/* =====================================================
+   SIDEBAR ARTICLE
+===================================================== */
 
 .sidebar-item{
     display:flex;
@@ -326,6 +351,7 @@ a{
     line-height:1.4;
     font-weight:700;
     color:#1f2937;
+
     display:-webkit-box;
     -webkit-line-clamp:3;
     -webkit-box-orient:vertical;
@@ -333,7 +359,9 @@ a{
 }
 
 
-/* MOST READ */
+/* =====================================================
+   MOST READ
+===================================================== */
 
 .most-read-item{
     display:flex;
@@ -362,6 +390,7 @@ a{
     line-height:1.4;
     font-weight:700;
     color:#1f2937;
+
     display:-webkit-box;
     -webkit-line-clamp:3;
     -webkit-box-orient:vertical;
@@ -369,7 +398,9 @@ a{
 }
 
 
-/* LOADING */
+/* =====================================================
+   LOADING
+===================================================== */
 
 .loading{
     grid-column:1 / -1;
@@ -381,7 +412,9 @@ a{
 }
 
 
-/* FOOTER */
+/* =====================================================
+   FOOTER
+===================================================== */
 
 .site-footer{
     background:#111827;
@@ -436,42 +469,9 @@ a{
 }
 
 
-/* DARK MODE */
-
-body.dark-mode{
-    background:#0b1120;
-    color:#f9fafb;
-}
-
-body.dark-mode .top-header,
-body.dark-mode .nav-bar,
-body.dark-mode .breaking,
-body.dark-mode .page-title,
-body.dark-mode .movie-card,
-body.dark-mode .sidebar-box{
-    background:#111827;
-    color:#f9fafb;
-    border-color:#374151;
-}
-
-body.dark-mode .logo,
-body.dark-mode .nav-inner a,
-body.dark-mode .breaking-text,
-body.dark-mode .section-head h2,
-body.dark-mode .movie-card-title,
-body.dark-mode .sidebar-title,
-body.dark-mode .sidebar-item-title,
-body.dark-mode .most-read-title{
-    color:#f9fafb;
-}
-
-body.dark-mode .sidebar-item,
-body.dark-mode .most-read-item{
-    border-color:#374151;
-}
-
-
-/* TABLET */
+/* =====================================================
+   TABLET
+===================================================== */
 
 @media(min-width:601px) and (max-width:1100px){
 
@@ -492,7 +492,9 @@ body.dark-mode .most-read-item{
 }
 
 
-/* MOBILE */
+/* =====================================================
+   MOBILE
+===================================================== */
 
 @media(max-width:600px){
 
@@ -502,11 +504,6 @@ body.dark-mode .most-read-item{
 
     .logo{
         font-size:22px;
-    }
-
-    .home-btn{
-        padding:6px 11px;
-        font-size:13px;
     }
 
     .nav-inner a{
@@ -543,7 +540,7 @@ body.dark-mode .most-read-item{
     }
 
 
-    /* MOBILE NEWS CARDS */
+    /* MOBILE NEWS */
 
     .movies-grid{
         grid-template-columns:1fr;
@@ -580,6 +577,7 @@ body.dark-mode .most-read-item{
         width:calc(100% - 115px);
         min-width:0;
         padding:9px 10px;
+
         display:flex;
         align-items:center;
         justify-content:center;
@@ -638,7 +636,9 @@ body.dark-mode .most-read-item{
 }
 
 
-/* SMALL MOBILE */
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
 
 @media(max-width:380px){
 
@@ -678,6 +678,10 @@ body.dark-mode .most-read-item{
 <body>
 
 
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
 <header class="top-header">
 
     <div class="header-inner">
@@ -686,27 +690,29 @@ body.dark-mode .most-read-item{
             BS <span>360</span> NEWS
         </div>
 
-        
-
     </div>
 
 </header>
 
+
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
 
 <nav class="nav-bar">
 
     <div class="nav-inner">
 
         <a href="index.html">
-            హోమ్ 
+            హోమ్
         </a>
 
         <a href="MOVIES.html">
-            మూవీస్ 
+            మూవీస్
         </a>
 
         <a href="SPORTS.html">
-            స్పోర్ట్స్ 
+            స్పోర్ట్స్
         </a>
 
         <a href="AP&TS.html" class="active">
@@ -714,13 +720,17 @@ body.dark-mode .most-read-item{
         </a>
 
         <a href="business.html">
-            బిజినెస్ 
+            బిజినెస్
         </a>
 
     </div>
 
 </nav>
 
+
+<!-- =====================================================
+     BREAKING NEWS
+===================================================== -->
 
 <div class="breaking">
 
@@ -735,6 +745,10 @@ body.dark-mode .most-read-item{
 </div>
 
 
+<!-- =====================================================
+     PAGE
+===================================================== -->
+
 <main class="page">
 
     <div class="page-title">
@@ -747,6 +761,10 @@ body.dark-mode .most-read-item{
 
         <div class="movies-main">
 
+
+            <!-- =================================================
+                 LOCAL AP & TS SOURCE
+            ================================================= -->
 
             <div id="localAptsSource" hidden>
 
@@ -765,7 +783,7 @@ body.dark-mode .most-read-item{
                     <div class="news-content">
 
                         <p>
-                            తెలంగాణలో కరువు పరిస్థితులపై ప్రభుత్వం అప్రమత్తమైంది. 2026 నైరుతి రుతుపవనాల సీజన్‌లో read more
+                            తెలంగాణలో కరువు పరిస్థితులపై ప్రభుత్వం అప్రమత్తమైంది. 2026 నైరుతి రుతుపవనాల సీజన్‌లో వర్షపాతం లోటుపై అధికారులు దృష్టి సారించారు.
                         </p>
 
                     </div>
@@ -801,7 +819,7 @@ body.dark-mode .most-read-item{
 
                     <img
                         src="palle-panduga-3-rural-development-works.png"
-                        alt="ఏపీలో ₹11,085 కోట్ల గ్రామీణాభివృద్ధి పనులు.. ‘పల్లె పండుగ 3.0’కు శ్రీకారం"
+                        alt="ఏపీలో ₹11,085 కోట్ల గ్రామీణాభివృద్ధి పనులు.. పల్లె పండుగ 3.0కు శ్రీకారం"
                     >
 
                     <div class="news-content">
@@ -843,7 +861,7 @@ body.dark-mode .most-read-item{
 
                     <img
                         src="mission-karmayogi-sadhana-shrinkhla-2026-vijayawada.png"
-                        alt="విజయవాడలో సెప్టెంబర్ 29న జాతీయ స్థాయి కార్యక్రమం.. ‘సాధన శ్రేణి 2026’ సదస్సు"
+                        alt="విజయవాడలో జాతీయ స్థాయి కార్యక్రమం.. సాధన శ్రేణి 2026 సదస్సు"
                     >
 
                     <div class="news-content">
@@ -891,7 +909,7 @@ body.dark-mode .most-read-item{
                     <div class="news-content">
 
                         <p>
-                            NH-65పై ట్రాఫిక్ డైవర్షన్.. పటాన్‌చెరు–సంగారెడ్డి మధ్య రోడ్డు పనుల కారణంగా సెప్టెంబర్ 26 నుంచి మార్గం మారనుంది
+                            NH-65పై ట్రాఫిక్ డైవర్షన్.. పటాన్‌చెరు–సంగారెడ్డి మధ్య రోడ్డు పనుల కారణంగా మార్గం మారనుంది
                         </p>
 
                     </div>
@@ -906,7 +924,7 @@ body.dark-mode .most-read-item{
 
                     <img
                         src="telangana-aarogyasri-dues.png"
-                        alt="తెలంగాణలో ఆరోగ్య పథకాలకు ఆర్థిక ఇబ్బందులు.. ప్రైవేట్ ఆస్పత్రులకు రూ.2,000 కోట్లకు పైగా బకాయిలు"
+                        alt="తెలంగాణలో ఆరోగ్య పథకాలకు ఆర్థిక ఇబ్బందులు.. ప్రైవేట్ ఆస్పత్రులకు బకాయిలు"
                     >
 
                     <div class="news-content">
@@ -969,7 +987,7 @@ body.dark-mode .most-read-item{
 
                     <img
                         src="khairatabad-ganesh-immersion.png"
-                        alt="తెలంగాణలో గణేశ్ నిమజ్జనం.. ఖైరతాబాద్ బడా గణేశుడి శోభాయాత్రకు భారీ బందోబస్తు"
+                        alt="తెలంగాణలో గణేశ్ నిమజ్జనం.. ఖైరతాబాద్ బడా గణేశుడి శోభాయాత్ర"
                     >
 
                     <div class="news-content">
@@ -1006,14 +1024,12 @@ body.dark-mode .most-read-item{
 
                 <article
                     class="news-item post"
-                    data-category="apts"
                     data-url="ttd2.html"
                 >
 
                     <img
                         src="ttd2.png"
                         alt="తిరుమల బ్రహ్మోత్సవాలు.. ఏడో రోజుకు చేరుకున్న శ్రీవారి ఉత్సవాలు"
-                        loading="lazy"
                     >
 
                     <div class="news-content">
@@ -1034,7 +1050,7 @@ body.dark-mode .most-read-item{
 
                     <img
                         src="rain.jpg"
-                        alt="ఏపీలో వర్షాలపై అలర్ట్.."
+                        alt="ఏపీలో వర్షాలపై అలర్ట్"
                     >
 
                     <div class="news-content">
@@ -1055,7 +1071,7 @@ body.dark-mode .most-read-item{
 
                     <img
                         src="kapam.png"
-                        alt="చంద్రబాబు కుప్పం పర్యటన.."
+                        alt="చంద్రబాబు కుప్పం పర్యటన"
                     >
 
                     <div class="news-content">
@@ -1076,7 +1092,7 @@ body.dark-mode .most-read-item{
 
                     <img
                         src="ttd.jpg"
-                        alt="తిరుమలలో వైభవంగా హనుమంత వాహన సేవ.."
+                        alt="తిరుమలలో వైభవంగా హనుమంత వాహన సేవ"
                     >
 
                     <div class="news-content">
@@ -1135,11 +1151,37 @@ body.dark-mode .most-read-item{
             </div>
 
 
-            
+            <!-- =================================================
+                 AP & TS SECTION
+            ================================================= -->
 
-  
+            <section class="section">
 
-            <!-- MOVIES -->
+                <div class="section-head">
+
+                    <h2>
+                        <span></span> AP & TS News
+                    </h2>
+
+                </div>
+
+                <div
+                    id="aptsGrid"
+                    class="movies-grid"
+                >
+
+                    <div class="loading">
+                        AP & TS News Loading...
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 MOVIES
+            ================================================= -->
 
             <section class="section">
 
@@ -1165,7 +1207,9 @@ body.dark-mode .most-read-item{
             </section>
 
 
-            <!-- SPORTS -->
+            <!-- =================================================
+                 SPORTS
+            ================================================= -->
 
             <section class="section">
 
@@ -1191,14 +1235,16 @@ body.dark-mode .most-read-item{
             </section>
 
 
-            <!-- BUSINESS -->
+            <!-- =================================================
+                 BUSINESS
+            ================================================= -->
 
             <section class="section">
 
                 <div class="section-head">
 
                     <h2>
-                        <span></span> News
+                        <span></span> Business
                     </h2>
 
                 </div>
@@ -1220,7 +1266,9 @@ body.dark-mode .most-read-item{
         </div>
 
 
-        <!-- SIDEBAR -->
+        <!-- =================================================
+             SIDEBAR
+        ================================================= -->
 
         <aside class="article-sidebar">
 
@@ -1265,6 +1313,10 @@ body.dark-mode .most-read-item{
 
 </main>
 
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
 <footer class="site-footer">
 
@@ -1342,7 +1394,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
 
     /* =====================================================
-       HELPERS
+       CLEAN TEXT
     ===================================================== */
 
     function cleanText(text){
@@ -1411,6 +1463,29 @@ document.addEventListener("DOMContentLoaded", function(){
                 article.image &&
                 article.url
             );
+
+        });
+
+    }
+
+
+    /* =====================================================
+       REMOVE DUPLICATES
+    ===================================================== */
+
+    function uniqueArticles(articles){
+
+        const seen = new Set();
+
+        return articles.filter(function(article){
+
+            if(seen.has(article.url)){
+                return false;
+            }
+
+            seen.add(article.url);
+
+            return true;
 
         });
 
@@ -1521,14 +1596,73 @@ document.addEventListener("DOMContentLoaded", function(){
             document.getElementById(id);
 
         if(element){
+
             element.innerHTML = html;
+
         }
 
     }
 
 
     /* =====================================================
-       LOAD INDEX
+       SHOW ARTICLES
+    ===================================================== */
+
+    function showArticles(id,articles,emptyText){
+
+        if(!articles || articles.length === 0){
+
+            show(
+                id,
+                `
+                    <div class="empty-message">
+                        ${emptyText}
+                    </div>
+                `
+            );
+
+            return;
+
+        }
+
+        show(
+            id,
+            articles
+                .map(cardHTML)
+                .join("")
+        );
+
+    }
+
+
+    /* =====================================================
+       LOCAL AP & TS
+    ===================================================== */
+
+    const localApts =
+        getArticles(
+            document.getElementById(
+                "localAptsSource"
+            )
+        );
+
+
+    /*
+       IMPORTANT:
+       Local AP & TS articles are shown
+       immediately. So even if index.html
+       fails, AP & TS news will still appear.
+    */
+
+    showArticles(
+        "aptsGrid",
+        localApts,
+        "AP & TS News అందుబాటులో లేవు."
+    );
+
+
+    /* =====================================================
+       LOAD INDEX.HTML
     ===================================================== */
 
     fetch(
@@ -1543,7 +1677,8 @@ document.addEventListener("DOMContentLoaded", function(){
         if(!response.ok){
 
             throw new Error(
-                "index.html load failed"
+                "index.html load failed: " +
+                response.status
             );
 
         }
@@ -1566,7 +1701,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
 
         /* =================================================
-           HOME MOVIES
+           MOVIES
         ================================================= */
 
         const movies =
@@ -1578,7 +1713,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
 
         /* =================================================
-           HOME SPORTS
+           SPORTS
         ================================================= */
 
         const sports =
@@ -1590,7 +1725,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
 
         /* =================================================
-           AP & TS
+           AP & TS FROM INDEX
         ================================================= */
 
         const indexApts =
@@ -1601,30 +1736,15 @@ document.addEventListener("DOMContentLoaded", function(){
             );
 
 
-        const localApts =
-            getArticles(
-                document.getElementById(
-                    "localAptsSource"
-                )
-            );
+        /*
+           LOCAL + INDEX
+        */
 
-
-        const apts = [
-
-            ...localApts,
-            ...indexApts
-
-        ]
-
-        .filter(function(article,index,array){
-
-            return array.findIndex(function(item){
-
-                return item.url === article.url;
-
-            }) === index;
-
-        });
+        const apts =
+            uniqueArticles([
+                ...localApts,
+                ...indexApts
+            ]);
 
 
         /* =================================================
@@ -1679,14 +1799,10 @@ document.addEventListener("DOMContentLoaded", function(){
            AP & TS
         ================================================= */
 
-        show(
-
+        showArticles(
             "aptsGrid",
-
-            apts
-                .map(cardHTML)
-                .join("")
-
+            apts,
+            "AP & TS News అందుబాటులో లేవు."
         );
 
 
@@ -1694,14 +1810,10 @@ document.addEventListener("DOMContentLoaded", function(){
            MOVIES
         ================================================= */
 
-        show(
-
+        showArticles(
             "moviesGrid",
-
-            movies
-                .map(cardHTML)
-                .join("")
-
+            movies,
+            "Movies News అందుబాటులో లేవు."
         );
 
 
@@ -1709,14 +1821,10 @@ document.addEventListener("DOMContentLoaded", function(){
            SPORTS
         ================================================= */
 
-        show(
-
+        showArticles(
             "sportsGrid",
-
-            sports
-                .map(cardHTML)
-                .join("")
-
+            sports,
+            "Sports News అందుబాటులో లేవు."
         );
 
 
@@ -1724,14 +1832,10 @@ document.addEventListener("DOMContentLoaded", function(){
            BUSINESS
         ================================================= */
 
-        show(
-
+        showArticles(
             "businessGrid",
-
-            business
-                .map(cardHTML)
-                .join("")
-
+            business,
+            "Business News అందుబాటులో లేవు."
         );
 
 
@@ -1801,7 +1905,12 @@ document.addEventListener("DOMContentLoaded", function(){
         );
 
         console.log(
-            "AP & TS:",
+            "Index AP & TS:",
+            indexApts.length
+        );
+
+        console.log(
+            "Total AP & TS:",
             apts.length
         );
 
@@ -1845,48 +1954,35 @@ document.addEventListener("DOMContentLoaded", function(){
     .catch(function(error){
 
         console.error(
-            "BS360 AP & TS ERROR:",
+            "BS360 INDEX LOAD ERROR:",
             error
         );
 
 
-        show(
-            "aptsGrid",
-            `
-                <div class="loading">
-                    AP & TS News load కాలేదు.
-                </div>
-            `
-        );
+        /*
+           AP & TS local articles already
+           loaded, so do NOT replace them.
+        */
 
 
-        show(
+        showArticles(
             "moviesGrid",
-            `
-                <div class="loading">
-                    Movies News load కాలేదు.
-                </div>
-            `
+            [],
+            "Movies News అందుబాటులో లేవు."
         );
 
 
-        show(
+        showArticles(
             "sportsGrid",
-            `
-                <div class="loading">
-                    Sports News load కాలేదు.
-                </div>
-            `
+            [],
+            "Sports News అందుబాటులో లేవు."
         );
 
 
-        show(
+        showArticles(
             "businessGrid",
-            `
-                <div class="loading">
-                    Business News load కాలేదు.
-                </div>
-            `
+            [],
+            "Business News అందుబాటులో లేవు."
         );
 
     });
