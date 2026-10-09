@@ -1669,3 +1669,108 @@ body.dark-mode .theme-button{
 
 
 
+
+
+
+
+
+
+
+
+/* BS360news Top News */
+.bs-top-news {
+  width: 100%;
+  margin: 20px auto;
+}
+
+.bs-top-news h2 {
+  font-size: 23px;
+  border-left: 4px solid #e31b23;
+  padding-left: 10px;
+  margin-bottom: 15px;
+}
+
+.bs-top-news h2 a {
+  color: #111;
+  text-decoration: none;
+}
+
+.bs-top-news-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(6, auto);
+  gap: 12px;
+}
+
+.bs-top-news-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.bs-top-news-item img {
+  width: 130px;
+  height: 85px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.bs-top-news-item h3 {
+  font-size: 17px;
+  line-height: 1.5;
+  margin: 0 0 5px;
+}
+
+.bs-top-news-item h3 a {
+  color: #161616;
+  text-decoration: none;
+}
+
+.bs-top-news-item p {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+  line-height: 1.5;
+}
+
+@media (max-width: 480px) {
+  .bs-top-news-item {
+    gap: 10px;
+    padding: 8px;
+  }
+
+  .bs-top-news-item img {
+    width: 100px;
+    height: 72px;
+  }
+
+  .bs-top-news-item h3 {
+    font-size: 14px;
+  }
+
+  .bs-top-news-item p {
+    font-size: 12px;
+  }
+}
+
+
+
+
+.top-news-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(6, auto);
+    gap: 15px;
+}
+
+
+
+
+
+
+
+
