@@ -1386,3 +1386,94 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* BS 360 NEWS - News section renderer */
+
+const bs360NewsData = {
+  topNewsGrid: [
+    // ఉదాహరణ:
+    // {
+    //   title: "వార్త టైటిల్ ఇక్కడ",
+    //   image: "images/news-image.jpg",
+    //   url: "news-folder/"
+    // }
+  ],
+
+  internationalNewsGrid: [],
+  nationalNewsGrid: [],
+  cinemaNewsGrid: [],
+  sportsNewsGrid: [],
+  apTsNewsGrid: [],
+  businessNewsGrid: []
+};
+
+function renderBS360News() {
+  Object.entries(bs360NewsData).forEach(([gridId, articles]) => {
+    const grid = document.getElementById(gridId);
+    if (!grid) return;
+
+    grid.replaceChildren();
+
+    if (!articles || articles.length === 0) {
+      const emptyMessage = document.createElement("p");
+      emptyMessage.className = "bs360-empty";
+      emptyMessage.textContent = "ఈ విభాగంలో వార్తలు త్వరలో అందుబాటులో ఉంటాయి.";
+      grid.appendChild(emptyMessage);
+      return;
+    }
+
+    articles.forEach((article) => {
+      const item = document.createElement("article");
+      item.className = "bs360-news-item";
+
+      const imageLink = document.createElement("a");
+      imageLink.className = "bs360-news-image-link";
+      imageLink.href = article.url;
+
+      const image = document.createElement("img");
+      image.className = "bs360-news-image";
+      image.src = article.image;
+      image.alt = article.title;
+      image.loading = "lazy";
+      image.decoding = "async";
+
+      imageLink.appendChild(image);
+
+      const heading = document.createElement("h3");
+      heading.className = "bs360-news-title";
+
+      const titleLink = document.createElement("a");
+      titleLink.href = article.url;
+      titleLink.textContent = article.title;
+
+      heading.appendChild(titleLink);
+      item.append(imageLink, heading);
+      grid.appendChild(item);
+    });
+  });
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", renderBS360News);
+} else {
+  renderBS360News();
+}
+
