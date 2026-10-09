@@ -1774,3 +1774,54 @@ body.dark-mode .theme-button{
 
 
 
+
+
+.national-news-list {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 15px;
+}
+
+.national-news-item {
+    min-width: 0;
+    overflow: hidden;
+}
+
+.national-news-item a {
+    display: block;
+    color: #111;
+    text-decoration: none;
+}
+
+.national-news-item img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+}
+
+.national-news-item h3 {
+    font-size: 15px;
+    line-height: 1.5;
+    margin: 8px 0;
+}
+
+/* Mobile: 2 columns x 3 rows */
+@media (max-width: 600px) {
+    .national-news-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .national-news-item h3 {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+}
+
+
+
+
+
+
+
