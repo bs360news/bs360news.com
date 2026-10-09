@@ -1296,3 +1296,106 @@ body.dark-mode .after-category-heading {
         font-size: 10px;
     }
 }
+
+
+
+
+
+
+
+
+/* LATEST NEWS - LAPTOP + MOBILE */
+
+#latestSection .news-item,
+#latestGrid .news-item,
+.latest-news-list .news-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid #e5e5e5;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* LEFT SIDE - TEXT */
+#latestSection .news-content,
+#latestGrid .news-content,
+.latest-news-list .news-content {
+    order: 1;
+    flex: 1;
+    min-width: 0;
+    text-align: left;
+}
+
+/* RIGHT SIDE - IMAGE */
+#latestSection .news-item img,
+#latestGrid .news-item img,
+.latest-news-list .news-item img {
+    order: 2;
+    width: 150px;
+    height: 100px;
+    object-fit: cover;
+    flex-shrink: 0;
+    border-radius: 6px;
+}
+
+/* NEWS TITLE */
+#latestSection .news-content h2,
+#latestSection .news-content h3,
+#latestGrid .news-content h2,
+#latestGrid .news-content h3,
+.latest-news-list .news-content h2,
+.latest-news-list .news-content h3 {
+    margin: 0 0 8px;
+    font-size: 17px;
+    line-height: 1.5;
+    font-weight: 700;
+}
+
+/* NEWS DESCRIPTION */
+#latestSection .news-content p,
+#latestGrid .news-content p,
+.latest-news-list .news-content p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+    #latestSection .news-item,
+    #latestGrid .news-item,
+    .latest-news-list .news-item {
+        gap: 10px;
+        padding: 12px 0;
+    }
+
+    #latestSection .news-item img,
+    #latestGrid .news-item img,
+    .latest-news-list .news-item img {
+        width: 105px;
+        height: 78px;
+    }
+
+    #latestSection .news-content h2,
+    #latestSection .news-content h3,
+    #latestGrid .news-content h2,
+    #latestGrid .news-content h3,
+    .latest-news-list .news-content h2,
+    .latest-news-list .news-content h3 {
+        font-size: 14px;
+        line-height: 1.45;
+    }
+
+    #latestSection .news-content p,
+    #latestGrid .news-content p,
+    .latest-news-list .news-content p {
+        font-size: 12px;
+    }
+}
+
+
+
+
