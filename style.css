@@ -1825,3 +1825,55 @@ body.dark-mode .theme-button{
 
 
 
+
+
+
+.international-news-list {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 15px;
+}
+
+.international-news-item {
+    min-width: 0;
+    overflow: hidden;
+}
+
+.international-news-item a {
+    display: block;
+    color: #111;
+    text-decoration: none;
+}
+
+.international-news-item img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+}
+
+.international-news-item h3 {
+    font-size: 15px;
+    line-height: 1.5;
+    margin: 8px 0;
+}
+
+@media (max-width: 600px) {
+    .international-news-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .international-news-item h3 {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+}
+
+
+
+
+
+
+
+
