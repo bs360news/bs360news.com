@@ -652,31 +652,36 @@ body.dark-mode .trending-news-item {
 
 
 
-/* =========================================
-   BS360NEWS - MOBILE HOMEPAGE LAYOUT
-   Mobile only - Desktop layout unchanged
-========================================= */
+
+
+
+
+
+
+
+
+/* ======================================
+   BS360NEWS MOBILE NEWS LAYOUT
+====================================== */
 
 @media screen and (max-width: 700px) {
 
-    /* Main sections stack vertically */
     main.homepage-news-layout {
         display: flex !important;
         flex-direction: column !important;
-        gap: 22px !important;
-        width: 100% !important;
+        gap: 20px !important;
         padding: 10px !important;
+        width: 100% !important;
         box-sizing: border-box;
     }
 
     main.homepage-news-layout > section {
         width: 100% !important;
         min-width: 0 !important;
-        margin: 0 0 18px !important;
         box-sizing: border-box;
     }
 
-    /* TOP NEWS main large article */
+    /* TOP NEWS - Large image with text below */
     .top-main-column .top-main-article {
         display: flex !important;
         flex-direction: column !important;
@@ -684,7 +689,6 @@ body.dark-mode .trending-news-item {
     }
 
     .top-main-column .top-main-article img {
-        display: block;
         width: 100% !important;
         height: auto !important;
         aspect-ratio: 16 / 9;
@@ -694,18 +698,17 @@ body.dark-mode .trending-news-item {
     .top-main-column .top-main-article h2,
     .top-main-column .top-main-article h3,
     .top-main-column .top-main-article p {
-        width: 100%;
         margin: 8px 0;
     }
 
-    /* TOP NEWS - two small articles
-       Images first, title/text underneath */
+    /* TOP NEWS - Two images side by side,
+       with text underneath each image */
     .top-main-column .top-small-articles {
         display: grid !important;
         grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
         gap: 12px !important;
-        width: 100% !important;
         margin-top: 14px;
+        width: 100% !important;
     }
 
     .top-main-column .top-small-articles article,
@@ -728,81 +731,90 @@ body.dark-mode .trending-news-item {
     .top-main-column .top-small-articles h3,
     .top-main-column .top-small-articles h4,
     .top-main-column .top-small-articles p {
-        margin: 6px 0;
         font-size: 14px;
         line-height: 1.45;
+        margin: 6px 0;
     }
 
-    /* TRENDING - image left, text right */
-    .trending-news-column article,
-    .trending-news-column .news-item,
-    #trendingSidebar article,
-    #trendingSidebar .news-item {
+    /* LATEST NEWS - first article large */
+    .latest-news-column #latestGrid > :first-child {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        margin-bottom: 16px;
+    }
+
+    .latest-news-column #latestGrid > :first-child img {
+        width: 100% !important;
+        height: auto !important;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+    }
+
+    /* LATEST NEWS - remaining articles:
+       image left, text right */
+    .latest-news-column #latestGrid > :not(:first-child) {
         display: flex !important;
         flex-direction: row !important;
         align-items: flex-start !important;
         gap: 10px !important;
         width: 100% !important;
-        margin-bottom: 14px !important;
+        margin-bottom: 14px;
     }
 
-    .trending-news-column img,
-    #trendingSidebar img {
+    .latest-news-column #latestGrid > :not(:first-child) img {
         flex: 0 0 105px;
         width: 105px !important;
         height: 78px !important;
         object-fit: cover;
     }
 
+    /* TRENDING NEWS - first article large */
+    .trending-news-column #trendingSidebar > :first-child {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        margin-bottom: 16px;
+    }
+
+    .trending-news-column #trendingSidebar > :first-child img {
+        width: 100% !important;
+        height: auto !important;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+    }
+
+    /* TRENDING NEWS - remaining articles:
+       image left, text right */
+    .trending-news-column #trendingSidebar > :not(:first-child) {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: flex-start !important;
+        gap: 10px !important;
+        width: 100% !important;
+        margin-bottom: 14px;
+    }
+
+    .trending-news-column #trendingSidebar > :not(:first-child) img {
+        flex: 0 0 105px;
+        width: 105px !important;
+        height: 78px !important;
+        object-fit: cover;
+    }
+
+    /* Text sizing for Latest and Trending */
+    .latest-news-column h2,
+    .latest-news-column h3,
+    .latest-news-column h4,
+    .latest-news-column p,
     .trending-news-column h2,
     .trending-news-column h3,
     .trending-news-column h4,
-    .trending-news-column p,
-    #trendingSidebar h2,
-    #trendingSidebar h3,
-    #trendingSidebar h4,
-    #trendingSidebar p {
-        flex: 1;
+    .trending-news-column p {
         min-width: 0;
-        margin: 0 0 6px;
         font-size: 14px;
         line-height: 1.45;
-    }
-
-    /* LATEST - image left, text right */
-    .latest-news-column #latestGrid {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 14px !important;
-    }
-
-    .latest-news-column #latestGrid article,
-    .latest-news-column #latestGrid .news-item {
-        display: flex !important;
-        flex-direction: row !important;
-        align-items: flex-start !important;
-        gap: 10px !important;
-        width: 100% !important;
-        min-width: 0 !important;
-    }
-
-    .latest-news-column #latestGrid img {
-        flex: 0 0 105px;
-        width: 105px !important;
-        height: 78px !important;
-        object-fit: cover;
-    }
-
-    .latest-news-column #latestGrid h2,
-    .latest-news-column #latestGrid h3,
-    .latest-news-column #latestGrid h4,
-    .latest-news-column #latestGrid p {
-        flex: 1;
-        min-width: 0;
-        margin: 0 0 6px;
-        font-size: 14px;
-        line-height: 1.45;
+        margin-top: 4px;
     }
 }
-
 
