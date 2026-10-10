@@ -1396,6 +1396,75 @@ body.dark-mode .after-category-heading {
     }
 }
 
+/* BS360 NEWS - LATEST NEWS */
+
+.latest-news-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.latest-news-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid #ddd;
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.latest-news-content {
+    flex: 1;
+    min-width: 0;
+    order: 1;
+}
+
+.latest-news-card h3 {
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.5;
+    font-weight: 700;
+    text-align: left;
+}
+
+.latest-news-card img {
+    order: 2;
+    display: block;
+    width: 150px;
+    height: 100px;
+    object-fit: cover;
+    flex-shrink: 0;
+    border-radius: 5px;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+    .latest-news-card {
+        gap: 10px;
+        padding: 12px 0;
+    }
+
+    .latest-news-card img {
+        width: 105px;
+        height: 78px;
+    }
+
+    .latest-news-card h3 {
+        font-size: 14px;
+        line-height: 1.45;
+    }
+}
+
+
+
+
+
+
 
 
 
