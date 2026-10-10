@@ -612,3 +612,31 @@ body.dark-mode .trending-news-item {
         height: 72px;
     }
 }
+/* Force the four main columns side by side on laptop */
+@media (min-width: 701px) {
+    main.homepage-news-layout {
+        display: grid !important;
+        grid-template-columns: 1.2fr 1fr 1fr 1fr !important;
+        gap: 16px;
+        align-items: start;
+    }
+
+    main.homepage-news-layout > .top-main-column,
+    main.homepage-news-layout > .top-side-column,
+    main.homepage-news-layout > .latest-news-column,
+    main.homepage-news-layout > .trending-news-column {
+        display: block;
+        min-width: 0;
+        width: auto;
+    }
+
+    main.homepage-news-layout .top-bottom-section {
+        grid-column: auto;
+    }
+}
+
+@media (max-width: 700px) {
+    main.homepage-news-layout {
+        grid-template-columns: minmax(0, 1fr) !important;
+    }
+}
