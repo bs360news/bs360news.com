@@ -412,28 +412,24 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
 
-    function createLatestCard(article) {
+    
+function createLatestCard(article) {
+    return `
+        <a href="${article.url}" class="latest-news-card">
 
-        return `
-            <a
-                href="${article.url}"
-                class="latest-news-card"
+            <div class="latest-news-content">
+                <h3>${article.title}</h3>
+            </div>
+
+            <img
+                src="${article.image}"
+                alt="${article.alt || article.title}"
+                loading="lazy"
             >
 
-                <img
-                    src="${article.image}"
-                    alt="${article.alt || article.title}"
-                    loading="lazy"
-                >
-
-                <h3>
-                    ${article.title}
-                </h3>
-
-            </a>
-        `;
-
-    }
+        </a>
+    `;
+}
 
 
     function renderLatestNews() {
