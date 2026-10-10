@@ -640,3 +640,169 @@ body.dark-mode .trending-news-item {
         grid-template-columns: minmax(0, 1fr) !important;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================
+   BS360NEWS - MOBILE HOMEPAGE LAYOUT
+   Mobile only - Desktop layout unchanged
+========================================= */
+
+@media screen and (max-width: 700px) {
+
+    /* Main sections stack vertically */
+    main.homepage-news-layout {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 22px !important;
+        width: 100% !important;
+        padding: 10px !important;
+        box-sizing: border-box;
+    }
+
+    main.homepage-news-layout > section {
+        width: 100% !important;
+        min-width: 0 !important;
+        margin: 0 0 18px !important;
+        box-sizing: border-box;
+    }
+
+    /* TOP NEWS main large article */
+    .top-main-column .top-main-article {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+    }
+
+    .top-main-column .top-main-article img {
+        display: block;
+        width: 100% !important;
+        height: auto !important;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+    }
+
+    .top-main-column .top-main-article h2,
+    .top-main-column .top-main-article h3,
+    .top-main-column .top-main-article p {
+        width: 100%;
+        margin: 8px 0;
+    }
+
+    /* TOP NEWS - two small articles
+       Images first, title/text underneath */
+    .top-main-column .top-small-articles {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 12px !important;
+        width: 100% !important;
+        margin-top: 14px;
+    }
+
+    .top-main-column .top-small-articles article,
+    .top-main-column .top-small-articles .news-item {
+        display: flex !important;
+        flex-direction: column !important;
+        min-width: 0 !important;
+        width: 100% !important;
+    }
+
+    .top-main-column .top-small-articles img {
+        display: block;
+        width: 100% !important;
+        height: auto !important;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+    }
+
+    .top-main-column .top-small-articles h2,
+    .top-main-column .top-small-articles h3,
+    .top-main-column .top-small-articles h4,
+    .top-main-column .top-small-articles p {
+        margin: 6px 0;
+        font-size: 14px;
+        line-height: 1.45;
+    }
+
+    /* TRENDING - image left, text right */
+    .trending-news-column article,
+    .trending-news-column .news-item,
+    #trendingSidebar article,
+    #trendingSidebar .news-item {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: flex-start !important;
+        gap: 10px !important;
+        width: 100% !important;
+        margin-bottom: 14px !important;
+    }
+
+    .trending-news-column img,
+    #trendingSidebar img {
+        flex: 0 0 105px;
+        width: 105px !important;
+        height: 78px !important;
+        object-fit: cover;
+    }
+
+    .trending-news-column h2,
+    .trending-news-column h3,
+    .trending-news-column h4,
+    .trending-news-column p,
+    #trendingSidebar h2,
+    #trendingSidebar h3,
+    #trendingSidebar h4,
+    #trendingSidebar p {
+        flex: 1;
+        min-width: 0;
+        margin: 0 0 6px;
+        font-size: 14px;
+        line-height: 1.45;
+    }
+
+    /* LATEST - image left, text right */
+    .latest-news-column #latestGrid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 14px !important;
+    }
+
+    .latest-news-column #latestGrid article,
+    .latest-news-column #latestGrid .news-item {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: flex-start !important;
+        gap: 10px !important;
+        width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    .latest-news-column #latestGrid img {
+        flex: 0 0 105px;
+        width: 105px !important;
+        height: 78px !important;
+        object-fit: cover;
+    }
+
+    .latest-news-column #latestGrid h2,
+    .latest-news-column #latestGrid h3,
+    .latest-news-column #latestGrid h4,
+    .latest-news-column #latestGrid p {
+        flex: 1;
+        min-width: 0;
+        margin: 0 0 6px;
+        font-size: 14px;
+        line-height: 1.45;
+    }
+}
+
+
