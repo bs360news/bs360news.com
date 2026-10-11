@@ -87,3 +87,44 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", async function () {
+    const target = document.getElementById("latestSidebar");
+
+    if (!target) {
+        console.error("latestSidebar not found");
+        return;
+    }
+
+    try {
+        const response = await fetch("../index.html");
+
+        if (!response.ok) {
+            throw new Error("index.html load failed: " + response.status);
+        }
+
+        const html = await response.text();
+        const doc = new DOMParser().parseFromString(html, "text/html");
+        const source = doc.getElementById("latestNewsSource");
+
+        if (!source) {
+            throw new Error("latestNewsSource not found in index.html");
+        }
+
+        target.replaceChildren(
+            ...Array.from(source.querySelectorAll(".news-item.post"))
+                .map(article => article.cloneNode(true))
+        );
+
+        target.style.display = "block";
+
+    } catch (error) {
+        console.error("Latest News error:", error);
+    }
+});
+
+
