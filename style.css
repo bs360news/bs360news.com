@@ -2165,3 +2165,51 @@ body.dark-mode .bottom-news-card p {
 
 
 
+
+
+
+
+
+
+
+/* BIGG BOSS - FULL WIDTH ON LAPTOP */
+
+@media screen and (min-width: 1051px) {
+
+    .homepage-news-layout > .bigboss-section {
+        grid-column: 1 / -1 !important;
+        grid-row: auto !important;
+        width: 100% !important;
+        max-width: none !important;
+        min-width: 0 !important;
+        display: block !important;
+        position: relative !important;
+        margin: 25px 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    .bigboss-scroll {
+        display: grid !important;
+        grid-auto-flow: column !important;
+        grid-auto-columns: minmax(0, 1fr) !important;
+        gap: 16px !important;
+        width: 100% !important;
+        overflow-x: auto !important;
+    }
+
+    .bigboss-card {
+        width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    .bigboss-card img {
+        width: 100% !important;
+        height: 160px !important;
+        object-fit: cover !important;
+    }
+}
+
+
+
+
+
