@@ -2971,19 +2971,22 @@ body.dark-mode .bottom-news-card p {
 
 
 
-/* ================= MOVIE REVIEWS ================= */
+
+
+
+
+/* ================= MOVIE REVIEWS BACKGROUND ================= */
 
 .movie-reviews-section {
     width: 100%;
-    background-image: url("movie-reviews-bg.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background: #0755c9;
     padding: 20px 0 24px;
     margin: 25px 0;
     overflow: hidden;
     box-sizing: border-box;
 }
+
+/* HEADING */
 
 .movie-reviews-heading {
     width: min(1400px, 96%);
@@ -2995,9 +2998,11 @@ body.dark-mode .bottom-news-card p {
     color: #fff;
     font-size: 22px;
     font-weight: 800;
-    border-left: 5px solid #1976ff;
+    border-left: 5px solid #fff;
     padding-left: 10px;
 }
+
+/* HORIZONTAL MANUAL SCROLL */
 
 .movie-reviews-scroll {
     width: min(1400px, 96%);
@@ -3010,13 +3015,20 @@ body.dark-mode .bottom-news-card p {
     padding-bottom: 10px;
     cursor: grab;
     scrollbar-width: thin;
-    scrollbar-color: #1976ff #222;
+    scrollbar-color: #fff #0645a5;
     box-sizing: border-box;
 }
+
+.movie-reviews-scroll:active {
+    cursor: grabbing;
+}
+
+/* REVIEW CARD */
 
 .movie-review-card {
     flex: 0 0 250px;
     min-width: 0;
+    background: transparent;
     cursor: pointer;
     transition: transform 0.2s ease;
 }
@@ -3025,6 +3037,8 @@ body.dark-mode .bottom-news-card p {
     transform: translateY(-3px);
 }
 
+/* MOVIE POSTER */
+
 .movie-review-card img {
     display: block;
     width: 100%;
@@ -3032,6 +3046,8 @@ body.dark-mode .bottom-news-card p {
     object-fit: cover;
     border-radius: 5px;
 }
+
+/* REVIEW TITLE */
 
 .movie-review-card h3 {
     margin: 8px 0 0;
@@ -3047,7 +3063,10 @@ body.dark-mode .bottom-news-card p {
     -webkit-box-orient: vertical;
     overflow: hidden;
     overflow-wrap: anywhere;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
+
+/* MOBILE */
 
 @media (max-width: 768px) {
     .movie-reviews-section {
@@ -3079,26 +3098,6 @@ body.dark-mode .bottom-news-card p {
         font-size: 14px;
     }
 }
-
-
-
-
-
-
-
-/* MOVIE REVIEWS - BLUE BACKGROUND */
-
-.movie-reviews-section {
-    width: 100%;
-    background: #0755c9;
-    padding: 20px 0 24px;
-    margin: 25px 0;
-    overflow: hidden;
-    box-sizing: border-box;
-}
-
-
-
 
 
 
