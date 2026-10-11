@@ -2543,3 +2543,24 @@ body.dark-mode .bottom-news-card p {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#nationalSection {
+    position: static !important;
+    grid-row: auto !important;
+    grid-column: auto !important;
+    align-self: start;
+    margin-top: 20px;
+}
