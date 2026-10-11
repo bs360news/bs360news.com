@@ -820,3 +820,60 @@ body.dark-mode .homepage-news-layout a:hover {
         height: 38px;
     }
 }
+
+
+
+
+
+
+/* ENTERTAINMENT: BELOW TOP NEWS AND MORE TOP NEWS */
+
+@media (min-width: 1000px) {
+    main.homepage-news-layout {
+        display: grid !important;
+        grid-template-columns:
+            minmax(0, 1.2fr)
+            minmax(0, 1fr)
+            minmax(0, 1fr)
+            minmax(0, 1fr) !important;
+        column-gap: 16px !important;
+        row-gap: 20px !important;
+        align-items: start;
+    }
+
+    .top-main-column {
+        grid-column: 1 !important;
+        grid-row: 1 !important;
+    }
+
+    .top-side-column {
+        grid-column: 2 !important;
+        grid-row: 1 !important;
+    }
+
+    #latestSection {
+        grid-column: 3 !important;
+        grid-row: 1 !important;
+    }
+
+    #trendingSection {
+        grid-column: 4 !important;
+        grid-row: 1 !important;
+    }
+
+    /* Entertainment spans both TOP NEWS columns */
+    #entertainmentSection {
+        grid-column: 1 / 3 !important;
+        grid-row: 2 !important;
+        width: 100% !important;
+        margin-top: 0 !important;
+    }
+
+    #entertainmentSection .entertainment-layout {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+        gap: 12px !important;
+    }
+}
+
+
