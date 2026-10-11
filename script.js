@@ -22,3 +22,31 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
+
+
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const moreTopNews = document.querySelector(".top-side-articles");
+    const mostReadList = document.getElementById("mostReadList");
+    const mostReadSection = document.getElementById("mostReadSection");
+
+    if (!moreTopNews || !mostReadList || !mostReadSection) {
+        console.warn("MORE TOP NEWS / MOST READ container missing.");
+        return;
+    }
+
+    // MORE TOP NEWS articles ను MOST READ లోకి తరలించకండి.
+    // MOST READ కు ప్రత్యేక articles ఇక్కడ జోడించాలి.
+    mostReadList.innerHTML = "";
+
+    // Most Read articles ఇంకా ఇవ్వకపోతే ఖాళీ section చూపించకండి.
+    mostReadSection.style.display = "none";
+});
+
+
