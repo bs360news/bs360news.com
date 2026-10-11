@@ -2482,3 +2482,30 @@ body.dark-mode .bottom-news-card p {
 
 
 
+
+
+
+
+
+
+
+/* NATIONAL NEWS - BELOW LATEST NEWS */
+#latestSection {
+    grid-column: 1 / -1;
+}
+
+#nationalSection {
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+    grid-column: 1 / -1;
+    grid-row: auto;
+    clear: both;
+}
+
+
+
+
+
+
+
