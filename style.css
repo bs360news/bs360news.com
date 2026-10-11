@@ -1348,3 +1348,108 @@ body.dark-mode .headlines-bar {
     min-width: 0 !important;
   }
 }
+
+
+
+
+
+
+
+
+
+
+/* SPORTS SECTION - SAME SIZE AS ENTERTAINMENT */
+
+#sportsSection {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+#sportsSection .entertainment-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 14px;
+    width: 100%;
+    align-items: start;
+}
+
+#sportsSection .entertainment-featured,
+#sportsSection .entertainment-small-grid,
+#sportsSection .entertainment-bottom-grid {
+    min-width: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#sportsSection .entertainment-featured img {
+    display: block;
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+}
+
+#sportsSection .entertainment-small-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+}
+
+#sportsSection .entertainment-small-grid img {
+    width: 100%;
+    height: 105px;
+    object-fit: cover;
+}
+
+#sportsSection .entertainment-bottom-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+}
+
+#sportsSection .entertainment-bottom-grid img {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+}
+
+/* TABLET */
+@media (min-width: 701px) and (max-width: 1050px) {
+    #sportsSection .entertainment-layout {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    #sportsSection .entertainment-bottom-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* MOBILE */
+@media (max-width: 700px) {
+    #sportsSection .entertainment-layout {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #sportsSection .entertainment-featured img {
+        height: 200px;
+    }
+
+    #sportsSection .entertainment-small-grid,
+    #sportsSection .entertainment-bottom-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    #sportsSection .entertainment-small-grid img {
+        height: 110px;
+    }
+
+    #sportsSection .entertainment-bottom-grid img {
+        height: 110px;
+    }
+}
+
+
