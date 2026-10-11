@@ -2321,7 +2321,7 @@ body.dark-mode .bottom-news-card p {
     #sportsSection,
     #businessSection,
     #aptsSection {
-        grid-column: 2 !important;
+        grid-column: 1 !important;
         width: 100%;
         max-width: 100%;
         margin: 16px 0;
