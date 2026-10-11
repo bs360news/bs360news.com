@@ -2602,3 +2602,80 @@ body.dark-mode .bottom-news-card p {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================
+   LAPTOP: ENTERTAINMENT & NATIONAL FIX + SPORTS SPACING
+========================================== */
+@media (min-width: 1051px) {
+    /* మెయిన్ హోమ్‌పేజీ లేఅవుట్ - 2 మెయిన్ కాలమ్స్ (ఎడమ వైపు పెద్దది, కుడి వైపు చిన్నది) */
+    .homepage-news-layout {
+        display: grid !important;
+        grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) !important;
+        gap: 20px !important;
+        align-items: start !important;
+    }
+
+    /* 1. ఎడమ వైపు ఎంటర్‌టైన్‌మెంట్ సెక్షన్ */
+    #entertainmentSection {
+        grid-column: 1 !important;
+        grid-row: 2 !important;
+        width: 100% !important;
+        margin-bottom: 20px !important;
+    }
+
+    /* 2. కుడి వైపు నేషనల్ న్యూస్ సెక్షన్ (ఎంటర్‌టైన్‌మెంట్ పక్కన) */
+    #nationalSection {
+        grid-column: 2 !important;
+        grid-row: 2 !important;
+        width: 100% !important;
+        margin-top: 0 !important;
+        margin-bottom: 20px !important;
+    }
+
+    /* నేషనల్ న్యూస్ 16 ఆర్టికల్స్ 2 కాలమ్స్‌లో సెట్ అవ్వడానికి */
+    #nationalSection .national-world-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 10px !important;
+    }
+
+    #nationalSection .national-world-grid img {
+        width: 100% !important;
+        height: 80px !important;
+        object-fit: cover !important;
+        border-radius: 4px;
+    }
+
+    #nationalSection .national-world-grid h3 {
+        font-size: 12px !important;
+        line-height: 1.4 !important;
+        margin: 4px 0 0 !important;
+    }
+
+    /* 3. స్పోర్ట్స్ లేదా తర్వాతి సెక్షన్స్ కింద గ్యాప్ రాకుండా సరిగ్గా కిందకి రావడానికి */
+    #sportsSection, 
+    #aptsSection, 
+    #businessSection {
+        grid-column: 1 / -1 !important; /* ఇది అడ్డంగా పూర్తి వెడల్పు తీసుకుంటుంది */
+        grid-row: 3 !important;         /* కచ్చితంగా ఎంటర్‌టైన్‌మెంట్ కింద వస్తుంది */
+        clear: both !important;
+        width: 100% !important;
+        margin-top: 10px !important;
+    }
+}
+
+
+
+
+
