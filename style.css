@@ -894,3 +894,105 @@ body.dark-mode .trending-news-item {
 
 
 
+
+/* ENTERTAINMENT - LAPTOP */
+@media (min-width: 1000px) {
+
+    #entertainmentSection {
+        width: 100%;
+        margin-top: 20px;
+        box-sizing: border-box;
+    }
+
+    .entertainment-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 420px;
+        gap: 15px;
+        align-items: start;
+        width: 100%;
+    }
+
+    /* Big article */
+    .entertainment-featured {
+        min-width: 0;
+    }
+
+    .entertainment-featured img {
+        display: block;
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    /* Four small articles: 2 x 2 */
+    .entertainment-small-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 200px));
+        gap: 12px;
+    }
+
+    .entertainment-small-grid article {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .entertainment-small-grid img {
+        display: block;
+        width: 100%;
+        height: 100px;
+        object-fit: cover;
+    }
+
+    .entertainment-layout h3 {
+        font-size: 14px;
+        line-height: 1.4;
+        margin: 6px 0;
+    }
+
+    .entertainment-layout a {
+        color: inherit;
+        text-decoration: none;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 999px) {
+    .entertainment-layout {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .entertainment-featured,
+    .entertainment-small-grid {
+        width: 100%;
+    }
+
+    .entertainment-featured img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .entertainment-small-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .entertainment-small-grid img {
+        width: 100%;
+        height: 100px;
+        object-fit: cover;
+    }
+}
+
+
+
+
+
+
+
+
+
+
