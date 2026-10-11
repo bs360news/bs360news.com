@@ -2161,142 +2161,21 @@ body.dark-mode .bottom-news-card p {
 
 
 
-
-/* ==========================================
-   BS360NEWS - SPORTS, BUSINESS, AP NEWS
-   SAME DESIGN AS SPORTS
-========================================== */
-
-/* DESKTOP / LAPTOP */
-@media (min-width: 1051px) {
-
-    #sportsSection,
-    #businessSection,
-    #aptsSection {
+/* Entertainment and Sports - Half Width on Laptop */
+@media screen and (min-width: 1051px) {
+    #entertainmentSection,
+    #sportsSection {
         width: 50% !important;
         max-width: 50% !important;
-        min-width: 0 !important;
         box-sizing: border-box;
-        margin: 22px 0 !important;
+        margin-left: 0 !important;
+        margin-right: auto !important;
+        grid-column: 1 / 3 !important;
+        min-width: 0 !important;
     }
 
-    #sportsSection .entertainment-layout,
-    #businessSection .entertainment-layout,
-    #aptsSection .entertainment-layout {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-        gap: 14px;
-        align-items: start;
-    }
-
-    #sportsSection .entertainment-small-grid,
-    #businessSection .entertainment-small-grid,
-    #aptsSection .entertainment-small-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 10px;
-    }
-
-    #sportsSection .entertainment-bottom-grid,
-    #businessSection .entertainment-bottom-grid,
-    #aptsSection .entertainment-bottom-grid {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 10px;
-        margin-top: 15px;
-    }
-
-    #sportsSection .entertainment-featured img,
-    #businessSection .entertainment-featured img,
-    #aptsSection .entertainment-featured img {
-        width: 100%;
-        height: 230px;
-        object-fit: cover;
-    }
-
-    #sportsSection .entertainment-small-grid img,
-    #businessSection .entertainment-small-grid img,
-    #aptsSection .entertainment-small-grid img {
-        width: 100%;
-        height: 105px;
-        object-fit: cover;
-    }
-
-    #sportsSection .entertainment-bottom-grid img,
-    #businessSection .entertainment-bottom-grid img,
-    #aptsSection .entertainment-bottom-grid img {
-        width: 100%;
-        height: 100px;
-        object-fit: cover;
+    #entertainmentSection img,
+    #sportsSection img {
+        max-width: 100%;
     }
 }
-
-/* MOBILE: SPORTS, THEN BUSINESS, THEN AP NEWS */
-@media (max-width: 700px) {
-
-    #sportsSection,
-    #businessSection,
-    #aptsSection {
-        display: block !important;
-        position: static !important;
-        order: initial;
-        width: 100% !important;
-        max-width: 100% !important;
-        min-width: 0 !important;
-        margin: 22px 0 !important;
-        box-sizing: border-box;
-    }
-
-    #sportsSection .entertainment-layout,
-    #businessSection .entertainment-layout,
-    #aptsSection .entertainment-layout {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-    }
-
-    #sportsSection .entertainment-featured img,
-    #businessSection .entertainment-featured img,
-    #aptsSection .entertainment-featured img {
-        width: 100%;
-        height: auto;
-        aspect-ratio: 16 / 9;
-        object-fit: cover;
-    }
-
-    #sportsSection .entertainment-small-grid,
-    #businessSection .entertainment-small-grid,
-    #aptsSection .entertainment-small-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 10px;
-    }
-
-    #sportsSection .entertainment-small-grid img,
-    #businessSection .entertainment-small-grid img,
-    #aptsSection .entertainment-small-grid img {
-        width: 100%;
-        height: auto;
-        aspect-ratio: 16 / 9;
-        object-fit: cover;
-    }
-
-    #sportsSection .entertainment-bottom-grid,
-    #businessSection .entertainment-bottom-grid,
-    #aptsSection .entertainment-bottom-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 10px;
-        margin-top: 12px;
-    }
-
-    #sportsSection .entertainment-bottom-grid img,
-    #businessSection .entertainment-bottom-grid img,
-    #aptsSection .entertainment-bottom-grid img {
-        width: 100%;
-        height: auto;
-        aspect-ratio: 16 / 9;
-        object-fit: cover;
-    }
-}
-
