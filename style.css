@@ -3199,48 +3199,6 @@ body.dark-mode .bottom-news-card p {
 
 
 
-/* ARTICLE PAGE ONLY */
-.article-container {
-    width: 100%;
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 15px;
-    box-sizing: border-box;
-}
-
-/* Article page logo */
-.bs-header .bs-brand img {
-    width: 65px;
-    height: 65px;
-    object-fit: contain;
-}
-
-/* Article title */
-.article-container h1 {
-    font-size: 26px;
-    line-height: 1.5;
-}
-
-/* Article image */
-.article-container .article-image {
-    width: 100%;
-    max-width: 700px;
-    height: auto;
-    display: block;
-}
-
-/* Mobile */
-@media (max-width: 600px) {
-    .article-container h1 {
-        font-size: 21px;
-    }
-
-    .article-container p {
-        font-size: 15px;
-        line-height: 1.7;
-    }
-}
-
 
 
 
