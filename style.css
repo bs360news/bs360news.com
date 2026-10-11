@@ -818,3 +818,64 @@ body.dark-mode .trending-news-item {
     }
 }
 
+
+
+
+
+/* BS360NEWS - MOBILE EQUAL ARTICLE IMAGE SIZES */
+
+@media screen and (max-width: 700px) {
+
+    /* TOP NEWS - two small articles side by side */
+    .top-main-column .top-small-articles {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 12px !important;
+    }
+
+    .top-main-column .top-small-articles article,
+    .top-main-column .top-small-articles .news-item {
+        display: flex !important;
+        flex-direction: column !important;
+        min-width: 0 !important;
+    }
+
+    /* All small article images: SAME SIZE */
+    .top-main-column .top-small-articles img,
+    .top-side-column img,
+    .latest-news-column #latestGrid img,
+    .trending-news-column #trendingSidebar img {
+        height: 100px !important;
+        width: 100% !important;
+        object-fit: cover !important;
+        aspect-ratio: auto !important;
+    }
+
+    /* Latest: small image left, text right */
+    .latest-news-column #latestGrid > :not(:first-child),
+    .latest-news-column #latestGrid > :not(:first-child) a {
+        min-width: 0;
+    }
+
+    .latest-news-column #latestGrid > :not(:first-child) img,
+    .trending-news-column #trendingSidebar > :not(:first-child) img {
+        flex: 0 0 105px !important;
+        width: 105px !important;
+        height: 78px !important;
+        object-fit: cover !important;
+    }
+
+    /* Latest and Trending text */
+    .latest-news-column h2,
+    .latest-news-column h3,
+    .latest-news-column h4,
+    .latest-news-column p,
+    .trending-news-column h2,
+    .trending-news-column h3,
+    .trending-news-column h4,
+    .trending-news-column p {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+}
+
