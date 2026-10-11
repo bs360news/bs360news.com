@@ -2717,3 +2717,31 @@ body.dark-mode .bottom-news-card p {
 
 
 
+
+
+
+
+
+
+
+/* LATEST NEWS + TRENDING NEWS */
+
+.latest-trending-layout {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    width: 100%;
+    align-items: start;
+}
+
+.latest-trending-layout > section {
+    min-width: 0;
+}
+
+@media (max-width: 700px) {
+    .latest-trending-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+
