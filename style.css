@@ -1453,3 +1453,63 @@ body.dark-mode .headlines-bar {
 }
 
 
+
+
+
+
+
+
+
+
+
+/* BIGG BOSS SECTION POSITION FIX */
+
+.bigboss-section {
+    display: block;
+    position: relative;
+    clear: both;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 25px 0;
+    overflow: hidden;
+}
+
+.bigboss-heading,
+.bigboss-scroll {
+    box-sizing: border-box;
+}
+
+.bigboss-scroll {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.bigboss-card {
+    flex: 0 0 250px;
+    min-width: 0;
+}
+
+.bigboss-card img {
+    display: block;
+    width: 100%;
+    height: 155px;
+    object-fit: cover;
+}
+
+@media (max-width: 768px) {
+    .bigboss-card {
+        flex: 0 0 210px;
+    }
+
+    .bigboss-card img {
+        height: 135px;
+    }
+}
+
+
+
+
+
+
