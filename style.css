@@ -556,3 +556,21 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
+
+
+
+
+
+/* BS360NEWS LOGO SIZE */
+.bs-brand img {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.bs-brand {
+    gap: 8px;
+    align-items: center;
+}
+
