@@ -2255,3 +2255,86 @@ body.dark-mode .bottom-news-card p {
         max-width: 100%;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+/* Keep all four news sections separate */
+#entertainmentSection,
+#sportsSection,
+#businessSection,
+#aptsSection {
+    display: block;
+    clear: both;
+    float: none;
+    position: relative;
+    box-sizing: border-box;
+    min-width: 0;
+    margin-bottom: 28px;
+}
+
+/* Same article layout */
+#entertainmentSection .entertainment-layout,
+#sportsSection .entertainment-layout,
+#businessSection .entertainment-layout,
+#aptsSection .entertainment-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 12px;
+}
+
+#entertainmentSection .entertainment-small-grid,
+#sportsSection .entertainment-small-grid,
+#businessSection .entertainment-small-grid,
+#aptsSection .entertainment-small-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+}
+
+#entertainmentSection .entertainment-bottom-grid,
+#sportsSection .entertainment-bottom-grid,
+#businessSection .entertainment-bottom-grid,
+#aptsSection .entertainment-bottom-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+}
+
+#entertainmentSection img,
+#sportsSection img,
+#businessSection img,
+#aptsSection img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+@media (max-width: 700px) {
+    #entertainmentSection,
+    #sportsSection,
+    #businessSection,
+    #aptsSection {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    #entertainmentSection .entertainment-bottom-grid,
+    #sportsSection .entertainment-bottom-grid,
+    #businessSection .entertainment-bottom-grid,
+    #aptsSection .entertainment-bottom-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+
+
+
