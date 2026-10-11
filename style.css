@@ -2745,3 +2745,33 @@ body.dark-mode .bottom-news-card p {
 }
 
 
+
+
+
+
+
+/* LAPTOP: LATEST NEWS SIZE INCREASE */
+
+@media (min-width: 701px) {
+    .latest-trending-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+        gap: 24px;
+        width: 100%;
+        align-items: start;
+    }
+
+    .latest-trending-layout > #latestSection {
+        min-width: 0;
+        width: 100%;
+    }
+
+    .latest-trending-layout > #trendingSection {
+        min-width: 0;
+        width: 100%;
+    }
+}
+
+
+
+
