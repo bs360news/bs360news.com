@@ -2814,3 +2814,42 @@ body.dark-mode .bottom-news-card p {
 }
 
 
+
+
+
+
+
+/* NATIONAL & WORLD NEWS - FIT SPACE */
+
+.national-world-layout {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 16px !important;
+    width: 100% !important;
+    align-items: start;
+}
+
+.national-world-layout > #nationalSection,
+.national-world-layout > #worldSection {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.national-world-grid {
+    width: 100% !important;
+    min-width: 0 !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+}
+
+/* MOBILE */
+@media (max-width: 700px) {
+    .national-world-layout {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+}
+
+
