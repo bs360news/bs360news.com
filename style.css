@@ -2689,3 +2689,44 @@ body.dark-mode .bottom-news-card p {
 }
 
 
+
+
+
+
+
+
+
+
+
+/* NATIONAL + WORLD + ENTERTAINMENT LAYOUT */
+
+@media (min-width: 1051px) {
+    .national-world-layout {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+        align-items: start;
+        gap: 24px;
+        width: 100%;
+    }
+
+    #nationalSection,
+    #worldSection,
+    #entertainmentSection {
+        min-width: 0;
+        width: 100%;
+        margin: 0;
+    }
+
+    #nationalSection {
+        grid-column: 1;
+    }
+
+    #worldSection {
+        grid-column: 2;
+    }
+}
+
+
+
+
+
