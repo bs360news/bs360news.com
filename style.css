@@ -2181,26 +2181,4 @@ body.dark-mode .bottom-news-card p {
 
 
 
-/* LAPTOP: ENTERTAINMENT & SPORTS HALF WIDTH */
-
-@media screen and (min-width: 1051px) {
-
-    #entertainmentSection,
-    .entertainment-section:not(.sports-section) {
-        grid-column: span 1 !important;
-        width: 100% !important;
-        max-width: 100% !important;
-    }
-
-    #sportsSection,
-    .sports-section {
-        grid-column: span 1 !important;
-        width: 100% !important;
-        max-width: 100% !important;
-    }
-
-}
-
-
-
 
