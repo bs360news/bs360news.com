@@ -2854,3 +2854,255 @@ body.dark-mode .bottom-news-card p {
 
 
 
+
+
+
+
+/* ================= MOVIE REVIEWS ================= */
+
+.movie-reviews-section {
+    width: 100%;
+    background-image: url("movie-reviews-bg.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 20px 0 24px;
+    margin: 25px 0;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.movie-reviews-heading {
+    width: min(1400px, 96%);
+    margin: 0 auto 15px;
+}
+
+.movie-reviews-heading span {
+    display: inline-block;
+    color: #fff;
+    font-size: 22px;
+    font-weight: 800;
+    border-left: 5px solid #1976ff;
+    padding-left: 10px;
+}
+
+.movie-reviews-scroll {
+    width: min(1400px, 96%);
+    margin: 0 auto;
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    padding-bottom: 10px;
+    cursor: grab;
+    scrollbar-width: thin;
+    scrollbar-color: #1976ff #222;
+    box-sizing: border-box;
+}
+
+.movie-review-card {
+    flex: 0 0 250px;
+    min-width: 0;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.movie-review-card:hover {
+    transform: translateY(-3px);
+}
+
+.movie-review-card img {
+    display: block;
+    width: 100%;
+    height: 155px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.movie-review-card h3 {
+    margin: 8px 0 0;
+    color: #fff;
+    font-size: 15px;
+    line-height: 1.45;
+    font-weight: 700;
+    background: rgba(0, 0, 0, 0.78);
+    padding: 8px 9px;
+    border-radius: 6px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    overflow-wrap: anywhere;
+}
+
+@media (max-width: 768px) {
+    .movie-reviews-section {
+        padding: 16px 0 20px;
+    }
+
+    .movie-reviews-heading {
+        width: 94%;
+    }
+
+    .movie-reviews-heading span {
+        font-size: 19px;
+    }
+
+    .movie-reviews-scroll {
+        width: 94%;
+        gap: 12px;
+    }
+
+    .movie-review-card {
+        flex: 0 0 210px;
+    }
+
+    .movie-review-card img {
+        height: 135px;
+    }
+
+    .movie-review-card h3 {
+        font-size: 14px;
+    }
+}
+
+
+
+
+
+/* ================= MOVIE REVIEWS ================= */
+
+.movie-reviews-section {
+    width: 100%;
+    background-image: url("movie-reviews-bg.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 20px 0 24px;
+    margin: 25px 0;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.movie-reviews-heading {
+    width: min(1400px, 96%);
+    margin: 0 auto 15px;
+}
+
+.movie-reviews-heading span {
+    display: inline-block;
+    color: #fff;
+    font-size: 22px;
+    font-weight: 800;
+    border-left: 5px solid #1976ff;
+    padding-left: 10px;
+}
+
+.movie-reviews-scroll {
+    width: min(1400px, 96%);
+    margin: 0 auto;
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    padding-bottom: 10px;
+    cursor: grab;
+    scrollbar-width: thin;
+    scrollbar-color: #1976ff #222;
+    box-sizing: border-box;
+}
+
+.movie-review-card {
+    flex: 0 0 250px;
+    min-width: 0;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.movie-review-card:hover {
+    transform: translateY(-3px);
+}
+
+.movie-review-card img {
+    display: block;
+    width: 100%;
+    height: 155px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.movie-review-card h3 {
+    margin: 8px 0 0;
+    color: #fff;
+    font-size: 15px;
+    line-height: 1.45;
+    font-weight: 700;
+    background: rgba(0, 0, 0, 0.78);
+    padding: 8px 9px;
+    border-radius: 6px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    overflow-wrap: anywhere;
+}
+
+@media (max-width: 768px) {
+    .movie-reviews-section {
+        padding: 16px 0 20px;
+    }
+
+    .movie-reviews-heading {
+        width: 94%;
+    }
+
+    .movie-reviews-heading span {
+        font-size: 19px;
+    }
+
+    .movie-reviews-scroll {
+        width: 94%;
+        gap: 12px;
+    }
+
+    .movie-review-card {
+        flex: 0 0 210px;
+    }
+
+    .movie-review-card img {
+        height: 135px;
+    }
+
+    .movie-review-card h3 {
+        font-size: 14px;
+    }
+}
+
+
+
+
+
+
+
+/* MOVIE REVIEWS - BLUE BACKGROUND */
+
+.movie-reviews-section {
+    width: 100%;
+    background: #0755c9;
+    padding: 20px 0 24px;
+    margin: 25px 0;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+
+
+
+
+
+
+
+
+
