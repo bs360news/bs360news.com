@@ -2541,3 +2541,64 @@ body.dark-mode .bottom-news-card p {
         margin-top: 20px;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================
+   CSS ONLY: ENTERTAINMENT పక్కన NATIONAL NEWS
+========================================== */
+
+@media (min-width: 1051px) {
+    /* మెయిన్ కంటైనర్ లో ఎంటర్‌టైన్‌మెంట్ మరియు నేషనల్ న్యూస్‌ని పక్కపక్కన ఉంచడానికి */
+    .homepage-news-layout {
+        display: grid !important;
+        grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) !important;
+        gap: 20px !important;
+    }
+
+    /* ఎంటర్‌టైన్‌మెంట్ సెక్షన్ ఎడమ వైపు ఉంటుంది */
+    #entertainmentSection {
+        grid-column: 1 !important;
+        grid-row: auto !important;
+        width: 100% !important;
+    }
+
+    /* నేషనల్ న్యూస్ సెక్షన్ ఎంటర్‌టైన్‌మెంట్ పక్కన కుడి వైపు వస్తుంది */
+    #nationalSection {
+        grid-column: 2 !important;
+        grid-row: auto !important;
+        width: 100% !important;
+        margin-top: 0 !important;
+    }
+
+    /* నేషనల్ న్యూస్ 16 ఆర్టికల్స్ 2 కాలమ్స్‌లో అమర్చడానికి */
+    #nationalSection .national-world-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 10px !important;
+    }
+
+    #nationalSection .national-world-grid img {
+        width: 100% !important;
+        height: 80px !important;
+        object-fit: cover !important;
+        border-radius: 4px;
+    }
+
+    #nationalSection .national-world-grid h3 {
+        font-size: 12px !important;
+        line-height: 1.4 !important;
+        margin: 4px 0 0 !important;
+    }
+}
+
+
+
