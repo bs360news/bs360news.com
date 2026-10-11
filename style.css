@@ -1220,3 +1220,79 @@ body.dark-mode .headlines-bar {
 
 
 
+
+
+
+
+
+
+
+/* SPORTS SIZE - MATCH ENTERTAINMENT */
+
+#sportsSection {
+    width: 100%;
+    max-width: none;
+    box-sizing: border-box;
+}
+
+#sportsSection .entertainment-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    width: 100%;
+    align-items: start;
+}
+
+#sportsSection .entertainment-featured,
+#sportsSection .entertainment-small-grid {
+    width: 100%;
+    min-width: 0;
+}
+
+#sportsSection .entertainment-featured img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    object-fit: cover;
+}
+
+#sportsSection .entertainment-small-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+#sportsSection .entertainment-small-grid img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    object-fit: cover;
+}
+
+#sportsSection .entertainment-bottom-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+    width: 100%;
+    margin-top: 15px;
+}
+
+#sportsSection .entertainment-bottom-grid img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    object-fit: cover;
+}
+
+/* MOBILE */
+@media (max-width: 700px) {
+    #sportsSection .entertainment-layout {
+        grid-template-columns: 1fr;
+    }
+
+    #sportsSection .entertainment-bottom-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+
