@@ -3105,3 +3105,25 @@ body.dark-mode .bottom-news-card p {
 
 
 
+
+
+
+
+/* MOVIE REVIEWS - FULL WIDTH */
+
+.movie-reviews-section {
+    width: 100% !important;
+    max-width: none !important;
+    box-sizing: border-box;
+    background: #0755c9;
+}
+
+/* SCROLL AREA FULL WIDTH */
+.movie-reviews-scroll {
+    width: 96% !important;
+    max-width: none !important;
+    box-sizing: border-box;
+}
+
+
+
