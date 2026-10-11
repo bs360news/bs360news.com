@@ -2679,3 +2679,87 @@ body.dark-mode .bottom-news-card p {
 
 
 
+
+
+
+/* ==========================================
+   LAPTOP LAYOUT FIX (NO OVERLAP / NO MIX)
+========================================== */
+@media (min-width: 1051px) {
+
+    /* Main container settings */
+    .homepage-news-layout {
+        display: grid !important;
+        grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) !important;
+        gap: 20px !important;
+        align-items: start !important;
+    }
+
+    /* 1. Top News Group (Left Column Top) */
+    .top-news-group {
+        grid-column: 1 !important;
+        grid-row: auto !important;
+    }
+
+    /* 2. Latest News (Right Column Top) */
+    #latestSection {
+        grid-column: 2 !important;
+        grid-row: auto !important;
+    }
+
+    /* 3. Entertainment News (Left Column Below Top News) */
+    #entertainmentSection {
+        grid-column: 1 !important;
+        grid-row: auto !important;
+        margin-top: 20px !important;
+        margin-bottom: 20px !important;
+    }
+
+    /* 4. National News (Right Column Beside Entertainment) */
+    #nationalSection {
+        grid-column: 2 !important;
+        grid-row: auto !important;
+        margin-top: 20px !important;
+        margin-bottom: 20px !important;
+    }
+
+    /* National News 16 articles 2 columns setup */
+    #nationalSection .national-world-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 10px !important;
+    }
+
+    #nationalSection .national-world-grid img {
+        width: 100% !important;
+        height: 75px !important;
+        object-fit: cover !important;
+        border-radius: 4px;
+    }
+
+    #nationalSection .national-world-grid h3 {
+        font-size: 12px !important;
+        line-height: 1.3 !important;
+        margin: 4px 0 0 !important;
+    }
+
+    /* 5. Sports & Other Sections (Full Width Below) */
+    #sportsSection,
+    #aptsSection,
+    #businessSection,
+    .bigboss-section {
+        grid-column: 1 / -1 !important;
+        grid-row: auto !important;
+        width: 100% !important;
+        margin-top: 25px !important;
+    }
+}
+
+
+
+
+
+
+
+
+
