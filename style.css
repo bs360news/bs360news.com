@@ -958,3 +958,13 @@ body.dark-mode .trending-news-item {
 
 
 
+/* Entertainment News below TOP NEWS on laptop */
+@media (min-width: 1000px) {
+    #entertainmentSection {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        gap: 14px;
+        width: 100%;
+        margin-top: 20px;
+    }
+}
