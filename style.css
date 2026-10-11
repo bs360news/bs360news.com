@@ -1296,3 +1296,55 @@ body.dark-mode .headlines-bar {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* MOBILE HOMEPAGE ORDER FIX */
+@media screen and (max-width: 700px) {
+
+  .homepage-news-layout {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .top-news-group {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    order: 1 !important;
+  }
+
+  #latestSection {
+    display: block !important;
+    position: static !important;
+    order: 2 !important;
+    width: 100% !important;
+  }
+
+  #trending-section,
+  .trending-section {
+    display: block !important;
+    position: static !important;
+    order: 3 !important;
+    width: 100% !important;
+  }
+
+  #latestGrid,
+  #trendingSidebar {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+}
