@@ -2,8 +2,8 @@
 BS360NEWS - HEADER AND BRAND
 ========================================== */
 
-{
-box-sizing: border-box;
+* {
+    box-sizing: border-box;
 }
 
 
