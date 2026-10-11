@@ -2826,3 +2826,31 @@ body.dark-mode .bottom-news-card p {
 
 
 
+
+
+
+
+
+/* NATIONAL NEWS - REMOVE RIGHT SIDE SPACE */
+
+.national-world-layout {
+    display: block !important;
+    width: 100% !important;
+}
+
+#nationalSection,
+#worldSection {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 0 20px 0 !important;
+    padding: 0 !important;
+}
+
+.national-world-grid {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+
+
