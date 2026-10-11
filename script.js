@@ -26,6 +26,43 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+async function loadLatestNews() {
+    try {
+        const response = await fetch("../index.html");
+        if (!response.ok) {
+            throw new Error("Homepage load failed");
+        }
+
+        const html = await response.text();
+        const parser = new DOMParser();
+        const home = parser.parseFromString(html, "text/html");
+
+        const source = home.getElementById("latestNewsSource");
+        const target = document.getElementById("latestSidebar");
+
+        if (!source || !target) {
+            console.error("Latest News source or sidebar not found");
+            return;
+        }
+
+        target.innerHTML = "";
+
+        source.querySelectorAll(".news-item.post").forEach(article => {
+            const item = article.cloneNode(true);
+            target.appendChild(item);
+        });
+    } catch (error) {
+        console.error("Latest News loading error:", error);
+    }
+}
+
+document.addEventListener("DOMContentLoaded", loadLatestNews);
+
+
+
+
+
+
 
 
 
