@@ -2750,28 +2750,22 @@ body.dark-mode .bottom-news-card p {
 
 
 
-/* LAPTOP: LATEST NEWS SIZE INCREASE */
+/* LAPTOP: LATEST + TRENDING EQUAL WIDTH */
 
 @media (min-width: 701px) {
     .latest-trending-layout {
-        display: grid;
-        grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
         gap: 24px;
         width: 100%;
         align-items: start;
     }
 
-    .latest-trending-layout > #latestSection {
-        min-width: 0;
-        width: 100%;
-    }
-
+    .latest-trending-layout > #latestSection,
     .latest-trending-layout > #trendingSection {
-        min-width: 0;
-        width: 100%;
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        grid-column: auto !important;
     }
 }
-
-
-
-
