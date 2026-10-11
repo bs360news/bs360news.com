@@ -2181,4 +2181,24 @@ body.dark-mode .bottom-news-card p {
 
 
 
+/* Entertainment and Sports - Half Width on Laptop */
+@media screen and (min-width: 1051px) {
+    #entertainmentSection,
+    #sportsSection {
+        width: 50% !important;
+        max-width: 50% !important;
+        box-sizing: border-box;
+        margin-left: 0 !important;
+        margin-right: auto !important;
+        grid-column: 1 / 3 !important;
+        min-width: 0 !important;
+    }
+
+    #entertainmentSection img,
+    #sportsSection img {
+        max-width: 100%;
+    }
+}
+
+
 
