@@ -2466,58 +2466,6 @@ body.dark-mode .bottom-news-card p {
 
 
 
-
-
-
-
-/* NATIONAL + WORLD NEWS — WIDER RIGHT SIDE */
-
-@media (min-width: 769px) {
-
-    .homepage-news-layout {
-        display: grid;
-        grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
-        column-gap: 24px;
-        align-items: start;
-    }
-
-    .existing-news-column {
-        grid-column: 1;
-        grid-row: 1 / span 20;
-        min-width: 0;
-    }
-
-    .national-world-layout {
-        grid-column: 2;
-        grid-row: 1 / span 20;
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 18px;
-        align-self: start;
-        min-width: 0;
-        margin-top: 0;
-    }
-
-    .national-world-section {
-        min-width: 0;
-        width: 100%;
-    }
-
-    .national-world-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 12px;
-    }
-
-    .national-world-grid article img {
-        display: block;
-        width: 100%;
-        aspect-ratio: 16 / 9;
-        height: auto;
-        object-fit: cover;
-    }
-}
-
 /* MOBILE */
 @media (max-width: 768px) {
     .homepage-news-layout {
