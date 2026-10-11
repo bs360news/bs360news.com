@@ -2184,3 +2184,198 @@ body.dark-mode .bottom-news-card p {
 
 
 
+
+
+
+
+
+
+
+
+
+/* ==========================================
+   BS360NEWS - LAPTOP ONLY
+   SPORTS + BUSINESS + AP NEWS
+   SAME DESIGN AND SIZE
+========================================== */
+
+@media screen and (min-width: 1051px) {
+
+    #sportsSection,
+    #businessSection,
+    #aptsSection {
+        width: 50% !important;
+        max-width: 50% !important;
+        min-width: 0 !important;
+        box-sizing: border-box;
+        margin-left: 0 !important;
+        margin-right: auto !important;
+    }
+
+    /* Featured article + 4 small articles */
+    #sportsSection .entertainment-layout,
+    #businessSection .entertainment-layout,
+    #aptsSection .entertainment-layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        align-items: start;
+    }
+
+    /* Small articles: 2 columns, 2 rows */
+    #sportsSection .entertainment-small-grid,
+    #businessSection .entertainment-small-grid,
+    #aptsSection .entertainment-small-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        min-width: 0;
+    }
+
+    /* Bottom 4 articles */
+    #sportsSection .entertainment-bottom-grid,
+    #businessSection .entertainment-bottom-grid,
+    #aptsSection .entertainment-bottom-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 16px;
+    }
+
+    /* Article images */
+    #sportsSection .entertainment-featured img,
+    #businessSection .entertainment-featured img,
+    #aptsSection .entertainment-featured img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+    }
+
+    #sportsSection .entertainment-small-grid img,
+    #businessSection .entertainment-small-grid img,
+    #aptsSection .entertainment-small-grid img {
+        width: 100%;
+        height: 90px;
+        object-fit: cover;
+    }
+
+    #sportsSection .entertainment-bottom-grid img,
+    #businessSection .entertainment-bottom-grid img,
+    #aptsSection .entertainment-bottom-grid img {
+        width: 100%;
+        height: 90px;
+        object-fit: cover;
+    }
+
+    /* Article titles */
+    #sportsSection h3,
+    #businessSection h3,
+    #aptsSection h3 {
+        font-size: 13px;
+        line-height: 1.5;
+        margin: 6px 0;
+        overflow-wrap: anywhere;
+    }
+
+    #sportsSection article,
+    #businessSection article,
+    #aptsSection article {
+        min-width: 0;
+    }
+}
+
+
+
+
+
+/* =====================================
+   BS360NEWS - MOBILE NEWS LAYOUT
+===================================== */
+
+@media screen and (max-width: 767px) {
+
+    #sportsSection,
+    #businessSection,
+    #aptsSection {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        margin: 20px 0 !important;
+        padding: 0 10px;
+        box-sizing: border-box;
+    }
+
+    /* Featured article + small articles */
+    #sportsSection .entertainment-layout,
+    #businessSection .entertainment-layout,
+    #aptsSection .entertainment-layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        align-items: start;
+    }
+
+    /* Main article */
+    #sportsSection .entertainment-featured img,
+    #businessSection .entertainment-featured img,
+    #aptsSection .entertainment-featured img {
+        width: 100%;
+        height: 130px;
+        object-fit: cover;
+    }
+
+    /* Four small articles */
+    #sportsSection .entertainment-small-grid,
+    #businessSection .entertainment-small-grid,
+    #aptsSection .entertainment-small-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    #sportsSection .entertainment-small-grid img,
+    #businessSection .entertainment-small-grid img,
+    #aptsSection .entertainment-small-grid img {
+        width: 100%;
+        height: 75px;
+        object-fit: cover;
+    }
+
+    /* Bottom four articles */
+    #sportsSection .entertainment-bottom-grid,
+    #businessSection .entertainment-bottom-grid,
+    #aptsSection .entertainment-bottom-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        margin-top: 12px;
+    }
+
+    #sportsSection .entertainment-bottom-grid img,
+    #businessSection .entertainment-bottom-grid img,
+    #aptsSection .entertainment-bottom-grid img {
+        width: 100%;
+        height: 100px;
+        object-fit: cover;
+    }
+
+    /* Article titles */
+    #sportsSection h3,
+    #businessSection h3,
+    #aptsSection h3 {
+        font-size: 12px;
+        line-height: 1.5;
+        margin: 5px 0;
+        overflow-wrap: anywhere;
+    }
+
+    #sportsSection article,
+    #businessSection article,
+    #aptsSection article {
+        min-width: 0;
+    }
+}
+
+
+
+
