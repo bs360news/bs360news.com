@@ -1,5 +1,361 @@
 
 /* ==========================================
+   BS360NEWS - HEADER AND BRAND
+========================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, "Noto Sans Telugu", sans-serif;
+    background: #fff;
+    color: #111;
+}
+
+/* HEADER */
+
+.bs-header {
+    width: 100%;
+    background: #fff;
+    color: #000;
+    border-bottom: 1px solid #ddd;
+}
+
+.bs-header-top {
+    width: 100%;
+    max-width: 1250px;
+    min-height: 82px;
+    margin: 0 auto;
+    padding: 12px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+/* BRAND AND LOGO */
+
+.bs-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+}
+
+.bs-brand > a {
+    display: block;
+    flex-shrink: 0;
+    line-height: 0;
+}
+
+.bs-logo {
+    display: block;
+    width: 54px;
+    height: 54px;
+    max-width: 54px;
+    object-fit: contain;
+}
+
+.bs-brand-name {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.bs-brand-name > a {
+    text-decoration: none;
+}
+
+.bs-brand-title {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    font-size: 25px;
+    line-height: 1.1;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+}
+
+.brand-bs,
+.brand-news {
+    color: #111;
+}
+
+.brand-360 {
+    color: #e60000;
+    margin-left: 3px;
+}
+
+.bs-tagline {
+    margin-top: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: #555;
+}
+
+/* HEADER ACTIONS */
+
+.bs-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-shrink: 0;
+}
+
+.bs-dark-btn {
+    padding: 8px 14px;
+    border: 1px solid #222;
+    border-radius: 20px;
+    background: #fff;
+    color: #000;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.bs-dark-btn:hover {
+    background: #000;
+    color: #fff;
+}
+
+/* LIVE INDICATOR */
+
+.bs-live {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: #000;
+    font-size: 13px;
+    font-weight: 900;
+}
+
+.bs-live-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #e60000;
+    animation: bsLivePulse 1.2s infinite;
+}
+
+@keyframes bsLivePulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.25; }
+}
+
+/* NAVIGATION */
+
+.bs-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    overflow-x: auto;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #ddd;
+    scrollbar-width: none;
+}
+
+.bs-navigation::-webkit-scrollbar {
+    display: none;
+}
+
+.bs-navigation a {
+    padding: 14px 24px;
+    border-right: 1px solid #eee;
+    color: #000;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 800;
+    white-space: nowrap;
+    transition: 0.2s ease;
+}
+
+.bs-navigation a:first-child {
+    border-left: 1px solid #eee;
+}
+
+.bs-navigation a:hover {
+    background: #000;
+    color: #fff;
+}
+
+/* HEADLINES BAR */
+
+.headlines-bar {
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+    background: #f5f5f5;
+}
+
+.headlines-bar .container {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 10px 16px;
+}
+
+.headlines-label {
+    flex-shrink: 0;
+    color: #e60000;
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.headlines-text {
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* DARK MODE HEADER */
+
+body.dark-mode .bs-header {
+    background: #111;
+    color: #fff;
+    border-color: #333;
+}
+
+body.dark-mode .brand-bs,
+body.dark-mode .brand-news {
+    color: #fff;
+}
+
+body.dark-mode .brand-360 {
+    color: #ff3333;
+}
+
+body.dark-mode .bs-tagline {
+    color: #aaa;
+}
+
+body.dark-mode .bs-dark-btn {
+    background: #111;
+    color: #fff;
+    border-color: #777;
+}
+
+body.dark-mode .bs-dark-btn:hover {
+    background: #fff;
+    color: #000;
+}
+
+body.dark-mode .bs-live {
+    color: #fff;
+}
+
+body.dark-mode .bs-navigation {
+    border-color: #333;
+}
+
+body.dark-mode .bs-navigation a {
+    color: #fff;
+    border-color: #333;
+}
+
+body.dark-mode .bs-navigation a:hover {
+    background: #fff;
+    color: #000;
+}
+
+body.dark-mode .headlines-bar {
+    background: #191919;
+    border-color: #333;
+}
+
+/* MOBILE HEADER */
+
+@media (max-width: 700px) {
+    .bs-header-top {
+        min-height: 68px;
+        padding: 9px 12px;
+    }
+
+    .bs-logo {
+        width: 42px;
+        height: 42px;
+        max-width: 42px;
+    }
+
+    .bs-brand {
+        gap: 8px;
+    }
+
+    .bs-brand-title {
+        font-size: 19px;
+    }
+
+    .bs-tagline {
+        font-size: 9px;
+        margin-top: 2px;
+    }
+
+    .bs-header-actions {
+        gap: 8px;
+    }
+
+    .bs-dark-btn {
+        padding: 6px 9px;
+        font-size: 11px;
+    }
+
+    .bs-live {
+        gap: 4px;
+        font-size: 10px;
+    }
+
+    .bs-live-dot {
+        width: 6px;
+        height: 6px;
+    }
+
+    .bs-navigation {
+        justify-content: flex-start;
+    }
+
+    .bs-navigation a {
+        padding: 12px 15px;
+        font-size: 12px;
+    }
+
+    .headlines-bar .container {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 5px;
+        padding: 10px 12px;
+    }
+
+    .headlines-text {
+        font-size: 12px;
+    }
+}
+
+/* VERY SMALL MOBILE */
+
+@media (max-width: 400px) {
+    .bs-tagline {
+        display: none;
+    }
+
+    .bs-brand-title {
+        font-size: 17px;
+    }
+
+    .bs-logo {
+        width: 38px;
+        height: 38px;
+        max-width: 38px;
+    }
+}
+
+
+
+
+
+/* ==========================================
    BS360NEWS - HOMEPAGE LAYOUT
    LAPTOP: TOP | MORE TOP | LATEST | TRENDING
    ENTERTAINMENT: BELOW FIRST TWO COLUMNS
