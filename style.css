@@ -930,3 +930,38 @@ body.dark-mode .headlines-bar {
     align-items: center;
 }
 
+
+
+
+
+
+
+
+
+
+/* LATEST AND TRENDING - IMAGE HEIGHT INCREASE */
+
+.latest-news-item img,
+.trending-news-item img {
+    width: 100%;
+    height: 180px;
+    aspect-ratio: auto;
+    object-fit: cover;
+}
+
+
+
+
+
+
+#latestGrid > :first-child img,
+#trendingSidebar > :first-child img {
+    width: 100%;
+    height: 200px;
+    aspect-ratio: auto;
+    object-fit: cover;
+}
+
+
+
+
