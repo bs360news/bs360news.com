@@ -79,6 +79,70 @@
 
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="style.css?v=20261011">
+
+    <!-- LATEST & TRENDING COMPACT NEWS CSS -->
+    <style>
+        /* Latest and Trending article cards */
+        #latestGrid .news-item.post,
+        #trendingSidebar .news-item.post {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            min-width: 0;
+            margin: 0 0 12px;
+            padding: 0 0 10px;
+            border-bottom: 1px solid #ddd;
+            box-sizing: border-box;
+        }
+
+        #latestGrid .news-item.post > a:first-child,
+        #trendingSidebar .news-item.post > a:first-child {
+            display: block;
+            width: 100%;
+        }
+
+        #latestGrid .news-item.post img,
+        #trendingSidebar .news-item.post img {
+            display: block;
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        #latestGrid .news-item.post .news-content,
+        #trendingSidebar .news-item.post .news-content {
+            width: 100%;
+            padding: 6px 0 0;
+            box-sizing: border-box;
+        }
+
+        #latestGrid .news-item.post .news-content p,
+        #trendingSidebar .news-item.post .news-content p {
+            font-size: 13px;
+            line-height: 1.5;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        #latestGrid .news-item.post .news-content a,
+        #trendingSidebar .news-item.post .news-content a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        #latestGrid .news-item.post .news-content a:hover,
+        #trendingSidebar .news-item.post .news-content a:hover {
+            color: #d71920;
+        }
+
+        @media (max-width: 700px) {
+            #latestGrid .news-item.post img,
+            #trendingSidebar .news-item.post img {
+                height: 150px;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -143,7 +207,7 @@
     <!-- HOMEPAGE NEWS -->
     <main class="homepage-news-layout">
 
-        <!-- LEFT GROUP: TOP NEWS + MORE TOP NEWS + ENTERTAINMENT -->
+        <!-- TOP NEWS GROUP -->
         <div class="top-news-group">
 
             <!-- COLUMN 1: TOP NEWS -->
@@ -151,32 +215,38 @@
 
                 <h2 class="section-heading">TOP NEWS</h2>
 
-                 <article class="news-item post" data-url="nani-the-paradise-box-office-collections/">
+                <article class="news-item post"
+                         data-url="nani-the-paradise-box-office-collections/">
 
-                    <img
-                        src="nani-the-paradise-box-office-collections.png"
-                        alt="భారీ వసూళ్లతో దూసుకెళ్తున్న నాని ‘ది ప్యారడైజ్’.. బాక్సాఫీస్ వద్ద జోరు"
-                    >
+                    <a href="nani-the-paradise-box-office-collections/">
+                        <img
+                            src="nani-the-paradise-box-office-collections.png"
+                            alt="భారీ వసూళ్లతో దూసుకెళ్తున్న నాని ది ప్యారడైజ్"
+                            fetchpriority="high">
+                    </a>
 
                     <div class="news-content">
-
                         <p>
-                            భారీ వసూళ్లతో దూసుకెళ్తున్న నాని ‘ది ప్యారడైజ్’.. బాక్సాఫీస్ వద్ద జోరు
+                            <a href="nani-the-paradise-box-office-collections/">
+                                భారీ వసూళ్లతో దూసుకెళ్తున్న నాని ‘ది ప్యారడైజ్’.. బాక్సాఫీస్ వద్ద జోరు
+                            </a>
                         </p>
-
                     </div>
 
                 </article>
 
                 <!-- THREE TEXT NEWS -->
                 <section class="top-bottom-section">
+
                     <div class="top-bottom-articles">
 
                         <article class="bottom-news-card">
                             <h3>
-                                <a href="nani-the-paradise-box-office-collections/">భారీ వసూళ్లతో దూసుకెళ్తున్న నాని ‘ది ప్యారడైజ్’.. బాక్సాఫీస్ వద్ద జోరు</a>
+                                <a href="nani-the-paradise-box-office-collections/">
+                                    భారీ వసూళ్లతో దూసుకెళ్తున్న నాని ‘ది ప్యారడైజ్’
+                                </a>
                             </h3>
-                            <p>భారీ వసూళ్లతో దూసుకెళ్తున్న నాని ‘ది ప్యారడైజ్’.. బాక్సాఫీస్ వద్ద జోర</p>
+                            <p>నాని సినిమా బాక్సాఫీస్ వద్ద ఎలా దూసుకెళ్తుందో తెలుసుకోండి.</p>
                         </article>
 
                         <article class="bottom-news-card">
@@ -268,7 +338,7 @@
                 </div>
             </section>
 
-            <!-- ENTERTAINMENT: UNDER BOTH LEFT COLUMNS -->
+            <!-- ENTERTAINMENT NEWS -->
             <section class="entertainment-section" id="entertainmentSection">
 
                 <h2 class="section-heading">ENTERTAINMENT NEWS</h2>
@@ -285,7 +355,7 @@
                         </a>
                     </article>
 
-                    <!-- FOUR SMALL ENTERTAINMENT ARTICLES -->
+                    <!-- FOUR SMALL ARTICLES -->
                     <div class="entertainment-small-grid">
 
                         <article>
@@ -357,23 +427,17 @@
                         </a>
                     </article>
 
-                      <article class="news-item post" data-url="nani-the-paradise-box-office-collections/">
+                    <article>
+                        <a href="article9.html">
+                            <img src="images/entertainment9.jpg"
+                                 alt="సినిమా వార్త 9"
+                                 loading="lazy">
+                            <h3>సినిమా వార్త 9 శీర్షిక</h3>
+                        </a>
+                    </article>
 
-                    <img
-                        src="nani-the-paradise-box-office-collections.png"
-                        alt="భారీ వసూళ్లతో దూసుకెళ్తున్న నాని ‘ది ప్యారడైజ్’.. బాక్సాఫీస్ వద్ద జోరు"
-                    >
-
-                    <div class="news-content">
-
-                        <p>
-                            భారీ వసూళ్లతో దూసుకెళ్తున్న నాని ‘ది ప్యారడైజ్’.. బాక్సాఫీస్ వద్ద జోరు
-                        </p>
-
-                    </div>
-
-                </article>
-
+                </div>
+            </section>
 
         </div>
 
@@ -384,28 +448,55 @@
 
             <div id="latestGrid" class="latest-news-list">
 
-                <article class="latest-news-item">
+                <article class="news-item post"
+                         data-url="article11.html">
+
                     <a href="article11.html">
-                        <img src="images/news11.jpg" alt="తాజా వార్త 1" loading="lazy">
+                        <img src="images/news11.jpg"
+                             alt="తాజా వార్త 1"
+                             loading="lazy">
                     </a>
-                    <h3><a href="article11.html">తాజా వార్త 1 శీర్షిక</a></h3>
-                    <p>వార్తకు సంబంధించిన చిన్న వివరణ.</p>
+
+                    <div class="news-content">
+                        <p>
+                            <a href="article11.html">తాజా వార్త 1 శీర్షిక</a>
+                        </p>
+                    </div>
+
                 </article>
 
-                <article class="latest-news-item">
+                <article class="news-item post"
+                         data-url="article12.html">
+
                     <a href="article12.html">
-                        <img src="images/news12.jpg" alt="తాజా వార్త 2" loading="lazy">
+                        <img src="images/news12.jpg"
+                             alt="తాజా వార్త 2"
+                             loading="lazy">
                     </a>
-                    <h3><a href="article12.html">తాజా వార్త 2 శీర్షిక</a></h3>
-                    <p>వార్తకు సంబంధించిన చిన్న వివరణ.</p>
+
+                    <div class="news-content">
+                        <p>
+                            <a href="article12.html">తాజా వార్త 2 శీర్షిక</a>
+                        </p>
+                    </div>
+
                 </article>
 
-                <article class="latest-news-item">
+                <article class="news-item post"
+                         data-url="article13.html">
+
                     <a href="article13.html">
-                        <img src="images/news13.jpg" alt="తాజా వార్త 3" loading="lazy">
+                        <img src="images/news13.jpg"
+                             alt="తాజా వార్త 3"
+                             loading="lazy">
                     </a>
-                    <h3><a href="article13.html">తాజా వార్త 3 శీర్షిక</a></h3>
-                    <p>వార్తకు సంబంధించిన చిన్న వివరణ.</p>
+
+                    <div class="news-content">
+                        <p>
+                            <a href="article13.html">తాజా వార్త 3 శీర్షిక</a>
+                        </p>
+                    </div>
+
                 </article>
 
             </div>
@@ -418,28 +509,55 @@
 
             <div id="trendingSidebar" class="trending-news-list">
 
-                <article class="trending-news-item">
+                <article class="news-item post"
+                         data-url="article14.html">
+
                     <a href="article14.html">
-                        <img src="images/news14.jpg" alt="ట్రెండింగ్ వార్త 1" loading="lazy">
+                        <img src="images/news14.jpg"
+                             alt="ట్రెండింగ్ వార్త 1"
+                             loading="lazy">
                     </a>
-                    <h3><a href="article14.html">ట్రెండింగ్ వార్త 1 శీర్షిక</a></h3>
-                    <p>వార్తకు సంబంధించిన చిన్న వివరణ.</p>
+
+                    <div class="news-content">
+                        <p>
+                            <a href="article14.html">ట్రెండింగ్ వార్త 1 శీర్షిక</a>
+                        </p>
+                    </div>
+
                 </article>
 
-                <article class="trending-news-item">
+                <article class="news-item post"
+                         data-url="article15.html">
+
                     <a href="article15.html">
-                        <img src="images/news15.jpg" alt="ట్రెండింగ్ వార్త 2" loading="lazy">
+                        <img src="images/news15.jpg"
+                             alt="ట్రెండింగ్ వార్త 2"
+                             loading="lazy">
                     </a>
-                    <h3><a href="article15.html">ట్రెండింగ్ వార్త 2 శీర్షిక</a></h3>
-                    <p>వార్తకు సంబంధించిన చిన్న వివరణ.</p>
+
+                    <div class="news-content">
+                        <p>
+                            <a href="article15.html">ట్రెండింగ్ వార్త 2 శీర్షిక</a>
+                        </p>
+                    </div>
+
                 </article>
 
-                <article class="trending-news-item">
+                <article class="news-item post"
+                         data-url="article16.html">
+
                     <a href="article16.html">
-                        <img src="images/news16.jpg" alt="ట్రెండింగ్ వార్త 3" loading="lazy">
+                        <img src="images/news16.jpg"
+                             alt="ట్రెండింగ్ వార్త 3"
+                             loading="lazy">
                     </a>
-                    <h3><a href="article16.html">ట్రెండింగ్ వార్త 3 శీర్షిక</a></h3>
-                    <p>వార్తకు సంబంధించిన చిన్న వివరణ.</p>
+
+                    <div class="news-content">
+                        <p>
+                            <a href="article16.html">ట్రెండింగ్ వార్త 3 శీర్షిక</a>
+                        </p>
+                    </div>
+
                 </article>
 
             </div>
