@@ -2559,3 +2559,82 @@ body.dark-mode .bottom-news-card p {
     }
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* LEFT NEWS + RIGHT NATIONAL/WORLD */
+.homepage-news-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+    gap: 20px;
+    align-items: start;
+}
+
+.existing-news-column,
+.right-news-column {
+    min-width: 0;
+    width: 100%;
+}
+
+.right-news-column {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.existing-news-column {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+/* NATIONAL + WORLD: TWO ARTICLES PER ROW */
+.nw-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px 10px;
+}
+
+.nw-card {
+    min-width: 0;
+}
+
+.nw-card img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    object-fit: cover;
+}
+
+.nw-card h3 {
+    font-size: 13px;
+    line-height: 1.5;
+    margin-top: 6px;
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+    .homepage-news-layout {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .existing-news-column,
+    .right-news-column {
+        grid-column: 1;
+        grid-row: auto;
+    }
+}
+
+
+
