@@ -2223,73 +2223,39 @@ body.dark-mode .bottom-news-card p {
 
 
 
+/* ==========================================
+   BS360NEWS - ALL CATEGORY SECTIONS FIX
+========================================== */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* Entertainment and Sports - Half Width on Laptop */
-@media screen and (min-width: 1051px) {
-    #entertainmentSection,
-    #sportsSection {
-        width: 50% !important;
-        max-width: 50% !important;
-        box-sizing: border-box;
-        margin-left: 0 !important;
-        margin-right: auto !important;
-        grid-column: 1 / 3 !important;
-        min-width: 0 !important;
-    }
-
-    #entertainmentSection img,
-    #sportsSection img {
-        max-width: 100%;
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-/* Keep all four news sections separate */
 #entertainmentSection,
 #sportsSection,
 #businessSection,
 #aptsSection {
     display: block;
-    clear: both;
-    float: none;
-    position: relative;
-    box-sizing: border-box;
+    grid-column: 1 / 3 !important;
+    grid-row: auto !important;
+    width: 100%;
+    max-width: 100%;
     min-width: 0;
-    margin-bottom: 28px;
+    margin: 24px 0;
+    padding: 0;
+    box-sizing: border-box;
+    clear: both;
 }
 
-/* Same article layout */
+/* Featured + four small articles */
 #entertainmentSection .entertainment-layout,
 #sportsSection .entertainment-layout,
 #businessSection .entertainment-layout,
 #aptsSection .entertainment-layout {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: 12px;
+    gap: 14px;
+    align-items: start;
+    width: 100%;
 }
 
+/* Four small articles */
 #entertainmentSection .entertainment-small-grid,
 #sportsSection .entertainment-small-grid,
 #businessSection .entertainment-small-grid,
@@ -2297,34 +2263,52 @@ body.dark-mode .bottom-news-card p {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px;
+    min-width: 0;
 }
 
+/* Four bottom articles */
 #entertainmentSection .entertainment-bottom-grid,
 #sportsSection .entertainment-bottom-grid,
 #businessSection .entertainment-bottom-grid,
 #aptsSection .entertainment-bottom-grid {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 12px;
+    gap: 10px;
+    margin-top: 14px;
+    width: 100%;
 }
 
+/* Images */
 #entertainmentSection img,
 #sportsSection img,
 #businessSection img,
 #aptsSection img {
+    display: block;
     width: 100%;
-    max-width: 100%;
     height: auto;
+    aspect-ratio: 16 / 9;
     object-fit: cover;
 }
 
-@media (max-width: 700px) {
+/* Laptop: sections remain in the left half */
+@media (min-width: 1051px) {
     #entertainmentSection,
     #sportsSection,
     #businessSection,
     #aptsSection {
+        grid-column: 1 / 3 !important;
         width: 100%;
         max-width: 100%;
+    }
+}
+
+/* Tablet */
+@media (min-width: 701px) and (max-width: 1050px) {
+    #entertainmentSection,
+    #sportsSection,
+    #businessSection,
+    #aptsSection {
+        grid-column: 1 / -1 !important;
     }
 
     #entertainmentSection .entertainment-bottom-grid,
@@ -2334,6 +2318,50 @@ body.dark-mode .bottom-news-card p {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
+
+/* Mobile */
+@media (max-width: 700px) {
+    #entertainmentSection,
+    #sportsSection,
+    #businessSection,
+    #aptsSection {
+        width: 100%;
+        max-width: 100%;
+        margin: 20px 0;
+    }
+
+    #entertainmentSection .entertainment-layout,
+    #sportsSection .entertainment-layout,
+    #businessSection .entertainment-layout,
+    #aptsSection .entertainment-layout {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    #entertainmentSection .entertainment-bottom-grid,
+    #sportsSection .entertainment-bottom-grid,
+    #businessSection .entertainment-bottom-grid,
+    #aptsSection .entertainment-bottom-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
