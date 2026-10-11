@@ -1042,3 +1042,116 @@ body.dark-mode .trending-news-item {
 
 
 
+
+
+
+
+
+
+/* ==========================================
+   BS360NEWS - ENTERTAINMENT BELOW TOP NEWS
+   LAPTOP ONLY
+========================================== */
+
+@media screen and (min-width: 1000px) {
+
+    main.homepage-news-layout {
+        display: grid !important;
+
+        grid-template-columns:
+            minmax(0, 1.2fr)
+            minmax(0, 1fr)
+            minmax(0, 1fr)
+            minmax(0, 1fr) !important;
+
+        grid-template-rows: auto auto !important;
+
+        column-gap: 16px !important;
+        row-gap: 20px !important;
+
+        align-items: start !important;
+    }
+
+    /* TOP NEWS - column 1 */
+    main.homepage-news-layout > .top-main-column {
+        grid-column: 1 !important;
+        grid-row: 1 !important;
+    }
+
+    /* Side TOP NEWS - column 2 */
+    main.homepage-news-layout > .top-side-column {
+        grid-column: 2 !important;
+        grid-row: 1 !important;
+    }
+
+    /* LATEST NEWS - column 3 */
+    main.homepage-news-layout > #latestSection {
+        grid-column: 3 !important;
+        grid-row: 1 !important;
+    }
+
+    /* TRENDING NEWS - column 4 */
+    main.homepage-news-layout > #trendingSection {
+        grid-column: 4 !important;
+        grid-row: 1 !important;
+    }
+
+    /* ENTERTAINMENT - directly below TOP NEWS */
+    main.homepage-news-layout > #entertainmentSection {
+        grid-column: 1 / 3 !important;
+        grid-row: 2 !important;
+
+        width: 100% !important;
+        min-width: 0 !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+
+        align-self: start !important;
+    }
+
+    /* Entertainment: big article + four small articles */
+    #entertainmentSection .entertainment-layout {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) 400px !important;
+        gap: 12px !important;
+        align-items: start !important;
+        width: 100% !important;
+    }
+
+    #entertainmentSection .entertainment-featured img {
+        display: block;
+        width: 100% !important;
+        height: 200px !important;
+        object-fit: cover !important;
+    }
+
+    #entertainmentSection .entertainment-small-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 12px !important;
+        min-width: 0 !important;
+    }
+
+    #entertainmentSection .entertainment-small-grid img {
+        display: block;
+        width: 100% !important;
+        height: 100px !important;
+        object-fit: cover !important;
+    }
+
+    #entertainmentSection h3 {
+        font-size: 14px;
+        line-height: 1.4;
+        margin: 6px 0;
+    }
+}
+
+
+
+
+
+
+
+
+
