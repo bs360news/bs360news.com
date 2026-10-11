@@ -2509,3 +2509,37 @@ body.dark-mode .bottom-news-card p {
 
 
 
+/* NATIONAL NEWS - BESIDE LATEST NEWS */
+@media (min-width: 1051px) {
+    .homepage-news-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+        align-items: start;
+        gap: 20px;
+    }
+
+    #latestSection {
+        grid-column: 2;
+        grid-row: 1;
+        width: 100%;
+        min-width: 0;
+    }
+
+    #nationalSection {
+        grid-column: 2;
+        grid-row: 2;
+        width: 100%;
+        min-width: 0;
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 1050px) {
+    #nationalSection {
+        grid-column: 1 / -1;
+        width: 100%;
+        margin-top: 20px;
+    }
+}
+
+
