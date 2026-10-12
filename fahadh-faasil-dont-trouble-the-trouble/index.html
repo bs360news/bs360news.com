@@ -1045,10 +1045,8 @@ body.dark-mode .lang-selector .active {
         © 2026 BS 360 NEWS. All rights reserved.
     </div>
 </footer>
-
 <script>
 /* MOBILE NAVIGATION */
-
 function toggleMobileNav() {
     const nav = document.getElementById("navLinks");
     const button = document.querySelector(".mobile-menu-toggle");
@@ -1060,7 +1058,6 @@ function toggleMobileNav() {
 }
 
 /* DARK MODE */
-
 function toggleTheme() {
     const isDark = document.body.classList.toggle("dark-mode");
     const button = document.getElementById("themeButton");
@@ -1070,219 +1067,98 @@ function toggleTheme() {
     }
 }
 
-/* LOAD ARTICLES FROM HOMEPAGE */
-
-
-            "businessSection", "businessNewsSource"
-        ],
-
-        movieReviewsGrid: [
-            "movieReviewsSource", "movieReviewsGrid",
-            "reviewsSource", "reviewsGrid", "movie-reviews"
-        ]
-    };
-
-    function absoluteURL(path) {
-        if (!path) return "";
-
-        try {
-            return new URL(path, HOME).href;
-        } catch (error) {
-            return "";
-        }
-    }
-
-    function extractCard(node) {
-        if (!node) return null;
-
-        const anchor = node.matches("a[href]")
-            ? node
-            : node.querySelector("a[href]");
-
-        const image = node.querySelector("img");
-
-        const titleNode = node.querySelector(
-            ".news-content h3, .news-content p, h3, h2, .post-title, p"
-        );
-
-        const title = (
-            titleNode?.textContent ||
-            anchor?.textContent ||
-            ""
-        ).replace(/\s+/g, " ").trim();
-
-        const imageURL = absoluteURL(
-            image?.getAttribute("src") ||
-            image?.getAttribute("data-src") ||
-            image?.getAttribute("data-lazy-src")
-        );
-
-        const articleURL = absoluteURL(
-            node.getAttribute("data-url") ||
-            anchor?.getAttribute("href")
-        );
-
-        if (!title || !imageURL || !articleURL) return null;
-
-        try {
-            if (new URL(articleURL).origin !== new URL(HOME).origin) {
-                return null;
-            }
-        } catch (error) {
-            return null;
-        }
-
-        return {
-            title: title,
-            image: imageURL,
-            url: articleURL,
-            alt: image?.getAttribute("alt") || title
-        };
-    }
-
-    function uniqueArticles(cards) {
-        const seen = new Set();
-
-        return cards.filter(function (card) {
-            if (!card || seen.has(card.url)) return false;
-            seen.add(card.url);
-            return true;
-        });
-    }
-<script>
-document.addEventListener("DOMContentLoaded", async () => {
+/* LOAD HOMEPAGE ARTICLES */
+document.addEventListener("DOMContentLoaded", async function () {
     const HOME = "https://bs360news.com/index.html";
 
     const sections = [
-        {
-            target: "nationalGrid",
-            aliases: ["nationalSource", "nationalNewsSource", "nationalSection", "nationalGrid"],
-            limit: 5
-        },
-        {
-            target: "latestSidebar",
-            aliases: ["latestSource", "latestNewsSource", "latestGrid", "latestSection", "latestSidebar"],
-            limit: 5
-        },
-        {
-            target: "trendingSidebar",
-            aliases: ["trendingSource", "trendingNewsSource", "trendingGrid", "trending-section", "trendingSection", "most-read-section"],
-            limit: 5
-        },
-        {
-            target: "movieReviewsSidebar",
-            aliases: ["movieReviewsSource", "reviewsSource", "reviewsGrid", "movie-reviews"],
-            limit: 5
-        },
-        {
-            target: "sportsGrid",
-            aliases: ["sportsGrid", "sportsSection", "sportsSource", "sportsNewsSource", "afterSportsGrid"],
-            limit: 5
-        },
-        {
-            target: "cinemaGrid",
-            aliases: ["cinemaGrid", "cinemaSection", "cinemaSource", "moviesGrid", "entertainmentSource", "afterEntertainmentGrid"],
-            limit: 5
-        },
-        {
-            target: "businessGrid",
-            aliases: ["businessGrid", "businessSection", "businessSource", "businessNewsSource", "afterBusinessGrid"],
-            limit: 5
-        },
-        {
-            target: "aptsGrid",
-            aliases: ["aptsGrid", "aptsSection", "aptsSource", "aptsNewsSource", "afterApTsGrid"],
-            limit: 5
-        },
-        {
-            target: "movieReviewsGrid",
-            aliases: ["movieReviewsSource", "reviewsSource", "reviewsGrid", "movie-reviews"],
-            limit: 5
-        }
+        { target: "nationalGrid", source: "nationalSection", limit: 5 },
+        { target: "latestSidebar", source: "latestGrid", limit: 5 },
+        { target: "trendingSidebar", source: "trendingSidebar", limit: 5 },
+        { target: "movieReviewsSidebar", source: "movieReviewsSection", limit: 5 },
+        { target: "sportsGrid", source: "sportsSection", limit: 5 },
+        { target: "cinemaGrid", source: "entertainmentSection", limit: 5 },
+        { target: "businessGrid", source: "businessSection", limit: 5 },
+        { target: "aptsGrid", source: "aptsSection", limit: 5 },
+        { target: "movieReviewsGrid", source: "movieReviewsSection", limit: 5 }
     ];
 
-    function getSource(doc, aliases) {
-        for (const id of aliases) {
-            const el = doc.getElementById(id);
-            if (el) return el;
-        }
-        return null;
-    }
+    function absoluteURL(value) {
+        if (!value) return "";
 
-    function toAbsolute(url) {
-        if (!url) return "";
         try {
-            return new URL(url, HOME).href;
+            return new URL(value, HOME).href;
         } catch {
             return "";
         }
-    }
-
-    function getArticle(anchor) {
-        if (!anchor) return null;
-
-        const card = anchor.closest(
-            ".news-card, .news-item, .post, article, li"
-        ) || anchor;
-
-        const img = card.querySelector("img") || anchor.querySelector("img");
-
-        const titleEl = card.querySelector(
-            "h1, h2, h3, h4, .post-title, .news-title, .title"
-        );
-
-        const title = (
-            titleEl?.textContent ||
-            anchor.getAttribute("aria-label") ||
-            anchor.textContent ||
-            img?.alt ||
-            ""
-        ).replace(/\s+/g, " ").trim();
-
-        const image = toAbsolute(
-            img?.getAttribute("src") ||
-            img?.getAttribute("data-src") ||
-            img?.getAttribute("data-lazy-src") ||
-            img?.getAttribute("data-original") ||
-            img?.getAttribute("srcset")?.split(",")[0]?.trim().split(" ")[0]
-        );
-
-        const url = toAbsolute(anchor.getAttribute("href"));
-
-        if (!title || !image || !url) return null;
-
-        try {
-            if (new URL(url).origin !== new URL(HOME).origin) return null;
-        } catch {
-            return null;
-        }
-
-        return {
-            title,
-            image,
-            url,
-            alt: img?.alt || title
-        };
     }
 
     function collectArticles(source) {
         if (!source) return [];
 
-        const result = [];
+        const cards = source.querySelectorAll(
+            "article, .news-card, .news-item, .post, li"
+        );
+
+        const articles = [];
         const seen = new Set();
 
-        source.querySelectorAll("a[href]").forEach(anchor => {
-            const item = getArticle(anchor);
-            if (!item || seen.has(item.url)) return;
+        cards.forEach(card => {
+            const link = card.matches("a[href]")
+                ? card
+                : card.querySelector("a[href]");
 
-            seen.add(item.url);
-            result.push(item);
+            const img = card.querySelector("img");
+
+            if (!link || !img) return;
+
+            const heading = card.querySelector(
+                "h1, h2, h3, h4, .post-title, .news-title, .title, .news-content p"
+            );
+
+            const title = (
+                heading?.textContent ||
+                link.getAttribute("aria-label") ||
+                img.alt ||
+                link.textContent ||
+                ""
+            ).replace(/\s+/g, " ").trim();
+
+            const image = absoluteURL(
+                img.getAttribute("src") ||
+                img.getAttribute("data-src") ||
+                img.getAttribute("data-lazy-src") ||
+                img.getAttribute("data-original")
+            );
+
+            const url = absoluteURL(
+                link.getAttribute("href") ||
+                card.getAttribute("data-url")
+            );
+
+            if (!title || !image || !url) return;
+
+            try {
+                if (new URL(url).origin !== new URL(HOME).origin) return;
+            } catch {
+                return;
+            }
+
+            if (seen.has(url)) return;
+            seen.add(url);
+
+            articles.push({
+                title: title,
+                image: image,
+                url: url,
+                alt: img.alt || title
+            });
         });
 
-        return result;
+        return articles;
     }
 
-    function render(targetId, articles, limit) {
+    function renderArticles(targetId, articles, limit) {
         const target = document.getElementById(targetId);
         if (!target) return;
 
@@ -1293,60 +1169,75 @@ document.addEventListener("DOMContentLoaded", async () => {
             link.className = "news-card";
             link.href = item.url;
 
-            const img = document.createElement("img");
-            img.src = item.image;
-            img.alt = item.alt;
-            img.loading = "lazy";
+            const image = document.createElement("img");
+            image.src = item.image;
+            image.alt = item.alt;
+            image.loading = "lazy";
 
             const title = document.createElement("h3");
             title.textContent = item.title;
 
-            link.append(img, title);
+            link.append(image, title);
             target.appendChild(link);
         });
 
         if (articles.length === 0) {
-            const msg = document.createElement("p");
-            msg.textContent = "వార్తలు కనిపించడం లేదు.";
-            msg.style.cssText = "font-size:13px;color:#777";
-            target.appendChild(msg);
+            const message = document.createElement("p");
+            message.textContent = "ఈ విభాగంలో వార్తలు దొరకలేదు.";
+            message.style.cssText = "font-size:13px;color:#777;";
+            target.appendChild(message);
         }
-
-        console.log(targetId, "source articles:", articles.length);
     }
 
     try {
-        const response = await fetch(HOME + "?v=" + Date.now(), {
-            cache: "no-store"
-        });
+        const response = await fetch(
+            HOME + "?v=" + Date.now(),
+            { cache: "no-store" }
+        );
 
         if (!response.ok) {
-            throw new Error("Homepage load failed: " + response.status);
+            throw new Error("Homepage response: " + response.status);
         }
 
         const html = await response.text();
         const doc = new DOMParser().parseFromString(html, "text/html");
 
         sections.forEach(section => {
-            const source = getSource(doc, section.aliases);
+            const source = doc.getElementById(section.source);
             const articles = collectArticles(source);
 
-            render(section.target, articles, section.limit);
+            renderArticles(section.target, articles, section.limit);
 
             if (!source) {
-                console.warn(
-                    "Source ID not found:",
-                    section.target,
-                    section.aliases
-                );
+                console.warn("Homepage ID not found:", section.source);
             }
+
+            console.log(
+                section.target,
+                "articles found:",
+                articles.length
+            );
         });
 
     } catch (error) {
-        console.error("BS360NEWS loading error:", error);
+        console.error("BS360NEWS article loading error:", error);
+
+        sections.forEach(section => {
+            const target = document.getElementById(section.target);
+
+            if (target) {
+                target.replaceChildren();
+
+                const message = document.createElement("p");
+                message.textContent =
+                    "వార్తలు లోడ్ కాలేదు. Homepage URL లేదా JavaScript లోపాన్ని చెక్ చేయండి.";
+                message.style.cssText = "font-size:13px;color:#777;";
+
+                target.appendChild(message);
+            }
+        });
     }
 });
-</script>
-
+  </script>
 </body>
 </html>
