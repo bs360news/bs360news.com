@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="te">
 <head>
@@ -9,6 +8,7 @@
 <meta name="description" content="డోంట్ ట్రబుల్ ది ట్రబుల్ సినిమాలో ఫహాద్ ఫాజిల్ గురించి ఆసక్తికర విషయాలు.">
 <meta name="author" content="BS 360 NEWS">
 <meta name="robots" content="index, follow, max-image-preview:large">
+
 <link rel="canonical" href="https://bs360news.com/fahadh-faasil-dont-trouble-the-trouble/">
 <link rel="icon" href="../dp.png.png">
 <link rel="apple-touch-icon" href="../dp.png.png">
@@ -21,8 +21,6 @@
 <meta property="og:locale" content="te_IN">
 <meta property="og:image" content="https://bs360news.com/fahadh-faasil-dont-trouble-the-trouble.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="యువ టీమ్‌తో ఫహాద్ ఫాజిల్..">
-<meta name="twitter:image" content="https://bs360news.com/fahadh-faasil-dont-trouble-the-trouble.png">
 
 <script type="application/ld+json">
 {
@@ -57,6 +55,7 @@ body {
 
 a {
     color: inherit;
+    text-decoration: none;
 }
 
 img {
@@ -87,7 +86,6 @@ img {
     display: flex;
     align-items: center;
     gap: 10px;
-    text-decoration: none;
     min-width: 0;
 }
 
@@ -180,10 +178,6 @@ img {
     font-size: 12px;
 }
 
-.lang-selector a {
-    text-decoration: none;
-}
-
 .lang-selector .active {
     color: #e60000;
     font-weight: 800;
@@ -198,7 +192,6 @@ img {
 .nav-links a {
     display: block;
     padding: 15px 17px;
-    text-decoration: none;
     white-space: nowrap;
     font-size: 13px;
     font-weight: 800;
@@ -237,7 +230,7 @@ img {
     line-height: 1.6;
 }
 
-/* ARTICLE + SIDEBAR */
+/* MAIN ARTICLE LAYOUT */
 
 .article-page {
     padding: 24px 0 40px;
@@ -270,7 +263,6 @@ img {
 .article-image {
     display: block;
     width: 100%;
-    height: auto;
     aspect-ratio: 16 / 9;
     object-fit: cover;
     border-radius: 6px;
@@ -287,7 +279,7 @@ img {
     margin: 0 0 20px;
 }
 
-/* SIDEBAR SECTIONS */
+/* SIDEBAR */
 
 .article-sidebar {
     min-width: 0;
@@ -296,27 +288,26 @@ img {
     gap: 22px;
 }
 
-.news-section,
-.related-section {
+.news-section {
     min-width: 0;
-    margin: 0 0 28px;
+    margin: 0 0 18px;
 }
 
-/* NO BLUE BACKGROUND OR BLUE BORDER */
+/* REMOVE BLUE HEADING BACKGROUND AND BLUE BORDER */
 
 .section-heading {
     margin: 0 0 12px;
     padding: 0 0 8px;
     color: #111;
-    background: transparent;
-    border: none;
-    border-bottom: 2px solid #e60000;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
     font-size: 19px;
     line-height: 1.4;
     font-weight: 900;
 }
 
-/* SIDEBAR NEWS: IMAGE LEFT, TITLE RIGHT */
+/* SIDEBAR ARTICLE LIST */
 
 .side-news-list {
     display: flex;
@@ -329,7 +320,6 @@ img {
     gap: 10px;
     padding: 10px 0;
     border-bottom: 1px solid #ddd;
-    text-decoration: none;
     color: #111;
 }
 
@@ -349,46 +339,99 @@ img {
     font-weight: 700;
 }
 
-/* RELATED NEWS GRID */
+/* BOTTOM CATEGORY + AD SIDE BY SIDE */
+
+.category-ad-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: 22px;
+    align-items: start;
+    margin: 0 0 30px;
+}
+
+.category-news {
+    min-width: 0;
+}
+
+.category-news .side-news-list .news-card {
+    padding: 9px 0;
+}
+
+.category-ad {
+    width: 100%;
+    min-height: 280px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: #fafafa;
+    color: #777;
+    font-size: 12px;
+    overflow: hidden;
+}
+
+/* MOVIE REVIEWS GRID */
+
+.movie-reviews-section {
+    margin-top: 28px;
+    margin-bottom: 30px;
+}
+
+.movie-reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.movie-reviews-grid .news-card {
+    min-width: 0;
+}
+
+.movie-reviews-grid .news-card img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.movie-reviews-grid .news-card h3 {
+    margin: 7px 0 0;
+    font-size: 13px;
+    line-height: 1.5;
+    font-weight: 800;
+}
+
+/* ADDITIONAL NEWS GRID */
 
 .news-grid {
     display: grid;
-    grid-template-columns: repeat(8, minmax(0, 1fr));
-    gap: 13px;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 14px;
 }
 
 .news-grid .news-card {
     display: block;
     min-width: 0;
-    text-decoration: none;
-    color: #111;
 }
 
 .news-grid .news-card img {
     display: block;
     width: 100%;
     aspect-ratio: 16 / 9;
-    height: auto;
     object-fit: cover;
     border-radius: 5px;
 }
 
 .news-grid .news-card h3 {
     margin: 7px 0 0;
-    font-size: 12px;
+    font-size: 13px;
     line-height: 1.5;
     font-weight: 800;
 }
 
-/* MOVIE REVIEWS */
-
-.movie-reviews-section {
-    margin-top: 28px;
-    padding: 18px 0;
-    border-top: 1px solid #eee;
-}
-
-/* ADVERTISEMENT */
+/* FULL WIDTH AD BELOW MOVIE REVIEWS */
 
 .ad-space {
     width: 100%;
@@ -402,7 +445,6 @@ img {
     color: #777;
     font-size: 12px;
     background: #fafafa;
-    border: 1px dashed #ccc;
 }
 
 /* FOOTER */
@@ -434,7 +476,6 @@ img {
 
 .footer-links a {
     color: #eee;
-    text-decoration: none;
     font-size: 14px;
 }
 
@@ -457,13 +498,18 @@ img {
         gap: 18px;
     }
 
-    .news-grid {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
+    .category-ad-layout {
+        grid-template-columns: minmax(0, 1fr) 270px;
     }
 
     .nav-links a {
         padding: 14px 10px;
         font-size: 12px;
+    }
+
+    .movie-reviews-grid,
+    .news-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 }
 
@@ -561,11 +607,26 @@ img {
         width: 100%;
     }
 
+    /* Each category is followed by its ad on mobile */
+
+    .category-ad-layout {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 12px;
+        margin-bottom: 28px;
+    }
+
+    .category-ad {
+        min-height: 250px;
+        width: 100%;
+    }
+
+    .movie-reviews-grid,
     .news-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 12px;
     }
 
+    .movie-reviews-grid .news-card h3,
     .news-grid .news-card h3 {
         font-size: 13px;
     }
@@ -629,13 +690,9 @@ body.dark-mode .side-news-list .news-card {
     border-color: #333;
 }
 
-body.dark-mode .section-heading {
-    border-bottom-color: #e60000;
-}
-
+body.dark-mode .category-ad,
 body.dark-mode .ad-space {
     background: #181818;
-    border-color: #444;
     color: #aaa;
 }
 
@@ -646,16 +703,10 @@ body.dark-mode .lang-selector a {
 body.dark-mode .lang-selector .active {
     color: #ff4242;
 }
-
-body.dark-mode .movie-reviews-section {
-    border-top-color: #333;
-}
 </style>
 </head>
 
 <body>
-
-<!-- HEADER -->
 
 <header class="brand-header">
     <div class="container brand-inner">
@@ -692,8 +743,6 @@ body.dark-mode .movie-reviews-section {
     </div>
 </header>
 
-<!-- NAVIGATION -->
-
 <nav class="main-nav" aria-label="Main Navigation">
     <div class="container nav-container">
 
@@ -715,8 +764,6 @@ body.dark-mode .movie-reviews-section {
     </div>
 </nav>
 
-<!-- HEADLINES -->
-
 <div class="headlines-bar">
     <div class="container">
         <span class="headlines-label">❗ TOP HEADLINES</span>
@@ -728,9 +775,9 @@ body.dark-mode .movie-reviews-section {
 
 <main class="container article-page">
 
-    <!-- ARTICLE AND RIGHT SIDEBAR -->
-
     <div class="article-layout">
+
+        <!-- MAIN ARTICLE -->
 
         <article class="article-main">
 
@@ -819,7 +866,7 @@ body.dark-mode .movie-reviews-section {
             </div>
         </article>
 
-        <!-- RIGHT SIDEBAR -->
+        <!-- RIGHT SIDE: NATIONAL, LATEST, TRENDING, MOVIE REVIEWS -->
 
         <aside class="article-sidebar">
 
@@ -829,50 +876,99 @@ body.dark-mode .movie-reviews-section {
             </section>
 
             <section class="news-section">
-                <h2 class="section-heading">World News</h2>
-                <div id="worldGrid" class="side-news-list"></div>
+                <h2 class="section-heading">Latest News</h2>
+                <div id="latestSidebar" class="side-news-list"></div>
             </section>
 
             <section class="news-section">
-                <h2 class="section-heading">Sports News</h2>
-                <div id="sportsSideGrid" class="side-news-list"></div>
+                <h2 class="section-heading">Trending News</h2>
+                <div id="trendingSidebar" class="side-news-list"></div>
             </section>
 
             <section class="news-section">
-                <h2 class="section-heading">AP &amp; TS News</h2>
-                <div id="aptsSideGrid" class="side-news-list"></div>
+                <h2 class="section-heading">Movie Reviews</h2>
+                <div id="movieReviewsSidebar" class="side-news-list"></div>
             </section>
 
-            <section class="news-section">
-                <h2 class="section-heading">Entertainment News</h2>
-                <div id="moviesSideGrid" class="side-news-list"></div>
-            </section>
+            <!-- SIDEBAR AD IN EMPTY SPACE -->
 
             <section class="news-section">
-                <h2 class="section-heading">Business News</h2>
-                <div id="businessSideGrid" class="side-news-list"></div>
+                <h2 class="section-heading">Advertisement</h2>
+                <div class="category-ad">
+                    <!-- మీ AdSense ad code ఇక్కడ పెట్టండి -->
+                </div>
             </section>
 
         </aside>
     </div>
 
-    <!-- MOVIE REVIEWS: ABOVE ADVERTISEMENT -->
+    <!-- SPORTS: 5 ARTICLES + AD BESIDE -->
 
-    <section class="related-section movie-reviews-section">
-        <h2 class="section-heading">Movie Reviews</h2>
-        <div id="movieReviewsGrid" class="news-grid"></div>
+    <section class="category-ad-layout">
+        <div class="category-news">
+            <h2 class="section-heading">Sports News</h2>
+            <div id="sportsSideGrid" class="side-news-list"></div>
+        </div>
+
+        <aside class="category-ad">
+            <!-- Sports section AdSense code -->
+        </aside>
     </section>
 
-    <!-- ADVERTISEMENT -->
+    <!-- AP & TS: 5 ARTICLES + AD BESIDE -->
+
+    <section class="category-ad-layout">
+        <div class="category-news">
+            <h2 class="section-heading">AP &amp; TS News</h2>
+            <div id="aptsSideGrid" class="side-news-list"></div>
+        </div>
+
+        <aside class="category-ad">
+            <!-- AP & TS section AdSense code -->
+        </aside>
+    </section>
+
+    <!-- ENTERTAINMENT: 5 ARTICLES + AD BESIDE -->
+
+    <section class="category-ad-layout">
+        <div class="category-news">
+            <h2 class="section-heading">Entertainment News</h2>
+            <div id="moviesSideGrid" class="side-news-list"></div>
+        </div>
+
+        <aside class="category-ad">
+            <!-- Entertainment section AdSense code -->
+        </aside>
+    </section>
+
+    <!-- BUSINESS: 5 ARTICLES + AD BESIDE -->
+
+    <section class="category-ad-layout">
+        <div class="category-news">
+            <h2 class="section-heading">Business News</h2>
+            <div id="businessSideGrid" class="side-news-list"></div>
+        </div>
+
+        <aside class="category-ad">
+            <!-- Business section AdSense code -->
+        </aside>
+    </section>
+
+    <!-- MOVIE REVIEWS GRID BELOW CATEGORY ARTICLES -->
+
+    <section class="movie-reviews-section">
+        <h2 class="section-heading">Movie Reviews</h2>
+        <div id="movieReviewsGrid" class="movie-reviews-grid"></div>
+    </section>
+
+    <!-- FULL WIDTH AD -->
 
     <div class="ad-space">
-        <span>Advertisement</span>
         <!-- మీ AdSense ad code ఇక్కడ పెట్టండి -->
+        <span>Advertisement</span>
     </div>
 
 </main>
-
-<!-- FOOTER -->
 
 <footer class="site-footer">
     <div class="container footer-inner">
@@ -926,53 +1022,65 @@ function toggleTheme() {
     }
 }
 
-/* LOAD HOMEPAGE ARTICLES */
+/* LOAD ARTICLES FROM HOMEPAGE */
 
 document.addEventListener("DOMContentLoaded", async function () {
 
     const HOME = "https://bs360news.com/index.html";
 
     /*
-      The aliases below are guesses for common homepage source IDs.
-      Replace/add IDs here if your actual index.html uses different IDs.
+      Source IDs below are common aliases.
+      If your homepage uses other IDs, add them to the relevant list.
     */
 
     const sourceAliases = {
         nationalGrid: [
             "nationalSource", "nationalNewsSource",
-            "indiaSource", "nationalNews", "nationalSection"
+            "indiaSource", "nationalNews", "nationalSection",
+            "nationalGrid"
         ],
-        worldGrid: [
-            "worldSource", "worldNewsSource",
-            "internationalSource", "worldNews", "worldSection"
+
+        latestSidebar: [
+            "latestSource", "latestNewsSource",
+            "latestGrid", "latestSection", "latestPosts"
         ],
+
+        trendingSidebar: [
+            "trendingSource", "trendingNewsSource",
+            "trendingGrid", "trending-section",
+            "trendingSection", "most-read-section"
+        ],
+
+        movieReviewsSidebar: [
+            "movieReviewsSource", "movieReviewsGrid",
+            "reviewsSource", "reviewsGrid", "movie-reviews"
+        ],
+
         sportsSideGrid: [
             "sportsSource", "sportsGrid", "sportsSection",
             "sportsNewsSource"
         ],
+
         aptsSideGrid: [
             "aptsSource", "aptsGrid", "aptsSection",
             "aptsNewsSource", "andhraSource", "telanganaSource"
         ],
+
         moviesSideGrid: [
             "entertainmentSource", "moviesSource",
             "moviesGrid", "cinemaSource", "cinemaSection"
         ],
+
         businessSideGrid: [
             "businessSource", "businessGrid",
             "businessSection", "businessNewsSource"
         ],
+
         movieReviewsGrid: [
             "movieReviewsSource", "movieReviewsGrid",
             "reviewsSource", "reviewsGrid", "movie-reviews"
         ]
     };
-
-    function normalize(value) {
-        return String(value || "")
-            .toLowerCase()
-            .replace(/[^a-z0-9]+/g, "");
-    }
 
     function absoluteURL(path) {
         if (!path) return "";
@@ -992,6 +1100,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             : node.querySelector("a[href]");
 
         const image = node.querySelector("img");
+
         const titleNode = node.querySelector(
             ".news-content h3, .news-content p, h3, h2, .post-title, p"
         );
@@ -1045,9 +1154,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         for (const id of aliases) {
             const element = home.getElementById(id);
 
-            if (element) {
-                return element;
-            }
+            if (element) return element;
         }
 
         return null;
@@ -1057,6 +1164,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         if (!source) return [];
 
         const cards = [];
+
         const nodes = source.querySelectorAll(
             ".news-item.post, .news-card, .post, article, li"
         );
@@ -1066,18 +1174,13 @@ document.addEventListener("DOMContentLoaded", async function () {
             if (card) cards.push(card);
         });
 
-        /*
-          If the source itself is a single article card,
-          try extracting it directly as well.
-        */
-
         const directCard = extractCard(source);
         if (directCard) cards.unshift(directCard);
 
         return uniqueArticles(cards);
     }
 
-    function renderCards(targetId, articles, sidebar) {
+    function renderCards(targetId, articles) {
         const target = document.getElementById(targetId);
         if (!target) return;
 
@@ -1102,14 +1205,13 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         if (articles.length === 0) {
             const empty = document.createElement("p");
-            empty.className = "news-empty";
             empty.textContent = "వార్తలు ప్రస్తుతం అందుబాటులో లేవు.";
             empty.style.fontSize = "13px";
             empty.style.color = "#777";
             target.appendChild(empty);
         }
 
-        console.log(targetId + ": " + articles.length + " articles found");
+        console.log(targetId + ": " + Math.min(articles.length, 5) + " articles");
     }
 
     try {
@@ -1128,11 +1230,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             const source = findSource(home, aliases);
             const articles = readSource(source);
 
-            renderCards(
-                targetId,
-                articles,
-                targetId !== "movieReviewsGrid"
-            );
+            renderCards(targetId, articles);
 
             if (!source) {
                 console.warn(
@@ -1145,22 +1243,14 @@ document.addEventListener("DOMContentLoaded", async function () {
     } catch (error) {
         console.error("BS360NEWS article loading error:", error);
 
-        [
-            "nationalGrid",
-            "worldGrid",
-            "sportsSideGrid",
-            "aptsSideGrid",
-            "moviesSideGrid",
-            "businessSideGrid",
-            "movieReviewsGrid"
-        ].forEach(function (id) {
+        Object.keys(sourceAliases).forEach(function (id) {
             const target = document.getElementById(id);
 
             if (target && !target.children.length) {
                 const message = document.createElement("p");
                 message.textContent = "వార్తలను లోడ్ చేయలేకపోయాం.";
-                message.style.color = "#777";
                 message.style.fontSize = "13px";
+                message.style.color = "#777";
                 target.appendChild(message);
             }
         });
