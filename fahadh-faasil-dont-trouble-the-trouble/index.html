@@ -1072,55 +1072,7 @@ function toggleTheme() {
 
 /* LOAD ARTICLES FROM HOMEPAGE */
 
-document.addEventListener("DOMContentLoaded", async function () {
 
-    const HOME = "https://bs360news.com/index.html";
-
-    /*
-      Source IDs below are common aliases.
-      If your homepage uses other IDs, add them to the relevant list.
-    */
-
-    const sourceAliases = {
-        nationalGrid: [
-            "nationalSource", "nationalNewsSource",
-            "indiaSource", "nationalNews", "nationalSection",
-            "nationalGrid"
-        ],
-
-        latestSidebar: [
-            "latestSource", "latestNewsSource",
-            "latestGrid", "latestSection", "latestPosts"
-        ],
-
-        trendingSidebar: [
-            "trendingSource", "trendingNewsSource",
-            "trendingGrid", "trending-section",
-            "trendingSection", "most-read-section"
-        ],
-
-        movieReviewsSidebar: [
-            "movieReviewsSource", "movieReviewsGrid",
-            "reviewsSource", "reviewsGrid", "movie-reviews"
-        ],
-
-        sportsSideGrid: [
-            "sportsSource", "sportsGrid", "sportsSection",
-            "sportsNewsSource"
-        ],
-
-        aptsSideGrid: [
-            "aptsSource", "aptsGrid", "aptsSection",
-            "aptsNewsSource", "andhraSource", "telanganaSource"
-        ],
-
-        moviesSideGrid: [
-            "entertainmentSource", "moviesSource",
-            "moviesGrid", "cinemaSource", "cinemaSection"
-        ],
-
-        businessSideGrid: [
-            "businessSource", "businessGrid",
             "businessSection", "businessNewsSource"
         ],
 
@@ -1197,69 +1149,170 @@ document.addEventListener("DOMContentLoaded", async function () {
             return true;
         });
     }
+<script>
+document.addEventListener("DOMContentLoaded", async () => {
+    const HOME = "https://bs360news.com/index.html";
 
-    function findSource(home, aliases) {
-        for (const id of aliases) {
-            const element = home.getElementById(id);
-
-            if (element) return element;
+    const sections = [
+        {
+            target: "nationalGrid",
+            aliases: ["nationalSource", "nationalNewsSource", "nationalSection", "nationalGrid"],
+            limit: 5
+        },
+        {
+            target: "latestSidebar",
+            aliases: ["latestSource", "latestNewsSource", "latestGrid", "latestSection", "latestSidebar"],
+            limit: 5
+        },
+        {
+            target: "trendingSidebar",
+            aliases: ["trendingSource", "trendingNewsSource", "trendingGrid", "trending-section", "trendingSection", "most-read-section"],
+            limit: 5
+        },
+        {
+            target: "movieReviewsSidebar",
+            aliases: ["movieReviewsSource", "reviewsSource", "reviewsGrid", "movie-reviews"],
+            limit: 5
+        },
+        {
+            target: "sportsGrid",
+            aliases: ["sportsGrid", "sportsSection", "sportsSource", "sportsNewsSource", "afterSportsGrid"],
+            limit: 5
+        },
+        {
+            target: "cinemaGrid",
+            aliases: ["cinemaGrid", "cinemaSection", "cinemaSource", "moviesGrid", "entertainmentSource", "afterEntertainmentGrid"],
+            limit: 5
+        },
+        {
+            target: "businessGrid",
+            aliases: ["businessGrid", "businessSection", "businessSource", "businessNewsSource", "afterBusinessGrid"],
+            limit: 5
+        },
+        {
+            target: "aptsGrid",
+            aliases: ["aptsGrid", "aptsSection", "aptsSource", "aptsNewsSource", "afterApTsGrid"],
+            limit: 5
+        },
+        {
+            target: "movieReviewsGrid",
+            aliases: ["movieReviewsSource", "reviewsSource", "reviewsGrid", "movie-reviews"],
+            limit: 5
         }
+    ];
 
+    function getSource(doc, aliases) {
+        for (const id of aliases) {
+            const el = doc.getElementById(id);
+            if (el) return el;
+        }
         return null;
     }
 
-    function readSource(source) {
-        if (!source) return [];
-
-        const cards = [];
-
-        const nodes = source.querySelectorAll(
-            ".news-item.post, .news-card, .post, article, li"
-        );
-
-        nodes.forEach(function (node) {
-            const card = extractCard(node);
-            if (card) cards.push(card);
-        });
-
-        const directCard = extractCard(source);
-        if (directCard) cards.unshift(directCard);
-
-        return uniqueArticles(cards);
+    function toAbsolute(url) {
+        if (!url) return "";
+        try {
+            return new URL(url, HOME).href;
+        } catch {
+            return "";
+        }
     }
 
-    function renderCards(targetId, articles) {
+    function getArticle(anchor) {
+        if (!anchor) return null;
+
+        const card = anchor.closest(
+            ".news-card, .news-item, .post, article, li"
+        ) || anchor;
+
+        const img = card.querySelector("img") || anchor.querySelector("img");
+
+        const titleEl = card.querySelector(
+            "h1, h2, h3, h4, .post-title, .news-title, .title"
+        );
+
+        const title = (
+            titleEl?.textContent ||
+            anchor.getAttribute("aria-label") ||
+            anchor.textContent ||
+            img?.alt ||
+            ""
+        ).replace(/\s+/g, " ").trim();
+
+        const image = toAbsolute(
+            img?.getAttribute("src") ||
+            img?.getAttribute("data-src") ||
+            img?.getAttribute("data-lazy-src") ||
+            img?.getAttribute("data-original") ||
+            img?.getAttribute("srcset")?.split(",")[0]?.trim().split(" ")[0]
+        );
+
+        const url = toAbsolute(anchor.getAttribute("href"));
+
+        if (!title || !image || !url) return null;
+
+        try {
+            if (new URL(url).origin !== new URL(HOME).origin) return null;
+        } catch {
+            return null;
+        }
+
+        return {
+            title,
+            image,
+            url,
+            alt: img?.alt || title
+        };
+    }
+
+    function collectArticles(source) {
+        if (!source) return [];
+
+        const result = [];
+        const seen = new Set();
+
+        source.querySelectorAll("a[href]").forEach(anchor => {
+            const item = getArticle(anchor);
+            if (!item || seen.has(item.url)) return;
+
+            seen.add(item.url);
+            result.push(item);
+        });
+
+        return result;
+    }
+
+    function render(targetId, articles, limit) {
         const target = document.getElementById(targetId);
         if (!target) return;
 
         target.replaceChildren();
 
-        articles.slice(0, 5).forEach(function (article) {
+        articles.slice(0, limit).forEach(item => {
             const link = document.createElement("a");
             link.className = "news-card";
-            link.href = article.url;
+            link.href = item.url;
 
             const img = document.createElement("img");
-            img.src = article.image;
-            img.alt = article.alt;
+            img.src = item.image;
+            img.alt = item.alt;
             img.loading = "lazy";
 
-            const heading = document.createElement("h3");
-            heading.textContent = article.title;
+            const title = document.createElement("h3");
+            title.textContent = item.title;
 
-            link.append(img, heading);
+            link.append(img, title);
             target.appendChild(link);
         });
 
         if (articles.length === 0) {
-            const empty = document.createElement("p");
-            empty.textContent = "వార్తలు ప్రస్తుతం అందుబాటులో లేవు.";
-            empty.style.fontSize = "13px";
-            empty.style.color = "#777";
-            target.appendChild(empty);
+            const msg = document.createElement("p");
+            msg.textContent = "వార్తలు కనిపించడం లేదు.";
+            msg.style.cssText = "font-size:13px;color:#777";
+            target.appendChild(msg);
         }
 
-        console.log(targetId + ": " + Math.min(articles.length, 5) + " articles");
+        console.log(targetId, "source articles:", articles.length);
     }
 
     try {
@@ -1268,40 +1321,29 @@ document.addEventListener("DOMContentLoaded", async function () {
         });
 
         if (!response.ok) {
-            throw new Error("Homepage HTTP status: " + response.status);
+            throw new Error("Homepage load failed: " + response.status);
         }
 
         const html = await response.text();
-        const home = new DOMParser().parseFromString(html, "text/html");
+        const doc = new DOMParser().parseFromString(html, "text/html");
 
-        Object.entries(sourceAliases).forEach(function ([targetId, aliases]) {
-            const source = findSource(home, aliases);
-            const articles = readSource(source);
+        sections.forEach(section => {
+            const source = getSource(doc, section.aliases);
+            const articles = collectArticles(source);
 
-            renderCards(targetId, articles);
+            render(section.target, articles, section.limit);
 
             if (!source) {
                 console.warn(
-                    "Homepage source not found for " + targetId,
-                    aliases
+                    "Source ID not found:",
+                    section.target,
+                    section.aliases
                 );
             }
         });
 
     } catch (error) {
-        console.error("BS360NEWS article loading error:", error);
-
-        Object.keys(sourceAliases).forEach(function (id) {
-            const target = document.getElementById(id);
-
-            if (target && !target.children.length) {
-                const message = document.createElement("p");
-                message.textContent = "వార్తలను లోడ్ చేయలేకపోయాం.";
-                message.style.fontSize = "13px";
-                message.style.color = "#777";
-                target.appendChild(message);
-            }
-        });
+        console.error("BS360NEWS loading error:", error);
     }
 });
 </script>
