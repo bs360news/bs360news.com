@@ -888,207 +888,148 @@ body.dark-mode .lang-selector .active {
 
 <script>
 document.addEventListener("DOMContentLoaded", async function () {
-    "use strict";
+    const HOME = "https://bs360news.com/index.html";
 
-    const HOME_URL = "https://bs360news.com/index.html";
+    const targets = {
+        nationalGrid: ["national", "india", "nationalnews"],
+        worldGrid: ["world", "international", "worldnews"],
+        moviesGrid: ["entertainment", "movies", "cinema"],
+        sportsGrid: ["sports", "sport", "cricket"],
+        businessGrid: ["business", "economy", "finance"],
+        aptsGrid: ["apts", "ap-ts", "andhra", "telangana"]
+    };
 
-    function resolveUrl(path) {
-        if (!path) return "";
-
-        if (/^(https?:)?\/\//i.test(path)) return path;
-
-        return new URL(path, HOME_URL).href;
+    function normalize(value) {
+        return String(value || "").toLowerCase()
+            .replace(/[^a-z0-9]+/g, "");
     }
 
-    function extractArticles(home, sourceId) {
-        const source = home.getElementById(sourceId);
-
-        if (!source) {
-            console.warn("Homepage source not found:", sourceId);
-            return [];
+    function absolute(path) {
+        if (!path) return "";
+        try {
+            return new URL(path, HOME).href;
+        } catch {
+            return "";
         }
+    }
 
-        const nodes = source.querySelectorAll(
-            ".news-item.post, .news-card, article"
+    function readArticles(home) {
+        const nodes = home.querySelectorAll(
+            ".news-item.post, .news-card, [data-category], article"
         );
 
-        const articles = [];
+        const result = [];
         const seen = new Set();
 
         nodes.forEach(function (node) {
-            const image = node.querySelector("img");
-            const link = node.matches("a[href]")
+            const img = node.querySelector("img");
+            const anchor = node.matches("a[href]")
                 ? node
                 : node.querySelector("a[href]");
 
-            const titleElement = node.querySelector(
+            const heading = node.querySelector(
                 ".news-content p, .news-content h3, h3, h2, p"
             );
 
             const title = (
-                titleElement?.textContent ||
-                link?.textContent ||
+                heading?.textContent ||
+                anchor?.textContent ||
                 ""
             ).replace(/\s+/g, " ").trim();
 
-            const imagePath = image?.getAttribute("src") || "";
-            const url =
+            const image = absolute(img?.getAttribute("src"));
+            const url = absolute(
                 node.getAttribute("data-url") ||
-                link?.getAttribute("href") ||
-                "";
+                anchor?.getAttribute("href")
+            );
 
-            const key = url || title;
+            if (!title || !image || !url) return;
 
-            if (!title || !imagePath || !url || seen.has(key)) return;
+            if (new URL(url).origin !== new URL(HOME).origin) return;
 
-            seen.add(key);
+            if (seen.has(url)) return;
+            seen.add(url);
 
-            articles.push({
-                title: title,
-                image: resolveUrl(imagePath),
-                url: resolveUrl(url),
-                alt: image?.getAttribute("alt") || title
+            const category = [
+                node.getAttribute("data-category"),
+                node.getAttribute("data-section"),
+                node.closest("[id]")?.id,
+                node.closest("section")?.id,
+                anchor?.getAttribute("href")
+            ].filter(Boolean).join(" ");
+
+            result.push({
+                title,
+                image,
+                url,
+                category: normalize(category),
+                alt: img?.getAttribute("alt") || title
             });
         });
 
-        return articles;
+        return result;
     }
 
-    function createCard(article, sidebar) {
-        const link = document.createElement("a");
-        link.className = "news-card";
-        link.href = article.url;
-
-        const image = document.createElement("img");
-        image.src = article.image;
-        image.alt = article.alt;
-        image.loading = "lazy";
-
-        const title = document.createElement("h3");
-        title.textContent = article.title;
-
-        link.append(image, title);
-        return link;
+    function belongs(article, keywords) {
+        return keywords.some(function (word) {
+            return article.category.includes(normalize(word));
+        });
     }
 
-    function renderArticles(targetId, articles, limit, sidebar) {
-        const target = document.getElementById(targetId);
+    function render(id, articles, sidebar) {
+        const target = document.getElementById(id);
         if (!target) return;
 
         target.replaceChildren();
 
-        articles.slice(0, limit).forEach(function (article) {
-            target.appendChild(createCard(article, sidebar));
+        articles.slice(0, 8).forEach(function (article) {
+            const link = document.createElement("a");
+            link.className = "news-card";
+            link.href = article.url;
+
+            const img = document.createElement("img");
+            img.src = article.image;
+            img.alt = article.alt;
+            img.loading = "lazy";
+
+            const title = document.createElement("h3");
+            title.textContent = article.title;
+
+            link.append(img, title);
+            target.appendChild(link);
         });
 
-        console.log(targetId + ": " + Math.min(articles.length, limit));
+        console.log(id, "articles:", articles.length);
     }
 
     try {
-        const response = await fetch(
-            HOME_URL + "?v=" + Date.now(),
-            { cache: "no-store" }
-        );
+        const response = await fetch(HOME + "?v=" + Date.now(), {
+            cache: "no-store"
+        });
 
         if (!response.ok) {
-            throw new Error("Homepage request failed: " + response.status);
+            throw new Error("Homepage returned " + response.status);
         }
 
         const html = await response.text();
         const home = new DOMParser().parseFromString(html, "text/html");
+        const articles = readArticles(home);
 
-        /*
-          Homepage source IDs:
-          nationalSource
-          worldSource
-          entertainmentSource
-          sportsSource
-          businessSource
-          aptsSource
+        Object.entries(targets).forEach(function ([id, keywords]) {
+            const matches = articles.filter(article =>
+                belongs(article, keywords)
+            );
+            render(id, matches, id === "nationalGrid" || id === "worldGrid");
+        });
 
-          These IDs must exist in your homepage index.html.
-        */
-
-        renderArticles(
-            "nationalGrid",
-            extractArticles(home, "nationalSource"),
-            8,
-            true
-        );
-
-        renderArticles(
-            "worldGrid",
-            extractArticles(home, "worldSource"),
-            8,
-            true
-        );
-
-        renderArticles(
-            "moviesGrid",
-            extractArticles(home, "entertainmentSource"),
-            8,
-            false
-        );
-
-        renderArticles(
-            "sportsGrid",
-            extractArticles(home, "sportsSource"),
-            8,
-            false
-        );
-
-        renderArticles(
-            "businessGrid",
-            extractArticles(home, "businessSource"),
-            8,
-            false
-        );
-
-        renderArticles(
-            "aptsGrid",
-            extractArticles(home, "aptsSource"),
-            8,
-            false
-        );
+        console.log("All homepage articles scanned:", articles.length);
 
     } catch (error) {
         console.error("BS360NEWS article loading error:", error);
     }
-
-    /* MOBILE MENU */
-    window.toggleMobileNav = function () {
-        const nav = document.getElementById("navLinks");
-
-        if (nav) {
-            nav.classList.toggle("mobile-open");
-        }
-    };
-
-    /* DARK MODE */
-    window.toggleTheme = function () {
-        document.body.classList.toggle("dark-mode");
-
-        const dark = document.body.classList.contains("dark-mode");
-        const button = document.getElementById("themeButton");
-
-        if (button) {
-            button.textContent = dark ? "☀️ Light" : "🌙 Dark";
-        }
-
-        localStorage.setItem(
-            "bs360-theme",
-            dark ? "dark" : "light"
-        );
-    };
-
-    if (localStorage.getItem("bs360-theme") === "dark") {
-        document.body.classList.add("dark-mode");
-
-        const button = document.getElementById("themeButton");
-        if (button) button.textContent = "☀️ Light";
-    }
 });
 </script>
+  
 
 </body>
 </html>
