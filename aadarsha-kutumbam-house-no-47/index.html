@@ -854,7 +854,111 @@
 <!-- AUTOMATIC ARTICLE NEWS SYSTEM -->
 
 <script>
-  
+document.addEventListener("DOMContentLoaded", async function () {
+    try {
+        const response = await fetch("../index.html?v=" + Date.now());
+        if (!response.ok) throw new Error("Homepage load కాలేదు");
+
+        const html = await response.text();
+        const parser = new DOMParser();
+        const home = parser.parseFromString(html, "text/html");
+
+        function getArticles(sourceId) {
+            const source = home.getElementById(sourceId);
+            if (!source) return [];
+
+            return Array.from(source.querySelectorAll("article"))
+                .map(function (item) {
+                    const link = item.querySelector("a[href]");
+                    const img = item.querySelector("img");
+                    const heading = item.querySelector(
+                        ".news-content p, h3, h2, p"
+                    );
+
+                    return {
+                        title: (heading?.textContent || link?.textContent || "").trim(),
+                        image: img?.getAttribute("src") || "",
+                        url: item.getAttribute("data-url") ||
+                             link?.getAttribute("href") || ""
+                    };
+                })
+                .filter(item => item.title && item.image && item.url);
+        }
+
+        function fixPath(path) {
+            if (!path) return "";
+            if (/^(https?:)?\/\//i.test(path) || path.startsWith("/") ||
+                path.startsWith("../")) return path;
+            return "../" + path;
+        }
+
+        function renderList(targetId, articles) {
+            const target = document.getElementById(targetId);
+            if (!target) return;
+
+            target.replaceChildren();
+
+            articles.forEach(function (item) {
+                const card = document.createElement("a");
+                card.className = "sidebar-item";
+                card.href = fixPath(item.url);
+
+                const img = document.createElement("img");
+                img.src = fixPath(item.image);
+                img.alt = item.title;
+                img.loading = "lazy";
+
+                const title = document.createElement("span");
+                title.textContent = item.title;
+
+                card.append(img, title);
+                target.appendChild(card);
+            });
+        }
+
+        function renderGrid(targetId, articles) {
+            const target = document.getElementById(targetId);
+            if (!target) return;
+
+            target.replaceChildren();
+
+            articles.forEach(function (item) {
+                const card = document.createElement("article");
+                card.className = "news-card";
+
+                const link = document.createElement("a");
+                link.href = fixPath(item.url);
+
+                const img = document.createElement("img");
+                img.src = fixPath(item.image);
+                img.alt = item.title;
+                img.loading = "lazy";
+
+                const title = document.createElement("h3");
+                title.textContent = item.title;
+
+                link.append(img, title);
+                card.appendChild(link);
+                target.appendChild(card);
+            });
+        }
+
+        renderList("latestSidebar", getArticles("latestGrid"));
+        renderList("trendingSidebar", getArticles("trendingSidebar"));
+
+        renderGrid("latestGrid", getArticles("latestGrid"));
+        renderGrid("sportsGrid", getArticles("sportsSection"));
+        renderGrid("moviesGrid", getArticles("entertainmentSection"));
+        renderGrid("aptsGrid", getArticles("aptsSection"));
+        renderGrid("businessGrid", getArticles("businessSection"));
+
+        renderList("mostReadSidebar", []);
+
+    } catch (error) {
+        console.error("News load error:", error);
+    }
+});
+
 
 document.addEventListener("DOMContentLoaded", function () {
 
