@@ -1137,7 +1137,29 @@ function toggleTheme() {
 }
 
 /* LOAD BS360NEWS ARTICLES */
-document.addEventListener("DOMContentLoaded", async function () {
+document.addEventListener("DOMContentLoaded", async function () function limitMovieReviewsToArticle() {
+    const main = document.querySelector(".article-main");
+    const sidebar = document.querySelector(".article-sidebar");
+    const reviews = document.querySelector(".news-section:has(#movieReviewsSidebar)");
+
+    if (!main || !sidebar || !reviews) return;
+
+    const mainHeight = main.offsetHeight;
+    const reviewsTop = reviews.offsetTop;
+
+    if (reviewsTop >= mainHeight) {
+        reviews.style.display = "none";
+        return;
+    }
+
+    reviews.style.display = "";
+    reviews.style.maxHeight = (mainHeight - reviewsTop) + "px";
+    reviews.style.overflow = "hidden";
+}
+
+window.addEventListener("load", limitMovieReviewsToArticle);
+window.addEventListener("resize", limitMovieReviewsToArticle);
+  {
 
     const HOME = "https://bs360news.com/index.html";
     const MOVIES = "https://bs360news.com/MOVIES.html";
