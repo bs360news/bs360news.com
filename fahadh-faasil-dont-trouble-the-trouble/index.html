@@ -1034,7 +1034,13 @@ body.dark-mode .lang-selector .active {
     <h2>Movie Reviews</h2>
     <div id="movieReviewsGrid" class="news-grid"></div>
 </section>
-  
+  <!-- ALL MOVIE NEWS FROM MOVIES.html -->
+<section class="movie-reviews-section" id="movieReviewsSection">
+    <h2>మరిన్ని ఎంటర్టైన్మెంట్స్ </h2>
+    <div id="movieReviewsGrid" class="news-grid">
+        <p>సినిమా వార్తలు లోడ్ అవుతున్నాయి...</p>
+    </div>
+</section>
 
 </main>
 
@@ -1087,49 +1093,96 @@ function toggleTheme() {
     }
 }
 
-/* LOAD HOMEPAGE ARTICLES */
+/* LOAD BS360NEWS ARTICLES */
 document.addEventListener("DOMContentLoaded", async function () {
-    const HOME = "https://bs360news.com/index.html";
 
-    const sections = [
+    const HOME = "https://bs360news.com/index.html";
+    const MOVIES = "https://bs360news.com/MOVIES.html";
+
+    const otherSections = [
         { target: "nationalGrid", source: "nationalSection", limit: 5 },
         { target: "latestSidebar", source: "latestGrid", limit: 5 },
         { target: "trendingSidebar", source: "trendingSidebar", limit: 5 },
-      { target: "movieReviewsSidebar", source: "movie-reviews-section", limit: 5 },
         { target: "sportsGrid", source: "sportsSection", limit: 5 },
         { target: "cinemaGrid", source: "entertainmentSection", limit: 5 },
         { target: "businessGrid", source: "businessSection", limit: 5 },
-        { target: "aptsGrid", source: "aptsSection", limit: 5 },
-      { target: "movieReviewsGrid", source: "movie-reviews-section", limit: 5 }
+        { target: "aptsGrid", source: "aptsSection", limit: 5 }
     ];
 
-    function absoluteURL(value) {
+    function absoluteURL(value, base) {
         if (!value) return "";
 
         try {
-            return new URL(value, HOME).href;
+            return new URL(value, base).href;
         } catch {
             return "";
         }
     }
 
-    function collectArticles(source) {
-        if (!source) return [];
+    function readMovieArticles(doc) {
+        const source = doc.getElementById("localMoviesSource");
 
-        const cards = source.querySelectorAll(
-            "article, .news-card, .news-item, .post, li"
-        );
+        if (!source) {
+            console.error("MOVIES.html: localMoviesSource not found");
+            return [];
+        }
 
         const articles = [];
         const seen = new Set();
 
-        cards.forEach(card => {
+        source.querySelectorAll(".news-item.post").forEach(function (item) {
+            const img = item.querySelector("img");
+            const titleElement = item.querySelector(
+                ".news-content p, .news-content h3, h2, h3"
+            );
+
+            const rawURL = item.getAttribute("data-url");
+            const rawImage = img && (
+                img.getAttribute("src") ||
+                img.getAttribute("data-src") ||
+                img.getAttribute("data-lazy-src")
+            );
+
+            const title = (
+                titleElement?.textContent || img?.alt || ""
+            ).replace(/\s+/g, " ").trim();
+
+            const url = absoluteURL(rawURL, MOVIES);
+            const image = absoluteURL(rawImage, MOVIES);
+
+            if (!title || !url || !image) return;
+
+            if (new URL(url).origin !== new URL(HOME).origin) return;
+            if (seen.has(url)) return;
+
+            seen.add(url);
+
+            articles.push({
+                title: title,
+                url: url,
+                image: image,
+                alt: img.alt || title
+            });
+        });
+
+        return articles;
+    }
+
+    function readHomeArticles(doc, sourceId) {
+        const source = doc.getElementById(sourceId);
+        if (!source) return [];
+
+        const articles = [];
+        const seen = new Set();
+
+        source.querySelectorAll(
+            "article, .news-card, .news-item, .post, li"
+        ).forEach(function (card) {
             const link = card.matches("a[href]")
                 ? card
                 : card.querySelector("a[href]");
 
             const img = card.querySelector("img");
-
             if (!link || !img) return;
 
             const heading = card.querySelector(
@@ -1138,39 +1191,29 @@ document.addEventListener("DOMContentLoaded", async function () {
 
             const title = (
                 heading?.textContent ||
-                link.getAttribute("aria-label") ||
                 img.alt ||
                 link.textContent ||
                 ""
             ).replace(/\s+/g, " ").trim();
 
+            const url = absoluteURL(link.getAttribute("href"), HOME);
             const image = absoluteURL(
                 img.getAttribute("src") ||
                 img.getAttribute("data-src") ||
-                img.getAttribute("data-lazy-src") ||
-                img.getAttribute("data-original")
+                img.getAttribute("data-lazy-src"),
+                HOME
             );
 
-            const url = absoluteURL(
-                link.getAttribute("href") ||
-                card.getAttribute("data-url")
-            );
+            if (!title || !url || !image) return;
 
-            if (!title || !image || !url) return;
-
-            try {
-                if (new URL(url).origin !== new URL(HOME).origin) return;
-            } catch {
-                return;
-            }
-
+            if (new URL(url).origin !== new URL(HOME).origin) return;
             if (seen.has(url)) return;
-            seen.add(url);
 
+            seen.add(url);
             articles.push({
                 title: title,
-                image: image,
                 url: url,
+                image: image,
                 alt: img.alt || title
             });
         });
@@ -1184,7 +1227,17 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         target.replaceChildren();
 
-        articles.slice(0, limit).forEach(item => {
+        const list = limit ? articles.slice(0, limit) : articles;
+
+        if (list.length === 0) {
+            const message = document.createElement("p");
+            message.textContent = "ఈ విభాగంలో వార్తలు దొరకలేదు.";
+            message.style.cssText = "font-size:13px;color:#777;";
+            target.appendChild(message);
+            return;
+        }
+
+        list.forEach(function (item) {
             const link = document.createElement("a");
             link.className = "news-card";
             link.href = item.url;
@@ -1200,57 +1253,65 @@ document.addEventListener("DOMContentLoaded", async function () {
             link.append(image, title);
             target.appendChild(link);
         });
-
-        if (articles.length === 0) {
-            const message = document.createElement("p");
-            message.textContent = "ఈ విభాగంలో వార్తలు దొరకలేదు.";
-            message.style.cssText = "font-size:13px;color:#777;";
-            target.appendChild(message);
-        }
     }
 
     try {
-        const response = await fetch(
-            HOME + "?v=" + Date.now(),
-            { cache: "no-store" }
-        );
+        /* Load homepage and MOVIES.html together */
+        const [homeResponse, moviesResponse] = await Promise.all([
+            fetch(HOME + "?v=" + Date.now(), { cache: "no-store" }),
+            fetch(MOVIES + "?v=" + Date.now(), { cache: "no-store" })
+        ]);
 
-        if (!response.ok) {
-            throw new Error("Homepage response: " + response.status);
+        if (!homeResponse.ok) {
+            throw new Error("Homepage load failed: " + homeResponse.status);
         }
 
-        const html = await response.text();
-        const doc = new DOMParser().parseFromString(html, "text/html");
+        if (!moviesResponse.ok) {
+            throw new Error("MOVIES.html load failed: " + moviesResponse.status);
+        }
 
-        sections.forEach(section => {
-            const source = doc.getElementById(section.source);
-            const articles = collectArticles(source);
+        const [homeHTML, moviesHTML] = await Promise.all([
+            homeResponse.text(),
+            moviesResponse.text()
+        ]);
 
+        const parser = new DOMParser();
+
+        const homeDoc = parser.parseFromString(homeHTML, "text/html");
+        const moviesDoc = parser.parseFromString(moviesHTML, "text/html");
+
+        /* ALL MOVIES: Read every card in MOVIES.html */
+        const movieArticles = readMovieArticles(moviesDoc);
+
+        /* Main Movie Reviews section: ALL movie news */
+        renderArticles("movieReviewsGrid", movieArticles, 0);
+
+        /* Sidebar: Latest 5 movie articles */
+        renderArticles("movieReviewsSidebar", movieArticles, 5);
+
+        /* Other homepage categories remain separate */
+        otherSections.forEach(function (section) {
+            const articles = readHomeArticles(homeDoc, section.source);
             renderArticles(section.target, articles, section.limit);
 
-            if (!source) {
-                console.warn("Homepage ID not found:", section.source);
-            }
-
             console.log(
-                section.target,
-                "articles found:",
-                articles.length
+                section.target + ": " + articles.length + " articles"
             );
         });
+
+        console.log("BS360NEWS: All movie articles =", movieArticles.length);
 
     } catch (error) {
         console.error("BS360NEWS article loading error:", error);
 
-        sections.forEach(section => {
-            const target = document.getElementById(section.target);
+        ["movieReviewsGrid", "movieReviewsSidebar"].forEach(function (id) {
+            const target = document.getElementById(id);
 
             if (target) {
                 target.replaceChildren();
 
                 const message = document.createElement("p");
-                message.textContent =
-                    "వార్తలు లోడ్ కాలేదు. Homepage URL లేదా JavaScript లోపాన్ని చెక్ చేయండి.";
+                message.textContent = "వార్తలు లోడ్ కాలేదు. MOVIES.html URL చెక్ చేయండి.";
                 message.style.cssText = "font-size:13px;color:#777;";
 
                 target.appendChild(message);
@@ -1258,10 +1319,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         });
     }
 });
-
-
-
-  
-  </script>
+</script>
 </body>
 </html>
