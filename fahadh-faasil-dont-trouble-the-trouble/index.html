@@ -965,14 +965,7 @@ body.dark-mode .lang-selector .active {
                 <div id="movieReviewsSidebar" class="side-news-list"></div>
             </section>
 
-            <!-- SIDEBAR AD IN EMPTY SPACE -->
-
-            <section class="news-section">
-                <h2 class="section-heading">Advertisement</h2>
-                <div class="category-ad">
-                    <!-- మీ AdSense ad code ఇక్కడ పెట్టండి -->
-                </div>
-            </section>
+            
 
         </aside>
     </div>
@@ -983,20 +976,15 @@ body.dark-mode .lang-selector .active {
         <h2>Sports News</h2>
         <div id="sportsGrid" class="news-grid"></div>
     </div>
-    <aside class="category-ad">
-        <p>Advertisement</p>
-    </aside>
+   
 </section>
-
 <!-- ENTERTAINMENT NEWS -->
 <section class="category-ad-layout">
     <div class="category-news">
         <h2>Entertainment News</h2>
         <div id="cinemaGrid" class="news-grid"></div>
     </div>
-    <aside class="category-ad">
-        <p>Advertisement</p>
-    </aside>
+   
 </section>
 
 <!-- BUSINESS NEWS -->
@@ -1005,9 +993,7 @@ body.dark-mode .lang-selector .active {
         <h2>Business News</h2>
         <div id="businessGrid" class="news-grid"></div>
     </div>
-    <aside class="category-ad">
-        <p>Advertisement</p>
-    </aside>
+   
 </section>
 
 <!-- AP NEWS -->
@@ -1287,7 +1273,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         renderArticles("movieReviewsGrid", movieArticles, 0);
 
         /* Sidebar: Latest 5 movie articles */
-        renderArticles("movieReviewsSidebar", movieArticles, 5);
+        renderArticles("movieReviewsSidebar", movieArticles, 15);
 
         /* Other homepage categories remain separate */
         otherSections.forEach(function (section) {
