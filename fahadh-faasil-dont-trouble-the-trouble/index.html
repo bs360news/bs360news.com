@@ -866,6 +866,37 @@ body.dark-mode .lang-selector .active {
         overflow: visible;
     }
 }
+  /* FIX ARTICLE END AND BELOW SECTIONS */
+
+.article-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    align-items: start;
+}
+
+.article-main {
+    min-width: 0;
+    height: auto;
+    overflow: visible;
+}
+
+.article-content {
+    height: auto;
+    max-height: none;
+    overflow: visible;
+}
+
+.category-ad-layout,
+.movie-reviews-section {
+    clear: both;
+    width: 100%;
+}
+
+@media (max-width: 700px) {
+    .article-layout {
+        grid-template-columns: 1fr;
+    }
+}
   
   
   
@@ -1406,6 +1437,14 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener("load", limitMovieReviewsToArticle);
     window.addEventListener("resize", limitMovieReviewsToArticle);
 });
+
+const image = absoluteURL(
+    img.getAttribute("data-src") ||
+    img.getAttribute("data-lazy-src") ||
+    img.getAttribute("src"),
+    HOME
+);
+  
           </script>
 
   
