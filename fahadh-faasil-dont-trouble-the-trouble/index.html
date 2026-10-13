@@ -832,7 +832,41 @@ body.dark-mode .lang-selector .active {
 .article-layout + .category-ad-layout {
     margin-top: 0;
 }
+/* MOVIE REVIEWS - STOP AT ARTICLE END */
 
+.article-layout {
+    align-items: start;
+}
+
+.article-main {
+    min-width: 0;
+}
+
+.article-sidebar {
+    min-width: 0;
+    align-self: start;
+}
+
+#movieReviewsSidebar {
+    min-height: 0;
+    overflow: hidden;
+}
+
+#movieReviewsSidebar .news-card {
+    min-width: 0;
+}
+
+#movieReviewsSidebar .news-card img {
+    flex-shrink: 0;
+}
+
+@media (max-width: 700px) {
+    #movieReviewsSidebar {
+        max-height: none;
+        overflow: visible;
+    }
+}
+  
   
   
 </style>
@@ -1114,6 +1148,7 @@ body.dark-mode .lang-selector .active {
         © 2026 BS 360 NEWS. All rights reserved.
     </div>
 </footer>
+
 <script>
 /* MOBILE NAVIGATION */
 function toggleMobileNav() {
@@ -1136,31 +1171,7 @@ function toggleTheme() {
     }
 }
 
-/* LOAD BS360NEWS ARTICLES */
-document.addEventListener("DOMContentLoaded", async function () function limitMovieReviewsToArticle() {
-    const main = document.querySelector(".article-main");
-    const sidebar = document.querySelector(".article-sidebar");
-    const reviews = document.querySelector(".news-section:has(#movieReviewsSidebar)");
-
-    if (!main || !sidebar || !reviews) return;
-
-    const mainHeight = main.offsetHeight;
-    const reviewsTop = reviews.offsetTop;
-
-    if (reviewsTop >= mainHeight) {
-        reviews.style.display = "none";
-        return;
-    }
-
-    reviews.style.display = "";
-    reviews.style.maxHeight = (mainHeight - reviewsTop) + "px";
-    reviews.style.overflow = "hidden";
-}
-
-window.addEventListener("load", limitMovieReviewsToArticle);
-window.addEventListener("resize", limitMovieReviewsToArticle);
-  {
-
+document.addEventListener("DOMContentLoaded", function () {
     const HOME = "https://bs360news.com/index.html";
     const MOVIES = "https://bs360news.com/MOVIES.html";
 
@@ -1197,23 +1208,22 @@ window.addEventListener("resize", limitMovieReviewsToArticle);
 
         source.querySelectorAll(".news-item.post").forEach(function (item) {
             const img = item.querySelector("img");
-            const titleElement = item.querySelector(
+            const heading = item.querySelector(
                 ".news-content p, .news-content h3, h2, h3"
             );
 
-            const rawURL = item.getAttribute("data-url");
-            const rawImage = img && (
-                img.getAttribute("src") ||
-                img.getAttribute("data-src") ||
-                img.getAttribute("data-lazy-src")
-            );
-
             const title = (
-                titleElement?.textContent || img?.alt || ""
+                heading?.textContent || img?.alt || ""
             ).replace(/\s+/g, " ").trim();
 
-            const url = absoluteURL(rawURL, MOVIES);
-            const image = absoluteURL(rawImage, MOVIES);
+            const url = absoluteURL(item.getAttribute("data-url"), MOVIES);
+
+            const image = absoluteURL(
+                img?.getAttribute("data-src") ||
+                img?.getAttribute("data-lazy-src") ||
+                img?.getAttribute("src"),
+                MOVIES
+            );
 
             if (!title || !url || !image) return;
 
@@ -1223,10 +1233,10 @@ window.addEventListener("resize", limitMovieReviewsToArticle);
             seen.add(url);
 
             articles.push({
-                title: title,
-                url: url,
-                image: image,
-                alt: img.alt || title
+                title,
+                url,
+                image,
+                alt: img?.alt || title
             });
         });
 
@@ -1262,23 +1272,23 @@ window.addEventListener("resize", limitMovieReviewsToArticle);
             ).replace(/\s+/g, " ").trim();
 
             const url = absoluteURL(link.getAttribute("href"), HOME);
+
             const image = absoluteURL(
-                img.getAttribute("src") ||
                 img.getAttribute("data-src") ||
-                img.getAttribute("data-lazy-src"),
+                img.getAttribute("data-lazy-src") ||
+                img.getAttribute("src"),
                 HOME
             );
 
             if (!title || !url || !image) return;
-
             if (new URL(url).origin !== new URL(HOME).origin) return;
             if (seen.has(url)) return;
 
             seen.add(url);
             articles.push({
-                title: title,
-                url: url,
-                image: image,
+                title,
+                url,
+                image,
                 alt: img.alt || title
             });
         });
@@ -1293,14 +1303,6 @@ window.addEventListener("resize", limitMovieReviewsToArticle);
         target.replaceChildren();
 
         const list = limit ? articles.slice(0, limit) : articles;
-
-        if (list.length === 0) {
-            const message = document.createElement("p");
-            message.textContent = "ఈ విభాగంలో వార్తలు దొరకలేదు.";
-            message.style.cssText = "font-size:13px;color:#777;";
-            target.appendChild(message);
-            return;
-        }
 
         list.forEach(function (item) {
             const link = document.createElement("a");
@@ -1320,70 +1322,92 @@ window.addEventListener("resize", limitMovieReviewsToArticle);
         });
     }
 
-    try {
-        /* Load homepage and MOVIES.html together */
-        const [homeResponse, moviesResponse] = await Promise.all([
-            fetch(HOME + "?v=" + Date.now(), { cache: "no-store" }),
-            fetch(MOVIES + "?v=" + Date.now(), { cache: "no-store" })
-        ]);
+    /* MOVIE REVIEWS MUST END AT MAIN ARTICLE BOTTOM */
+    function limitMovieReviewsToArticle() {
+        const main = document.querySelector(".article-main");
+        const sidebar = document.querySelector(".article-sidebar");
+        const section = document.getElementById("movieReviewsSidebar");
 
-        if (!homeResponse.ok) {
-            throw new Error("Homepage load failed: " + homeResponse.status);
+        if (!main || !sidebar || !section) return;
+
+        const list = section;
+        const heading = section.previousElementSibling;
+
+        list.style.maxHeight = "";
+        list.style.overflow = "";
+
+        if (window.innerWidth <= 700) return;
+
+        const mainHeight = main.getBoundingClientRect().height;
+        const sectionTop =
+            section.getBoundingClientRect().top -
+            sidebar.getBoundingClientRect().top;
+
+        const headingHeight = heading
+            ? heading.getBoundingClientRect().height
+            : 0;
+
+        const availableHeight = mainHeight - sectionTop - headingHeight - 12;
+
+        if (availableHeight <= 0) {
+            section.parentElement.style.display = "none";
+            return;
         }
 
-        if (!moviesResponse.ok) {
-            throw new Error("MOVIES.html load failed: " + moviesResponse.status);
-        }
-
-        const [homeHTML, moviesHTML] = await Promise.all([
-            homeResponse.text(),
-            moviesResponse.text()
-        ]);
-
-        const parser = new DOMParser();
-
-        const homeDoc = parser.parseFromString(homeHTML, "text/html");
-        const moviesDoc = parser.parseFromString(moviesHTML, "text/html");
-
-        /* ALL MOVIES: Read every card in MOVIES.html */
-        const movieArticles = readMovieArticles(moviesDoc);
-
-        /* Main Movie Reviews section: ALL movie news */
-        renderArticles("movieReviewsGrid", movieArticles, 0);
-
-        /* Sidebar: Latest 5 movie articles */
-        renderArticles("movieReviewsSidebar", movieArticles, 15);
-
-        /* Other homepage categories remain separate */
-        otherSections.forEach(function (section) {
-            const articles = readHomeArticles(homeDoc, section.source);
-            renderArticles(section.target, articles, section.limit);
-
-            console.log(
-                section.target + ": " + articles.length + " articles"
-            );
-        });
-
-        console.log("BS360NEWS: All movie articles =", movieArticles.length);
-
-    } catch (error) {
-        console.error("BS360NEWS article loading error:", error);
-
-        ["movieReviewsGrid", "movieReviewsSidebar"].forEach(function (id) {
-            const target = document.getElementById(id);
-
-            if (target) {
-                target.replaceChildren();
-
-                const message = document.createElement("p");
-                message.textContent = "వార్తలు లోడ్ కాలేదు. MOVIES.html URL చెక్ చేయండి.";
-                message.style.cssText = "font-size:13px;color:#777;";
-
-                target.appendChild(message);
-            }
-        });
+        section.parentElement.style.display = "";
+        list.style.maxHeight = availableHeight + "px";
+        list.style.overflow = "hidden";
     }
+
+    async function loadArticles() {
+        try {
+            const [homeResponse, moviesResponse] = await Promise.all([
+                fetch(HOME, { cache: "no-store" }),
+                fetch(MOVIES, { cache: "no-store" })
+            ]);
+
+            if (!homeResponse.ok || !moviesResponse.ok) {
+                throw new Error("Homepage or MOVIES.html could not load");
+            }
+
+            const [homeHTML, moviesHTML] = await Promise.all([
+                homeResponse.text(),
+                moviesResponse.text()
+            ]);
+
+            const parser = new DOMParser();
+
+            const homeDoc = parser.parseFromString(homeHTML, "text/html");
+            const moviesDoc = parser.parseFromString(moviesHTML, "text/html");
+
+            const movieArticles = readMovieArticles(moviesDoc);
+
+            renderArticles("movieReviewsGrid", movieArticles, 0);
+            renderArticles("movieReviewsSidebar", movieArticles, 15);
+
+            otherSections.forEach(function (section) {
+                const articles = readHomeArticles(homeDoc, section.source);
+                renderArticles(section.target, articles, section.limit);
+            });
+
+            requestAnimationFrame(function () {
+                requestAnimationFrame(limitMovieReviewsToArticle);
+            });
+
+            console.log("Movie articles:", movieArticles.length);
+
+        } catch (error) {
+            console.error("BS360NEWS loading error:", error);
+        }
+    }
+
+    loadArticles();
+
+    window.addEventListener("load", limitMovieReviewsToArticle);
+    window.addEventListener("resize", limitMovieReviewsToArticle);
 });
-</script>
+          </script>
+
+  
 </body>
 </html>
