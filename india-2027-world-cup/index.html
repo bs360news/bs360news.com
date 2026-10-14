@@ -1438,233 +1438,140 @@ const otherSections = [
                 ""
             ).replace(/\s+/g, " ").trim();
 
-            const url = absoluteURL(link.getAttribute("href"), HOME);
+            
+async function loadSportsFromSportsPage() {
+    const sportsURL = "https://bs360news.com/SPORTS.html";
 
-            const image = absoluteURL(
-                img.getAttribute("data-src") ||
-                img.getAttribute("data-lazy-src") ||
-                img.getAttribute("src"),
-                HOME
-            );
-
-            if (!title || !url || !image) return;
-            if (new URL(url).origin !== new URL(HOME).origin) return;
-            if (seen.has(url)) return;
-
-            seen.add(url);
-            articles.push({
-                title,
-                url,
-                image,
-                alt: img.alt || title
-            });
-        });
-
-        return articles;
-    }
-
-    function renderArticles(targetId, articles, limit) {
-        const target = document.getElementById(targetId);
-        if (!target) return;
-
-        target.replaceChildren();
-
-        const list = limit ? articles.slice(0, limit) : articles;
-
-        list.forEach(function (item) {
-            const link = document.createElement("a");
-            link.className = "news-card";
-            link.href = item.url;
-
-            const image = document.createElement("img");
-            image.src = item.image;
-            image.alt = item.alt;
-            image.loading = "lazy";
-
-            const title = document.createElement("h3");
-            title.textContent = item.title;
-
-            link.append(image, title);
-            target.appendChild(link);
-        });
-    }
-
-    /* MOVIE REVIEWS MUST END AT MAIN ARTICLE BOTTOM */
-    function limitMovieReviewsToArticle() {
-        const main = document.querySelector(".article-main");
-        const sidebar = document.querySelector(".article-sidebar");
-        const section = document.getElementById("movieReviewsSidebar");
-
-        if (!main || !sidebar || !section) return;
-
-        const list = section;
-        const heading = section.previousElementSibling;
-
-        list.style.maxHeight = "";
-        list.style.overflow = "";
-
-        if (window.innerWidth <= 700) return;
-
-        const mainHeight = main.getBoundingClientRect().height;
-        const sectionTop =
-            section.getBoundingClientRect().top -
-            sidebar.getBoundingClientRect().top;
-
-        const headingHeight = heading
-            ? heading.getBoundingClientRect().height
-            : 0;
-
-        const availableHeight = mainHeight - sectionTop - headingHeight - 12;
-
-        if (availableHeight <= 0) {
-            section.parentElement.style.display = "none";
-            return;
-        }
-
-        section.parentElement.style.display = "";
-        list.style.maxHeight = availableHeight + "px";
-        list.style.overflow = "hidden";
-    }
-
-    async function loadArticles() {
-        try {
-            const [homeResponse, moviesResponse] = await Promise.all([
-                fetch(HOME, { cache: "no-store" }),
-                fetch(MOVIES, { cache: "no-store" })
-            ]);
-
-            if (!homeResponse.ok || !moviesResponse.ok) {
-                throw new Error("Homepage or MOVIES.html could not load");
-            }
-
-            const [homeHTML, moviesHTML] = await Promise.all([
-                homeResponse.text(),
-                moviesResponse.text()
-            ]);
-
-            const parser = new DOMParser();
-
-            const homeDoc = parser.parseFromString(homeHTML, "text/html");
-            const moviesDoc = parser.parseFromString(moviesHTML, "text/html");
-
-            const movieArticles = readMovieArticles(moviesDoc);
-
-            renderArticles("movieReviewsGrid", movieArticles, 0);
-            renderArticles("movieReviewsSidebar", movieArticles, 30);
-
-            otherSections.forEach(function (section) {
-                const articles = readHomeArticles(homeDoc, section.source);
-                renderArticles(section.target, articles, section.limit);
-            });
-
-            requestAnimationFrame(function () {
-                requestAnimationFrame(limitMovieReviewsToArticle);
-            });
-
-            console.log("Movie articles:", movieArticles.length);
-
-        } catch (error) {
-            console.error("BS360NEWS loading error:", error);
-        }
-    }
-
-    loadArticles();
-
-    window.addEventListener("load", limitMovieReviewsToArticle);
-    window.addEventListener("resize", limitMovieReviewsToArticle);
-});
-
-const image = absoluteURL(
-    img.getAttribute("data-src") ||
-    img.getAttribute("data-lazy-src") ||
-    img.getAttribute("src"),
-    HOME
-);
-
-
-
-
-    async function loadSportsNews() {
     try {
         const response = await fetch(
-            "SPORTS.html?v=" + Date.now()
+            sportsURL + "?v=" + Date.now(),
+            { cache: "no-store" }
         );
 
         if (!response.ok) {
-            throw new Error("SPORTS.html లోడ్ కాలేదు");
+            throw new Error("SPORTS.html HTTP " + response.status);
         }
 
         const html = await response.text();
-
         const parser = new DOMParser();
-        const sportsDoc = parser.parseFromString(
-            html,
-            "text/html"
-        );
+        const doc = parser.parseFromString(html, "text/html");
 
-        const source =
-            sportsDoc.querySelector("#sportsGrid") ||
-            sportsDoc.querySelector("#sportsSection");
+        const sourceIds = [
+            "sportsGrid",
+            "latestSportsGrid",
+            "allSportsGrid",
+            "sportsSection",
+            "sportsNewsSection",
+            "latestGrid",
+            "menSportsGrid",
+            "womenSportsGrid"
+        ];
 
-        const target = document.getElementById("movieReviewsGrid");
+        const articles = [];
+        const seen = new Set();
 
-        if (!source || !target) return;
+        function absoluteURL(value) {
+            if (!value) return "";
+            try {
+                return new URL(value, sportsURL).href;
+            } catch {
+                return "";
+            }
+        }
 
-        target.innerHTML = source.innerHTML;
+        sourceIds.forEach(function (id) {
+            const source = doc.getElementById(id);
+            if (!source) return;
+
+            source.querySelectorAll(
+                "article, .news-card, .news-item, .post, li"
+            ).forEach(function (card) {
+                const link = card.matches("a[href]")
+                    ? card
+                    : card.querySelector("a[href]");
+
+                const img = card.querySelector("img");
+                if (!link || !img) return;
+
+                const heading = card.querySelector(
+                    "h1, h2, h3, h4, .post-title, .news-title, .title"
+                );
+
+                const title = (
+                    heading?.textContent ||
+                    img.alt ||
+                    link.textContent ||
+                    ""
+                ).replace(/\s+/g, " ").trim();
+
+                const url = absoluteURL(link.getAttribute("href"));
+                const image = absoluteURL(
+                    img.getAttribute("data-src") ||
+                    img.getAttribute("data-lazy-src") ||
+                    img.getAttribute("src")
+                );
+
+                if (!title || !url || !image) return;
+                if (new URL(url).origin !== location.origin) return;
+                if (seen.has(url)) return;
+
+                seen.add(url);
+                articles.push({
+                    title: title,
+                    url: url,
+                    image: image,
+                    alt: img.alt || title
+                });
+            });
+        });
+
+        function renderSports(targetId, list) {
+            const target = document.getElementById(targetId);
+            if (!target) return;
+
+            target.replaceChildren();
+
+            list.forEach(function (item) {
+                const link = document.createElement("a");
+                link.className = "news-card";
+                link.href = item.url;
+
+                const img = document.createElement("img");
+                img.src = item.image;
+                img.alt = item.alt;
+                img.loading = "lazy";
+
+                const title = document.createElement("h3");
+                title.textContent = item.title;
+
+                link.append(img, title);
+                target.appendChild(link);
+            });
+        }
+
+        renderSports("sportsNewsGrid", articles);
+        renderSports("sportsAllNewsGrid", articles);
+
+        renderSports("sportsSidebar", articles.slice(0, 5));
+
+        if (articles.length === 0) {
+            console.error(
+                "SPORTS.html లో వార్తల కంటైనర్ ID లేదా article cards కనబడలేదు."
+            );
+        }
+
+        console.log("SPORTS.html నుంచి లోడ్ అయిన వార్తలు:", articles.length);
 
     } catch (error) {
         console.error("Sports news loading error:", error);
     }
 }
 
-document.addEventListener("DOMContentLoaded", loadSportsNews);
-
-
-    async function loadSportsSidebar() {
-    try {
-        const response = await fetch(
-            "SPORTS.html?v=" + Date.now()
-        );
-
-        if (!response.ok) {
-            throw new Error("SPORTS.html లోడ్ కాలేదు");
-        }
-
-        const html = await response.text();
-        const parser = new DOMParser();
-        const sportsDoc = parser.parseFromString(
-            html,
-            "text/html"
-        );
-
-        const source =
-            sportsDoc.querySelector("#sportsGrid") ||
-            sportsDoc.querySelector("#sportsSection");
-
-        const target = document.getElementById("sportsSidebar");
-
-        if (!source || !target) {
-            console.error("Sports news source లేదా target దొరకలేదు");
-            return;
-        }
-
-        target.innerHTML = "";
-
-        Array.from(source.children)
-            .filter(card => card.querySelector("a, img"))
-            .slice(0, 5)
-            .forEach(card => {
-                target.appendChild(card.cloneNode(true));
-            });
-
-    } catch (error) {
-        console.error("Sports sidebar error:", error);
-    }
-}
-
-document.addEventListener("DOMContentLoaded", loadSportsSidebar);
-          </script>
-
+document.addEventListener(
+    "DOMContentLoaded",
+    loadSportsFromSportsPage
+);
+                  </script>
   
 </body>
 </html>
