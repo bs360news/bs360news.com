@@ -1234,12 +1234,10 @@ ICC ప్రకటించిన షెడ్యూల్ ప్రకార�
                 <div id="trendingSidebar" class="side-news-list"></div>
             </section>
 
-           
-<section class="news-section">
+ <section class="news-section">
     <h2 class="section-heading">క్రీడా వార్తలు</h2>
     <div id="sportsSidebar" class="side-news-list"></div>
 </section>
-
             
 
         </aside>
@@ -1583,7 +1581,89 @@ const image = absoluteURL(
     img.getAttribute("src"),
     HOME
 );
-  
+
+
+
+
+    async function loadSportsNews() {
+    try {
+        const response = await fetch(
+            "SPORTS.html?v=" + Date.now()
+        );
+
+        if (!response.ok) {
+            throw new Error("SPORTS.html లోడ్ కాలేదు");
+        }
+
+        const html = await response.text();
+
+        const parser = new DOMParser();
+        const sportsDoc = parser.parseFromString(
+            html,
+            "text/html"
+        );
+
+        const source =
+            sportsDoc.querySelector("#sportsGrid") ||
+            sportsDoc.querySelector("#sportsSection");
+
+        const target = document.getElementById("movieReviewsGrid");
+
+        if (!source || !target) return;
+
+        target.innerHTML = source.innerHTML;
+
+    } catch (error) {
+        console.error("Sports news loading error:", error);
+    }
+}
+
+document.addEventListener("DOMContentLoaded", loadSportsNews);
+
+
+    async function loadSportsSidebar() {
+    try {
+        const response = await fetch(
+            "SPORTS.html?v=" + Date.now()
+        );
+
+        if (!response.ok) {
+            throw new Error("SPORTS.html లోడ్ కాలేదు");
+        }
+
+        const html = await response.text();
+        const parser = new DOMParser();
+        const sportsDoc = parser.parseFromString(
+            html,
+            "text/html"
+        );
+
+        const source =
+            sportsDoc.querySelector("#sportsGrid") ||
+            sportsDoc.querySelector("#sportsSection");
+
+        const target = document.getElementById("sportsSidebar");
+
+        if (!source || !target) {
+            console.error("Sports news source లేదా target దొరకలేదు");
+            return;
+        }
+
+        target.innerHTML = "";
+
+        Array.from(source.children)
+            .filter(card => card.querySelector("a, img"))
+            .slice(0, 5)
+            .forEach(card => {
+                target.appendChild(card.cloneNode(true));
+            });
+
+    } catch (error) {
+        console.error("Sports sidebar error:", error);
+    }
+}
+
+document.addEventListener("DOMContentLoaded", loadSportsSidebar);
           </script>
 
   
