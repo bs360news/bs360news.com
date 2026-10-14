@@ -475,95 +475,23 @@ FY26లో మంజూరైన ప్రాజెక్టుల పెట్�
  </div>
  <div class="copyright">© 2026 BS 360 NEWS. All rights reserved.</div>
 </footer>
+
+
+
+    
 <script>
 document.addEventListener("DOMContentLoaded", function () {
     "use strict";
 
-    const HOME_URL = "index.html?v=" + Date.now();
-    const BUSINESS_URL = "business.html?v=" + Date.now();
+    /*
+     * Article page is inside a folder.
+     * ../ points to the website root.
+     */
+    const BUSINESS_URL = new URL("../business.html", window.location.href);
+    const HOME_URL = new URL("../index.html", window.location.href);
 
-    function cleanText(text) {
-        return String(text || "").replace(/\s+/g, " ").trim();
-    }
-
-    function uniqueArticles(articles) {
-        const seen = new Set();
-
-        return articles.filter(function (article) {
-            if (!article.title || !article.image || !article.url) {
-                return false;
-            }
-
-            if (seen.has(article.url)) return false;
-            seen.add(article.url);
-
-            return true;
-        });
-    }
-
-    function getArticles(source) {
-        if (!source) return [];
-
-        return Array.from(
-            source.querySelectorAll(".news-item.post")
-        ).map(function (item) {
-            const image = item.querySelector("img");
-            const titleElement =
-                item.querySelector(".news-content p") ||
-                item.querySelector(".news-content h3") ||
-                item.querySelector("p") ||
-                item.querySelector("h3");
-
-            const rawUrl = item.getAttribute("data-url") || "";
-
-            return {
-                title: cleanText(
-                    titleElement ? titleElement.textContent : ""
-                ),
-                image: image ? image.getAttribute("src") || "" : "",
-                alt: image ? image.getAttribute("alt") || "" : "",
-                url: rawUrl
-            };
-        }).filter(function (article) {
-            return article.title && article.image && article.url;
-        });
-    }
-
-    function cardHTML(article) {
-        return `
-            <a href="${escapeAttribute(article.url)}" class="movie-card">
-                <img
-                    src="${escapeAttribute(article.image)}"
-                    alt="${escapeAttribute(article.alt || article.title)}"
-                    loading="lazy"
-                    draggable="false"
-                >
-                <div class="movie-card-content">
-                    <h3 class="movie-card-title">
-                        ${escapeHTML(article.title)}
-                    </h3>
-                </div>
-            </a>
-        `;
-    }
-
-    function sidebarHTML(article, mostRead) {
-        const itemClass = mostRead ? "most-read-item" : "sidebar-item";
-        const titleClass = mostRead ? "most-read-title" : "sidebar-item-title";
-
-        return `
-            <a href="${escapeAttribute(article.url)}" class="${itemClass}">
-                <img
-                    src="${escapeAttribute(article.image)}"
-                    alt="${escapeAttribute(article.alt || article.title)}"
-                    loading="lazy"
-                    draggable="false"
-                >
-                <div class="${titleClass}">
-                    ${escapeHTML(article.title)}
-                </div>
-            </a>
-        `;
+    function cleanText(value) {
+        return String(value || "").replace(/\s+/g, " ").trim();
     }
 
     function escapeHTML(value) {
@@ -578,8 +506,88 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    function escapeAttribute(value) {
-        return escapeHTML(value);
+    function absoluteURL(path, baseURL) {
+        if (!path) return "";
+
+        try {
+            return new URL(path, baseURL).href;
+        } catch (error) {
+            console.error("Invalid URL:", path, error);
+            return "";
+        }
+    }
+
+    function getArticles(source, baseURL) {
+        if (!source) return [];
+
+        return Array.from(
+            source.querySelectorAll(".news-item.post")
+        ).map(function (item) {
+            const image = item.querySelector("img");
+
+            const titleElement =
+                item.querySelector(".news-content p") ||
+                item.querySelector(".news-content h3") ||
+                item.querySelector("p") ||
+                item.querySelector("h3");
+
+            return {
+                title: cleanText(
+                    titleElement ? titleElement.textContent : ""
+                ),
+
+                image: image
+                    ? absoluteURL(image.getAttribute("src"), baseURL)
+                    : "",
+
+                alt: image
+                    ? cleanText(image.getAttribute("alt"))
+                    : "",
+
+                url: absoluteURL(
+                    item.getAttribute("data-url"),
+                    baseURL
+                )
+            };
+        }).filter(function (article) {
+            return article.title && article.image && article.url;
+        });
+    }
+
+    function uniqueArticles(articles) {
+        const seen = new Set();
+
+        return articles.filter(function (article) {
+            if (seen.has(article.url)) return false;
+            seen.add(article.url);
+            return true;
+        });
+    }
+
+    function cardHTML(article) {
+        return `
+            <a href="${escapeHTML(article.url)}" class="news-card">
+                <img
+                    src="${escapeHTML(article.image)}"
+                    alt="${escapeHTML(article.alt || article.title)}"
+                    loading="lazy"
+                >
+                <h3>${escapeHTML(article.title)}</h3>
+            </a>
+        `;
+    }
+
+    function sidebarHTML(article) {
+        return `
+            <a href="${escapeHTML(article.url)}" class="news-card">
+                <img
+                    src="${escapeHTML(article.image)}"
+                    alt="${escapeHTML(article.alt || article.title)}"
+                    loading="lazy"
+                >
+                <h3>${escapeHTML(article.title)}</h3>
+            </a>
+        `;
     }
 
     function show(id, articles, limit, renderer) {
@@ -592,165 +600,182 @@ document.addEventListener("DOMContentLoaded", function () {
 
         element.innerHTML = selected.length
             ? selected.map(renderer).join("")
-            : '<div class="loading">వార్తలు అందుబాటులో లేవు.</div>';
+            : '<p class="news-loading-message">వార్తలు అందుబాటులో లేవు.</p>';
     }
 
     function showError(id, message) {
         const element = document.getElementById(id);
         if (element) {
             element.innerHTML =
-                '<div class="loading">' + escapeHTML(message) + '</div>';
+                '<p class="news-loading-message">' +
+                escapeHTML(message) +
+                '</p>';
         }
     }
 
-    async function loadBusinessPage() {
-        /*
-         * BUSINESS SOURCE:
-         * Load articles from business.html.
-         * Do not combine with index.html business articles.
-         */
-        const response = await fetch(BUSINESS_URL, {
+    async function loadBusiness() {
+        const response = await fetch(BUSINESS_URL.href, {
             cache: "no-store"
         });
 
         if (!response.ok) {
-            throw new Error("business.html load failed: " + response.status);
+            throw new Error(
+                "Business page HTTP error: " + response.status
+            );
         }
 
         const html = await response.text();
-        const parser = new DOMParser();
-        const businessDoc = parser.parseFromString(html, "text/html");
+        const doc = new DOMParser().parseFromString(html, "text/html");
 
-        let businessSource =
-            businessDoc.getElementById("localBusinessSource");
-
-        let businessArticles = getArticles(businessSource);
+        let articles = getArticles(
+            doc.getElementById("localBusinessSource"),
+            BUSINESS_URL
+        );
 
         /*
-         * Fallback:
-         * If localBusinessSource is absent, collect business cards
-         * from the Business page's main article grid.
+         * Fallback: collect cards from businessGrid if needed.
          */
-        if (!businessArticles.length) {
-            const grid = businessDoc.getElementById("businessGrid");
-
-            if (grid) {
-                businessArticles = getArticles(grid);
-            }
+        if (!articles.length) {
+            articles = getArticles(
+                doc.getElementById("businessGrid"),
+                BUSINESS_URL
+            );
         }
 
-        businessArticles = uniqueArticles(businessArticles);
+        articles = uniqueArticles(articles);
 
         /*
-         * Show the same Business articles in both locations.
+         * Same Business articles in both locations.
          */
-        show("businessGrid", businessArticles, 9, cardHTML);
-        show("businessMoreGrid", businessArticles, 9, cardHTML);
+        show("businessGrid", articles, 9, cardHTML);
+        show("businessMoreGrid", articles, 9, cardHTML);
 
-        console.log("Business articles loaded from business.html:",
-            businessArticles.length);
+        console.log("Business source:", BUSINESS_URL.href);
+        console.log("Business articles:", articles.length);
     }
 
-    async function loadHomeSections() {
-        const response = await fetch(HOME_URL, {
+    async function loadHomepageSections() {
+        const response = await fetch(HOME_URL.href, {
             cache: "no-store"
         });
 
         if (!response.ok) {
-            throw new Error("index.html load failed: " + response.status);
+            throw new Error(
+                "Homepage HTTP error: " + response.status
+            );
         }
 
         const html = await response.text();
-        const parser = new DOMParser();
-        const home = parser.parseFromString(html, "text/html");
+        const doc = new DOMParser().parseFromString(html, "text/html");
 
-        const movies = getArticles(
-            home.getElementById("entertainmentSource") ||
-            home.getElementById("cinemaSource") ||
-            home.getElementById("moviesSource")
-        );
-
-        const sports = getArticles(
-            home.getElementById("sportsSource") ||
-            home.getElementById("sportsGrid")
-        );
-
-        const latest = getArticles(
-            home.getElementById("latestNewsSource") ||
-            home.getElementById("latestSidebar")
-        );
-
-        const trending = getArticles(
-            home.getElementById("trendingSource") ||
-            home.getElementById("trendingSidebar")
-        );
-
-        const mostRead = getArticles(
-            home.getElementById("mostReadSource") ||
-            home.getElementById("mostReadList")
-        );
-
-        show("moviesGrid", uniqueArticles(movies), 9, cardHTML);
-        show("sportsGrid", uniqueArticles(sports), 9, cardHTML);
-
-        show(
-            "latestSidebar",
-            uniqueArticles(latest),
-            8,
-            function (article) {
-                return sidebarHTML(article, false);
+        function firstSource(ids) {
+            for (const id of ids) {
+                const element = doc.getElementById(id);
+                if (element) return element;
             }
-        );
+            return null;
+        }
 
-        show(
-            "trendingSidebar",
-            uniqueArticles(trending),
-            8,
-            function (article) {
-                return sidebarHTML(article, false);
-            }
-        );
+        const movies = uniqueArticles(getArticles(
+            firstSource([
+                "entertainmentSource",
+                "cinemaSource",
+                "moviesSource",
+                "moviesGrid"
+            ]),
+            HOME_URL
+        ));
 
-        show(
-            "mostReadSidebar",
-            uniqueArticles(mostRead),
-            8,
-            function (article) {
-                return sidebarHTML(article, true);
-            }
-        );
+        const sports = uniqueArticles(getArticles(
+            firstSource([
+                "sportsSource",
+                "sportsGrid",
+                "sportsSection"
+            ]),
+            HOME_URL
+        ));
+
+        const latest = uniqueArticles(getArticles(
+            firstSource([
+                "latestNewsSource",
+                "latestSidebar",
+                "latestGrid"
+            ]),
+            HOME_URL
+        ));
+
+        const trending = uniqueArticles(getArticles(
+            firstSource([
+                "trendingSource",
+                "trendingSidebar",
+                "trendingGrid"
+            ]),
+            HOME_URL
+        ));
+
+        const mostRead = uniqueArticles(getArticles(
+            firstSource([
+                "mostReadSource",
+                "mostReadList",
+                "mostReadSidebar"
+            ]),
+            HOME_URL
+        ));
+
+        const national = uniqueArticles(getArticles(
+            firstSource([
+                "nationalSource",
+                "nationalGrid",
+                "nationalNewsSource"
+            ]),
+            HOME_URL
+        ));
+
+        const apts = uniqueArticles(getArticles(
+            firstSource([
+                "aptsSource",
+                "aptsGrid",
+                "aptsSection"
+            ]),
+            HOME_URL
+        ));
+
+        show("movieReviewsGrid", movies, 10, cardHTML);
+        show("sportsGrid", sports, 10, cardHTML);
+
+        show("latestSidebar", latest, 8, sidebarHTML);
+        show("trendingSidebar", trending, 8, sidebarHTML);
+        show("nationalGrid", national, 8, sidebarHTML);
+        show("aptsSidebar", apts, 8, sidebarHTML);
+
+        console.log("Homepage source:", HOME_URL.href);
+        console.log("Movies:", movies.length);
+        console.log("Sports:", sports.length);
+        console.log("Latest:", latest.length);
+        console.log("Trending:", trending.length);
+        console.log("National:", national.length);
+        console.log("AP & TS:", apts.length);
     }
 
     /*
-     * Load the two sources independently.
-     * If index.html fails, Business articles can still appear.
+     * Load each source independently.
+     * Homepage failure will not stop Business articles.
      */
-    loadBusinessPage().catch(function (error) {
-        console.error("Business loading error:", error);
-        showError(
-            "businessGrid",
-            "Business వార్తలు లోడ్ కాలేదు. business.html ఫైల్‌ను చెక్ చేయండి."
-        );
-        showError(
-            "businessMoreGrid",
-            "Business వార్తలు లోడ్ కాలేదు. business.html ఫైల్‌ను చెక్ చేయండి."
-        );
+    loadBusiness().catch(function (error) {
+        console.error("Business loading failed:", error);
+        showError("businessGrid", "Business వార్తలు లోడ్ కాలేదు.");
+        showError("businessMoreGrid", "Business వార్తలు లోడ్ కాలేదు.");
     });
 
-    loadHomeSections().catch(function (error) {
-        console.error("Homepage sections loading error:", error);
+    loadHomepageSections().catch(function (error) {
+        console.error("Homepage sections loading failed:", error);
 
-        showError("moviesGrid", "Movies News లోడ్ కాలేదు.");
-        showError("sportsGrid", "Sports News లోడ్ కాలేదు.");
-        showError("latestSidebar", "Latest News లోడ్ కాలేదు.");
-        showError("trendingSidebar", "Trending News లోడ్ కాలేదు.");
-        showError("mostReadSidebar", "Most Read News లోడ్ కాలేదు.");
-    });
-
-    document.querySelectorAll("img").forEach(function (img) {
-        img.addEventListener("dragstart", function (event) {
-            event.preventDefault();
-        });
+        showError("movieReviewsGrid", "Movies వార్తలు లోడ్ కాలేదు.");
+        showError("sportsGrid", "Sports వార్తలు లోడ్ కాలేదు.");
+        showError("latestSidebar", "Latest వార్తలు లోడ్ కాలేదు.");
+        showError("trendingSidebar", "Trending వార్తలు లోడ్ కాలేదు.");
+        showError("nationalGrid", "National వార్తలు లోడ్ కాలేదు.");
+        showError("aptsSidebar", "AP & TS వార్తలు లోడ్ కాలేదు.");
     });
 });
 </script>
