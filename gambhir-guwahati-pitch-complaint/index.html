@@ -1441,9 +1441,9 @@ document.addEventListener("DOMContentLoaded", function () {
             });
 
             /* All sports cards are automatic; sidebars show only the first five. */
-            renderArticles("sportsGrid", sports, 0);
-            renderArticles("sportsSidebar", sports, 5);
-            renderArticles("cinemaGrid", sports, 0);
+            renderArticles("sportsGrid", sports, 5);
+            renderArticles("sportsSidebar", sports, 0);
+            renderArticles("cinemaGrid", sports, 5);
             renderArticles("movieReviewsGrid", sports, 0);
             console.log("BS 360 NEWS sports articles loaded:", sports.length, sports);
         } else {
