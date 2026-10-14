@@ -1401,6 +1401,14 @@ document.addEventListener("DOMContentLoaded", function () {
             renderArticles("aptsGrid", readSource(homeDoc, HOME,
                 ["aptsSource", "aptsGrid", "aptsSection"],
                 [".news-item.post[data-category='apts']", ".news-item.post[data-category='ap-ts']", "[data-category='apts']"]), 5);
+
+            renderArticles("cinemaGrid", readSource(homeDoc, HOME,
+    ["cinemaSource", "cinemaGrid", "cinemaSection"],
+    [
+        ".news-item.post[data-category='cinema']",
+        ".news-item.post[data-category='movies']",
+        "[data-category='cinema']"
+    ]), 5);
           
         }
 
