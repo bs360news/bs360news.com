@@ -137,24 +137,207 @@
 </script>
 
 
-<!-- MAIN CSS -->
-
-<link
-    rel="stylesheet"
-    href="../style.css?v=20260918"
->
-
 
 <style>
+  
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, "Noto Sans Telugu", sans-serif;
+    background: #fff;
+    color: #111;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+.container {
+    width: min(1200px, 96%);
+    margin: 0 auto;
+}
+
+/* HEADER */
+
+.brand-header {
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+}
+
+.brand-inner {
+    min-height: 92px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+}
+
+.logo-mark img {
+    width: 65px;
+    height: 65px;
+    display: block;
+    object-fit: contain;
+}
+
+.logo-name {
+    font-size: 25px;
+    font-weight: 900;
+    line-height: 1.15;
+}
+
+.logo-red {
+    color: #e60000;
+}
+
+.logo-tagline {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    margin-top: 5px;
+    letter-spacing: .5px;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.theme-button,
+.mobile-menu-toggle {
+    border: 1px solid #ccc;
+    background: #fff;
+    color: #111;
+    padding: 9px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.live-button {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: #e60000;
+    font-weight: 900;
+}
+
+.live-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #e60000;
+    animation: livePulse 1s infinite;
+}
+
+@keyframes livePulse {
+    50% { opacity: .3; }
+}
+
+.mobile-menu-toggle {
+    display: none;
+    font-size: 21px;
+}
+
+/* NAVIGATION */
+
+.main-nav {
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.lang-selector {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+    font-size: 12px;
+}
+
+.lang-selector .active {
+    color: #e60000;
+    font-weight: 800;
+}
+
+.nav-links {
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-end;
+}
+
+.nav-links a {
+    display: block;
+    padding: 15px 17px;
+    white-space: nowrap;
+    font-size: 13px;
+    font-weight: 800;
+    border-left: 1px solid #eee;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    background: #e60000;
+    color: #fff;
+}
+
+/* TOP HEADLINES */
+
+.headlines-bar {
+    background: #f5f5f5;
+    border-bottom: 1px solid #ddd;
+}
+
+.headlines-bar .container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    min-height: 42px;
+}
+
+.headlines-label {
+    color: #e60000;
+    font-size: 12px;
+    font-weight: 900;
+    white-space: nowrap;
+}
+
+.headlines-text {
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* MAIN ARTICLE LAYOUT */
 
 .article-page {
-    padding: 20px 0 40px;
+    padding: 24px 0 40px;
 }
 
 .article-layout {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 320px;
-    gap: 25px;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: 26px;
     align-items: start;
 }
 
@@ -163,395 +346,719 @@
 }
 
 .article-title {
+    margin: 0 0 14px;
     font-size: 32px;
-    line-height: 1.35;
-    margin: 0 0 15px;
-    color: #111;
-    font-weight: 800;
+    line-height: 1.4;
+    font-weight: 900;
+}
+
+.article-meta {
+    color: #777;
+    font-size: 13px;
+    margin: 15px 0 8px;
+}
+
+.article-image {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 6px;
+    margin: 8px 0 22px;
 }
 
 .article-content {
     font-size: 18px;
     line-height: 2;
-    color: #222;
+    overflow-wrap: anywhere;
 }
 
 .article-content p {
-    margin: 0 0 18px;
+    margin: 0 0 20px;
 }
-
-.article-meta {
-    font-size: 13px;
-    color: #777;
-    margin: 0 0 8px;
-    font-weight: 500;
-}
-
-.article-image {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-    display: block;
-    border-radius: 8px;
-    margin: 8px 0 20px;
-}
-
 
 /* SIDEBAR */
 
 .article-sidebar {
-    width: 100%;
-}
-
-.sidebar-box {
-    margin-bottom: 22px;
-}
-
-.sidebar-title {
-    background: #075aaa;
-    color: #fff;
-    font-size: 20px;
-    font-weight: 800;
-    padding: 10px 12px;
-    border-left: 5px solid #e60000;
-    margin-bottom: 8px;
-}
-
-.sidebar-item {
+    min-width: 0;
     display: flex;
-    gap: 10px;
-    padding: 9px 0;
-    border-bottom: 1px solid #ddd;
-    text-decoration: none;
-    color: #111;
-    align-items: center;
+    flex-direction: column;
+    gap: 22px;
 }
 
-.sidebar-item img {
-    width: 78px;
-    height: 55px;
+.news-section {
+    min-width: 0;
+    margin: 0 0 18px;
+}
+
+/* REMOVE BLUE HEADING BACKGROUND AND BLUE BORDER */
+
+.section-heading {
+    margin: 0 0 12px;
+    padding: 0 0 8px;
+    color: #111;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    font-size: 19px;
+    line-height: 1.4;
+    font-weight: 900;
+}
+
+/* SIDEBAR ARTICLE LIST */
+
+.side-news-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.side-news-list .news-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    color: #111;
+}
+
+.side-news-list .news-card img {
+    display: block;
+    width: 86px;
+    height: 62px;
+    flex: 0 0 86px;
     object-fit: cover;
-    flex: 0 0 78px;
     border-radius: 4px;
 }
 
-.sidebar-item-title {
-    font-size: 14px;
-    line-height: 1.45;
+.side-news-list .news-card h3 {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.5;
     font-weight: 700;
 }
 
-.most-read-item {
-    display: flex;
-    gap: 9px;
-    padding: 9px 0;
-    border-bottom: 1px solid #ddd;
-    text-decoration: none;
-    color: #111;
-    align-items: center;
+/* BOTTOM CATEGORY + AD SIDE BY SIDE */
+
+.category-ad-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: 22px;
+    align-items: start;
+    margin: 0 0 30px;
 }
 
-.most-read-number {
-    width: 28px;
-    height: 28px;
-    background: #075aaa;
-    color: #fff;
+.category-news {
+    min-width: 0;
+}
+
+.category-news .side-news-list .news-card {
+    padding: 9px 0;
+}
+
+.category-ad {
+    width: 100%;
+    min-height: 280px;
+    padding: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 800;
-    border-radius: 3px;
-    flex: 0 0 28px;
+    text-align: center;
+    background: #fafafa;
+    color: #777;
+    font-size: 12px;
+    overflow: hidden;
 }
 
-.most-read-item img {
-    width: 70px;
-    height: 50px;
-    object-fit: cover;
-    border-radius: 4px;
-    flex: 0 0 70px;
+/* MOVIE REVIEWS GRID */
+
+.movie-reviews-section {
+    margin-top: 28px;
+    margin-bottom: 30px;
 }
 
-.most-read-title {
-    font-size: 13px;
-    line-height: 1.4;
-    font-weight: 700;
-}
-
-
-/* RELATED */
-
-.related-section {
-    margin-top: 35px;
-}
-
-.related-title {
-    font-size: 24px;
-    font-weight: 800;
-    border-left: 5px solid #e60000;
-    padding-left: 10px;
-    margin-bottom: 15px;
-}
-
-.news-grid {
+.movie-reviews-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 14px;
 }
 
-.news-card {
-    text-decoration: none;
-    color: #111;
+.movie-reviews-grid .news-card {
+    min-width: 0;
+}
+
+.movie-reviews-grid .news-card img {
     display: block;
-}
-
-.news-card img {
     width: 100%;
     aspect-ratio: 16 / 9;
     object-fit: cover;
-    border-radius: 6px;
+    border-radius: 5px;
+}
+
+.movie-reviews-grid .news-card h3 {
+    margin: 7px 0 0;
+    font-size: 13px;
+    line-height: 1.5;
+    font-weight: 800;
+}
+
+/* ADDITIONAL NEWS GRID */
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.news-grid .news-card {
     display: block;
+    min-width: 0;
 }
 
-.news-card h3 {
-    font-size: 15px;
-    line-height: 1.45;
-    margin: 8px 0 0;
-    font-weight: 700;
+.news-grid .news-card img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 5px;
 }
 
+.news-grid .news-card h3 {
+    margin: 7px 0 0;
+    font-size: 13px;
+    line-height: 1.5;
+    font-weight: 800;
+}
+
+/* FULL WIDTH AD BELOW MOVIE REVIEWS */
+
+.ad-space {
+    width: 100%;
+    min-height: 280px;
+    margin: 25px 0 35px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #777;
+    font-size: 12px;
+    background: #fafafa;
+}
+
+/* FOOTER */
+
+.site-footer {
+    margin-top: 35px;
+    background: #111;
+    color: #fff;
+}
+
+.footer-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+.footer-column h3,
+.footer-contact h3 {
+    margin-top: 0;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 18px;
+}
+
+.footer-links a {
+    color: #eee;
+    font-size: 14px;
+}
+
+.footer-contact p {
+    font-size: 14px;
+}
+
+.copyright {
+    text-align: center;
+    padding: 14px 10px;
+    border-top: 1px solid #333;
+    font-size: 12px;
+}
+
+/* TABLET */
+
+@media (max-width: 1100px) {
+    .article-layout {
+        grid-template-columns: minmax(0, 1fr) 270px;
+        gap: 18px;
+    }
+
+    .category-ad-layout {
+        grid-template-columns: minmax(0, 1fr) 270px;
+    }
+
+    .nav-links a {
+        padding: 14px 10px;
+        font-size: 12px;
+    }
+
+    .movie-reviews-grid,
+    .news-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
 
 /* MOBILE */
 
-@media (max-width: 800px) {
+@media (max-width: 700px) {
+    .brand-inner {
+        min-height: 75px;
+        gap: 8px;
+    }
+
+    .logo-mark img {
+        width: 48px;
+        height: 48px;
+    }
+
+    .logo-name {
+        font-size: 20px;
+    }
+
+    .logo-tagline {
+        font-size: 9px;
+    }
+
+    .header-actions {
+        gap: 7px;
+    }
+
+    .theme-button {
+        padding: 7px;
+        font-size: 12px;
+    }
+
+    .live-button {
+        font-size: 11px;
+    }
+
+    .mobile-menu-toggle {
+        display: block;
+        padding: 7px 10px;
+    }
+
+    .nav-container {
+        display: block;
+    }
+
+    .lang-selector {
+        padding: 10px 0;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        border-top: 1px solid #ddd;
+    }
+
+    .nav-links.mobile-open {
+        display: flex;
+    }
+
+    .nav-links a {
+        padding: 12px;
+        border-left: 0;
+        border-bottom: 1px solid #eee;
+    }
+
+    .headlines-bar .container {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 5px;
+        padding-top: 9px;
+        padding-bottom: 9px;
+    }
+
+    .article-page {
+        padding-top: 15px;
+    }
 
     .article-layout {
-        grid-template-columns: 1fr;
-        gap: 25px;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 24px;
     }
 
     .article-title {
         font-size: 24px;
-        line-height: 1.4;
-    }
-
-    .article-content {
-        font-size: 17px;
-        line-height: 1.9;
-    }
-
-    .article-sidebar {
-        order: 2;
-    }
-
-    .news-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-    }
-
-}
-
-
-@media (max-width: 600px) {
-
-    .article-page {
-        padding-top: 12px;
-    }
-
-    .article-title {
-        font-size: 22px;
-    }
-
-    .article-image {
-        border-radius: 5px;
     }
 
     .article-content {
         font-size: 16px;
-        line-height: 1.85;
+        line-height: 1.9;
     }
 
-    .sidebar-item img {
-        width: 75px;
-        height: 53px;
-        flex-basis: 75px;
+    .article-sidebar {
+        width: 100%;
     }
 
-    .sidebar-item-title {
-        font-size: 14px;
+    /* Each category is followed by its ad on mobile */
+
+    .category-ad-layout {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 12px;
+        margin-bottom: 28px;
     }
 
-    .sidebar-title {
-        font-size: 18px;
+    .category-ad {
+        min-height: 250px;
+        width: 100%;
     }
 
-    .news-card h3 {
-        font-size: 14px;
-    }
-
-}
-
-
-@media (max-width: 380px) {
-
+    .movie-reviews-grid,
     .news-grid {
-        gap: 9px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
     }
 
-    .news-card h3 {
+    .movie-reviews-grid .news-card h3,
+    .news-grid .news-card h3 {
         font-size: 13px;
     }
 
+    .section-heading {
+        font-size: 18px;
+    }
+
+    .ad-space {
+        min-height: 250px;
+        margin: 20px 0;
+    }
+
+    .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
 }
 
+/* DARK MODE */
+
+body.dark-mode {
+    background: #111;
+    color: #eee;
+}
+
+body.dark-mode .brand-header,
+body.dark-mode .main-nav,
+body.dark-mode .theme-button,
+body.dark-mode .mobile-menu-toggle {
+    background: #181818;
+    color: #fff;
+    border-color: #333;
+}
+
+body.dark-mode .nav-links a {
+    color: #fff;
+    border-color: #333;
+}
+
+body.dark-mode .nav-links a:hover,
+body.dark-mode .nav-links a.active {
+    background: #e60000;
+    color: #fff;
+}
+
+body.dark-mode .headlines-bar {
+    background: #1c1c1c;
+    border-color: #333;
+}
+
+body.dark-mode .article-title,
+body.dark-mode .article-content,
+body.dark-mode .news-grid .news-card,
+body.dark-mode .side-news-list .news-card,
+body.dark-mode .section-heading {
+    color: #eee;
+}
+
+body.dark-mode .side-news-list .news-card {
+    border-color: #333;
+}
+
+body.dark-mode .category-ad,
+body.dark-mode .ad-space {
+    background: #181818;
+    color: #aaa;
+}
+
+body.dark-mode .lang-selector a {
+    color: #fff;
+}
+
+body.dark-mode .lang-selector .active {
+    color: #ff4242;
+}
+
+
+
+/* CATEGORY LAYOUT */
+.category-ad-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: 20px;
+    margin: 25px 0;
+    align-items: start;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.category-ad {
+    min-height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px dashed #ccc;
+    color: #777;
+    background: #fafafa;
+}
+
+.section-heading,
+.category-news h2,
+.movie-reviews-section h2 {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 10px 0;
+}
+
+@media (max-width: 1000px) {
+    .news-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .category-ad-layout {
+        grid-template-columns: minmax(0, 1fr) 250px;
+    }
+}
+
+@media (max-width: 650px) {
+    .category-ad-layout {
+        display: block;
+    }
+
+    .news-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .category-ad {
+        min-height: 120px;
+        margin: 18px 0;
+    }
+}
+
+
+
+
+  .category-ad img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+
+
+
+
+
+
+  .sports-section {
+    margin-top: 20px;
+    padding-top: 20px;
+}
+
+.sports-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+
+
+
+
+  /* CATEGORY SECTIONS — FULL WIDTH */
+.category-ad-layout {
+    display: block;
+    width: 100%;
+    margin: 15px 0 25px;
+    padding: 0;
+    align-items: initial;
+}
+
+.category-news {
+    width: 100%;
+    min-width: 0;
+}
+
+.category-news .news-grid {
+    width: 100%;
+}
+
+
+  
+
+
+  /* REDUCE SPACE BEFORE SPORTS NEWS */
+.article-page {
+    padding-bottom: 0;
+}
+
+.article-layout {
+    margin-bottom: 0;
+}
+
+.article-layout + .category-ad-layout {
+    margin-top: 0;
+}
+/* MOVIE REVIEWS - STOP AT ARTICLE END */
+
+.article-layout {
+    align-items: start;
+}
+
+.article-main {
+    min-width: 0;
+}
+
+.article-sidebar {
+    min-width: 0;
+    align-self: start;
+}
+
+#movieReviewsSidebar {
+    min-height: 0;
+    overflow: hidden;
+}
+
+#movieReviewsSidebar .news-card {
+    min-width: 0;
+}
+
+#movieReviewsSidebar .news-card img {
+    flex-shrink: 0;
+}
+
+@media (max-width: 700px) {
+    #movieReviewsSidebar {
+        max-height: none;
+        overflow: visible;
+    }
+}
+  /* FIX ARTICLE END AND BELOW SECTIONS */
+
+.article-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    align-items: start;
+}
+
+.article-main {
+    min-width: 0;
+    height: auto;
+    overflow: visible;
+}
+
+.article-content {
+    height: auto;
+    max-height: none;
+    overflow: visible;
+}
+
+.category-ad-layout,
+.movie-reviews-section {
+    clear: both;
+    width: 100%;
+}
+
+@media (max-width: 700px) {
+    .article-layout {
+        grid-template-columns: 1fr;
+    }
+}
+  
+  
+  
+.news-loading-message{font-size:13px;color:#777;line-height:1.6;margin:8px 0;}
 </style>
-
 </head>
-
 
 <body>
 
-
-<!-- HEADER -->
-
 <header class="brand-header">
-
     <div class="container brand-inner">
 
-        <a
-            href="../index.html"
-            class="brand-logo"
-            aria-label="BS 360 NEWS Home"
-        >
-
+        <a href="../index.html" class="brand-logo" aria-label="BS 360 NEWS Home">
             <div class="logo-mark">
-
-                <img
-                    src="../dp.png.png"
-                    alt="BS 360 NEWS"
-                >
-
+                <img src="../dp.png.png" alt="BS 360 NEWS">
             </div>
-
 
             <div class="logo-name">
-
                 <div>
-
                     <span>BS 360</span>
-
-                    <span class="logo-red">
-                        NEWS
-                    </span>
-
+                    <span class="logo-red">NEWS</span>
                 </div>
-
-                <span class="logo-tagline">
-                    Fast | Fair | Fearless
-                </span>
-
+                <span class="logo-tagline">Fast | Fair | Fearless</span>
             </div>
-
         </a>
 
-
         <div class="header-actions">
-
-            <button
-                type="button"
-                class="theme-button"
-                id="themeButton"
-                onclick="toggleTheme()"
-            >
-                🌙 Dark
-            </button>
-
+            <button type="button" class="theme-button" id="themeButton"
+                    onclick="toggleTheme()">🌙 Dark</button>
 
             <div class="live-button">
-
                 <span class="live-dot"></span>
-
                 LIVE
-
             </div>
-
         </div>
 
-
-        <button
-            class="mobile-menu-toggle"
-            type="button"
-            aria-label="Navigation menu"
-            onclick="toggleMobileNav()"
-        >
-            ☰
-        </button>
-
+        <button class="mobile-menu-toggle" type="button"
+                aria-label="Navigation menu"
+                aria-controls="navLinks"
+                aria-expanded="false"
+                onclick="toggleMobileNav()">☰</button>
     </div>
-
 </header>
 
-
-<!-- NAVIGATION -->
-
-<nav
-    class="main-nav"
-    aria-label="Main Navigation"
->
-
+<nav class="main-nav" aria-label="Main Navigation">
     <div class="container nav-container">
 
         <div class="lang-selector">
-
-            <a href="../index.html" class="active">
-                తెలుగు
-            </a>
-
+            <a href="../index.html" class="active">తెలుగు</a>
             <span>|</span>
-
-            <span>
-                English
-            </span>
-
+            <span>English</span>
             <span>|</span>
-
-            <span>
-                हिन्दी
-            </span>
-
+            <span>हिन्दी</span>
         </div>
 
-
-        <div
-            class="nav-links"
-            id="navLinks"
-        >
-
-            <a href="../index.html">
-                HOME
-            </a>
-
-            <a href="../MOVIES.html">
-                ENTERTAINMENT
-            </a>
-
-            <a href="../SPORTS.html">
-                SPORTS
-            </a>
-
-            <a href="../AP&TS.html">
-                AP & TS
-            </a>
-
-            <a href="../business.html">
-                BUSINESS
-            </a>
-
+        <div class="nav-links" id="navLinks">
+           <a href="index.html">హోమ్</a>
+            <a href="MOVIES.html">ఎంటర్టైన్మెంట్</a>
+            <a href="SPORTS.html">స్పోర్ట్స్</a>
+            <a href="AP%26TS.html">ఏపీ&amp;టీస్</a>
+            <a href="business.html">బిజినెస్</a>
         </div>
-
     </div>
-
 </nav>
+
 
 
 <!-- TOP HEADLINES -->
@@ -685,684 +1192,297 @@
 
 <!-- SIDEBAR -->
 
-<aside class="article-sidebar">
+  <aside class="article-sidebar">
 
+            <section class="news-section">
+                <h2 class="section-heading">జాతీయ వార్తలు</h2>
+                <div id="nationalGrid" class="side-news-list"></div>
+            </section>
 
-<div class="sidebar-box">
+            <section class="news-section">
+                <h2 class="section-heading">తాజా వార్తలు</h2>
+                <div id="latestSidebar" class="side-news-list"></div>
+            </section>
 
-    <div class="sidebar-title">
-        Trending News
+            <section class="news-section">
+                <h2 class="section-heading">ట్రెండింగ్ వార్తలు</h2>
+                <div id="trendingSidebar" class="side-news-list"></div>
+            </section>
+
+            <section class="news-section">
+                <h2 class="section-heading">క్రీడా వార్తలు</h2>
+                <div id="sportsSidebar" class="side-news-list"></div>
+            </section>
+
+            
+
+        </aside>
     </div>
 
-    <div id="trendingSidebar"></div>
 
-</div>
-
-
-<div class="sidebar-box">
-
-    <div class="sidebar-title">
-        Latest News
+<!-- BUSINESS NEWS -->
+<section class="category-ad-layout">
+    <div class="category-news">
+        <h2>వ్యాపార వార్తలు</h2>
+        <div id="businessGrid" class="news-grid"></div>
     </div>
-
-    <div id="latestSidebar"></div>
-
-</div>
-
-
-<div class="sidebar-box">
-
-    <div class="sidebar-title">
-        Most Read
-    </div>
-
-    <div id="mostReadSidebar"></div>
-
-</div>
-
-
-</aside>
-
-</div>
-
-
-<!-- LATEST -->
-
-<section class="related-section">
-
-    <div class="related-title">
-         Latest News
-    </div>
-
-    <div
-        id="latestGrid"
-        class="news-grid"
-    ></div>
-
+   
 </section>
 
-
-<!-- SPORTS -->
-
-<section class="related-section">
-
-    <div class="related-title">
-         Sports
+<!-- AP NEWS -->
+<section class="category-ad-layout">
+    <div class="category-news">
+        <h2>ఆంధ్రప్రదేశ్ & తెలంగాణ వార్తలు</h2>
+        <div id="aptsGrid" class="news-grid"></div>
     </div>
 
-    <div
-        id="sportsGrid"
-        class="news-grid"
-    ></div>
-
+ <!-- ENTERTAINMENT NEWS -->
+<section class="category-ad-layout">
+    <div class="category-news">
+        <h2>సినిమా అప్‌డేట్స్</h2>
+        <div id="cinemaGrid" class="news-grid"></div>
+    </div>
 </section>
 
-
-<!-- ENTERTAINMENT -->
-
-<section class="related-section">
-
-    <div class="related-title">
-         Entertainment
-    </div>
-
-    <div
-        id="moviesGrid"
-        class="news-grid"
-    ></div>
-
-</section>
-
-
-<!-- AP TS -->
-
-<section class="related-section">
-
-    <div class="related-title">
-         AP & TS
-    </div>
-
-    <div
-        id="aptsGrid"
-        class="news-grid"
-    ></div>
-
-</section>
-
-
-<!-- BUSINESS -->
-
-<section class="related-section">
-
-    <div class="related-title">
-         Business
-    </div>
-
-    <div
-        id="businessGrid"
-        class="news-grid"
-    ></div>
-
+<!-- MOVIE REVIEWS -->
+<section class="movie-reviews-section">
+    <h2> క్రీడా వార్తలు</h2>
+    <div id="movieReviewsGrid" class="news-grid"></div>
 </section>
 
 
 </main>
 
-
-<!-- FOOTER -->
-
 <footer class="site-footer">
-
     <div class="container footer-inner">
 
-
         <div class="footer-column">
-
-            <h3>
-                ముఖ్యమైన లింకులు
-            </h3>
-
-
+            <h3>ముఖ్యమైన లింకులు</h3>
             <div class="footer-links">
-
-                <a href="../advertise.html">
-                    Advertise With Us
-                </a>
-
-                <a href="../about.html">
-                    About Us
-                </a>
-
-                <a href="../contact.html">
-                    Contact Us
-                </a>
-
-                <a href="../Privacy Policy.html">
-                    Privacy Policy
-                </a>
-
-                <a href="../disclaimer.html">
-                    Disclaimer
-                </a>
-
-                <a href="../terms.html">
-                    Terms & Conditions
-                </a>
-
+                <a href="../advertise.html">Advertise With Us</a>
+                <a href="../about.html">About Us</a>
+                <a href="../contact.html">Contact Us</a>
+                <a href="../Privacy%20Policy.html">Privacy Policy</a>
+                <a href="../disclaimer.html">Disclaimer</a>
+                <a href="../terms.html">Terms &amp; Conditions</a>
             </div>
-
         </div>
-
 
         <div class="footer-contact">
-
-            <h3>
-                Contact
-            </h3>
-
-            <p>
-                newsb386@gmail.com
-            </p>
-
-            <p>
-                Follow us for latest updates.
-            </p>
-
+            <h3>Contact</h3>
+            <p>newsb386@gmail.com</p>
+            <p>Follow us for latest updates.</p>
         </div>
 
     </div>
 
-
     <div class="copyright">
-
         © 2026 BS 360 NEWS. All rights reserved.
-
     </div>
-
 </footer>
 
-
-<!-- AUTOMATIC ARTICLE NEWS SYSTEM -->
-
 <script>
+/* MOBILE NAVIGATION */
+function toggleMobileNav() {
+    const nav = document.getElementById("navLinks");
+    const button = document.querySelector(".mobile-menu-toggle");
+    if (!nav || !button) return;
+    const isOpen = nav.classList.toggle("mobile-open");
+    button.setAttribute("aria-expanded", String(isOpen));
+}
+
+/* DARK MODE */
+function toggleTheme() {
+    const isDark = document.body.classList.toggle("dark-mode");
+    const button = document.getElementById("themeButton");
+    if (button) button.textContent = isDark ? "☀️ Light" : "🌙 Dark";
+}
 
 document.addEventListener("DOMContentLoaded", function () {
+    const HOME = new URL("../index.html", window.location.href).href;
+    const SPORTS = new URL("../SPORTS.html", window.location.href).href;
 
-    "use strict";
-
-
-    function cleanText(text) {
-
-        return String(text || "")
-            .replace(/\s+/g, " ")
-            .trim();
-
+    function absoluteURL(value, base) {
+        if (!value) return "";
+        try { return new URL(value, base).href; } catch (error) { return ""; }
     }
 
+    function getImage(card, base) {
+        const img = card.querySelector("img");
+        if (!img) return "";
+        return absoluteURL(
+            img.getAttribute("data-src") ||
+            img.getAttribute("data-lazy-src") ||
+            img.getAttribute("data-original") ||
+            img.getAttribute("src"), base
+        );
+    }
 
-    function getArticles(home, sourceId) {
+    function readCards(doc, base, selectors) {
+        const found = [];
+        const seen = new Set();
+        const selectorList = selectors.join(",");
+        doc.querySelectorAll(selectorList).forEach(function (card) {
+            const link = card.matches("a[href]") ? card : card.querySelector("a[href]");
+            const img = card.querySelector("img");
+            const dataUrl = card.getAttribute("data-url") || "";
 
-        const source =
-            home.getElementById(sourceId);
+            /* SPORTS.html source posts use data-url and do not contain an <a> tag. */
+            if ((!link && !dataUrl) || !img) return;
 
-        if (!source) {
-            return [];
+            const titleNode = card.querySelector("h1,h2,h3,h4,.post-title,.news-title,.title,.news-content p,.news-content h3,p");
+            const title = (titleNode?.textContent || img.getAttribute("alt") || (link ? link.textContent : ""))
+                .replace(/\s+/g, " ").trim();
+            const url = absoluteURL(dataUrl || (link ? link.getAttribute("href") : ""), base);
+            const image = getImage(card, base);
+            if (!title || !url || !image) return;
+            try { if (new URL(url).origin !== new URL(HOME).origin) return; } catch (error) { return; }
+            if (seen.has(url)) return;
+            seen.add(url);
+            found.push({ title: title, url: url, image: image, alt: img.getAttribute("alt") || title });
+        });
+        return found;
+    }
+
+    function readSource(doc, base, ids, fallbackSelectors) {
+        const all = [];
+        const seen = new Set();
+        ids.forEach(function (id) {
+            const source = doc.getElementById(id);
+            if (!source) return;
+            const cards = readCards(source, base, ["article", ".news-card", ".news-item", ".post", "li", "a.card"]);
+            cards.forEach(function (item) {
+                if (!seen.has(item.url)) { seen.add(item.url); all.push(item); }
+            });
+        });
+        if (all.length) return all;
+        if (fallbackSelectors && fallbackSelectors.length) return readCards(doc, base, fallbackSelectors);
+        return [];
+    }
+
+    function renderArticles(targetId, articles, limit) {
+        const target = document.getElementById(targetId);
+        if (!target) return;
+        target.replaceChildren();
+        const list = Number.isFinite(limit) && limit > 0 ? articles.slice(0, limit) : articles;
+        list.forEach(function (item) {
+            const link = document.createElement("a");
+            link.className = "news-card";
+            link.href = item.url;
+            const img = document.createElement("img");
+            img.src = item.image;
+            img.alt = item.alt || item.title;
+            img.loading = "lazy";
+            const heading = document.createElement("h3");
+            heading.textContent = item.title;
+            link.append(img, heading);
+            target.appendChild(link);
+        });
+        if (!list.length) {
+            const message = document.createElement("p");
+            message.className = "news-loading-message";
+            message.textContent = "వార్తలు ప్రస్తుతం అందుబాటులో లేవు.";
+            target.appendChild(message);
         }
+    }
 
+    async function fetchDocument(url) {
+        const response = await fetch(url, { cache: "no-store" });
+        if (!response.ok) throw new Error("Could not load " + url + " (" + response.status + ")");
+        const html = await response.text();
+        return new DOMParser().parseFromString(html, "text/html");
+    }
 
-        return Array.from(
-            source.querySelectorAll(".news-item.post")
-        )
-
-        .map(function (item) {
-
-            const image =
-                item.querySelector("img");
-
-            const title =
-                item.querySelector(".news-content p") ||
-                item.querySelector(".news-content h3") ||
-                item.querySelector("p");
-
-
-            return {
-
-                title:
-                    cleanText(
-                        title
-                            ? title.textContent
-                            : ""
-                    ),
-
-                image:
-                    image
-                        ? image.getAttribute("src") || ""
-                        : "",
-
-                alt:
-                    image
-                        ? image.getAttribute("alt") || ""
-                        : "",
-
-                url:
-                    item.getAttribute("data-url") || ""
-
-            };
-
-        })
-
-        .filter(function (item) {
-
-            return (
-                item.title &&
-                item.image &&
-                item.url
-            );
-
+    async function loadArticles() {
+        const homePromise = fetchDocument(HOME).catch(function (error) {
+            console.error("Homepage source could not load:", error);
+            return null;
+        });
+        const sportsPromise = fetchDocument(SPORTS).catch(function (error) {
+            console.error("SPORTS.html source could not load:", error);
+            return null;
         });
 
-    }
+        const [homeDoc, sportsDoc] = await Promise.all([homePromise, sportsPromise]);
+
+        if (homeDoc) {
+            renderArticles("nationalGrid", readSource(homeDoc, HOME,
+                ["nationalSection", "nationalNewsSection", "nationalGrid", "nationalNewsSource"],
+                [".news-item.post[data-category='national']", "[data-category='national']"]), 5);
+            renderArticles("latestSidebar", readSource(homeDoc, HOME,
+                ["latestNewsSource", "latestGrid", "latestSection", "latestNewsSection"],
+                [".news-item.post", ".post[data-url]", ".news-card"]), 5);
+            renderArticles("trendingSidebar", readSource(homeDoc, HOME,
+                ["trendingSource", "trendingGrid", "trendingSection", "trendingSidebar"],
+                [".news-item.post[data-trending]", "[data-category='trending']"]), 5);
+            renderArticles("businessGrid", readSource(homeDoc, HOME,
+                ["businessSource", "businessGrid", "businessSection"],
+                [".news-item.post[data-category='business']", "[data-category='business']"]), 5);
+            renderArticles("aptsGrid", readSource(homeDoc, HOME,
+                ["aptsSource", "aptsGrid", "aptsSection"],
+                [".news-item.post[data-category='apts']", ".news-item.post[data-category='ap-ts']", "[data-category='apts']"]), 5);
 
 
-    function fixPath(path) {
-
-        if (!path) {
-            return "";
+            renderArticles(
+    "cinemaGrid",
+    readSource(homeDoc, HOME,
+        ["latestNewsSource", "cinemaGrid", "moviesGrid", "moviesSource"],
+        [
+            ".news-item.post[data-category='entertainment']",
+            ".news-item.post[data-category='movies']",
+            ".news-item.post[data-category='cinema']",
+            ".news-item.post"
+        ]
+    ),
+    5
+);
+            
         }
 
-        if (
-            path.startsWith("http://") ||
-            path.startsWith("https://") ||
-            path.startsWith("../") ||
-            path.startsWith("/")
-        ) {
-
-            return path;
-
-        }
-
-        return "../" + path;
-
-    }
-
-
-    function sidebarHTML(article) {
-
-        return `
-            <a
-                href="${fixPath(article.url)}"
-                class="sidebar-item"
-            >
-
-                <img
-                    src="${fixPath(article.image)}"
-                    alt="${article.alt || article.title}"
-                    loading="lazy"
-                >
-
-                <div class="sidebar-item-title">
-                    ${article.title}
-                </div>
-
-            </a>
-        `;
-
-    }
-
-
-    function cardHTML(article) {
-
-        return `
-            <a
-                href="${fixPath(article.url)}"
-                class="news-card"
-            >
-
-                <img
-                    src="${fixPath(article.image)}"
-                    alt="${article.alt || article.title}"
-                    loading="lazy"
-                >
-
-                <h3>
-                    ${article.title}
-                </h3>
-
-            </a>
-        `;
-
-    }
-
-
-    function mostReadHTML(article, number) {
-
-        return `
-            <a
-                href="${fixPath(article.url)}"
-                class="most-read-item"
-            >
-
-                <div class="most-read-number">
-                    ${number}
-                </div>
-
-                <img
-                    src="${fixPath(article.image)}"
-                    alt="${article.alt || article.title}"
-                    loading="lazy"
-                >
-
-                <div class="most-read-title">
-                    ${article.title}
-                </div>
-
-            </a>
-        `;
-
-    }
-
-
-    function show(id, html) {
-
-        const element =
-            document.getElementById(id);
-
-        if (element) {
-
-            element.innerHTML = html;
-
-        }
-
-    }
-
-
-    /* LOAD MAIN HOMEPAGE */
-
-    fetch(
-        "../index.html?v=" + Date.now(),
-        {
-            cache: "no-store"
-        }
-    )
-
-    .then(function (response) {
-
-        if (!response.ok) {
-
-            throw new Error(
-                "Main index.html load failed"
-            );
-
-        }
-
-        return response.text();
-
-    })
-
-    .then(function (html) {
-
-        const parser =
-            new DOMParser();
-
-
-        const home =
-            parser.parseFromString(
-                html,
-                "text/html"
-            );
-
-
-        const latest =
-            getArticles(
-                home,
-                "latestNewsSource"
-            );
-
-
-        const trending =
-            getArticles(
-                home,
-                "trendingSource"
-            );
-
-
-        const mostRead =
-            getArticles(
-                home,
-                "mostReadSource"
-            );
-
-
-        const apts =
-            getArticles(
-                home,
-                "aptsSource"
-            );
-
-
-        const sports =
-            getArticles(
-                home,
-                "sportsSource"
-            );
-
-
-        const entertainment =
-            getArticles(
-                home,
-                "entertainmentSource"
-            );
-
-
-        const business =
-            getArticles(
-                home,
-                "businessSource"
-            );
-
-
-        show(
-            "trendingSidebar",
-
-            trending
-                .slice(0, 8)
-                .map(sidebarHTML)
-                .join("")
-        );
-
-
-        show(
-            "latestSidebar",
-
-            latest
-                .slice(0, 8)
-                .map(sidebarHTML)
-                .join("")
-        );
-
-
-        show(
-            "mostReadSidebar",
-
-            mostRead
-                .slice(0, 8)
-                .map(function (
-                    article,
-                    index
-                ) {
-
-                    return mostReadHTML(
-                        article,
-                        index + 1
-                    );
-
-                })
-                .join("")
-        );
-
-
-        show(
-            "latestGrid",
-
-            latest
-                .slice(0, 8)
-                .map(cardHTML)
-                .join("")
-        );
-
-
-        show(
-            "sportsGrid",
-
-            sports
-                .slice(0, 8)
-                .map(cardHTML)
-                .join("")
-        );
-
-
-        show(
-            "moviesGrid",
-
-            entertainment
-                .slice(0, 8)
-                .map(cardHTML)
-                .join("")
-        );
-
-
-        show(
-            "aptsGrid",
-
-            apts
-                .slice(0, 8)
-                .map(cardHTML)
-                .join("")
-        );
-
-
-        show(
-            "businessGrid",
-
-            business
-                .slice(0, 8)
-                .map(cardHTML)
-                .join("")
-        );
-
-
-        console.log(
-            "BS360 HOME ARTICLES LOADED"
-        );
-
-
-    })
-
-    .catch(function (error) {
-
-        console.error(
-            "BS360 NEWS ERROR:",
-            error
-        );
-
-    });
-
-
-    /* MOBILE NAV */
-
-    window.toggleMobileNav =
-        function () {
-
-            const nav =
-                document.getElementById(
-                    "navLinks"
-                );
-
-
-            if (nav) {
-
-                nav.classList.toggle(
-                    "mobile-open"
-                );
-
+        if (sportsDoc) {
+            /*
+              SPORTS NEWS SOURCE:
+              Read every article from SPORTS.html's localSportsSource first.
+              These cards use data-url + img + .news-content p (no anchor tag).
+              New articles added to that source automatically appear here.
+            */
+            const sportsSource = sportsDoc.getElementById("localSportsSource");
+            let sports = sportsSource
+                ? readCards(sportsSource, SPORTS, [".news-item.post[data-url]", ".news-item.post", ".post[data-url]"])
+                : [];
+
+            /* If the source container is renamed/removed, try known sports containers. */
+            if (!sports.length) {
+                sports = readSource(sportsDoc, SPORTS,
+                    ["sportsNewsSource", "latestSportsGrid", "sportsGrid", "latestGrid", "allSportsGrid", "sportsSection", "sportsNewsSection", "menSportsGrid", "womenSportsGrid", "sportsNews", "allSports"],
+                    [".news-item.post[data-category='sports']", "[data-category='sports']"]);
             }
 
-        };
+            /* Remove duplicates by final article URL, preserving SPORTS.html order. */
+            const seenSports = new Set();
+            sports = sports.filter(function (item) {
+                if (!item.url || seenSports.has(item.url)) return false;
+                seenSports.add(item.url);
+                return true;
+            });
 
-
-    /* DARK MODE */
-
-    window.toggleTheme =
-        function () {
-
-            document.body.classList.toggle(
-                "dark-mode"
-            );
-
-
-            const button =
-                document.getElementById(
-                    "themeButton"
-                );
-
-
-            const dark =
-                document.body.classList.contains(
-                    "dark-mode"
-                );
-
-
-            if (button) {
-
-                button.textContent =
-                    dark
-                        ? "☀️ Light"
-                        : "🌙 Dark";
-
-            }
-
-
-            localStorage.setItem(
-                "bs360-theme",
-                dark
-                    ? "dark"
-                    : "light"
-            );
-
-        };
-
-
-    if (
-        localStorage.getItem(
-            "bs360-theme"
-        ) === "dark"
-    ) {
-
-        document.body.classList.add(
-            "dark-mode"
-        );
-
-
-        const button =
-            document.getElementById(
-                "themeButton"
-            );
-
-
-        if (button) {
-
-            button.textContent =
-                "☀️ Light";
-
+            /* All sports cards are automatic; sidebars show only the first five. */
+            renderArticles("sportsGrid", sports, 5);
+            renderArticles("sportsSidebar", sports, 0);
+           
+            renderArticles("movieReviewsGrid", sports, 0);
+            console.log("BS 360 NEWS sports articles loaded:", sports.length, sports);
+        } else {
+            ["sportsGrid", "sportsSidebar", "cinemaGrid", "movieReviewsGrid"].forEach(function (id) {
+                renderArticles(id, [], 0);
+            });
         }
-
     }
 
+    loadArticles();
 });
-
 </script>
 
-
+  
 </body>
-
 </html>
