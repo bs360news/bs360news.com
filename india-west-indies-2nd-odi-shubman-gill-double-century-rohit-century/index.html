@@ -998,6 +998,29 @@ body.dark-mode .lang-selector .active {
   
   
 .news-loading-message{font-size:13px;color:#777;line-height:1.6;margin:8px 0;}
+
+
+
+
+    
+@media (min-width: 701px) {
+    #sportsSidebar {
+        overflow: hidden;
+    }
+}
+
+@media (max-width: 700px) {
+    #sportsSidebar {
+        max-height: none !important;
+        overflow: visible !important;
+    }
+
+    #sportsSidebar .news-card {
+        display: flex !important;
+    }
+}
+
+    
 </style>
 </head>
 
@@ -1190,7 +1213,9 @@ body.dark-mode .lang-selector .active {
 </article>
 
 
-<!-- SIDEBAR -->
+
+
+    <!-- SIDEBAR -->
 
   <aside class="article-sidebar">
 
@@ -1468,8 +1493,74 @@ document.addEventListener("DOMContentLoaded", function () {
 
             /* All sports cards are automatic; sidebars show only the first five. */
             renderArticles("sportsGrid", sports, 5);
-            renderArticles("sportsSidebar", sports, 0);
-           
+
+renderArticles("sportsGrid", sports, 5);
+renderArticles("sportsSidebar", sports, 0);
+renderArticles("movieReviewsGrid", sports, 0);
+
+function fitSportsSidebar() {
+    const sportsBox = document.getElementById("sportsSidebar");
+    const articleMain = document.querySelector(".article-main");
+
+    if (!sportsBox || !articleMain) return;
+
+    const cards = Array.from(sportsBox.querySelectorAll(".news-card"));
+
+    // Mobile lo cards anni complete ga chupinchali
+    if (window.innerWidth <= 700) {
+        sportsBox.style.maxHeight = "none";
+        sportsBox.style.overflow = "visible";
+        cards.forEach(card => card.style.display = "");
+        return;
+    }
+
+    cards.forEach(card => card.style.display = "");
+
+    sportsBox.style.maxHeight = "none";
+    sportsBox.style.overflow = "hidden";
+
+    const articleBottom =
+        articleMain.getBoundingClientRect().bottom + window.scrollY;
+
+    const listTop =
+        sportsBox.getBoundingClientRect().top + window.scrollY;
+
+    const availableHeight = Math.max(0, articleBottom - listTop);
+
+    let usedHeight = 0;
+
+    cards.forEach(card => {
+        const style = window.getComputedStyle(card);
+        const marginTop = parseFloat(style.marginTop) || 0;
+        const marginBottom = parseFloat(style.marginBottom) || 0;
+
+        const cardHeight =
+            card.getBoundingClientRect().height +
+            marginTop +
+            marginBottom;
+
+        if (usedHeight + cardHeight > availableHeight) {
+            card.style.display = "none";
+        } else {
+            usedHeight += cardHeight;
+        }
+    });
+
+    sportsBox.style.maxHeight = availableHeight + "px";
+}
+
+requestAnimationFrame(() => {
+    requestAnimationFrame(fitSportsSidebar);
+});
+
+window.addEventListener("resize", fitSportsSidebar);
+
+const articleImage = document.querySelector(".article-image");
+
+if (articleImage && !articleImage.complete) {
+    articleImage.addEventListener("load", fitSportsSidebar, { once: true });
+}
+
             renderArticles("movieReviewsGrid", sports, 0);
             console.log("BS 360 NEWS sports articles loaded:", sports.length, sports);
         } else {
