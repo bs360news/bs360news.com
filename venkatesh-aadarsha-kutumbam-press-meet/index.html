@@ -137,24 +137,207 @@
 </script>
 
 
-<!-- MAIN CSS -->
-
-<link
-    rel="stylesheet"
-    href="../style.css?v=20260918"
->
-
 
 <style>
+  
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, "Noto Sans Telugu", sans-serif;
+    background: #fff;
+    color: #111;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+.container {
+    width: min(1200px, 96%);
+    margin: 0 auto;
+}
+
+/* HEADER */
+
+.brand-header {
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+}
+
+.brand-inner {
+    min-height: 92px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+}
+
+.logo-mark img {
+    width: 65px;
+    height: 65px;
+    display: block;
+    object-fit: contain;
+}
+
+.logo-name {
+    font-size: 25px;
+    font-weight: 900;
+    line-height: 1.15;
+}
+
+.logo-red {
+    color: #e60000;
+}
+
+.logo-tagline {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    margin-top: 5px;
+    letter-spacing: .5px;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.theme-button,
+.mobile-menu-toggle {
+    border: 1px solid #ccc;
+    background: #fff;
+    color: #111;
+    padding: 9px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.live-button {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: #e60000;
+    font-weight: 900;
+}
+
+.live-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #e60000;
+    animation: livePulse 1s infinite;
+}
+
+@keyframes livePulse {
+    50% { opacity: .3; }
+}
+
+.mobile-menu-toggle {
+    display: none;
+    font-size: 21px;
+}
+
+/* NAVIGATION */
+
+.main-nav {
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.lang-selector {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+    font-size: 12px;
+}
+
+.lang-selector .active {
+    color: #e60000;
+    font-weight: 800;
+}
+
+.nav-links {
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-end;
+}
+
+.nav-links a {
+    display: block;
+    padding: 15px 17px;
+    white-space: nowrap;
+    font-size: 13px;
+    font-weight: 800;
+    border-left: 1px solid #eee;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    background: #e60000;
+    color: #fff;
+}
+
+/* TOP HEADLINES */
+
+.headlines-bar {
+    background: #f5f5f5;
+    border-bottom: 1px solid #ddd;
+}
+
+.headlines-bar .container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    min-height: 42px;
+}
+
+.headlines-label {
+    color: #e60000;
+    font-size: 12px;
+    font-weight: 900;
+    white-space: nowrap;
+}
+
+.headlines-text {
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* MAIN ARTICLE LAYOUT */
 
 .article-page {
-    padding: 20px 0 40px;
+    padding: 24px 0 40px;
 }
 
 .article-layout {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 320px;
-    gap: 25px;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: 26px;
     align-items: start;
 }
 
@@ -163,417 +346,727 @@
 }
 
 .article-title {
+    margin: 0 0 14px;
     font-size: 32px;
-    line-height: 1.35;
-    margin: 0 0 15px;
-    color: #111;
-    font-weight: 800;
+    line-height: 1.4;
+    font-weight: 900;
+}
+
+.article-meta {
+    color: #777;
+    font-size: 13px;
+    margin: 15px 0 8px;
+}
+
+.article-image {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 6px;
+    margin: 8px 0 22px;
 }
 
 .article-content {
     font-size: 18px;
     line-height: 2;
-    color: #222;
+    overflow-wrap: anywhere;
 }
 
 .article-content p {
-    margin: 0 0 18px;
+    margin: 0 0 20px;
 }
-
-.article-meta {
-    font-size: 13px;
-    color: #777;
-    margin: 0 0 8px;
-    font-weight: 500;
-}
-
-.article-image {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-    display: block;
-    border-radius: 8px;
-    margin: 8px 0 20px;
-}
-
 
 /* SIDEBAR */
 
 .article-sidebar {
-    width: 100%;
-}
-
-.sidebar-box {
-    margin-bottom: 22px;
-}
-
-.sidebar-title {
-    background: #075aaa;
-    color: #fff;
-    font-size: 20px;
-    font-weight: 800;
-    padding: 10px 12px;
-    border-left: 5px solid #e60000;
-    margin-bottom: 8px;
-}
-
-.sidebar-item {
+    min-width: 0;
     display: flex;
-    gap: 10px;
-    padding: 9px 0;
-    border-bottom: 1px solid #ddd;
-    text-decoration: none;
-    color: #111;
-    align-items: center;
+    flex-direction: column;
+    gap: 22px;
 }
 
-.sidebar-item img {
-    width: 78px;
-    height: 55px;
+.news-section {
+    min-width: 0;
+    margin: 0 0 18px;
+}
+
+/* REMOVE BLUE HEADING BACKGROUND AND BLUE BORDER */
+
+.section-heading {
+    margin: 0 0 12px;
+    padding: 0 0 8px;
+    color: #111;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    font-size: 19px;
+    line-height: 1.4;
+    font-weight: 900;
+}
+
+/* SIDEBAR ARTICLE LIST */
+
+.side-news-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.side-news-list .news-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    color: #111;
+}
+
+.side-news-list .news-card img {
+    display: block;
+    width: 86px;
+    height: 62px;
+    flex: 0 0 86px;
     object-fit: cover;
-    flex: 0 0 78px;
     border-radius: 4px;
 }
 
-.sidebar-item-title {
-    font-size: 14px;
-    line-height: 1.45;
+.side-news-list .news-card h3 {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.5;
     font-weight: 700;
 }
 
-.most-read-item {
-    display: flex;
-    gap: 9px;
-    padding: 9px 0;
-    border-bottom: 1px solid #ddd;
-    text-decoration: none;
-    color: #111;
-    align-items: center;
+/* BOTTOM CATEGORY + AD SIDE BY SIDE */
+
+.category-ad-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: 22px;
+    align-items: start;
+    margin: 0 0 30px;
 }
 
-.most-read-number {
-    width: 28px;
-    height: 28px;
-    background: #075aaa;
-    color: #fff;
+.category-news {
+    min-width: 0;
+}
+
+.category-news .side-news-list .news-card {
+    padding: 9px 0;
+}
+
+.category-ad {
+    width: 100%;
+    min-height: 280px;
+    padding: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 800;
-    border-radius: 3px;
-    flex: 0 0 28px;
+    text-align: center;
+    background: #fafafa;
+    color: #777;
+    font-size: 12px;
+    overflow: hidden;
 }
 
-.most-read-item img {
-    width: 70px;
-    height: 50px;
-    object-fit: cover;
-    border-radius: 4px;
-    flex: 0 0 70px;
+/* MOVIE REVIEWS GRID */
+
+.movie-reviews-section {
+    margin-top: 28px;
+    margin-bottom: 30px;
 }
 
-.most-read-title {
-    font-size: 13px;
-    line-height: 1.4;
-    font-weight: 700;
-}
-
-
-/* RELATED */
-
-.related-section {
-    margin-top: 35px;
-}
-
-.related-title {
-    font-size: 24px;
-    font-weight: 800;
-    border-left: 5px solid #e60000;
-    padding-left: 10px;
-    margin-bottom: 15px;
-}
-
-.news-grid {
+.movie-reviews-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 14px;
 }
 
-.news-card {
-    text-decoration: none;
-    color: #111;
+.movie-reviews-grid .news-card {
+    min-width: 0;
+}
+
+.movie-reviews-grid .news-card img {
     display: block;
-}
-
-.news-card img {
     width: 100%;
     aspect-ratio: 16 / 9;
     object-fit: cover;
-    border-radius: 6px;
+    border-radius: 5px;
+}
+
+.movie-reviews-grid .news-card h3 {
+    margin: 7px 0 0;
+    font-size: 13px;
+    line-height: 1.5;
+    font-weight: 800;
+}
+
+/* ADDITIONAL NEWS GRID */
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.news-grid .news-card {
     display: block;
+    min-width: 0;
 }
 
-.news-card h3 {
-    font-size: 15px;
-    line-height: 1.45;
-    margin: 8px 0 0;
-    font-weight: 700;
+.news-grid .news-card img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 5px;
 }
 
+.news-grid .news-card h3 {
+    margin: 7px 0 0;
+    font-size: 13px;
+    line-height: 1.5;
+    font-weight: 800;
+}
+
+/* FULL WIDTH AD BELOW MOVIE REVIEWS */
+
+.ad-space {
+    width: 100%;
+    min-height: 280px;
+    margin: 25px 0 35px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #777;
+    font-size: 12px;
+    background: #fafafa;
+}
+
+/* FOOTER */
+
+.site-footer {
+    margin-top: 35px;
+    background: #111;
+    color: #fff;
+}
+
+.footer-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+.footer-column h3,
+.footer-contact h3 {
+    margin-top: 0;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 18px;
+}
+
+.footer-links a {
+    color: #eee;
+    font-size: 14px;
+}
+
+.footer-contact p {
+    font-size: 14px;
+}
+
+.copyright {
+    text-align: center;
+    padding: 14px 10px;
+    border-top: 1px solid #333;
+    font-size: 12px;
+}
+
+/* TABLET */
+
+@media (max-width: 1100px) {
+    .article-layout {
+        grid-template-columns: minmax(0, 1fr) 270px;
+        gap: 18px;
+    }
+
+    .category-ad-layout {
+        grid-template-columns: minmax(0, 1fr) 270px;
+    }
+
+    .nav-links a {
+        padding: 14px 10px;
+        font-size: 12px;
+    }
+
+    .movie-reviews-grid,
+    .news-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
 
 /* MOBILE */
 
-@media (max-width: 800px) {
+@media (max-width: 700px) {
+    .brand-inner {
+        min-height: 75px;
+        gap: 8px;
+    }
+
+    .logo-mark img {
+        width: 48px;
+        height: 48px;
+    }
+
+    .logo-name {
+        font-size: 20px;
+    }
+
+    .logo-tagline {
+        font-size: 9px;
+    }
+
+    .header-actions {
+        gap: 7px;
+    }
+
+    .theme-button {
+        padding: 7px;
+        font-size: 12px;
+    }
+
+    .live-button {
+        font-size: 11px;
+    }
+
+    .mobile-menu-toggle {
+        display: block;
+        padding: 7px 10px;
+    }
+
+    .nav-container {
+        display: block;
+    }
+
+    .lang-selector {
+        padding: 10px 0;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        border-top: 1px solid #ddd;
+    }
+
+    .nav-links.mobile-open {
+        display: flex;
+    }
+
+    .nav-links a {
+        padding: 12px;
+        border-left: 0;
+        border-bottom: 1px solid #eee;
+    }
+
+    .headlines-bar .container {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 5px;
+        padding-top: 9px;
+        padding-bottom: 9px;
+    }
+
+    .article-page {
+        padding-top: 15px;
+    }
 
     .article-layout {
-        grid-template-columns: 1fr;
-        gap: 25px;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 24px;
     }
 
     .article-title {
         font-size: 24px;
-        line-height: 1.4;
-    }
-
-    .article-content {
-        font-size: 17px;
-        line-height: 1.9;
-    }
-
-    .article-sidebar {
-        order: 2;
-    }
-
-    .news-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-    }
-
-}
-
-
-@media (max-width: 600px) {
-
-    .article-page {
-        padding-top: 12px;
-    }
-
-    .article-title {
-        font-size: 22px;
-    }
-
-    .article-image {
-        border-radius: 5px;
     }
 
     .article-content {
         font-size: 16px;
-        line-height: 1.85;
+        line-height: 1.9;
     }
 
-    .sidebar-item img {
-        width: 75px;
-        height: 53px;
-        flex-basis: 75px;
+    .article-sidebar {
+        width: 100%;
     }
 
-    .sidebar-item-title {
-        font-size: 14px;
+    /* Each category is followed by its ad on mobile */
+
+    .category-ad-layout {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 12px;
+        margin-bottom: 28px;
     }
 
-    .sidebar-title {
-        font-size: 18px;
+    .category-ad {
+        min-height: 250px;
+        width: 100%;
     }
 
-    .news-card h3 {
-        font-size: 14px;
-    }
-
-}
-
-
-@media (max-width: 380px) {
-
+    .movie-reviews-grid,
     .news-grid {
-        gap: 9px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
     }
 
-    .news-card h3 {
+    .movie-reviews-grid .news-card h3,
+    .news-grid .news-card h3 {
         font-size: 13px;
     }
 
+    .section-heading {
+        font-size: 18px;
+    }
+
+    .ad-space {
+        min-height: 250px;
+        margin: 20px 0;
+    }
+
+    .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
 }
 
+/* DARK MODE */
+
+body.dark-mode {
+    background: #111;
+    color: #eee;
+}
+
+body.dark-mode .brand-header,
+body.dark-mode .main-nav,
+body.dark-mode .theme-button,
+body.dark-mode .mobile-menu-toggle {
+    background: #181818;
+    color: #fff;
+    border-color: #333;
+}
+
+body.dark-mode .nav-links a {
+    color: #fff;
+    border-color: #333;
+}
+
+body.dark-mode .nav-links a:hover,
+body.dark-mode .nav-links a.active {
+    background: #e60000;
+    color: #fff;
+}
+
+body.dark-mode .headlines-bar {
+    background: #1c1c1c;
+    border-color: #333;
+}
+
+body.dark-mode .article-title,
+body.dark-mode .article-content,
+body.dark-mode .news-grid .news-card,
+body.dark-mode .side-news-list .news-card,
+body.dark-mode .section-heading {
+    color: #eee;
+}
+
+body.dark-mode .side-news-list .news-card {
+    border-color: #333;
+}
+
+body.dark-mode .category-ad,
+body.dark-mode .ad-space {
+    background: #181818;
+    color: #aaa;
+}
+
+body.dark-mode .lang-selector a {
+    color: #fff;
+}
+
+body.dark-mode .lang-selector .active {
+    color: #ff4242;
+}
+
+
+
+/* CATEGORY LAYOUT */
+.category-ad-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: 20px;
+    margin: 25px 0;
+    align-items: start;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.category-ad {
+    min-height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px dashed #ccc;
+    color: #777;
+    background: #fafafa;
+}
+
+.section-heading,
+.category-news h2,
+.movie-reviews-section h2 {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 10px 0;
+}
+
+@media (max-width: 1000px) {
+    .news-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .category-ad-layout {
+        grid-template-columns: minmax(0, 1fr) 250px;
+    }
+}
+
+@media (max-width: 650px) {
+    .category-ad-layout {
+        display: block;
+    }
+
+    .news-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .category-ad {
+        min-height: 120px;
+        margin: 18px 0;
+    }
+}
+
+
+
+
+  .category-ad img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+
+
+
+
+
+
+  .sports-section {
+    margin-top: 20px;
+    padding-top: 20px;
+}
+
+.sports-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+
+
+
+
+  /* CATEGORY SECTIONS — FULL WIDTH */
+.category-ad-layout {
+    display: block;
+    width: 100%;
+    margin: 15px 0 25px;
+    padding: 0;
+    align-items: initial;
+}
+
+.category-news {
+    width: 100%;
+    min-width: 0;
+}
+
+.category-news .news-grid {
+    width: 100%;
+}
+
+
+  
+
+
+  /* REDUCE SPACE BEFORE SPORTS NEWS */
+.article-page {
+    padding-bottom: 0;
+}
+
+.article-layout {
+    margin-bottom: 0;
+}
+
+.article-layout + .category-ad-layout {
+    margin-top: 0;
+}
+/* MOVIE REVIEWS - STOP AT ARTICLE END */
+
+.article-layout {
+    align-items: start;
+}
+
+.article-main {
+    min-width: 0;
+}
+
+.article-sidebar {
+    min-width: 0;
+    align-self: start;
+}
+
+#movieReviewsSidebar {
+    min-height: 0;
+    overflow: hidden;
+}
+
+#movieReviewsSidebar .news-card {
+    min-width: 0;
+}
+
+#movieReviewsSidebar .news-card img {
+    flex-shrink: 0;
+}
+
+@media (max-width: 700px) {
+    #movieReviewsSidebar {
+        max-height: none;
+        overflow: visible;
+    }
+}
+  /* FIX ARTICLE END AND BELOW SECTIONS */
+
+.article-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    align-items: start;
+}
+
+.article-main {
+    min-width: 0;
+    height: auto;
+    overflow: visible;
+}
+
+.article-content {
+    height: auto;
+    max-height: none;
+    overflow: visible;
+}
+
+.category-ad-layout,
+.movie-reviews-section {
+    clear: both;
+    width: 100%;
+}
+
+@media (max-width: 700px) {
+    .article-layout {
+        grid-template-columns: 1fr;
+    }
+}
+  
+  
+  
 </style>
-
 </head>
-
 
 <body>
 
-
-<!-- HEADER -->
-
 <header class="brand-header">
-
     <div class="container brand-inner">
 
-        <a
-            href="../index.html"
-            class="brand-logo"
-            aria-label="BS 360 NEWS Home"
-        >
-
+        <a href="../index.html" class="brand-logo" aria-label="BS 360 NEWS Home">
             <div class="logo-mark">
-
-                <img
-                    src="../dp.png.png"
-                    alt="BS 360 NEWS"
-                >
-
+                <img src="../dp.png.png" alt="BS 360 NEWS">
             </div>
-
 
             <div class="logo-name">
-
                 <div>
-
                     <span>BS 360</span>
-
-                    <span class="logo-red">
-                        NEWS
-                    </span>
-
+                    <span class="logo-red">NEWS</span>
                 </div>
-
-                <span class="logo-tagline">
-                    Fast | Fair | Fearless
-                </span>
-
+                <span class="logo-tagline">Fast | Fair | Fearless</span>
             </div>
-
         </a>
 
-
         <div class="header-actions">
-
-            <button
-                type="button"
-                class="theme-button"
-                id="themeButton"
-                onclick="toggleTheme()"
-            >
-                🌙 Dark
-            </button>
-
+            <button type="button" class="theme-button" id="themeButton"
+                    onclick="toggleTheme()">🌙 Dark</button>
 
             <div class="live-button">
-
                 <span class="live-dot"></span>
-
                 LIVE
-
             </div>
-
         </div>
 
-
-        <button
-            class="mobile-menu-toggle"
-            type="button"
-            aria-label="Navigation menu"
-            onclick="toggleMobileNav()"
-        >
-            ☰
-        </button>
-
+        <button class="mobile-menu-toggle" type="button"
+                aria-label="Navigation menu"
+                aria-controls="navLinks"
+                aria-expanded="false"
+                onclick="toggleMobileNav()">☰</button>
     </div>
-
 </header>
 
-
-<!-- NAVIGATION -->
-
-<nav
-    class="main-nav"
-    aria-label="Main Navigation"
->
-
+<nav class="main-nav" aria-label="Main Navigation">
     <div class="container nav-container">
 
         <div class="lang-selector">
-
-            <a href="../index.html" class="active">
-                తెలుగు
-            </a>
-
+            <a href="../index.html" class="active">తెలుగు</a>
             <span>|</span>
-
-            <span>
-                English
-            </span>
-
+            <span>English</span>
             <span>|</span>
-
-            <span>
-                हिन्दी
-            </span>
-
+            <span>हिन्दी</span>
         </div>
 
-
-        <div
-            class="nav-links"
-            id="navLinks"
-        >
-
-            <a href="../index.html">
-                HOME
-            </a>
-
-            <a href="../MOVIES.html">
-                ENTERTAINMENT
-            </a>
-
-            <a href="../SPORTS.html">
-                SPORTS
-            </a>
-
-            <a href="../AP&TS.html">
-                AP & TS
-            </a>
-
-            <a href="../business.html">
-                BUSINESS
-            </a>
-
+        <div class="nav-links" id="navLinks">
+           <a href="index.html">హోమ్</a>
+            <a href="MOVIES.html">ఎంటర్టైన్మెంట్</a>
+            <a href="SPORTS.html">స్పోర్ట్స్</a>
+            <a href="AP%26TS.html">ఏపీ&amp;టీస్</a>
+            <a href="business.html">బిజినెస్</a>
         </div>
-
     </div>
-
 </nav>
 
-
-<!-- TOP HEADLINES -->
-
 <div class="headlines-bar">
-
     <div class="container">
-
-        <span class="headlines-label">
-            ❗ TOP HEADLINES
-        </span>
-
+        <span class="headlines-label">❗ TOP HEADLINES</span>
         <div class="headlines-text">
-
-            తెలుగు రాష్ట్రాలు, సినిమా, క్రికెట్, స్పోర్ట్స్,
-            బిజినెస్ మరియు జాతీయ వార్తల తాజా అప్‌డేట్స్
-
+            తెలుగు రాష్ట్రాలు, సినిమా, క్రికెట్, స్పోర్ట్స్, బిజినెస్ మరియు జాతీయ వార్తల తాజా అప్‌డేట్స్
         </div>
-
     </div>
-
 </div>
+
 
 
 <!-- MAIN ARTICLE -->
@@ -588,27 +1081,16 @@
 <article class="article-main">
 
 
-<h1 class="article-title">
+<h2 class="article-title">
 
-20 ఏళ్ల తర్వాత త్రివిక్రమ్‌తో వెంకటేష్.. ‘పెళ్లికాని ప్రసాద్’ కాలం పోయింది
 
-</h1>
+ వెంకటేష్–త్రివిక్రమ్ ‘ఆదర్శ కుటుంబం’లో అదిరిపోయే ట్విస్టులు.. చిట్టిబాబు పాత్రపై విక్టరీ హీరో ఆసక్తికర వ్యాఖ్యలు!
+
+</h2>
 
 
 <div class="article-content">
 
-
-<p>
-హైదరాబాద్: విక్టరీ వెంకటేష్, మాటల మాంత్రికుడు త్రివిక్రమ్ శ్రీనివాస్ కాంబినేషన్‌లో తెరకెక్కుతున్న ‘ఆదర్శ కుటుంబం హౌస్ నెం.47 – AK47’ సినిమాపై ఆసక్తి పెరుగుతోంది. దాదాపు 20 ఏళ్ల తర్వాత వెంకటేష్, త్రివిక్రమ్ కలిసి పనిచేస్తుండటంతో ఈ సినిమాపై మొదటి నుంచే అంచనాలు ఉన్నాయి. ఈ నేపథ్యంలో ఆదివారం హైదరాబాద్‌లో నిర్వహించిన ‘నారాయణమ్మ’ పాట విడుదల కార్యక్రమంలో వెంకటేష్ సినిమాతో పాటు త్రివిక్రమ్‌తో తన అనుబంధం, కథలోని తన పాత్ర గురించి ఆసక్తికర విషయాలు వెల్లడించారు.
-</p>
-
-<p>
-‘నువ్వు నాకు నచ్చావ్’, ‘మల్లీశ్వరి’ సినిమాల తర్వాత త్రివిక్రమ్‌తో కలిసి పనిచేస్తుండటం సంతోషంగా ఉందని వెంకటేష్ చెప్పారు. దాదాపు రెండు దశాబ్దాల తర్వాత ఇద్దరూ కలిసి సినిమా చేస్తున్న నేపథ్యంలో కథ విషయంలో తమపై ఒత్తిడి కూడా ఉందని ఆయన తెలిపారు. గతంలో వచ్చిన సినిమాలతో ప్రేక్షకులకు మంచి అనుభూతి ఉండటంతో ఇప్పుడు మరోసారి కలిసి పనిచేసేటప్పుడు ఎలాంటి కథను ఎంచుకోవాలనే విషయంలో ప్రత్యేకంగా ఆలోచించాల్సి వచ్చిందని చెప్పారు.
-</p>
-
-<p>
-తన మాటల్లోనే చెప్పాలంటే, ‘నువ్వు నాకు నచ్చావ్’, ‘మల్లీశ్వరి’ సినిమాలు వచ్చినప్పుడు తన పాత్రలు, ముఖ్యంగా పెళ్లికి దూరంగా ఉండే పాత్రలు ప్రేక్షకులను ఆకట్టుకున్నాయని వెంకటేష్ గుర్తు చేసుకున్నారు. అప్పట్లో ‘పెళ్లికాని ప్రసాద్’ తరహా పాత్రలు నడిచాయని, కానీ ఇప్పుడు పరిస్థితులు మారిపోయాయని సరదాగా వ్యాఖ్యానించారు. పెళ్లిళ్లు కూడా అయిపోయాయని చెప్పిన ఆయన.. ఇప్పుడు త్రివిక్రమ్‌తో ఎలాంటి సినిమా చేయాలనే విషయంలో తమపై చాలా ప్రెజర్ ఉండేదని తెలిపారు.
-</p>
 
 
 <!-- DATE ABOVE IMAGE -->
@@ -618,736 +1100,495 @@
 </div>
 
 
+
+
+
+
+
+
+ వెంకటేష్–త్రివిక్రమ్ ‘ఆదర్శ కుటుంబం’లో అదిరిపోయే ట్విస్టులు.. చిట్టిబాబు పాత్రపై విక్టరీ హీరో ఆసక్తికర వ్యాఖ్యలు!
+
+<p>టాలీవుడ్‌లో విక్టరీ వెంకటేష్, మాటల మాంత్రికుడు త్రివిక్రమ్ శ్రీనివాస్ కాంబినేషన్‌కు ప్రత్యేకమైన గుర్తింపు ఉంది. వీరిద్దరి కలయికలో గతంలో వచ్చిన ‘నువ్వు నాకు నచ్చావ్’, ‘మల్లీశ్వరి’ సినిమాలు ప్రేక్షకులను ఎంతగానో ఆకట్టుకున్నాయి. ఈ చిత్రాల్లో వెంకటేష్ కామెడీ టైమింగ్, త్రివిక్రమ్ మాటలు ప్రేక్షకులను అలరించాయి. ఇప్పుడు దాదాపు రెండు దశాబ్దాల తర్వాత ఈ ఇద్దరూ మరోసారి కలిసి పనిచేస్తుండటంతో ‘ఆదర్శ కుటుంబం హౌస్ నెం.47 – AK47’ సినిమాపై ఆసక్తి పెరుగుతోంది. కుటుంబ వినోదంతో పాటు యాక్షన్, సెంటిమెంట్, ఊహించని మలుపులు ఉంటాయని వెంకటేష్ చెప్పడంతో ఈ సినిమాపై ప్రేక్షకుల్లో అంచనాలు మరింత పెరుగుతున్నాయి.</p>
+
+<p>ఈ నేపథ్యంలో హైదరాబాద్‌లో ఆదివారం నిర్వహించిన ‘నారాయణమ్మ’ పాట విడుదల కార్యక్రమంలో వెంకటేష్ పలు ఆసక్తికర విషయాలను పంచుకున్నారు. త్రివిక్రమ్‌తో మళ్లీ పనిచేయడం ఎలా అనిపిస్తోంది? సినిమాలో తన పాత్ర ఎలా ఉండబోతోంది? కథలో ఎలాంటి అంశాలు ప్రేక్షకులను అలరించనున్నాయి? అనే విషయాలపై మాట్లాడారు. ముఖ్యంగా తన పాత్ర పేరు చిట్టిబాబు అని వెల్లడిస్తూ, అతడి కుటుంబంలో చోటుచేసుకునే పరిస్థితుల గురించి సరదాగా వివరించారు. ఈ వ్యాఖ్యలు సినిమా స్వభావంపై ఆసక్తిని పెంచాయి.</p>
+
+<h3>దాదాపు 20 ఏళ్ల తర్వాత వెంకటేష్–త్రివిక్రమ్ కలయిక</h3>
+
+<p>తెలుగు సినీ ప్రేక్షకులకు వెంకటేష్, త్రివిక్రమ్ కాంబినేషన్ అంటే ముందుగా గుర్తుకొచ్చేవి వినోదభరితమైన సన్నివేశాలు, గుర్తుండిపోయే సంభాషణలు. వీరిద్దరి కలయికలో గతంలో వచ్చిన ‘నువ్వు నాకు నచ్చావ్’, ‘మల్లీశ్వరి’ సినిమాలు మంచి గుర్తింపు పొందాయి. ఈ చిత్రాల్లో వెంకటేష్ తన సహజమైన నటనతో ప్రేక్షకులను నవ్వించగా, త్రివిక్రమ్ మాటలు కథకు ప్రత్యేకమైన ఆకర్షణగా నిలిచాయి. అందుకే ఈ ఇద్దరూ మళ్లీ కలిసి సినిమా చేస్తున్నారనే వార్త మొదటి నుంచే ఆసక్తిని కలిగిస్తోంది.</p>
+
+<p>దాదాపు రెండు దశాబ్దాల తర్వాత మళ్లీ కలిసి పనిచేయడం సంతోషంగా ఉందని వెంకటేష్ తెలిపారు. అయితే గతంలో వచ్చిన సినిమాలు ప్రేక్షకుల మనసుల్లో ప్రత్యేక స్థానం సంపాదించుకోవడంతో ఇప్పుడు మరోసారి కలిసి పనిచేసేటప్పుడు తమపై బాధ్యత కూడా పెరిగిందని చెప్పారు. అప్పటి సినిమాలతో ప్రేక్షకులకు మంచి అనుభూతి ఉంది. ఇప్పుడు కొత్త సినిమాతో వారిని మరోసారి అలరించాలంటే కథ, పాత్రలు, వినోదం విషయంలో ప్రత్యేకంగా ఆలోచించాల్సి ఉంటుందని ఆయన మాటల్లో స్పష్టమైంది.</p>
+
+<p>ఒక విజయవంతమైన కాంబినేషన్ మళ్లీ తెరపైకి వస్తున్నప్పుడు ప్రేక్షకులు సహజంగానే పాత సినిమాలతో పోల్చుకుంటారు. కొత్త చిత్రంలోనూ అలాంటి వినోదం ఉంటుందా? గత సినిమాల్లో కనిపించిన మ్యాజిక్ మళ్లీ పునరావృతమవుతుందా? అనే ప్రశ్నలు అభిమానుల్లో ఉంటాయి. వెంకటేష్ కూడా ఈ అంచనాలను దృష్టిలో పెట్టుకుని కథ విషయంలో తమపై ఒత్తిడి ఉందని చెప్పడం గమనార్హం.</p>
+
+<h3>పాత సినిమాల విజయంతో కథ విషయంలో ప్రత్యేక ఆలోచన</h3>
+
+<p>‘నువ్వు నాకు నచ్చావ్’, ‘మల్లీశ్వరి’ సినిమాలు వచ్చిన సమయంలో తన పాత్రలు ప్రేక్షకులను బాగా ఆకట్టుకున్నాయని వెంకటేష్ గుర్తుచేసుకున్నారు. ముఖ్యంగా పెళ్లికి దూరంగా ఉండే పాత్రలతో అప్పట్లో మంచి వినోదం పండిందని సరదాగా వ్యాఖ్యానించారు. అప్పటి పరిస్థితులు, ప్రేక్షకుల అభిరుచులు ఇప్పుడు కొంత మారాయని ఆయన మాటల్లో వెల్లడైంది. పాత సినిమాల్లో పనిచేసిన విధానాన్ని అలాగే అనుసరించడం కాకుండా, ఇప్పటి ప్రేక్షకులకు సరిపోయే కొత్త కథను ఎంచుకోవాల్సిన అవసరం ఉందని ఆయన అభిప్రాయానికి ఈ వ్యాఖ్యలు అద్దం పడుతున్నాయి.</p>
+
+<p>వెంకటేష్ చెప్పిన విషయాల్లో హాస్యంతో పాటు ఒక ముఖ్యమైన అంశం కూడా ఉంది. ఒకప్పుడు ప్రేక్షకులను అలరించిన పాత్రల తరహాలో మరో సినిమా చేయాలంటే కేవలం అదే రకమైన సన్నివేశాలు పెట్టడం సరిపోదు. కథలో కొత్తదనం ఉండాలి. పాత్రల మధ్య సంబంధాలు సహజంగా కనిపించాలి. వినోదం కథలో భాగంగా ఉండాలి. అప్పుడే ప్రేక్షకులు సినిమాతో అనుబంధం ఏర్పరచుకుంటారు.</p>
+
+<p>త్రివిక్రమ్ మంచి కథ, స్క్రిప్ట్‌తో ముందుకు రావడంతో ఈ ప్రాజెక్ట్‌పై నమ్మకం ఏర్పడిందని వెంకటేష్ తెలిపారు. కథలో యాక్షన్, సెంటిమెంట్, ఎంటర్‌టైన్‌మెంట్‌తో పాటు ఊహించని మలుపులు ఉంటాయని చెప్పారు. దీంతో ‘ఆదర్శ కుటుంబం’ కేవలం సాధారణ కుటుంబ కథగా కాకుండా, విభిన్నమైన పరిస్థితులు, పాత్రలతో సాగిపోయే వినోదాత్మక చిత్రంగా ఉండవచ్చనే ఆసక్తి ప్రేక్షకుల్లో పెరుగుతోంది.</p>
+
+
 <img
     class="article-image"
     src="../venkatesh-aadarsha-kutumbam-press-meet..png"
     alt="వెంకటేష్ - ఆదర్శ కుటుంబం ప్రెస్ మీట్"
     loading="eager"
 >
+<!-- DATE ABOVE IMAGE -->
 
+<div class="article-meta">
+    BS 360 NEWS | సెప్టెంబర్ 27, 2026
+</div>
 
-<p>
-అలాంటి సమయంలో త్రివిక్రమ్ మంచి కథ, స్క్రిప్ట్‌తో ముందుకు వచ్చారని వెంకటేష్ చెప్పారు. ఈ సినిమాలో యాక్షన్, సెంటిమెంట్, ఎంటర్‌టైన్‌మెంట్‌తో పాటు ఊహించని ట్విస్టులు, ఆసక్తికరమైన సన్నివేశాలు ఉంటాయని వెల్లడించారు. సినిమా ట్రీట్‌మెంట్ కూడా కొత్తగా ఉంటుందని చెప్పారు. ప్రేక్షకులు ఇప్పటివరకు ఊహించని విధంగా కొన్ని మలుపులు ఉంటాయని, సినిమా చూసేటప్పుడు ఫ్యామిలీ ఆడియన్స్‌తో పాటు అన్ని వర్గాల ప్రేక్షకులు ఎంజాయ్ చేసేలా రూపొందించారని వివరించారు.
-</p>
+<h3>‘ఆదర్శ కుటుంబం’లో చిట్టిబాబుగా వెంకటేష్</h3>
 
-<p>
-సినిమా పేరులోనే ‘ఆదర్శ కుటుంబం’ ఉన్నప్పటికీ.. ఇది సాధారణ కుటుంబ కథ కాదని వెంకటేష్ స్పష్టం చేశారు. ‘ఇది మామూలు కుటుంబం కాదు.. వేరే లెవెల్’ అంటూ సినిమాపై తనదైన శైలిలో మాట్లాడారు. తన పాత్ర పేరు చిట్టిబాబు అని, అతడి కుటుంబంలో జరిగే పరిస్థితులే కథలో వినోదానికి ప్రధాన కారణంగా నిలుస్తాయని చెప్పారు.
-</p>
+<p>ఈ సినిమాలో తన పాత్ర పేరు చిట్టిబాబు అని వెంకటేష్ వెల్లడించారు. ‘ఆదర్శ కుటుంబం’ అనే పేరు వినగానే ఒక సాధారణ కుటుంబం, వారి మధ్య అనుబంధాలు, సమస్యలు, భావోద్వేగాలతో కూడిన కథ గుర్తుకు రావచ్చు. అయితే ఈ సినిమాలో కుటుంబం చుట్టూ జరిగే సంఘటనలు కొంత భిన్నంగా ఉంటాయని వెంకటేష్ చెప్పిన మాటలు సూచిస్తున్నాయి. ‘ఇది మామూలు కుటుంబం కాదు.. వేరే లెవెల్’ అంటూ ఆయన సరదాగా చేసిన వ్యాఖ్య ప్రత్యేక ఆకర్షణగా నిలిచింది.</p>
 
-<p>
-తన భార్య పాత్ర గురించి కూడా వెంకటేష్ ఆసక్తికరంగా వివరించారు. సినిమాలో తన భార్య స్వర్ణ ఎప్పుడూ అప్పులు చేస్తుంటుందని, తాను మాత్రం ఇంట్లో వంట చేసుకుంటూ ఉండే పరిస్థితి ఉంటుందని చెప్పారు. మరోవైపు ఇంకొక వ్యక్తి పది రూపాయల్లో నాలుగు రూపాయలు కూడా లెక్కపెట్టలేని పరిస్థితిలో ఉంటాడని సరదాగా చెప్పారు. ఇలా కుటుంబంలోని విభిన్న వ్యక్తులు, వారి సమస్యల మధ్య చిట్టిబాబు ఎలా ఇరుక్కుంటాడనేది సినిమాలో వినోదాన్ని పంచుతుందని ఆయన చెప్పిన మాటల ద్వారా తెలుస్తోంది.
-</p>
+<p>చిట్టిబాబు పాత్ర చుట్టూ జరిగే సంఘటనలే కథలో వినోదానికి ప్రధాన కారణంగా నిలుస్తాయని ఆయన వివరించారు. కుటుంబంలోని వ్యక్తుల ఆలోచనలు, వారి ఆర్థిక పరిస్థితులు, ఒకరితో మరొకరికి ఉండే సంబంధాలు కథను ముందుకు నడిపించే అంశాలుగా కనిపిస్తున్నాయి. అయితే కథలోని పూర్తి వివరాలు, ప్రధాన మలుపులు ఏమిటన్నది వెంకటేష్ వెల్లడించలేదు. అందువల్ల సినిమా చూసినప్పుడు మాత్రమే చిట్టిబాబు ఎదుర్కొనే పరిస్థితులు ఎలా ఉంటాయో పూర్తిగా తెలుస్తుంది.</p>
 
-<p>
-వెంకటేష్ చెప్పిన విషయాల్లో సినిమా కథ మాత్రమే కాకుండా జీవితానికి సంబంధించిన ఒక సందేశం కూడా ఉంది. జీవితంలో మనం ఎన్నో ప్రణాళికలు వేసుకున్నా ప్రతి విషయం మన చేతుల్లోనే ఉండదని ఆయన అన్నారు. ఏ టూ జెడ్ వరకు ప్రతిదీ మనమే నియంత్రించాలనే ఆలోచన కంటే, కొన్ని విషయాలను భగవంతుడిపై నమ్మకంతో వదిలేయాలని సూచించారు.
-</p>
+<p>వెంకటేష్‌కు కామెడీ పాత్రల్లో ప్రత్యేకమైన అనుభవం ఉంది. సరదాగా మాట్లాడే విధానం, పరిస్థితులకు తగ్గట్లుగా స్పందించడం, భావోద్వేగ సన్నివేశాల్లోనూ సహజత్వాన్ని చూపించడం ఆయన నటనలో కనిపించే లక్షణాలు. ‘ఆదర్శ కుటుంబం’లో చిట్టిబాబు పాత్రకు ఈ లక్షణాలు ఎలా ఉపయోగపడతాయనేది ఆసక్తికరంగా మారింది. ముఖ్యంగా కుటుంబ కథల్లో చిన్న చిన్న సంఘటనల ద్వారా హాస్యం పండించే అవకాశం ఎక్కువగా ఉంటుంది. ఈ సినిమాలో అలాంటి సన్నివేశాలు ఎలా ఉంటాయో ప్రేక్షకులు ఎదురుచూస్తున్నారు.</p>
 
-<p>
-ప్రకృతితో, యూనివర్స్‌తో కనెక్ట్ అవుతూ అందరికీ మంచి చేయాలని వెంకటేష్ అభిమానులకు సందేశం ఇచ్చారు. సినిమా కార్యక్రమంలో తన అభిమానులతో మాట్లాడుతున్న సందర్భంలో ఆయన చెప్పిన ఈ మాటలు ప్రత్యేకంగా నిలిచాయి. సాధారణంగా సినిమా ప్రమోషన్‌లో సినిమా కథ, పాత్రలు, దర్శకుడు, సంగీతం గురించి మాట్లాడే వెంకటేష్.. ఈసారి వ్యక్తిగత జీవితానికి సంబంధించిన ఒక ఆలోచనను కూడా పంచుకున్నారు.
-</p>
+<h3>భార్య స్వర్ణ పాత్రతో ఇంట్లో జరిగే సరదా సంఘటనలు</h3>
 
-<p>
-ఇక ‘నారాయణమ్మ’ పాట విషయానికి వస్తే.. ఈ పాటను తమన్ సంగీతం అందించగా, ప్రభ, రామ్ మిరియాల పాడారు. రామజోగయ్య శాస్త్రి సాహిత్యం అందించారు. పాటలో డింపుల్ హయాతి ప్రత్యేక ఆకర్షణగా నిలిచారు. ఆమెతో పాటు వెంకటేష్, శ్రీనిధి శెట్టి, నివేదా పేతురాజ్ కూడా కనిపించారు. ఆదివారం హైదరాబాద్‌లోని దస్పల్లా హోటల్‌లో జరిగిన పాట విడుదల కార్యక్రమంతో సినిమా ప్రమోషన్ కార్యక్రమాలు మరింత ఊపందుకున్నాయి.
-</p>
+<p>సినిమాలో తన భార్య పాత్ర పేరు స్వర్ణ అని వెంకటేష్ తెలిపారు. ఆమె ఎప్పుడూ అప్పులు చేస్తుంటుందని, తాను మాత్రం ఇంట్లో వంట చేసుకుంటూ ఉండే పరిస్థితులు ఉంటాయని సరదాగా వివరించారు. ఈ వ్యాఖ్యలతో చిట్టిబాబు కుటుంబంలో ఆర్థిక విషయాలు, భార్యాభర్తల మధ్య పరిస్థితులు వినోదానికి కారణమవుతాయనే ఆసక్తి ఏర్పడింది. సాధారణ కుటుంబాల్లో కనిపించే కొన్ని పరిస్థితులను భిన్నమైన కోణంలో చూపించడం ద్వారా కామెడీ సృష్టించే అవకాశం ఈ పాత్రల రూపకల్పనలో కనిపిస్తోంది.</p>
 
-<p>
-త్రివిక్రమ్‌తో దాదాపు 20 ఏళ్ల తర్వాత కలిసి పనిచేయడంపై వెంకటేష్ సంతోషం వ్యక్తం చేశారు. ‘నువ్వు నాకు నచ్చావ్’, ‘మల్లీశ్వరి’ వంటి సినిమాల తర్వాత మళ్లీ ఇద్దరి కలయికలో వస్తున్న ఈ చిత్రం కుటుంబ వినోదానికి కొత్త ట్రీట్‌మెంట్‌ను అందిస్తుందని ఆయన చెప్పిన మాటలు సినిమా స్వభావంపై ఒక అంచనాను ఇస్తున్నాయి. అయితే కథలోని అసలు ట్విస్టులు, చిట్టిబాబు ఎదుర్కొనే పరిస్థితులు మాత్రం సినిమా విడుదలైన తర్వాతే పూర్తిగా తెలియనున్నాయి.
-</p>
+<p>భార్యాభర్తల మధ్య జరిగే సంభాషణలు, ఇంటి ఖర్చులు, అప్పులు, రోజువారీ సమస్యలు తెలుగు కుటుంబ వినోద చిత్రాల్లో తరచూ కనిపించే అంశాలు. అయితే వాటిని కొత్తగా చూపించడం, పాత్రల ప్రవర్తనలో సహజత్వం ఉండేలా చూడటం దర్శకుడి పనితీరుపై ఆధారపడి ఉంటుంది. వెంకటేష్ చెప్పిన వివరాలను బట్టి ఈ సినిమాలో కుటుంబంలోని వ్యక్తుల మధ్య ఉండే విభిన్న ఆలోచనలు కథకు వినోదాన్ని అందించనున్నట్లు తెలుస్తోంది.</p>
 
-<p>
-‘ఆదర్శ కుటుంబం – AK47’లో వెంకటేష్‌తో పాటు శ్రీనిధి శెట్టి, నారా రోహిత్, నివేదా పేతురాజ్, రావు రమేష్, సత్య, బ్రహ్మాజీ, వెన్నెల కిషోర్ తదితరులు కీలక పాత్రల్లో నటిస్తున్నారు. త్రివిక్రమ్ శ్రీనివాస్ కథ, మాటలు, దర్శకత్వం అందిస్తున్నారు. హారిక అండ్ హాసిని క్రియేషన్స్ బ్యానర్‌పై ఎస్. రాధాకృష్ణ ఈ చిత్రాన్ని నిర్మిస్తున్నారు. సినిమా తొలుత అక్టోబర్ 2న విడుదలవుతుందని ప్రకటించినప్పటికీ, ప్రస్తుతం విడుదల తేదీని అక్టోబర్ 9, 2026గా మార్చారు.
-</p>
+<p>అదే సమయంలో సినిమాలోని ఇతర పాత్రల పరిస్థితుల గురించి కూడా వెంకటేష్ సరదాగా మాట్లాడారు. ఇంకొక వ్యక్తి పది రూపాయల్లో నాలుగు రూపాయలు కూడా లెక్కపెట్టలేని పరిస్థితిలో ఉంటాడని ఆయన వ్యాఖ్యానించారు. ఈ మాటలు సినిమాలోని పాత్రల మధ్య ఉండే వ్యత్యాసాలను సూచిస్తున్నాయి. అయితే ఆ పాత్ర ఎవరిది, కథలో దాని ప్రాధాన్యం ఏమిటి అనే వివరాలను ఆయన పూర్తిగా వెల్లడించలేదు. సినిమా విడుదలైన తర్వాత ఈ పాత్రల మధ్య సంబంధాలు, వాటి వల్ల ఏర్పడే సంఘటనలపై మరింత స్పష్టత వచ్చే అవకాశం ఉంది.</p>
 
-<p>
-మొత్తంగా చూస్తే.. ‘నారాయణమ్మ’ పాట విడుదల కార్యక్రమంలో వెంకటేష్ చేసిన వ్యాఖ్యల్లో రెండు అంశాలు ప్రధానంగా కనిపించాయి. ఒకటి దాదాపు 20 ఏళ్ల తర్వాత త్రివిక్రమ్‌తో కలిసి పనిచేయడంపై ఉన్న ఆనందం. రెండోది ‘ఆదర్శ కుటుంబం’లో తాను పోషిస్తున్న చిట్టిబాబు పాత్ర చుట్టూ ఉండే కుటుంబ పరిస్థితులు, వినోదం. యాక్షన్, సెంటిమెంట్, కామెడీతో పాటు ఊహించని మలుపులు ఉంటాయని వెంకటేష్ చెప్పడంతో ఈ సినిమా ఎలా ఉండబోతుందనే ఆసక్తి మరింత పెరిగింది.
-</p>
+<h3>యాక్షన్, సెంటిమెంట్, కామెడీతో కొత్త ట్రీట్‌మెంట్</h3>
 
+<p>‘ఆదర్శ కుటుంబం హౌస్ నెం.47 – AK47’లో యాక్షన్, సెంటిమెంట్, వినోదం సమపాళ్లలో ఉంటాయని వెంకటేష్ చెప్పారు. ఈ మూడు అంశాలను ఒకే కథలో సమర్థంగా కలపడం ప్రేక్షకులను ఆకట్టుకునే సినిమాకు ముఖ్యమైన అంశం. కేవలం కామెడీతోనే కథను నడిపించడం కాకుండా, పాత్రల జీవితాల్లో ఎదురయ్యే సంఘటనలకు భావోద్వేగాలనూ జోడిస్తే ప్రేక్షకులు కథతో మరింతగా అనుసంధానమవుతారు.</p>
+
+<p>వెంకటేష్ వ్యాఖ్యల ప్రకారం ఈ సినిమాలో ఊహించని ట్విస్టులు, ఆసక్తికరమైన సన్నివేశాలు కూడా ఉండనున్నాయి. అయితే ఆ ట్విస్టులు ఏంటి, కథ ఏ దిశగా సాగుతుంది అనే విషయాలను ఆయన వెల్లడించలేదు. సినిమా గురించి ఎక్కువ వివరాలు బయటపెట్టకుండా, ప్రేక్షకుల్లో ఆసక్తి కొనసాగేలా తన పాత్ర, కథ స్వభావం గురించి మాత్రమే సూచనలు ఇచ్చారు.</p>
+
+<p>త్రివిక్రమ్ సినిమాల్లో సంభాషణలకు ప్రత్యేకమైన ప్రాధాన్యం ఉంటుంది. పాత్రల మధ్య మాటలతోనే హాస్యాన్ని పండించడం, సాధారణ పరిస్థితుల్లోనూ ఆసక్తికరమైన సంభాషణలను సృష్టించడం ఆయన రచనా శైలిలో గుర్తించదగిన అంశాలు. వెంకటేష్ సహజమైన కామెడీ టైమింగ్‌తో ఈ మాటలను తెరపై ఎలా ప్రదర్శిస్తారనేది అభిమానుల్లో ఆసక్తిని పెంచుతోంది. అయితే సినిమా మొత్తం ఎలా ఉంటుందనే విషయంపై తుది నిర్ణయం ప్రేక్షకుల స్పందన వచ్చిన తర్వాతే చెప్పగలం.</p>
+
+<h3>జీవితంపై వెంకటేష్ చెప్పిన సందేశం</h3>
+
+<p>‘నారాయణమ్మ’ పాట విడుదల కార్యక్రమంలో వెంకటేష్ కేవలం సినిమా గురించి మాత్రమే కాకుండా జీవితానికి సంబంధించిన ఒక ఆలోచనను కూడా పంచుకున్నారు. మనం జీవితంలో అనేక ప్రణాళికలు వేసుకుంటామని, ప్రతి విషయాన్ని మన చేతుల్లోనే ఉంచుకోవాలని ప్రయత్నిస్తామని ఆయన అన్నారు. అయితే అన్ని విషయాలను పూర్తిగా నియంత్రించడం సాధ్యం కాదనే భావనను వ్యక్తం చేశారు. కొన్ని విషయాలను భగవంతుడిపై నమ్మకంతో వదిలేయాలని సూచించారు.</p>
+
+<p>జీవితంలో ఎదురయ్యే ప్రతి పరిస్థితిని ముందుగానే ఊహించడం లేదా మనకు అనుకూలంగా మార్చుకోవడం సాధ్యం కాదు. కొన్ని సందర్భాల్లో మన ప్రయత్నం చేయడంతో పాటు పరిస్థితులను అంగీకరించడం కూడా అవసరం. వెంకటేష్ చెప్పిన మాటలను ఈ కోణంలో అర్థం చేసుకోవచ్చు. ఆయన ప్రకృతితో, యూనివర్స్‌తో అనుసంధానంగా ఉంటూ అందరికీ మంచి చేయాలనే సందేశాన్ని కూడా ఇచ్చారు.</p>
+
+<p>సినిమా కార్యక్రమాల్లో సాధారణంగా నటీనటులు తమ పాత్రలు, దర్శకుడు, సంగీతం, నిర్మాణం వంటి అంశాలపై మాట్లాడుతుంటారు. అయితే ఈ కార్యక్రమంలో వెంకటేష్ వ్యక్తిగత జీవితానికి సంబంధించిన ఆలోచనను పంచుకోవడం ప్రత్యేకంగా నిలిచింది. అభిమానులతో మాట్లాడేటప్పుడు ఆయన చెప్పిన ఈ మాటలు కార్యక్రమానికి మరో కోణాన్ని తీసుకొచ్చాయి. సినిమా ప్రమోషన్‌లో భాగంగా పంచుకున్న ఈ సందేశం ఆయన అభిమానులకు ఆసక్తికరంగా అనిపించింది.</p>
+
+<h3>‘నారాయణమ్మ’ పాటకు తమన్ సంగీతం</h3>
+
+<p>ఈ సినిమా ప్రమోషన్‌లో భాగంగా విడుదల చేసిన ‘నారాయణమ్మ’ పాట కూడా ప్రేక్షకుల దృష్టిని ఆకర్షిస్తోంది. ఈ పాటకు తమన్ సంగీతం అందించారు. ప్రభ, రామ్ మిరియాల గానం చేయగా, రామజోగయ్య శాస్త్రి సాహిత్యం అందించారు. సంగీతం, గానం, సాహిత్యం కలిసిన ఈ పాట సినిమా ప్రచారంలో కీలక భాగంగా నిలిచింది. పాట విడుదల కార్యక్రమంతో చిత్ర బృందం ప్రమోషన్ కార్యకలాపాలకు మరింత ఊపునిచ్చింది.</p>
+
+<p>పాటలో డింపుల్ హయాతి ప్రత్యేక ఆకర్షణగా కనిపించారు. ఆమెతో పాటు వెంకటేష్, శ్రీనిధి శెట్టి, నివేదా పేతురాజ్ కూడా కనిపించారు. ప్రముఖ నటీనటులు ఒకే పాటలో కనిపించడం సినిమాపై ఆసక్తిని పెంచే అంశంగా నిలుస్తోంది. అయితే పాటలోని సన్నివేశాలు కథలో ఎలాంటి సందర్భంలో వస్తాయనే విషయాన్ని తెలుసుకోవాలంటే సినిమా విడుదలయ్యే వరకు వేచి చూడాలి.</p>
+
+<p>హైదరాబాద్‌లోని దస్పల్లా హోటల్‌లో నిర్వహించిన పాట విడుదల కార్యక్రమంలో చిత్రానికి సంబంధించిన పలు అంశాలు చర్చకు వచ్చాయి. ఈ వేదికపై వెంకటేష్ చేసిన వ్యాఖ్యలు, పాట విడుదల, నటీనటుల వివరాలు కలిసి సినిమా ప్రచారానికి ప్రాధాన్యం తీసుకొచ్చాయి. కథ గురించి పూర్తిగా వెల్లడించకుండానే కొన్ని అంశాలను పంచుకోవడం ద్వారా చిత్ర బృందం ప్రేక్షకుల్లో ఆసక్తిని కొనసాగిస్తోంది.</p>
+
+<h3>త్రివిక్రమ్ దర్శకత్వంపై అంచనాలు</h3>
+
+<p>దర్శకుడు త్రివిక్రమ్ శ్రీనివాస్ తెలుగు సినిమాల్లో రచయితగా, దర్శకుడిగా ప్రత్యేక గుర్తింపు సంపాదించారు. ఆయన సినిమాల్లో మాటలకు ఉండే ప్రాధాన్యం, కుటుంబ సంబంధాల చుట్టూ నడిచే కథలు, హాస్యంతో కూడిన సంభాషణలు ప్రేక్షకులను ఆకట్టుకున్నాయి. వెంకటేష్‌తో గతంలో పనిచేసిన అనుభవం ఉండటంతో ఈ కొత్త చిత్రంలోనూ ఇద్దరి మధ్య సమన్వయం ఎలా ఉండబోతోందనే ఆసక్తి నెలకొంది.</p>
+
+<p>ఒకే దర్శకుడితో చాలా సంవత్సరాల తర్వాత పనిచేసేటప్పుడు పాత అనుభవాలు ఉపయోగపడటంతో పాటు కొత్త కథకు అనుగుణంగా మార్పులు అవసరమవుతాయి. పాత చిత్రాల విజయాన్ని మాత్రమే ఆధారంగా చేసుకోకుండా, ప్రస్తుత ప్రేక్షకుల అభిరుచులకు తగిన కథను అందించడం ముఖ్యం. వెంకటేష్ చెప్పినట్లుగా, ఈ సినిమాకు కథ విషయంలో ప్రత్యేకమైన ఆలోచన అవసరమైంది. త్రివిక్రమ్ అందించిన స్క్రిప్ట్‌పై ఆయన నమ్మకం వ్యక్తం చేయడం ఈ ప్రాజెక్ట్‌పై అంచనాలను పెంచుతోంది.</p>
+
+<p>అయితే గతంలో విజయవంతమైన కాంబినేషన్ మళ్లీ కలిసిందనే కారణంతోనే కొత్త సినిమా విజయవంతమవుతుందని చెప్పలేం. కథ, నటన, సాంకేతిక అంశాలు, ప్రేక్షకుల అభిరుచులు అన్నీ సినిమా ఫలితాన్ని ప్రభావితం చేస్తాయి. అందువల్ల ‘ఆదర్శ కుటుంబం’ ఎలా ఉండబోతోందనే దానిపై వెంకటేష్ వ్యాఖ్యలు ఆసక్తిని పెంచుతున్నప్పటికీ, అసలు ఫలితం ప్రేక్షకుల స్పందనతోనే స్పష్టమవుతుంది.</p>
+
+<h3>భారీ తారాగణంతో ‘ఆదర్శ కుటుంబం – AK47’</h3>
+
+<p>ఈ చిత్రంలో వెంకటేష్‌తో పాటు శ్రీనిధి శెట్టి, నారా రోహిత్, నివేదా పేతురాజ్, రావు రమేష్, సత్య, బ్రహ్మాజీ, వెన్నెల కిషోర్ తదితరులు కీలక పాత్రల్లో నటిస్తున్నారు. విభిన్నమైన నటీనటులు ఒకే సినిమాలో ఉండటంతో కథలోని పాత్రలు ఎలా ఉంటాయనే ఆసక్తి నెలకొంది. ముఖ్యంగా కుటుంబ కథల్లో ప్రతి పాత్రకు ఒక ప్రత్యేకమైన లక్షణం ఉంటేనే కథలో వినోదం, భావోద్వేగాలు సమర్థంగా పండుతాయి.</p>
+
+<p>త్రివిక్రమ్ శ్రీనివాస్ ఈ సినిమాకు కథ, మాటలు, దర్శకత్వం అందిస్తున్నారు. హారిక అండ్ హాసిని క్రియేషన్స్ బ్యానర్‌పై ఎస్. రాధాకృష్ణ నిర్మిస్తున్నారు. ఈ నిర్మాణ సంస్థ, దర్శకుడు, ప్రధాన నటుడి కలయికతో సినిమా గురించి ప్రేక్షకుల్లో చర్చ కొనసాగుతోంది. అయితే ప్రతి నటుడి పాత్రకు సంబంధించిన పూర్తి వివరాలు ఇంకా తెలియాల్సి ఉంది.</p>
+
+<p>సినిమా టైటిల్‌లోని ‘ఆదర్శ కుటుంబం’ అనే పదాలు ఒక ప్రత్యేకమైన కుటుంబ కథను సూచిస్తున్నప్పటికీ, వెంకటేష్ చేసిన వ్యాఖ్యలను బట్టి కథలో వినోదభరితమైన పరిస్థితులు, అనూహ్య మలుపులు కూడా ఉండనున్నట్లు తెలుస్తోంది. చిట్టిబాబు, స్వర్ణ పాత్రల మధ్య సంబంధం, కుటుంబంలో చోటుచేసుకునే సమస్యలు, ఇతర పాత్రలతో ఏర్పడే పరిణామాలు కథను ఎలా ముందుకు తీసుకెళ్తాయనేది ఆసక్తికరంగా మారింది.</p>
+
+<h3>విడుదల తేదీపై ప్రేక్షకుల దృష్టి</h3>
+
+<p>మీరు అందించిన వివరాల ప్రకారం, ‘ఆదర్శ కుటుంబం హౌస్ నెం.47 – AK47’ సినిమా మొదట అక్టోబర్ 2న విడుదల కావాల్సి ఉండగా, విడుదల తేదీని అక్టోబర్ 9, 2026గా మార్చారు. అయితే సినిమా విడుదల తేదీల్లో మార్పులు జరిగే అవకాశం ఉండటంతో, కథనాన్ని వెబ్‌సైట్‌లో ప్రచురించే ముందు నిర్మాణ సంస్థ లేదా చిత్ర బృందం ప్రకటించిన తాజా సమాచారాన్ని మరోసారి పరిశీలించడం మంచిది.</p>
+
+<p>విడుదల తేదీ దగ్గరపడే కొద్దీ సినిమా ప్రమోషన్ కార్యక్రమాలు, పాటలు, ట్రైలర్, నటీనటుల ఇంటర్వ్యూలపై ప్రేక్షకుల్లో ఆసక్తి పెరుగుతుంది. ‘నారాయణమ్మ’ పాట విడుదల కార్యక్రమంలో వెంకటేష్ చేసిన వ్యాఖ్యలు కూడా అదే ఆసక్తిని పెంచే అంశంగా నిలిచాయి. ముఖ్యంగా త్రివిక్రమ్‌తో చాలా సంవత్సరాల తర్వాత పనిచేయడం, కొత్త కథలో తన పాత్ర గురించి చెప్పిన వివరాలు సినిమాపై చర్చను మరింత పెంచాయి.</p>
+
+<h3>మొత్తంగా ‘ఆదర్శ కుటుంబం’పై పెరుగుతున్న అంచనాలు</h3>
+
+<p>వెంకటేష్, త్రివిక్రమ్ కాంబినేషన్‌లో వస్తున్న ‘ఆదర్శ కుటుంబం హౌస్ నెం.47 – AK47’పై ప్రేక్షకుల్లో ఆసక్తి పెరగడానికి పలు కారణాలు ఉన్నాయి. దాదాపు రెండు దశాబ్దాల తర్వాత వీరిద్దరూ కలిసి పనిచేయడం ఒక ముఖ్యమైన అంశం. ‘నువ్వు నాకు నచ్చావ్’, ‘మల్లీశ్వరి’ వంటి పాత సినిమాల జ్ఞాపకాలు మరో కారణం. ఇప్పుడు చిట్టిబాబు పాత్ర చుట్టూ జరిగే సంఘటనలు, కుటుంబంలోని విభిన్న వ్యక్తుల మధ్య ఏర్పడే పరిస్థితులు, యాక్షన్, సెంటిమెంట్, కామెడీతో కూడిన కథ అనే అంశాలు ఈ సినిమాపై అంచనాలను పెంచుతున్నాయి.</p>
+
+<p>‘నారాయణమ్మ’ పాట విడుదల కార్యక్రమంలో వెంకటేష్ చేసిన వ్యాఖ్యలు సినిమా కథను పూర్తిగా బయటపెట్టకపోయినా, దాని స్వభావంపై కొన్ని సూచనలు ఇచ్చాయి. త్రివిక్రమ్ మంచి స్క్రిప్ట్‌తో ముందుకు వచ్చారని చెప్పడం, కథలో ఊహించని మలుపులు ఉంటాయని వెల్లడించడం అభిమానుల్లో ఆసక్తిని పెంచాయి. మరోవైపు జీవితంలో ప్రతిదీ మన చేతుల్లో ఉండదని, కొన్ని విషయాలను నమ్మకంతో వదిలేయాలని ఆయన చెప్పిన మాటలు కూడా కార్యక్రమంలో ప్రత్యేకంగా నిలిచాయి.</p>
+
+<p>మొత్తానికి, పాత విజయవంతమైన కాంబినేషన్ మళ్లీ ప్రేక్షకుల ముందుకు రావడం, కొత్త కథలో వెంకటేష్ చిట్టిబాబుగా కనిపించనుండటం ఈ చిత్రానికి ప్రధాన ఆకర్షణలుగా నిలుస్తున్నాయి. అయితే సినిమా కథలోని అసలు ట్విస్టులు, పాత్రల మధ్య సంబంధాలు, వినోదం ఎంతవరకు ఆకట్టుకుంటాయనే విషయాలు తెరపై చూసిన తర్వాతే తెలుస్తాయి. అప్పటివరకు వెంకటేష్ తాజా వ్యాఖ్యలు, పాట విడుదల, చిత్ర బృందం నుంచి వచ్చే అధికారిక అప్‌డేట్స్‌పై అభిమానుల దృష్టి కొనసాగనుంది.</p>
 
 </div>
 
 </article>
 
 
-<!-- SIDEBAR -->
+  <aside class="article-sidebar">
 
-<aside class="article-sidebar">
+            <section class="news-section">
+                <h2 class="section-heading">జాతీయ వార్తలు</h2>
+                <div id="nationalGrid" class="side-news-list"></div>
+            </section>
 
+            <section class="news-section">
+                <h2 class="section-heading">తాజా వార్తలు</h2>
+                <div id="latestSidebar" class="side-news-list"></div>
+            </section>
 
-<div class="sidebar-box">
+            <section class="news-section">
+                <h2 class="section-heading">ట్రెండింగ్ వార్తలు</h2>
+                <div id="trendingSidebar" class="side-news-list"></div>
+            </section>
 
-    <div class="sidebar-title">
-        Trending News
+            <section class="news-section">
+                <h2 class="section-heading">సినిమా వార్తలు</h2>
+                <div id="movieReviewsSidebar" class="side-news-list"></div>
+            </section>
+
+            
+
+        </aside>
     </div>
 
-    <div id="trendingSidebar"></div>
-
-</div>
-
-
-<div class="sidebar-box">
-
-    <div class="sidebar-title">
-        Latest News
+<!-- SPORTS NEWS -->
+<section class="category-ad-layout">
+    <div class="category-news">
+        <h2>క్రీడా వార్తలు</h2>
+        <div id="sportsGrid" class="news-grid"></div>
     </div>
-
-    <div id="latestSidebar"></div>
-
-</div>
-
-
-<div class="sidebar-box">
-
-    <div class="sidebar-title">
-        Most Read
+   
+</section>
+<!-- ENTERTAINMENT NEWS -->
+<section class="category-ad-layout">
+    <div class="category-news">
+        <h2>సినిమా అప్‌డేట్స్</h2>
+        <div id="cinemaGrid" class="news-grid"></div>
     </div>
-
-    <div id="mostReadSidebar"></div>
-
-</div>
-
-
-</aside>
-
-</div>
-
-
-<!-- LATEST -->
-
-<section class="related-section">
-
-    <div class="related-title">
-         Latest News
-    </div>
-
-    <div
-        id="latestGrid"
-        class="news-grid"
-    ></div>
-
+   
 </section>
 
-
-<!-- SPORTS -->
-
-<section class="related-section">
-
-    <div class="related-title">
-         Sports
+<!-- BUSINESS NEWS -->
+<section class="category-ad-layout">
+    <div class="category-news">
+        <h2>వ్యాపార వార్తలు</h2>
+        <div id="businessGrid" class="news-grid"></div>
     </div>
-
-    <div
-        id="sportsGrid"
-        class="news-grid"
-    ></div>
-
+   
 </section>
 
-
-<!-- ENTERTAINMENT -->
-
-<section class="related-section">
-
-    <div class="related-title">
-         Entertainment
+<!-- AP NEWS -->
+<section class="category-ad-layout">
+    <div class="category-news">
+        <h2>ఆంధ్రప్రదేశ్ & తెలంగాణ వార్తలు</h2>
+        <div id="aptsGrid" class="news-grid"></div>
     </div>
 
-    <div
-        id="moviesGrid"
-        class="news-grid"
-    ></div>
-
+ 
 </section>
 
-
-<!-- AP TS -->
-
-<section class="related-section">
-
-    <div class="related-title">
-         AP & TS
+<!-- MOVIE REVIEWS -->
+<section class="movie-reviews-section">
+    <h2>సినిమా వార్తలు</h2>
+    <div id="movieReviewsGrid" class="news-grid"></div>
+</section>
+  <!-- ALL MOVIE NEWS FROM MOVIES.html -->
+<section class="movie-reviews-section" id="movieReviewsSection">
+    
+    <div id="movieReviewsGrid" class="news-grid">
+        
     </div>
-
-    <div
-        id="aptsGrid"
-        class="news-grid"
-    ></div>
-
 </section>
-
-
-<!-- BUSINESS -->
-
-<section class="related-section">
-
-    <div class="related-title">
-         Business
-    </div>
-
-    <div
-        id="businessGrid"
-        class="news-grid"
-    ></div>
-
-</section>
-
 
 </main>
 
-
-<!-- FOOTER -->
-
 <footer class="site-footer">
-
     <div class="container footer-inner">
 
-
         <div class="footer-column">
-
-            <h3>
-                ముఖ్యమైన లింకులు
-            </h3>
-
-
+            <h3>ముఖ్యమైన లింకులు</h3>
             <div class="footer-links">
-
-                <a href="../advertise.html">
-                    Advertise With Us
-                </a>
-
-                <a href="../about.html">
-                    About Us
-                </a>
-
-                <a href="../contact.html">
-                    Contact Us
-                </a>
-
-                <a href="../Privacy Policy.html">
-                    Privacy Policy
-                </a>
-
-                <a href="../disclaimer.html">
-                    Disclaimer
-                </a>
-
-                <a href="../terms.html">
-                    Terms & Conditions
-                </a>
-
+                <a href="../advertise.html">Advertise With Us</a>
+                <a href="../about.html">About Us</a>
+                <a href="../contact.html">Contact Us</a>
+                <a href="../Privacy%20Policy.html">Privacy Policy</a>
+                <a href="../disclaimer.html">Disclaimer</a>
+                <a href="../terms.html">Terms &amp; Conditions</a>
             </div>
-
         </div>
-
 
         <div class="footer-contact">
-
-            <h3>
-                Contact
-            </h3>
-
-            <p>
-                newsb386@gmail.com
-            </p>
-
-            <p>
-                Follow us for latest updates.
-            </p>
-
+            <h3>Contact</h3>
+            <p>newsb386@gmail.com</p>
+            <p>Follow us for latest updates.</p>
         </div>
 
     </div>
 
-
     <div class="copyright">
-
         © 2026 BS 360 NEWS. All rights reserved.
-
     </div>
-
 </footer>
 
-
-<!-- AUTOMATIC ARTICLE NEWS SYSTEM -->
-
 <script>
+/* MOBILE NAVIGATION */
+function toggleMobileNav() {
+    const nav = document.getElementById("navLinks");
+    const button = document.querySelector(".mobile-menu-toggle");
+
+    if (!nav || !button) return;
+
+    const isOpen = nav.classList.toggle("mobile-open");
+    button.setAttribute("aria-expanded", String(isOpen));
+}
+
+/* DARK MODE */
+function toggleTheme() {
+    const isDark = document.body.classList.toggle("dark-mode");
+    const button = document.getElementById("themeButton");
+
+    if (button) {
+        button.textContent = isDark ? "☀️ Light" : "🌙 Dark";
+    }
+}
 
 document.addEventListener("DOMContentLoaded", function () {
+    const HOME = "https://bs360news.com/index.html";
+    const MOVIES = "https://bs360news.com/MOVIES.html";
 
-    "use strict";
+    const otherSections = [
+        { target: "nationalGrid", source: "nationalSection", limit: 5 },
+        { target: "latestSidebar", source: "latestGrid", limit: 5 },
+        { target: "trendingSidebar", source: "trendingSidebar", limit: 5 },
+        { target: "sportsGrid", source: "sportsSection", limit: 5 },
+        { target: "cinemaGrid", source: "entertainmentSection", limit: 5 },
+        { target: "businessGrid", source: "businessSection", limit: 5 },
+        { target: "aptsGrid", source: "aptsSection", limit: 5 }
+    ];
 
+    function absoluteURL(value, base) {
+        if (!value) return "";
 
-    function cleanText(text) {
-
-        return String(text || "")
-            .replace(/\s+/g, " ")
-            .trim();
-
+        try {
+            return new URL(value, base).href;
+        } catch {
+            return "";
+        }
     }
 
-
-    function getArticles(home, sourceId) {
-
-        const source =
-            home.getElementById(sourceId);
+    function readMovieArticles(doc) {
+        const source = doc.getElementById("localMoviesSource");
 
         if (!source) {
+            console.error("MOVIES.html: localMoviesSource not found");
             return [];
         }
 
+        const articles = [];
+        const seen = new Set();
 
-        return Array.from(
-            source.querySelectorAll(".news-item.post")
-        )
-
-        .map(function (item) {
-
-            const image =
-                item.querySelector("img");
-
-            const title =
-                item.querySelector(".news-content p") ||
-                item.querySelector(".news-content h3") ||
-                item.querySelector("p");
-
-
-            return {
-
-                title:
-                    cleanText(
-                        title
-                            ? title.textContent
-                            : ""
-                    ),
-
-                image:
-                    image
-                        ? image.getAttribute("src") || ""
-                        : "",
-
-                alt:
-                    image
-                        ? image.getAttribute("alt") || ""
-                        : "",
-
-                url:
-                    item.getAttribute("data-url") || ""
-
-            };
-
-        })
-
-        .filter(function (item) {
-
-            return (
-                item.title &&
-                item.image &&
-                item.url
+        source.querySelectorAll(".news-item.post").forEach(function (item) {
+            const img = item.querySelector("img");
+            const heading = item.querySelector(
+                ".news-content p, .news-content h3, h2, h3"
             );
 
+            const title = (
+                heading?.textContent || img?.alt || ""
+            ).replace(/\s+/g, " ").trim();
+
+            const url = absoluteURL(item.getAttribute("data-url"), MOVIES);
+
+            const image = absoluteURL(
+                img?.getAttribute("data-src") ||
+                img?.getAttribute("data-lazy-src") ||
+                img?.getAttribute("src"),
+                MOVIES
+            );
+
+            if (!title || !url || !image) return;
+
+            if (new URL(url).origin !== new URL(HOME).origin) return;
+            if (seen.has(url)) return;
+
+            seen.add(url);
+
+            articles.push({
+                title,
+                url,
+                image,
+                alt: img?.alt || title
+            });
         });
 
+        return articles;
     }
 
+    function readHomeArticles(doc, sourceId) {
+        const source = doc.getElementById(sourceId);
+        if (!source) return [];
 
-    function fixPath(path) {
+        const articles = [];
+        const seen = new Set();
 
-        if (!path) {
-            return "";
+        source.querySelectorAll(
+            "article, .news-card, .news-item, .post, li"
+        ).forEach(function (card) {
+            const link = card.matches("a[href]")
+                ? card
+                : card.querySelector("a[href]");
+
+            const img = card.querySelector("img");
+            if (!link || !img) return;
+
+            const heading = card.querySelector(
+                "h1, h2, h3, h4, .post-title, .news-title, .title, .news-content p"
+            );
+
+            const title = (
+                heading?.textContent ||
+                img.alt ||
+                link.textContent ||
+                ""
+            ).replace(/\s+/g, " ").trim();
+
+            const url = absoluteURL(link.getAttribute("href"), HOME);
+
+            const image = absoluteURL(
+                img.getAttribute("data-src") ||
+                img.getAttribute("data-lazy-src") ||
+                img.getAttribute("src"),
+                HOME
+            );
+
+            if (!title || !url || !image) return;
+            if (new URL(url).origin !== new URL(HOME).origin) return;
+            if (seen.has(url)) return;
+
+            seen.add(url);
+            articles.push({
+                title,
+                url,
+                image,
+                alt: img.alt || title
+            });
+        });
+
+        return articles;
+    }
+
+    function renderArticles(targetId, articles, limit) {
+        const target = document.getElementById(targetId);
+        if (!target) return;
+
+        target.replaceChildren();
+
+        const list = limit ? articles.slice(0, limit) : articles;
+
+        list.forEach(function (item) {
+            const link = document.createElement("a");
+            link.className = "news-card";
+            link.href = item.url;
+
+            const image = document.createElement("img");
+            image.src = item.image;
+            image.alt = item.alt;
+            image.loading = "lazy";
+
+            const title = document.createElement("h3");
+            title.textContent = item.title;
+
+            link.append(image, title);
+            target.appendChild(link);
+        });
+    }
+
+    /* MOVIE REVIEWS MUST END AT MAIN ARTICLE BOTTOM */
+    function limitMovieReviewsToArticle() {
+        const main = document.querySelector(".article-main");
+        const sidebar = document.querySelector(".article-sidebar");
+        const section = document.getElementById("movieReviewsSidebar");
+
+        if (!main || !sidebar || !section) return;
+
+        const list = section;
+        const heading = section.previousElementSibling;
+
+        list.style.maxHeight = "";
+        list.style.overflow = "";
+
+        if (window.innerWidth <= 700) return;
+
+        const mainHeight = main.getBoundingClientRect().height;
+        const sectionTop =
+            section.getBoundingClientRect().top -
+            sidebar.getBoundingClientRect().top;
+
+        const headingHeight = heading
+            ? heading.getBoundingClientRect().height
+            : 0;
+
+        const availableHeight = mainHeight - sectionTop - headingHeight - 12;
+
+        if (availableHeight <= 0) {
+            section.parentElement.style.display = "none";
+            return;
         }
 
-        if (
-            path.startsWith("http://") ||
-            path.startsWith("https://") ||
-            path.startsWith("../") ||
-            path.startsWith("/")
-        ) {
-
-            return path;
-
-        }
-
-        return "../" + path;
-
+        section.parentElement.style.display = "";
+        list.style.maxHeight = availableHeight + "px";
+        list.style.overflow = "hidden";
     }
 
-
-    function sidebarHTML(article) {
-
-        return `
-            <a
-                href="${fixPath(article.url)}"
-                class="sidebar-item"
-            >
-
-                <img
-                    src="${fixPath(article.image)}"
-                    alt="${article.alt || article.title}"
-                    loading="lazy"
-                >
-
-                <div class="sidebar-item-title">
-                    ${article.title}
-                </div>
-
-            </a>
-        `;
-
-    }
-
-
-    function cardHTML(article) {
-
-        return `
-            <a
-                href="${fixPath(article.url)}"
-                class="news-card"
-            >
-
-                <img
-                    src="${fixPath(article.image)}"
-                    alt="${article.alt || article.title}"
-                    loading="lazy"
-                >
-
-                <h3>
-                    ${article.title}
-                </h3>
-
-            </a>
-        `;
-
-    }
-
-
-    function mostReadHTML(article, number) {
-
-        return `
-            <a
-                href="${fixPath(article.url)}"
-                class="most-read-item"
-            >
-
-                <div class="most-read-number">
-                    ${number}
-                </div>
-
-                <img
-                    src="${fixPath(article.image)}"
-                    alt="${article.alt || article.title}"
-                    loading="lazy"
-                >
-
-                <div class="most-read-title">
-                    ${article.title}
-                </div>
-
-            </a>
-        `;
-
-    }
-
-
-    function show(id, html) {
-
-        const element =
-            document.getElementById(id);
-
-        if (element) {
-
-            element.innerHTML = html;
-
-        }
-
-    }
-
-
-    /* LOAD MAIN HOMEPAGE */
-
-    fetch(
-        "../index.html?v=" + Date.now(),
-        {
-            cache: "no-store"
-        }
-    )
-
-    .then(function (response) {
-
-        if (!response.ok) {
-
-            throw new Error(
-                "Main index.html load failed"
-            );
-
-        }
-
-        return response.text();
-
-    })
-
-    .then(function (html) {
-
-        const parser =
-            new DOMParser();
-
-
-        const home =
-            parser.parseFromString(
-                html,
-                "text/html"
-            );
-
-
-        const latest =
-            getArticles(
-                home,
-                "latestNewsSource"
-            );
-
-
-        const trending =
-            getArticles(
-                home,
-                "trendingSource"
-            );
-
-
-        const mostRead =
-            getArticles(
-                home,
-                "mostReadSource"
-            );
-
-
-        const apts =
-            getArticles(
-                home,
-                "aptsSource"
-            );
-
-
-        const sports =
-            getArticles(
-                home,
-                "sportsSource"
-            );
-
-
-        const entertainment =
-            getArticles(
-                home,
-                "entertainmentSource"
-            );
-
-
-        const business =
-            getArticles(
-                home,
-                "businessSource"
-            );
-
-
-        show(
-            "trendingSidebar",
-
-            trending
-                .slice(0, 8)
-                .map(sidebarHTML)
-                .join("")
-        );
-
-
-        show(
-            "latestSidebar",
-
-            latest
-                .slice(0, 8)
-                .map(sidebarHTML)
-                .join("")
-        );
-
-
-        show(
-            "mostReadSidebar",
-
-            mostRead
-                .slice(0, 8)
-                .map(function (
-                    article,
-                    index
-                ) {
-
-                    return mostReadHTML(
-                        article,
-                        index + 1
-                    );
-
-                })
-                .join("")
-        );
-
-
-        show(
-            "latestGrid",
-
-            latest
-                .slice(0, 8)
-                .map(cardHTML)
-                .join("")
-        );
-
-
-        show(
-            "sportsGrid",
-
-            sports
-                .slice(0, 8)
-                .map(cardHTML)
-                .join("")
-        );
-
-
-        show(
-            "moviesGrid",
-
-            entertainment
-                .slice(0, 8)
-                .map(cardHTML)
-                .join("")
-        );
-
-
-        show(
-            "aptsGrid",
-
-            apts
-                .slice(0, 8)
-                .map(cardHTML)
-                .join("")
-        );
-
-
-        show(
-            "businessGrid",
-
-            business
-                .slice(0, 8)
-                .map(cardHTML)
-                .join("")
-        );
-
-
-        console.log(
-            "BS360 HOME ARTICLES LOADED"
-        );
-
-
-    })
-
-    .catch(function (error) {
-
-        console.error(
-            "BS360 NEWS ERROR:",
-            error
-        );
-
-    });
-
-
-    /* MOBILE NAV */
-
-    window.toggleMobileNav =
-        function () {
-
-            const nav =
-                document.getElementById(
-                    "navLinks"
-                );
-
-
-            if (nav) {
-
-                nav.classList.toggle(
-                    "mobile-open"
-                );
-
+    async function loadArticles() {
+        try {
+            const [homeResponse, moviesResponse] = await Promise.all([
+                fetch(HOME, { cache: "no-store" }),
+                fetch(MOVIES, { cache: "no-store" })
+            ]);
+
+            if (!homeResponse.ok || !moviesResponse.ok) {
+                throw new Error("Homepage or MOVIES.html could not load");
             }
 
-        };
+            const [homeHTML, moviesHTML] = await Promise.all([
+                homeResponse.text(),
+                moviesResponse.text()
+            ]);
 
+            const parser = new DOMParser();
 
-    /* DARK MODE */
+            const homeDoc = parser.parseFromString(homeHTML, "text/html");
+            const moviesDoc = parser.parseFromString(moviesHTML, "text/html");
 
-    window.toggleTheme =
-        function () {
+            const movieArticles = readMovieArticles(moviesDoc);
 
-            document.body.classList.toggle(
-                "dark-mode"
-            );
+            renderArticles("movieReviewsGrid", movieArticles, 0);
+            renderArticles("movieReviewsSidebar", movieArticles, 30);
 
+            otherSections.forEach(function (section) {
+                const articles = readHomeArticles(homeDoc, section.source);
+                renderArticles(section.target, articles, section.limit);
+            });
 
-            const button =
-                document.getElementById(
-                    "themeButton"
-                );
+            requestAnimationFrame(function () {
+                requestAnimationFrame(limitMovieReviewsToArticle);
+            });
 
+            console.log("Movie articles:", movieArticles.length);
 
-            const dark =
-                document.body.classList.contains(
-                    "dark-mode"
-                );
-
-
-            if (button) {
-
-                button.textContent =
-                    dark
-                        ? "☀️ Light"
-                        : "🌙 Dark";
-
-            }
-
-
-            localStorage.setItem(
-                "bs360-theme",
-                dark
-                    ? "dark"
-                    : "light"
-            );
-
-        };
-
-
-    if (
-        localStorage.getItem(
-            "bs360-theme"
-        ) === "dark"
-    ) {
-
-        document.body.classList.add(
-            "dark-mode"
-        );
-
-
-        const button =
-            document.getElementById(
-                "themeButton"
-            );
-
-
-        if (button) {
-
-            button.textContent =
-                "☀️ Light";
-
+        } catch (error) {
+            console.error("BS360NEWS loading error:", error);
         }
-
     }
 
+    loadArticles();
+
+    window.addEventListener("load", limitMovieReviewsToArticle);
+    window.addEventListener("resize", limitMovieReviewsToArticle);
 });
 
-</script>
+const image = absoluteURL(
+    img.getAttribute("data-src") ||
+    img.getAttribute("data-lazy-src") ||
+    img.getAttribute("src"),
+    HOME
+);
+  
+          </script>
 
-
+  
 </body>
-
 </html>
