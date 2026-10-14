@@ -1209,7 +1209,7 @@ BS 360 NEWSలో తాజా తెలుగు సినిమా వార�
 <!-- ENTERTAINMENT NEWS -->
 <section class="category-ad-layout">
     <div class="category-news">
-        <h2>సినిమా అప్‌డేట్స్</h2>
+        <h2>క్రీడా వార్తలు</h2>
         <div id="cinemaGrid" class="news-grid"></div>
     </div>
    
@@ -1236,7 +1236,7 @@ BS 360 NEWSలో తాజా తెలుగు సినిమా వార�
 
 <!-- MOVIE REVIEWS -->
 <section class="movie-reviews-section">
-    <h2>సినిమా వార్తలు</h2>
+    <h2>మరిన్ని క్రీడా వార్తలు</h2>
     <div id="movieReviewsGrid" class="news-grid"></div>
 </section>
 
@@ -1290,7 +1290,6 @@ function toggleTheme() {
 
 document.addEventListener("DOMContentLoaded", function () {
     const HOME = new URL("../index.html", window.location.href).href;
-    const MOVIES = new URL("../MOVIES.html", window.location.href).href;
     const SPORTS = new URL("../SPORTS.html", window.location.href).href;
 
     function absoluteURL(value, base) {
@@ -1385,61 +1384,72 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     async function loadArticles() {
-        try {
-            const results = await Promise.allSettled([
-                fetchDocument(HOME), fetchDocument(MOVIES), fetchDocument(SPORTS)
-            ]);
-            const homeDoc = results[0].status === "fulfilled" ? results[0].value : null;
-            const moviesDoc = results[1].status === "fulfilled" ? results[1].value : null;
-            const sportsDoc = results[2].status === "fulfilled" ? results[2].value : null;
+        const homePromise = fetchDocument(HOME).catch(function (error) {
+            console.error("Homepage source could not load:", error);
+            return null;
+        });
+        const sportsPromise = fetchDocument(SPORTS).catch(function (error) {
+            console.error("SPORTS.html source could not load:", error);
+            return null;
+        });
 
-            if (homeDoc) {
-                renderArticles("nationalGrid", readSource(homeDoc, HOME,
-                    ["nationalSection", "nationalNewsSection", "nationalGrid", "nationalNewsSource"],
-                    [".news-item.post[data-category='national']", "[data-category='national']"]), 5);
-                renderArticles("latestSidebar", readSource(homeDoc, HOME,
-                    ["latestNewsSource", "latestGrid", "latestSection", "latestNewsSection"],
-                    [".news-item.post", ".post[data-url]", ".news-card"]), 5);
-                renderArticles("trendingSidebar", readSource(homeDoc, HOME,
-                    ["trendingSource", "trendingGrid", "trendingSection", "trendingSidebar"],
-                    [".news-item.post[data-trending]", "[data-category='trending']"]), 5);
-                renderArticles("businessGrid", readSource(homeDoc, HOME,
-                    ["businessSource", "businessGrid", "businessSection"],
-                    [".news-item.post[data-category='business']", "[data-category='business']"]), 5);
-                renderArticles("aptsGrid", readSource(homeDoc, HOME,
-                    ["aptsSource", "aptsGrid", "aptsSection"],
-                    [".news-item.post[data-category='apts']", ".news-item.post[data-category='ap-ts']", "[data-category='apts']"]), 5);
+        const [homeDoc, sportsDoc] = await Promise.all([homePromise, sportsPromise]);
+
+        if (homeDoc) {
+            renderArticles("nationalGrid", readSource(homeDoc, HOME,
+                ["nationalSection", "nationalNewsSection", "nationalGrid", "nationalNewsSource"],
+                [".news-item.post[data-category='national']", "[data-category='national']"]), 5);
+            renderArticles("latestSidebar", readSource(homeDoc, HOME,
+                ["latestNewsSource", "latestGrid", "latestSection", "latestNewsSection"],
+                [".news-item.post", ".post[data-url]", ".news-card"]), 5);
+            renderArticles("trendingSidebar", readSource(homeDoc, HOME,
+                ["trendingSource", "trendingGrid", "trendingSection", "trendingSidebar"],
+                [".news-item.post[data-trending]", "[data-category='trending']"]), 5);
+            renderArticles("businessGrid", readSource(homeDoc, HOME,
+                ["businessSource", "businessGrid", "businessSection"],
+                [".news-item.post[data-category='business']", "[data-category='business']"]), 5);
+            renderArticles("aptsGrid", readSource(homeDoc, HOME,
+                ["aptsSource", "aptsGrid", "aptsSection"],
+                [".news-item.post[data-category='apts']", ".news-item.post[data-category='ap-ts']", "[data-category='apts']"]), 5);
+        }
+
+        if (sportsDoc) {
+            /*
+              SPORTS NEWS SOURCE:
+              Read every article from SPORTS.html's localSportsSource first.
+              These cards use data-url + img + .news-content p (no anchor tag).
+              New articles added to that source automatically appear here.
+            */
+            const sportsSource = sportsDoc.getElementById("localSportsSource");
+            let sports = sportsSource
+                ? readCards(sportsSource, SPORTS, [".news-item.post[data-url]", ".news-item.post", ".post[data-url]"])
+                : [];
+
+            /* If the source container is renamed/removed, try known sports containers. */
+            if (!sports.length) {
+                sports = readSource(sportsDoc, SPORTS,
+                    ["sportsNewsSource", "latestSportsGrid", "sportsGrid", "latestGrid", "allSportsGrid", "sportsSection", "sportsNewsSection", "menSportsGrid", "womenSportsGrid", "sportsNews", "allSports"],
+                    [".news-item.post[data-category='sports']", "[data-category='sports']"]);
             }
 
-            if (sportsDoc) {
-                const sports = readSource(sportsDoc, SPORTS,
-                    ["localSportsSource", "sportsNewsSource", "latestSportsGrid", "sportsGrid", "latestGrid", "allSportsGrid", "sportsSection", "sportsNewsSection", "menSportsGrid", "womenSportsGrid", "sportsNews", "allSports"],
-                    [".news-item.post", ".post[data-url]", ".news-card", "[data-category='sports']"]);
-                renderArticles("sportsGrid", sports, 5);
-                renderArticles("sportsSidebar", sports, 5);
-            } else {
-                renderArticles("sportsGrid", [], 5);
-                renderArticles("sportsSidebar", [], 5);
-            }
-
-            if (moviesDoc) {
-                const movies = readSource(moviesDoc, MOVIES,
-                    ["localMoviesSource", "moviesSource", "moviesGrid", "cinemaGrid", "latestMoviesGrid", "entertainmentSection"],
-                    [".news-item.post", ".post[data-url]", ".news-card"]);
-                renderArticles("cinemaGrid", movies, 5);
-                renderArticles("movieReviewsGrid", movies, 0);
-            } else {
-                renderArticles("cinemaGrid", [], 5);
-                renderArticles("movieReviewsGrid", [], 0);
-            }
-
-            console.log("BS 360 NEWS articles loaded", {
-                sportsPage: results[2].status,
-                moviesPage: results[1].status,
-                homepage: results[0].status
+            /* Remove duplicates by final article URL, preserving SPORTS.html order. */
+            const seenSports = new Set();
+            sports = sports.filter(function (item) {
+                if (!item.url || seenSports.has(item.url)) return false;
+                seenSports.add(item.url);
+                return true;
             });
-        } catch (error) {
-            console.error("BS360NEWS loading error:", error);
+
+            /* All sports cards are automatic; sidebars show only the first five. */
+            renderArticles("sportsGrid", sports, 0);
+            renderArticles("sportsSidebar", sports, 5);
+            renderArticles("cinemaGrid", sports, 0);
+            renderArticles("movieReviewsGrid", sports, 0);
+            console.log("BS 360 NEWS sports articles loaded:", sports.length, sports);
+        } else {
+            ["sportsGrid", "sportsSidebar", "cinemaGrid", "movieReviewsGrid"].forEach(function (id) {
+                renderArticles(id, [], 0);
+            });
         }
     }
 
