@@ -1316,11 +1316,15 @@ document.addEventListener("DOMContentLoaded", function () {
         doc.querySelectorAll(selectorList).forEach(function (card) {
             const link = card.matches("a[href]") ? card : card.querySelector("a[href]");
             const img = card.querySelector("img");
-            if (!link || !img) return;
-            const titleNode = card.querySelector("h1,h2,h3,h4,.post-title,.news-title,.title,.news-content p,.news-content h3");
-            const title = (titleNode?.textContent || img.getAttribute("alt") || link.textContent || "")
+            const dataUrl = card.getAttribute("data-url") || "";
+
+            /* SPORTS.html source posts use data-url and do not contain an <a> tag. */
+            if ((!link && !dataUrl) || !img) return;
+
+            const titleNode = card.querySelector("h1,h2,h3,h4,.post-title,.news-title,.title,.news-content p,.news-content h3,p");
+            const title = (titleNode?.textContent || img.getAttribute("alt") || (link ? link.textContent : ""))
                 .replace(/\s+/g, " ").trim();
-            const url = absoluteURL(link.getAttribute("href") || card.getAttribute("data-url"), base);
+            const url = absoluteURL(dataUrl || (link ? link.getAttribute("href") : ""), base);
             const image = getImage(card, base);
             if (!title || !url || !image) return;
             try { if (new URL(url).origin !== new URL(HOME).origin) return; } catch (error) { return; }
@@ -1409,7 +1413,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (sportsDoc) {
                 const sports = readSource(sportsDoc, SPORTS,
-                    ["sportsNewsSource", "latestSportsGrid", "sportsGrid", "latestGrid", "allSportsGrid", "sportsSection", "sportsNewsSection", "menSportsGrid", "womenSportsGrid", "sportsNews", "allSports"],
+                    ["localSportsSource", "sportsNewsSource", "latestSportsGrid", "sportsGrid", "latestGrid", "allSportsGrid", "sportsSection", "sportsNewsSection", "menSportsGrid", "womenSportsGrid", "sportsNews", "allSports"],
                     [".news-item.post", ".post[data-url]", ".news-card", "[data-category='sports']"]);
                 renderArticles("sportsGrid", sports, 5);
                 renderArticles("sportsSidebar", sports, 5);
