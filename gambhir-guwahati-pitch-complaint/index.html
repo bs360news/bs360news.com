@@ -1401,6 +1401,7 @@ document.addEventListener("DOMContentLoaded", function () {
             renderArticles("aptsGrid", readSource(homeDoc, HOME,
                 ["aptsSource", "aptsGrid", "aptsSection"],
                 [".news-item.post[data-category='apts']", ".news-item.post[data-category='ap-ts']", "[data-category='apts']"]), 5);
+              { target: "cinemaGrid", source: "entertainmentSection", limit: 5 },
         }
 
         if (sportsDoc) {
@@ -1433,7 +1434,7 @@ document.addEventListener("DOMContentLoaded", function () {
             /* All sports cards are automatic; sidebars show only the first five. */
             renderArticles("sportsGrid", sports, 5);
             renderArticles("sportsSidebar", sports, 0);
-            renderArticles("cinemaGrid", sports, 5);
+           
             renderArticles("movieReviewsGrid", sports, 0);
             console.log("BS 360 NEWS sports articles loaded:", sports.length, sports);
         } else {
