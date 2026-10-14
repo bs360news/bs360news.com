@@ -286,19 +286,22 @@ body.dark-mode .lang-selector .active{color:#ff4242}
   </div>
  </section>
 
- <section class="category-ad-layout">
+<!-- SPORTS NEWS SECTION -->
+<section class="category-ad-layout">
   <div class="category-news">
-   <h2>ఆంధ్రప్రదేశ్ &amp; తెలంగాణ వార్తలు</h2>
-   <div id="aptsGrid" class="news-grid"></div>
+    <h2>స్పోర్ట్స్ వార్తలు</h2>
+    <div id="sportsGrid" class="news-grid"></div>
   </div>
- </section>
+</section>
 
- <section class="category-ad-layout">
+<!-- MOVIE REVIEWS SECTION -->
+<section class="category-ad-layout">
   <div class="category-news">
-   <h2>సినిమా అప్‌డేట్స్</h2>
-   <div id="cinemaGrid" class="news-grid"></div>
+    <h2>సినిమా వార్తలు</h2>
+    <div id="movieReviewsGrid" class="news-grid"></div>
   </div>
- </section>
+</section>
+
 
  <section class="movie-reviews-section">
   <h2>ఆంధ్రప్రదేశ్ &amp; తెలంగాణ వార్తలు</h2>
@@ -329,6 +332,10 @@ body.dark-mode .lang-selector .active{color:#ff4242}
 </footer>
 
 <script>
+
+
+
+  
 function toggleMobileNav(){
  const nav=document.getElementById("navLinks");
  const button=document.querySelector(".mobile-menu-toggle");
@@ -592,6 +599,50 @@ document.addEventListener("DOMContentLoaded",function(){
   // General sections are sourced from the homepage
   if(homeDoc){
 
+// SPORTS — Homepage sports section
+const sportsArticles = readSource(
+  homeDoc,
+  HOME,
+  [
+    "sportsSource",
+    "sportsGrid",
+    "sportsSection",
+    "sportsNewsSource",
+    "latestSportsGrid"
+  ],
+  [
+    ".news-item.post[data-category='sports']",
+    ".news-item.post[data-category='cricket']",
+    "[data-category='sports']",
+    "[data-category='cricket']"
+  ]
+);
+
+renderArticles("sportsGrid", sportsArticles, 5);
+
+
+// MOVIES — Homepage cinema section
+const movieArticles = readSource(
+  homeDoc,
+  HOME,
+  [
+    "cinemaSource",
+    "cinemaGrid",
+    "cinemaSection",
+    "moviesSource",
+    "moviesGrid",
+    "entertainmentSource",
+    "entertainmentGrid"
+  ],
+  [
+    ".news-item.post[data-category='movies']",
+    ".news-item.post[data-category='movie']",
+    ".news-item.post[data-category='cinema']",
+    ".news-item.post[data-category='entertainment']"
+  ]
+);
+
+renderArticles("movieReviewsGrid", movieArticles, 5);
    renderArticles(
     "nationalGrid",
     readSource(homeDoc,HOME,
