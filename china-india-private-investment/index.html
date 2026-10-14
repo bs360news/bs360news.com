@@ -257,10 +257,29 @@ body.dark-mode .lang-selector .active{color:#ff4242}
  .footer-inner{grid-template-columns:1fr;gap:18px}
 }
 
-    #businessSidebarSection {
-    position: static;
+  .article-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    align-items: start;
+    gap: 24px;
+}
+
+.article-main,
+.article-sidebar {
+    min-width: 0;
     height: auto;
+    min-height: 0;
+}
+
+.article-sidebar {
+    position: static !important;
     align-self: start;
+}
+
+#businessSidebarSection {
+    position: static !important;
+    height: auto;
+    margin-bottom: 0;
 }
 
 #businessSidebar {
@@ -269,22 +288,10 @@ body.dark-mode .lang-selector .active{color:#ff4242}
     gap: 12px;
 }
 
-#businessSidebar .side-news-card {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    text-decoration: none;
-}
-
-#businessSidebar .side-news-card img {
-    width: 100px;
-    height: 70px;
-    object-fit: cover;
-    flex-shrink: 0;
-}
-
-#businessSidebar .side-news-card span {
-    line-height: 1.5;
+@media (max-width: 768px) {
+    .article-layout {
+        grid-template-columns: 1fr;
+    }
 }
 </style>
 </head>
@@ -438,10 +445,21 @@ FY26లో మంజూరైన ప్రాజెక్టుల పెట్�
     <div id="trendingSidebar" class="side-news-list"></div>
    </section>
 
-<section class="news-section" id="businessSidebarSection">
-    <h2 class="section-heading">బిజినెస్ వార్తలు</h2>
-    <div id="businessSidebar" class="side-news-list"></div>
-</section>
+<div class="article-layout">
+
+    <main class="article-main">
+        <!-- మీ Article content మొత్తం ఇక్కడ -->
+    </main>
+
+    <aside class="article-sidebar">
+        <!-- Business Sidebar -->
+        <section class="news-section" id="businessSidebarSection">
+            <h2 class="section-heading">బిజినెస్ వార్తలు</h2>
+            <div id="businessSidebar" class="side-news-list"></div>
+        </section>
+    </aside>
+
+</div>
  </div>
 
  <section class="category-ad-layout">
