@@ -1280,7 +1280,7 @@ ICC ప్రకటించిన షెడ్యూల్ ప్రకార�
 
 <!-- ALL SPORTS NEWS FROM SPORTS.html -->
 <section class="sports-news-section" id="sportsNewsSection">
-    <h2 class="section-heading">రీడా వార్తలు</h2>
+    <h2 class="section-heading">అన్ని క్రీడా వార్తలు</h2>
     <div id="sportsAllNewsGrid" class="news-grid"></div>
 </section>
 
@@ -1319,9 +1319,7 @@ ICC ప్రకటించిన షెడ్యూల్ ప్రకార�
 function toggleMobileNav() {
     const nav = document.getElementById("navLinks");
     const button = document.querySelector(".mobile-menu-toggle");
-
     if (!nav || !button) return;
-
     const isOpen = nav.classList.toggle("mobile-open");
     button.setAttribute("aria-expanded", String(isOpen));
 }
@@ -1330,248 +1328,158 @@ function toggleMobileNav() {
 function toggleTheme() {
     const isDark = document.body.classList.toggle("dark-mode");
     const button = document.getElementById("themeButton");
-
-    if (button) {
-        button.textContent = isDark ? "☀️ Light" : "🌙 Dark";
-    }
+    if (button) button.textContent = isDark ? "☀️ Light" : "🌙 Dark";
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    const HOME = "https://bs360news.com/index.html";
-    const MOVIES = "https://bs360news.com/MOVIES.html";
+    "use strict";
 
-   
-const otherSections = [
-    { target: "nationalGrid", source: "nationalSection", limit: 5 },
-    { target: "latestSidebar", source: "latestGrid", limit: 5 },
-    { target: "trendingSidebar", source: "trendingSidebar", limit: 5 },
-    { target: "sportsSidebar", source: "sportsSection", limit: 5 },
-    { target: "sportsGrid", source: "sportsSection", limit: 5 },
-    { target: "cinemaGrid", source: "entertainmentSection", limit: 5 },
-    { target: "businessGrid", source: "businessSection", limit: 5 },
-    { target: "aptsGrid", source: "aptsSection", limit: 5 }
-];
+    const HOME_URL = "https://bs360news.com/index.html";
+    const MOVIES_URL = "https://bs360news.com/MOVIES.html";
+    const SPORTS_URL = "https://bs360news.com/SPORTS.html";
 
     function absoluteURL(value, base) {
         if (!value) return "";
-
-        try {
-            return new URL(value, base).href;
-        } catch {
-            return "";
-        }
+        try { return new URL(value, base).href; }
+        catch (error) { return ""; }
     }
 
-    function readMovieArticles(doc) {
-        const source = doc.getElementById("localMoviesSource");
+    function cleanTitle(value) {
+        return (value || "").replace(/\s+/g, " ").trim();
+    }
 
-        if (!source) {
-            console.error("MOVIES.html: localMoviesSource not found");
-            return [];
-        }
+    function extractFromCard(card, baseURL) {
+        const link = card.matches && card.matches("a[href]")
+            ? card
+            : card.querySelector("a[href]");
+        const img = card.querySelector("img");
+        if (!link || !img) return null;
 
+        const heading = card.querySelector(
+            "h1, h2, h3, h4, .post-title, .news-title, .title, .news-content p, p"
+        );
+        const title = cleanTitle(heading?.textContent || img.getAttribute("alt") || link.textContent);
+        const url = absoluteURL(
+            card.getAttribute("data-url") || link.getAttribute("href"), baseURL
+        );
+        const image = absoluteURL(
+            img.getAttribute("data-src") || img.getAttribute("data-lazy-src") ||
+            img.getAttribute("data-original") || img.getAttribute("src"), baseURL
+        );
+        if (!title || !url || !image) return null;
+        if (new URL(url).origin !== new URL(baseURL).origin) return null;
+        return { title, url, image, alt: img.getAttribute("alt") || title };
+    }
+
+    function collectArticles(doc, baseURL, sourceIds) {
         const articles = [];
         const seen = new Set();
+        const addCard = card => {
+            const item = extractFromCard(card, baseURL);
+            if (!item || seen.has(item.url)) return;
+            seen.add(item.url);
+            articles.push(item);
+        };
 
-        source.querySelectorAll(".news-item.post").forEach(function (item) {
-            const img = item.querySelector("img");
-            const heading = item.querySelector(
-                ".news-content p, .news-content h3, h2, h3"
-            );
+        // Pull hidden/source posts first (common on BS 360 NEWS pages).
+        doc.querySelectorAll(".news-item.post, .post[data-url], [data-category='sports']")
+            .forEach(addCard);
 
-            const title = (
-                heading?.textContent || img?.alt || ""
-            ).replace(/\s+/g, " ").trim();
-
-            const url = absoluteURL(item.getAttribute("data-url"), MOVIES);
-
-            const image = absoluteURL(
-                img?.getAttribute("data-src") ||
-                img?.getAttribute("data-lazy-src") ||
-                img?.getAttribute("src"),
-                MOVIES
-            );
-
-            if (!title || !url || !image) return;
-
-            if (new URL(url).origin !== new URL(HOME).origin) return;
-            if (seen.has(url)) return;
-
-            seen.add(url);
-
-            articles.push({
-                title,
-                url,
-                image,
-                alt: img?.alt || title
-            });
+        // Pull cards from known category containers.
+        sourceIds.forEach(id => {
+            const source = doc.getElementById(id);
+            if (!source) return;
+            source.querySelectorAll("article, .news-card, .news-item, .post, li, a[href]")
+                .forEach(addCard);
         });
 
         return articles;
     }
 
-    function readHomeArticles(doc, sourceId) {
-        const source = doc.getElementById(sourceId);
-        if (!source) return [];
+    function renderArticles(targetId, articles, limit) {
+        const target = document.getElementById(targetId);
+        if (!target) return;
+        target.replaceChildren();
+        const list = Number.isFinite(limit) ? articles.slice(0, limit) : articles;
 
-        const articles = [];
-        const seen = new Set();
+        list.forEach(item => {
+            const card = document.createElement("a");
+            card.className = "news-card";
+            card.href = item.url;
 
-        source.querySelectorAll(
-            "article, .news-card, .news-item, .post, li"
-        ).forEach(function (card) {
-            const link = card.matches("a[href]")
-                ? card
-                : card.querySelector("a[href]");
+            const image = document.createElement("img");
+            image.src = item.image;
+            image.alt = item.alt || item.title;
+            image.loading = "lazy";
 
-            const img = card.querySelector("img");
-            if (!link || !img) return;
-
-            const heading = card.querySelector(
-                "h1, h2, h3, h4, .post-title, .news-title, .title, .news-content p"
-            );
-
-            const title = (
-                heading?.textContent ||
-                img.alt ||
-                link.textContent ||
-                ""
-            ).replace(/\s+/g, " ").trim();
-
-            
-async function loadSportsFromSportsPage() {
-    const sportsURL = "https://bs360news.com/SPORTS.html";
-
-    try {
-        const response = await fetch(
-            sportsURL + "?v=" + Date.now(),
-            { cache: "no-store" }
-        );
-
-        if (!response.ok) {
-            throw new Error("SPORTS.html HTTP " + response.status);
-        }
-
-        const html = await response.text();
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(html, "text/html");
-
-        const sourceIds = [
-            "sportsGrid",
-            "latestSportsGrid",
-            "allSportsGrid",
-            "sportsSection",
-            "sportsNewsSection",
-            "latestGrid",
-            "menSportsGrid",
-            "womenSportsGrid"
-        ];
-
-        const articles = [];
-        const seen = new Set();
-
-        function absoluteURL(value) {
-            if (!value) return "";
-            try {
-                return new URL(value, sportsURL).href;
-            } catch {
-                return "";
-            }
-        }
-
-        sourceIds.forEach(function (id) {
-            const source = doc.getElementById(id);
-            if (!source) return;
-
-            source.querySelectorAll(
-                "article, .news-card, .news-item, .post, li"
-            ).forEach(function (card) {
-                const link = card.matches("a[href]")
-                    ? card
-                    : card.querySelector("a[href]");
-
-                const img = card.querySelector("img");
-                if (!link || !img) return;
-
-                const heading = card.querySelector(
-                    "h1, h2, h3, h4, .post-title, .news-title, .title"
-                );
-
-                const title = (
-                    heading?.textContent ||
-                    img.alt ||
-                    link.textContent ||
-                    ""
-                ).replace(/\s+/g, " ").trim();
-
-                const url = absoluteURL(link.getAttribute("href"));
-                const image = absoluteURL(
-                    img.getAttribute("data-src") ||
-                    img.getAttribute("data-lazy-src") ||
-                    img.getAttribute("src")
-                );
-
-                if (!title || !url || !image) return;
-                if (new URL(url).origin !== location.origin) return;
-                if (seen.has(url)) return;
-
-                seen.add(url);
-                articles.push({
-                    title: title,
-                    url: url,
-                    image: image,
-                    alt: img.alt || title
-                });
-            });
+            const title = document.createElement("h3");
+            title.textContent = item.title;
+            card.append(image, title);
+            target.appendChild(card);
         });
-
-        function renderSports(targetId, list) {
-            const target = document.getElementById(targetId);
-            if (!target) return;
-
-            target.replaceChildren();
-
-            list.forEach(function (item) {
-                const link = document.createElement("a");
-                link.className = "news-card";
-                link.href = item.url;
-
-                const img = document.createElement("img");
-                img.src = item.image;
-                img.alt = item.alt;
-                img.loading = "lazy";
-
-                const title = document.createElement("h3");
-                title.textContent = item.title;
-
-                link.append(img, title);
-                target.appendChild(link);
-            });
-        }
-
-        renderSports("sportsNewsGrid", articles);
-        renderSports("sportsAllNewsGrid", articles);
-
-        renderSports("sportsSidebar", articles.slice(0, 5));
-
-        if (articles.length === 0) {
-            console.error(
-                "SPORTS.html లో వార్తల కంటైనర్ ID లేదా article cards కనబడలేదు."
-            );
-        }
-
-        console.log("SPORTS.html నుంచి లోడ్ అయిన వార్తలు:", articles.length);
-
-    } catch (error) {
-        console.error("Sports news loading error:", error);
     }
-}
 
-document.addEventListener(
-    "DOMContentLoaded",
-    loadSportsFromSportsPage
-);
-                  </script>
+    async function fetchDocument(url) {
+        const response = await fetch(url + (url.includes("?") ? "&" : "?") + "v=" + Date.now(), {
+            cache: "no-store"
+        });
+        if (!response.ok) throw new Error(url + " HTTP " + response.status);
+        const html = await response.text();
+        return new DOMParser().parseFromString(html, "text/html");
+    }
+
+    async function loadAllNews() {
+        // Load each source independently so one failed page doesn't stop all sections.
+        try {
+            const homeDoc = await fetchDocument(HOME_URL);
+            const homeSources = [
+                { target: "nationalGrid", source: "nationalSection", limit: 5 },
+                { target: "latestSidebar", source: "latestGrid", limit: 5 },
+                { target: "trendingSidebar", source: "trendingSidebar", limit: 5 },
+                { target: "cinemaGrid", source: "entertainmentSection", limit: 5 },
+                { target: "businessGrid", source: "businessSection", limit: 5 },
+                { target: "aptsGrid", source: "aptsSection", limit: 5 }
+            ];
+            homeSources.forEach(section => {
+                const articles = collectArticles(homeDoc, HOME_URL, [section.source]);
+                renderArticles(section.target, articles, section.limit);
+            });
+        } catch (error) {
+            console.error("Homepage news could not load:", error);
+        }
+
+        try {
+            const moviesDoc = await fetchDocument(MOVIES_URL);
+            const movies = collectArticles(moviesDoc, MOVIES_URL, [
+                "localMoviesSource", "moviesGrid", "latestMoviesGrid", "entertainmentSection", "latestGrid"
+            ]);
+            renderArticles("cinemaGrid", movies, 5);
+        } catch (error) {
+            console.error("Movie news could not load:", error);
+        }
+
+        try {
+            const sportsDoc = await fetchDocument(SPORTS_URL);
+            const sports = collectArticles(sportsDoc, SPORTS_URL, [
+                "sportsGrid", "latestSportsGrid", "allSportsGrid", "sportsSection",
+                "sportsNewsSection", "latestGrid", "menSportsGrid", "womenSportsGrid",
+                "latestSports", "allSports", "sportsNewsGrid", "sportsAllNewsGrid"
+            ]);
+            renderArticles("sportsNewsGrid", sports, 5);
+            renderArticles("sportsAllNewsGrid", sports, undefined);
+            renderArticles("sportsSidebar", sports, 5);
+            console.log("SPORTS.html articles loaded:", sports.length);
+            if (!sports.length) {
+                console.error("SPORTS.html నుంచి articles దొరకలేదు. SPORTS.html లోని article source/container ID ని చెక్ చేయాలి.");
+            }
+        } catch (error) {
+            console.error("Sports news could not load:", error);
+        }
+    }
+
+    loadAllNews();
+});
+</script>
   
 </body>
 </html>
