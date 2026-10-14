@@ -1464,7 +1464,43 @@ document.addEventListener("DOMContentLoaded", function () {
 
             /* All sports cards are automatic; sidebars show only the first five. */
             renderArticles("sportsGrid", sports, 5);
-            renderArticles("sportsSidebar", sports, 0);
+          const articleMain = document.querySelector(".article-main");
+const sportsBox = document.getElementById("sportsSidebar");
+
+if (articleMain && sportsBox) {
+    const articleHeight = articleMain.offsetHeight;
+    const heading = sportsBox.previousElementSibling;
+    const headingHeight = heading ? heading.offsetHeight + 12 : 0;
+
+    let usedHeight = 0;
+    const visibleSports = [];
+
+    sports.forEach(function (item) {
+        const card = document.createElement("a");
+        card.className = "news-card";
+        card.href = item.url;
+
+        const img = document.createElement("img");
+        img.src = item.image;
+        img.alt = item.alt || item.title;
+
+        const title = document.createElement("h3");
+        title.textContent = item.title;
+
+        card.append(img, title);
+        sportsBox.appendChild(card);
+
+        usedHeight += card.offsetHeight;
+
+        if (usedHeight <= articleHeight - headingHeight) {
+            visibleSports.push(item);
+        }
+
+        card.remove();
+    });
+
+    renderArticles("sportsSidebar", visibleSports, 0);
+}
            
             renderArticles("movieReviewsGrid", sports, 0);
             console.log("BS 360 NEWS sports articles loaded:", sports.length, sports);
