@@ -137,24 +137,207 @@
 </script>
 
 
-<!-- MAIN CSS -->
-
-<link
-    rel="stylesheet"
-    href="../style.css?v=20260918"
->
-
 
 <style>
+  
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, "Noto Sans Telugu", sans-serif;
+    background: #fff;
+    color: #111;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+.container {
+    width: min(1200px, 96%);
+    margin: 0 auto;
+}
+
+/* HEADER */
+
+.brand-header {
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+}
+
+.brand-inner {
+    min-height: 92px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+}
+
+.logo-mark img {
+    width: 65px;
+    height: 65px;
+    display: block;
+    object-fit: contain;
+}
+
+.logo-name {
+    font-size: 25px;
+    font-weight: 900;
+    line-height: 1.15;
+}
+
+.logo-red {
+    color: #e60000;
+}
+
+.logo-tagline {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    margin-top: 5px;
+    letter-spacing: .5px;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.theme-button,
+.mobile-menu-toggle {
+    border: 1px solid #ccc;
+    background: #fff;
+    color: #111;
+    padding: 9px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.live-button {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: #e60000;
+    font-weight: 900;
+}
+
+.live-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #e60000;
+    animation: livePulse 1s infinite;
+}
+
+@keyframes livePulse {
+    50% { opacity: .3; }
+}
+
+.mobile-menu-toggle {
+    display: none;
+    font-size: 21px;
+}
+
+/* NAVIGATION */
+
+.main-nav {
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.lang-selector {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+    font-size: 12px;
+}
+
+.lang-selector .active {
+    color: #e60000;
+    font-weight: 800;
+}
+
+.nav-links {
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-end;
+}
+
+.nav-links a {
+    display: block;
+    padding: 15px 17px;
+    white-space: nowrap;
+    font-size: 13px;
+    font-weight: 800;
+    border-left: 1px solid #eee;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    background: #e60000;
+    color: #fff;
+}
+
+/* TOP HEADLINES */
+
+.headlines-bar {
+    background: #f5f5f5;
+    border-bottom: 1px solid #ddd;
+}
+
+.headlines-bar .container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    min-height: 42px;
+}
+
+.headlines-label {
+    color: #e60000;
+    font-size: 12px;
+    font-weight: 900;
+    white-space: nowrap;
+}
+
+.headlines-text {
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* MAIN ARTICLE LAYOUT */
 
 .article-page {
-    padding: 20px 0 40px;
+    padding: 24px 0 40px;
 }
 
 .article-layout {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 320px;
-    gap: 25px;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: 26px;
     align-items: start;
 }
 
@@ -163,416 +346,725 @@
 }
 
 .article-title {
+    margin: 0 0 14px;
     font-size: 32px;
-    line-height: 1.35;
-    margin: 0 0 15px;
-    color: #111;
-    font-weight: 800;
+    line-height: 1.4;
+    font-weight: 900;
+}
+
+.article-meta {
+    color: #777;
+    font-size: 13px;
+    margin: 15px 0 8px;
+}
+
+.article-image {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 6px;
+    margin: 8px 0 22px;
 }
 
 .article-content {
     font-size: 18px;
     line-height: 2;
-    color: #222;
+    overflow-wrap: anywhere;
 }
 
 .article-content p {
-    margin: 0 0 18px;
+    margin: 0 0 20px;
 }
-
-.article-meta {
-    font-size: 13px;
-    color: #777;
-    margin: 0 0 8px;
-    font-weight: 500;
-}
-
-.article-image {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-    display: block;
-    border-radius: 8px;
-    margin: 8px 0 20px;
-}
-
 
 /* SIDEBAR */
 
 .article-sidebar {
-    width: 100%;
-}
-
-.sidebar-box {
-    margin-bottom: 22px;
-}
-
-.sidebar-title {
-    background: #075aaa;
-    color: #fff;
-    font-size: 20px;
-    font-weight: 800;
-    padding: 10px 12px;
-    border-left: 5px solid #e60000;
-    margin-bottom: 8px;
-}
-
-.sidebar-item {
+    min-width: 0;
     display: flex;
-    gap: 10px;
-    padding: 9px 0;
-    border-bottom: 1px solid #ddd;
-    text-decoration: none;
-    color: #111;
-    align-items: center;
+    flex-direction: column;
+    gap: 22px;
 }
 
-.sidebar-item img {
-    width: 78px;
-    height: 55px;
+.news-section {
+    min-width: 0;
+    margin: 0 0 18px;
+}
+
+/* REMOVE BLUE HEADING BACKGROUND AND BLUE BORDER */
+
+.section-heading {
+    margin: 0 0 12px;
+    padding: 0 0 8px;
+    color: #111;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    font-size: 19px;
+    line-height: 1.4;
+    font-weight: 900;
+}
+
+/* SIDEBAR ARTICLE LIST */
+
+.side-news-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.side-news-list .news-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    color: #111;
+}
+
+.side-news-list .news-card img {
+    display: block;
+    width: 86px;
+    height: 62px;
+    flex: 0 0 86px;
     object-fit: cover;
-    flex: 0 0 78px;
     border-radius: 4px;
 }
 
-.sidebar-item-title {
-    font-size: 14px;
-    line-height: 1.45;
+.side-news-list .news-card h3 {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.5;
     font-weight: 700;
 }
 
-.most-read-item {
-    display: flex;
-    gap: 9px;
-    padding: 9px 0;
-    border-bottom: 1px solid #ddd;
-    text-decoration: none;
-    color: #111;
-    align-items: center;
+/* BOTTOM CATEGORY + AD SIDE BY SIDE */
+
+.category-ad-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: 22px;
+    align-items: start;
+    margin: 0 0 30px;
 }
 
-.most-read-number {
-    width: 28px;
-    height: 28px;
-    background: #075aaa;
-    color: #fff;
+.category-news {
+    min-width: 0;
+}
+
+.category-news .side-news-list .news-card {
+    padding: 9px 0;
+}
+
+.category-ad {
+    width: 100%;
+    min-height: 280px;
+    padding: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 800;
-    border-radius: 3px;
-    flex: 0 0 28px;
+    text-align: center;
+    background: #fafafa;
+    color: #777;
+    font-size: 12px;
+    overflow: hidden;
 }
 
-.most-read-item img {
-    width: 70px;
-    height: 50px;
-    object-fit: cover;
-    border-radius: 4px;
-    flex: 0 0 70px;
+/* MOVIE REVIEWS GRID */
+
+.movie-reviews-section {
+    margin-top: 28px;
+    margin-bottom: 30px;
 }
 
-.most-read-title {
-    font-size: 13px;
-    line-height: 1.4;
-    font-weight: 700;
-}
-
-
-/* RELATED */
-
-.related-section {
-    margin-top: 35px;
-}
-
-.related-title {
-    font-size: 24px;
-    font-weight: 800;
-    border-left: 5px solid #e60000;
-    padding-left: 10px;
-    margin-bottom: 15px;
-}
-
-.news-grid {
+.movie-reviews-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 14px;
 }
 
-.news-card {
-    text-decoration: none;
-    color: #111;
+.movie-reviews-grid .news-card {
+    min-width: 0;
+}
+
+.movie-reviews-grid .news-card img {
     display: block;
-}
-
-.news-card img {
     width: 100%;
     aspect-ratio: 16 / 9;
     object-fit: cover;
-    border-radius: 6px;
+    border-radius: 5px;
+}
+
+.movie-reviews-grid .news-card h3 {
+    margin: 7px 0 0;
+    font-size: 13px;
+    line-height: 1.5;
+    font-weight: 800;
+}
+
+/* ADDITIONAL NEWS GRID */
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.news-grid .news-card {
     display: block;
+    min-width: 0;
 }
 
-.news-card h3 {
-    font-size: 15px;
-    line-height: 1.45;
-    margin: 8px 0 0;
-    font-weight: 700;
+.news-grid .news-card img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 5px;
 }
 
+.news-grid .news-card h3 {
+    margin: 7px 0 0;
+    font-size: 13px;
+    line-height: 1.5;
+    font-weight: 800;
+}
+
+/* FULL WIDTH AD BELOW MOVIE REVIEWS */
+
+.ad-space {
+    width: 100%;
+    min-height: 280px;
+    margin: 25px 0 35px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #777;
+    font-size: 12px;
+    background: #fafafa;
+}
+
+/* FOOTER */
+
+.site-footer {
+    margin-top: 35px;
+    background: #111;
+    color: #fff;
+}
+
+.footer-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+.footer-column h3,
+.footer-contact h3 {
+    margin-top: 0;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 18px;
+}
+
+.footer-links a {
+    color: #eee;
+    font-size: 14px;
+}
+
+.footer-contact p {
+    font-size: 14px;
+}
+
+.copyright {
+    text-align: center;
+    padding: 14px 10px;
+    border-top: 1px solid #333;
+    font-size: 12px;
+}
+
+/* TABLET */
+
+@media (max-width: 1100px) {
+    .article-layout {
+        grid-template-columns: minmax(0, 1fr) 270px;
+        gap: 18px;
+    }
+
+    .category-ad-layout {
+        grid-template-columns: minmax(0, 1fr) 270px;
+    }
+
+    .nav-links a {
+        padding: 14px 10px;
+        font-size: 12px;
+    }
+
+    .movie-reviews-grid,
+    .news-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
 
 /* MOBILE */
 
-@media (max-width: 800px) {
+@media (max-width: 700px) {
+    .brand-inner {
+        min-height: 75px;
+        gap: 8px;
+    }
+
+    .logo-mark img {
+        width: 48px;
+        height: 48px;
+    }
+
+    .logo-name {
+        font-size: 20px;
+    }
+
+    .logo-tagline {
+        font-size: 9px;
+    }
+
+    .header-actions {
+        gap: 7px;
+    }
+
+    .theme-button {
+        padding: 7px;
+        font-size: 12px;
+    }
+
+    .live-button {
+        font-size: 11px;
+    }
+
+    .mobile-menu-toggle {
+        display: block;
+        padding: 7px 10px;
+    }
+
+    .nav-container {
+        display: block;
+    }
+
+    .lang-selector {
+        padding: 10px 0;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        border-top: 1px solid #ddd;
+    }
+
+    .nav-links.mobile-open {
+        display: flex;
+    }
+
+    .nav-links a {
+        padding: 12px;
+        border-left: 0;
+        border-bottom: 1px solid #eee;
+    }
+
+    .headlines-bar .container {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 5px;
+        padding-top: 9px;
+        padding-bottom: 9px;
+    }
+
+    .article-page {
+        padding-top: 15px;
+    }
 
     .article-layout {
-        grid-template-columns: 1fr;
-        gap: 25px;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 24px;
     }
 
     .article-title {
         font-size: 24px;
-        line-height: 1.4;
-    }
-
-    .article-content {
-        font-size: 17px;
-        line-height: 1.9;
-    }
-
-    .article-sidebar {
-        order: 2;
-    }
-
-    .news-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-    }
-
-}
-
-
-@media (max-width: 600px) {
-
-    .article-page {
-        padding-top: 12px;
-    }
-
-    .article-title {
-        font-size: 22px;
-    }
-
-    .article-image {
-        border-radius: 5px;
     }
 
     .article-content {
         font-size: 16px;
-        line-height: 1.85;
+        line-height: 1.9;
     }
 
-    .sidebar-item img {
-        width: 75px;
-        height: 53px;
-        flex-basis: 75px;
+    .article-sidebar {
+        width: 100%;
     }
 
-    .sidebar-item-title {
-        font-size: 14px;
+    /* Each category is followed by its ad on mobile */
+
+    .category-ad-layout {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 12px;
+        margin-bottom: 28px;
     }
 
-    .sidebar-title {
-        font-size: 18px;
+    .category-ad {
+        min-height: 250px;
+        width: 100%;
     }
 
-    .news-card h3 {
-        font-size: 14px;
-    }
-
-}
-
-
-@media (max-width: 380px) {
-
+    .movie-reviews-grid,
     .news-grid {
-        gap: 9px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
     }
 
-    .news-card h3 {
+    .movie-reviews-grid .news-card h3,
+    .news-grid .news-card h3 {
         font-size: 13px;
     }
 
+    .section-heading {
+        font-size: 18px;
+    }
+
+    .ad-space {
+        min-height: 250px;
+        margin: 20px 0;
+    }
+
+    .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
 }
 
+/* DARK MODE */
+
+body.dark-mode {
+    background: #111;
+    color: #eee;
+}
+
+body.dark-mode .brand-header,
+body.dark-mode .main-nav,
+body.dark-mode .theme-button,
+body.dark-mode .mobile-menu-toggle {
+    background: #181818;
+    color: #fff;
+    border-color: #333;
+}
+
+body.dark-mode .nav-links a {
+    color: #fff;
+    border-color: #333;
+}
+
+body.dark-mode .nav-links a:hover,
+body.dark-mode .nav-links a.active {
+    background: #e60000;
+    color: #fff;
+}
+
+body.dark-mode .headlines-bar {
+    background: #1c1c1c;
+    border-color: #333;
+}
+
+body.dark-mode .article-title,
+body.dark-mode .article-content,
+body.dark-mode .news-grid .news-card,
+body.dark-mode .side-news-list .news-card,
+body.dark-mode .section-heading {
+    color: #eee;
+}
+
+body.dark-mode .side-news-list .news-card {
+    border-color: #333;
+}
+
+body.dark-mode .category-ad,
+body.dark-mode .ad-space {
+    background: #181818;
+    color: #aaa;
+}
+
+body.dark-mode .lang-selector a {
+    color: #fff;
+}
+
+body.dark-mode .lang-selector .active {
+    color: #ff4242;
+}
+
+
+
+/* CATEGORY LAYOUT */
+.category-ad-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: 20px;
+    margin: 25px 0;
+    align-items: start;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.category-ad {
+    min-height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px dashed #ccc;
+    color: #777;
+    background: #fafafa;
+}
+
+.section-heading,
+.category-news h2,
+.movie-reviews-section h2 {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 10px 0;
+}
+
+@media (max-width: 1000px) {
+    .news-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .category-ad-layout {
+        grid-template-columns: minmax(0, 1fr) 250px;
+    }
+}
+
+@media (max-width: 650px) {
+    .category-ad-layout {
+        display: block;
+    }
+
+    .news-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .category-ad {
+        min-height: 120px;
+        margin: 18px 0;
+    }
+}
+
+
+
+
+  .category-ad img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+
+
+
+
+
+
+  .sports-section {
+    margin-top: 20px;
+    padding-top: 20px;
+}
+
+.sports-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+
+
+
+
+  /* CATEGORY SECTIONS — FULL WIDTH */
+.category-ad-layout {
+    display: block;
+    width: 100%;
+    margin: 15px 0 25px;
+    padding: 0;
+    align-items: initial;
+}
+
+.category-news {
+    width: 100%;
+    min-width: 0;
+}
+
+.category-news .news-grid {
+    width: 100%;
+}
+
+
+  
+
+
+  /* REDUCE SPACE BEFORE SPORTS NEWS */
+.article-page {
+    padding-bottom: 0;
+}
+
+.article-layout {
+    margin-bottom: 0;
+}
+
+.article-layout + .category-ad-layout {
+    margin-top: 0;
+}
+/* MOVIE REVIEWS - STOP AT ARTICLE END */
+
+.article-layout {
+    align-items: start;
+}
+
+.article-main {
+    min-width: 0;
+}
+
+.article-sidebar {
+    min-width: 0;
+    align-self: start;
+}
+
+#movieReviewsSidebar {
+    min-height: 0;
+    overflow: hidden;
+}
+
+#movieReviewsSidebar .news-card {
+    min-width: 0;
+}
+
+#movieReviewsSidebar .news-card img {
+    flex-shrink: 0;
+}
+
+@media (max-width: 700px) {
+    #movieReviewsSidebar {
+        max-height: none;
+        overflow: visible;
+    }
+}
+  /* FIX ARTICLE END AND BELOW SECTIONS */
+
+.article-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    align-items: start;
+}
+
+.article-main {
+    min-width: 0;
+    height: auto;
+    overflow: visible;
+}
+
+.article-content {
+    height: auto;
+    max-height: none;
+    overflow: visible;
+}
+
+.category-ad-layout,
+.movie-reviews-section {
+    clear: both;
+    width: 100%;
+}
+
+@media (max-width: 700px) {
+    .article-layout {
+        grid-template-columns: 1fr;
+    }
+}
+  
+  
+  
 </style>
-
 </head>
-
 
 <body>
 
-
-<!-- HEADER -->
-
 <header class="brand-header">
-
     <div class="container brand-inner">
 
-        <a
-            href="../index.html"
-            class="brand-logo"
-            aria-label="BS 360 NEWS Home"
-        >
-
+        <a href="../index.html" class="brand-logo" aria-label="BS 360 NEWS Home">
             <div class="logo-mark">
-
-                <img
-                    src="../dp.png.png"
-                    alt="BS 360 NEWS"
-                >
-
+                <img src="../dp.png.png" alt="BS 360 NEWS">
             </div>
-
 
             <div class="logo-name">
-
                 <div>
-
                     <span>BS 360</span>
-
-                    <span class="logo-red">
-                        NEWS
-                    </span>
-
+                    <span class="logo-red">NEWS</span>
                 </div>
-
-                <span class="logo-tagline">
-                    Fast | Fair | Fearless
-                </span>
-
+                <span class="logo-tagline">Fast | Fair | Fearless</span>
             </div>
-
         </a>
 
-
         <div class="header-actions">
-
-            <button
-                type="button"
-                class="theme-button"
-                id="themeButton"
-                onclick="toggleTheme()"
-            >
-                🌙 Dark
-            </button>
-
+            <button type="button" class="theme-button" id="themeButton"
+                    onclick="toggleTheme()">🌙 Dark</button>
 
             <div class="live-button">
-
                 <span class="live-dot"></span>
-
                 LIVE
-
             </div>
-
         </div>
 
-
-        <button
-            class="mobile-menu-toggle"
-            type="button"
-            aria-label="Navigation menu"
-            onclick="toggleMobileNav()"
-        >
-            ☰
-        </button>
-
+        <button class="mobile-menu-toggle" type="button"
+                aria-label="Navigation menu"
+                aria-controls="navLinks"
+                aria-expanded="false"
+                onclick="toggleMobileNav()">☰</button>
     </div>
-
 </header>
 
-
-<!-- NAVIGATION -->
-
-<nav
-    class="main-nav"
-    aria-label="Main Navigation"
->
-
+<nav class="main-nav" aria-label="Main Navigation">
     <div class="container nav-container">
 
         <div class="lang-selector">
-
-            <a href="../index.html" class="active">
-                తెలుగు
-            </a>
-
+            <a href="../index.html" class="active">తెలుగు</a>
             <span>|</span>
-
-            <span>
-                English
-            </span>
-
+            <span>English</span>
             <span>|</span>
-
-            <span>
-                हिन्दी
-            </span>
-
+            <span>हिन्दी</span>
         </div>
 
-
-        <div
-            class="nav-links"
-            id="navLinks"
-        >
-
-            <a href="../index.html">
-                HOME
-            </a>
-
-            <a href="../MOVIES.html">
-                ENTERTAINMENT
-            </a>
-
-            <a href="../SPORTS.html">
-                SPORTS
-            </a>
-
-            <a href="../AP&TS.html">
-                AP & TS
-            </a>
-
-            <a href="../business.html">
-                BUSINESS
-            </a>
-
+        <div class="nav-links" id="navLinks">
+           <a href="index.html">హోమ్</a>
+            <a href="MOVIES.html">ఎంటర్టైన్మెంట్</a>
+            <a href="SPORTS.html">స్పోర్ట్స్</a>
+            <a href="AP%26TS.html">ఏపీ&amp;టీస్</a>
+            <a href="business.html">బిజినెస్</a>
         </div>
-
     </div>
-
 </nav>
 
-
-<!-- TOP HEADLINES -->
-
 <div class="headlines-bar">
-
     <div class="container">
-
-        <span class="headlines-label">
-            ❗ TOP HEADLINES
-        </span>
-
+        <span class="headlines-label">❗ TOP HEADLINES</span>
         <div class="headlines-text">
-
-            తెలుగు రాష్ట్రాలు, సినిమా, క్రికెట్, స్పోర్ట్స్,
-            బిజినెస్ మరియు జాతీయ వార్తల తాజా అప్‌డేట్స్
-
+            తెలుగు రాష్ట్రాలు, సినిమా, క్రికెట్, స్పోర్ట్స్, బిజినెస్ మరియు జాతీయ వార్తల తాజా అప్‌డేట్స్
         </div>
-
     </div>
-
 </div>
 
 
@@ -590,7 +1082,8 @@
 
 <h1 class="article-title">
 
-'ప్యారడైజ్'పై పాజిటివిటీ పెరుగుతోంది: నాని
+
+‘2026లో మోస్ట్ నాయిస్ ఫిల్మ్ అదే’.. ‘ది ప్యారడైజ్’పై నాని ఆసక్తికర వ్యాఖ్యలు!
 
 </h1>
 
@@ -598,12 +1091,27 @@
 <div class="article-content">
 
 
-<p>
-'ప్యారడైజ్' సినిమా విడుదలైన తర్వాత షోలు పెరుగుతున్న కొద్దీ ప్రేక్షకుల నుంచి వస్తున్న స్పందనలో పాజిటివిటీ కూడా పెరుగుతోందని హీరో నాని అన్నారు. ఇటీవల ఏ సినిమాకీ ఇలాంటి రెస్పాన్స్ తాను చూడలేదని పేర్కొన్నారు. సినిమా విడుదలకు ముందు నుంచే ‘ది ప్యారడైజ్’పై భారీ అంచనాలు నెలకొన్నాయి. దర్శకుడు శ్రీకాంత్ ఓదెలతో నాని రెండోసారి కలిసి పనిచేసిన ఈ చిత్రం సెప్టెంబర్ 24న ప్రేక్షకుల ముందుకు వచ్చింది. విడుదలకు ముందు సినిమా నుంచి వచ్చిన ప్రతి అప్‌డేట్ ప్రేక్షకుల్లో ఆసక్తిని పెంచగా, థియేటర్లలో సినిమా చూసిన తర్వాత కూడా తమ స్పందనను సోషల్ మీడియాలో పంచుకుంటున్నారు. ఈ నేపథ్యంలో నిర్వహించిన మీడియా సమావేశంలో నాని సినిమా గురించి, ప్రేక్షకుల స్పందన గురించి తన అభిప్రాయాలను వెల్లడించారు.
-</p>
 
 
-<!-- DATE ABOVE IMAGE -->
+
+<P>
+నేచురల్ స్టార్ నాని హీరోగా, దర్శకుడు శ్రీకాంత్ ఓదెల తెరకెక్కించిన ‘ది ప్యారడైజ్’ సినిమా విడుదల తర్వాత ప్రేక్షకుల్లో చర్చ కొనసాగుతోంది. సినిమా షోలు పెరుగుతున్న కొద్దీ ప్రేక్షకుల నుంచి వస్తున్న స్పందనలో పాజిటివిటీ కూడా పెరుగుతోందని హీరో నాని వ్యాఖ్యానించారు. ఇటీవల ఏ సినిమాకీ ఇలాంటి స్పందన తాను చూడలేదని ఆయన పేర్కొనడం ఇప్పుడు ఆసక్తికరంగా మారింది. సినిమా విడుదలకు ముందు నుంచే భారీ అంచనాలు ఏర్పడగా, థియేటర్లలోకి వచ్చిన తర్వాత కూడా ప్రేక్షకులు తమ అభిప్రాయాలను సోషల్ మీడియా వేదికగా పంచుకుంటున్నారు.
+
+నాని, దర్శకుడు శ్రీకాంత్ ఓదెల కలయికలో గతంలో ‘దసరా’ సినిమా ప్రేక్షకుల ముందుకు వచ్చింది. ఆ సినిమా తర్వాత వీరిద్దరూ మరోసారి కలిసి పనిచేయడంతో ‘ది ప్యారడైజ్’పై అభిమానుల్లో ఆసక్తి పెరిగింది. కథ, నాని కొత్త లుక్, విడుదలకు ముందు వచ్చిన అప్‌డేట్స్‌తో సినిమాపై చర్చ మొదలైంది. ఇప్పుడు సినిమా విడుదలైన తర్వాత ప్రేక్షకుల స్పందన గురించి నాని చేసిన వ్యాఖ్యలు మరోసారి వార్తల్లో నిలిచాయి.
+
+సినిమా గురించి నిర్వహించిన మీడియా సమావేశంలో నాని ప్రేక్షకుల స్పందన, సినిమా చుట్టూ జరుగుతున్న చర్చ, చిత్రబృందం చేసిన ప్రయత్నాల గురించి మాట్లాడారు. సినిమా విషయంలో మంచి, చెడు అనే అభిప్రాయాల కంటే చర్చ, స్పందన, నాయిస్ ఎక్కువగా కనిపిస్తున్నాయని ఆయన పేర్కొన్నారు. 2026లో ఎక్కువ చర్చకు దారితీసిన సినిమాల్లో ‘ది ప్యారడైజ్’ ముందుంటుందని ఆయన చేసిన వ్యాఖ్యలు అభిమానుల దృష్టిని ఆకర్షించాయి.
+</P>
+<h3>షోలు పెరుగుతున్న కొద్దీ పాజిటివిటీ పెరుగుతోంది: నాని</h3>
+<P>
+సినిమా విడుదలైన తర్వాత ప్రేక్షకుల నుంచి వచ్చే స్పందనను గమనించడం నటీనటులకు సహజం. మొదటి రోజు ప్రేక్షకులు ఎలా స్పందించారు? తర్వాతి షోల్లో పరిస్థితి ఎలా ఉంది? సినిమా చూసినవారు తమ అభిప్రాయాలను ఇతరులతో ఎలా పంచుకుంటున్నారు? అనే అంశాలను చిత్రబృందం ఆసక్తిగా పరిశీలిస్తుంది. ‘ది ప్యారడైజ్’ విషయంలోనూ ఇదే జరుగుతోందని నాని మాటలను బట్టి తెలుస్తోంది.
+
+షోలు పెరుగుతున్న కొద్దీ పాజిటివిటీ పెరుగుతోందని ఆయన చెప్పడం ప్రత్యేకంగా చర్చకు వచ్చింది. సినిమా చూసిన ప్రేక్షకుల నుంచి వస్తున్న స్పందనను తాను గమనిస్తున్నానని, ఇలాంటి రియాక్షన్ ఇటీవల ఏ సినిమాకీ చూడలేదనే భావనను వ్యక్తం చేశారు. దీంతో ‘ది ప్యారడైజ్’పై ప్రేక్షకుల చర్చ మరోసారి వార్తల్లో నిలిచింది.
+
+సాధారణంగా సినిమా విడుదలైన వెంటనే సోషల్ మీడియాలో అనేక రకాల అభిప్రాయాలు కనిపిస్తాయి. కొందరు సినిమా నచ్చిందని చెబుతారు. మరికొందరు కథలోని లోపాలను ప్రస్తావిస్తారు. ఇంకొందరు నటన, దర్శకత్వం, సంగీతం, యాక్షన్ సన్నివేశాలు లేదా క్లైమాక్స్ గురించి తమ అభిప్రాయాలను పంచుకుంటారు. ఇలాంటి స్పందనలన్నీ కలిపి సినిమా చుట్టూ చర్చను పెంచుతాయి.
+
+నాని చేసిన వ్యాఖ్యల్లోనూ సినిమా గురించి జరుగుతున్న చర్చ ప్రధానంగా కనిపించింది. ఆయన చెప్పిన పాజిటివిటీ అనేది ప్రేక్షకుల స్పందనపై ఆయన వ్యక్తిగత పరిశీలనగా చూడాలి. సినిమా విజయాన్ని లేదా ప్రేక్షకులందరి అభిప్రాయాన్ని నిర్ధారించాలంటే బాక్సాఫీస్ గణాంకాలు, విశ్వసనీయ నివేదికలు, విస్తృతమైన ప్రేక్షకుల స్పందన వంటి అంశాలను కూడా పరిశీలించాల్సి ఉంటుంది.
+</P>
+    <!-- DATE ABOVE IMAGE -->
 
 <div class="article-meta">
     BS 360 NEWS | సెప్టెంబర్ 26, 2026
@@ -617,712 +1125,469 @@
     loading="eager"
 >
 
+<h3>‘ఈరోజుల్లో గుడ్, బ్యాడ్ కాదు.. నాయిస్ మాత్రమే’</h3>
+<P>
+‘ది ప్యారడైజ్’ గురించి మాట్లాడిన సందర్భంగా నాని చేసిన మరో వ్యాఖ్య కూడా చర్చకు కారణమైంది. ఈ రోజుల్లో గుడ్, బ్యాడ్ అనే విభజన కంటే నాయిస్ ఎక్కువగా ఉందని ఆయన అభిప్రాయపడ్డారు. 2026లో మోస్ట్ నాయిస్ ఫిల్మ్ ఇదేనని పేర్కొనడం ద్వారా సినిమా చుట్టూ కొనసాగుతున్న చర్చ తీవ్రతను ప్రస్తావించారు.
 
-<p>
-సినిమా షోలు జరిగే కొద్దీ పాజిటివిటీ పెరుగుతోందని నాని చెప్పడం ఇప్పుడు ‘ది ప్యారడైజ్’ చుట్టూ జరుగుతున్న చర్చలో ప్రధానంగా మారింది. సాధారణంగా ఒక సినిమా విడుదలైన తర్వాత ప్రేక్షకుల స్పందన ఒక స్థాయిలో స్థిరపడుతుందని, కానీ ‘ది ప్యారడైజ్’ విషయంలో మాత్రం ప్రతి షో తర్వాత కొత్త రకమైన చర్చ కనిపిస్తోందని ఆయన అభిప్రాయపడ్డారు. “ఈరోజుల్లో గుడ్, బ్యాడ్ అనేది లేదు. కేవలం నాయిస్ మాత్రమే ఉంది” అని నాని వ్యాఖ్యానించారు. 2026లో మోస్ట్ నాయిస్ ఫిల్మ్ ఇదేనని ఆయన పేర్కొన్నారు. సినిమా విషయంలో ప్రేక్షకులు, అభిమానులు, సినీ వర్గాల నుంచి వస్తున్న భిన్నమైన స్పందనలు చిత్రంపై చర్చను కొనసాగిస్తున్నాయని ఆయన మాటలను బట్టి తెలుస్తోంది. ఇదే సమయంలో సినిమా గురించి వచ్చిన ప్రశంసలను మాత్రమే కాకుండా విమర్శలను కూడా తాను గమనిస్తున్నట్లు నాని ఇప్పటికే వెల్లడించారు.
-</p>
+ప్రస్తుత కాలంలో సినిమాలపై ప్రేక్షకుల స్పందన థియేటర్లకే పరిమితం కావడం లేదు. సినిమా చూసిన వెంటనే సోషల్ మీడియాలో పోస్టులు, వీడియోలు, రివ్యూలు, చర్చలు మొదలవుతున్నాయి. కొన్ని సన్నివేశాలు వైరల్ అవుతాయి. కొన్ని డైలాగులు ప్రేక్షకుల మధ్య చర్చకు వస్తాయి. మరికొన్ని అంశాలపై అభిమానులు, విమర్శకులు వేర్వేరు అభిప్రాయాలను వ్యక్తం చేస్తారు. దీంతో సినిమా విడుదలైన తర్వాత కూడా దాని గురించి చర్చ కొనసాగుతుంది.
 
+ఈ పరిస్థితుల్లో ‘నాయిస్’ అనే పదం సినిమా చుట్టూ ఏర్పడే మొత్తం చర్చను సూచించడానికి ఉపయోగించవచ్చు. అయితే ఎక్కువ చర్చ జరగడం మాత్రమే సినిమా విజయానికి పూర్తి కొలమానం కాదు. ప్రేక్షకుల ఆదరణ, టికెట్ విక్రయాలు, సినిమా చూసినవారి అభిప్రాయాలు, వాణిజ్య ఫలితాలు వంటి అంశాలు వేర్వేరుగా పరిశీలించాల్సినవి.
 
-<p>
-‘ది ప్యారడైజ్’ను కొత్తగా తెరకెక్కించామని చిత్రబృందం భావించిందని నాని తెలిపారు. అయితే సినిమా చూసిన తర్వాత ప్రేక్షకుల నుంచి వచ్చే రియాక్షన్ కూడా ఇంత కొత్తగా ఉంటుందని తాము ఊహించలేదని చెప్పారు. కథ, పాత్రలు, సినిమా చూపించిన విధానం విషయంలో ఒక ప్రత్యేకమైన అనుభూతిని ప్రేక్షకులకు అందించాలనే ఉద్దేశంతో చిత్రబృందం పనిచేసిందని ఆయన వెల్లడించారు. ఈ సినిమా కోసం యూనిట్ చాలా కష్టపడిందని, ప్రేక్షకులకు ఒక భిన్నమైన అనుభవాన్ని అందించాలనే లక్ష్యంతో పనిచేశామని నాని గతంలోనూ చెప్పారు. దర్శకుడు శ్రీకాంత్ ఓదెల కథను తెరకెక్కించేందుకు విస్తృతంగా పరిశోధన చేసి, సినిమాలోని ప్రపంచాన్ని సహజంగా చూపించేందుకు ప్రత్యేకంగా శ్రమించారని చిత్రబృందం పేర్కొంది. సినిమా కథలో ఒక అట్టడుగు వర్గానికి చెందిన సమాజం నేపథ్యం ఉండటంతో భారీ సెట్లను కూడా నిర్మించారు.
-</p>
+‘ది ప్యారడైజ్’ విషయంలోనూ ప్రశంసలు, విమర్శలు రెండూ కనిపిస్తున్నాయి. కొందరు నాని నటనను మెచ్చుకుంటుండగా, మరికొందరు కథనం, స్క్రీన్‌ప్లే గురించి తమ అభిప్రాయాలను వెల్లడిస్తున్నారు. ఈ భిన్న స్పందనల మధ్య సినిమా గురించి చర్చ కొనసాగుతోంది. నాని చేసిన వ్యాఖ్యలు కూడా అదే చర్చలో భాగంగా నిలిచాయి.
+</P>
+<h3>ప్రేక్షకుల స్పందన తమ అంచనాలకు భిన్నంగా ఉందన్న నాని</h3>
+<P>
+‘ది ప్యారడైజ్’ను ప్రత్యేకమైన సినిమాగా ప్రేక్షకుల ముందుకు తీసుకురావాలనే ఉద్దేశంతో చిత్రబృందం పనిచేసిందని నాని తెలిపారు. అయితే సినిమా చూసిన తర్వాత ప్రేక్షకుల నుంచి వచ్చిన స్పందన కూడా ఇంత భిన్నంగా ఉంటుందని తాము ఊహించలేదనే భావనను ఆయన వ్యక్తం చేశారు. కథ, పాత్రలు, వాటి నేపథ్యం ద్వారా ప్రేక్షకులకు కొత్త అనుభూతిని అందించాలనే లక్ష్యంతో పనిచేసినట్లు ఆయన మాటల ద్వారా తెలుస్తోంది.
 
+ఒక సినిమా రూపొందించే సమయంలో దర్శకుడు, నటీనటులు, సాంకేతిక బృందం తమ ఆలోచనలకు అనుగుణంగా కథను తెరపైకి తీసుకురావడానికి ప్రయత్నిస్తారు. కానీ సినిమా ప్రేక్షకుల ముందుకు వచ్చిన తర్వాత దానికి వచ్చే స్పందన పూర్తిగా ప్రేక్షకుల అనుభవం, అభిరుచులపై ఆధారపడి ఉంటుంది. చిత్రబృందం ఊహించిన అంశాన్ని ప్రేక్షకులు మరో కోణంలో చూడవచ్చు. కొన్ని సన్నివేశాలకు ఎక్కువ ప్రాధాన్యం ఇవ్వవచ్చు. మరికొన్ని అంశాలపై విమర్శలు చేయవచ్చు.
 
-<p>
-ఈ సందర్భంగా తెలుగు ప్రేక్షకుల గురించి నాని ప్రత్యేకంగా మాట్లాడారు. తెలుగువాళ్లు గ్రేటెస్ట్ ఆడియన్స్ అని, వారి ప్రేమకు తాను ఎప్పటికీ రుణపడి ఉంటానని చెప్పారు. ఒక సినిమా విషయంలో ప్రేక్షకులు చూపించే ఆసక్తి, స్పందన, చర్చే నటీనటులు, దర్శకులు, నిర్మాతలకు మరింత ఉత్సాహాన్ని ఇస్తాయని ఆయన అభిప్రాయపడ్డారు. ‘ది ప్యారడైజ్’ విషయంలో కూడా ప్రేక్షకులు సినిమాను తమదిగా భావించి మాట్లాడుతున్న తీరు తనకు ఆనందాన్ని ఇస్తోందని నాని చెప్పారు. అదే సమయంలో సినిమాపై వచ్చిన విమర్శలను కూడా తాను స్వీకరిస్తున్నట్లు వెల్లడించారు. సెప్టెంబర్ 25న నాని చేసిన వ్యాఖ్యల్లో ప్రేక్షకుల స్పందనను చూసినట్లు, వచ్చిన ప్రేమను ఆస్వాదించడంతో పాటు విమర్శకులు, రివ్యూయర్లు చూపించిన లోపాల నుంచి నేర్చుకున్నట్లు తెలిపారు. ప్రేక్షకులు సినిమాను ఎలా స్వీకరించాలో, ఎలా అంచనా వేయాలో వారికి పూర్తి స్వేచ్ఛ ఉందనే భావనను కూడా ఆయన వ్యక్తం చేశారు.
-</p>
+అందుకే సినిమా విడుదల తర్వాత ప్రేక్షకుల అభిప్రాయాలను గమనించడం చిత్రబృందానికి ముఖ్యమవుతుంది. ‘ది ప్యారడైజ్’ విషయంలోనూ ప్రేక్షకులు సినిమాను తమదైన రీతిలో అర్థం చేసుకుని చర్చిస్తున్నారని నాని వ్యాఖ్యలను బట్టి తెలుస్తోంది. ఈ స్పందనను ఆయన ఆసక్తిగా గమనిస్తున్నట్లు చెప్పారు.
 
+సినిమా గురించి చర్చ జరగడం ద్వారా అందులోని పాత్రలు, కథాంశం, దర్శకుడి ఆలోచనలపై మరింత మంది దృష్టి పడుతుంది. అయితే ఆ చర్చలోని ప్రతి అభిప్రాయాన్ని చిత్రబృందం అంగీకరించాల్సిన అవసరం లేదు. ప్రేక్షకులకు తమ అభిప్రాయాలను స్వేచ్ఛగా చెప్పే హక్కు ఉన్నట్లే, ఆ అభిప్రాయాల నుంచి నేర్చుకోవాలా వద్దా అన్నది చిత్రబృందం నిర్ణయించుకోవచ్చు.
+</P>
+<h3>సినిమా కోసం కష్టపడ్డ చిత్రబృందం</h3>
+<P>
+‘ది ప్యారడైజ్’ కోసం చిత్రబృందం చాలా కష్టపడిందని నాని పేర్కొన్నారు. ప్రేక్షకులకు సాధారణ కథనానికి భిన్నమైన అనుభవాన్ని అందించాలనే ఉద్దేశంతో పనిచేసినట్లు ఆయన వెల్లడించారు. దర్శకుడు శ్రీకాంత్ ఓదెల కథకు తగిన వాతావరణాన్ని సృష్టించేందుకు ప్రత్యేకంగా శ్రమించినట్లు చిత్రబృందం నుంచి వచ్చిన వివరాలు సూచిస్తున్నాయి.
 
-<p>
-ఇక ‘ది ప్యారడైజ్’ విడుదలకు ముందు నుంచే సినిమాపై భారీ బాధ్యత, ఒత్తిడి ఉందని నాని చెప్పిన విషయం కూడా ఈ సందర్భంలో ప్రస్తావనకు వచ్చింది. ఇప్పటికే రెండుసార్లు విడుదల తేదీ మారడంతో సెప్టెంబర్ 24 విడుదల కోసం చిత్రబృందం తీవ్రంగా పనిచేసిందని ఆయన తెలిపారు. సినిమా నుంచి వచ్చిన ప్రతి అప్‌డేట్‌కు ప్రేక్షకుల నుంచి వచ్చిన స్పందన తమ బాధ్యతను మరింత పెంచిందని అప్పట్లో నాని చెప్పారు. ఇప్పుడు సినిమా ప్రేక్షకుల ముందుకు వచ్చిన తర్వాత వారి స్పందనను స్వయంగా గమనిస్తున్న ఆయన, షోలు పెరుగుతున్న కొద్దీ పాజిటివిటీ కూడా పెరుగుతోందని చెప్పడం ఆసక్తికరంగా మారింది. అయితే అదే సమయంలో సినిమాకు మిశ్రమ స్పందన కూడా నమోదైనట్లు పలు నివేదికలు పేర్కొంటున్నాయి. ప్రశంసలు, విమర్శలు, సోషల్ మీడియాలో చర్చ—ఇవన్నీ కలిసి ‘ది ప్యారడైజ్’పై నాయిస్‌ను కొనసాగిస్తున్నాయి. ఈ నేపథ్యంలో నాని చేసిన “2026లో మోస్ట్ నాయిస్ ఫిల్మ్” వ్యాఖ్యలు సినిమా చుట్టూ ఉన్న చర్చకు మరింత ఆసక్తిని తీసుకొచ్చాయి.
-</p>
+ఒక సినిమా కథలో ప్రత్యేకమైన ప్రపంచాన్ని సృష్టించాలంటే కేవలం నటీనటుల పాత్రలు సరిపోవు. కథ జరిగే ప్రాంతం, అక్కడి ప్రజల జీవనశైలి, పరిసరాలు, భాష, దుస్తులు, సామాజిక పరిస్థితులు వంటి అంశాలు కూడా కీలకంగా మారుతాయి. ప్రేక్షకులు సినిమా చూస్తున్నప్పుడు కథలోని ప్రపంచాన్ని నమ్మేలా చూపించడం దర్శకుడికి పెద్ద బాధ్యత.
 
+‘ది ప్యారడైజ్’ కథకు సంబంధించిన నేపథ్యాన్ని తెరపై చూపించేందుకు భారీ సెట్లు నిర్మించినట్లు అందించిన సమాచారం పేర్కొంటోంది. కథలోని సమాజం, పాత్రలు నివసించే పరిసరాలు, వారి జీవన పరిస్థితులను సహజంగా చూపించేందుకు ఈ ఏర్పాట్లు ఉపయోగపడతాయి. ఇలాంటి నిర్మాణ పనుల వెనుక ఆర్ట్ డైరెక్షన్, సెట్స్ బృందం, కెమెరా విభాగం, దుస్తుల రూపకల్పన వంటి అనేక విభాగాల కృషి ఉంటుంది.
 
+సినిమా ప్రేక్షకుల ముందుకు వచ్చిన తర్వాత తెరపై కనిపించే ఫలితాన్ని మాత్రమే ప్రేక్షకులు చూస్తారు. కానీ దాని వెనుక నెలల తరబడి సాగిన ప్రణాళిక, చిత్రీకరణ, సాంకేతిక పనులు ఉంటాయి. ఈ కృషి ప్రేక్షకులకు ఎంతవరకు చేరింది అన్నది సినిమా చూసిన తర్వాత వారి స్పందనలో తెలుస్తుంది.
+
+నాని చెప్పినట్లుగా చిత్రబృందం ఒక భిన్నమైన అనుభూతిని అందించాలనే ఉద్దేశంతో పనిచేసి ఉంటే, ప్రేక్షకుల స్పందన ఆ ప్రయత్నాన్ని అంచనా వేయడానికి ఒక మార్గంగా ఉంటుంది. అదే సమయంలో సినిమా విషయంలో ప్రతి ప్రేక్షకుడి అభిప్రాయం వేర్వేరుగా ఉండటం సహజం.
+</P>
+<h3>తెలుగు ప్రేక్షకుల ప్రేమకు రుణపడి ఉంటా</h3>
+<P>
+తెలుగు ప్రేక్షకుల గురించి నాని ప్రత్యేకంగా మాట్లాడారు. తెలుగువాళ్లు గొప్ప ప్రేక్షకులని, వారు చూపించే ప్రేమకు ఎప్పటికీ రుణపడి ఉంటాననే భావనను వ్యక్తం చేశారు. ఒక నటుడి కెరీర్‌లో ప్రేక్షకుల ఆదరణ కీలక పాత్ర పోషిస్తుంది. ఒక సినిమా నచ్చితే దాన్ని ఇతరులకు సిఫారసు చేయడం, ఇష్టమైన సన్నివేశాల గురించి మాట్లాడటం, నటుడి తదుపరి సినిమా కోసం ఎదురుచూడటం వంటి చర్యల ద్వారా అభిమానులు తమ మద్దతును తెలియజేస్తారు.
+
+నాని సినిమాల విషయంలోనూ అభిమానులు ఆయన పాత్రలు, కథల ఎంపిక, నటన గురించి తరచుగా చర్చిస్తుంటారు. ప్రతి సినిమాలో ఒకే తరహా పాత్రను ఎంచుకోకుండా కొత్త కథలతో ప్రేక్షకుల ముందుకు రావడానికి ప్రయత్నించడం ఆయన కెరీర్‌లో కనిపించే అంశాల్లో ఒకటి. ‘ది ప్యారడైజ్’లోనూ భిన్నమైన పాత్రలో కనిపించడంతో అభిమానుల్లో ఆసక్తి ఏర్పడింది.
+
+అయితే అభిమానుల ప్రేమతో పాటు విమర్శలు కూడా సినిమా ప్రయాణంలో భాగమే. ప్రేక్షకులు ఒక సినిమాపై తమకు నచ్చిన విషయాలను ప్రశంసించవచ్చు. నచ్చని అంశాలను బహిరంగంగా చెప్పవచ్చు. నాని కూడా ప్రేక్షకుల స్పందనను స్వీకరిస్తున్నట్లు పేర్కొనడం ఈ సందర్భంలో ప్రాధాన్యం సంతరించుకుంది.
+
+సినిమా చూసిన ప్రతి ఒక్కరూ ఒకేలా స్పందించకపోవచ్చు. అయినప్పటికీ ప్రేక్షకులు సమయం కేటాయించి సినిమా చూడటం, దాని గురించి చర్చించడం నటీనటులకు ముఖ్యమైన అనుభవం. ఆ స్పందనలోని మంచి విషయాలను ఆస్వాదించడంతో పాటు విమర్శల్లోని ఉపయోగకరమైన అంశాలను గుర్తించడం కూడా ఒక నటుడి ఎదుగుదలకు సహాయపడుతుంది.
+</P>
+<h3>ప్రశంసలతో పాటు విమర్శల నుంచి కూడా నేర్చుకుంటా</h3>
+<P>
+సెప్టెంబర్ 25న నాని చేసిన వ్యాఖ్యల ప్రకారం, ‘ది ప్యారడైజ్’కు వచ్చిన స్పందనను ఆయన గమనించారు. ప్రేక్షకుల నుంచి వచ్చిన ప్రేమను ఆస్వాదించడంతో పాటు విమర్శకులు, రివ్యూయర్లు ప్రస్తావించిన లోపాల నుంచి నేర్చుకోవాలని భావిస్తున్నట్లు తెలిపారు. సినిమా విషయంలో ప్రేక్షకులు తమకు నచ్చినట్లుగా స్పందించే స్వేచ్ఛ ఉందనే భావనను కూడా ఆయన వ్యక్తం చేశారు.
+
+సినిమా విడుదలైన తర్వాత సమీక్షలు రావడం సాధారణం. కొందరు కథలోని బలాలను గుర్తిస్తారు. మరికొందరు కథనం నెమ్మదిగా సాగిందని లేదా కొన్ని సన్నివేశాలు మరింత ప్రభావవంతంగా ఉండాల్సిందని అభిప్రాయపడవచ్చు. నటన, ఎడిటింగ్, సంగీతం, నేపథ్య సంగీతం, కెమెరా పనితీరు వంటి అంశాలపై కూడా సమీక్షకులు తమ అభిప్రాయాలను వెల్లడిస్తారు.
+
+ఒక నటుడు లేదా దర్శకుడు ప్రతి విమర్శను వ్యక్తిగతంగా తీసుకోవాల్సిన అవసరం లేదు. అదే సమయంలో విమర్శలను పూర్తిగా పక్కన పెట్టకుండా, అందులో ఉపయోగకరమైన అంశాలున్నాయా అని పరిశీలించడం వల్ల భవిష్యత్తులో మరింత మెరుగైన పనితీరుకు అవకాశం ఉంటుంది. నాని చేసిన వ్యాఖ్యల్లోనూ ప్రేక్షకుల స్పందనను గమనించి నేర్చుకోవాలనే దృక్పథం కనిపిస్తోంది.
+
+సమీక్ష అనేది ఒక వ్యక్తి అభిప్రాయం. అది ప్రతి ప్రేక్షకుడి అభిప్రాయానికి ప్రాతినిధ్యం వహించదు. అలాగే సోషల్ మీడియాలో వైరల్ అయ్యే ఒక పోస్టు ఆధారంగా సినిమా మొత్తాన్ని అంచనా వేయడం కూడా సరైంది కాదు. సినిమా గురించి నిర్ణయం తీసుకునే ముందు వీలైతే స్వయంగా చూసి అభిప్రాయం ఏర్పరచుకోవడం మంచిది.
+
+ప్రేక్షకులు సినిమా గురించి ప్రశంసించినా, విమర్శించినా వారి అభిప్రాయాలను గౌరవించాలని నాని చెప్పిన భావన కూడా ఇక్కడ ముఖ్యమైనది. సినిమా అనేది ప్రేక్షకుల ముందుకు వచ్చిన తర్వాత వారితోనే పూర్తయ్యే కళారూపం. దానికి తుది అర్థాన్ని ప్రతి ఒక్కరూ తమ అనుభవానికి అనుగుణంగా తీసుకుంటారు.
+</P>
+<h3>విడుదలకు ముందే భారీ అంచనాలు.. మారిన విడుదల తేదీలు</h3>
+<P>
+‘ది ప్యారడైజ్’ విడుదలకు ముందే ప్రేక్షకుల్లో భారీ అంచనాలు ఏర్పడ్డాయి. నాని, శ్రీకాంత్ ఓదెల కాంబినేషన్ కావడం, సినిమాకు సంబంధించిన ప్రచార కార్యక్రమాలు, పాత్రలపై వచ్చిన అప్‌డేట్స్ అభిమానుల్లో ఆసక్తిని పెంచాయి. సినిమా నుంచి ఒక్కో సమాచారం బయటకు వచ్చినప్పుడు దాని గురించి చర్చ జరగడం చిత్రబృందంపై ఉన్న అంచనాలను మరింత పెంచింది.
+
+అయితే విడుదల తేదీ విషయంలో మార్పులు రావడంతో అభిమానులు చివరి తేదీ కోసం ఎదురుచూడాల్సి వచ్చింది. సినిమా విడుదల రెండుసార్లు వాయిదా పడినట్లు నాని పేర్కొన్నారని అందించిన సమాచారం చెబుతోంది. చివరకు సెప్టెంబర్ 24న ప్రేక్షకుల ముందుకు తీసుకురావడానికి చిత్రబృందం తీవ్రంగా పనిచేసిందని ఆయన తెలిపారు.
+
+పెద్ద సినిమా నిర్మాణంలో విడుదల తేదీని ఖరారు చేయడం అనేక అంశాలపై ఆధారపడి ఉంటుంది. చిత్రీకరణ పూర్తవడం, పోస్ట్ ప్రొడక్షన్ పనులు, సాంకేతిక నాణ్యత, ప్రచార కార్యక్రమాలు, థియేటర్లలో విడుదలకు సంబంధించిన ప్రణాళికలు వంటి అంశాలు కీలకం. విడుదల తేదీ మారినప్పుడు ప్రేక్షకుల్లో అంచనాలు పెరగవచ్చు. అదే సమయంలో చిత్రబృందంపై ఒత్తిడి కూడా పెరుగుతుంది.
+
+‘ది ప్యారడైజ్’ విషయంలో విడుదలకు ముందు వచ్చిన ప్రతి అప్‌డేట్‌కు స్పందన రావడం తమ బాధ్యతను మరింత పెంచిందని నాని గతంలో చెప్పినట్లు సమాచారం. ఇప్పుడు సినిమా విడుదలైన తర్వాత ప్రేక్షకుల స్పందనను గమనిస్తూ ఆయన చేసిన వ్యాఖ్యలు ఆ ప్రయాణంలో మరో భాగంగా నిలిచాయి.
+</P>
+<h3>‘దసరా’ తర్వాత నాని, శ్రీకాంత్ ఓదెల కాంబినేషన్‌పై ఆసక్తి</h3>
+<P>
+నాని, శ్రీకాంత్ ఓదెల కలిసి పనిచేసిన ‘దసరా’ సినిమా తర్వాత ఈ కాంబినేషన్‌పై ప్రేక్షకుల్లో ప్రత్యేకమైన అంచనాలు ఏర్పడ్డాయి. ఒకసారి కలిసి పనిచేసిన నటుడు, దర్శకుడు మరో సినిమా చేస్తున్నప్పుడు వారి గత అనుభవాన్ని ప్రేక్షకులు గుర్తు చేసుకుంటారు. అయితే కొత్త సినిమా కథ, పాత్రలు, నిర్మాణ విధానం వేర్వేరుగా ఉండటంతో ప్రతి చిత్రాన్ని స్వతంత్రంగా చూడాల్సిన అవసరం ఉంటుంది.
+
+‘ది ప్యారడైజ్’లో నాని పాత్ర, కథ నేపథ్యం గత సినిమాతో పోలిస్తే భిన్నంగా ఉన్నాయని ప్రచారంలో వచ్చిన వివరాలు సూచిస్తున్నాయి. కొత్త పాత్ర కోసం నటుడు తన లుక్, బాడీ లాంగ్వేజ్‌లో మార్పులు చూపించడం అభిమానుల ఆసక్తిని పెంచింది. సినిమా విడుదల తర్వాత కూడా ఆయన నటనపై చర్చ కొనసాగుతోంది.
+
+దర్శకుడు శ్రీకాంత్ ఓదెల కథను తెరపైకి తీసుకురావడంలో ఎంచుకున్న విధానం గురించి కూడా ప్రేక్షకులు తమ అభిప్రాయాలను వ్యక్తం చేస్తున్నారు. ఒక దర్శకుడి ప్రత్యేకత అతను ఎంచుకునే కథలోనే కాకుండా, పాత్రలను ఎలా మలుస్తాడు, సన్నివేశాలను ఎలా నిర్మిస్తాడు, కథలోని భావోద్వేగాలను ఎలా వ్యక్తం చేస్తాడు అనే అంశాల్లోనూ కనిపిస్తుంది.
+
+ఈ కాంబినేషన్‌పై ముందుగానే ఏర్పడిన అంచనాలు సినిమా విడుదల తర్వాత చర్చను కొనసాగించడానికి ఒక కారణంగా కనిపిస్తున్నాయి. అయితే సినిమా విజయాన్ని గత చిత్రం విజయంతో మాత్రమే పోల్చి నిర్ణయించలేం. కొత్త సినిమాను దాని స్వంత కథ, నటన, సాంకేతిక అంశాలు, ప్రేక్షకుల స్పందన ఆధారంగా అంచనా వేయాలి.
+</P>
+<h3>మొత్తానికి.. చర్చ కొనసాగిస్తున్న ‘ది ప్యారడైజ్’</h3>
+<P>
+‘ది ప్యారడైజ్’ సినిమా విడుదలైన తర్వాత ప్రేక్షకుల నుంచి వస్తున్న స్పందన గురించి నాని చేసిన వ్యాఖ్యలు మరోసారి వార్తల్లో నిలిచాయి. షోలు పెరుగుతున్న కొద్దీ పాజిటివిటీ పెరుగుతోందని, ఇటీవల ఏ సినిమాకీ ఇలాంటి స్పందన చూడలేదని ఆయన చెప్పడం ఆసక్తిని కలిగించింది. 2026లో మోస్ట్ నాయిస్ ఫిల్మ్ ఇదేనని పేర్కొనడం ద్వారా సినిమా చుట్టూ జరుగుతున్న చర్చను ప్రస్తావించారు.
+
+సినిమా కోసం చిత్రబృందం చేసిన కృషి, తెలుగు ప్రేక్షకులు చూపిస్తున్న ప్రేమ, విమర్శల నుంచి నేర్చుకోవాలనే తన ఆలోచన గురించి కూడా నాని మాట్లాడారు. ప్రేక్షకులు తమ అభిప్రాయాలను స్వేచ్ఛగా వ్యక్తం చేయవచ్చని, ప్రశంసలతో పాటు విమర్శలను కూడా గమనిస్తాననే ఆయన వ్యాఖ్యలు ప్రాధాన్యం సంతరించుకున్నాయి.
+
+ప్రస్తుతం ‘ది ప్యారడైజ్’పై ప్రశంసలు, విమర్శలు రెండూ కనిపిస్తున్నాయి. కొందరు నాని నటనను మెచ్చుకుంటుండగా, మరికొందరు కథనం, స్క్రీన్‌ప్లే వంటి అంశాలపై తమ అభిప్రాయాలను పంచుకుంటున్నారు. ఈ భిన్న స్పందనలే సినిమా గురించి చర్చను కొనసాగిస్తున్నాయి. అయితే ఎక్కువ చర్చ జరగడం ఒక్కటే సినిమా విజయానికి ప్రమాణం కాదు. బాక్సాఫీస్ ఫలితాలు, అధికారిక గణాంకాలు, ప్రేక్షకుల విస్తృత స్పందనను విడిగా పరిశీలించాలి.
+
+నాని వ్యాఖ్యలతో ‘ది ప్యారడైజ్’పై అభిమానుల్లో ఆసక్తి కొనసాగుతోంది. సినిమా గురించి తుది అభిప్రాయం ప్రతి ప్రేక్షకుడికి భిన్నంగా ఉండవచ్చు. కానీ విడుదల తర్వాత కూడా సినిమా గురించి చర్చ జరగడం, దాని అంశాలపై ప్రేక్షకులు తమ అభిప్రాయాలను పంచుకోవడం చిత్రబృందానికి ముఖ్యమైన అనుభవంగా నిలుస్తోంది.
+
+</P>
 </div>
 
 </article>
 
 
-<!-- SIDEBAR -->
+  <aside class="article-sidebar">
 
-<aside class="article-sidebar">
+            <section class="news-section">
+                <h2 class="section-heading">జాతీయ వార్తలు</h2>
+                <div id="nationalGrid" class="side-news-list"></div>
+            </section>
 
+            <section class="news-section">
+                <h2 class="section-heading">తాజా వార్తలు</h2>
+                <div id="latestSidebar" class="side-news-list"></div>
+            </section>
 
-<div class="sidebar-box">
+            <section class="news-section">
+                <h2 class="section-heading">ట్రెండింగ్ వార్తలు</h2>
+                <div id="trendingSidebar" class="side-news-list"></div>
+            </section>
 
-    <div class="sidebar-title">
-        Trending News
+            <section class="news-section">
+                <h2 class="section-heading">సినిమా వార్తలు</h2>
+                <div id="movieReviewsSidebar" class="side-news-list"></div>
+            </section>
+
+            
+
+        </aside>
     </div>
 
-    <div id="trendingSidebar"></div>
-
-</div>
-
-
-<div class="sidebar-box">
-
-    <div class="sidebar-title">
-        Latest News
+<!-- SPORTS NEWS -->
+<section class="category-ad-layout">
+    <div class="category-news">
+        <h2>క్రీడా వార్తలు</h2>
+        <div id="sportsGrid" class="news-grid"></div>
     </div>
-
-    <div id="latestSidebar"></div>
-
-</div>
-
-
-<div class="sidebar-box">
-
-    <div class="sidebar-title">
-        Most Read
+   
+</section>
+<!-- ENTERTAINMENT NEWS -->
+<section class="category-ad-layout">
+    <div class="category-news">
+        <h2>సినిమా అప్‌డేట్స్</h2>
+        <div id="cinemaGrid" class="news-grid"></div>
     </div>
-
-    <div id="mostReadSidebar"></div>
-
-</div>
-
-
-</aside>
-
-</div>
-
-
-<!-- LATEST -->
-
-<section class="related-section">
-
-    <div class="related-title">
-         Latest News
-    </div>
-
-    <div
-        id="latestGrid"
-        class="news-grid"
-    ></div>
-
+   
 </section>
 
-
-<!-- SPORTS -->
-
-<section class="related-section">
-
-    <div class="related-title">
-         Sports
+<!-- BUSINESS NEWS -->
+<section class="category-ad-layout">
+    <div class="category-news">
+        <h2>వ్యాపార వార్తలు</h2>
+        <div id="businessGrid" class="news-grid"></div>
     </div>
-
-    <div
-        id="sportsGrid"
-        class="news-grid"
-    ></div>
-
+   
 </section>
 
-
-<!-- ENTERTAINMENT -->
-
-<section class="related-section">
-
-    <div class="related-title">
-         Entertainment
+<!-- AP NEWS -->
+<section class="category-ad-layout">
+    <div class="category-news">
+        <h2>ఆంధ్రప్రదేశ్ & తెలంగాణ వార్తలు</h2>
+        <div id="aptsGrid" class="news-grid"></div>
     </div>
 
-    <div
-        id="moviesGrid"
-        class="news-grid"
-    ></div>
-
+ 
 </section>
 
-
-<!-- AP TS -->
-
-<section class="related-section">
-
-    <div class="related-title">
-         AP & TS
+<!-- MOVIE REVIEWS -->
+<section class="movie-reviews-section">
+    <h2>సినిమా వార్తలు</h2>
+    <div id="movieReviewsGrid" class="news-grid"></div>
+</section>
+  <!-- ALL MOVIE NEWS FROM MOVIES.html -->
+<section class="movie-reviews-section" id="movieReviewsSection">
+    
+    <div id="movieReviewsGrid" class="news-grid">
+        
     </div>
-
-    <div
-        id="aptsGrid"
-        class="news-grid"
-    ></div>
-
 </section>
-
-
-<!-- BUSINESS -->
-
-<section class="related-section">
-
-    <div class="related-title">
-         Business
-    </div>
-
-    <div
-        id="businessGrid"
-        class="news-grid"
-    ></div>
-
-</section>
-
 
 </main>
 
-
-<!-- FOOTER -->
-
 <footer class="site-footer">
-
     <div class="container footer-inner">
 
-
         <div class="footer-column">
-
-            <h3>
-                ముఖ్యమైన లింకులు
-            </h3>
-
-
+            <h3>ముఖ్యమైన లింకులు</h3>
             <div class="footer-links">
-
-                <a href="../advertise.html">
-                    Advertise With Us
-                </a>
-
-                <a href="../about.html">
-                    About Us
-                </a>
-
-                <a href="../contact.html">
-                    Contact Us
-                </a>
-
-                <a href="../Privacy Policy.html">
-                    Privacy Policy
-                </a>
-
-                <a href="../disclaimer.html">
-                    Disclaimer
-                </a>
-
-                <a href="../terms.html">
-                    Terms & Conditions
-                </a>
-
+                <a href="../advertise.html">Advertise With Us</a>
+                <a href="../about.html">About Us</a>
+                <a href="../contact.html">Contact Us</a>
+                <a href="../Privacy%20Policy.html">Privacy Policy</a>
+                <a href="../disclaimer.html">Disclaimer</a>
+                <a href="../terms.html">Terms &amp; Conditions</a>
             </div>
-
         </div>
-
 
         <div class="footer-contact">
-
-            <h3>
-                Contact
-            </h3>
-
-            <p>
-                newsb386@gmail.com
-            </p>
-
-            <p>
-                Follow us for latest updates.
-            </p>
-
+            <h3>Contact</h3>
+            <p>newsb386@gmail.com</p>
+            <p>Follow us for latest updates.</p>
         </div>
 
     </div>
 
-
     <div class="copyright">
-
         © 2026 BS 360 NEWS. All rights reserved.
-
     </div>
-
 </footer>
 
-
-<!-- AUTOMATIC ARTICLE NEWS SYSTEM -->
-
 <script>
+/* MOBILE NAVIGATION */
+function toggleMobileNav() {
+    const nav = document.getElementById("navLinks");
+    const button = document.querySelector(".mobile-menu-toggle");
+
+    if (!nav || !button) return;
+
+    const isOpen = nav.classList.toggle("mobile-open");
+    button.setAttribute("aria-expanded", String(isOpen));
+}
+
+/* DARK MODE */
+function toggleTheme() {
+    const isDark = document.body.classList.toggle("dark-mode");
+    const button = document.getElementById("themeButton");
+
+    if (button) {
+        button.textContent = isDark ? "☀️ Light" : "🌙 Dark";
+    }
+}
 
 document.addEventListener("DOMContentLoaded", function () {
+    const HOME = "https://bs360news.com/index.html";
+    const MOVIES = "https://bs360news.com/MOVIES.html";
 
-    "use strict";
+    const otherSections = [
+        { target: "nationalGrid", source: "nationalSection", limit: 5 },
+        { target: "latestSidebar", source: "latestGrid", limit: 5 },
+        { target: "trendingSidebar", source: "trendingSidebar", limit: 5 },
+        { target: "sportsGrid", source: "sportsSection", limit: 5 },
+        { target: "cinemaGrid", source: "entertainmentSection", limit: 5 },
+        { target: "businessGrid", source: "businessSection", limit: 5 },
+        { target: "aptsGrid", source: "aptsSection", limit: 5 }
+    ];
 
+    function absoluteURL(value, base) {
+        if (!value) return "";
 
-    function cleanText(text) {
-
-        return String(text || "")
-            .replace(/\s+/g, " ")
-            .trim();
-
+        try {
+            return new URL(value, base).href;
+        } catch {
+            return "";
+        }
     }
 
-
-    function getArticles(home, sourceId) {
-
-        const source =
-            home.getElementById(sourceId);
+    function readMovieArticles(doc) {
+        const source = doc.getElementById("localMoviesSource");
 
         if (!source) {
+            console.error("MOVIES.html: localMoviesSource not found");
             return [];
         }
 
+        const articles = [];
+        const seen = new Set();
 
-        return Array.from(
-            source.querySelectorAll(".news-item.post")
-        )
-
-        .map(function (item) {
-
-            const image =
-                item.querySelector("img");
-
-            const title =
-                item.querySelector(".news-content p") ||
-                item.querySelector(".news-content h3") ||
-                item.querySelector("p");
-
-
-            return {
-
-                title:
-                    cleanText(
-                        title
-                            ? title.textContent
-                            : ""
-                    ),
-
-                image:
-                    image
-                        ? image.getAttribute("src") || ""
-                        : "",
-
-                alt:
-                    image
-                        ? image.getAttribute("alt") || ""
-                        : "",
-
-                url:
-                    item.getAttribute("data-url") || ""
-
-            };
-
-        })
-
-        .filter(function (item) {
-
-            return (
-                item.title &&
-                item.image &&
-                item.url
+        source.querySelectorAll(".news-item.post").forEach(function (item) {
+            const img = item.querySelector("img");
+            const heading = item.querySelector(
+                ".news-content p, .news-content h3, h2, h3"
             );
 
+            const title = (
+                heading?.textContent || img?.alt || ""
+            ).replace(/\s+/g, " ").trim();
+
+            const url = absoluteURL(item.getAttribute("data-url"), MOVIES);
+
+            const image = absoluteURL(
+                img?.getAttribute("data-src") ||
+                img?.getAttribute("data-lazy-src") ||
+                img?.getAttribute("src"),
+                MOVIES
+            );
+
+            if (!title || !url || !image) return;
+
+            if (new URL(url).origin !== new URL(HOME).origin) return;
+            if (seen.has(url)) return;
+
+            seen.add(url);
+
+            articles.push({
+                title,
+                url,
+                image,
+                alt: img?.alt || title
+            });
         });
 
+        return articles;
     }
 
+    function readHomeArticles(doc, sourceId) {
+        const source = doc.getElementById(sourceId);
+        if (!source) return [];
 
-    function fixPath(path) {
+        const articles = [];
+        const seen = new Set();
 
-        if (!path) {
-            return "";
+        source.querySelectorAll(
+            "article, .news-card, .news-item, .post, li"
+        ).forEach(function (card) {
+            const link = card.matches("a[href]")
+                ? card
+                : card.querySelector("a[href]");
+
+            const img = card.querySelector("img");
+            if (!link || !img) return;
+
+            const heading = card.querySelector(
+                "h1, h2, h3, h4, .post-title, .news-title, .title, .news-content p"
+            );
+
+            const title = (
+                heading?.textContent ||
+                img.alt ||
+                link.textContent ||
+                ""
+            ).replace(/\s+/g, " ").trim();
+
+            const url = absoluteURL(link.getAttribute("href"), HOME);
+
+            const image = absoluteURL(
+                img.getAttribute("data-src") ||
+                img.getAttribute("data-lazy-src") ||
+                img.getAttribute("src"),
+                HOME
+            );
+
+            if (!title || !url || !image) return;
+            if (new URL(url).origin !== new URL(HOME).origin) return;
+            if (seen.has(url)) return;
+
+            seen.add(url);
+            articles.push({
+                title,
+                url,
+                image,
+                alt: img.alt || title
+            });
+        });
+
+        return articles;
+    }
+
+    function renderArticles(targetId, articles, limit) {
+        const target = document.getElementById(targetId);
+        if (!target) return;
+
+        target.replaceChildren();
+
+        const list = limit ? articles.slice(0, limit) : articles;
+
+        list.forEach(function (item) {
+            const link = document.createElement("a");
+            link.className = "news-card";
+            link.href = item.url;
+
+            const image = document.createElement("img");
+            image.src = item.image;
+            image.alt = item.alt;
+            image.loading = "lazy";
+
+            const title = document.createElement("h3");
+            title.textContent = item.title;
+
+            link.append(image, title);
+            target.appendChild(link);
+        });
+    }
+
+    /* MOVIE REVIEWS MUST END AT MAIN ARTICLE BOTTOM */
+    function limitMovieReviewsToArticle() {
+        const main = document.querySelector(".article-main");
+        const sidebar = document.querySelector(".article-sidebar");
+        const section = document.getElementById("movieReviewsSidebar");
+
+        if (!main || !sidebar || !section) return;
+
+        const list = section;
+        const heading = section.previousElementSibling;
+
+        list.style.maxHeight = "";
+        list.style.overflow = "";
+
+        if (window.innerWidth <= 700) return;
+
+        const mainHeight = main.getBoundingClientRect().height;
+        const sectionTop =
+            section.getBoundingClientRect().top -
+            sidebar.getBoundingClientRect().top;
+
+        const headingHeight = heading
+            ? heading.getBoundingClientRect().height
+            : 0;
+
+        const availableHeight = mainHeight - sectionTop - headingHeight - 12;
+
+        if (availableHeight <= 0) {
+            section.parentElement.style.display = "none";
+            return;
         }
 
-        if (
-            path.startsWith("http://") ||
-            path.startsWith("https://") ||
-            path.startsWith("../") ||
-            path.startsWith("/")
-        ) {
-
-            return path;
-
-        }
-
-        return "../" + path;
-
+        section.parentElement.style.display = "";
+        list.style.maxHeight = availableHeight + "px";
+        list.style.overflow = "hidden";
     }
 
-
-    function sidebarHTML(article) {
-
-        return `
-            <a
-                href="${fixPath(article.url)}"
-                class="sidebar-item"
-            >
-
-                <img
-                    src="${fixPath(article.image)}"
-                    alt="${article.alt || article.title}"
-                    loading="lazy"
-                >
-
-                <div class="sidebar-item-title">
-                    ${article.title}
-                </div>
-
-            </a>
-        `;
-
-    }
-
-
-    function cardHTML(article) {
-
-        return `
-            <a
-                href="${fixPath(article.url)}"
-                class="news-card"
-            >
-
-                <img
-                    src="${fixPath(article.image)}"
-                    alt="${article.alt || article.title}"
-                    loading="lazy"
-                >
-
-                <h3>
-                    ${article.title}
-                </h3>
-
-            </a>
-        `;
-
-    }
-
-
-    function mostReadHTML(article, number) {
-
-        return `
-            <a
-                href="${fixPath(article.url)}"
-                class="most-read-item"
-            >
-
-                <div class="most-read-number">
-                    ${number}
-                </div>
-
-                <img
-                    src="${fixPath(article.image)}"
-                    alt="${article.alt || article.title}"
-                    loading="lazy"
-                >
-
-                <div class="most-read-title">
-                    ${article.title}
-                </div>
-
-            </a>
-        `;
-
-    }
-
-
-    function show(id, html) {
-
-        const element =
-            document.getElementById(id);
-
-        if (element) {
-
-            element.innerHTML = html;
-
-        }
-
-    }
-
-
-    /* LOAD MAIN HOMEPAGE */
-
-    fetch(
-        "../index.html?v=" + Date.now(),
-        {
-            cache: "no-store"
-        }
-    )
-
-    .then(function (response) {
-
-        if (!response.ok) {
-
-            throw new Error(
-                "Main index.html load failed"
-            );
-
-        }
-
-        return response.text();
-
-    })
-
-    .then(function (html) {
-
-        const parser =
-            new DOMParser();
-
-
-        const home =
-            parser.parseFromString(
-                html,
-                "text/html"
-            );
-
-
-        const latest =
-            getArticles(
-                home,
-                "latestNewsSource"
-            );
-
-
-        const trending =
-            getArticles(
-                home,
-                "trendingSource"
-            );
-
-
-        const mostRead =
-            getArticles(
-                home,
-                "mostReadSource"
-            );
-
-
-        const apts =
-            getArticles(
-                home,
-                "aptsSource"
-            );
-
-
-        const sports =
-            getArticles(
-                home,
-                "sportsSource"
-            );
-
-
-        const entertainment =
-            getArticles(
-                home,
-                "entertainmentSource"
-            );
-
-
-        const business =
-            getArticles(
-                home,
-                "businessSource"
-            );
-
-
-        show(
-            "trendingSidebar",
-
-            trending
-                .slice(0, 8)
-                .map(sidebarHTML)
-                .join("")
-        );
-
-
-        show(
-            "latestSidebar",
-
-            latest
-                .slice(0, 8)
-                .map(sidebarHTML)
-                .join("")
-        );
-
-
-        show(
-            "mostReadSidebar",
-
-            mostRead
-                .slice(0, 8)
-                .map(function (
-                    article,
-                    index
-                ) {
-
-                    return mostReadHTML(
-                        article,
-                        index + 1
-                    );
-
-                })
-                .join("")
-        );
-
-
-        show(
-            "latestGrid",
-
-            latest
-                .slice(0, 8)
-                .map(cardHTML)
-                .join("")
-        );
-
-
-        show(
-            "sportsGrid",
-
-            sports
-                .slice(0, 8)
-                .map(cardHTML)
-                .join("")
-        );
-
-
-        show(
-            "moviesGrid",
-
-            entertainment
-                .slice(0, 8)
-                .map(cardHTML)
-                .join("")
-        );
-
-
-        show(
-            "aptsGrid",
-
-            apts
-                .slice(0, 8)
-                .map(cardHTML)
-                .join("")
-        );
-
-
-        show(
-            "businessGrid",
-
-            business
-                .slice(0, 8)
-                .map(cardHTML)
-                .join("")
-        );
-
-
-        console.log(
-            "BS360 HOME ARTICLES LOADED"
-        );
-
-
-    })
-
-    .catch(function (error) {
-
-        console.error(
-            "BS360 NEWS ERROR:",
-            error
-        );
-
-    });
-
-
-    /* MOBILE NAV */
-
-    window.toggleMobileNav =
-        function () {
-
-            const nav =
-                document.getElementById(
-                    "navLinks"
-                );
-
-
-            if (nav) {
-
-                nav.classList.toggle(
-                    "mobile-open"
-                );
-
+    async function loadArticles() {
+        try {
+            const [homeResponse, moviesResponse] = await Promise.all([
+                fetch(HOME, { cache: "no-store" }),
+                fetch(MOVIES, { cache: "no-store" })
+            ]);
+
+            if (!homeResponse.ok || !moviesResponse.ok) {
+                throw new Error("Homepage or MOVIES.html could not load");
             }
 
-        };
+            const [homeHTML, moviesHTML] = await Promise.all([
+                homeResponse.text(),
+                moviesResponse.text()
+            ]);
 
+            const parser = new DOMParser();
 
-    /* DARK MODE */
+            const homeDoc = parser.parseFromString(homeHTML, "text/html");
+            const moviesDoc = parser.parseFromString(moviesHTML, "text/html");
 
-    window.toggleTheme =
-        function () {
+            const movieArticles = readMovieArticles(moviesDoc);
 
-            document.body.classList.toggle(
-                "dark-mode"
-            );
+            renderArticles("movieReviewsGrid", movieArticles, 0);
+            renderArticles("movieReviewsSidebar", movieArticles, 30);
 
+            otherSections.forEach(function (section) {
+                const articles = readHomeArticles(homeDoc, section.source);
+                renderArticles(section.target, articles, section.limit);
+            });
 
-            const button =
-                document.getElementById(
-                    "themeButton"
-                );
+            requestAnimationFrame(function () {
+                requestAnimationFrame(limitMovieReviewsToArticle);
+            });
 
+            console.log("Movie articles:", movieArticles.length);
 
-            const dark =
-                document.body.classList.contains(
-                    "dark-mode"
-                );
-
-
-            if (button) {
-
-                button.textContent =
-                    dark
-                        ? "☀️ Light"
-                        : "🌙 Dark";
-
-            }
-
-
-            localStorage.setItem(
-                "bs360-theme",
-                dark
-                    ? "dark"
-                    : "light"
-            );
-
-        };
-
-
-    if (
-        localStorage.getItem(
-            "bs360-theme"
-        ) === "dark"
-    ) {
-
-        document.body.classList.add(
-            "dark-mode"
-        );
-
-
-        const button =
-            document.getElementById(
-                "themeButton"
-            );
-
-
-        if (button) {
-
-            button.textContent =
-                "☀️ Light";
-
+        } catch (error) {
+            console.error("BS360NEWS loading error:", error);
         }
-
     }
 
+    loadArticles();
+
+    window.addEventListener("load", limitMovieReviewsToArticle);
+    window.addEventListener("resize", limitMovieReviewsToArticle);
 });
 
-</script>
+const image = absoluteURL(
+    img.getAttribute("data-src") ||
+    img.getAttribute("data-lazy-src") ||
+    img.getAttribute("src"),
+    HOME
+);
+  
+          </script>
 
-
+  
 </body>
-
 </html>
