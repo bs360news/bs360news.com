@@ -137,24 +137,207 @@
 </script>
 
 
-<!-- MAIN CSS -->
-
-<link
-    rel="stylesheet"
-    href="../style.css?v=20260918"
->
-
 
 <style>
+  
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, "Noto Sans Telugu", sans-serif;
+    background: #fff;
+    color: #111;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+.container {
+    width: min(1200px, 96%);
+    margin: 0 auto;
+}
+
+/* HEADER */
+
+.brand-header {
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+}
+
+.brand-inner {
+    min-height: 92px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+}
+
+.logo-mark img {
+    width: 65px;
+    height: 65px;
+    display: block;
+    object-fit: contain;
+}
+
+.logo-name {
+    font-size: 25px;
+    font-weight: 900;
+    line-height: 1.15;
+}
+
+.logo-red {
+    color: #e60000;
+}
+
+.logo-tagline {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    margin-top: 5px;
+    letter-spacing: .5px;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.theme-button,
+.mobile-menu-toggle {
+    border: 1px solid #ccc;
+    background: #fff;
+    color: #111;
+    padding: 9px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.live-button {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: #e60000;
+    font-weight: 900;
+}
+
+.live-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #e60000;
+    animation: livePulse 1s infinite;
+}
+
+@keyframes livePulse {
+    50% { opacity: .3; }
+}
+
+.mobile-menu-toggle {
+    display: none;
+    font-size: 21px;
+}
+
+/* NAVIGATION */
+
+.main-nav {
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.lang-selector {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+    font-size: 12px;
+}
+
+.lang-selector .active {
+    color: #e60000;
+    font-weight: 800;
+}
+
+.nav-links {
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-end;
+}
+
+.nav-links a {
+    display: block;
+    padding: 15px 17px;
+    white-space: nowrap;
+    font-size: 13px;
+    font-weight: 800;
+    border-left: 1px solid #eee;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    background: #e60000;
+    color: #fff;
+}
+
+/* TOP HEADLINES */
+
+.headlines-bar {
+    background: #f5f5f5;
+    border-bottom: 1px solid #ddd;
+}
+
+.headlines-bar .container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    min-height: 42px;
+}
+
+.headlines-label {
+    color: #e60000;
+    font-size: 12px;
+    font-weight: 900;
+    white-space: nowrap;
+}
+
+.headlines-text {
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* MAIN ARTICLE LAYOUT */
 
 .article-page {
-    padding: 20px 0 40px;
+    padding: 24px 0 40px;
 }
 
 .article-layout {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 320px;
-    gap: 25px;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: 26px;
     align-items: start;
 }
 
@@ -163,395 +346,727 @@
 }
 
 .article-title {
+    margin: 0 0 14px;
     font-size: 32px;
-    line-height: 1.35;
-    margin: 0 0 15px;
-    color: #111;
-    font-weight: 800;
+    line-height: 1.4;
+    font-weight: 900;
+}
+
+.article-meta {
+    color: #777;
+    font-size: 13px;
+    margin: 15px 0 8px;
+}
+
+.article-image {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 6px;
+    margin: 8px 0 22px;
 }
 
 .article-content {
     font-size: 18px;
     line-height: 2;
-    color: #222;
+    overflow-wrap: anywhere;
 }
 
 .article-content p {
-    margin: 0 0 18px;
+    margin: 0 0 20px;
 }
-
-.article-meta {
-    font-size: 13px;
-    color: #777;
-    margin: 0 0 8px;
-    font-weight: 500;
-}
-
-.article-image {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-    display: block;
-    border-radius: 8px;
-    margin: 8px 0 20px;
-}
-
 
 /* SIDEBAR */
 
 .article-sidebar {
-    width: 100%;
-}
-
-.sidebar-box {
-    margin-bottom: 22px;
-}
-
-.sidebar-title {
-    background: #075aaa;
-    color: #fff;
-    font-size: 20px;
-    font-weight: 800;
-    padding: 10px 12px;
-    border-left: 5px solid #e60000;
-    margin-bottom: 8px;
-}
-
-.sidebar-item {
+    min-width: 0;
     display: flex;
-    gap: 10px;
-    padding: 9px 0;
-    border-bottom: 1px solid #ddd;
-    text-decoration: none;
-    color: #111;
-    align-items: center;
+    flex-direction: column;
+    gap: 22px;
 }
 
-.sidebar-item img {
-    width: 78px;
-    height: 55px;
+.news-section {
+    min-width: 0;
+    margin: 0 0 18px;
+}
+
+/* REMOVE BLUE HEADING BACKGROUND AND BLUE BORDER */
+
+.section-heading {
+    margin: 0 0 12px;
+    padding: 0 0 8px;
+    color: #111;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    font-size: 19px;
+    line-height: 1.4;
+    font-weight: 900;
+}
+
+/* SIDEBAR ARTICLE LIST */
+
+.side-news-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.side-news-list .news-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    color: #111;
+}
+
+.side-news-list .news-card img {
+    display: block;
+    width: 86px;
+    height: 62px;
+    flex: 0 0 86px;
     object-fit: cover;
-    flex: 0 0 78px;
     border-radius: 4px;
 }
 
-.sidebar-item-title {
-    font-size: 14px;
-    line-height: 1.45;
+.side-news-list .news-card h3 {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.5;
     font-weight: 700;
 }
 
-.most-read-item {
-    display: flex;
-    gap: 9px;
-    padding: 9px 0;
-    border-bottom: 1px solid #ddd;
-    text-decoration: none;
-    color: #111;
-    align-items: center;
+/* BOTTOM CATEGORY + AD SIDE BY SIDE */
+
+.category-ad-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: 22px;
+    align-items: start;
+    margin: 0 0 30px;
 }
 
-.most-read-number {
-    width: 28px;
-    height: 28px;
-    background: #075aaa;
-    color: #fff;
+.category-news {
+    min-width: 0;
+}
+
+.category-news .side-news-list .news-card {
+    padding: 9px 0;
+}
+
+.category-ad {
+    width: 100%;
+    min-height: 280px;
+    padding: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 800;
-    border-radius: 3px;
-    flex: 0 0 28px;
+    text-align: center;
+    background: #fafafa;
+    color: #777;
+    font-size: 12px;
+    overflow: hidden;
 }
 
-.most-read-item img {
-    width: 70px;
-    height: 50px;
-    object-fit: cover;
-    border-radius: 4px;
-    flex: 0 0 70px;
+/* MOVIE REVIEWS GRID */
+
+.movie-reviews-section {
+    margin-top: 28px;
+    margin-bottom: 30px;
 }
 
-.most-read-title {
-    font-size: 13px;
-    line-height: 1.4;
-    font-weight: 700;
-}
-
-
-/* RELATED */
-
-.related-section {
-    margin-top: 35px;
-}
-
-.related-title {
-    font-size: 24px;
-    font-weight: 800;
-    border-left: 5px solid #e60000;
-    padding-left: 10px;
-    margin-bottom: 15px;
-}
-
-.news-grid {
+.movie-reviews-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 14px;
 }
 
-.news-card {
-    text-decoration: none;
-    color: #111;
+.movie-reviews-grid .news-card {
+    min-width: 0;
+}
+
+.movie-reviews-grid .news-card img {
     display: block;
-}
-
-.news-card img {
     width: 100%;
     aspect-ratio: 16 / 9;
     object-fit: cover;
-    border-radius: 6px;
+    border-radius: 5px;
+}
+
+.movie-reviews-grid .news-card h3 {
+    margin: 7px 0 0;
+    font-size: 13px;
+    line-height: 1.5;
+    font-weight: 800;
+}
+
+/* ADDITIONAL NEWS GRID */
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.news-grid .news-card {
     display: block;
+    min-width: 0;
 }
 
-.news-card h3 {
-    font-size: 15px;
-    line-height: 1.45;
-    margin: 8px 0 0;
-    font-weight: 700;
+.news-grid .news-card img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 5px;
 }
 
+.news-grid .news-card h3 {
+    margin: 7px 0 0;
+    font-size: 13px;
+    line-height: 1.5;
+    font-weight: 800;
+}
+
+/* FULL WIDTH AD BELOW MOVIE REVIEWS */
+
+.ad-space {
+    width: 100%;
+    min-height: 280px;
+    margin: 25px 0 35px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #777;
+    font-size: 12px;
+    background: #fafafa;
+}
+
+/* FOOTER */
+
+.site-footer {
+    margin-top: 35px;
+    background: #111;
+    color: #fff;
+}
+
+.footer-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+.footer-column h3,
+.footer-contact h3 {
+    margin-top: 0;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 18px;
+}
+
+.footer-links a {
+    color: #eee;
+    font-size: 14px;
+}
+
+.footer-contact p {
+    font-size: 14px;
+}
+
+.copyright {
+    text-align: center;
+    padding: 14px 10px;
+    border-top: 1px solid #333;
+    font-size: 12px;
+}
+
+/* TABLET */
+
+@media (max-width: 1100px) {
+    .article-layout {
+        grid-template-columns: minmax(0, 1fr) 270px;
+        gap: 18px;
+    }
+
+    .category-ad-layout {
+        grid-template-columns: minmax(0, 1fr) 270px;
+    }
+
+    .nav-links a {
+        padding: 14px 10px;
+        font-size: 12px;
+    }
+
+    .movie-reviews-grid,
+    .news-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
 
 /* MOBILE */
 
-@media (max-width: 800px) {
+@media (max-width: 700px) {
+    .brand-inner {
+        min-height: 75px;
+        gap: 8px;
+    }
+
+    .logo-mark img {
+        width: 48px;
+        height: 48px;
+    }
+
+    .logo-name {
+        font-size: 20px;
+    }
+
+    .logo-tagline {
+        font-size: 9px;
+    }
+
+    .header-actions {
+        gap: 7px;
+    }
+
+    .theme-button {
+        padding: 7px;
+        font-size: 12px;
+    }
+
+    .live-button {
+        font-size: 11px;
+    }
+
+    .mobile-menu-toggle {
+        display: block;
+        padding: 7px 10px;
+    }
+
+    .nav-container {
+        display: block;
+    }
+
+    .lang-selector {
+        padding: 10px 0;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        border-top: 1px solid #ddd;
+    }
+
+    .nav-links.mobile-open {
+        display: flex;
+    }
+
+    .nav-links a {
+        padding: 12px;
+        border-left: 0;
+        border-bottom: 1px solid #eee;
+    }
+
+    .headlines-bar .container {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 5px;
+        padding-top: 9px;
+        padding-bottom: 9px;
+    }
+
+    .article-page {
+        padding-top: 15px;
+    }
 
     .article-layout {
-        grid-template-columns: 1fr;
-        gap: 25px;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 24px;
     }
 
     .article-title {
         font-size: 24px;
-        line-height: 1.4;
-    }
-
-    .article-content {
-        font-size: 17px;
-        line-height: 1.9;
-    }
-
-    .article-sidebar {
-        order: 2;
-    }
-
-    .news-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-    }
-
-}
-
-
-@media (max-width: 600px) {
-
-    .article-page {
-        padding-top: 12px;
-    }
-
-    .article-title {
-        font-size: 22px;
-    }
-
-    .article-image {
-        border-radius: 5px;
     }
 
     .article-content {
         font-size: 16px;
-        line-height: 1.85;
+        line-height: 1.9;
     }
 
-    .sidebar-item img {
-        width: 75px;
-        height: 53px;
-        flex-basis: 75px;
+    .article-sidebar {
+        width: 100%;
     }
 
-    .sidebar-item-title {
-        font-size: 14px;
+    /* Each category is followed by its ad on mobile */
+
+    .category-ad-layout {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 12px;
+        margin-bottom: 28px;
     }
 
-    .sidebar-title {
-        font-size: 18px;
+    .category-ad {
+        min-height: 250px;
+        width: 100%;
     }
 
-    .news-card h3 {
-        font-size: 14px;
-    }
-
-}
-
-
-@media (max-width: 380px) {
-
+    .movie-reviews-grid,
     .news-grid {
-        gap: 9px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
     }
 
-    .news-card h3 {
+    .movie-reviews-grid .news-card h3,
+    .news-grid .news-card h3 {
         font-size: 13px;
     }
 
+    .section-heading {
+        font-size: 18px;
+    }
+
+    .ad-space {
+        min-height: 250px;
+        margin: 20px 0;
+    }
+
+    .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
 }
 
+/* DARK MODE */
+
+body.dark-mode {
+    background: #111;
+    color: #eee;
+}
+
+body.dark-mode .brand-header,
+body.dark-mode .main-nav,
+body.dark-mode .theme-button,
+body.dark-mode .mobile-menu-toggle {
+    background: #181818;
+    color: #fff;
+    border-color: #333;
+}
+
+body.dark-mode .nav-links a {
+    color: #fff;
+    border-color: #333;
+}
+
+body.dark-mode .nav-links a:hover,
+body.dark-mode .nav-links a.active {
+    background: #e60000;
+    color: #fff;
+}
+
+body.dark-mode .headlines-bar {
+    background: #1c1c1c;
+    border-color: #333;
+}
+
+body.dark-mode .article-title,
+body.dark-mode .article-content,
+body.dark-mode .news-grid .news-card,
+body.dark-mode .side-news-list .news-card,
+body.dark-mode .section-heading {
+    color: #eee;
+}
+
+body.dark-mode .side-news-list .news-card {
+    border-color: #333;
+}
+
+body.dark-mode .category-ad,
+body.dark-mode .ad-space {
+    background: #181818;
+    color: #aaa;
+}
+
+body.dark-mode .lang-selector a {
+    color: #fff;
+}
+
+body.dark-mode .lang-selector .active {
+    color: #ff4242;
+}
+
+
+
+/* CATEGORY LAYOUT */
+.category-ad-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: 20px;
+    margin: 25px 0;
+    align-items: start;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.category-ad {
+    min-height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px dashed #ccc;
+    color: #777;
+    background: #fafafa;
+}
+
+.section-heading,
+.category-news h2,
+.movie-reviews-section h2 {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 10px 0;
+}
+
+@media (max-width: 1000px) {
+    .news-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .category-ad-layout {
+        grid-template-columns: minmax(0, 1fr) 250px;
+    }
+}
+
+@media (max-width: 650px) {
+    .category-ad-layout {
+        display: block;
+    }
+
+    .news-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .category-ad {
+        min-height: 120px;
+        margin: 18px 0;
+    }
+}
+
+
+
+
+  .category-ad img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+
+
+
+
+
+
+  .sports-section {
+    margin-top: 20px;
+    padding-top: 20px;
+}
+
+.sports-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+
+
+
+
+  /* CATEGORY SECTIONS — FULL WIDTH */
+.category-ad-layout {
+    display: block;
+    width: 100%;
+    margin: 15px 0 25px;
+    padding: 0;
+    align-items: initial;
+}
+
+.category-news {
+    width: 100%;
+    min-width: 0;
+}
+
+.category-news .news-grid {
+    width: 100%;
+}
+
+
+  
+
+
+  /* REDUCE SPACE BEFORE SPORTS NEWS */
+.article-page {
+    padding-bottom: 0;
+}
+
+.article-layout {
+    margin-bottom: 0;
+}
+
+.article-layout + .category-ad-layout {
+    margin-top: 0;
+}
+/* MOVIE REVIEWS - STOP AT ARTICLE END */
+
+.article-layout {
+    align-items: start;
+}
+
+.article-main {
+    min-width: 0;
+}
+
+.article-sidebar {
+    min-width: 0;
+    align-self: start;
+}
+
+#movieReviewsSidebar {
+    min-height: 0;
+    overflow: hidden;
+}
+
+#movieReviewsSidebar .news-card {
+    min-width: 0;
+}
+
+#movieReviewsSidebar .news-card img {
+    flex-shrink: 0;
+}
+
+@media (max-width: 700px) {
+    #movieReviewsSidebar {
+        max-height: none;
+        overflow: visible;
+    }
+}
+  /* FIX ARTICLE END AND BELOW SECTIONS */
+
+.article-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    align-items: start;
+}
+
+.article-main {
+    min-width: 0;
+    height: auto;
+    overflow: visible;
+}
+
+.article-content {
+    height: auto;
+    max-height: none;
+    overflow: visible;
+}
+
+.category-ad-layout,
+.movie-reviews-section {
+    clear: both;
+    width: 100%;
+}
+
+@media (max-width: 700px) {
+    .article-layout {
+        grid-template-columns: 1fr;
+    }
+}
+  
+  
+  
 </style>
-
 </head>
-
 
 <body>
 
-
-<!-- HEADER -->
-
 <header class="brand-header">
-
     <div class="container brand-inner">
 
-        <a
-            href="../index.html"
-            class="brand-logo"
-            aria-label="BS 360 NEWS Home"
-        >
-
+        <a href="../index.html" class="brand-logo" aria-label="BS 360 NEWS Home">
             <div class="logo-mark">
-
-                <img
-                    src="../dp.png.png"
-                    alt="BS 360 NEWS"
-                >
-
+                <img src="../dp.png.png" alt="BS 360 NEWS">
             </div>
-
 
             <div class="logo-name">
-
                 <div>
-
                     <span>BS 360</span>
-
-                    <span class="logo-red">
-                        NEWS
-                    </span>
-
+                    <span class="logo-red">NEWS</span>
                 </div>
-
-                <span class="logo-tagline">
-                    Fast | Fair | Fearless
-                </span>
-
+                <span class="logo-tagline">Fast | Fair | Fearless</span>
             </div>
-
         </a>
 
-
         <div class="header-actions">
-
-            <button
-                type="button"
-                class="theme-button"
-                id="themeButton"
-                onclick="toggleTheme()"
-            >
-                🌙 Dark
-            </button>
-
+            <button type="button" class="theme-button" id="themeButton"
+                    onclick="toggleTheme()">🌙 Dark</button>
 
             <div class="live-button">
-
                 <span class="live-dot"></span>
-
                 LIVE
-
             </div>
-
         </div>
 
-
-        <button
-            class="mobile-menu-toggle"
-            type="button"
-            aria-label="Navigation menu"
-            onclick="toggleMobileNav()"
-        >
-            ☰
-        </button>
-
+        <button class="mobile-menu-toggle" type="button"
+                aria-label="Navigation menu"
+                aria-controls="navLinks"
+                aria-expanded="false"
+                onclick="toggleMobileNav()">☰</button>
     </div>
-
 </header>
 
-
-<!-- NAVIGATION -->
-
-<nav
-    class="main-nav"
-    aria-label="Main Navigation"
->
-
+<nav class="main-nav" aria-label="Main Navigation">
     <div class="container nav-container">
 
         <div class="lang-selector">
-
-            <a href="../index.html" class="active">
-                తెలుగు
-            </a>
-
+            <a href="../index.html" class="active">తెలుగు</a>
             <span>|</span>
-
-            <span>
-                English
-            </span>
-
+            <span>English</span>
             <span>|</span>
-
-            <span>
-                हिन्दी
-            </span>
-
+            <span>हिन्दी</span>
         </div>
 
-
-        <div
-            class="nav-links"
-            id="navLinks"
-        >
-
-            <a href="../index.html">
-                HOME
-            </a>
-
-            <a href="../MOVIES.html">
-                ENTERTAINMENT
-            </a>
-
-            <a href="../SPORTS.html">
-                SPORTS
-            </a>
-
-            <a href="../AP&TS.html">
-                AP & TS
-            </a>
-
-            <a href="../business.html">
-                BUSINESS
-            </a>
-
+        <div class="nav-links" id="navLinks">
+           <a href="index.html">హోమ్</a>
+            <a href="MOVIES.html">ఎంటర్టైన్మెంట్</a>
+            <a href="SPORTS.html">స్పోర్ట్స్</a>
+            <a href="AP%26TS.html">ఏపీ&amp;టీస్</a>
+            <a href="business.html">బిజినెస్</a>
         </div>
-
     </div>
-
 </nav>
+
+<div class="headlines-bar">
+    <div class="container">
+        <span class="headlines-label">❗ TOP HEADLINES</span>
+        <div class="headlines-text">
+            తెలుగు రాష్ట్రాలు, సినిమా, క్రికెట్, స్పోర్ట్స్, బిజినెస్ మరియు జాతీయ వార్తల తాజా అప్‌డేట్స్
+        </div>
+    </div>
+</div>
+
 
 
 <!-- TOP HEADLINES -->
@@ -598,16 +1113,21 @@
 <div class="article-content">
 
 
-<p>
-నేచురల్ స్టార్ నాని, దర్శకుడు శ్రీకాంత్ ఓదెల కాంబినేషన్‌లో తెరకెక్కిన ‘ది ప్యారడైజ్’ సినిమా విడుదలైన తర్వాత సినీ వర్గాల్లో చర్చకు దారితీస్తోంది. సెప్టెంబర్ 24న ప్రేక్షకుల ముందుకు వచ్చిన ఈ సినిమాపై ఇప్పటికే పలువురు సినీ ప్రముఖులు, ప్రేక్షకులు తమ అభిప్రాయాలను వెల్లడిస్తున్నారు. తాజాగా బీఆర్ఎస్ వర్కింగ్ ప్రెసిడెంట్, మాజీ మంత్రి కేటీఆర్ హైదరాబాద్‌లోని థియేటర్‌కు వెళ్లి ఈ సినిమాను వీక్షించారు. సినిమా చూసిన అనంతరం నాని నటనతో పాటు దర్శకుడు శ్రీకాంత్ ఓదెల పనితీరును ప్రశంసిస్తూ ఆయన చేసిన వ్యాఖ్యలు ఇప్పుడు సోషల్ మీడియాలో చర్చనీయాంశంగా మారాయి.
 
-చాలా ఏళ్ల తర్వాత తాను థియేటర్‌లో సినిమా చూసినట్లు కేటీఆర్ ముందుగానే సోషల్ మీడియా ద్వారా వెల్లడించారు. నాని తనకు ఇష్టమైన నటుల్లో ఒకరని, అలాగే దర్శకుడు శ్రీకాంత్ ఓదెలపై కూడా తనకు ప్రత్యేక అభిమానం ఉందని పేర్కొంటూ ‘ది ప్యారడైజ్’ చూడాలని నిర్ణయించుకున్నట్లు తెలిపారు. దీంతో సినిమా చూసిన తర్వాత కేటీఆర్ ఎలా స్పందిస్తారనే ఆసక్తి సినీ అభిమానుల్లో కనిపించింది.
+<P>
+నేచురల్ స్టార్ నాని హీరోగా, దర్శకుడు శ్రీకాంత్ ఓదెల తెరకెక్కించిన ‘ది ప్యారడైజ్’ సినిమా విడుదల తర్వాత సినీ వర్గాల్లో చర్చనీయాంశంగా మారింది. సినిమాలో నాని నటన, దర్శకుడు ఎంచుకున్న కథాంశం, తెలంగాణ నేపథ్యాన్ని తెరపై చూపించిన విధానం గురించి ప్రేక్షకులు తమ అభిప్రాయాలను వ్యక్తం చేస్తున్నారు. ఈ క్రమంలో బీఆర్ఎస్ వర్కింగ్ ప్రెసిడెంట్, మాజీ మంత్రి కేటీఆర్ సినిమా చూసి చిత్ర బృందాన్ని అభినందించడం ఆసక్తిని పెంచింది. ముఖ్యంగా అణచివేతకు వ్యతిరేకంగా అస్తిత్వం కోసం జరిగే పోరాటాన్ని సినిమాలో చూపించిన విధానం తనకు నచ్చిందని ఆయన పేర్కొన్నట్లు వార్తా కథనాలు వెల్లడించాయి.
 
-హైదరాబాద్ ఆర్టీసీ క్రాస్‌రోడ్స్‌లోని సుదర్శన్ 35ఎంఎం థియేటర్‌లో కేటీఆర్ ఈ సినిమాను వీక్షించారు. ఆయనతో పాటు బీఆర్ఎస్‌కు చెందిన పలువురు నేతలు కూడా సినిమా చూశారు. రాజ్యసభ సభ్యుడు వద్దిరాజు రవిచంద్ర, మాజీ మంత్రులు జగదీశ్‌రెడ్డి, తలసాని శ్రీనివాస్ యాదవ్, ఎమ్మెల్యే కౌశిక్‌రెడ్డి తదితరులు కేటీఆర్‌తో కలిసి థియేటర్‌కు వెళ్లినట్లు వార్తా కథనాలు పేర్కొన్నాయి.
-</p>
+సెప్టెంబర్ 24న ప్రేక్షకుల ముందుకు వచ్చిన ఈ సినిమాపై విడుదలకు ముందే మంచి అంచనాలు ఏర్పడ్డాయి. నాని, శ్రీకాంత్ ఓదెల గతంలో ‘దసరా’ సినిమాతో ప్రేక్షకుల ముందుకు వచ్చారు. ఆ చిత్రం తర్వాత వీరిద్దరూ మరోసారి కలిసి పనిచేయడంతో కొత్త సినిమాపై ఆసక్తి పెరిగింది. ఈసారి మరింత భిన్నమైన నేపథ్యం, కొత్త లుక్‌లో నాని కనిపించడం అభిమానుల్లో చర్చకు దారితీసింది. సినిమా విడుదలైన తర్వాత ప్రశంసలతో పాటు కొన్ని అంశాలపై విమర్శలు కూడా వ్యక్తమవుతున్నాయి. ఇలాంటి సమయంలో కేటీఆర్ చేసిన వ్యాఖ్యలు సినిమా గురించి మరోసారి చర్చ జరిగేలా చేశాయి.
+</P>
+<h3>చాలా కాలం తర్వాత థియేటర్‌కు వెళ్లిన కేటీఆర్</h3>
+<P>
+కేటీఆర్ చాలా ఏళ్ల తర్వాత థియేటర్‌లో సినిమా చూడబోతున్నట్లు ముందుగానే సోషల్ మీడియా వేదికగా వెల్లడించారు. నాని తనకు ఇష్టమైన నటుల్లో ఒకరని, దర్శకుడు శ్రీకాంత్ ఓదెల పనితీరు కూడా తనకు నచ్చుతుందని ఆయన పేర్కొన్నట్లు కథనాలు తెలిపాయి. దీంతో ‘ది ప్యారడైజ్’ చూసిన తర్వాత కేటీఆర్ ఎలాంటి అభిప్రాయం వ్యక్తం చేస్తారనే ఆసక్తి అభిమానుల్లో కనిపించింది.
 
+సాధారణంగా సినిమా విడుదలైన తర్వాత ప్రేక్షకులు తమ స్పందనలను సోషల్ మీడియాలో పంచుకుంటుంటారు. అయితే రాజకీయ రంగానికి చెందిన ప్రముఖులు సినిమా చూసి బహిరంగంగా అభిప్రాయం చెప్పినప్పుడు ఆ స్పందనకు ప్రత్యేకమైన ప్రాధాన్యం ఏర్పడుతుంది. కేటీఆర్ విషయంలోనూ అదే జరిగింది. ఆయన సినిమా చూడటానికి వెళ్లిన విషయం బయటకు రావడంతో పాటు, సినిమా పూర్తయిన తర్వాత దర్శకుడు, హీరో గురించి చేసిన వ్యాఖ్యలు కూడా చర్చకు వచ్చాయి.
 
-<!-- DATE ABOVE IMAGE -->
+హైదరాబాద్‌లోని ఆర్టీసీ క్రాస్‌రోడ్స్ ప్రాంతంలో ఉన్న సుదర్శన్ 35ఎంఎం థియేటర్‌లో కేటీఆర్ ఈ సినిమాను వీక్షించారు. ఆయనతో పాటు బీఆర్ఎస్‌కు చెందిన పలువురు నేతలు కూడా థియేటర్‌కు వెళ్లినట్లు వార్తా కథనాలు పేర్కొన్నాయి. రాజ్యసభ సభ్యుడు వద్దిరాజు రవిచంద్ర, మాజీ మంత్రులు జగదీశ్‌రెడ్డి, తలసాని శ్రీనివాస్ యాదవ్, ఎమ్మెల్యే కౌశిక్‌రెడ్డి తదితరులు ఆయనతో కలిసి సినిమా చూశారని సమాచారం.
+</P>
+    <!-- DATE ABOVE IMAGE -->
 
 <div class="article-meta">
     BS 360 NEWS | సెప్టెంబర్ 27, 2026
@@ -620,721 +1140,469 @@
     alt="కేటీఆర్ ‘ది ప్యారడైజ్’ సినిమా చూస్తున్న సందర్భం"
     loading="eager"
 >
+<h3>శ్రీకాంత్ ఓదెల దర్శకత్వంపై ప్రశంసలు</h3>
+<P>
+సినిమా చూసిన అనంతరం కేటీఆర్ దర్శకుడు శ్రీకాంత్ ఓదెల పనితీరును ప్రత్యేకంగా ప్రశంసించారు. అణచివేతకు వ్యతిరేకంగా తమ అస్తిత్వం కోసం ప్రజలు చేసే పోరాటాన్ని కథలో భాగంగా చూపించిన విధానం తనను ఆకట్టుకుందని ఆయన అభిప్రాయపడినట్లు నివేదికలు పేర్కొన్నాయి. ఒక కథను వినోదానికి మాత్రమే పరిమితం చేయకుండా, దాని ద్వారా సామాజిక అంశాలను కూడా ప్రేక్షకుల ముందుకు తీసుకురావడం దర్శకుడి ప్రయత్నంలో కనిపించిందనే భావన ఆయన వ్యాఖ్యల్లో వ్యక్తమైనట్లు తెలుస్తోంది.
 
+శ్రీకాంత్ ఓదెల సినిమాల్లో పాత్రల రూపకల్పన, వాటి చుట్టూ నడిచే సంఘర్షణలకు ప్రాధాన్యం కనిపిస్తుందని ప్రేక్షకులు చర్చించుకుంటుంటారు. ‘ది ప్యారడైజ్’ విషయంలోనూ కథా నేపథ్యం, పాత్రల పరిస్థితులు, వాటి మధ్య ఏర్పడే ఘర్షణలు ప్రధాన ఆకర్షణగా నిలిచాయి. ఈ అంశాలను తెరపైకి తీసుకురావడంలో దర్శకుడు చేసిన ప్రయత్నాన్ని కేటీఆర్ అభినందించినట్లు వార్తలు వెలువడ్డాయి.
 
-<p>
-సినిమా చూసిన అనంతరం కేటీఆర్ దర్శకుడు శ్రీకాంత్ ఓదెల పనితీరును ప్రత్యేకంగా ప్రశంసించారు. అణచివేతకు వ్యతిరేకంగా అస్తిత్వం కోసం జరిగే పోరాటాన్ని సినిమాలో చూపించిన విధానం తనను ఆకట్టుకుందని ఆయన పేర్కొన్నారు. కథను తెరపైకి తీసుకురావడంలో శ్రీకాంత్ ఓదెల ప్రతిభను అభినందిస్తూ చిత్ర బృందానికి శుభాకాంక్షలు తెలిపారు.
+దర్శకుడికి ప్రశంసలు లభించడం అనేది సినిమా నిర్మాణంలో పనిచేసిన సాంకేతిక బృందానికి కూడా ప్రోత్సాహంగా నిలుస్తుంది. కథకు తగిన వాతావరణాన్ని సృష్టించడం, పాత్రలకు సరిపోయే నటీనటులను ఎంపిక చేయడం, కీలక సన్నివేశాలను తెరపై ఆవిష్కరించడం వంటి అనేక అంశాలు దర్శకుడి బాధ్యతలో భాగంగా ఉంటాయి. ‘ది ప్యారడైజ్’ గురించి చర్చ జరుగుతున్న సమయంలో శ్రీకాంత్ ఓదెల పనితీరును కేటీఆర్ ప్రస్తావించడం అందరి దృష్టిని ఆకర్షించింది.
+</P>
+<h3>నాని నటనపై విక్టరీ కాదు.. ప్రత్యేకంగా నేచురల్ స్టార్ ప్రశంసలు</h3>
+<P>
+‘ది ప్యారడైజ్’లో నాని పోషించిన జాదల్ పాత్ర సినిమా విడుదలకు ముందే ఆసక్తిని పెంచింది. ఇప్పటివరకు చేసిన పాత్రలతో పోలిస్తే ఈ సినిమాలో ఆయన కనిపించిన తీరు భిన్నంగా ఉందని అభిమానులు చర్చించారు. పాత్రకు తగ్గట్టుగా లుక్, బాడీ లాంగ్వేజ్, మాటతీరులో మార్పులు చూపించే ప్రయత్నం చేశారు. విడుదల తర్వాత కూడా నాని నటన గురించి ప్రేక్షకులు తమ అభిప్రాయాలను పంచుకుంటున్నారు.
 
-అదే సమయంలో హీరో నాని నటనపై కూడా కేటీఆర్ ప్రశంసలు కురిపించారు. సినిమాలో ప్రధాన పాత్రలో నాని పూర్తిగా లీనమై నటించారని ఆయన పేర్కొన్నారు. పాత్రకు తగ్గట్టుగా నాని చూపించిన నటన తనకు బాగా నచ్చిందని చెప్పారు. ముఖ్యంగా సినిమాలోని పోరాట సన్నివేశాలు, పాత్రలోని తీవ్రతను నాని తన నటనతో బలంగా చూపించారని కేటీఆర్ అభిప్రాయపడినట్లు పలు కథనాలు వెల్లడించాయి.
+కేటీఆర్ కూడా సినిమాలో నాని నటనను ప్రశంసించినట్లు వార్తా కథనాలు పేర్కొన్నాయి. పాత్రలో పూర్తిగా లీనమై నటించడం, కథలోని సంఘర్షణను తన అభినయంతో చూపించడం తనకు నచ్చిందనే అభిప్రాయం వ్యక్తమైనట్లు సమాచారం. ముఖ్యంగా యాక్షన్ సన్నివేశాల్లో పాత్రలోని తీవ్రతను నాని చూపించిన తీరు ప్రశంసలు అందుకుందని నివేదికలు వెల్లడించాయి.
 
-‘ది ప్యారడైజ్’లో ప్రియదర్శి పోషించిన ‘శంకరన్న’ పాత్ర కూడా సినిమా విడుదల తర్వాత ప్రత్యేకంగా చర్చకు వచ్చింది. ఈ పాత్ర రూపురేఖలు, మాటతీరు, కొన్ని సన్నివేశాలు తెలంగాణ మాజీ ముఖ్యమంత్రి కేసీఆర్‌ను పోలి ఉన్నాయనే అభిప్రాయాలు సోషల్ మీడియాలో వ్యక్తమయ్యాయి. ఈ అంశం కూడా కేటీఆర్ స్పందనకు కారణమైంది. అయితే సినిమాలోని పాత్రలు కల్పితమైనవేనని, కథకు వాస్తవ సంఘటనల నుంచి కొన్ని అంశాలు స్ఫూర్తిగా తీసుకున్నట్లు దర్శకుడు శ్రీకాంత్ ఓదెల గతంలో వివరించారు.
+ఒక నటుడు కొత్త పాత్రలో కనిపించినప్పుడు ప్రేక్షకులు సాధారణంగా ఆయన గత సినిమాలతో పోల్చి చూస్తారు. ఈసారి నాని ఎంచుకున్న పాత్రలోని భిన్నత్వం కూడా చర్చకు కారణమైంది. పాత్రకు అనుగుణంగా శరీర భాషను మార్చుకోవడం, సన్నివేశాల్లో భావోద్వేగాలను వ్యక్తం చేయడం, కథలోని పరిస్థితులకు తగ్గట్టుగా నటించడం వంటి అంశాలు ప్రేక్షకుల అభిప్రాయాలను ప్రభావితం చేస్తాయి.
 
-శంకరన్న పాత్రకు సంబంధించిన సన్నివేశాన్ని కేటీఆర్ ప్రత్యేకంగా ప్రస్తావించారు. తెలంగాణలో ఒక నాయకుడు అణచివేతకు వ్యతిరేకంగా పోరాడి ప్రజలకు గొంతుకగా మారిన అంశాన్ని ఆ సన్నివేశం గుర్తు చేసిందనే భావనను ఆయన వ్యక్తం చేశారు. ఈ సన్నివేశం సినిమాలో కొద్దిసేపే కనిపించినప్పటికీ ప్రేక్షకులపై ప్రభావం చూపిందని కేటీఆర్ వ్యాఖ్యానించినట్లు నివేదికలు పేర్కొన్నాయి.
-</p>
+అయితే ఏ సినిమా విషయంలోనైనా ప్రతి ఒక్కరి అభిప్రాయం ఒకేలా ఉండదు. కొందరికి నటన, యాక్షన్ సన్నివేశాలు నచ్చవచ్చు. మరికొందరు కథనం లేదా స్క్రీన్‌ప్లే విషయంలో వేరే అభిప్రాయాన్ని వ్యక్తం చేయవచ్చు. ‘ది ప్యారడైజ్’కు కూడా ఇలాంటి భిన్న స్పందనలు కనిపిస్తున్నాయి. ఈ నేపథ్యంలో కేటీఆర్ చేసిన ప్రశంసలు నాని అభిమానులకు ఆసక్తికరంగా మారాయి.
+</P>
+<h3>‘శంకరన్న’ పాత్ర చుట్టూ సోషల్ మీడియాలో చర్చ</h3>
+<P>
+సినిమాలో ప్రియదర్శి పోషించిన ‘శంకరన్న’ పాత్ర కూడా విడుదల తర్వాత చర్చకు వచ్చింది. ఆ పాత్ర రూపురేఖలు, మాటతీరు, కొన్ని సన్నివేశాలు తెలంగాణ మాజీ ముఖ్యమంత్రి కేసీఆర్‌ను గుర్తు చేస్తున్నాయనే అభిప్రాయాలు సోషల్ మీడియాలో వ్యక్తమయ్యాయి. ముఖ్యంగా తెలంగాణ రాజకీయ నేపథ్యంతో పరిచయం ఉన్న ప్రేక్షకులు ఈ పాత్రలోని కొన్ని అంశాలను తమకు తెలిసిన వ్యక్తులు, సంఘటనలతో పోల్చి చర్చించారు.
 
+అయితే ఒక సినిమాలోని పాత్రను నిజ జీవితంలోని వ్యక్తితో పోల్చడం ప్రేక్షకుల అభిప్రాయం మాత్రమే కావచ్చు. పాత్ర రూపకల్పన వెనుక దర్శకుడి ఉద్దేశాన్ని స్పష్టంగా తెలుసుకోవాలంటే ఆయన చేసిన అధికారిక వ్యాఖ్యలను ఆధారంగా తీసుకోవాలి. సినిమా కథలోని పాత్రలు, వాటి ప్రవర్తన, కథనం కోసం ఉపయోగించిన సంఘటనలను నేరుగా వాస్తవ వ్యక్తులకు అన్వయించడం సరైన పద్ధతి కాదు.
 
-<p>
-కేటీఆర్ చేసిన వ్యాఖ్యల్లో తెలంగాణ భాష, సంస్కృతి, అక్కడి ప్రజల పోరాటాలను తెరపై చూపించిన దర్శకుడు శ్రీకాంత్ ఓదెలకు అభినందనలు కూడా ఉన్నాయి. తెలంగాణ నేపథ్యంలో కథను రూపొందించడంలో దర్శకుడు తీసుకున్న శ్రద్ధను ఆయన ప్రశంసించారు. కథలోని సామాజిక అంశాలను, అణచివేతకు వ్యతిరేకంగా పోరాటాన్ని సినిమాలో చూపించిన విధానాన్ని కేటీఆర్ అభినందించారు.
+‘ది ప్యారడైజ్’లోని శంకరన్న పాత్ర గురించి కేటీఆర్ ప్రత్యేకంగా ప్రస్తావించినట్లు వార్తా కథనాలు పేర్కొన్నాయి. తెలంగాణలో అణచివేతకు వ్యతిరేకంగా పోరాడి ప్రజలకు గొంతుకగా నిలిచిన నాయకుడిని ఆ సన్నివేశం గుర్తు చేసిందనే భావన ఆయన వ్యాఖ్యల్లో ఉన్నట్లు నివేదికలు వెల్లడించాయి. సినిమాలో కొద్దిసేపే కనిపించిన పాత్ర అయినప్పటికీ దాని వెనుక ఉన్న భావం ప్రేక్షకుల్లో చర్చకు దారితీసిందని తెలుస్తోంది.
 
-‘ది ప్యారడైజ్’ నాని, శ్రీకాంత్ ఓదెల కాంబినేషన్‌లో వచ్చిన రెండో సినిమా. వీరిద్దరి కలయికలో గతంలో ‘దసరా’ సినిమా వచ్చిన విషయం తెలిసిందే. ఆ తర్వాత మరోసారి కలిసి పనిచేయడంతో ‘ది ప్యారడైజ్’పై విడుదలకు ముందే అంచనాలు ఏర్పడ్డాయి. 1980ల కాలం నాటి సికింద్రాబాద్ నేపథ్యంలో సాగే కథగా ఈ సినిమాను తెరకెక్కించారు. సామాజిక వివక్ష, అణచివేత, అస్తిత్వం కోసం పోరాటం వంటి అంశాలను కథలో భాగంగా చూపించారు.
+ఒక పాత్రకు స్క్రీన్ టైమ్ తక్కువగా ఉన్నా, అది కథలో ఏ సందర్భంలో కనిపిస్తుంది, ఏ విషయాన్ని సూచిస్తుంది, ఇతర పాత్రలపై ఎలాంటి ప్రభావం చూపిస్తుంది అనే అంశాలు దాని ప్రాధాన్యాన్ని నిర్ణయిస్తాయి. కొన్ని సన్నివేశాలు కథలోని ప్రధాన సంఘర్షణను అర్థం చేసుకోవడానికి సహాయపడతాయి. మరికొన్ని సన్నివేశాలు సామాజిక లేదా రాజకీయ చర్చలకు దారితీస్తాయి. శంకరన్న పాత్రపై జరుగుతున్న చర్చను కూడా ఈ కోణంలో చూడవచ్చు.
+</P>
+<h3>తెలంగాణ భాష, సంస్కృతికి సినిమాలో ప్రాధాన్యం</h3>
+<P>
+తెలంగాణ నేపథ్యంతో కథను తెరకెక్కించినప్పుడు స్థానిక భాష, మాటతీరు, జీవనశైలి, సామాజిక పరిస్థితులను సహజంగా చూపించడం కీలకం. పాత్రలు మాట్లాడే భాష నుంచి వారు నివసించే ప్రాంతం వరకు ప్రతి అంశం కథకు వాస్తవికతను తీసుకురాగలదు. ‘ది ప్యారడైజ్’ గురించి కేటీఆర్ స్పందించినప్పుడు తెలంగాణ నేపథ్యం, అణచివేతకు వ్యతిరేకంగా జరిగే పోరాటం వంటి అంశాలు ప్రత్యేకంగా ప్రస్తావనకు వచ్చినట్లు వార్తా కథనాలు వెల్లడించాయి.
 
-ఈ సినిమాలో నాని ‘జాదల్’ అనే పాత్రలో కనిపించారు. గత చిత్రాలతో పోలిస్తే ఈ పాత్ర కోసం ఆయన తన లుక్, బాడీ లాంగ్వేజ్, నటనలోనూ మార్పులు తీసుకొచ్చారు. విడుదలకు ముందు నుంచే నాని కొత్త అవతారం సినిమాపై ఆసక్తిని పెంచింది. సినిమా విడుదలైన తర్వాత ఆయన నటనకు ప్రశంసలు రావడంతో పాటు, కథనం, ఎమోషనల్ అంశాలు, యాక్షన్ ట్రీట్‌మెంట్‌పై ప్రేక్షకుల నుంచి భిన్నాభిప్రాయాలు కూడా వ్యక్తమయ్యాయి.
-</p>
+ప్రాంతీయ నేపథ్యంతో రూపొందే సినిమాలు ఆ ప్రాంతానికి చెందిన ప్రేక్షకులతో ప్రత్యేకమైన అనుబంధాన్ని ఏర్పరచుకోవచ్చు. వారికి తెలిసిన భాష, పరిసరాలు, సామాజిక అనుభవాలు తెరపై కనిపించినప్పుడు కథతో మరింత సులభంగా కనెక్ట్ అవుతారు. అదే సమయంలో ఇతర ప్రాంతాల ప్రేక్షకులకు కూడా ఆ ప్రాంత చరిత్ర, సంస్కృతి, ప్రజల జీవన పరిస్థితుల గురించి తెలుసుకునే అవకాశం ఉంటుంది.
 
+తెలంగాణ భాషను తెరపై చూపించడం అంటే కేవలం కొన్ని ప్రత్యేక పదాలు ఉపయోగించడం మాత్రమే కాదు. ఆ భాషలోని సహజత్వం, సంభాషణల లయ, పాత్రల వ్యక్తిత్వానికి సరిపోయే మాటతీరు కూడా ముఖ్యమే. కథలోని పరిస్థితులకు అనుగుణంగా సంభాషణలు ఉండటం వల్ల పాత్రలు మరింత సహజంగా కనిపిస్తాయి. ఈ అంశాలపై ప్రేక్షకులు తమ అభిప్రాయాలను పంచుకుంటున్న నేపథ్యంలో శ్రీకాంత్ ఓదెల దర్శకత్వం మరోసారి చర్చకు వచ్చింది.
 
-<p>
-సినిమాపై స్పందనలు మాత్రం ఒకేలా లేవు. కొందరు ప్రేక్షకులు నాని నటన, యాక్షన్ సన్నివేశాలు, సినిమాకు సంబంధించిన కొన్ని కీలక ఎపిసోడ్లను ప్రశంసిస్తుండగా, మరికొందరు కథనం, స్క్రీన్‌ప్లే, భావోద్వేగ సన్నివేశాల విషయంలో తమ అభిప్రాయాలను వ్యక్తం చేశారు. విడుదల తర్వాత వచ్చిన ఈ భిన్న స్పందనలపై నాని కూడా స్పందించారు. ప్రేక్షకులు చెప్పిన మంచి విషయాలతో పాటు విమర్శలను కూడా తాను గమనించానని, తన పనిలో మెరుగుపడేందుకు వాటి నుంచి నేర్చుకుంటానని ఆయన తెలిపారు.
+సినిమా ద్వారా సామాజిక అంశాలను ప్రస్తావించినప్పుడు వాటిని ప్రేక్షకులు తమ అనుభవాలు, ఆలోచనలతో అనుసంధానించుకుంటారు. అణచివేత, సమానత్వం, ఆత్మగౌరవం, గుర్తింపు కోసం పోరాటం వంటి అంశాలు అనేక కథల్లో కనిపిస్తుంటాయి. వాటిని ఏ కాలంలో, ఏ ప్రాంతంలో, ఏ పాత్రల ద్వారా చూపించారన్నది సినిమా ప్రభావాన్ని నిర్ణయించే అంశాల్లో ఒకటి.
+</P>
+<h3>‘దసరా’ తర్వాత మరోసారి కలిసి పనిచేసిన నాని, శ్రీకాంత్ ఓదెల</h3>
+<P>
+నాని, శ్రీకాంత్ ఓదెల కలయికలో గతంలో ‘దసరా’ సినిమా ప్రేక్షకుల ముందుకు వచ్చింది. ఆ చిత్రంతో వీరిద్దరి మధ్య ఏర్పడిన కాంబినేషన్‌పై ప్రేక్షకుల్లో ఆసక్తి పెరిగింది. ఆ తర్వాత మరోసారి కలిసి పనిచేస్తున్నారనే వార్తలు వచ్చినప్పటి నుంచే ‘ది ప్యారడైజ్’ గురించి అభిమానులు ఎదురుచూశారు.
 
-ఈ నేపథ్యంలో కేటీఆర్ సినిమా చూసి నాని, శ్రీకాంత్ ఓదెలను అభినందించడం ఆసక్తికరంగా మారింది. ముఖ్యంగా చాలా కాలం తర్వాత థియేటర్‌కు వెళ్లి సినిమా చూసిన కేటీఆర్.. సినిమా పూర్తయిన తర్వాత తన అభిప్రాయాన్ని బహిరంగంగా పంచుకోవడంతో ‘ది ప్యారడైజ్’పై మరోసారి చర్చ మొదలైంది.
+ఒక దర్శకుడు, నటుడు రెండోసారి కలిసి పనిచేసినప్పుడు ప్రేక్షకులు వారి గత సినిమా అనుభవాన్ని దృష్టిలో పెట్టుకుంటారు. అయితే కొత్త సినిమా కథ, పాత్రలు, నేపథ్యం వేర్వేరుగా ఉంటాయి. అందువల్ల గత చిత్రంతో పోల్చడం సహజమైనప్పటికీ, కొత్త సినిమాను దాని కథ, నటన, దర్శకత్వం, సాంకేతిక అంశాల ఆధారంగా కూడా అంచనా వేయాల్సి ఉంటుంది.
 
-సినిమా విడుదల తర్వాత ప్రేక్షకులు, సినీ ప్రముఖులు, ఇతర రంగాలకు చెందిన వ్యక్తులు తమ అభిప్రాయాలను సోషల్ మీడియా వేదికగా పంచుకుంటున్నారు. ఈ క్రమంలో కేటీఆర్ స్పందన కూడా సినిమాకు సంబంధించిన చర్చలో మరో అంశంగా నిలిచింది. ముఖ్యంగా నాని నటన, శ్రీకాంత్ ఓదెల దర్శకత్వంపై ఆయన చేసిన వ్యాఖ్యలు అభిమానుల దృష్టిని ఆకర్షించాయి.
-</p>
+‘ది ప్యారడైజ్’లో నాని జాదల్ పాత్రలో కనిపించగా, కథకు భిన్నమైన నేపథ్యాన్ని ఎంచుకున్నారు. 1980ల కాలం నాటి సికింద్రాబాద్ నేపథ్యంలో కథ సాగుతుందని ప్రచారంలో ఉన్న వివరాలు పేర్కొన్నాయి. ఆ కాలానికి సంబంధించిన వాతావరణం, పాత్రల జీవన పరిస్థితులు, కథలోని సంఘర్షణలను తెరపై చూపించేందుకు చిత్ర బృందం ప్రయత్నించింది.
+
+ఒక నిర్దిష్ట కాలాన్ని ఆధారంగా చేసుకుని సినిమా రూపొందించేటప్పుడు దుస్తులు, ప్రదేశాలు, వాహనాలు, భాష, సామాజిక పరిస్థితులు వంటి అంశాలపై ప్రత్యేక శ్రద్ధ అవసరం. కథలోని కాలాన్ని ప్రేక్షకులు నమ్మేలా చూపించడం సినిమాకు కీలకంగా మారుతుంది. దీనికి తోడు పాత్రల ప్రయాణం, వాటి నిర్ణయాలు, కథలో ఎదురయ్యే సమస్యలు కూడా ప్రేక్షకులను కథలోకి తీసుకెళ్లాలి.
+</P>
+<h3>అణచివేత, అస్తిత్వ పోరాటం ప్రధాన అంశాలుగా</h3>
+<P>
+‘ది ప్యారడైజ్’ గురించి వెలువడిన వివరాల్లో అణచివేతకు వ్యతిరేకంగా పోరాటం, అస్తిత్వం కోసం జరిగే సంఘర్షణ ప్రధాన అంశాలుగా ప్రస్తావనకు వచ్చాయి. ఒక వ్యక్తి లేదా సమూహం తమ హక్కులు, గౌరవం, గుర్తింపు కోసం పోరాడే పరిస్థితులను కథలో చూపించినప్పుడు అది కేవలం వ్యక్తిగత సంఘర్షణగా మాత్రమే కాకుండా సామాజిక కోణాన్ని కూడా సంతరించుకుంటుంది.
+
+సినిమాల్లో సామాజిక అంశాలను చూపించడానికి విభిన్న మార్గాలు ఉంటాయి. కొన్ని కథలు వ్యక్తిగత అనుభవాల ద్వారా పెద్ద సమస్యలను వివరిస్తాయి. మరికొన్ని కథలు ఒక ప్రాంతం లేదా సమూహం ఎదుర్కొనే పరిస్థితులను ప్రధానంగా తీసుకుంటాయి. ‘ది ప్యారడైజ్’ గురించి కేటీఆర్ స్పందించినప్పుడు అణచివేతకు వ్యతిరేకంగా జరిగే పోరాటాన్ని ఆయన ప్రత్యేకంగా ప్రస్తావించినట్లు నివేదికలు వెల్లడించాయి.
+
+అయితే సామాజిక అంశాలను సినిమాలో చూపించడం మాత్రమే కాకుండా, అవి కథతో ఎంత సహజంగా మిళితమయ్యాయన్నది కూడా ముఖ్యం. ప్రేక్షకులు పాత్రలతో అనుబంధం ఏర్పరచుకోవడానికి వారి పరిస్థితులు, నిర్ణయాలు, భావోద్వేగాలు నమ్మదగిన విధంగా ఉండాలి. కథలోని సంఘర్షణ ప్రేక్షకులకు అర్థమయ్యేలా తెరకెక్కితే ఆ అంశాలు సినిమా చూసిన తర్వాత కూడా చర్చకు దారితీయవచ్చు.
+
+ఈ కారణంగానే ఒక సినిమా గురించి అభిప్రాయాలు కేవలం వినోదం వరకే పరిమితం కావు. కథలోని సామాజిక నేపథ్యం, పాత్రల ప్రవర్తన, దర్శకుడు చెప్పాలనుకున్న అంశాలు కూడా ప్రేక్షకుల చర్చల్లో చోటు సంపాదిస్తాయి. ‘ది ప్యారడైజ్’పై జరుగుతున్న చర్చలోనూ ఈ అంశాలు కనిపిస్తున్నాయి.
+</P>
+<h3>సినిమాకు వస్తున్న స్పందనలు ఎలా ఉన్నాయి?</h3>
+<P>
+‘ది ప్యారడైజ్’ విడుదలైన తర్వాత ప్రేక్షకుల నుంచి భిన్నమైన స్పందనలు వస్తున్నాయి. కొందరు నాని నటనను, యాక్షన్ సన్నివేశాలను, కొన్ని కీలక ఎపిసోడ్లను ప్రశంసిస్తున్నారు. మరికొందరు కథనం, స్క్రీన్‌ప్లే, భావోద్వేగ సన్నివేశాల విషయంలో తమ అభిప్రాయాలను వ్యక్తం చేస్తున్నారు. ఈ తరహా స్పందనలు పెద్ద సినిమాల విషయంలో సాధారణంగా కనిపిస్తుంటాయి.
+
+ఒక సినిమాను చూసే ప్రతి ప్రేక్షకుడి అంచనాలు వేర్వేరుగా ఉంటాయి. కొందరు కథలో కొత్తదనాన్ని కోరుకుంటారు. మరికొందరు పాత్రల భావోద్వేగాలకు ప్రాధాన్యం ఇస్తారు. ఇంకొందరు యాక్షన్, విజువల్స్, సంగీతం, నేపథ్య సంగీతం వంటి సాంకేతిక అంశాలను ఎక్కువగా గమనిస్తారు. అందువల్ల ఒకే సినిమాపై ప్రశంసలు, విమర్శలు రెండూ రావచ్చు.
+
+విడుదల తర్వాత వచ్చిన స్పందనలపై నాని కూడా ప్రేక్షకుల అభిప్రాయాలను గమనిస్తున్నట్లు వార్తలు వెలువడ్డాయి. మంచి విషయాలతో పాటు విమర్శలను కూడా పరిశీలించి, వాటి నుంచి నేర్చుకుంటాననే భావనను ఆయన వ్యక్తం చేసినట్లు కథనాలు పేర్కొన్నాయి. ఒక నటుడికి ప్రేక్షకుల స్పందన తదుపరి పాత్రలను ఎంచుకునే సమయంలోనూ, తన నటనలో మెరుగుదల కోసం ఆలోచించే సమయంలోనూ ఉపయోగపడుతుంది.
+
+సోషల్ మీడియాలో వచ్చే ప్రతి అభిప్రాయాన్ని మొత్తం ప్రేక్షకుల తీర్పుగా పరిగణించలేం. సినిమా విజయాన్ని అంచనా వేయాలంటే అధికారిక బాక్సాఫీస్ గణాంకాలు, పంపిణీదారుల సమాచారం, విశ్వసనీయ వాణిజ్య నివేదికలు వంటి అంశాలను పరిశీలించాలి. అదే విధంగా సినిమా నచ్చిందా లేదా అన్నది వ్యక్తిగత అభిరుచికి సంబంధించిన విషయం. ఈ తేడాను గుర్తుంచుకోవడం అవసరం.
+</P>
+<h3>కేటీఆర్ స్పందనతో మళ్లీ చర్చలోకి ‘ది ప్యారడైజ్’</h3>
+<P>
+సినిమా విడుదలైన తర్వాత ప్రేక్షకులు, సినీ ప్రముఖులు, వివిధ రంగాలకు చెందిన వ్యక్తులు తమ అభిప్రాయాలను సోషల్ మీడియా ద్వారా పంచుకోవడం సాధారణంగా మారింది. ఈ క్రమంలో కేటీఆర్ ‘ది ప్యారడైజ్’ చూసి స్పందించడం కూడా సినిమా చర్చలో మరో అంశంగా నిలిచింది. ఆయన ముఖ్యంగా నాని నటన, శ్రీకాంత్ ఓదెల దర్శకత్వాన్ని ప్రశంసించినట్లు వార్తా కథనాలు పేర్కొన్నాయి.
+
+కేటీఆర్ వ్యాఖ్యల్లో తెలంగాణ నేపథ్యం, అణచివేతకు వ్యతిరేకంగా జరిగే పోరాటం ప్రస్తావనకు రావడం ప్రత్యేకంగా ఆసక్తిని కలిగించింది. సినిమా కథలోని సామాజిక కోణంపై ఆయన దృష్టి పెట్టినట్లు తెలుస్తోంది. శంకరన్న పాత్రకు సంబంధించిన చర్చ కూడా ఈ స్పందనతో మరోసారి తెరపైకి వచ్చింది.
+
+అయితే కేటీఆర్ ప్రశంసలు సినిమా గురించి వచ్చిన అన్ని విమర్శలకు సమాధానమని చెప్పలేం. అలాగే కొందరు ప్రేక్షకులు చేసిన విమర్శల ఆధారంగా సినిమా మొత్తం గురించి తుది నిర్ణయానికి రావడం కూడా సరైంది కాదు. ప్రతి ప్రేక్షకుడు తన అభిరుచి, అంచనాలకు అనుగుణంగా సినిమా గురించి అభిప్రాయం వ్యక్తం చేస్తారు. ఆ స్పందనలన్నింటినీ పరిశీలించినప్పుడే సినిమాపై విస్తృతమైన అవగాహన ఏర్పడుతుంది.
+
+ప్రస్తుతం ‘ది ప్యారడైజ్’ చుట్టూ జరుగుతున్న చర్చలో నాని కొత్త పాత్ర, శ్రీకాంత్ ఓదెల దర్శకత్వం, తెలంగాణ నేపథ్యం, శంకరన్న పాత్ర వంటి అంశాలు ప్రధానంగా కనిపిస్తున్నాయి. కేటీఆర్ స్పందనతో ఈ అంశాలు మరోసారి వార్తల్లో నిలిచాయి.
+</P>
+<h3>ముగింపు</h3>
+<P>
+నాని, శ్రీకాంత్ ఓదెల కలయికలో వచ్చిన ‘ది ప్యారడైజ్’ సినిమా విడుదల తర్వాత ప్రశంసలు, విమర్శలు రెండింటినీ ఎదుర్కొంటూ చర్చలో కొనసాగుతోంది. ఈ నేపథ్యంలో కేటీఆర్ థియేటర్‌కు వెళ్లి సినిమా చూడటం, అనంతరం హీరో నాని, దర్శకుడు శ్రీకాంత్ ఓదెల పనితీరును అభినందించినట్లు వచ్చిన వార్తలు ఆసక్తిని పెంచాయి. ముఖ్యంగా అణచివేతకు వ్యతిరేకంగా అస్తిత్వం కోసం జరిగే పోరాటాన్ని సినిమాలో చూపించిన విధానం తనను ఆకట్టుకుందని ఆయన పేర్కొన్నట్లు నివేదికలు వెల్లడించాయి.
+
+శంకరన్న పాత్రపై సోషల్ మీడియాలో జరుగుతున్న చర్చ, తెలంగాణ నేపథ్యాన్ని తెరపై చూపించిన విధానం, నాని నటనపై వస్తున్న భిన్న స్పందనలు ఈ సినిమాను వార్తల్లో నిలుపుతున్నాయి. ఒక సినిమా గురించి ప్రేక్షకుల అభిప్రాయాలు వేర్వేరుగా ఉండటం సహజమే. అయితే కేటీఆర్ ప్రశంసలతో ‘ది ప్యారడైజ్’పై మరోసారి ఆసక్తికరమైన చర్చ మొదలైంది.
+</P>
 
 
 
 </article>
 
 
-<!-- SIDEBAR -->
+  <aside class="article-sidebar">
 
-<aside class="article-sidebar">
+            <section class="news-section">
+                <h2 class="section-heading">జాతీయ వార్తలు</h2>
+                <div id="nationalGrid" class="side-news-list"></div>
+            </section>
 
+            <section class="news-section">
+                <h2 class="section-heading">తాజా వార్తలు</h2>
+                <div id="latestSidebar" class="side-news-list"></div>
+            </section>
 
-<div class="sidebar-box">
+            <section class="news-section">
+                <h2 class="section-heading">ట్రెండింగ్ వార్తలు</h2>
+                <div id="trendingSidebar" class="side-news-list"></div>
+            </section>
 
-    <div class="sidebar-title">
-        Trending News
+            <section class="news-section">
+                <h2 class="section-heading">సినిమా వార్తలు</h2>
+                <div id="movieReviewsSidebar" class="side-news-list"></div>
+            </section>
+
+            
+
+        </aside>
     </div>
 
-    <div id="trendingSidebar"></div>
-
-</div>
-
-
-<div class="sidebar-box">
-
-    <div class="sidebar-title">
-        Latest News
+<!-- SPORTS NEWS -->
+<section class="category-ad-layout">
+    <div class="category-news">
+        <h2>క్రీడా వార్తలు</h2>
+        <div id="sportsGrid" class="news-grid"></div>
     </div>
-
-    <div id="latestSidebar"></div>
-
-</div>
-
-
-<div class="sidebar-box">
-
-    <div class="sidebar-title">
-        Most Read
+   
+</section>
+<!-- ENTERTAINMENT NEWS -->
+<section class="category-ad-layout">
+    <div class="category-news">
+        <h2>సినిమా అప్‌డేట్స్</h2>
+        <div id="cinemaGrid" class="news-grid"></div>
     </div>
-
-    <div id="mostReadSidebar"></div>
-
-</div>
-
-
-</aside>
-
-</div>
-
-
-<!-- LATEST -->
-
-<section class="related-section">
-
-    <div class="related-title">
-         Latest News
-    </div>
-
-    <div
-        id="latestGrid"
-        class="news-grid"
-    ></div>
-
+   
 </section>
 
-
-<!-- SPORTS -->
-
-<section class="related-section">
-
-    <div class="related-title">
-         Sports
+<!-- BUSINESS NEWS -->
+<section class="category-ad-layout">
+    <div class="category-news">
+        <h2>వ్యాపార వార్తలు</h2>
+        <div id="businessGrid" class="news-grid"></div>
     </div>
-
-    <div
-        id="sportsGrid"
-        class="news-grid"
-    ></div>
-
+   
 </section>
 
-
-<!-- ENTERTAINMENT -->
-
-<section class="related-section">
-
-    <div class="related-title">
-         Entertainment
+<!-- AP NEWS -->
+<section class="category-ad-layout">
+    <div class="category-news">
+        <h2>ఆంధ్రప్రదేశ్ & తెలంగాణ వార్తలు</h2>
+        <div id="aptsGrid" class="news-grid"></div>
     </div>
 
-    <div
-        id="moviesGrid"
-        class="news-grid"
-    ></div>
-
+ 
 </section>
 
-
-<!-- AP TS -->
-
-<section class="related-section">
-
-    <div class="related-title">
-         AP & TS
+<!-- MOVIE REVIEWS -->
+<section class="movie-reviews-section">
+    <h2>సినిమా వార్తలు</h2>
+    <div id="movieReviewsGrid" class="news-grid"></div>
+</section>
+  <!-- ALL MOVIE NEWS FROM MOVIES.html -->
+<section class="movie-reviews-section" id="movieReviewsSection">
+    
+    <div id="movieReviewsGrid" class="news-grid">
+        
     </div>
-
-    <div
-        id="aptsGrid"
-        class="news-grid"
-    ></div>
-
 </section>
-
-
-<!-- BUSINESS -->
-
-<section class="related-section">
-
-    <div class="related-title">
-         Business
-    </div>
-
-    <div
-        id="businessGrid"
-        class="news-grid"
-    ></div>
-
-</section>
-
 
 </main>
 
-
-<!-- FOOTER -->
-
 <footer class="site-footer">
-
     <div class="container footer-inner">
 
-
         <div class="footer-column">
-
-            <h3>
-                ముఖ్యమైన లింకులు
-            </h3>
-
-
+            <h3>ముఖ్యమైన లింకులు</h3>
             <div class="footer-links">
-
-                <a href="../advertise.html">
-                    Advertise With Us
-                </a>
-
-                <a href="../about.html">
-                    About Us
-                </a>
-
-                <a href="../contact.html">
-                    Contact Us
-                </a>
-
-                <a href="../Privacy Policy.html">
-                    Privacy Policy
-                </a>
-
-                <a href="../disclaimer.html">
-                    Disclaimer
-                </a>
-
-                <a href="../terms.html">
-                    Terms & Conditions
-                </a>
-
+                <a href="../advertise.html">Advertise With Us</a>
+                <a href="../about.html">About Us</a>
+                <a href="../contact.html">Contact Us</a>
+                <a href="../Privacy%20Policy.html">Privacy Policy</a>
+                <a href="../disclaimer.html">Disclaimer</a>
+                <a href="../terms.html">Terms &amp; Conditions</a>
             </div>
-
         </div>
-
 
         <div class="footer-contact">
-
-            <h3>
-                Contact
-            </h3>
-
-            <p>
-                newsb386@gmail.com
-            </p>
-
-            <p>
-                Follow us for latest updates.
-            </p>
-
+            <h3>Contact</h3>
+            <p>newsb386@gmail.com</p>
+            <p>Follow us for latest updates.</p>
         </div>
 
     </div>
 
-
     <div class="copyright">
-
         © 2026 BS 360 NEWS. All rights reserved.
-
     </div>
-
 </footer>
 
-
-<!-- AUTOMATIC ARTICLE NEWS SYSTEM -->
-
 <script>
+/* MOBILE NAVIGATION */
+function toggleMobileNav() {
+    const nav = document.getElementById("navLinks");
+    const button = document.querySelector(".mobile-menu-toggle");
+
+    if (!nav || !button) return;
+
+    const isOpen = nav.classList.toggle("mobile-open");
+    button.setAttribute("aria-expanded", String(isOpen));
+}
+
+/* DARK MODE */
+function toggleTheme() {
+    const isDark = document.body.classList.toggle("dark-mode");
+    const button = document.getElementById("themeButton");
+
+    if (button) {
+        button.textContent = isDark ? "☀️ Light" : "🌙 Dark";
+    }
+}
 
 document.addEventListener("DOMContentLoaded", function () {
+    const HOME = "https://bs360news.com/index.html";
+    const MOVIES = "https://bs360news.com/MOVIES.html";
 
-    "use strict";
+    const otherSections = [
+        { target: "nationalGrid", source: "nationalSection", limit: 5 },
+        { target: "latestSidebar", source: "latestGrid", limit: 5 },
+        { target: "trendingSidebar", source: "trendingSidebar", limit: 5 },
+        { target: "sportsGrid", source: "sportsSection", limit: 5 },
+        { target: "cinemaGrid", source: "entertainmentSection", limit: 5 },
+        { target: "businessGrid", source: "businessSection", limit: 5 },
+        { target: "aptsGrid", source: "aptsSection", limit: 5 }
+    ];
 
+    function absoluteURL(value, base) {
+        if (!value) return "";
 
-    function cleanText(text) {
-
-        return String(text || "")
-            .replace(/\s+/g, " ")
-            .trim();
-
+        try {
+            return new URL(value, base).href;
+        } catch {
+            return "";
+        }
     }
 
-
-    function getArticles(home, sourceId) {
-
-        const source =
-            home.getElementById(sourceId);
+    function readMovieArticles(doc) {
+        const source = doc.getElementById("localMoviesSource");
 
         if (!source) {
+            console.error("MOVIES.html: localMoviesSource not found");
             return [];
         }
 
+        const articles = [];
+        const seen = new Set();
 
-        return Array.from(
-            source.querySelectorAll(".news-item.post")
-        )
-
-        .map(function (item) {
-
-            const image =
-                item.querySelector("img");
-
-            const title =
-                item.querySelector(".news-content p") ||
-                item.querySelector(".news-content h3") ||
-                item.querySelector("p");
-
-
-            return {
-
-                title:
-                    cleanText(
-                        title
-                            ? title.textContent
-                            : ""
-                    ),
-
-                image:
-                    image
-                        ? image.getAttribute("src") || ""
-                        : "",
-
-                alt:
-                    image
-                        ? image.getAttribute("alt") || ""
-                        : "",
-
-                url:
-                    item.getAttribute("data-url") || ""
-
-            };
-
-        })
-
-        .filter(function (item) {
-
-            return (
-                item.title &&
-                item.image &&
-                item.url
+        source.querySelectorAll(".news-item.post").forEach(function (item) {
+            const img = item.querySelector("img");
+            const heading = item.querySelector(
+                ".news-content p, .news-content h3, h2, h3"
             );
 
+            const title = (
+                heading?.textContent || img?.alt || ""
+            ).replace(/\s+/g, " ").trim();
+
+            const url = absoluteURL(item.getAttribute("data-url"), MOVIES);
+
+            const image = absoluteURL(
+                img?.getAttribute("data-src") ||
+                img?.getAttribute("data-lazy-src") ||
+                img?.getAttribute("src"),
+                MOVIES
+            );
+
+            if (!title || !url || !image) return;
+
+            if (new URL(url).origin !== new URL(HOME).origin) return;
+            if (seen.has(url)) return;
+
+            seen.add(url);
+
+            articles.push({
+                title,
+                url,
+                image,
+                alt: img?.alt || title
+            });
         });
 
+        return articles;
     }
 
+    function readHomeArticles(doc, sourceId) {
+        const source = doc.getElementById(sourceId);
+        if (!source) return [];
 
-    function fixPath(path) {
+        const articles = [];
+        const seen = new Set();
 
-        if (!path) {
-            return "";
+        source.querySelectorAll(
+            "article, .news-card, .news-item, .post, li"
+        ).forEach(function (card) {
+            const link = card.matches("a[href]")
+                ? card
+                : card.querySelector("a[href]");
+
+            const img = card.querySelector("img");
+            if (!link || !img) return;
+
+            const heading = card.querySelector(
+                "h1, h2, h3, h4, .post-title, .news-title, .title, .news-content p"
+            );
+
+            const title = (
+                heading?.textContent ||
+                img.alt ||
+                link.textContent ||
+                ""
+            ).replace(/\s+/g, " ").trim();
+
+            const url = absoluteURL(link.getAttribute("href"), HOME);
+
+            const image = absoluteURL(
+                img.getAttribute("data-src") ||
+                img.getAttribute("data-lazy-src") ||
+                img.getAttribute("src"),
+                HOME
+            );
+
+            if (!title || !url || !image) return;
+            if (new URL(url).origin !== new URL(HOME).origin) return;
+            if (seen.has(url)) return;
+
+            seen.add(url);
+            articles.push({
+                title,
+                url,
+                image,
+                alt: img.alt || title
+            });
+        });
+
+        return articles;
+    }
+
+    function renderArticles(targetId, articles, limit) {
+        const target = document.getElementById(targetId);
+        if (!target) return;
+
+        target.replaceChildren();
+
+        const list = limit ? articles.slice(0, limit) : articles;
+
+        list.forEach(function (item) {
+            const link = document.createElement("a");
+            link.className = "news-card";
+            link.href = item.url;
+
+            const image = document.createElement("img");
+            image.src = item.image;
+            image.alt = item.alt;
+            image.loading = "lazy";
+
+            const title = document.createElement("h3");
+            title.textContent = item.title;
+
+            link.append(image, title);
+            target.appendChild(link);
+        });
+    }
+
+    /* MOVIE REVIEWS MUST END AT MAIN ARTICLE BOTTOM */
+    function limitMovieReviewsToArticle() {
+        const main = document.querySelector(".article-main");
+        const sidebar = document.querySelector(".article-sidebar");
+        const section = document.getElementById("movieReviewsSidebar");
+
+        if (!main || !sidebar || !section) return;
+
+        const list = section;
+        const heading = section.previousElementSibling;
+
+        list.style.maxHeight = "";
+        list.style.overflow = "";
+
+        if (window.innerWidth <= 700) return;
+
+        const mainHeight = main.getBoundingClientRect().height;
+        const sectionTop =
+            section.getBoundingClientRect().top -
+            sidebar.getBoundingClientRect().top;
+
+        const headingHeight = heading
+            ? heading.getBoundingClientRect().height
+            : 0;
+
+        const availableHeight = mainHeight - sectionTop - headingHeight - 12;
+
+        if (availableHeight <= 0) {
+            section.parentElement.style.display = "none";
+            return;
         }
 
-        if (
-            path.startsWith("http://") ||
-            path.startsWith("https://") ||
-            path.startsWith("../") ||
-            path.startsWith("/")
-        ) {
-
-            return path;
-
-        }
-
-        return "../" + path;
-
+        section.parentElement.style.display = "";
+        list.style.maxHeight = availableHeight + "px";
+        list.style.overflow = "hidden";
     }
 
-
-    function sidebarHTML(article) {
-
-        return `
-            <a
-                href="${fixPath(article.url)}"
-                class="sidebar-item"
-            >
-
-                <img
-                    src="${fixPath(article.image)}"
-                    alt="${article.alt || article.title}"
-                    loading="lazy"
-                >
-
-                <div class="sidebar-item-title">
-                    ${article.title}
-                </div>
-
-            </a>
-        `;
-
-    }
-
-
-    function cardHTML(article) {
-
-        return `
-            <a
-                href="${fixPath(article.url)}"
-                class="news-card"
-            >
-
-                <img
-                    src="${fixPath(article.image)}"
-                    alt="${article.alt || article.title}"
-                    loading="lazy"
-                >
-
-                <h3>
-                    ${article.title}
-                </h3>
-
-            </a>
-        `;
-
-    }
-
-
-    function mostReadHTML(article, number) {
-
-        return `
-            <a
-                href="${fixPath(article.url)}"
-                class="most-read-item"
-            >
-
-                <div class="most-read-number">
-                    ${number}
-                </div>
-
-                <img
-                    src="${fixPath(article.image)}"
-                    alt="${article.alt || article.title}"
-                    loading="lazy"
-                >
-
-                <div class="most-read-title">
-                    ${article.title}
-                </div>
-
-            </a>
-        `;
-
-    }
-
-
-    function show(id, html) {
-
-        const element =
-            document.getElementById(id);
-
-        if (element) {
-
-            element.innerHTML = html;
-
-        }
-
-    }
-
-
-    /* LOAD MAIN HOMEPAGE */
-
-    fetch(
-        "../index.html?v=" + Date.now(),
-        {
-            cache: "no-store"
-        }
-    )
-
-    .then(function (response) {
-
-        if (!response.ok) {
-
-            throw new Error(
-                "Main index.html load failed"
-            );
-
-        }
-
-        return response.text();
-
-    })
-
-    .then(function (html) {
-
-        const parser =
-            new DOMParser();
-
-
-        const home =
-            parser.parseFromString(
-                html,
-                "text/html"
-            );
-
-
-        const latest =
-            getArticles(
-                home,
-                "latestNewsSource"
-            );
-
-
-        const trending =
-            getArticles(
-                home,
-                "trendingSource"
-            );
-
-
-        const mostRead =
-            getArticles(
-                home,
-                "mostReadSource"
-            );
-
-
-        const apts =
-            getArticles(
-                home,
-                "aptsSource"
-            );
-
-
-        const sports =
-            getArticles(
-                home,
-                "sportsSource"
-            );
-
-
-        const entertainment =
-            getArticles(
-                home,
-                "entertainmentSource"
-            );
-
-
-        const business =
-            getArticles(
-                home,
-                "businessSource"
-            );
-
-
-        show(
-            "trendingSidebar",
-
-            trending
-                .slice(0, 8)
-                .map(sidebarHTML)
-                .join("")
-        );
-
-
-        show(
-            "latestSidebar",
-
-            latest
-                .slice(0, 8)
-                .map(sidebarHTML)
-                .join("")
-        );
-
-
-        show(
-            "mostReadSidebar",
-
-            mostRead
-                .slice(0, 8)
-                .map(function (
-                    article,
-                    index
-                ) {
-
-                    return mostReadHTML(
-                        article,
-                        index + 1
-                    );
-
-                })
-                .join("")
-        );
-
-
-        show(
-            "latestGrid",
-
-            latest
-                .slice(0, 8)
-                .map(cardHTML)
-                .join("")
-        );
-
-
-        show(
-            "sportsGrid",
-
-            sports
-                .slice(0, 8)
-                .map(cardHTML)
-                .join("")
-        );
-
-
-        show(
-            "moviesGrid",
-
-            entertainment
-                .slice(0, 8)
-                .map(cardHTML)
-                .join("")
-        );
-
-
-        show(
-            "aptsGrid",
-
-            apts
-                .slice(0, 8)
-                .map(cardHTML)
-                .join("")
-        );
-
-
-        show(
-            "businessGrid",
-
-            business
-                .slice(0, 8)
-                .map(cardHTML)
-                .join("")
-        );
-
-
-        console.log(
-            "BS360 HOME ARTICLES LOADED"
-        );
-
-
-    })
-
-    .catch(function (error) {
-
-        console.error(
-            "BS360 NEWS ERROR:",
-            error
-        );
-
-    });
-
-
-    /* MOBILE NAV */
-
-    window.toggleMobileNav =
-        function () {
-
-            const nav =
-                document.getElementById(
-                    "navLinks"
-                );
-
-
-            if (nav) {
-
-                nav.classList.toggle(
-                    "mobile-open"
-                );
-
+    async function loadArticles() {
+        try {
+            const [homeResponse, moviesResponse] = await Promise.all([
+                fetch(HOME, { cache: "no-store" }),
+                fetch(MOVIES, { cache: "no-store" })
+            ]);
+
+            if (!homeResponse.ok || !moviesResponse.ok) {
+                throw new Error("Homepage or MOVIES.html could not load");
             }
 
-        };
+            const [homeHTML, moviesHTML] = await Promise.all([
+                homeResponse.text(),
+                moviesResponse.text()
+            ]);
 
+            const parser = new DOMParser();
 
-    /* DARK MODE */
+            const homeDoc = parser.parseFromString(homeHTML, "text/html");
+            const moviesDoc = parser.parseFromString(moviesHTML, "text/html");
 
-    window.toggleTheme =
-        function () {
+            const movieArticles = readMovieArticles(moviesDoc);
 
-            document.body.classList.toggle(
-                "dark-mode"
-            );
+            renderArticles("movieReviewsGrid", movieArticles, 0);
+            renderArticles("movieReviewsSidebar", movieArticles, 30);
 
+            otherSections.forEach(function (section) {
+                const articles = readHomeArticles(homeDoc, section.source);
+                renderArticles(section.target, articles, section.limit);
+            });
 
-            const button =
-                document.getElementById(
-                    "themeButton"
-                );
+            requestAnimationFrame(function () {
+                requestAnimationFrame(limitMovieReviewsToArticle);
+            });
 
+            console.log("Movie articles:", movieArticles.length);
 
-            const dark =
-                document.body.classList.contains(
-                    "dark-mode"
-                );
-
-
-            if (button) {
-
-                button.textContent =
-                    dark
-                        ? "☀️ Light"
-                        : "🌙 Dark";
-
-            }
-
-
-            localStorage.setItem(
-                "bs360-theme",
-                dark
-                    ? "dark"
-                    : "light"
-            );
-
-        };
-
-
-    if (
-        localStorage.getItem(
-            "bs360-theme"
-        ) === "dark"
-    ) {
-
-        document.body.classList.add(
-            "dark-mode"
-        );
-
-
-        const button =
-            document.getElementById(
-                "themeButton"
-            );
-
-
-        if (button) {
-
-            button.textContent =
-                "☀️ Light";
-
+        } catch (error) {
+            console.error("BS360NEWS loading error:", error);
         }
-
     }
 
+    loadArticles();
+
+    window.addEventListener("load", limitMovieReviewsToArticle);
+    window.addEventListener("resize", limitMovieReviewsToArticle);
 });
 
-</script>
+const image = absoluteURL(
+    img.getAttribute("data-src") ||
+    img.getAttribute("data-lazy-src") ||
+    img.getAttribute("src"),
+    HOME
+);
+  
+          </script>
 
-
+  
 </body>
-
 </html>
