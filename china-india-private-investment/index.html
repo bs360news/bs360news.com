@@ -256,6 +256,36 @@ body.dark-mode .lang-selector .active{color:#ff4242}
  .section-heading{font-size:18px}
  .footer-inner{grid-template-columns:1fr;gap:18px}
 }
+
+    #businessSidebarSection {
+    position: static;
+    height: auto;
+    align-self: start;
+}
+
+#businessSidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+#businessSidebar .side-news-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    text-decoration: none;
+}
+
+#businessSidebar .side-news-card img {
+    width: 100px;
+    height: 70px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+#businessSidebar .side-news-card span {
+    line-height: 1.5;
+}
 </style>
 </head>
 
@@ -409,11 +439,10 @@ FY26లో మంజూరైన ప్రాజెక్టుల పెట్�
     <div id="trendingSidebar" class="side-news-list"></div>
    </section>
 
-   <section class="news-section" id="aptsSidebarSection">
-    <h2 class="section-heading">ఏపీ &amp; తెలంగాణ వార్తలు</h2>
-    <div id="aptsSidebar" class="side-news-list"></div>
-   </section>
-  </aside>
+<section class="news-section" id="businessSidebarSection">
+    <h2 class="section-heading">బిజినెస్ వార్తలు</h2>
+    <div id="businessSidebar" class="side-news-list"></div>
+</section>
  </div>
 
  <section class="category-ad-layout">
@@ -480,6 +509,77 @@ FY26లో మంజూరైన ప్రాజెక్టుల పెట్�
 
     
 <script>
+
+    async function loadBusinessSidebar() {
+    const sidebar = document.getElementById("businessSidebar");
+    const section = document.getElementById("businessSidebarSection");
+
+    if (!sidebar || !section) return;
+
+    try {
+        const businessURL = new URL("../business.html", window.location.href);
+        businessURL.searchParams.set("v", Date.now());
+
+        const response = await fetch(businessURL);
+
+        if (!response.ok) {
+            throw new Error("Business HTML load కాలేదు");
+        }
+
+        const html = await response.text();
+        const doc = new DOMParser().parseFromString(html, "text/html");
+
+        const source =
+            doc.querySelector("#localBusinessSource") ||
+            doc.querySelector("#businessGrid");
+
+        if (!source) {
+            section.style.display = "none";
+            return;
+        }
+
+        const articles = Array.from(
+            source.querySelectorAll(".news-item.post")
+        );
+
+        if (!articles.length) {
+            section.style.display = "none";
+            return;
+        }
+
+        sidebar.innerHTML = articles.map(article => {
+            const titleElement = article.querySelector(
+                ".news-content p, h3, h2, .news-title"
+            );
+            const imageElement = article.querySelector("img");
+
+            const title = titleElement?.textContent.trim();
+            const image = imageElement?.getAttribute("src");
+            const path = article.getAttribute("data-url");
+
+            if (!title || !path) return "";
+
+            const articleURL = new URL(path, businessURL).href;
+            const imageURL = image ? new URL(image, businessURL).href : "";
+
+            return `
+                <a class="side-news-card" href="${articleURL}">
+                    ${imageURL ? `<img src="${imageURL}" alt="">` : ""}
+                    <span>${title}</span>
+                </a>
+            `;
+        }).filter(Boolean).join("");
+
+        if (!sidebar.innerHTML.trim()) {
+            section.style.display = "none";
+        }
+    } catch (error) {
+        console.error("Business Sidebar Error:", error);
+        section.style.display = "none";
+    }
+}
+
+document.addEventListener("DOMContentLoaded", loadBusinessSidebar);
 document.addEventListener("DOMContentLoaded", function () {
     "use strict";
 
