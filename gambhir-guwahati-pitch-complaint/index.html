@@ -1400,15 +1400,22 @@ document.addEventListener("DOMContentLoaded", function () {
             renderArticles("aptsGrid", readSource(homeDoc, HOME,
                 ["aptsSource", "aptsGrid", "aptsSection"],
                 [".news-item.post[data-category='apts']", ".news-item.post[data-category='ap-ts']", "[data-category='apts']"]), 5);
-renderArticles("cinemaGrid", readSource(homeDoc, HOME,
-    ["entertainmentSource", "cinemaGrid", "cinemaSection"],
-    [
-        ".news-item.post[data-category='entertainment']",
-        ".news-item.post[data-category='movies']",
-        ".news-item.post[data-category='cinema']"
-    ]
-), 5);
-          
+
+
+            renderArticles(
+    "cinemaGrid",
+    readSource(homeDoc, HOME,
+        ["latestNewsSource", "cinemaGrid", "moviesGrid", "moviesSource"],
+        [
+            ".news-item.post[data-category='entertainment']",
+            ".news-item.post[data-category='movies']",
+            ".news-item.post[data-category='cinema']",
+            ".news-item.post"
+        ]
+    ),
+    5
+);
+            
         }
 
         if (sportsDoc) {
