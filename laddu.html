@@ -109,6 +109,10 @@ img{max-width:100%}
 .side-news-list .news-card h3{margin:0;font-size:13px;line-height:1.5;font-weight:700}
 .news-loading-message{font-size:13px;color:#777;line-height:1.6;margin:8px 0}
 
+/* AP & TS SIDEBAR */
+#aptsSidebarSection{min-width:0}
+#aptsSidebar{min-width:0;overflow:hidden}
+
 .category-ad-layout{display:block;width:100%;margin:25px 0;padding:0}
 .category-news{width:100%;min-width:0}
 .category-news h2,.movie-reviews-section h2{margin:0 0 14px;font-size:22px;line-height:1.5}
@@ -140,7 +144,6 @@ body.dark-mode .side-news-list .news-card{border-color:#333}
 body.dark-mode .lang-selector a{color:#fff}
 body.dark-mode .lang-selector .active{color:#ff4242}
 
-@media(min-width:701px){#aptsSidebar{overflow:hidden}}
 @media(max-width:1100px){
  .article-layout{grid-template-columns:minmax(0,1fr) 270px;gap:18px}
  .nav-links a{padding:14px 10px;font-size:12px}
@@ -269,7 +272,6 @@ body.dark-mode .lang-selector .active{color:#ff4242}
     <div id="trendingSidebar" class="side-news-list"></div>
    </section>
 
-   <!-- AP & TS SIDEBAR: ARTICLES COME FROM AP&TS.html -->
    <section class="news-section" id="aptsSidebarSection">
     <h2 class="section-heading">ఏపీ &amp; తెలంగాణ వార్తలు</h2>
     <div id="aptsSidebar" class="side-news-list"></div>
@@ -342,6 +344,7 @@ function toggleTheme(){
 }
 
 document.addEventListener("DOMContentLoaded",function(){
+
  const HOME=new URL("../index.html",window.location.href).href;
  const APTS=new URL("../AP%26TS.html",window.location.href).href;
 
@@ -353,6 +356,7 @@ document.addEventListener("DOMContentLoaded",function(){
  function getImage(card,base){
   const img=card.querySelector("img");
   if(!img)return "";
+
   return absoluteURL(
    img.getAttribute("data-src")||
    img.getAttribute("data-lazy-src")||
@@ -362,11 +366,11 @@ document.addEventListener("DOMContentLoaded",function(){
   );
  }
 
- function readCards(doc,base,selectors){
+ function readCards(scope,base,selectors){
   const found=[];
   const seen=new Set();
 
-  doc.querySelectorAll(selectors.join(",")).forEach(function(card){
+  scope.querySelectorAll(selectors.join(",")).forEach(function(card){
    const link=card.matches("a[href]")?card:card.querySelector("a[href]");
    const img=card.querySelector("img");
    const dataUrl=card.getAttribute("data-url")||"";
@@ -387,6 +391,7 @@ document.addEventListener("DOMContentLoaded",function(){
     dataUrl||(link?link.getAttribute("href"):""),
     base
    );
+
    const image=getImage(card,base);
 
    if(!title||!url||!image)return;
@@ -446,6 +451,10 @@ document.addEventListener("DOMContentLoaded",function(){
 
   target.replaceChildren();
 
+  /*
+   * limit > 0: show only that many articles.
+   * limit = 0: show every article found in the source.
+   */
   const list=Number.isFinite(limit)&&limit>0
    ?articles.slice(0,limit)
    :articles;
@@ -475,50 +484,75 @@ document.addEventListener("DOMContentLoaded",function(){
   }
  }
 
+ /*
+  * AP & TS SIDEBAR:
+  * Display AP & TS articles only, until the main article ends.
+  * No fixed five-article limit.
+  */
  function fitAptsSidebar(){
   const list=document.getElementById("aptsSidebar");
   const section=document.getElementById("aptsSidebarSection");
   const article=document.querySelector(".article-main");
+
   if(!list||!section||!article)return;
 
   const cards=Array.from(list.querySelectorAll(".news-card"));
 
+  // Mobile: show all AP & TS articles
   if(window.innerWidth<=700){
    section.style.display="";
    list.style.maxHeight="none";
    list.style.overflow="visible";
-   cards.forEach(card=>card.style.display="");
+
+   cards.forEach(function(card){
+    card.style.display="";
+   });
+
    return;
   }
 
-  cards.forEach(card=>card.style.display="");
+  // Reset visibility before recalculating
+  section.style.display="";
   list.style.maxHeight="none";
   list.style.overflow="hidden";
 
-  const articleBottom=article.getBoundingClientRect().bottom+window.scrollY;
-  const sectionTop=section.getBoundingClientRect().top+window.scrollY;
+  cards.forEach(function(card){
+   card.style.display="";
+  });
 
+  const articleBottom=
+   article.getBoundingClientRect().bottom+window.scrollY;
+
+  const sectionTop=
+   section.getBoundingClientRect().top+window.scrollY;
+
+  // If the AP & TS section starts after the article ends, hide it
   if(sectionTop>=articleBottom){
    section.style.display="none";
    return;
   }
 
-  section.style.display="";
+  const listTop=
+   list.getBoundingClientRect().top+window.scrollY;
 
-  const listTop=list.getBoundingClientRect().top+window.scrollY;
   const availableHeight=Math.max(0,articleBottom-listTop);
+
   let usedHeight=0;
 
   cards.forEach(function(card){
    const style=getComputedStyle(card);
-   const marginTop=parseFloat(style.marginTop)||0;
-   const marginBottom=parseFloat(style.marginBottom)||0;
-   const height=card.getBoundingClientRect().height+marginTop+marginBottom;
 
-   if(usedHeight+height>availableHeight){
-    card.style.display="none";
-   }else{
+   const margins=
+    (parseFloat(style.marginTop)||0)+
+    (parseFloat(style.marginBottom)||0);
+
+   const height=card.getBoundingClientRect().height+margins;
+
+   if(usedHeight+height<=availableHeight){
+    card.style.display="";
     usedHeight+=height;
+   }else{
+    card.style.display="none";
    }
   });
 
@@ -527,8 +561,15 @@ document.addEventListener("DOMContentLoaded",function(){
 
  async function fetchDocument(url){
   const response=await fetch(url,{cache:"no-store"});
-  if(!response.ok)throw new Error("Could not load "+url+" ("+response.status+")");
-  return new DOMParser().parseFromString(await response.text(),"text/html");
+
+  if(!response.ok){
+   throw new Error("Could not load "+url+" ("+response.status+")");
+  }
+
+  return new DOMParser().parseFromString(
+   await response.text(),
+   "text/html"
+  );
  }
 
  async function loadArticles(){
@@ -541,14 +582,16 @@ document.addEventListener("DOMContentLoaded",function(){
    console.error("Homepage source could not load:",error);
   }
 
-  /* IMPORTANT: AP & TS ARTICLES LOAD FROM AP&TS.html */
+  // AP & TS articles must come from AP&TS.html
   try{
    aptsDoc=await fetchDocument(APTS);
   }catch(error){
    console.error("AP&TS source could not load:",error);
   }
 
+  // General sections are sourced from the homepage
   if(homeDoc){
+
    renderArticles(
     "nationalGrid",
     readSource(homeDoc,HOME,
@@ -600,9 +643,8 @@ document.addEventListener("DOMContentLoaded",function(){
   }
 
   /*
-   * AP & TS NEWS:
-   * The source is AP&TS.html, not index.html.
-   * Add your actual AP&TS.html container ID to the list below if needed.
+   * AP & TS source selectors.
+   * These target containers inside AP&TS.html.
    */
   let aptsArticles=[];
 
@@ -624,45 +666,54 @@ document.addEventListener("DOMContentLoaded",function(){
      "allAptsGrid"
     ],
     [
-     ".news-item.post[data-url]",
      ".news-item.post[data-category='apts']",
      ".news-item.post[data-category='ap-ts']",
      ".news-item.post[data-category='andhra-pradesh']",
      ".news-item.post[data-category='telangana']",
-     ".news-card",
-     ".news-item"
+     ".news-item.post[data-url]"
     ]
    );
   }
 
+  // Remove duplicate AP & TS article URLs
   const seenApts=new Set();
+
   aptsArticles=aptsArticles.filter(function(item){
    if(!item.url||seenApts.has(item.url))return false;
    seenApts.add(item.url);
    return true;
   });
 
-  /* Same AP & TS source in the sidebar and below the article */
-  renderArticles("aptsSidebar",aptsArticles,5);
-  renderArticles("aptsGrid",aptsArticles,5);
+  /*
+   * IMPORTANT:
+   * 0 means all articles, not just five.
+   * Both AP & TS displays use the AP&TS.html source.
+   */
+  renderArticles("aptsSidebar",aptsArticles,0);
+  renderArticles("aptsGrid",aptsArticles,0);
+
+  // Keep this section AP & TS too, as in your supplied HTML
   renderArticles("movieReviewsGrid",aptsArticles,0);
 
+  // Recalculate after the cards have been inserted
   requestAnimationFrame(function(){
    requestAnimationFrame(fitAptsSidebar);
   });
 
+  // Recalculate after images load and page layout changes
   window.addEventListener("resize",fitAptsSidebar);
-
-  const articleImage=document.querySelector(".article-image");
-  if(articleImage&&!articleImage.complete){
-   articleImage.addEventListener("load",fitAptsSidebar,{once:true});
-  }
 
   document.querySelectorAll("#aptsSidebar img").forEach(function(img){
    if(!img.complete){
     img.addEventListener("load",fitAptsSidebar,{once:true});
    }
   });
+
+  const articleImage=document.querySelector(".article-image");
+
+  if(articleImage&&!articleImage.complete){
+   articleImage.addEventListener("load",fitAptsSidebar,{once:true});
+  }
 
   console.log("AP & TS source:",APTS);
   console.log("AP & TS articles loaded:",aptsArticles.length);
@@ -674,4 +725,3 @@ document.addEventListener("DOMContentLoaded",function(){
 
 </body>
 </html>
-
