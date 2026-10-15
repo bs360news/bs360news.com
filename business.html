@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="te">
 <head>
@@ -190,7 +189,7 @@ button {
 /* ================= MAIN LAYOUT ================= */
 .main-layout {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 320px;
+    grid-template-columns: minmax(0, 1fr);
     gap: 22px;
     align-items: start;
     width: 100%;
@@ -647,11 +646,6 @@ body.dark-mode .sidebar-item {
 
 
 
-   .main-layout {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 320px;
-    gap: 22px;
-}
 
 
 
@@ -682,10 +676,22 @@ body.dark-mode .sidebar-item {
     border-radius: 8px;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 900px) {
+    .business-bottom-sections {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
     .business-bottom-sections {
         grid-template-columns: 1fr;
     }
+}
+
+body.dark-mode .business-bottom-sections .sidebar-box {
+    background: #111827;
+    color: #f9fafb;
+    border-color: #374151;
 }
 
    
@@ -791,11 +797,10 @@ body.dark-mode .sidebar-item {
 
         </div>
 
-        <!-- ================= SIDEBAR ================= -->
-        <aside class="article-sidebar">
+        
+    </div>
 
-            
-<!-- BUSINESS NEWS KINDHA 3 SECTIONS -->
+<!-- THREE SECTIONS BELOW BUSINESS NEWS -->
 <div class="business-bottom-sections">
 
     <section class="sidebar-box">
@@ -818,13 +823,7 @@ body.dark-mode .sidebar-item {
             <div class="loading">మూవీ రివ్యూస్ లోడ్ అవుతున్నాయి...</div>
         </div>
     </section>
-
 </div>
-
-
-        </aside>
-
-    </div>
 </main>
 
 <!-- ================= FOOTER ================= -->
@@ -945,20 +944,46 @@ document.addEventListener("DOMContentLoaded", function () {
         */
         const articles = [];
 
-        if (root.matches && root.matches("article")) {
+        if (root.matches && (
+            root.matches("article") ||
+            root.matches("a[href]")
+        )) {
             articles.push(root);
         }
 
-        root.querySelectorAll("article").forEach(function (article) {
+        root.querySelectorAll(
+            "article, a[href].movie-card, a[href].homepage-card, a[href]"
+        ).forEach(function (article) {
             articles.push(article);
         });
 
         articles.forEach(function (article) {
-            const item = getArticle(article);
+            let item;
+
+            if (article.matches && article.matches("a[href]")) {
+                const image = article.querySelector("img");
+                const heading = article.querySelector(
+                    "h1, h2, h3, h4, .news-title, .news-content p, p"
+                );
+                const href = article.getAttribute("href") || "";
+                const src = getImageSource(image);
+                const title = heading
+                    ? clean(heading.textContent)
+                    : (image ? clean(image.getAttribute("alt")) : "");
+
+                item = (href && src && title) ? {
+                    href: href,
+                    src: src,
+                    title: title,
+                    alt: (image && image.getAttribute("alt")) || title
+                } : null;
+            } else {
+                item = getArticle(article);
+            }
+
             if (!item) return;
 
             const key = item.href + "|" + item.title;
-
             if (seen.has(key)) return;
 
             seen.add(key);
