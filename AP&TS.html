@@ -1,26 +1,17 @@
+
 <!DOCTYPE html>
 <html lang="te">
-
 <head>
-
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="BS 360 NEWS బిజినెస్ వార్తలు, స్టాక్ మార్కెట్, బంగారం, వెండి, ఆర్థిక వ్యవస్థ, కంపెనీల తాజా అప్‌డేట్స్.">
+<meta name="robots" content="index,follow,max-image-preview:large">
 
-<title>AP & TS News | BS 360 NEWS</title>
-
-<meta
-    name="description"
-    content="BS 360 NEWS AP & TS News - ఆంధ్రప్రదేశ్, తెలంగాణ తాజా వార్తలు, రాజకీయాలు, జిల్లాల వార్తలు, ముఖ్యమైన అప్డేట్స్."
->
-
-<meta
-    name="robots"
-    content="index, follow, max-image-preview:large"
->
+<title>AP &amp; TS News | BS 360 NEWS</title>
 
 <link rel="icon" type="image/png" href="dp.png.png">
-<link rel="apple-touch-icon" href="dp.png.png">
+<link rel="canonical" href="https://bs360news.com/business.html">
 
 
 <style>
@@ -199,7 +190,7 @@ button {
 /* ================= MAIN LAYOUT ================= */
 .main-layout {
     display: grid;
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr) 320px;
     gap: 22px;
     align-items: start;
     width: 100%;
@@ -656,6 +647,11 @@ body.dark-mode .sidebar-item {
 
 
 
+   .main-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: 22px;
+}
 
 
 
@@ -686,22 +682,10 @@ body.dark-mode .sidebar-item {
     border-radius: 8px;
 }
 
-@media (max-width: 900px) {
-    .business-bottom-sections {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
-
-@media (max-width: 600px) {
+@media (max-width: 700px) {
     .business-bottom-sections {
         grid-template-columns: 1fr;
     }
-}
-
-body.dark-mode .business-bottom-sections .sidebar-box {
-    background: #111827;
-    color: #f9fafb;
-    border-color: #374151;
 }
 
    
@@ -731,220 +715,74 @@ body.dark-mode .business-bottom-sections .sidebar-box {
         <a href="MOVIES.html">ఎంటర్టైన్మెంట్</a>
         <a href="SPORTS.html">స్పోర్ట్స్</a>
         <a href="AP%26TS.html">ఏపీ &amp; టీఎస్</a>
-        <a href="business.html" class="active">బిజినెస్</a>
+        <a href="AP%26TS.html" class="active">ఏపీ &amp; టీఎస్</a>
     </div>
 </nav>
 
-<!-- =====================================================
-     BREAKING NEWS
-===================================================== -->
-
+<!-- ================= BREAKING NEWS ================= -->
 <div class="breaking">
-
-    <div class="breaking-title">
-        BREAKING NEWS
-    </div>
-
+    <div class="breaking-title">BREAKING NEWS</div>
     <div class="breaking-text">
-        ఆంధ్రప్రదేశ్, తెలంగాణ తాజా వార్తలు, రాజకీయాలు, జిల్లాల వార్తలు, ముఖ్యమైన అప్డేట్స్...
+        బిజినెస్, స్టాక్ మార్కెట్, బంగారం, వెండి, ఆర్థిక వ్యవస్థకు సంబంధించిన తాజా వార్తలు
     </div>
-
 </div>
 
-
-<!-- =====================================================
-     PAGE
-===================================================== -->
-
+<!-- ================= MAIN PAGE ================= -->
 <main class="page">
+
+    <div class="page-title">బిజినెస్ న్యూస్</div>
 
     <div class="main-layout">
 
-
+        <!-- ================= MAIN CONTENT ================= -->
         <div class="movies-main">
 
-
-            <!-- =================================================
-                 LOCAL AP & TS SOURCE
-            ================================================= -->
-
-            <div id="localAptsSource" hidden>
-
-
-                <article
-                    class="news-item post"
-                    data-category="news ap"
-                    data-url="telangana-drought-rainfall-deficit/"
-                >
-
-                    <img
-                        src="telangana-drought-rainfall-deficit.png"
-                        alt="తెలంగాణలో కరువు పరిస్థితులపై అలర్ట్.. 17 శాతం వర్షపాతం లోటు"
-                    >
-
-                    <div class="news-content">
-
-                        <p>
-                            తెలంగాణలో కరువు పరిస్థితులపై ప్రభుత్వం అప్రమత్తమైంది. 2026 నైరుతి రుతుపవనాల సీజన్‌లో వర్షపాతం లోటుపై అధికారులు దృష్టి సారించారు.
-                        </p>
-
-                    </div>
-
-                </article>
-
-
-                <article
-                    class="news-item post"
-                    data-url="andhra-medical-college-visakhapatnam-investigation/"
-                >
-
-                    <img
-                        src="andhra-medical-college-visakhapatnam-investigation.png"
-                        alt="విశాఖలో ఆంధ్ర మెడికల్ కాలేజీలో విషాదం.. ఐదు రోజుల్లో ఇద్దరు మహిళా PG విద్యార్థుల మృతి"
-                    >
-
-                    <div class="news-content">
-
-                        <p>
-                            విశాఖలో ఆంధ్ర మెడికల్ కాలేజీలో విషాదం.. ఐదు రోజుల్లో ఇద్దరు మహిళా PG విద్యార్థుల మృతి
-                        </p>
-
-                    </div>
-
-                </article>
-
-
-                <article
-                    class="news-item post"
-                    data-url="palle-panduga-3-rural-development-works/"
-                >
-
-                    <img
-                        src="palle-panduga-3-rural-development-works.png"
-                        alt="ఏపీలో ₹11,085 కోట్ల గ్రామీణాభివృద్ధి పనులు.. పల్లె పండుగ 3.0కు శ్రీకారం"
-                    >
-
-                    <div class="news-content">
-
-                        <p>
-                            ఏపీలో ₹11,085 కోట్ల గ్రామీణాభివృద్ధి పనులు.. ‘పల్లె పండుగ 3.0’కు శ్రీకారం
-                        </p>
-
-                    </div>
-
-                </article>
-
-
-                <article
-                    class="news-item post"
-                    data-url="ap-rural-infrastructure-palle-panduga-3/"
-                >
-
-                    <img
-                        src="ap-rural-infrastructure-palle-panduga-3.png"
-                        alt="ఏపీలో గ్రామీణ అభివృద్ధికి భారీ ప్రణాళిక.. రూ.11,085 కోట్లతో పల్లె పండుగ 3.0"
-                    >
-
-                    <div class="news-content">
-
-                        <p>
-                            ఏపీలో గ్రామీణ అభివృద్ధికి భారీ ప్రణాళిక.. రూ.11,085 కోట్లతో ‘పల్లె పండుగ 3.0’
-                        </p>
-
-                    </div>
-
-                </article>
-
-
-                <article
-                    class="news-item post"
-                    data-url="mission-karmayogi-sadhana-shrinkhla-2026-vijayawada/"
-                >
-
-                    <img
-                        src="mission-karmayogi-sadhana-shrinkhla-2026-vijayawada.png"
-                        alt="విజయవాడలో జాతీయ స్థాయి కార్యక్రమం.. సాధన శ్రేణి 2026 సదస్సు"
-                    >
-
-                    <div class="news-content">
-
-                        <p>
-                            విజయవాడలో సెప్టెంబర్ 29న జాతీయ స్థాయి కార్యక్రమం.. ‘సాధన శ్రేణి 2026’ సదస్సు
-                        </p>
-
-                    </div>
-
-                </article>
-
-
-                <article
-                    class="news-item post"
-                    data-url="amaravati-ap-capital-high-court/"
-                >
-
-                    <img
-                        src="amaravati-ap-capital-high-court.jpg"
-                        alt="మూడు రాజధానుల పిటిషన్లకు ముగింపు దిశగా.. అమరావతిపై హైకోర్టు కీలక వ్యాఖ్యలు"
-                    >
-
-                    <div class="news-content">
-
-                        <p>
-                            మూడు రాజధానుల పిటిషన్లకు ముగింపు దిశగా.. అమరావతిపై హైకోర్టు కీలక వ్యాఖ్యలు
-                        </p>
-
-                    </div>
-
-                </article>
-
-
-
-
-                <article
-                    class="news-item post"
-                    data-url="telangana-aarogyasri-dues/"
-                >
-
-                    <img
-                        src="telangana-aarogyasri-dues.png"
-                        alt="తెలంగాణలో ఆరోగ్య పథకాలకు ఆర్థిక ఇబ్బందులు.. ప్రైవేట్ ఆస్పత్రులకు బకాయిలు"
-                    >
-
-                    <div class="news-content">
-
-                        <p>
-                            తెలంగాణలో ఆరోగ్య పథకాలకు ఆర్థిక ఇబ్బందులు.. ప్రైవేట్ ఆస్పత్రులకు రూ.2,000 కోట్లకు పైగా బకాయిలు
-                        </p>
-
-                    </div>
-
-                </article>
-
-
-                <article
-                    class="news-item post"
-                    data-url="jagan-municipal-elections/"
-                >
-
-                    <img
-                        src="jagan-municipal-elections.png"
-                        alt="ఎన్నికల్లో యుద్ధం చేయండి.. కార్యకర్తలకు జగన్ పిలుపు"
-                    >
-
-                    <div class="news-content">
-
-                        <p>
-                            ఎన్నికల్లో యుద్ధం చేయండి.. కార్యకర్తలకు జగన్ పిలుపు
-                        </p>
-
-                    </div>
-
-                </article>
-
-
-
-            </div>
-
+            <!-- BUSINESS ARTICLES -->
+            <section class="section">
+                <div class="section-head">
+                    <h2><span>బిజినెస్</span> వార్తలు</h2>
+                </div>
+
+                <div id="businessGrid" class="movies-grid">
+
+                    <a class="movie-card" href="phonepe-upi-mdr-expansion/">
+                        <img
+                            src="phonepe-upi-mdr-expansion.png"
+                            alt="PhonePe UPI MDR"
+                            loading="lazy">
+                        <div class="movie-card-content">
+                            <h3 class="movie-card-title">
+                                UPIలో MDR మార్పులు.. గ్రామీణ మార్కెట్‌పై PhonePe భారీ ఫోకస్
+                            </h3>
+                        </div>
+                    </a>
+
+                    <a class="movie-card" href="containe-technologies-rights-issue/">
+                        <img
+                            src="containe-technologies-rights-issue.png"
+                            alt="కంటెయిన్ టెక్నాలజీస్ రైట్స్ ఇష్యూ"
+                            loading="lazy">
+                        <div class="movie-card-content">
+                            <h3 class="movie-card-title">
+                                కంటెయిన్ టెక్నాలజీస్ రైట్స్ ఇష్యూ.. రూ.20.98 కోట్ల సమీకరణకు నేడు చివరి రోజు
+                            </h3>
+                        </div>
+                    </a>
+
+                    <a class="movie-card" href="nirmala-sitharaman-economy-growth/">
+                        <img
+                            src="nirmala-sitharaman-economy-growth.jpg"
+                            alt="భారత ఆర్థిక వ్యవస్థ"
+                            loading="lazy">
+                        <div class="movie-card-content">
+                            <h3 class="movie-card-title">
+                                దాదాపు 8 శాతం వృద్ధి దిశగా భారత ఆర్థిక వ్యవస్థ.. నిర్మలా సీతారామన్ కీలక వ్యాఖ్యలు
+                            </h3>
+                        </div>
+                    </a>
+
+                </div>
+            </section>
 
             <!-- HOMEPAGE SECTIONS: MAXIMUM 5 ARTICLES EACH -->
             <div id="homepageArticlesContent">
@@ -953,11 +791,11 @@ body.dark-mode .business-bottom-sections .sidebar-box {
 
         </div>
 
-        
-    </div>
-    
+        <!-- ================= SIDEBAR ================= -->
+        <aside class="article-sidebar">
 
-<!-- THREE SECTIONS BELOW BUSINESS NEWS -->
+            
+<!-- BUSINESS NEWS KINDHA 3 SECTIONS -->
 <div class="business-bottom-sections">
 
     <section class="sidebar-box">
@@ -980,7 +818,13 @@ body.dark-mode .business-bottom-sections .sidebar-box {
             <div class="loading">మూవీ రివ్యూస్ లోడ్ అవుతున్నాయి...</div>
         </div>
     </section>
+
 </div>
+
+
+        </aside>
+
+    </div>
 </main>
 
 <!-- ================= FOOTER ================= -->
@@ -1062,6 +906,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         let href = link ? link.getAttribute("href") : "";
 
+        if (!href) href = article.getAttribute("data-url") || "";
+
         if (!href) {
             const onclick = article.getAttribute("onclick") || "";
             const match = onclick.match(
@@ -1101,46 +947,20 @@ document.addEventListener("DOMContentLoaded", function () {
         */
         const articles = [];
 
-        if (root.matches && (
-            root.matches("article") ||
-            root.matches("a[href]")
-        )) {
+        if (root.matches && root.matches("article")) {
             articles.push(root);
         }
 
-        root.querySelectorAll(
-            "article, a[href].movie-card, a[href].homepage-card, a[href]"
-        ).forEach(function (article) {
+        root.querySelectorAll("article").forEach(function (article) {
             articles.push(article);
         });
 
         articles.forEach(function (article) {
-            let item;
-
-            if (article.matches && article.matches("a[href]")) {
-                const image = article.querySelector("img");
-                const heading = article.querySelector(
-                    "h1, h2, h3, h4, .news-title, .news-content p, p"
-                );
-                const href = article.getAttribute("href") || "";
-                const src = getImageSource(image);
-                const title = heading
-                    ? clean(heading.textContent)
-                    : (image ? clean(image.getAttribute("alt")) : "");
-
-                item = (href && src && title) ? {
-                    href: href,
-                    src: src,
-                    title: title,
-                    alt: (image && image.getAttribute("alt")) || title
-                } : null;
-            } else {
-                item = getArticle(article);
-            }
-
+            const item = getArticle(article);
             if (!item) return;
 
             const key = item.href + "|" + item.title;
+
             if (seen.has(key)) return;
 
             seen.add(key);
@@ -1191,6 +1011,27 @@ document.addEventListener("DOMContentLoaded", function () {
         `;
     }
 
+    /* ================= RENDER LOCAL AP & TS ARTICLES ================= */
+    function renderLocalAptsArticles() {
+        const source = document.getElementById("localAptsSource");
+        const output = document.getElementById("homepageArticlesContent");
+        if (!source || !output) return;
+
+        const items = collectArticles(source);
+        if (!items.length) return;
+
+        const block = document.createElement("section");
+        block.className = "homepage-section";
+        const heading = document.createElement("h2");
+        heading.textContent = "AP & TS NEWS";
+        const grid = document.createElement("div");
+        grid.className = "homepage-cards";
+        grid.innerHTML = items.map(cardHTML).join("");
+        block.appendChild(heading);
+        block.appendChild(grid);
+        output.appendChild(block);
+    }
+
     /* ================= RENDER HOMEPAGE SECTIONS ================= */
     function renderHomepageSections(home) {
         const output = document.getElementById(
@@ -1200,6 +1041,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!output) return;
 
         output.innerHTML = "";
+        renderLocalAptsArticles();
 
         const sections = [
             {
@@ -1240,7 +1082,7 @@ document.addEventListener("DOMContentLoaded", function () {
             },
             {
                 title: "MOVIE REVIEWS",
-                selector: ".movie-reviews-section"
+                selector: ".movie-reviews-section, #movieReviewsSection, #movieReviewsGrid"
             },
             {
                 title: "BUSINESS NEWS",
@@ -1331,7 +1173,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         /* LATEST NEWS: 3 ARTICLES */
         const latestSource = home.querySelector(
-            "#latestNewsSource, #latestGrid, #latestSection"
+            "#latestNewsSource, #latestSource, #latestGrid, #latestSection"
         );
 
         renderSidebar(
@@ -1343,7 +1185,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         /* TRENDING NEWS: 3 ARTICLES */
         const trendingSource = home.querySelector(
-            "#trendingSource, #trendingSidebar, #trendingSection"
+            "#trendingSource, #trendingGrid, #trendingSidebar, #trendingSection"
         );
 
         renderSidebar(
@@ -1355,7 +1197,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         /* MOVIE REVIEWS: 3 ARTICLES */
         const movieReviewsSource = home.querySelector(
-            ".movie-reviews-section"
+            ".movie-reviews-section, #movieReviewsSection, #movieReviewsGrid"
         );
 
         renderSidebar(
