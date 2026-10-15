@@ -1249,6 +1249,12 @@ body.dark-mode .lang-selector .active {
     </div>
 </footer>
 <script>
+
+/* =========================================================
+   BS 360 NEWS — ARTICLE PAGE FULL JAVASCRIPT
+   National | Latest | Trending | Movies | AP & TS | Business
+========================================================= */
+
 /* MOBILE NAVIGATION */
 function toggleMobileNav() {
     const nav = document.getElementById("navLinks");
@@ -1271,6 +1277,9 @@ function toggleTheme() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
+    "use strict";
+
+    /* SOURCE PAGE PATHS */
     const HOME = new URL("../index.html", window.location.href).href;
     const BUSINESS = new URL("../business.html", window.location.href).href;
 
@@ -1285,47 +1294,59 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    /* GET ARTICLE IMAGE */
+    /* GET IMAGE URL */
     function getImage(card, base) {
         const img = card.querySelector("img");
         if (!img) return "";
 
-        return absoluteURL(
+        const src =
             img.getAttribute("data-src") ||
             img.getAttribute("data-lazy-src") ||
             img.getAttribute("data-original") ||
-            img.getAttribute("src"),
-            base
-        );
+            img.getAttribute("src");
+
+        return absoluteURL(src, base);
     }
 
-    /* READ ARTICLE CARDS */
+    /* READ NEWS CARDS */
     function readCards(source, base, selectors) {
         if (!source) return [];
 
         const found = [];
         const seen = new Set();
 
-        source.querySelectorAll(selectors.join(",")).forEach(function (card) {
+        const cards = source.querySelectorAll(
+            selectors.join(",")
+        );
+
+        cards.forEach(function (card) {
             const link = card.matches("a[href]")
                 ? card
                 : card.querySelector("a[href]");
 
-            const dataUrl = card.getAttribute("data-url") || "";
+            const dataUrl =
+                card.getAttribute("data-url") ||
+                card.getAttribute("data-href") ||
+                "";
+
             const img = card.querySelector("img");
 
             if ((!link && !dataUrl) || !img) return;
 
             const titleNode = card.querySelector(
-                ".news-content h3, .news-content h2, " +
-                ".news-title, .post-title, .news-card-title, " +
+                ".news-content h3, " +
+                ".news-content h2, " +
+                ".news-title, " +
+                ".post-title, " +
+                ".news-card-title, " +
+                ".entry-title, " +
                 "h1, h2, h3, h4, p"
             );
 
             const title = (
                 titleNode?.textContent ||
-                img.getAttribute("alt") ||
                 link?.textContent ||
+                img.getAttribute("alt") ||
                 ""
             ).replace(/\s+/g, " ").trim();
 
@@ -1339,12 +1360,21 @@ document.addEventListener("DOMContentLoaded", function () {
             if (!title || !url || !image) return;
 
             try {
-                if (new URL(url).origin !== new URL(HOME).origin) return;
+                const parsedURL = new URL(url);
+
+                /* Only use links from the same website */
+                if (
+                    parsedURL.origin !==
+                    new URL(HOME).origin
+                ) {
+                    return;
+                }
             } catch (error) {
                 return;
             }
 
             if (seen.has(url)) return;
+
             seen.add(url);
 
             found.push({
@@ -1358,7 +1388,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return found;
     }
 
-    /* READ ARTICLES FROM SOURCE CONTAINERS */
+    /* READ NEWS FROM KNOWN CONTAINERS */
     function readSource(doc, base, ids, fallbackSelectors) {
         if (!doc) return [];
 
@@ -1390,13 +1420,31 @@ document.addEventListener("DOMContentLoaded", function () {
         if (all.length) return all;
 
         if (fallbackSelectors && fallbackSelectors.length) {
-            return readCards(doc, base, fallbackSelectors);
+            return readCards(
+                doc,
+                base,
+                fallbackSelectors
+            );
         }
 
         return [];
     }
 
-    /* RENDER ARTICLES */
+    /* REMOVE DUPLICATE ARTICLES */
+    function uniqueArticles(articles) {
+        const seen = new Set();
+
+        return articles.filter(function (item) {
+            if (!item.url || seen.has(item.url)) {
+                return false;
+            }
+
+            seen.add(item.url);
+            return true;
+        });
+    }
+
+    /* DISPLAY NEWS IN A TARGET */
     function renderArticles(targetId, articles, limit) {
         const target = document.getElementById(targetId);
         if (!target) return;
@@ -1407,35 +1455,46 @@ document.addEventListener("DOMContentLoaded", function () {
             ? articles.slice(0, limit)
             : articles;
 
+        if (!list.length) {
+            const message = document.createElement("p");
+
+            message.className = "news-loading-message";
+            message.textContent =
+                "వార్తలు ప్రస్తుతం అందుబాటులో లేవు.";
+
+            target.appendChild(message);
+            return;
+        }
+
         list.forEach(function (item) {
             const link = document.createElement("a");
+
             link.className = "news-card";
             link.href = item.url;
 
             const img = document.createElement("img");
+
             img.src = item.image;
             img.alt = item.alt || item.title;
             img.loading = "lazy";
 
             const heading = document.createElement("h3");
+
             heading.textContent = item.title;
 
-            link.append(img, heading);
+            link.appendChild(img);
+            link.appendChild(heading);
+
             target.appendChild(link);
         });
-
-        if (!list.length) {
-            const message = document.createElement("p");
-            message.className = "news-loading-message";
-            message.textContent = "వార్తలు ప్రస్తుతం అందుబాటులో లేవు.";
-            target.appendChild(message);
-        }
     }
 
-    /* FETCH HTML PAGE */
+    /* FETCH AND PARSE HTML PAGE */
     async function fetchDocument(url) {
         const requestURL =
-            url + (url.includes("?") ? "&" : "?") + "v=" + Date.now();
+            url +
+            (url.includes("?") ? "&" : "?") +
+            "v=" + Date.now();
 
         const response = await fetch(requestURL, {
             cache: "no-store"
@@ -1443,247 +1502,272 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (!response.ok) {
             throw new Error(
-                "Could not load " + url + " (" + response.status + ")"
+                "Failed to load " +
+                url +
+                " — HTTP " +
+                response.status
             );
         }
 
         const html = await response.text();
 
-        return new DOMParser().parseFromString(html, "text/html");
+        return new DOMParser().parseFromString(
+            html,
+            "text/html"
+        );
     }
 
-    /* REMOVE DUPLICATE ARTICLES */
-    function uniqueArticles(articles) {
-        const seen = new Set();
+    /* HOMEPAGE NEWS LOADER */
+    async function loadHomepageNews(homeDoc) {
+        if (!homeDoc) return;
 
-        return articles.filter(function (item) {
-            if (!item.url || seen.has(item.url)) return false;
+        /* NATIONAL NEWS */
+        const national = readSource(
+            homeDoc,
+            HOME,
+            [
+                "nationalNewsSource",
+                "nationalSection",
+                "nationalNewsSection",
+                "nationalGrid"
+            ],
+            [
+                ".news-item.post[data-category='national']",
+                "[data-category='national']"
+            ]
+        );
 
-            seen.add(item.url);
-            return true;
-        });
+        renderArticles("nationalGrid", national, 5);
+
+        /* LATEST NEWS */
+        const latest = readSource(
+            homeDoc,
+            HOME,
+            [
+                "latestNewsSource",
+                "latestGrid",
+                "latestSection",
+                "latestNewsSection"
+            ],
+            [
+                "#latestNewsSource .news-item.post",
+                "#latestGrid .news-card",
+                "#latestSection .news-item.post",
+                ".news-item.post"
+            ]
+        );
+
+        renderArticles(
+            "latestSidebar",
+            uniqueArticles(latest),
+            5
+        );
+
+        /* TRENDING NEWS */
+        const trending = readSource(
+            homeDoc,
+            HOME,
+            [
+                "trendingSource",
+                "trendingGrid",
+                "trendingSection",
+                "trendingNewsSource"
+            ],
+            [
+                ".news-item.post[data-trending]",
+                "[data-category='trending']"
+            ]
+        );
+
+        renderArticles(
+            "trendingSidebar",
+            uniqueArticles(trending),
+            5
+        );
+
+        /* HOMEPAGE BUSINESS NEWS */
+        const homepageBusiness = readSource(
+            homeDoc,
+            HOME,
+            [
+                "businessSource",
+                "businessGrid",
+                "businessSection"
+            ],
+            [
+                ".news-item.post[data-category='business']",
+                "[data-category='business']"
+            ]
+        );
+
+        /* Keep this if the homepage has a businessGrid */
+        renderArticles(
+            "businessGrid",
+            uniqueArticles(homepageBusiness),
+            5
+        );
+
+        /* ANDHRA PRADESH & TELANGANA */
+        const apTs = readSource(
+            homeDoc,
+            HOME,
+            [
+                "aptsSource",
+                "aptsGrid",
+                "aptsSection"
+            ],
+            [
+                ".news-item.post[data-category='apts']",
+                ".news-item.post[data-category='ap-ts']",
+                "[data-category='apts']"
+            ]
+        );
+
+        renderArticles(
+            "aptsGrid",
+            uniqueArticles(apTs),
+            5
+        );
+
+        /* MOVIES / ENTERTAINMENT */
+        const movies = readSource(
+            homeDoc,
+            HOME,
+            [
+                "entertainmentSource",
+                "moviesSource",
+                "cinemaSource",
+                "cinemaNewsSource",
+                "moviesGrid",
+                "cinemaGrid",
+                "cinemaSection",
+                "entertainmentSection"
+            ],
+            [
+                ".news-item.post[data-category='movies']",
+                ".news-item.post[data-category='movie']",
+                ".news-item.post[data-category='cinema']",
+                ".news-item.post[data-category='entertainment']",
+                "[data-category='movies']",
+                "[data-category='cinema']"
+            ]
+        );
+
+        const uniqueMovies = uniqueArticles(movies);
+
+        renderArticles("cinemaGrid", uniqueMovies, 5);
+        renderArticles("movieReviewsGrid", uniqueMovies, 0);
+
+        console.log(
+            "Homepage news counts:",
+            {
+                national: national.length,
+                latest: latest.length,
+                trending: trending.length,
+                business: homepageBusiness.length,
+                apTs: apTs.length,
+                movies: uniqueMovies.length
+            }
+        );
     }
 
-    /* LOAD ALL ARTICLE SECTIONS */
-    async function loadArticles() {
-        const homePromise = fetchDocument(HOME).catch(function (error) {
-            console.error("Homepage source error:", error);
-            return null;
-        });
-
-        const businessPromise = fetchDocument(BUSINESS).catch(function (error) {
-            console.error("Business source error:", error);
-            return null;
-        });
-
-        const [homeDoc, businessDoc] = await Promise.all([
-            homePromise,
-            businessPromise
-        ]);
-
-        /* =========================================
-           HOMEPAGE ARTICLES
-           National, Latest, Trending, Business,
-           AP & TS, Movies
-        ========================================= */
-
-        if (homeDoc) {
-
-            /* NATIONAL NEWS */
-            const national = readSource(
-                homeDoc,
-                HOME,
-                [
-                    "nationalSection",
-                    "nationalNewsSection",
-                    "nationalGrid",
-                    "nationalNewsSource"
-                ],
-                [
-                    ".news-item.post[data-category='national']",
-                    "[data-category='national']"
-                ]
+    /* BUSINESS PAGE NEWS LOADER */
+    async function loadBusinessNews(businessDoc) {
+        if (!businessDoc) {
+            console.error(
+                "Business page could not be loaded:",
+                BUSINESS
             );
-
-            renderArticles("nationalGrid", national, 5);
-
-            /* LATEST NEWS */
-            const latest = readSource(
-                homeDoc,
-                HOME,
-                [
-                    "latestNewsSource",
-                    "latestGrid",
-                    "latestSection",
-                    "latestNewsSection"
-                ],
-                [
-                    "#latestNewsSource .news-item.post",
-                    "#latestGrid .news-card",
-                    "#latestSection .news-item.post",
-                    ".news-item.post"
-                ]
-            );
-
-            renderArticles("latestSidebar", latest, 5);
-
-            /* TRENDING NEWS */
-            const trending = readSource(
-                homeDoc,
-                HOME,
-                [
-                    "trendingSource",
-                    "trendingGrid",
-                    "trendingSection",
-                    "trendingSidebar"
-                ],
-                [
-                    ".news-item.post[data-trending]",
-                    "[data-category='trending']"
-                ]
-            );
-
-            renderArticles("trendingSidebar", trending, 5);
-
-            /* BUSINESS NEWS — EXISTING SECTION */
-            const homepageBusiness = readSource(
-                homeDoc,
-                HOME,
-                [
-                    "businessSource",
-                    "businessGrid",
-                    "businessSection"
-                ],
-                [
-                    ".news-item.post[data-category='business']",
-                    "[data-category='business']"
-                ]
-            );
-
-            renderArticles("businessGrid", homepageBusiness, 5);
-
-            /* AP & TS NEWS — KEEP AS BEFORE */
-            const apTs = readSource(
-                homeDoc,
-                HOME,
-                [
-                    "aptsSource",
-                    "aptsGrid",
-                    "aptsSection"
-                ],
-                [
-                    ".news-item.post[data-category='apts']",
-                    ".news-item.post[data-category='ap-ts']",
-                    "[data-category='apts']"
-                ]
-            );
-
-            renderArticles("aptsGrid", apTs, 5);
-
-            /* MOVIES — LOAD FROM HOMEPAGE */
-            const movies = uniqueArticles(
-                readSource(
-                    homeDoc,
-                    HOME,
-                    [
-                        "entertainmentSource",
-                        "moviesSource",
-                        "cinemaSource",
-                        "cinemaNewsSource",
-                        "moviesGrid",
-                        "cinemaGrid",
-                        "cinemaSection",
-                        "entertainmentSection"
-                    ],
-                    [
-                        ".news-item.post[data-category='movies']",
-                        ".news-item.post[data-category='movie']",
-                        ".news-item.post[data-category='cinema']",
-                        ".news-item.post[data-category='entertainment']",
-                        "[data-category='movies']",
-                        "[data-category='cinema']"
-                    ]
-                )
-            );
-
-            renderArticles("cinemaGrid", movies, 5);
-            renderArticles("movieReviewsGrid", movies, 0);
-
-            console.log("Homepage Movies articles:", movies.length);
-
-        } else {
-            console.error("Homepage articles could not be loaded.");
+            return [];
         }
 
-        /* =========================================
-           BUSINESS ARTICLES IN THE FORMER
-           SPORTS SIDEBAR POSITION
-        ========================================= */
+        let articles = readSource(
+            businessDoc,
+            BUSINESS,
+            [
+                "localBusinessSource",
+                "businessSource",
+                "businessGrid",
+                "businessNewsGrid",
+                "latestBusinessGrid",
+                "businessSection",
+                "latestNewsSource",
+                "latestGrid",
+                "latestSection"
+            ],
+            [
+                ".news-item.post[data-category='business']",
+                "[data-category='business']",
+                ".news-item.post[data-url]",
+                ".news-card"
+            ]
+        );
 
-        if (businessDoc) {
-            let businessArticles = readSource(
+        /* FALLBACK: SEARCH OTHER COMMON CARD STRUCTURES */
+        if (!articles.length) {
+            articles = readCards(
                 businessDoc,
                 BUSINESS,
                 [
-                    "localBusinessSource",
-                    "businessSource",
-                    "businessGrid",
-                    "latestBusinessGrid",
-                    "businessSection",
-                    "latestNewsSource",
-                    "latestGrid",
-                    "latestSection"
-                ],
-                [
-                    ".news-item.post[data-category='business']",
-                    "[data-category='business']",
-                    ".news-item.post[data-url]",
-                    ".news-card"
+                    ".news-item.post",
+                    ".news-card",
+                    ".news-item",
+                    "article",
+                    ".post"
                 ]
             );
-
-            /* FALLBACK: FIND BUSINESS ARTICLE CARDS */
-            if (!businessArticles.length) {
-                businessArticles = readCards(
-                    businessDoc,
-                    BUSINESS,
-                    [
-                        ".news-item.post",
-                        ".news-card",
-                        "article",
-                        ".post"
-                    ]
-                );
-            }
-
-            businessArticles = uniqueArticles(businessArticles);
-
-            /* BUSINESS REPLACES SPORTS IN THE SIDEBAR */
-            renderArticles("sportsSidebar", businessArticles, 5);
-
-            /* IF A SEPARATE sportsGrid EXISTS, SHOW BUSINESS THERE TOO */
-            renderArticles("sportsGrid", businessArticles, 5);
-
-            console.log(
-                "Business articles in former Sports position:",
-                businessArticles.length
-            );
-
-        } else {
-            console.error("Business page could not be loaded.");
         }
 
-        /* =========================================
-           FIT SIDEBAR CONTENT TO ARTICLE HEIGHT
-           DESKTOP ONLY; MOBILE SHOWS ALL CARDS
-        ========================================= */
+        articles = uniqueArticles(articles);
+
+        console.log(
+            "Business page URL:",
+            BUSINESS
+        );
+
+        console.log(
+            "Business article count:",
+            articles.length
+        );
+
+        if (!articles.length) {
+            console.warn(
+                "No business articles found. Check the HTML card selectors in business.html."
+            );
+        }
+
+        /* BUSINESS IN THE FORMER SPORTS SIDEBAR */
+        renderArticles(
+            "sportsSidebar",
+            articles,
+            5
+        );
+
+        /* BUSINESS SECTION BELOW THE ARTICLE */
+        renderArticles(
+            "businessNewsGrid",
+            articles,
+            5
+        );
+
+        /* Optional older target, if present on this page */
+        renderArticles(
+            "sportsGrid",
+            articles,
+            5
+        );
+
+        return articles;
+    }
+
+    /* FIT SIDEBAR TO ARTICLE HEIGHT ON DESKTOP */
+    function setupSidebarFit() {
+        const sidebar = document.getElementById("sportsSidebar");
+        const articleMain = document.querySelector(".article-main");
+
+        if (!sidebar || !articleMain) return;
 
         function fitSidebar() {
-            const sidebar = document.getElementById("sportsSidebar");
-            const articleMain = document.querySelector(".article-main");
-
-            if (!sidebar || !articleMain) return;
-
             const cards = Array.from(
                 sidebar.querySelectorAll(".news-card")
             );
@@ -1729,25 +1813,27 @@ document.addEventListener("DOMContentLoaded", function () {
                     (parseFloat(style.marginBottom) || 0);
 
                 const cardHeight =
-                    card.getBoundingClientRect().height + margins;
+                    card.getBoundingClientRect().height +
+                    margins;
 
-                if (usedHeight + cardHeight > availableHeight) {
+                if (
+                    usedHeight + cardHeight >
+                    availableHeight
+                ) {
                     card.style.display = "none";
                 } else {
                     usedHeight += cardHeight;
                 }
             });
 
-            sidebar.style.maxHeight = availableHeight + "px";
+            sidebar.style.maxHeight =
+                availableHeight + "px";
         }
-
-        requestAnimationFrame(function () {
-            requestAnimationFrame(fitSidebar);
-        });
 
         window.addEventListener("resize", fitSidebar);
 
-        const articleImage = document.querySelector(".article-image");
+        const articleImage =
+            document.querySelector(".article-image");
 
         if (articleImage && !articleImage.complete) {
             articleImage.addEventListener(
@@ -1756,11 +1842,47 @@ document.addEventListener("DOMContentLoaded", function () {
                 { once: true }
             );
         }
+
+        /* Recalculate after images render */
+        requestAnimationFrame(function () {
+            requestAnimationFrame(fitSidebar);
+        });
+    }
+
+    /* LOAD ALL SECTIONS */
+    async function loadArticles() {
+        const homePromise = fetchDocument(HOME)
+            .catch(function (error) {
+                console.error(
+                    "Homepage source error:",
+                    error
+                );
+                return null;
+            });
+
+        const businessPromise = fetchDocument(BUSINESS)
+            .catch(function (error) {
+                console.error(
+                    "Business source error:",
+                    error
+                );
+                return null;
+            });
+
+        const [homeDoc, businessDoc] =
+            await Promise.all([
+                homePromise,
+                businessPromise
+            ]);
+
+        await loadHomepageNews(homeDoc);
+        await loadBusinessNews(businessDoc);
+
+        setupSidebarFit();
     }
 
     loadArticles();
 });
-
 </script>
   
 </body>
