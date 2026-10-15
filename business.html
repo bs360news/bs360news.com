@@ -4,316 +4,1091 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <meta name="description" content="BS 360 NEWS బిజినెస్ వార్తలు, స్టాక్ మార్కెట్, బంగారం, వెండి, ఆర్థిక వ్యవస్థ, కంపెనీల తాజా అప్‌డేట్స్.">
 <meta name="robots" content="index,follow,max-image-preview:large">
+
 <title>Business News | BS 360 NEWS</title>
+
 <link rel="icon" href="dp.png.png">
 <link rel="canonical" href="https://bs360news.com/business.html">
 
 <style>
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:#f3f5f7;color:#111827;font-family:Arial,"Noto Sans Telugu","Segoe UI",sans-serif;line-height:1.6}
-img{display:block;width:100%;max-width:100%;object-fit:cover}
-a{color:inherit;text-decoration:none}
-.top-header,.nav-bar{background:#fff;border-bottom:1px solid #e5e7eb}
-.header-inner,.nav-inner,.page,.breaking,.footer-inner,.copyright{width:min(1400px,96%);margin:auto}
-.header-inner{min-height:68px;display:flex;align-items:center;justify-content:space-between}
-.logo{font-size:30px;font-weight:900}
-.logo span{color:#e50914}
-.nav-bar{position:sticky;top:0;z-index:100}
-.nav-inner{display:flex;gap:5px;overflow-x:auto;scrollbar-width:none}
-.nav-inner::-webkit-scrollbar{display:none}
-.nav-inner a{flex:0 0 auto;padding:11px 15px;font-size:14px;font-weight:700;white-space:nowrap;border-bottom:3px solid transparent}
-.nav-inner a.active,.nav-inner a:hover{color:#e50914;border-bottom-color:#e50914}
-.breaking{margin:12px auto 0;background:#fff;display:flex;align-items:center;overflow:hidden;border:1px solid #e5e7eb;border-radius:6px}
-.breaking-title{background:#e50914;color:white;padding:8px 14px;font-size:13px;font-weight:900;white-space:nowrap}
-.breaking-text{padding:8px 12px;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.page{margin:15px auto 35px}
-.page-title{background:#fff;border-left:5px solid #e50914;padding:12px 15px;margin-bottom:18px;font-size:24px;font-weight:900}
-.main-layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:22px;align-items:start}
-.section{margin-bottom:28px;min-width:0}
-.section-head{border-bottom:2px solid #e50914;padding-bottom:7px;margin-bottom:12px}
-.section-head h2{margin:0;font-size:21px;font-weight:900}
-.section-head h2 span{color:#e50914}
-.movies-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-.movie-card{display:block;background:#fff;border-radius:7px;overflow:hidden;min-width:0;transition:transform .2s}
-.movie-card:hover{transform:translateY(-2px)}
-.movie-card img{aspect-ratio:16/9}
-.movie-card-content{padding:9px}
-.movie-card-title{margin:0;font-size:14px;line-height:1.45;font-weight:800;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;overflow-wrap:anywhere}
-.article-sidebar{display:flex;flex-direction:column;gap:18px}
-.sidebar-box{background:#fff;border:1px solid #e5e7eb;border-radius:8px;padding:14px}
-.sidebar-title{font-size:19px;font-weight:900;padding-bottom:9px;margin-bottom:5px;border-bottom:3px solid #e50914}
-.sidebar-item,.most-read-item{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid #e5e7eb;align-items:center}
-.sidebar-item:last-child,.most-read-item:last-child{border-bottom:0}
-.sidebar-item img{width:100px;height:65px;border-radius:5px;flex-shrink:0}
-.most-read-item img{width:95px;height:65px;border-radius:5px;flex-shrink:0}
-.sidebar-item-title,.most-read-title{font-size:13px;line-height:1.4;font-weight:700;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-.loading{background:#fff;padding:20px;text-align:center;color:#666;grid-column:1/-1}
-.homepage-section{margin-bottom:28px}
-.homepage-section>h2{font-size:21px;border-bottom:2px solid #e50914;padding-bottom:7px;margin:0 0 12px}
-.homepage-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-.homepage-card{background:#fff;border-radius:6px;overflow:hidden;min-width:0}
-.homepage-card img{aspect-ratio:16/9}
-.homepage-card h3{font-size:14px;line-height:1.45;margin:8px;font-weight:800;overflow-wrap:anywhere}
-.homepage-section .bigboss-card{width:100%;min-width:0}
-.homepage-section .bigboss-card img{aspect-ratio:16/9}
-.site-footer{background:#111827;color:white;margin-top:35px;padding:30px 0 15px}
-.footer-inner{display:grid;grid-template-columns:1fr 1fr;gap:40px}
-.footer-column h3,.footer-contact h3{margin:0 0 12px;font-size:18px}
-.footer-links{display:flex;flex-wrap:wrap;gap:8px 15px}
-.footer-links a,.footer-contact p{color:#d1d5db;font-size:14px}
-.copyright{margin-top:25px;padding-top:15px;border-top:1px solid #374151;text-align:center;color:#9ca3af;font-size:13px}
-body.dark-mode{background:#0b1120;color:#f9fafb}
-body.dark-mode .top-header,body.dark-mode .nav-bar,body.dark-mode .breaking,body.dark-mode .page-title,body.dark-mode .movie-card,body.dark-mode .sidebar-box,body.dark-mode .homepage-card,body.dark-mode .loading{background:#111827;color:#f9fafb;border-color:#374151}
-body.dark-mode .nav-inner a,body.dark-mode .breaking-text,body.dark-mode .section-head h2,body.dark-mode .movie-card-title,body.dark-mode .sidebar-title,body.dark-mode .sidebar-item-title,body.dark-mode .most-read-title,body.dark-mode .homepage-section>h2,body.dark-mode .homepage-card h3{color:#f9fafb}
-body.dark-mode .sidebar-item,body.dark-mode .most-read-item{border-color:#374151}
-@media(min-width:601px) and (max-width:1100px){.main-layout{grid-template-columns:1fr}.article-sidebar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}.movies-grid,.homepage-cards{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media(max-width:600px){
-.header-inner{min-height:58px}.logo{font-size:23px}.nav-inner a{padding:9px 11px;font-size:12px}
-.breaking{margin-top:8px}.breaking-title{padding:7px 9px;font-size:10px}.breaking-text{font-size:12px;padding:7px 9px}
-.page{width:94%;margin-top:10px}.page-title{font-size:20px;padding:10px 12px}.main-layout{display:block}
-.movies-grid,.homepage-cards{grid-template-columns:1fr;gap:8px}
-.movie-card{display:flex;flex-direction:row-reverse;min-height:92px}
-.movie-card img{width:115px;min-width:115px;height:92px;aspect-ratio:auto}
-.movie-card-content{width:calc(100% - 115px);padding:9px 10px;display:flex;align-items:center}
-.movie-card-title{font-size:13px}
-.article-sidebar{margin-top:22px;gap:12px}.sidebar-box{padding:11px}.sidebar-title{font-size:17px}
-.sidebar-item img,.most-read-item img{width:90px;height:62px}
-.footer-inner{grid-template-columns:1fr;gap:22px}.footer-links{display:grid;grid-template-columns:1fr 1fr}
-.homepage-card{display:flex;flex-direction:row-reverse;align-items:center}
-.homepage-card img{width:115px;min-width:115px;height:85px;aspect-ratio:auto}
-.homepage-card h3{font-size:13px}
+/* ================= RESET ================= */
+* {
+    box-sizing: border-box;
 }
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #f3f5f7;
+    color: #111827;
+    font-family: Arial, "Noto Sans Telugu", "Segoe UI", sans-serif;
+    line-height: 1.6;
+}
+
+img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    object-fit: cover;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font: inherit;
+}
+
+/* ================= HEADER ================= */
+.top-header,
+.nav-bar {
+    background: #fff;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.header-inner,
+.nav-inner,
+.page,
+.breaking,
+.footer-inner,
+.copyright {
+    width: min(1400px, 96%);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.header-inner {
+    min-height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.logo {
+    font-size: 30px;
+    font-weight: 900;
+    white-space: nowrap;
+}
+
+.logo span {
+    color: #e50914;
+}
+
+#themeToggle {
+    border: 1px solid #d1d5db;
+    background: #fff;
+    color: #111827;
+    border-radius: 5px;
+    padding: 8px 10px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+/* ================= NAVIGATION ================= */
+.nav-bar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-inner {
+    display: flex;
+    gap: 5px;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.nav-inner::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-inner a {
+    flex: 0 0 auto;
+    padding: 11px 15px;
+    font-size: 14px;
+    font-weight: 700;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+}
+
+.nav-inner a.active,
+.nav-inner a:hover {
+    color: #e50914;
+    border-bottom-color: #e50914;
+}
+
+/* ================= BREAKING NEWS ================= */
+.breaking {
+    margin-top: 12px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+}
+
+.breaking-title {
+    background: #e50914;
+    color: #fff;
+    padding: 8px 14px;
+    font-size: 13px;
+    font-weight: 900;
+    white-space: nowrap;
+}
+
+.breaking-text {
+    padding: 8px 12px;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ================= PAGE ================= */
+.page {
+    margin-top: 15px;
+    margin-bottom: 35px;
+}
+
+.page-title {
+    background: #fff;
+    border-left: 5px solid #e50914;
+    padding: 12px 15px;
+    margin-bottom: 18px;
+    font-size: 24px;
+    font-weight: 900;
+}
+
+.main-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: 22px;
+    align-items: start;
+}
+
+.movies-main {
+    min-width: 0;
+}
+
+/* ================= SECTION HEADINGS ================= */
+.section,
+.homepage-section {
+    margin-bottom: 28px;
+    min-width: 0;
+}
+
+.section-head {
+    border-bottom: 2px solid #e50914;
+    padding-bottom: 7px;
+    margin-bottom: 12px;
+}
+
+.section-head h2,
+.homepage-section > h2 {
+    margin: 0 0 12px;
+    font-size: 21px;
+    font-weight: 900;
+}
+
+.section-head h2 span {
+    color: #e50914;
+}
+
+.homepage-section > h2 {
+    border-bottom: 2px solid #e50914;
+    padding-bottom: 7px;
+}
+
+/* ==================================================
+   MAIN BUSINESS NEWS
+   DESKTOP: 5 CARDS PER ROW
+================================================== */
+.movies-grid,
+.homepage-cards {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 12px;
+    width: 100%;
+    align-items: start;
+}
+
+/* ================= BUSINESS CARD ================= */
+.movie-card,
+.homepage-card {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    background: #fff;
+    border-radius: 6px;
+    overflow: hidden;
+    transition: transform 0.2s ease;
+}
+
+.movie-card:hover,
+.homepage-card:hover {
+    transform: translateY(-2px);
+}
+
+.movie-card img,
+.homepage-card img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+.movie-card-content {
+    padding: 9px;
+}
+
+.movie-card-title,
+.homepage-card h3 {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 800;
+    overflow-wrap: anywhere;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.homepage-card h3 {
+    padding: 9px;
+}
+
+/* ================= SIDEBAR ================= */
+.article-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    min-width: 0;
+}
+
+.sidebar-box {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 14px;
+    min-width: 0;
+}
+
+.sidebar-title {
+    font-size: 19px;
+    font-weight: 900;
+    padding-bottom: 9px;
+    margin-bottom: 5px;
+    border-bottom: 3px solid #e50914;
+}
+
+.sidebar-item,
+.most-read-item {
+    display: flex;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid #e5e7eb;
+    align-items: center;
+    min-width: 0;
+}
+
+.sidebar-item:last-child,
+.most-read-item:last-child {
+    border-bottom: 0;
+}
+
+.sidebar-item img {
+    width: 100px;
+    height: 65px;
+    border-radius: 5px;
+    flex-shrink: 0;
+}
+
+.most-read-item img {
+    width: 95px;
+    height: 65px;
+    border-radius: 5px;
+    flex-shrink: 0;
+}
+
+.sidebar-item-title,
+.most-read-title {
+    min-width: 0;
+    font-size: 13px;
+    line-height: 1.4;
+    font-weight: 700;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    overflow-wrap: anywhere;
+}
+
+/* ================= LOADING ================= */
+.loading {
+    background: #fff;
+    padding: 20px;
+    text-align: center;
+    color: #666;
+    grid-column: 1 / -1;
+    border-radius: 6px;
+}
+
+/* ================= FOOTER ================= */
+.site-footer {
+    background: #111827;
+    color: #fff;
+    margin-top: 35px;
+    padding: 30px 0 15px;
+}
+
+.footer-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.footer-column h3,
+.footer-contact h3 {
+    margin: 0 0 12px;
+    font-size: 18px;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 15px;
+}
+
+.footer-links a,
+.footer-contact p {
+    color: #d1d5db;
+    font-size: 14px;
+}
+
+.copyright {
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 1px solid #374151;
+    text-align: center;
+    color: #9ca3af;
+    font-size: 13px;
+}
+
+/* ================= DARK MODE ================= */
+body.dark-mode {
+    background: #0b1120;
+    color: #f9fafb;
+}
+
+body.dark-mode .top-header,
+body.dark-mode .nav-bar,
+body.dark-mode .breaking,
+body.dark-mode .page-title,
+body.dark-mode .movie-card,
+body.dark-mode .sidebar-box,
+body.dark-mode .homepage-card,
+body.dark-mode .loading {
+    background: #111827;
+    color: #f9fafb;
+    border-color: #374151;
+}
+
+body.dark-mode #themeToggle {
+    background: #1f2937;
+    color: #fff;
+    border-color: #4b5563;
+}
+
+body.dark-mode .nav-inner a,
+body.dark-mode .breaking-text,
+body.dark-mode .section-head h2,
+body.dark-mode .movie-card-title,
+body.dark-mode .sidebar-title,
+body.dark-mode .sidebar-item-title,
+body.dark-mode .most-read-title,
+body.dark-mode .homepage-section > h2,
+body.dark-mode .homepage-card h3 {
+    color: #f9fafb;
+}
+
+body.dark-mode .sidebar-item,
+body.dark-mode .most-read-item {
+    border-color: #374151;
+}
+
+/* ================= TABLET ================= */
+@media (min-width: 601px) and (max-width: 1100px) {
+    .main-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .movies-grid,
+    .homepage-cards {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .article-sidebar {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        align-items: start;
+    }
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 600px) {
+    .header-inner {
+        min-height: 58px;
+    }
+
+    .logo {
+        font-size: 23px;
+    }
+
+    .nav-inner a {
+        padding: 9px 11px;
+        font-size: 12px;
+    }
+
+    .breaking {
+        margin-top: 8px;
+    }
+
+    .breaking-title {
+        padding: 7px 9px;
+        font-size: 10px;
+    }
+
+    .breaking-text {
+        font-size: 12px;
+        padding: 7px 9px;
+    }
+
+    .page {
+        width: 94%;
+        margin-top: 10px;
+    }
+
+    .page-title {
+        font-size: 20px;
+        padding: 10px 12px;
+    }
+
+    .main-layout {
+        display: block;
+    }
+
+    /* MOBILE: 2 CARDS PER ROW */
+    .movies-grid,
+    .homepage-cards {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .movie-card,
+    .homepage-card {
+        display: block;
+        width: 100%;
+        min-width: 0;
+    }
+
+    .movie-card img,
+    .homepage-card img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16 / 9;
+    }
+
+    .movie-card-content {
+        width: 100%;
+        padding: 8px;
+    }
+
+    .movie-card-title,
+    .homepage-card h3 {
+        font-size: 13px;
+        line-height: 1.45;
+        padding: 7px;
+        -webkit-line-clamp: 4;
+    }
+
+    .article-sidebar {
+        display: flex;
+        margin-top: 22px;
+        gap: 12px;
+    }
+
+    .sidebar-box {
+        padding: 11px;
+    }
+
+    .sidebar-title {
+        font-size: 17px;
+    }
+
+    .sidebar-item img,
+    .most-read-item img {
+        width: 90px;
+        height: 62px;
+    }
+
+    .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    .footer-links {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+
+  
+/* MOBILE: LEFT TEXT + RIGHT IMAGE */
+@media (max-width: 600px) {
+
+    .movies-grid,
+    .homepage-cards {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .movie-card,
+    .homepage-card {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center;
+        width: 100%;
+        min-width: 0;
+        min-height: 95px;
+        background: #fff;
+        border-radius: 6px;
+        overflow: hidden;
+    }
+
+    /* IMAGE RIGHT SIDE */
+    .movie-card img,
+    .homepage-card img {
+        order: 2;
+        width: 115px;
+        min-width: 115px;
+        max-width: 115px;
+        height: 85px;
+        aspect-ratio: auto;
+        object-fit: cover;
+        flex-shrink: 0;
+    }
+
+    /* TEXT LEFT SIDE */
+    .movie-card-content {
+        order: 1;
+        flex: 1;
+        min-width: 0;
+        width: auto;
+        padding: 8px;
+    }
+
+    .movie-card-title {
+        font-size: 13px;
+        line-height: 1.5;
+        margin: 0;
+        padding: 0;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .homepage-card h3 {
+        order: 1;
+        flex: 1;
+        min-width: 0;
+        margin: 0;
+        padding: 8px;
+        font-size: 13px;
+        line-height: 1.5;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    body.dark-mode .movie-card,
+    body.dark-mode .homepage-card {
+        background: #111827;
+        color: #fff;
+    }
+}
+
 </style>
 </head>
 
 <body>
+
+<!-- ================= HEADER ================= -->
 <header class="top-header">
-  <div class="header-inner">
-    <a class="logo" href="index.html">BS <span>360</span> NEWS</a>
-    <button id="themeToggle" type="button" style="padding:8px 10px;cursor:pointer">🌙 Dark</button>
-  </div>
+    <div class="header-inner">
+        <a class="logo" href="index.html">
+            BS <span>360</span> NEWS
+        </a>
+
+        <button id="themeToggle" type="button">
+            🌙 Dark
+        </button>
+    </div>
 </header>
 
+<!-- ================= NAVIGATION ================= -->
 <nav class="nav-bar">
-  <div class="nav-inner">
-    <a href="index.html">హోమ్</a>
-    <a href="MOVIES.html">ఎంటర్టైన్మెంట్</a>
-    <a href="SPORTS.html">స్పోర్ట్స్</a>
-    <a href="AP%26TS.html">ఏపీ &amp; టీస్</a>
-    <a href="business.html" class="active">బిజినెస్</a>
-  </div>
+    <div class="nav-inner">
+        <a href="index.html">హోమ్</a>
+        <a href="MOVIES.html">ఎంటర్టైన్మెంట్</a>
+        <a href="SPORTS.html">స్పోర్ట్స్</a>
+        <a href="AP%26TS.html">ఏపీ &amp; టీఎస్</a>
+        <a href="business.html" class="active">బిజినెస్</a>
+    </div>
 </nav>
 
+<!-- ================= BREAKING NEWS ================= -->
 <div class="breaking">
-  <div class="breaking-title">BREAKING NEWS</div>
-  <div class="breaking-text">బిజినెస్, స్టాక్ మార్కెట్, బంగారం, వెండి, ఆర్థిక వ్యవస్థకు సంబంధించిన తాజా వార్తలు</div>
+    <div class="breaking-title">BREAKING NEWS</div>
+    <div class="breaking-text">
+        బిజినెస్, స్టాక్ మార్కెట్, బంగారం, వెండి, ఆర్థిక వ్యవస్థకు సంబంధించిన తాజా వార్తలు
+    </div>
 </div>
 
+<!-- ================= MAIN PAGE ================= -->
 <main class="page">
-  <div class="page-title">బిజినెస్ న్యూస్</div>
 
-  <div class="main-layout">
-    <div class="movies-main">
+    <div class="page-title">బిజినెస్ న్యూస్</div>
 
-      <!-- మీ అసలు బిజినెస్ వార్తలు -->
-      <section class="section">
-        <div class="section-head"><h2><span>బిజినెస్</span> వార్తలు</h2></div>
-        <div id="businessGrid" class="movies-grid">
-          <a class="movie-card" href="phonepe-upi-mdr-expansion/">
-            <img src="phonepe-upi-mdr-expansion.png" alt="PhonePe UPI MDR" loading="lazy">
-            <div class="movie-card-content"><h3 class="movie-card-title">UPIలో MDR మార్పులు.. గ్రామీణ మార్కెట్‌పై PhonePe భారీ ఫోకస్</h3></div>
-          </a>
-          <a class="movie-card" href="containe-technologies-rights-issue/">
-            <img src="containe-technologies-rights-issue.png" alt="కంటెయిన్ టెక్నాలజీస్ రైట్స్ ఇష్యూ" loading="lazy">
-            <div class="movie-card-content"><h3 class="movie-card-title">కంటెయిన్ టెక్నాలజీస్ రైట్స్ ఇష్యూ.. రూ.20.98 కోట్ల సమీకరణకు నేడు చివరి రోజు</h3></div>
-          </a>
-          <a class="movie-card" href="nirmala-sitharaman-economy-growth/">
-            <img src="nirmala-sitharaman-economy-growth.jpg" alt="భారత ఆర్థిక వ్యవస్థ" loading="lazy">
-            <div class="movie-card-content"><h3 class="movie-card-title">దాదాపు 8 శాతం వృద్ధి దిశగా భారత ఆర్థిక వ్యవస్థ.. నిర్మలా సీతారామన్ కీలక వ్యాఖ్యలు</h3></div>
-          </a>
+    <div class="main-layout">
+
+        <div class="movies-main">
+
+            <!-- ================= BUSINESS ARTICLES ================= -->
+            <section class="section">
+                <div class="section-head">
+                    <h2><span>బిజినెస్</span> వార్తలు</h2>
+                </div>
+
+                <div id="businessGrid" class="movies-grid">
+
+                    <a class="movie-card" href="phonepe-upi-mdr-expansion/">
+                        <img
+                            src="phonepe-upi-mdr-expansion.png"
+                            alt="PhonePe UPI MDR"
+                            loading="lazy"
+                        >
+                        <div class="movie-card-content">
+                            <h3 class="movie-card-title">
+                                UPIలో MDR మార్పులు.. గ్రామీణ మార్కెట్‌పై PhonePe భారీ ఫోకస్
+                            </h3>
+                        </div>
+                    </a>
+
+                    <a class="movie-card" href="containe-technologies-rights-issue/">
+                        <img
+                            src="containe-technologies-rights-issue.png"
+                            alt="కంటెయిన్ టెక్నాలజీస్ రైట్స్ ఇష్యూ"
+                            loading="lazy"
+                        >
+                        <div class="movie-card-content">
+                            <h3 class="movie-card-title">
+                                కంటెయిన్ టెక్నాలజీస్ రైట్స్ ఇష్యూ.. రూ.20.98 కోట్ల సమీకరణకు నేడు చివరి రోజు
+                            </h3>
+                        </div>
+                    </a>
+
+                    <a class="movie-card" href="nirmala-sitharaman-economy-growth/">
+                        <img
+                            src="nirmala-sitharaman-economy-growth.jpg"
+                            alt="భారత ఆర్థిక వ్యవస్థ"
+                            loading="lazy"
+                        >
+                        <div class="movie-card-content">
+                            <h3 class="movie-card-title">
+                                దాదాపు 8 శాతం వృద్ధి దిశగా భారత ఆర్థిక వ్యవస్థ.. నిర్మలా సీతారామన్ కీలక వ్యాఖ్యలు
+                            </h3>
+                        </div>
+                    </a>
+
+                </div>
+            </section>
+
+            <!-- ================= HOMEPAGE ARTICLES ================= -->
+            <div id="homepageArticlesContent">
+                <div class="loading">
+                    హోమ్‌పేజీ వార్తలు లోడ్ అవుతున్నాయి...
+                </div>
+            </div>
+
         </div>
-      </section>
 
-      <!-- Homepage వార్తలు: index.html నుంచి క్రమంగా లోడ్ అవుతాయి -->
-      <div id="homepageArticlesContent">
-        <div class="loading">హోమ్‌పేజీ వార్తలు లోడ్ అవుతున్నాయి...</div>
-      </div>
+        <!-- ================= SIDEBAR ================= -->
+        <aside class="article-sidebar">
+
+            <section class="sidebar-box">
+                <div class="sidebar-title">LATEST NEWS</div>
+                <div id="latestSidebar">
+                    <div class="loading">వార్తలు లోడ్ అవుతున్నాయి...</div>
+                </div>
+            </section>
+
+            <section class="sidebar-box">
+                <div class="sidebar-title">TRENDING NEWS</div>
+                <div id="trendingSidebar">
+                    <div class="loading">వార్తలు లోడ్ అవుతున్నాయి...</div>
+                </div>
+            </section>
+
+            <section class="sidebar-box">
+                <div class="sidebar-title">MOST READ</div>
+                <div id="mostReadSidebar">
+                    <div class="loading">వార్తలు లోడ్ అవుతున్నాయి...</div>
+                </div>
+            </section>
+
+        </aside>
+
     </div>
-
-    <aside class="article-sidebar">
-      <section class="sidebar-box">
-        <div class="sidebar-title">LATEST NEWS</div>
-        <div id="latestSidebar"><div class="loading">వార్తలు లోడ్ అవుతున్నాయి...</div></div>
-      </section>
-      <section class="sidebar-box">
-        <div class="sidebar-title">TRENDING NEWS</div>
-        <div id="trendingSidebar"><div class="loading">వార్తలు లోడ్ అవుతున్నాయి...</div></div>
-      </section>
-      <section class="sidebar-box">
-        <div class="sidebar-title">MOST READ</div>
-        <div id="mostReadSidebar"><div class="loading">వార్తలు లోడ్ అవుతున్నాయి...</div></div>
-      </section>
-    </aside>
-  </div>
 </main>
 
+<!-- ================= FOOTER ================= -->
 <footer class="site-footer">
-  <div class="footer-inner">
-    <div class="footer-column">
-      <h3>ముఖ్యమైన లింకులు</h3>
-      <div class="footer-links">
-        <a href="advertise.html">Advertise With Us</a>
-        <a href="about.html">About Us</a>
-        <a href="contact.html">Contact Us</a>
-        <a href="Privacy%20Policy.html">Privacy Policy</a>
-        <a href="disclaimer.html">Disclaimer</a>
-        <a href="terms.html">Terms &amp; Conditions</a>
-      </div>
+
+    <div class="footer-inner">
+
+        <div class="footer-column">
+            <h3>ముఖ్యమైన లింకులు</h3>
+
+            <div class="footer-links">
+                <a href="advertise.html">Advertise With Us</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact Us</a>
+                <a href="Privacy%20Policy.html">Privacy Policy</a>
+                <a href="disclaimer.html">Disclaimer</a>
+                <a href="terms.html">Terms &amp; Conditions</a>
+            </div>
+        </div>
+
+        <div class="footer-contact">
+            <h3>Contact</h3>
+            <p>newsb386@gmail.com</p>
+            <p>Follow us for latest updates.</p>
+        </div>
+
     </div>
-    <div class="footer-contact">
-      <h3>Contact</h3>
-      <p>newsb386@gmail.com</p>
-      <p>Follow us for latest updates.</p>
+
+    <div class="copyright">
+        © 2026 BS 360 NEWS. All Rights Reserved.
     </div>
-  </div>
-  <div class="copyright">© 2026 BS 360 NEWS. All Rights Reserved.</div>
+
 </footer>
 
+<!-- ================= JAVASCRIPT ================= -->
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-  "use strict";
+    "use strict";
 
-  const themeButton = document.getElementById("themeToggle");
-  themeButton.addEventListener("click", function () {
-    document.body.classList.toggle("dark-mode");
-    themeButton.textContent = document.body.classList.contains("dark-mode") ? "☀️ Light" : "🌙 Dark";
-  });
+    /* ================= DARK MODE ================= */
+    const themeButton = document.getElementById("themeToggle");
 
-  const clean = value => (value || "").replace(/\s+/g, " ").trim();
+    themeButton.addEventListener("click", function () {
+        document.body.classList.toggle("dark-mode");
 
-  function getArticle(article) {
-    const link = article.querySelector("a[href]");
-    const image = article.querySelector("img");
-    const heading = article.querySelector("h3, .news-content p, p");
-    if (!link || !image || !heading) return null;
-
-    const href = link.getAttribute("href");
-    const src = image.getAttribute("src");
-    const title = clean(heading.textContent);
-    if (!href || !src || !title) return null;
-
-    return { href, src, title, alt: image.getAttribute("alt") || title };
-  }
-
-  function cardHTML(item) {
-    return `<a class="homepage-card" href="${item.href}">
-      <img src="${item.src}" alt="${item.alt}" loading="lazy">
-      <h3>${item.title}</h3>
-    </a>`;
-  }
-
-  function sidebarHTML(item) {
-    return `<a class="sidebar-item" href="${item.href}">
-      <img src="${item.src}" alt="${item.alt}" loading="lazy">
-      <span class="sidebar-item-title">${item.title}</span>
-    </a>`;
-  }
-
-  function collectArticles(root) {
-    const result = [];
-    const seen = new Set();
-    root.querySelectorAll("article").forEach(article => {
-      const item = getArticle(article);
-      if (!item) return;
-      const key = item.href + "|" + item.title;
-      if (seen.has(key)) return;
-      seen.add(key);
-      result.push(item);
-    });
-    return result;
-  }
-
-  function renderHomepageSections(home) {
-    const output = document.getElementById("homepageArticlesContent");
-    output.innerHTML = "";
-
-    const sections = [
-      { title: "TOP NEWS", selector: ".top-news-group" },
-      { title: "LATEST NEWS", selector: "#latestSection" },
-      { title: "TRENDING NEWS", selector: "#trendingSection" },
-      { title: "ENTERTAINMENT NEWS", selector: "#entertainmentSection" },
-      { title: "NATIONAL + WORLD NEWS", selector: ".national-world-layout" },
-      { title: "BIGG BOSS", selector: ".bigboss-section" },
-      { title: "SPORTS NEWS", selector: "#sportsSection" },
-      { title: "WORLD NEWS", selector: "#worldSection" },
-      { title: "AP & TS NEWS", selector: "#aptsSection" },
-      { title: "MOVIE REVIEWS", selector: ".movie-reviews-section" },
-      { title: "BUSINESS NEWS", selector: "#businessSection" }
-    ];
-
-    sections.forEach(section => {
-      const source = home.querySelector(section.selector);
-      if (!source) return;
-
-      const articles = collectArticles(source);
-      if (!articles.length) return;
-
-      const block = document.createElement("section");
-      block.className = "homepage-section";
-
-      const heading = document.createElement("h2");
-      heading.textContent = section.title;
-      block.appendChild(heading);
-
-      const grid = document.createElement("div");
-      grid.className = "homepage-cards";
-      grid.innerHTML = articles.map(cardHTML).join("");
-      block.appendChild(grid);
-      output.appendChild(block);
+        themeButton.textContent =
+            document.body.classList.contains("dark-mode")
+                ? "☀️ Light"
+                : "🌙 Dark";
     });
 
-    if (!output.children.length) {
-      output.innerHTML = '<div class="loading">హోమ్‌పేజీలో చదవగలిగే ఆర్టికల్స్ దొరకలేదు.</div>';
+    /* ================= HELPERS ================= */
+    const clean = value =>
+        (value || "").replace(/\s+/g, " ").trim();
+
+    function getArticle(article) {
+        const link = article.querySelector("a[href]");
+        const image = article.querySelector("img");
+        const heading = article.querySelector(
+            "h1, h2, h3, h4, .news-content p, .news-title, p"
+        );
+
+        if (!link || !image || !heading) {
+            return null;
+        }
+
+        const href = link.getAttribute("href");
+        const src =
+            image.getAttribute("src") ||
+            image.getAttribute("data-src") ||
+            image.getAttribute("data-lazy-src");
+
+        const title = clean(heading.textContent);
+
+        if (!href || !src || !title) {
+            return null;
+        }
+
+        return {
+            href: href,
+            src: src,
+            title: title,
+            alt: image.getAttribute("alt") || title
+        };
     }
-  }
 
-  fetch("index.html?v=" + Date.now(), { cache: "no-store" })
-    .then(response => {
-      if (!response.ok) throw new Error("index.html load failed: " + response.status);
-      return response.text();
-    })
-    .then(html => {
-      const home = new DOMParser().parseFromString(html, "text/html");
+    /* ================= COLLECT ARTICLES ================= */
+    function collectArticles(root) {
+        if (!root) {
+            return [];
+        }
 
-      renderHomepageSections(home);
+        const result = [];
+        const seen = new Set();
 
-      const latestSource = home.querySelector("#latestNewsSource, #latestGrid, #latestSection");
-      const trendingSource = home.querySelector("#trendingSource, #trendingSidebar, #trendingSection");
-      const mostReadSource = home.querySelector("#mostReadSource, #mostReadList, #mostReadSidebar");
+        root.querySelectorAll("article").forEach(function (article) {
+            const item = getArticle(article);
 
-      function renderSidebar(targetId, source, limit) {
+            if (!item) {
+                return;
+            }
+
+            const key = item.href + "|" + item.title;
+
+            if (seen.has(key)) {
+                return;
+            }
+
+            seen.add(key);
+            result.push(item);
+        });
+
+        return result;
+    }
+
+    /* ================= CREATE HOMEPAGE CARD ================= */
+    function cardHTML(item) {
+        return `
+            <a class="homepage-card" href="${item.href}">
+                <img
+                    src="${item.src}"
+                    alt="${item.alt}"
+                    loading="lazy"
+                >
+                <h3>${item.title}</h3>
+            </a>
+        `;
+    }
+
+    /* ================= CREATE SIDEBAR CARD ================= */
+    function sidebarHTML(item) {
+        return `
+            <a class="sidebar-item" href="${item.href}">
+                <img
+                    src="${item.src}"
+                    alt="${item.alt}"
+                    loading="lazy"
+                >
+                <span class="sidebar-item-title">${item.title}</span>
+            </a>
+        `;
+    }
+
+    /* ================= HOMEPAGE SECTION ORDER ================= */
+    function renderHomepageSections(home) {
+        const output = document.getElementById(
+            "homepageArticlesContent"
+        );
+
+        output.innerHTML = "";
+
+        const sections = [
+            {
+                title: "TOP NEWS",
+                selector: ".top-news-group"
+            },
+            {
+                title: "LATEST NEWS",
+                selector: "#latestSection"
+            },
+            {
+                title: "TRENDING NEWS",
+                selector: "#trendingSection"
+            },
+            {
+                title: "ENTERTAINMENT NEWS",
+                selector: "#entertainmentSection"
+            },
+            {
+                title: "NATIONAL + WORLD NEWS",
+                selector: ".national-world-layout"
+            },
+            {
+                title: "BIGG BOSS",
+                selector: ".bigboss-section"
+            },
+            {
+                title: "SPORTS NEWS",
+                selector: "#sportsSection"
+            },
+            {
+                title: "WORLD NEWS",
+                selector: "#worldSection"
+            },
+            {
+                title: "AP & TS NEWS",
+                selector: "#aptsSection"
+            },
+            {
+                title: "MOVIE REVIEWS",
+                selector: ".movie-reviews-section"
+            },
+            {
+                title: "BUSINESS NEWS",
+                selector: "#businessSection"
+            }
+        ];
+
+        sections.forEach(function (section) {
+            const source = home.querySelector(section.selector);
+
+            if (!source) {
+                return;
+            }
+
+            const articles = collectArticles(source);
+
+            if (!articles.length) {
+                return;
+            }
+
+            const block = document.createElement("section");
+            block.className = "homepage-section";
+
+            const heading = document.createElement("h2");
+            heading.textContent = section.title;
+
+            const grid = document.createElement("div");
+            grid.className = "homepage-cards";
+
+            grid.innerHTML = articles
+                .map(cardHTML)
+                .join("");
+
+            block.appendChild(heading);
+            block.appendChild(grid);
+            output.appendChild(block);
+        });
+
+        if (!output.children.length) {
+            output.innerHTML = `
+                <div class="loading">
+                    హోమ్‌పేజీలో చదవగలిగే ఆర్టికల్స్ దొరకలేదు.
+                    index.html లో article నిర్మాణాన్ని తనిఖీ చేయండి.
+                </div>
+            `;
+        }
+    }
+
+    /* ================= SIDEBAR RENDER ================= */
+    function renderSidebar(targetId, source, limit) {
         const target = document.getElementById(targetId);
-        if (!target) return;
 
-        const items = source ? collectArticles(source).slice(0, limit) : [];
+        if (!target) {
+            return;
+        }
+
+        const items = source
+            ? collectArticles(source).slice(0, limit)
+            : [];
+
         target.innerHTML = items.length
-          ? items.map(sidebarHTML).join("")
-          : '<p>ప్రస్తుతం వార్తలు అందుబాటులో లేవు.</p>';
-      }
+            ? items.map(sidebarHTML).join("")
+            : "<p>ప్రస్తుతం వార్తలు అందుబాటులో లేవు.</p>";
+    }
 
-      renderSidebar("latestSidebar", latestSource, 8);
-      renderSidebar("trendingSidebar", trendingSource, 8);
-      renderSidebar("mostReadSidebar", mostReadSource, 8);
+    /* ================= LOAD HOMEPAGE ================= */
+    fetch("index.html?v=" + Date.now(), {
+        cache: "no-store"
     })
-    .catch(error => {
-      console.error("BS360 homepage articles error:", error);
-      document.getElementById("homepageArticlesContent").innerHTML =
-        '<div class="loading">హోమ్‌పేజీ వార్తలు లోడ్ కాలేదు. index.html ఫైల్‌ను తనిఖీ చేయండి.</div>';
-    });
+        .then(function (response) {
+            if (!response.ok) {
+                throw new Error(
+                    "index.html load failed: " + response.status
+                );
+            }
+
+            return response.text();
+        })
+        .then(function (html) {
+            const home = new DOMParser().parseFromString(
+                html,
+                "text/html"
+            );
+
+            /* Homepage sections in the configured order */
+            renderHomepageSections(home);
+
+            /* Sidebar source elements */
+            const latestSource = home.querySelector(
+                "#latestNewsSource, #latestGrid, #latestSection"
+            );
+
+            const trendingSource = home.querySelector(
+                "#trendingSource, #trendingSidebar, #trendingSection"
+            );
+
+            const mostReadSource = home.querySelector(
+                "#mostReadSource, #mostReadList, #mostReadSidebar"
+            );
+
+            renderSidebar("latestSidebar", latestSource, 8);
+            renderSidebar("trendingSidebar", trendingSource, 8);
+            renderSidebar("mostReadSidebar", mostReadSource, 8);
+        })
+        .catch(function (error) {
+            console.error(
+                "BS360 homepage articles error:",
+                error
+            );
+
+            document.getElementById(
+                "homepageArticlesContent"
+            ).innerHTML = `
+                <div class="loading">
+                    హోమ్‌పేజీ వార్తలు లోడ్ కాలేదు.
+                    index.html ఫైల్‌ను తనిఖీ చేయండి.
+                </div>
+            `;
+
+            document.getElementById("latestSidebar").innerHTML =
+                "<p>వార్తలు లోడ్ కాలేదు.</p>";
+
+            document.getElementById("trendingSidebar").innerHTML =
+                "<p>వార్తలు లోడ్ కాలేదు.</p>";
+
+            document.getElementById("mostReadSidebar").innerHTML =
+                "<p>వార్తలు లోడ్ కాలేదు.</p>";
+        });
 });
 </script>
+
 </body>
 </html>
+
