@@ -467,66 +467,30 @@ body.dark-mode .lang-selector .active{color:#ff4242}
     <div class="copyright">© 2026 BS 360 NEWS. All rights reserved.</div>
 </footer>
 
+
 <script>
-
-/* =========================================================
-   BS 360 NEWS - ARTICLE PAGE NEWS LOADER
-   Loads news from homepage index.html
-========================================================= */
-
 document.addEventListener("DOMContentLoaded", function () {
     "use strict";
 
-    const HOME_URL = new URL("../index.html", window.location.href);
+    const HOME_URL = new URL("../index.html", location.href);
+    const SPORTS_URL = new URL("../SPORTS.html", location.href);
 
-    /* ARTICLE PAGE TARGET ID -> HOMEPAGE SOURCE */
+    // Homepage నుంచి వచ్చే సాధారణ వార్తలు
     const NEWS_SECTIONS = [
-        {
-            target: "aptsGrid",
-            sourceId: "aptsSection",
-            limit: 5
-        },
-        {
-            target: "cinemaGrid",
-            sourceId: "entertainmentSection",
-            limit: 5
-        },
-        {
-            target: "trendingSidebar",
-            sourceId: "trendingSection",
-            limit: 5
-        },
-        {
-            target: "latestSidebar",
-            sourceId: "latestSection",
-            limit: 5
-        },
-        {
-            target: "nationalGrid",
-            sourceId: "nationalSection",
-            limit: 5
-        },
-        {
-            target: "sportsGrid",
-            sourceId: "sportsSection",
-            limit: 0
-        },
-        {
-            target: "businessGrid",
-            sourceId: "businessSection",
-            limit: 0
-        }
+        { target: "aptsGrid", sourceId: "aptsSection", limit: 5 },
+        { target: "cinemaGrid", sourceId: "entertainmentSection", limit: 5 },
+        { target: "trendingSidebar", sourceId: "trendingSection", limit: 5 },
+        { target: "latestSidebar", sourceId: "latestSection", limit: 5 },
+        { target: "nationalGrid", sourceId: "nationalSection", limit: 5 }
     ];
 
-    /* GET A SAFE URL */
     function makeURL(path, baseURL) {
         if (!path) return "";
 
         try {
             const url = new URL(path, baseURL);
 
-            if (url.protocol !== "http:" &&
-                url.protocol !== "https:") {
+            if (!["http:", "https:"].includes(url.protocol)) {
                 return "";
             }
 
@@ -536,197 +500,287 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    /* FIND NEWS CARDS INSIDE A SECTION */
-    function getNewsCards(source) {
-        if (!source) return [];
-
-        /*
-          Homepage sections contain article cards.
-          Select direct article cards first to avoid
-          collecting nested links/cards multiple times.
-        */
-        const articles = Array.from(
-            source.querySelectorAll("article")
+    function getTitle(card) {
+        const heading = card.querySelector(
+            "h1, h2, h3, h4, .news-title, .post-title, .news-content p"
         );
 
-        if (articles.length) {
-            return articles;
+        if (heading && heading.textContent.trim()) {
+            return heading.textContent.trim();
         }
 
-        return Array.from(
-            source.querySelectorAll(
-                ".news-item.post, .news-card, .post"
-            )
-        );
+        const link = card.querySelector("a[href]");
+        return link ? link.textContent.trim() : "";
     }
 
-    /* BUILD A NEWS CARD */
-    function buildNewsCard(card) {
+    function getImage(card) {
+        return card.querySelector("img");
+    }
+
+    function getCardURL(card, baseURL) {
         const link = card.querySelector("a[href]");
-        const image = card.querySelector("img");
-        const heading = card.querySelector(
-            "h3, h2, .news-content p, p"
-        );
+        if (!link) return "";
 
-        if (!link || !heading) return null;
+        return makeURL(link.getAttribute("href"), baseURL);
+    }
 
-        const title = heading.textContent.trim();
-        const articleURL = makeURL(
-            link.getAttribute("href"),
-            HOME_URL
-        );
+    function buildCard(card, baseURL) {
+        const title = getTitle(card);
+        const articleURL = getCardURL(card, baseURL);
+        const image = getImage(card);
 
         if (!title || !articleURL) return null;
 
         const article = document.createElement("article");
-        article.className = "news-item post";
+        article.className = "news-card";
 
-        article.dataset.url = articleURL;
-
-        const imageLink = document.createElement("a");
-        imageLink.href = articleURL;
+        const link = document.createElement("a");
+        link.className = "news-card-link";
+        link.href = articleURL;
 
         if (image) {
             const imageURL = makeURL(
-                image.getAttribute("src"),
-                HOME_URL
+                image.getAttribute("src") ||
+                image.getAttribute("data-src"),
+                baseURL
             );
 
             if (imageURL) {
                 const img = document.createElement("img");
-
                 img.src = imageURL;
-                img.alt = image.getAttribute("alt") || title;
+                img.alt = image.alt || title;
                 img.loading = "lazy";
-
-                imageLink.appendChild(img);
+                link.appendChild(img);
             }
         }
 
-        const content = document.createElement("div");
-        content.className = "news-content";
+        const heading = document.createElement("h3");
+        heading.textContent = title;
+        link.appendChild(heading);
 
-        const paragraph = document.createElement("p");
-        const titleLink = document.createElement("a");
-
-        titleLink.href = articleURL;
-        titleLink.textContent = title;
-
-        paragraph.appendChild(titleLink);
-        content.appendChild(paragraph);
-
-        article.appendChild(imageLink);
-        article.appendChild(content);
-
+        article.appendChild(link);
         return article;
     }
 
-    /* LOAD ONE SECTION */
+    function findCards(source) {
+        if (!source) return [];
+
+        // మొదట సాధారణ article card నిర్మాణాలను వెతుకుతుంది
+        const selectors = [
+            "article.news-card",
+            "article.news-item",
+            ".news-grid .news-card",
+            ".sports-grid .news-card",
+            ".sports-card",
+            ".news-item.post",
+            "article"
+        ];
+
+        for (const selector of selectors) {
+            const found = Array.from(source.querySelectorAll(selector));
+
+            if (found.length) {
+                return found.filter(function (card) {
+                    return card.querySelector("a[href]") &&
+                           getTitle(card);
+                });
+            }
+        }
+
+        // Article card structure లేకపోతే image links ఆధారంగా వెతుకుతుంది
+        const imageLinks = Array.from(
+            source.querySelectorAll("a[href]")
+        ).filter(function (link) {
+            return link.querySelector("img") &&
+                   link.textContent.trim();
+        });
+
+        return imageLinks;
+    }
+
     function loadSection(homeDoc, config) {
         const target = document.getElementById(config.target);
+        const source = homeDoc.getElementById(config.sourceId);
 
-        if (!target) {
-            console.info(
-                "Article page target not found:",
+        if (!target || !source) {
+            console.warn(
+                "Section లేదా target కనిపించలేదు:",
+                config.sourceId,
                 config.target
             );
             return;
         }
 
-        const source = homeDoc.getElementById(config.sourceId);
-
-        if (!source) {
-            console.warn(
-                "Homepage source not found:",
-                config.sourceId
-            );
-            return;
-        }
-
-        const cards = getNewsCards(source);
+        const cards = findCards(source);
         const fragment = document.createDocumentFragment();
-        const usedLinks = new Set();
-
-        let added = 0;
+        const seen = new Set();
+        let count = 0;
 
         for (const card of cards) {
-            if (added >= config.limit) break;
+            if (count >= config.limit) break;
 
-            const link = card.querySelector("a[href]");
-            if (!link) continue;
+            const url = getCardURL(card, HOME_URL);
+            if (!url || seen.has(url)) continue;
 
-            const href = makeURL(
-                link.getAttribute("href"),
-                HOME_URL
-            );
-
-            if (!href || usedLinks.has(href)) continue;
-
-            const newCard = buildNewsCard(card);
-
+            const newCard = buildCard(card, HOME_URL);
             if (!newCard) continue;
 
-            usedLinks.add(href);
+            seen.add(url);
             fragment.appendChild(newCard);
-            added++;
+            count++;
         }
 
-        if (added > 0) {
+        if (count > 0) {
             target.replaceChildren(fragment);
-
-            console.info(
-                config.target + ": loaded " + added + " news cards"
-            );
         } else {
-            console.warn(
-                "No usable news cards found in:",
-                config.sourceId
-            );
+            console.warn("వార్తలు దొరకలేదు:", config.sourceId);
         }
     }
 
-    /* LOAD ALL HOMEPAGE NEWS */
+    // SPORTS.html నుంచి వార్తలను నేరుగా Sidebar‌లోకి లోడ్ చేయడం
+    async function loadSportsSidebar() {
+        const target = document.getElementById("sportsSidebar");
+
+        if (!target) {
+            console.warn("sportsSidebar ID HTML‌లో లేదు");
+            return;
+        }
+
+        try {
+            const requestURL = new URL(SPORTS_URL.href);
+            requestURL.searchParams.set("v", Date.now());
+
+            const response = await fetch(requestURL.href, {
+                cache: "no-store"
+            });
+
+            if (!response.ok) {
+                throw new Error("SPORTS.html HTTP " + response.status);
+            }
+
+            const html = await response.text();
+            const parser = new DOMParser();
+            const sportsDoc = parser.parseFromString(html, "text/html");
+
+            // SPORTS.html లో section ID ఉంటే దానినే ముందుగా వాడుతుంది
+            const sourceIds = [
+                "latestSportsSection",
+                "sportsNewsSection",
+                "allSportsSection",
+                "sportsSection",
+                "latestSports",
+                "sportsGrid"
+            ];
+
+            let source = null;
+
+            for (const id of sourceIds) {
+                source = sportsDoc.getElementById(id);
+                if (source) break;
+            }
+
+            // ప్రత్యేక ID దొరకకపోతే ప్రధాన content‌లో వెతుకుతుంది
+            if (!source) {
+                source =
+                    sportsDoc.querySelector("main") ||
+                    sportsDoc.querySelector(".sports-container") ||
+                    sportsDoc.querySelector(".container") ||
+                    sportsDoc.body;
+            }
+
+            const cards = findCards(source);
+            const fragment = document.createDocumentFragment();
+            const seen = new Set();
+            let count = 0;
+
+            // SPORTS.html లో ఉన్నన్ని గుర్తించిన వార్తలు
+            for (const card of cards) {
+                const url = getCardURL(card, SPORTS_URL);
+
+                if (!url || seen.has(url)) continue;
+
+                const newCard = buildCard(card, SPORTS_URL);
+                if (!newCard) continue;
+
+                seen.add(url);
+                fragment.appendChild(newCard);
+                count++;
+            }
+
+            if (count > 0) {
+                target.replaceChildren(fragment);
+                console.info("Sports Sidebar వార్తలు:", count);
+            } else {
+                console.warn(
+                    "SPORTS.html లో news cards గుర్తించలేకపోయింది. " +
+                    "ఆ పేజీ HTML card structure తనిఖీ చేయండి."
+                );
+            }
+
+        } catch (error) {
+            console.error("Sports Sidebar loading error:", error);
+        }
+    }
+
     async function loadHomepageNews() {
         try {
             const requestURL = new URL(HOME_URL.href);
             requestURL.searchParams.set("v", Date.now());
 
             const response = await fetch(requestURL.href, {
-                method: "GET",
                 cache: "no-store"
             });
 
             if (!response.ok) {
-                throw new Error(
-                    "Homepage request failed: HTTP " +
-                    response.status
-                );
+                throw new Error("Homepage HTTP " + response.status);
             }
 
             const html = await response.text();
             const parser = new DOMParser();
-            const homeDoc = parser.parseFromString(
-                html,
-                "text/html"
-            );
+            const homeDoc = parser.parseFromString(html, "text/html");
 
             NEWS_SECTIONS.forEach(function (config) {
                 loadSection(homeDoc, config);
             });
 
         } catch (error) {
-            console.error(
-                "BS 360 NEWS loading error:",
-                error
-            );
+            console.error("Homepage news loading error:", error);
         }
     }
 
+    // రెండింటినీ స్వతంత్రంగా లోడ్ చేస్తుంది
     loadHomepageNews();
+    loadSportsSidebar();
 });
 
-</script>
+function toggleTheme() {
+    document.body.classList.toggle("dark-mode");
 
+    const button = document.getElementById("themeButton");
+
+    if (button) {
+        button.textContent = document.body.classList.contains("dark-mode")
+            ? "☀️ Light"
+            : "🌙 Dark";
+    }
+}
+
+function toggleMobileNav() {
+    const nav = document.getElementById("navLinks");
+    const button = document.querySelector(".mobile-menu-toggle");
+
+    if (!nav) return;
+
+    nav.classList.toggle("mobile-open");
+
+    if (button) {
+        button.setAttribute(
+            "aria-expanded",
+            nav.classList.contains("mobile-open") ? "true" : "false"
+        );
+    }
+}
+</script>
 
 </body>
 </html>
