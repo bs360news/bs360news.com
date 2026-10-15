@@ -22,711 +22,718 @@
 <link rel="icon" type="image/png" href="dp.png.png">
 <link rel="apple-touch-icon" href="dp.png.png">
 
+
 <style>
-
-*{
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    margin:0;
-    padding:0;
-    background:#f3f5f7;
-    color:#111827;
-    font-family:Arial,"Noto Sans Telugu","Segoe UI",sans-serif;
-    line-height:1.6;
-}
-
-img{
-    display:block;
-    width:100%;
-    max-width:100%;
-}
-
-a{
-    color:inherit;
-    text-decoration:none;
-}
-
-
 /* =====================================================
-   HEADER
+   BS 360 NEWS - BUSINESS PAGE COMPLETE CSS
+   FULL WIDTH + DESKTOP + TABLET + MOBILE
 ===================================================== */
 
-.top-header{
-    background:#fff;
-    border-bottom:1px solid #e5e7eb;
+/* ================= RESET ================= */
+* {
+    box-sizing: border-box;
 }
 
-.header-inner{
-    width:min(1400px,96%);
-    margin:auto;
-    min-height:68px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:15px;
+html {
+    scroll-behavior: smooth;
 }
 
-.logo{
-    font-size:30px;
-    font-weight:900;
-    letter-spacing:.5px;
-    color:#111827;
+body {
+    margin: 0;
+    width: 100%;
+    background: #f3f5f7;
+    color: #111827;
+    font-family: Arial, "Noto Sans Telugu", "Segoe UI", sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
 }
 
-.logo span{
-    color:#e50914;
+img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    object-fit: cover;
 }
 
-
-/* =====================================================
-   NAVIGATION
-===================================================== */
-
-.nav-bar{
-    background:#fff;
-    border-bottom:1px solid #e5e7eb;
-    position:sticky;
-    top:0;
-    z-index:100;
+a {
+    color: inherit;
+    text-decoration: none;
 }
 
-.nav-inner{
-    width:min(1400px,96%);
-    margin:auto;
-    display:flex;
-    align-items:center;
-    gap:5px;
-    overflow-x:auto;
-    scrollbar-width:none;
+button {
+    font: inherit;
 }
 
-.nav-inner::-webkit-scrollbar{
-    display:none;
+/* ================= COMMON WIDTH ================= */
+.header-inner,
+.nav-inner,
+.page,
+.breaking,
+.footer-inner,
+.copyright {
+    width: 96%;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.nav-inner a{
-    flex:0 0 auto;
-    padding:11px 15px;
-    font-size:14px;
-    font-weight:700;
-    white-space:nowrap;
-    color:#111827;
-    border-bottom:3px solid transparent;
+/* ================= HEADER ================= */
+.top-header,
+.nav-bar {
+    background: #fff;
+    border-bottom: 1px solid #e5e7eb;
 }
 
-.nav-inner a:hover{
-    color:#e50914;
+.header-inner {
+    min-height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
 }
 
-.nav-inner a.active{
-    color:#e50914;
-    border-bottom:3px solid #e50914;
+.logo {
+    font-size: 30px;
+    font-weight: 900;
+    white-space: nowrap;
 }
 
-
-/* =====================================================
-   BREAKING NEWS
-===================================================== */
-
-.breaking{
-    width:min(1400px,96%);
-    margin:12px auto 0;
-    background:#fff;
-    display:flex;
-    align-items:center;
-    overflow:hidden;
-    border-radius:6px;
-    border:1px solid #e5e7eb;
+.logo span {
+    color: #e50914;
 }
 
-.breaking-title{
-    background:#e50914;
-    color:#fff;
-    padding:8px 16px;
-    font-size:13px;
-    font-weight:900;
-    white-space:nowrap;
+#themeToggle {
+    border: 1px solid #d1d5db;
+    background: #fff;
+    color: #111827;
+    border-radius: 5px;
+    padding: 8px 10px;
+    cursor: pointer;
+    white-space: nowrap;
 }
 
-.breaking-text{
-    padding:8px 15px;
-    font-size:14px;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
-    color:#111827;
+/* ================= NAVIGATION ================= */
+.nav-bar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
-
-/* =====================================================
-   PAGE
-===================================================== */
-
-.page{
-    width:min(1400px,96%);
-    margin:15px auto 35px;
+.nav-inner {
+    display: flex;
+    gap: 5px;
+    overflow-x: auto;
+    scrollbar-width: none;
 }
 
-.page-title{
-    background:#fff;
-    border-left:5px solid #e50914;
-    padding:12px 15px;
-    margin-bottom:18px;
-    font-size:24px;
-    font-weight:900;
+.nav-inner::-webkit-scrollbar {
+    display: none;
 }
 
-
-/* =====================================================
-   MAIN LAYOUT
-===================================================== */
-
-.main-layout{
-    display:grid;
-    grid-template-columns:minmax(0,1fr) 320px;
-    gap:22px;
-    align-items:start;
+.nav-inner a {
+    flex: 0 0 auto;
+    padding: 11px 15px;
+    font-size: 14px;
+    font-weight: 700;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
 }
 
-
-/* =====================================================
-   SECTION
-===================================================== */
-
-.section{
-    margin-bottom:30px;
+.nav-inner a.active,
+.nav-inner a:hover {
+    color: #e50914;
+    border-bottom-color: #e50914;
 }
 
-.section-head{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    margin-bottom:12px;
-    border-bottom:2px solid #e50914;
-    padding-bottom:7px;
+/* ================= BREAKING NEWS ================= */
+.breaking {
+    margin-top: 12px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
 }
 
-.section-head h2{
-    margin:0;
-    font-size:21px;
-    font-weight:900;
-    color:#111827;
+.breaking-title {
+    background: #e50914;
+    color: #fff;
+    padding: 8px 14px;
+    font-size: 13px;
+    font-weight: 900;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
-.section-head h2 span{
-    color:#e50914;
+.breaking-text {
+    padding: 8px 12px;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
 }
 
-
-/* =====================================================
-   ARTICLE GRID
-===================================================== */
-
-.movies-grid{
-    display:grid;
-    grid-template-columns:repeat(6,minmax(0,1fr));
-    gap:12px;
+/* ================= PAGE ================= */
+.page {
+    display: block;
+    width: 96%;
+    max-width: 1400px;
+    margin-top: 15px;
+    margin-bottom: 35px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-
-/* =====================================================
-   ARTICLE CARD
-===================================================== */
-
-.movie-card{
-    display:block;
-    background:#fff;
-    border-radius:7px;
-    overflow:hidden;
-    min-width:0;
-    transition:
-        transform .2s ease,
-        box-shadow .2s ease;
+.page-title {
+    width: 100%;
+    background: #fff;
+    border-left: 5px solid #e50914;
+    padding: 12px 15px;
+    margin: 0 0 18px;
+    font-size: 24px;
+    font-weight: 900;
 }
 
-.movie-card:hover{
-    transform:translateY(-3px);
-    box-shadow:0 5px 18px rgba(0,0,0,.10);
+/* ================= MAIN LAYOUT ================= */
+.main-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 22px;
+    align-items: start;
+    width: 100%;
+    max-width: none;
 }
 
-.movie-card img{
-    width:100%;
-    aspect-ratio:16 / 9;
-    object-fit:cover;
+.movies-main {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    max-width: none;
 }
 
-.movie-card-content{
-    padding:9px;
+/* ================= SECTION HEADINGS ================= */
+.section,
+.homepage-section {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    margin: 0 0 28px;
 }
 
-.movie-card-title{
-    margin:0;
-    color:#111827;
-    font-size:14px;
-    line-height:1.45;
-    font-weight:800;
-
-    display:-webkit-box;
-    -webkit-line-clamp:4;
-    -webkit-box-orient:vertical;
-    overflow:hidden;
+.section-head {
+    width: 100%;
+    border-bottom: 2px solid #e50914;
+    padding-bottom: 7px;
+    margin-bottom: 12px;
 }
 
-
-/* =====================================================
-   EMPTY MESSAGE
-===================================================== */
-
-.empty-message{
-    grid-column:1 / -1;
-    background:#fff;
-    padding:25px;
-    text-align:center;
-    border-radius:8px;
-    color:#777;
+.section-head h2,
+.homepage-section > h2 {
+    margin: 0 0 12px;
+    font-size: 21px;
+    font-weight: 900;
 }
 
-
-/* =====================================================
-   SIDEBAR
-===================================================== */
-
-.article-sidebar{
-    display:flex;
-    flex-direction:column;
-    gap:18px;
+.section-head h2 span {
+    color: #e50914;
 }
 
-.sidebar-box{
-    background:#fff;
-    border-radius:8px;
-    padding:14px;
-    border:1px solid #e5e7eb;
+.homepage-section > h2 {
+    width: 100%;
+    border-bottom: 2px solid #e50914;
+    padding-bottom: 7px;
 }
 
-.sidebar-title{
-    font-size:19px;
-    line-height:1.3;
-    font-weight:900;
-    color:#111827;
-    padding-bottom:9px;
-    margin-bottom:5px;
-    border-bottom:3px solid #e50914;
+/* ================= ARTICLE GRIDS ================= */
+.movies-grid,
+.homepage-cards {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 12px;
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+    align-items: start;
 }
 
-
-/* =====================================================
-   SIDEBAR ARTICLE
-===================================================== */
-
-.sidebar-item{
-    display:flex;
-    gap:10px;
-    padding:10px 0;
-    border-bottom:1px solid #e5e7eb;
-    text-decoration:none;
-    color:inherit;
+/* ================= BUSINESS CARDS ================= */
+.movie-card,
+.homepage-card {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    background: #fff;
+    border-radius: 6px;
+    overflow: hidden;
+    transition: transform .2s ease;
 }
 
-.sidebar-item:last-child{
-    border-bottom:none;
+.movie-card:hover,
+.homepage-card:hover {
+    transform: translateY(-2px);
 }
 
-.sidebar-item img{
-    width:100px;
-    height:65px;
-    object-fit:cover;
-    border-radius:6px;
-    flex-shrink:0;
+.movie-card img,
+.homepage-card img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    background: #e5e7eb;
 }
 
-.sidebar-item-title{
-    font-size:14px;
-    line-height:1.4;
-    font-weight:700;
-    color:#1f2937;
-
-    display:-webkit-box;
-    -webkit-line-clamp:3;
-    -webkit-box-orient:vertical;
-    overflow:hidden;
+.movie-card-content {
+    padding: 9px;
+    min-width: 0;
 }
 
-
-/* =====================================================
-   MOST READ
-===================================================== */
-
-.most-read-item{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    padding:10px 0;
-    border-bottom:1px solid #e5e7eb;
-    text-decoration:none;
-    color:inherit;
+.movie-card-title,
+.homepage-card h3 {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 800;
+    overflow-wrap: anywhere;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
-.most-read-item:last-child{
-    border-bottom:none;
+.homepage-card h3 {
+    padding: 9px;
 }
 
-.most-read-item img{
-    width:95px;
-    height:65px;
-    object-fit:cover;
-    border-radius:6px;
-    flex-shrink:0;
+/* ================= SIDEBAR ================= */
+.article-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    width: 100%;
+    min-width: 0;
+    max-width: none;
 }
 
-.most-read-title{
-    font-size:14px;
-    line-height:1.4;
-    font-weight:700;
-    color:#1f2937;
-
-    display:-webkit-box;
-    -webkit-line-clamp:3;
-    -webkit-box-orient:vertical;
-    overflow:hidden;
+.sidebar-box {
+    width: 100%;
+    min-width: 0;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 14px;
 }
 
-
-/* =====================================================
-   LOADING
-===================================================== */
-
-.loading{
-    grid-column:1 / -1;
-    background:#fff;
-    padding:25px;
-    text-align:center;
-    border-radius:8px;
-    color:#666;
+.sidebar-title {
+    font-size: 19px;
+    font-weight: 900;
+    padding-bottom: 9px;
+    margin: 0 0 5px;
+    border-bottom: 3px solid #e50914;
 }
 
-
-/* =====================================================
-   FOOTER
-===================================================== */
-
-.site-footer{
-    background:#111827;
-    color:#fff;
-    margin-top:35px;
-    padding:30px 0 15px;
+.sidebar-item {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid #e5e7eb;
+    align-items: center;
+    min-width: 0;
 }
 
-.footer-inner{
-    width:min(1400px,96%);
-    margin:auto;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:40px;
+.sidebar-item:last-child {
+    border-bottom: 0;
+}
+
+.sidebar-item img {
+    order: 2;
+    width: 100px;
+    height: 65px;
+    border-radius: 5px;
+    flex-shrink: 0;
+}
+
+.sidebar-item-title {
+    order: 1;
+    flex: 1;
+    min-width: 0;
+    font-size: 13px;
+    line-height: 1.4;
+    font-weight: 700;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    overflow-wrap: anywhere;
+}
+
+.sidebar-item:hover .sidebar-item-title,
+.homepage-card:hover h3 {
+    color: #075aaa;
+}
+
+/* ================= HOMEPAGE LOADED CONTENT ================= */
+#homepageArticlesContent {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+}
+
+#homepageArticlesContent > section,
+#homepageArticlesContent > div {
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+}
+
+/* Allow nested article sections to use available width */
+#homepageArticlesContent .section,
+#homepageArticlesContent .homepage-section,
+#homepageArticlesContent .movies-grid,
+#homepageArticlesContent .homepage-cards {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+}
+
+/* ================= LOADING ================= */
+.loading {
+    background: #fff;
+    padding: 15px;
+    text-align: center;
+    color: #666;
+    grid-column: 1 / -1;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+/* ================= FOOTER ================= */
+.site-footer {
+    width: 100%;
+    background: #111827;
+    color: #fff;
+    margin-top: 35px;
+    padding: 30px 0 15px;
+}
+
+.footer-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
 }
 
 .footer-column h3,
-.footer-contact h3{
-    margin:0 0 12px;
-    font-size:18px;
+.footer-contact h3 {
+    margin: 0 0 12px;
+    font-size: 18px;
 }
 
-.footer-links{
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px 15px;
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 15px;
 }
 
-.footer-links a{
-    color:#d1d5db;
-    font-size:14px;
+.footer-links a,
+.footer-contact p {
+    color: #d1d5db;
+    font-size: 14px;
 }
 
-.footer-links a:hover{
-    color:#fff;
+.copyright {
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 1px solid #374151;
+    text-align: center;
+    color: #9ca3af;
+    font-size: 13px;
 }
 
-.footer-contact p{
-    margin:5px 0;
-    color:#d1d5db;
-    font-size:14px;
+/* ================= DARK MODE ================= */
+body.dark-mode {
+    background: #0b1120;
+    color: #f9fafb;
 }
 
-.copyright{
-    width:min(1400px,96%);
-    margin:25px auto 0;
-    padding-top:15px;
-    border-top:1px solid #374151;
-    text-align:center;
-    color:#9ca3af;
-    font-size:13px;
+body.dark-mode .top-header,
+body.dark-mode .nav-bar,
+body.dark-mode .breaking,
+body.dark-mode .page-title,
+body.dark-mode .movie-card,
+body.dark-mode .sidebar-box,
+body.dark-mode .homepage-card,
+body.dark-mode .loading {
+    background: #111827;
+    color: #f9fafb;
+    border-color: #374151;
+}
+
+body.dark-mode #themeToggle {
+    background: #1f2937;
+    color: #fff;
+    border-color: #4b5563;
+}
+
+body.dark-mode .breaking-text,
+body.dark-mode .section-head h2,
+body.dark-mode .movie-card-title,
+body.dark-mode .sidebar-title,
+body.dark-mode .sidebar-item-title,
+body.dark-mode .homepage-section > h2,
+body.dark-mode .homepage-card h3 {
+    color: #f9fafb;
+}
+
+body.dark-mode .sidebar-item {
+    border-color: #374151;
+}
+
+/* ================= LARGE DESKTOP ================= */
+@media (min-width: 1401px) {
+    .page,
+    .header-inner,
+    .nav-inner,
+    .breaking,
+    .footer-inner,
+    .copyright {
+        width: 96%;
+        max-width: 1600px;
+    }
+}
+
+/* ================= TABLET ================= */
+@media (min-width: 601px) and (max-width: 1100px) {
+    .main-layout {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .movies-grid,
+    .homepage-cards {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .article-sidebar {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        align-items: start;
+    }
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 600px) {
+    .header-inner {
+        min-height: 58px;
+    }
+
+    .logo {
+        font-size: 23px;
+    }
+
+    .nav-inner a {
+        padding: 9px 11px;
+        font-size: 12px;
+    }
+
+    .breaking {
+        margin-top: 8px;
+    }
+
+    .breaking-title {
+        padding: 7px 9px;
+        font-size: 10px;
+    }
+
+    .breaking-text {
+        font-size: 12px;
+        padding: 7px 9px;
+    }
+
+    .page {
+        width: 94%;
+        margin-top: 10px;
+    }
+
+    .page-title {
+        font-size: 20px;
+        padding: 10px 12px;
+    }
+
+    .main-layout {
+        display: block;
+        width: 100%;
+    }
+
+    /* ONE ARTICLE PER ROW */
+    .movies-grid,
+    .homepage-cards {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 10px;
+    }
+
+    /* TEXT LEFT, IMAGE RIGHT */
+    .movie-card,
+    .homepage-card {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 100%;
+        min-height: 95px;
+    }
+
+    .movie-card img,
+    .homepage-card img {
+        order: 2;
+        width: 115px;
+        min-width: 115px;
+        max-width: 115px;
+        height: 85px;
+        aspect-ratio: auto;
+        object-fit: cover;
+        flex-shrink: 0;
+    }
+
+    .movie-card-content {
+        order: 1;
+        flex: 1;
+        min-width: 0;
+        padding: 8px;
+    }
+
+    .movie-card-title,
+    .homepage-card h3 {
+        order: 1;
+        flex: 1;
+        min-width: 0;
+        padding: 8px;
+        font-size: 13px;
+        line-height: 1.5;
+        -webkit-line-clamp: 4;
+    }
+
+    .article-sidebar {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 22px;
+        gap: 12px;
+    }
+
+    .sidebar-box {
+        padding: 11px;
+    }
+
+    .sidebar-title {
+        font-size: 17px;
+    }
+
+    .sidebar-item img {
+        width: 100px;
+        height: 65px;
+    }
+
+    .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    .footer-links {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    body.dark-mode .movie-card,
+    body.dark-mode .homepage-card {
+        background: #111827;
+        color: #fff;
+    }
 }
 
 
-/* =====================================================
-   TABLET
-===================================================== */
 
-@media(min-width:601px) and (max-width:1100px){
 
-    .main-layout{
-        grid-template-columns:1fr;
-    }
 
-    .movies-grid{
-        grid-template-columns:repeat(4,minmax(0,1fr));
-    }
 
-    .article-sidebar{
-        display:grid;
-        grid-template-columns:repeat(2,minmax(0,1fr));
-        align-items:start;
-    }
 
+
+
+
+
+
+
+
+
+   
+/* THREE SECTIONS BELOW BUSINESS NEWS */
+.business-bottom-sections {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    width: 100%;
+    margin-top: 25px;
 }
 
-
-/* =====================================================
-   MOBILE
-===================================================== */
-
-@media(max-width:600px){
-
-    .header-inner{
-        min-height:58px;
-    }
-
-    .logo{
-        font-size:22px;
-    }
-
-    .nav-inner a{
-        padding:9px 11px;
-        font-size:12px;
-    }
-
-    .breaking{
-        margin-top:8px;
-    }
-
-    .breaking-title{
-        padding:7px 10px;
-        font-size:10px;
-    }
-
-    .breaking-text{
-        font-size:12px;
-        padding:7px 10px;
-    }
-
-    .page{
-        width:94%;
-        margin-top:10px;
-    }
-
-    .page-title{
-        font-size:20px;
-        padding:10px 12px;
-    }
-
-    .main-layout{
-        display:block;
-    }
-
-
-    /* MOBILE NEWS */
-
-    .movies-grid{
-        grid-template-columns:1fr;
-        gap:8px;
-    }
-
-    .movie-card{
-        display:flex;
-        flex-direction:row-reverse;
-        align-items:stretch;
-        width:100%;
-        min-height:92px;
-        border-radius:6px;
-    }
-
-
-    /* IMAGE RIGHT */
-
-    .movie-card img{
-        order:1;
-        width:115px;
-        min-width:115px;
-        height:92px;
-        aspect-ratio:auto;
-        object-fit:cover;
-        flex-shrink:0;
-    }
-
-
-    /* TEXT LEFT */
-
-    .movie-card-content{
-        order:2;
-        width:calc(100% - 115px);
-        min-width:0;
-        padding:9px 10px;
-
-        display:flex;
-        align-items:center;
-        justify-content:center;
-    }
-
-    .movie-card-title{
-        margin:0;
-        width:100%;
-        font-size:13px;
-        line-height:1.45;
-        -webkit-line-clamp:4;
-    }
-
-
-    .article-sidebar{
-        margin-top:22px;
-        gap:12px;
-    }
-
-    .sidebar-box{
-        padding:11px;
-    }
-
-    .sidebar-title{
-        font-size:17px;
-    }
-
-    .sidebar-item img{
-        width:90px;
-        height:62px;
-    }
-
-    .sidebar-item-title{
-        font-size:13px;
-    }
-
-    .most-read-item img{
-        width:90px;
-        height:62px;
-    }
-
-    .most-read-title{
-        font-size:13px;
-    }
-
-    .footer-inner{
-        grid-template-columns:1fr;
-        gap:22px;
-    }
-
-    .footer-links{
-        display:grid;
-        grid-template-columns:1fr 1fr;
-    }
-
+.business-bottom-sections .sidebar-box {
+    min-width: 0;
+    padding: 12px;
+    background: #fff;
+    border: 1px solid #e1e5eb;
+    border-radius: 8px;
 }
 
-
-/* =====================================================
-   SMALL MOBILE
-===================================================== */
-
-@media(max-width:380px){
-
-    .movies-grid{
-        grid-template-columns:1fr;
-        gap:7px;
+@media (max-width: 900px) {
+    .business-bottom-sections {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
-
-    .movie-card{
-        min-height:86px;
-    }
-
-    .movie-card img{
-        width:105px;
-        min-width:105px;
-        height:86px;
-    }
-
-    .movie-card-content{
-        width:calc(100% - 105px);
-        padding:8px;
-    }
-
-    .movie-card-title{
-        font-size:12px;
-        line-height:1.4;
-        -webkit-line-clamp:4;
-    }
-
 }
 
+@media (max-width: 600px) {
+    .business-bottom-sections {
+        grid-template-columns: 1fr;
+    }
+}
+
+body.dark-mode .business-bottom-sections .sidebar-box {
+    background: #111827;
+    color: #f9fafb;
+    border-color: #374151;
+}
+
+   
 </style>
 
 </head>
 
-
 <body>
 
-
-<!-- =====================================================
-     HEADER
-===================================================== -->
-
+<!-- ================= HEADER ================= -->
 <header class="top-header">
-
     <div class="header-inner">
-
-        <div class="logo">
+        <a class="logo" href="index.html">
             BS <span>360</span> NEWS
-        </div>
+        </a>
 
+        <button id="themeToggle" type="button">
+            🌙 Dark
+        </button>
     </div>
-
 </header>
 
-
-<!-- =====================================================
-     NAVIGATION
-===================================================== -->
-
+<!-- ================= NAVIGATION ================= -->
 <nav class="nav-bar">
-
     <div class="nav-inner">
-
-        <a href="index.html">
-            హోమ్
-        </a>
-
-        <a href="MOVIES.html">
-            మూవీస్
-        </a>
-
-        <a href="SPORTS.html">
-            స్పోర్ట్స్
-        </a>
-
-        <a href="AP&TS.html" class="active">
-            ఏపీ & టీస్
-        </a>
-
-        <a href="business.html">
-            బిజినెస్
-        </a>
-
+        <a href="index.html">హోమ్</a>
+        <a href="MOVIES.html">ఎంటర్టైన్మెంట్</a>
+        <a href="SPORTS.html">స్పోర్ట్స్</a>
+        <a href="AP%26TS.html">ఏపీ &amp; టీఎస్</a>
+        <a href="business.html" class="active">బిజినెస్</a>
     </div>
-
 </nav>
-
 
 <!-- =====================================================
      BREAKING NEWS
@@ -939,867 +946,456 @@ a{
             </div>
 
 
-            <!-- =================================================
-                 AP & TS SECTION
-            ================================================= -->
-
-            <section class="section">
-
-                <div class="section-head">
-
-                    <h2>
-                        <span></span> AP & TS News
-                    </h2>
-
-                </div>
-
-                <div
-                    id="aptsGrid"
-                    class="movies-grid"
-                >
-
-                    <div class="loading">
-                        AP & TS News Loading...
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <!-- =================================================
-                 MOVIES
-            ================================================= -->
-
-            <section class="section">
-
-                <div class="section-head">
-
-                    <h2>
-                        <span></span> Movies
-                    </h2>
-
-                </div>
-
-                <div
-                    id="moviesGrid"
-                    class="movies-grid"
-                >
-
-                    <div class="loading">
-                        Movies News Loading...
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <!-- =================================================
-                 SPORTS
-            ================================================= -->
-
-            <section class="section">
-
-                <div class="section-head">
-
-                    <h2>
-                        <span></span> Sports
-                    </h2>
-
-                </div>
-
-                <div
-                    id="sportsGrid"
-                    class="movies-grid"
-                >
-
-                    <div class="loading">
-                        Sports News Loading...
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <!-- =================================================
-                 BUSINESS
-            ================================================= -->
-
-            <section class="section">
-
-                <div class="section-head">
-
-                    <h2>
-                        <span></span> Business
-                    </h2>
-
-                </div>
-
-                <div
-                    id="businessGrid"
-                    class="movies-grid"
-                >
-
-                    <div class="loading">
-                        Business News Loading...
-                    </div>
-
-                </div>
-
-            </section>
-
+            <!-- HOMEPAGE SECTIONS: MAXIMUM 5 ARTICLES EACH -->
+            <div id="homepageArticlesContent">
+                <div class="loading">హోమ్‌పేజీ వార్తలు లోడ్ అవుతున్నాయి...</div>
+            </div>
 
         </div>
 
-
-        <!-- =================================================
-             SIDEBAR
-        ================================================= -->
-
-        <aside class="article-sidebar">
-
-
-            <div class="sidebar-box">
-
-                <div class="sidebar-title">
-                    Most Read
-                </div>
-
-                <div id="mostReadSidebar"></div>
-
-            </div>
-
-
-            <div class="sidebar-box">
-
-                <div class="sidebar-title">
-                    Trending News
-                </div>
-
-                <div id="trendingSidebar"></div>
-
-            </div>
-
-
-            <div class="sidebar-box">
-
-                <div class="sidebar-title">
-                    Latest News
-                </div>
-
-                <div id="latestSidebar"></div>
-
-            </div>
-
-
-        </aside>
-
-
+        
     </div>
+    
 
+<!-- THREE SECTIONS BELOW BUSINESS NEWS -->
+<div class="business-bottom-sections">
+
+    <section class="sidebar-box">
+        <div class="sidebar-title">తాజా వార్తలు</div>
+        <div id="latestSidebar">
+            <div class="loading">వార్తలు లోడ్ అవుతున్నాయి...</div>
+        </div>
+    </section>
+
+    <section class="sidebar-box">
+        <div class="sidebar-title">ట్రెండింగ్ వార్తలు</div>
+        <div id="trendingSidebar">
+            <div class="loading">వార్తలు లోడ్ అవుతున్నాయి...</div>
+        </div>
+    </section>
+
+    <section class="sidebar-box">
+        <div class="sidebar-title">మూవీ రివ్యూస్</div>
+        <div id="movieReviewsSidebar">
+            <div class="loading">మూవీ రివ్యూస్ లోడ్ అవుతున్నాయి...</div>
+        </div>
+    </section>
+</div>
 </main>
 
-
-<!-- =====================================================
-     FOOTER
-===================================================== -->
-
+<!-- ================= FOOTER ================= -->
 <footer class="site-footer">
-
     <div class="footer-inner">
 
-
         <div class="footer-column">
-
-            <h3>
-                ముఖ్యమైన లింకులు
-            </h3>
+            <h3>ముఖ్యమైన లింకులు</h3>
 
             <div class="footer-links">
-
-                <a href="advertise.html">
-                    Advertise With Us
-                </a>
-
-                <a href="about.html">
-                    About Us
-                </a>
-
-                <a href="contact.html">
-                    Contact Us
-                </a>
-
-                <a href="Privacy Policy.html">
-                    Privacy Policy
-                </a>
-
-                <a href="disclaimer.html">
-                    Disclaimer
-                </a>
-
-                <a href="terms.html">
-                    Terms & Conditions
-                </a>
-
+                <a href="advertise.html">Advertise With Us</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact Us</a>
+                <a href="Privacy%20Policy.html">Privacy Policy</a>
+                <a href="disclaimer.html">Disclaimer</a>
+                <a href="terms.html">Terms &amp; Conditions</a>
             </div>
-
         </div>
 
-
         <div class="footer-contact">
-
-            <h3>
-                Contact
-            </h3>
-
-            <p>
-                newsb386@gmail.com
-            </p>
-
-            <p>
-                Follow us for latest updates.
-            </p>
-
+            <h3>Contact</h3>
+            <p>newsb386@gmail.com</p>
+            <p>Follow us for latest updates.</p>
         </div>
 
     </div>
-
 
     <div class="copyright">
         © 2026 BS 360 NEWS. All Rights Reserved.
     </div>
-
 </footer>
 
-
+<!-- ================= JAVASCRIPT ================= -->
 <script>
-
-document.addEventListener("DOMContentLoaded", function(){
-
+document.addEventListener("DOMContentLoaded", function () {
     "use strict";
 
+    /* ================= DARK MODE ================= */
+    const themeButton = document.getElementById("themeToggle");
 
-    /* =====================================================
-       CLEAN TEXT
-    ===================================================== */
+    if (themeButton) {
+        themeButton.addEventListener("click", function () {
+            document.body.classList.toggle("dark-mode");
 
-    function cleanText(text){
-
-        return String(text || "")
-            .replace(/\s+/g," ")
-            .trim();
-
-    }
-
-
-    /* =====================================================
-       GET ARTICLES
-    ===================================================== */
-
-    function getArticles(source){
-
-        if(!source){
-            return [];
-        }
-
-        return Array.from(
-            source.querySelectorAll(".news-item.post")
-        )
-
-        .map(function(item){
-
-            const image =
-                item.querySelector("img");
-
-            const title =
-                item.querySelector(".news-content p") ||
-                item.querySelector(".news-content h3") ||
-                item.querySelector("p");
-
-            return {
-
-                title:
-                    cleanText(
-                        title
-                            ? title.textContent
-                            : ""
-                    ),
-
-                image:
-                    image
-                        ? image.getAttribute("src") || ""
-                        : "",
-
-                alt:
-                    image
-                        ? image.getAttribute("alt") || ""
-                        : "",
-
-                url:
-                    item.getAttribute("data-url") || ""
-
-            };
-
-        })
-
-        .filter(function(article){
-
-            return (
-                article.title &&
-                article.image &&
-                article.url
-            );
-
+            themeButton.textContent =
+                document.body.classList.contains("dark-mode")
+                    ? "☀️ Light"
+                    : "🌙 Dark";
         });
-
     }
 
-
-    /* =====================================================
-       REMOVE DUPLICATES
-    ===================================================== */
-
-    function uniqueArticles(articles){
-
-        const seen = new Set();
-
-        return articles.filter(function(article){
-
-            if(seen.has(article.url)){
-                return false;
-            }
-
-            seen.add(article.url);
-
-            return true;
-
-        });
-
+    /* ================= HELPERS ================= */
+    function clean(value) {
+        return (value || "").replace(/\s+/g, " ").trim();
     }
 
+    function getImageSource(image) {
+        if (!image) return "";
 
-    /* =====================================================
-       NORMAL CARD
-    ===================================================== */
-
-    function cardHTML(article){
-
-        return `
-
-            <a
-                href="${article.url}"
-                class="movie-card"
-            >
-
-                <img
-                    src="${article.image}"
-                    alt="${article.alt || article.title}"
-                    loading="lazy"
-                >
-
-                <div class="movie-card-content">
-
-                    <h3 class="movie-card-title">
-                        ${article.title}
-                    </h3>
-
-                </div>
-
-            </a>
-
-        `;
-
+        return image.getAttribute("src") ||
+            image.getAttribute("data-src") ||
+            image.getAttribute("data-lazy-src") ||
+            image.getAttribute("data-original") ||
+            "";
     }
-
-
-    /* =====================================================
-       SIDEBAR
-    ===================================================== */
-
-    function sidebarHTML(article){
-
-        return `
-
-            <a
-                href="${article.url}"
-                class="sidebar-item"
-            >
-
-                <img
-                    src="${article.image}"
-                    alt="${article.alt || article.title}"
-                    loading="lazy"
-                >
-
-                <div class="sidebar-item-title">
-                    ${article.title}
-                </div>
-
-            </a>
-
-        `;
-
-    }
-
-
-    /* =====================================================
-       MOST READ
-    ===================================================== */
-
-    function mostReadHTML(article){
-
-        return `
-
-            <a
-                href="${article.url}"
-                class="most-read-item"
-            >
-
-                <img
-                    src="${article.image}"
-                    alt="${article.alt || article.title}"
-                    loading="lazy"
-                >
-
-                <div class="most-read-title">
-                    ${article.title}
-                </div>
-
-            </a>
-
-        `;
-
-    }
-
-
-    /* =====================================================
-       SHOW
-    ===================================================== */
-
-    function show(id,html){
-
-        const element =
-            document.getElementById(id);
-
-        if(element){
-
-            element.innerHTML = html;
-
-        }
-
-    }
-
-
-    /* =====================================================
-       SHOW ARTICLES
-    ===================================================== */
-
-    function showArticles(id,articles,emptyText){
-
-        if(!articles || articles.length === 0){
-
-            show(
-                id,
-                `
-                    <div class="empty-message">
-                        ${emptyText}
-                    </div>
-                `
-            );
-
-            return;
-
-        }
-
-        show(
-            id,
-            articles
-                .map(cardHTML)
-                .join("")
-        );
-
-    }
-
-
-    /* =====================================================
-       LOCAL AP & TS
-    ===================================================== */
-
-    const localApts =
-        getArticles(
-            document.getElementById(
-                "localAptsSource"
-            )
-        );
-
 
     /*
-       IMPORTANT:
-       Local AP & TS articles are shown
-       immediately. So even if index.html
-       fails, AP & TS news will still appear.
+      Supports regular article links and movie-review cards
+      that use onclick="location.href='...'"
     */
+    function getArticle(article) {
+        if (!article) return null;
 
-    showArticles(
-        "aptsGrid",
-        localApts,
-        "AP & TS News అందుబాటులో లేవు."
-    );
+        const link = article.querySelector("a[href]");
+        const image = article.querySelector("img");
+        const heading = article.querySelector(
+            "h1, h2, h3, h4, .news-title, .news-content p, p"
+        );
 
+        let href = link ? link.getAttribute("href") : "";
 
-    /* =====================================================
-       LOAD INDEX.HTML
-    ===================================================== */
-
-    fetch(
-        "index.html?v=" + Date.now(),
-        {
-            cache:"no-store"
-        }
-    )
-
-    .then(function(response){
-
-        if(!response.ok){
-
-            throw new Error(
-                "index.html load failed: " +
-                response.status
+        if (!href) {
+            const onclick = article.getAttribute("onclick") || "";
+            const match = onclick.match(
+                /location\.href\s*=\s*['"]([^'"]+)['"]/
             );
 
+            if (match) href = match[1];
+        }
+
+        const src = getImageSource(image);
+        let title = heading ? clean(heading.textContent) : "";
+
+        if (!title && image) {
+            title = clean(image.getAttribute("alt"));
+        }
+
+        if (!href || !src || !title) return null;
+
+        return {
+            href: href,
+            src: src,
+            title: title,
+            alt: image.getAttribute("alt") || title
+        };
+    }
+
+    /* ================= COLLECT ARTICLES ================= */
+    function collectArticles(root) {
+        if (!root) return [];
+
+        const result = [];
+        const seen = new Set();
+
+        /*
+          The homepage sections contain article elements.
+          Include the root itself when it is an article.
+        */
+        const articles = [];
+
+        if (root.matches && (
+            root.matches("article") ||
+            root.matches("a[href]")
+        )) {
+            articles.push(root);
+        }
+
+        root.querySelectorAll(
+            "article, a[href].movie-card, a[href].homepage-card, a[href]"
+        ).forEach(function (article) {
+            articles.push(article);
+        });
+
+        articles.forEach(function (article) {
+            let item;
+
+            if (article.matches && article.matches("a[href]")) {
+                const image = article.querySelector("img");
+                const heading = article.querySelector(
+                    "h1, h2, h3, h4, .news-title, .news-content p, p"
+                );
+                const href = article.getAttribute("href") || "";
+                const src = getImageSource(image);
+                const title = heading
+                    ? clean(heading.textContent)
+                    : (image ? clean(image.getAttribute("alt")) : "");
+
+                item = (href && src && title) ? {
+                    href: href,
+                    src: src,
+                    title: title,
+                    alt: (image && image.getAttribute("alt")) || title
+                } : null;
+            } else {
+                item = getArticle(article);
+            }
+
+            if (!item) return;
+
+            const key = item.href + "|" + item.title;
+            if (seen.has(key)) return;
+
+            seen.add(key);
+            result.push(item);
+        });
+
+        return result;
+    }
+
+    /* ================= HTML ESCAPE ================= */
+    function escapeHTML(value) {
+        return String(value || "").replace(/[&<>"']/g, function (char) {
+            return {
+                "&": "&amp;",
+                "<": "&lt;",
+                ">": "&gt;",
+                '"': "&quot;",
+                "'": "&#39;"
+            }[char];
+        });
+    }
+
+    /* ================= CREATE HOMEPAGE CARD ================= */
+    function cardHTML(item) {
+        return `
+            <a class="homepage-card" href="${escapeHTML(item.href)}">
+                <img
+                    src="${escapeHTML(item.src)}"
+                    alt="${escapeHTML(item.alt)}"
+                    loading="lazy">
+                <h3>${escapeHTML(item.title)}</h3>
+            </a>
+        `;
+    }
+
+    /* ================= CREATE SIDEBAR CARD ================= */
+    function sidebarHTML(item) {
+        return `
+            <a class="sidebar-item" href="${escapeHTML(item.href)}">
+                <span class="sidebar-item-title">
+                    ${escapeHTML(item.title)}
+                </span>
+                <img
+                    src="${escapeHTML(item.src)}"
+                    alt="${escapeHTML(item.alt)}"
+                    loading="lazy">
+            </a>
+        `;
+    }
+
+    /* ================= RENDER HOMEPAGE SECTIONS ================= */
+    function renderHomepageSections(home) {
+        const output = document.getElementById(
+            "homepageArticlesContent"
+        );
+
+        if (!output) return;
+
+        output.innerHTML = "";
+
+        const sections = [
+            {
+                title: "TOP NEWS",
+                selector: ".top-news-group"
+            },
+            {
+                title: "LATEST NEWS",
+                selector: "#latestSection"
+            },
+            {
+                title: "TRENDING NEWS",
+                selector: "#trendingSection"
+            },
+            {
+                title: "ENTERTAINMENT NEWS",
+                selector: "#entertainmentSection"
+            },
+            {
+                title: "NATIONAL + WORLD NEWS",
+                selector: ".national-world-layout"
+            },
+            {
+                title: "BIGG BOSS",
+                selector: ".bigboss-section"
+            },
+            {
+                title: "SPORTS NEWS",
+                selector: "#sportsSection"
+            },
+            {
+                title: "WORLD NEWS",
+                selector: "#worldSection"
+            },
+            {
+                title: "AP & TS NEWS",
+                selector: "#aptsSection"
+            },
+            {
+                title: "MOVIE REVIEWS",
+                selector: ".movie-reviews-section"
+            },
+            {
+                title: "BUSINESS NEWS",
+                selector: "#businessSection"
+            }
+        ];
+
+        const alreadyRendered = new Set();
+
+        sections.forEach(function (section) {
+            const source = home.querySelector(section.selector);
+
+            if (!source) return;
+
+            const articles = collectArticles(source).filter(function (item) {
+                if (alreadyRendered.has(item.href + "|" + item.title)) {
+                    return false;
+                }
+
+                return true;
+            }).slice(0, 5);
+
+            if (!articles.length) return;
+
+            articles.forEach(function (item) {
+                alreadyRendered.add(item.href + "|" + item.title);
+            });
+
+            const block = document.createElement("section");
+            block.className = "homepage-section";
+
+            const heading = document.createElement("h2");
+            heading.textContent = section.title;
+
+            const grid = document.createElement("div");
+            grid.className = "homepage-cards";
+            grid.innerHTML = articles.map(cardHTML).join("");
+
+            block.appendChild(heading);
+            block.appendChild(grid);
+            output.appendChild(block);
+        });
+
+        if (!output.children.length) {
+            output.innerHTML = `
+                <div class="loading">
+                    హోమ్‌పేజీలో ఆర్టికల్స్ దొరకలేదు.
+                    index.html ఫైల్‌ను తనిఖీ చేయండి.
+                </div>
+            `;
+        }
+    }
+
+    /* ================= RENDER SIDEBAR ================= */
+    function renderSidebar(targetId, source, limit, customMessage) {
+        const target = document.getElementById(targetId);
+
+        if (!target) return;
+
+        const items = collectArticles(source).slice(0, limit);
+
+        target.innerHTML = items.length
+            ? items.map(sidebarHTML).join("")
+            : `<p>${escapeHTML(
+                customMessage || "ప్రస్తుతం వార్తలు అందుబాటులో లేవు."
+              )}</p>`;
+    }
+
+    /* ================= LOAD HOMEPAGE ================= */
+    fetch("index.html?v=" + Date.now(), {
+        cache: "no-store"
+    })
+    .then(function (response) {
+        if (!response.ok) {
+            throw new Error("index.html load failed: " + response.status);
         }
 
         return response.text();
-
     })
-
-
-    .then(function(html){
-
-        const parser =
-            new DOMParser();
-
-        const home =
-            parser.parseFromString(
-                html,
-                "text/html"
-            );
-
-
-        /* =================================================
-           MOVIES
-        ================================================= */
-
-        const movies =
-            getArticles(
-                home.getElementById(
-                    "entertainmentSource"
-                )
-            );
-
-
-        /* =================================================
-           SPORTS
-        ================================================= */
-
-        const sports =
-            getArticles(
-                home.getElementById(
-                    "sportsSource"
-                )
-            );
-
-
-        /* =================================================
-           AP & TS FROM INDEX
-        ================================================= */
-
-        const indexApts =
-            getArticles(
-                home.getElementById(
-                    "aptsSource"
-                )
-            );
-
-
-        /*
-           LOCAL + INDEX
-        */
-
-        const apts =
-            uniqueArticles([
-                ...localApts,
-                ...indexApts
-            ]);
-
-
-        /* =================================================
-           BUSINESS
-        ================================================= */
-
-        const business =
-            getArticles(
-                home.getElementById(
-                    "businessSource"
-                )
-            );
-
-
-        /* =================================================
-           LATEST
-        ================================================= */
-
-        const latest =
-            getArticles(
-                home.getElementById(
-                    "latestNewsSource"
-                )
-            );
-
-
-        /* =================================================
-           TRENDING
-        ================================================= */
-
-        const trending =
-            getArticles(
-                home.getElementById(
-                    "trendingSource"
-                )
-            );
-
-
-        /* =================================================
-           MOST READ
-        ================================================= */
-
-        const mostRead =
-            getArticles(
-                home.getElementById(
-                    "mostReadSource"
-                )
-            );
-
-
-        /* =================================================
-           AP & TS
-        ================================================= */
-
-        showArticles(
-            "aptsGrid",
-            apts,
-            "AP & TS News అందుబాటులో లేవు."
+    .then(function (html) {
+        const home = new DOMParser().parseFromString(
+            html,
+            "text/html"
         );
 
+        /* OTHER HOMEPAGE SECTIONS: MAX 5 EACH */
+        renderHomepageSections(home);
 
-        /* =================================================
-           MOVIES
-        ================================================= */
-
-        showArticles(
-            "moviesGrid",
-            movies,
-            "Movies News అందుబాటులో లేవు."
+        /* LATEST NEWS: 3 ARTICLES */
+        const latestSource = home.querySelector(
+            "#latestNewsSource, #latestGrid, #latestSection"
         );
 
-
-        /* =================================================
-           SPORTS
-        ================================================= */
-
-        showArticles(
-            "sportsGrid",
-            sports,
-            "Sports News అందుబాటులో లేవు."
-        );
-
-
-        /* =================================================
-           BUSINESS
-        ================================================= */
-
-        showArticles(
-            "businessGrid",
-            business,
-            "Business News అందుబాటులో లేవు."
-        );
-
-
-        /* =================================================
-           MOST READ
-        ================================================= */
-
-        show(
-
-            "mostReadSidebar",
-
-            mostRead
-                .slice(0,8)
-                .map(mostReadHTML)
-                .join("")
-
-        );
-
-
-        /* =================================================
-           TRENDING
-        ================================================= */
-
-        show(
-
-            "trendingSidebar",
-
-            trending
-                .slice(0,8)
-                .map(sidebarHTML)
-                .join("")
-
-        );
-
-
-        /* =================================================
-           LATEST
-        ================================================= */
-
-        show(
-
+        renderSidebar(
             "latestSidebar",
-
-            latest
-                .slice(0,8)
-                .map(sidebarHTML)
-                .join("")
-
+            latestSource,
+            3,
+            "తాజా వార్తలు అందుబాటులో లేవు."
         );
 
-
-        /* =================================================
-           CONSOLE
-        ================================================= */
-
-        console.log(
-            "================================"
+        /* TRENDING NEWS: 3 ARTICLES */
+        const trendingSource = home.querySelector(
+            "#trendingSource, #trendingSidebar, #trendingSection"
         );
 
-        console.log(
-            "BS360 AP & TS PAGE LOADED"
+        renderSidebar(
+            "trendingSidebar",
+            trendingSource,
+            3,
+            "ట్రెండింగ్ వార్తలు అందుబాటులో లేవు."
         );
 
-        console.log(
-            "Local AP & TS:",
-            localApts.length
+        /* MOVIE REVIEWS: 3 ARTICLES */
+        const movieReviewsSource = home.querySelector(
+            ".movie-reviews-section"
         );
 
-        console.log(
-            "Index AP & TS:",
-            indexApts.length
+        renderSidebar(
+            "movieReviewsSidebar",
+            movieReviewsSource,
+            3,
+            "మూవీ రివ్యూస్ అందుబాటులో లేవు."
         );
-
-        console.log(
-            "Total AP & TS:",
-            apts.length
-        );
-
-        console.log(
-            "Movies:",
-            movies.length
-        );
-
-        console.log(
-            "Sports:",
-            sports.length
-        );
-
-        console.log(
-            "Business:",
-            business.length
-        );
-
-        console.log(
-            "Latest:",
-            latest.length
-        );
-
-        console.log(
-            "Trending:",
-            trending.length
-        );
-
-        console.log(
-            "Most Read:",
-            mostRead.length
-        );
-
-        console.log(
-            "================================"
-        );
-
     })
+    .catch(function (error) {
+        console.error("BS360 homepage articles error:", error);
 
-
-    .catch(function(error){
-
-        console.error(
-            "BS360 INDEX LOAD ERROR:",
-            error
+        const homepageOutput = document.getElementById(
+            "homepageArticlesContent"
         );
 
+        if (homepageOutput) {
+            homepageOutput.innerHTML = `
+                <div class="loading">
+                    హోమ్‌పేజీ వార్తలు లోడ్ కాలేదు.
+                    index.html ఫైల్‌ను తనిఖీ చేయండి.
+                </div>
+            `;
+        }
 
-        /*
-           AP & TS local articles already
-           loaded, so do NOT replace them.
-        */
+        [
+            "latestSidebar",
+            "trendingSidebar",
+            "movieReviewsSidebar"
+        ].forEach(function (id) {
+            const target = document.getElementById(id);
 
-
-        showArticles(
-            "moviesGrid",
-            [],
-            "Movies News అందుబాటులో లేవు."
-        );
-
-
-        showArticles(
-            "sportsGrid",
-            [],
-            "Sports News అందుబాటులో లేవు."
-        );
-
-
-        showArticles(
-            "businessGrid",
-            [],
-            "Business News అందుబాటులో లేవు."
-        );
-
-    });
-
-
-    /* =====================================================
-       DISABLE IMAGE DRAGGING
-    ===================================================== */
-
-    document
-        .querySelectorAll("img")
-        .forEach(function(img){
-
-            img.addEventListener(
-                "dragstart",
-                function(e){
-
-                    e.preventDefault();
-
-                }
-            );
-
+            if (target) {
+                target.innerHTML =
+                    "<p>వార్తలు లోడ్ కాలేదు. మళ్లీ ప్రయత్నించండి.</p>";
+            }
         });
-
+    });
 });
-
 </script>
 
-
 </body>
-
 </html>
