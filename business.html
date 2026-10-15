@@ -298,15 +298,7 @@ button {
     margin-top: 25px;
 }
 
-#homepageArticlesContent > * {
-    width: 100%;
-    min-width: 0;
-    max-width: none;
-}
 
-#homepageArticlesContent .homepage-news-layout {
-    display: block;
-}
 
 #homepageArticlesContent .top-news-group,
 #homepageArticlesContent .latest-trending-layout,
@@ -784,243 +776,31 @@ body.dark-mode .business-bottom-sections .sidebar-box {
 </footer>
 
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-    "use strict";
 
-    /* DARK MODE */
-    const themeButton = document.getElementById("themeToggle");
+function renderHomepageSections(home) {
+    const output = document.getElementById("homepageArticlesContent");
+    const sourceMain = home.querySelector("main.homepage-news-layout");
 
-    if (themeButton) {
-        themeButton.addEventListener("click", function () {
-            document.body.classList.toggle("dark-mode");
+    if (!output) return;
 
-            themeButton.textContent =
-                document.body.classList.contains("dark-mode")
-                    ? "☀️ Light"
-                    : "🌙 Dark";
-        });
+    if (!sourceMain) {
+        output.innerHTML =
+            '<div class="loading">హోమ్‌పేజీ వార్తలు కనిపించలేదు.</div>';
+        return;
     }
 
-    /* HELPERS */
-    function clean(value) {
-        return (value || "").replace(/\s+/g, " ").trim();
-    }
+    // హోమ్‌పేజీ మొత్తం layout‌ను దాని అసలు wrapper‌తో కాపీ చేయాలి
+    const clone = sourceMain.cloneNode(true);
 
-    function getImageSource(image) {
-        if (!image) return "";
-
-        return image.getAttribute("src") ||
-            image.getAttribute("data-src") ||
-            image.getAttribute("data-lazy-src") ||
-            image.getAttribute("data-original") ||
-            "";
-    }
-
-    function escapeHTML(value) {
-        return String(value || "").replace(/[&<>"']/g, function (char) {
-            return {
-                "&": "&amp;",
-                "<": "&lt;",
-                ">": "&gt;",
-                '"': "&quot;",
-                "'": "&#39;"
-            }[char];
-        });
-    }
-
-    function getArticle(element) {
-        if (!element) return null;
-
-        const link = element.matches("a[href]")
-            ? element
-            : element.querySelector("a[href]");
-
-        const image = element.querySelector("img");
-        const heading = element.querySelector(
-            "h1, h2, h3, h4, .news-title, .news-content p"
-        );
-
-        if (!link || !image) return null;
-
-        const href = link.getAttribute("href") || "";
-        const src = getImageSource(image);
-        const title = heading
-            ? clean(heading.textContent)
-            : clean(image.getAttribute("alt"));
-
-        if (!href || !src || !title) return null;
-
-        return {
-            href: href,
-            src: src,
-            title: title,
-            alt: image.getAttribute("alt") || title
-        };
-    }
-
-    function collectArticles(root) {
-        if (!root) return [];
-
-        const elements = [];
-
-        if (root.matches("article, a[href]")) {
-            elements.push(root);
-        }
-
-        root.querySelectorAll("article, a[href]").forEach(function (element) {
-            elements.push(element);
-        });
-
-        const results = [];
-        const seen = new Set();
-
-        elements.forEach(function (element) {
-            const item = getArticle(element);
-            if (!item) return;
-
-            const key = item.href + "|" + item.title;
-            if (seen.has(key)) return;
-
-            seen.add(key);
-            results.push(item);
-        });
-
-        return results;
-    }
-
-    function cardHTML(item) {
-        return `
-            <a class="homepage-card" href="${escapeHTML(item.href)}">
-                <img
-                    src="${escapeHTML(item.src)}"
-                    alt="${escapeHTML(item.alt)}"
-                    loading="lazy">
-                <h3>${escapeHTML(item.title)}</h3>
-            </a>
-        `;
-    }
-
-    function sidebarHTML(item) {
-        return `
-            <a class="sidebar-item" href="${escapeHTML(item.href)}">
-                <span class="sidebar-item-title">
-                    ${escapeHTML(item.title)}
-                </span>
-                <img
-                    src="${escapeHTML(item.src)}"
-                    alt="${escapeHTML(item.alt)}"
-                    loading="lazy">
-            </a>
-        `;
-    }
-
-    /*
-      COPY HOMEPAGE MAIN CONTENT IN ORIGINAL ORDER.
-      The Business section is excluded because the three
-      custom Business articles are already shown above.
-    */
-    function renderHomepageSections(home) {
-        const output = document.getElementById("homepageArticlesContent");
-        const sourceMain = home.querySelector("main.homepage-news-layout");
-
-        if (!output) return;
-
-        if (!sourceMain) {
-            output.innerHTML =
-                '<div class="loading">index.html లో main.homepage-news-layout కనిపించలేదు.</div>';
-            return;
-        }
-
-        output.innerHTML = "";
-
-        Array.from(sourceMain.children).forEach(function (section) {
-            if (section.matches("#businessSection")) {
-                return;
-            }
-
-            const clone = section.cloneNode(true);
-            output.appendChild(clone);
-        });
-
-        if (!output.children.length) {
-            output.innerHTML =
-                '<div class="loading">Homepage లో సెక్షన్లు కనిపించలేదు.</div>';
-        }
-    }
-
-    function renderSidebar(targetId, source, limit, message) {
-        const target = document.getElementById(targetId);
-        if (!target) return;
-
-        const items = collectArticles(source).slice(0, limit);
-
-        target.innerHTML = items.length
-            ? items.map(sidebarHTML).join("")
-            : `<p>${escapeHTML(message)}</p>`;
-    }
-
-    /* LOAD HOMEPAGE */
-    fetch("index.html?v=" + Date.now(), {
-        cache: "no-store"
-    })
-    .then(function (response) {
-        if (!response.ok) {
-            throw new Error("index.html లోడ్ కాలేదు: " + response.status);
-        }
-
-        return response.text();
-    })
-    .then(function (html) {
-        const home = new DOMParser().parseFromString(html, "text/html");
-
-        renderHomepageSections(home);
-
-        const latestSource = home.querySelector(
-            "#latestNewsSource, #latestGrid, #latestSection"
-        );
-
-        const trendingSource = home.querySelector(
-            "#trendingSource, #trendingSection"
-        );
-
-        const reviewsSource = home.querySelector(".movie-reviews-section");
-
-        renderSidebar(
-            "latestSidebar",
-            latestSource,
-            3,
-            "తాజా వార్తలు అందుబాటులో లేవు."
-        );
-
-        renderSidebar(
-            "trendingSidebar",
-            trendingSource,
-            3,
-            "ట్రెండింగ్ వార్తలు అందుబాటులో లేవు."
-        );
-
-        renderSidebar(
-            "movieReviewsSidebar",
-            reviewsSource,
-            3,
-            "మూవీ రివ్యూస్ అందుబాటులో లేవు."
-        );
-    })
-    .catch(function (error) {
-        console.error("BS 360 NEWS:", error);
-
-        const output = document.getElementById("homepageArticlesContent");
-
-        if (output) {
-            output.innerHTML = `
-                <div class="loading">
-                    Homepage Articles లోడ్ కాలేదు.
-                    index.html ఫైల్‌ను తనిఖీ చేయండి.
-                </div>
-            `;
-        }
+    // Business పేజీలో ప్రత్యేకంగా ఉన్న 3 articles‌ను మళ్లీ చూపించకూడదు
+    clone.querySelectorAll("#businessSection").forEach(function (section) {
+        section.remove();
     });
-});
+
+    // అసలు homepage layout‌ను అలాగే ఉంచాలి
+    output.replaceChildren(clone);
+}
+
 </script>
 <link rel="stylesheet" href="style.css?v=20261011">
 <script src="script.js?v=20260918"></script>
