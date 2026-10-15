@@ -284,216 +284,152 @@ body.dark-mode .category-ad{background:#181818;color:#aaa}
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
- "use strict";
+  "use strict";
 
- const HOME = new URL("index.html", window.location.href).href;
- const MOVIES = new URL("MOVIES.html", window.location.href).href;
+  const HOME = new URL("index.html", window.location.href).href;
+  const MOVIES = new URL("MOVIES.html", window.location.href).href;
 
- const themeButton = document.getElementById("themeToggle");
- const menuButton = document.getElementById("mobileMenuToggle");
- const navLinks = document.getElementById("navLinks");
+  const themeButton = document.getElementById("themeToggle");
+  const menuButton = document.getElementById("mobileMenuToggle");
+  const navLinks = document.getElementById("navLinks");
 
- if (themeButton) {
-  themeButton.addEventListener("click", function () {
-   const dark = document.body.classList.toggle("dark-mode");
-   themeButton.textContent = dark ? "☀️ Light" : "🌙 Dark";
-   try {
-    localStorage.setItem("bs360-theme", dark ? "dark" : "light");
-   } catch (e) {}
-  });
+  /* DARK MODE */
+  if (themeButton) {
+    try {
+      if (localStorage.getItem("bs360-theme") === "dark") {
+        document.body.classList.add("dark-mode");
+        themeButton.textContent = "☀️ Light";
+      }
+    } catch (e) {}
 
-  try {
-   if (localStorage.getItem("bs360-theme") === "dark") {
-    document.body.classList.add("dark-mode");
-    themeButton.textContent = "☀️ Light";
-   }
-  } catch (e) {}
- }
+    themeButton.addEventListener("click", function () {
+      const dark = document.body.classList.toggle("dark-mode");
+      themeButton.textContent = dark ? "☀️ Light" : "🌙 Dark";
 
- if (menuButton && navLinks) {
-  menuButton.addEventListener("click", function () {
-   const open = navLinks.classList.toggle("mobile-open");
-   menuButton.setAttribute("aria-expanded", String(open));
-  });
- }
-
- function absoluteURL(value, base) {
-  if (!value) return "";
-  try {
-   return new URL(value, base).href;
-  } catch (e) {
-   return "";
-  }
- }
-
- function readHomeArticles(doc, sourceId) {
-  const source = doc.getElementById(sourceId);
-  if (!source) {
-   console.warn("Homepage source ID not found:", sourceId);
-   return [];
+      try {
+        localStorage.setItem("bs360-theme", dark ? "dark" : "light");
+      } catch (e) {}
+    });
   }
 
-  const articles = [];
-  const seen = new Set();
-
-  source.querySelectorAll("article, .news-card, .news-item, .post, li, a").forEach(function (card) {
-   const link = card.matches("a[href]") ? card : card.querySelector("a[href]");
-   const img = card.querySelector("img");
-   if (!link || !img) return;
-
-   const heading = card.querySelector("h1,h2,h3,h4,.post-title,.news-title,.title,.news-content p");
-   const title = (heading?.textContent || img.alt || link.textContent || "").replace(/\s+/g, " ").trim();
-
-   const url = absoluteURL(link.getAttribute("href"), HOME);
-   const image = absoluteURL(
-    img.getAttribute("data-src") ||
-    img.getAttribute("data-lazy-src") ||
-    img.getAttribute("src"),
-    HOME
-   );
-
-   if (!title || !url || !image) return;
-   try {
-    if (new URL(url).origin !== new URL(HOME).origin) return;
-   } catch (e) {
-    return;
-   }
-
-   if (seen.has(url)) return;
-   seen.add(url);
-   articles.push({title: title, url: url, image: image, alt: img.alt || title});
-  });
-
-  return articles;
- }
-
- function readMovieArticles(doc) {
-  const source = doc.getElementById("localMoviesSource");
-  if (!source) {
-   console.warn("MOVIES.html లో localMoviesSource ID దొరకలేదు.");
-   return [];
+  /* MOBILE MENU */
+  if (menuButton && navLinks) {
+    menuButton.addEventListener("click", function () {
+      const opened = navLinks.classList.toggle("mobile-open");
+      menuButton.setAttribute("aria-expanded", String(opened));
+    });
   }
 
-  const articles = [];
-  const seen = new Set();
+  /* URL FIX */
+  function absoluteURL(value, base) {
+    if (!value) return "";
 
-  source.querySelectorAll(".news-item.post").forEach(function (item) {
-   const img = item.querySelector("img");
-   const heading = item.querySelector(".news-content p,.news-content h3,h2,h3");
-   const title = (heading?.textContent || img?.alt || "").replace(/\s+/g, " ").trim();
-
-   const url = absoluteURL(item.getAttribute("data-url"), MOVIES);
-   const image = img ? absoluteURL(
-    img.getAttribute("data-src") ||
-    img.getAttribute("data-lazy-src") ||
-    img.getAttribute("src"),
-    MOVIES
-   ) : "";
-
-   if (!title || !url || !image) return;
-   if (seen.has(url)) return;
-   seen.add(url);
-
-   articles.push({title: title, url: url, image: image, alt: img.alt || title});
-  });
-
-  return articles;
- }
-
- function renderArticles(targetId, articles, limit) {
-  const target = document.getElementById(targetId);
-  if (!target) return;
-
-  target.replaceChildren();
-
-  const list = limit ? articles.slice(0, limit) : articles;
-
-  if (!list.length) {
-   const message = document.createElement("p");
-   message.textContent = "ప్రస్తుతం వార్తలు అందుబాటులో లేవు.";
-   message.style.color = "#777";
-   target.appendChild(message);
-   return;
+    try {
+      return new URL(value, base).href;
+    } catch (e) {
+      return "";
+    }
   }
 
-  list.forEach(function (item) {
-   const link = document.createElement("a");
-   link.className = "news-card";
-   link.href = item.url;
+  /*
+   * HOMEPAGE ARTICLES
+   * Duplicate IDs ఉన్నా అన్ని sections చదువుతుంది.
+   */
+  function readHomeArticles(doc, sourceIds) {
+    const articles = [];
+    const seen = new Set();
 
-   const img = document.createElement("img");
-   img.src = item.image;
-   img.alt = item.alt || item.title;
-   img.loading = "lazy";
+    sourceIds.forEach(function (sourceId) {
+      const sources = Array.from(
+        doc.querySelectorAll('[id="' + sourceId + '"]')
+      );
 
-   const title = document.createElement("h3");
-   title.textContent = item.title;
+      sources.forEach(function (source) {
+        const cards = source.querySelectorAll(
+          "article, .news-card, .news-item, .post, " +
+          ".bottom-news-card, .top-side-article, li, a"
+        );
 
-   link.append(img, title);
-   target.appendChild(link);
-  });
- }
+        cards.forEach(function (card) {
+          const link = card.matches("a[href]")
+            ? card
+            : card.querySelector("a[href]");
 
- function mergeUnique(first, second) {
-  const all = [];
-  const seen = new Set();
+          if (!link) return;
 
-  first.concat(second).forEach(function (item) {
-   if (!item.url || seen.has(item.url)) return;
-   seen.add(item.url);
-   all.push(item);
-  });
+          const img =
+            card.querySelector("img") ||
+            link.querySelector("img");
 
-  return all;
- }
+          if (!img) return;
 
- async function loadArticles() {
-  try {
-   const responses = await Promise.all([
-    fetch(HOME + "?v=" + Date.now(), {cache: "no-store"}),
-    fetch(MOVIES + "?v=" + Date.now(), {cache: "no-store"})
-   ]);
+          const heading = card.querySelector(
+            "h1, h2, h3, h4, .post-title, " +
+            ".news-title, .title, .news-content p"
+          );
 
-   if (!responses[0].ok) throw new Error("index.html load failed");
-   if (!responses[1].ok) throw new Error("MOVIES.html load failed");
+          const title = (
+            heading?.textContent ||
+            img.getAttribute("alt") ||
+            link.textContent ||
+            ""
+          ).replace(/\s+/g, " ").trim();
 
-   const html = await Promise.all([
-    responses[0].text(),
-    responses[1].text()
-   ]);
+          const url = absoluteURL(
+            link.getAttribute("href"),
+            HOME
+          );
 
-   const parser = new DOMParser();
-   const homeDoc = parser.parseFromString(html[0], "text/html");
-   const moviesDoc = parser.parseFromString(html[1], "text/html");
+          const image = absoluteURL(
+            img.getAttribute("data-src") ||
+            img.getAttribute("data-lazy-src") ||
+            img.getAttribute("src"),
+            HOME
+          );
 
-   const sports = readHomeArticles(homeDoc, "sportsSource");
-   const entertainment = readHomeArticles(homeDoc, "entertainmentSource");
-   const business = readHomeArticles(homeDoc, "businessSource");
-   const apts = readHomeArticles(homeDoc, "aptsSource");
-   const national = readHomeArticles(homeDoc, "nationalSection");
-   const latest = readHomeArticles(homeDoc, "latestNewsSource");
-   const trending = readHomeArticles(homeDoc, "trendingSource");
-   const movieArticles = readMovieArticles(moviesDoc);
+          if (!title || !url || !image) return;
 
-   renderArticles("sportsGrid", sports, 5);
-   renderArticles("cinemaGrid", entertainment, 10);
-   renderArticles("businessNewsGrid", business, 10);
-   renderArticles("aptsGrid", apts, 10);
-   renderArticles("movieReviewsGrid", mergeUnique(movieArticles, entertainment), 10);
+          try {
+            if (new URL(url).origin !== new URL(HOME).origin) {
+              return;
+            }
+          } catch (e) {
+            return;
+          }
 
-   renderArticles("nationalGrid", national, 5);
-   renderArticles("latestSidebar", latest, 5);
-   renderArticles("trendingSidebar", trending, 5);
-   renderArticles("movieReviewsSidebar", movieArticles, 5);
+          if (seen.has(url)) return;
 
-   console.log("BS 360 NEWS: category articles loaded");
-  } catch (error) {
-   console.error("BS 360 NEWS article loading error:", error);
+          seen.add(url);
+
+          articles.push({
+            title: title,
+            url: url,
+            image: image,
+            alt: img.alt || title
+          });
+        });
+      });
+    });
+
+    return articles;
   }
- }
 
- loadArticles();
-});
+  /* MOVIES PAGE ARTICLES */
+  function readMovieArticles(doc) {
+    const articles = [];
+    const seen = new Set();
+
+    const sources = Array.from(
+      doc.querySelectorAll(
+        '[id="localMoviesSource"], [id="moviesGrid"], ' +
+        '[id="cinemaGrid"], [id="entertainmentSection"]'
+      )
+    );
+
+    sources.forEach(function (source) {
+      source.querySelectorAll(
+        ".news-item.post, article, .news-card, .movie-card, a[href]"
+      ).for
 </script>
 
 </body>
