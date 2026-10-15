@@ -635,6 +635,119 @@ body.dark-mode .most-read-item {
     }
 }
 
+
+
+
+
+
+
+    
+/* FIX: USE FULL AVAILABLE WIDTH */
+.main-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: 18px;
+    width: 100%;
+    align-items: start;
+}
+
+.movies-main {
+    width: 100%;
+    min-width: 0;
+}
+
+/* DESKTOP: 5 CARDS PER ROW */
+.movies-grid,
+.homepage-cards {
+    display: grid !important;
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+    gap: 12px;
+    width: 100%;
+    align-items: stretch;
+}
+
+.movie-card,
+.homepage-card {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.movie-card img,
+.homepage-card img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    object-fit: cover;
+}
+
+/* TABLET */
+@media (min-width: 601px) and (max-width: 1100px) {
+    .main-layout {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .movies-grid,
+    .homepage-cards {
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    }
+}
+
+/* MOBILE: TEXT LEFT, IMAGE RIGHT */
+@media (max-width: 600px) {
+    .main-layout {
+        display: block;
+    }
+
+    .movies-grid,
+    .homepage-cards {
+        grid-template-columns: minmax(0, 1fr) !important;
+        gap: 10px;
+    }
+
+    .movie-card,
+    .homepage-card {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center;
+        min-height: 90px;
+    }
+
+    .movie-card img,
+    .homepage-card img {
+        order: 2;
+        width: 110px;
+        min-width: 110px;
+        height: 80px;
+        aspect-ratio: auto;
+        object-fit: cover;
+    }
+
+    .movie-card-content {
+        order: 1;
+        flex: 1;
+        min-width: 0;
+        padding: 8px;
+    }
+
+    .movie-card-title {
+        font-size: 13px;
+        padding: 0;
+    }
+
+    .homepage-card h3 {
+        order: 1;
+        flex: 1;
+        min-width: 0;
+        padding: 8px;
+        font-size: 13px;
+    }
+}
+
+
+    
 </style>
 </head>
 
