@@ -1,4 +1,4 @@
-
+```html
 <!DOCTYPE html>
 <html lang="te">
 <head>
@@ -10,7 +10,7 @@
 
 <title>Business News | BS 360 NEWS</title>
 
-<link rel="icon" href="dp.png.png">
+<link rel="icon" type="image/png" href="dp.png.png">
 <link rel="canonical" href="https://bs360news.com/business.html">
 
 <style>
@@ -47,7 +47,6 @@ button {
     font: inherit;
 }
 
-/* ================= HEADER ================= */
 .top-header,
 .nav-bar {
     background: #fff;
@@ -65,6 +64,7 @@ button {
     margin-right: auto;
 }
 
+/* ================= HEADER ================= */
 .header-inner {
     min-height: 68px;
     display: flex;
@@ -169,6 +169,7 @@ button {
     font-weight: 900;
 }
 
+/* ================= MAIN LAYOUT ================= */
 .main-layout {
     display: grid;
     grid-template-columns: minmax(0, 1fr) 320px;
@@ -178,6 +179,7 @@ button {
 
 .movies-main {
     min-width: 0;
+    width: 100%;
 }
 
 /* ================= SECTION HEADINGS ================= */
@@ -209,10 +211,7 @@ button {
     padding-bottom: 7px;
 }
 
-/* ==================================================
-   MAIN BUSINESS NEWS
-   DESKTOP: 5 CARDS PER ROW
-================================================== */
+/* ================= ARTICLE GRIDS ================= */
 .movies-grid,
 .homepage-cards {
     display: grid;
@@ -222,7 +221,7 @@ button {
     align-items: start;
 }
 
-/* ================= BUSINESS CARD ================= */
+/* ================= BUSINESS CARDS ================= */
 .movie-card,
 .homepage-card {
     display: block;
@@ -231,7 +230,7 @@ button {
     background: #fff;
     border-radius: 6px;
     overflow: hidden;
-    transition: transform 0.2s ease;
+    transition: transform .2s ease;
 }
 
 .movie-card:hover,
@@ -246,6 +245,7 @@ button {
     height: auto;
     aspect-ratio: 16 / 9;
     object-fit: cover;
+    background: #e5e7eb;
 }
 
 .movie-card-content {
@@ -293,9 +293,9 @@ button {
     border-bottom: 3px solid #e50914;
 }
 
-.sidebar-item,
-.most-read-item {
+.sidebar-item {
     display: flex;
+    flex-direction: row;
     gap: 10px;
     padding: 10px 0;
     border-bottom: 1px solid #e5e7eb;
@@ -303,27 +303,21 @@ button {
     min-width: 0;
 }
 
-.sidebar-item:last-child,
-.most-read-item:last-child {
+.sidebar-item:last-child {
     border-bottom: 0;
 }
 
 .sidebar-item img {
+    order: 2;
     width: 100px;
     height: 65px;
     border-radius: 5px;
     flex-shrink: 0;
 }
 
-.most-read-item img {
-    width: 95px;
-    height: 65px;
-    border-radius: 5px;
-    flex-shrink: 0;
-}
-
-.sidebar-item-title,
-.most-read-title {
+.sidebar-item-title {
+    order: 1;
+    flex: 1;
     min-width: 0;
     font-size: 13px;
     line-height: 1.4;
@@ -335,14 +329,20 @@ button {
     overflow-wrap: anywhere;
 }
 
+.sidebar-item:hover .sidebar-item-title,
+.homepage-card:hover h3 {
+    color: #075aaa;
+}
+
 /* ================= LOADING ================= */
 .loading {
     background: #fff;
-    padding: 20px;
+    padding: 15px;
     text-align: center;
     color: #666;
     grid-column: 1 / -1;
     border-radius: 6px;
+    font-size: 14px;
 }
 
 /* ================= FOOTER ================= */
@@ -411,38 +411,34 @@ body.dark-mode #themeToggle {
     border-color: #4b5563;
 }
 
-body.dark-mode .nav-inner a,
 body.dark-mode .breaking-text,
 body.dark-mode .section-head h2,
 body.dark-mode .movie-card-title,
 body.dark-mode .sidebar-title,
 body.dark-mode .sidebar-item-title,
-body.dark-mode .most-read-title,
 body.dark-mode .homepage-section > h2,
 body.dark-mode .homepage-card h3 {
     color: #f9fafb;
 }
 
-body.dark-mode .sidebar-item,
-body.dark-mode .most-read-item {
+body.dark-mode .sidebar-item {
     border-color: #374151;
 }
 
 /* ================= TABLET ================= */
 @media (min-width: 601px) and (max-width: 1100px) {
     .main-layout {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
     }
 
     .movies-grid,
     .homepage-cards {
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 12px;
     }
 
     .article-sidebar {
         display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         align-items: start;
     }
 }
@@ -490,98 +486,23 @@ body.dark-mode .most-read-item {
         display: block;
     }
 
-    /* MOBILE: 2 CARDS PER ROW */
+    /* MOBILE: ONE ARTICLE PER ROW */
     .movies-grid,
     .homepage-cards {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: minmax(0, 1fr);
         gap: 10px;
     }
 
+    /* TEXT LEFT, IMAGE RIGHT */
     .movie-card,
     .homepage-card {
-        display: block;
-        width: 100%;
-        min-width: 0;
-    }
-
-    .movie-card img,
-    .homepage-card img {
-        width: 100%;
-        height: auto;
-        aspect-ratio: 16 / 9;
-    }
-
-    .movie-card-content {
-        width: 100%;
-        padding: 8px;
-    }
-
-    .movie-card-title,
-    .homepage-card h3 {
-        font-size: 13px;
-        line-height: 1.45;
-        padding: 7px;
-        -webkit-line-clamp: 4;
-    }
-
-    .article-sidebar {
         display: flex;
-        margin-top: 22px;
-        gap: 12px;
-    }
-
-    .sidebar-box {
-        padding: 11px;
-    }
-
-    .sidebar-title {
-        font-size: 17px;
-    }
-
-    .sidebar-item img,
-    .most-read-item img {
-        width: 90px;
-        height: 62px;
-    }
-
-    .footer-inner {
-        grid-template-columns: 1fr;
-        gap: 22px;
-    }
-
-    .footer-links {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-    }
-}
-
-
-  
-/* MOBILE: LEFT TEXT + RIGHT IMAGE */
-@media (max-width: 600px) {
-
-    .movies-grid,
-    .homepage-cards {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 10px;
-    }
-
-    .movie-card,
-    .homepage-card {
-        display: flex !important;
-        flex-direction: row !important;
+        flex-direction: row;
         align-items: center;
         width: 100%;
-        min-width: 0;
         min-height: 95px;
-        background: #fff;
-        border-radius: 6px;
-        overflow: hidden;
     }
 
-    /* IMAGE RIGHT SIDE */
     .movie-card img,
     .homepage-card img {
         order: 2;
@@ -594,38 +515,52 @@ body.dark-mode .most-read-item {
         flex-shrink: 0;
     }
 
-    /* TEXT LEFT SIDE */
     .movie-card-content {
         order: 1;
         flex: 1;
         min-width: 0;
-        width: auto;
         padding: 8px;
     }
 
-    .movie-card-title {
-        font-size: 13px;
-        line-height: 1.5;
-        margin: 0;
-        padding: 0;
-        display: -webkit-box;
-        -webkit-line-clamp: 4;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-    }
-
+    .movie-card-title,
     .homepage-card h3 {
         order: 1;
         flex: 1;
         min-width: 0;
-        margin: 0;
         padding: 8px;
         font-size: 13px;
         line-height: 1.5;
-        display: -webkit-box;
         -webkit-line-clamp: 4;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
+    }
+
+    .article-sidebar {
+        display: flex;
+        flex-direction: column;
+        margin-top: 22px;
+        gap: 12px;
+    }
+
+    .sidebar-box {
+        padding: 11px;
+    }
+
+    .sidebar-title {
+        font-size: 17px;
+    }
+
+    .sidebar-item img {
+        width: 100px;
+        height: 65px;
+    }
+
+    .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    .footer-links {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
     }
 
     body.dark-mode .movie-card,
@@ -634,215 +569,6 @@ body.dark-mode .most-read-item {
         color: #fff;
     }
 }
-
-
-
-
-
-
-
-    
-/* FIX: USE FULL AVAILABLE WIDTH */
-.main-layout {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 300px;
-    gap: 18px;
-    width: 100%;
-    align-items: start;
-}
-
-.movies-main {
-    width: 100%;
-    min-width: 0;
-}
-
-/* DESKTOP: 5 CARDS PER ROW */
-.movies-grid,
-.homepage-cards {
-    display: grid !important;
-    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
-    gap: 12px;
-    width: 100%;
-    align-items: stretch;
-}
-
-.movie-card,
-.homepage-card {
-    display: block;
-    width: 100%;
-    min-width: 0;
-    overflow: hidden;
-}
-
-.movie-card img,
-.homepage-card img {
-    display: block;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    height: auto;
-    object-fit: cover;
-}
-
-/* TABLET */
-@media (min-width: 601px) and (max-width: 1100px) {
-    .main-layout {
-        grid-template-columns: minmax(0, 1fr);
-    }
-
-    .movies-grid,
-    .homepage-cards {
-        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-    }
-}
-
-/* MOBILE: TEXT LEFT, IMAGE RIGHT */
-@media (max-width: 600px) {
-    .main-layout {
-        display: block;
-    }
-
-    .movies-grid,
-    .homepage-cards {
-        grid-template-columns: minmax(0, 1fr) !important;
-        gap: 10px;
-    }
-
-    .movie-card,
-    .homepage-card {
-        display: flex !important;
-        flex-direction: row !important;
-        align-items: center;
-        min-height: 90px;
-    }
-
-    .movie-card img,
-    .homepage-card img {
-        order: 2;
-        width: 110px;
-        min-width: 110px;
-        height: 80px;
-        aspect-ratio: auto;
-        object-fit: cover;
-    }
-
-    .movie-card-content {
-        order: 1;
-        flex: 1;
-        min-width: 0;
-        padding: 8px;
-    }
-
-    .movie-card-title {
-        font-size: 13px;
-        padding: 0;
-    }
-
-    .homepage-card h3 {
-        order: 1;
-        flex: 1;
-        min-width: 0;
-        padding: 8px;
-        font-size: 13px;
-    }
-}
-
-
-
-
-
-
-    
-/* FINAL FIX: REMOVE RIGHT-SIDE EMPTY SPACE */
-.page {
-    width: 96% !important;
-    max-width: 1400px !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-}
-
-.main-layout {
-    display: grid !important;
-    grid-template-columns: minmax(0, 1fr) !important;
-    gap: 18px !important;
-    width: 100% !important;
-}
-
-.movies-main {
-    width: 100% !important;
-    max-width: none !important;
-    min-width: 0 !important;
-}
-
-#homepageArticlesContent,
-#businessGrid,
-.homepage-section {
-    width: 100% !important;
-    max-width: none !important;
-}
-
-.movies-grid,
-.homepage-cards {
-    display: grid !important;
-    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
-    width: 100% !important;
-    max-width: none !important;
-    gap: 12px !important;
-}
-
-.article-sidebar {
-    display: grid !important;
-    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-    width: 100% !important;
-    margin-top: 10px;
-}
-
-@media (min-width: 601px) and (max-width: 1100px) {
-    .movies-grid,
-    .homepage-cards {
-        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-    }
-}
-
-@media (max-width: 600px) {
-    .page {
-        width: 94% !important;
-    }
-
-    .movies-grid,
-    .homepage-cards {
-        grid-template-columns: 1fr !important;
-    }
-
-    .article-sidebar {
-        grid-template-columns: 1fr !important;
-    }
-
-    .movie-card,
-    .homepage-card {
-        display: flex !important;
-        flex-direction: row !important;
-        align-items: center;
-    }
-
-    .movie-card img,
-    .homepage-card img {
-        order: 2;
-        width: 110px;
-        min-width: 110px;
-        height: 80px;
-        aspect-ratio: auto;
-    }
-
-    .movie-card-content,
-    .homepage-card h3 {
-        order: 1;
-        flex: 1;
-        min-width: 0;
-    }
-}
-
-
-    
 </style>
 </head>
 
@@ -887,9 +613,10 @@ body.dark-mode .most-read-item {
 
     <div class="main-layout">
 
+        <!-- ================= MAIN CONTENT ================= -->
         <div class="movies-main">
 
-            <!-- ================= BUSINESS ARTICLES ================= -->
+            <!-- BUSINESS ARTICLES -->
             <section class="section">
                 <div class="section-head">
                     <h2><span>బిజినెస్</span> వార్తలు</h2>
@@ -901,8 +628,7 @@ body.dark-mode .most-read-item {
                         <img
                             src="phonepe-upi-mdr-expansion.png"
                             alt="PhonePe UPI MDR"
-                            loading="lazy"
-                        >
+                            loading="lazy">
                         <div class="movie-card-content">
                             <h3 class="movie-card-title">
                                 UPIలో MDR మార్పులు.. గ్రామీణ మార్కెట్‌పై PhonePe భారీ ఫోకస్
@@ -914,8 +640,7 @@ body.dark-mode .most-read-item {
                         <img
                             src="containe-technologies-rights-issue.png"
                             alt="కంటెయిన్ టెక్నాలజీస్ రైట్స్ ఇష్యూ"
-                            loading="lazy"
-                        >
+                            loading="lazy">
                         <div class="movie-card-content">
                             <h3 class="movie-card-title">
                                 కంటెయిన్ టెక్నాలజీస్ రైట్స్ ఇష్యూ.. రూ.20.98 కోట్ల సమీకరణకు నేడు చివరి రోజు
@@ -927,8 +652,7 @@ body.dark-mode .most-read-item {
                         <img
                             src="nirmala-sitharaman-economy-growth.jpg"
                             alt="భారత ఆర్థిక వ్యవస్థ"
-                            loading="lazy"
-                        >
+                            loading="lazy">
                         <div class="movie-card-content">
                             <h3 class="movie-card-title">
                                 దాదాపు 8 శాతం వృద్ధి దిశగా భారత ఆర్థిక వ్యవస్థ.. నిర్మలా సీతారామన్ కీలక వ్యాఖ్యలు
@@ -939,11 +663,9 @@ body.dark-mode .most-read-item {
                 </div>
             </section>
 
-            <!-- ================= HOMEPAGE ARTICLES ================= -->
+            <!-- HOMEPAGE SECTIONS: MAXIMUM 5 ARTICLES EACH -->
             <div id="homepageArticlesContent">
-                <div class="loading">
-                    హోమ్‌పేజీ వార్తలు లోడ్ అవుతున్నాయి...
-                </div>
+                <div class="loading">హోమ్‌పేజీ వార్తలు లోడ్ అవుతున్నాయి...</div>
             </div>
 
         </div>
@@ -965,13 +687,12 @@ body.dark-mode .most-read-item {
                 </div>
             </section>
 
-<section class="sidebar-box">
-    <div class="sidebar-title"> మూవీ రివ్యూస్</div>
-    <div id="movieReviewsSidebar">
-        <div class="loading">మూవీ రివ్యూస్ లోడ్ అవుతున్నాయి...</div>
-    </div>
-</section>
-
+            <section class="sidebar-box">
+                <div class="sidebar-title">మూవీ రివ్యూస్</div>
+                <div id="movieReviewsSidebar">
+                    <div class="loading">మూవీ రివ్యూస్ లోడ్ అవుతున్నాయి...</div>
+                </div>
+            </section>
 
         </aside>
 
@@ -980,7 +701,6 @@ body.dark-mode .most-read-item {
 
 <!-- ================= FOOTER ================= -->
 <footer class="site-footer">
-
     <div class="footer-inner">
 
         <div class="footer-column">
@@ -1007,11 +727,10 @@ body.dark-mode .most-read-item {
     <div class="copyright">
         © 2026 BS 360 NEWS. All Rights Reserved.
     </div>
-
 </footer>
-<script>
-<!-- ================= JAVASCRIPT ================= -->
 
+<!-- ================= JAVASCRIPT ================= -->
+<script>
 document.addEventListener("DOMContentLoaded", function () {
     "use strict";
 
@@ -1030,25 +749,50 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /* ================= HELPERS ================= */
-    const clean = value =>
-        (value || "").replace(/\s+/g, " ").trim();
+    function clean(value) {
+        return (value || "").replace(/\s+/g, " ").trim();
+    }
 
+    function getImageSource(image) {
+        if (!image) return "";
+
+        return image.getAttribute("src") ||
+            image.getAttribute("data-src") ||
+            image.getAttribute("data-lazy-src") ||
+            image.getAttribute("data-original") ||
+            "";
+    }
+
+    /*
+      Supports regular article links and movie-review cards
+      that use onclick="location.href='...'"
+    */
     function getArticle(article) {
+        if (!article) return null;
+
         const link = article.querySelector("a[href]");
         const image = article.querySelector("img");
         const heading = article.querySelector(
-            "h1, h2, h3, h4, .news-content p, .news-title, p"
+            "h1, h2, h3, h4, .news-title, .news-content p, p"
         );
 
-        if (!link || !image || !heading) return null;
+        let href = link ? link.getAttribute("href") : "";
 
-        const href = link.getAttribute("href");
-        const src =
-            image.getAttribute("src") ||
-            image.getAttribute("data-src") ||
-            image.getAttribute("data-lazy-src");
+        if (!href) {
+            const onclick = article.getAttribute("onclick") || "";
+            const match = onclick.match(
+                /location\.href\s*=\s*['"]([^'"]+)['"]/
+            );
 
-        const title = clean(heading.textContent);
+            if (match) href = match[1];
+        }
+
+        const src = getImageSource(image);
+        let title = heading ? clean(heading.textContent) : "";
+
+        if (!title && image) {
+            title = clean(image.getAttribute("alt"));
+        }
 
         if (!href || !src || !title) return null;
 
@@ -1067,7 +811,21 @@ document.addEventListener("DOMContentLoaded", function () {
         const result = [];
         const seen = new Set();
 
+        /*
+          The homepage sections contain article elements.
+          Include the root itself when it is an article.
+        */
+        const articles = [];
+
+        if (root.matches && root.matches("article")) {
+            articles.push(root);
+        }
+
         root.querySelectorAll("article").forEach(function (article) {
+            articles.push(article);
+        });
+
+        articles.forEach(function (article) {
             const item = getArticle(article);
             if (!item) return;
 
@@ -1082,47 +840,48 @@ document.addEventListener("DOMContentLoaded", function () {
         return result;
     }
 
-    /* ================= CARD HTML ================= */
+    /* ================= HTML ESCAPE ================= */
+    function escapeHTML(value) {
+        return String(value || "").replace(/[&<>"']/g, function (char) {
+            return {
+                "&": "&amp;",
+                "<": "&lt;",
+                ">": "&gt;",
+                '"': "&quot;",
+                "'": "&#39;"
+            }[char];
+        });
+    }
+
+    /* ================= CREATE HOMEPAGE CARD ================= */
     function cardHTML(item) {
         return `
-            <a class="homepage-card" href="${item.href}">
+            <a class="homepage-card" href="${escapeHTML(item.href)}">
                 <img
-                    src="${item.src}"
-                    alt="${item.alt}"
-                    loading="lazy"
-                >
-                <h3>${item.title}</h3>
+                    src="${escapeHTML(item.src)}"
+                    alt="${escapeHTML(item.alt)}"
+                    loading="lazy">
+                <h3>${escapeHTML(item.title)}</h3>
             </a>
         `;
     }
 
-    /* ================= SIDEBAR HTML ================= */
+    /* ================= CREATE SIDEBAR CARD ================= */
     function sidebarHTML(item) {
         return `
-            <a class="sidebar-item" href="${item.href}">
+            <a class="sidebar-item" href="${escapeHTML(item.href)}">
+                <span class="sidebar-item-title">
+                    ${escapeHTML(item.title)}
+                </span>
                 <img
-                    src="${item.src}"
-                    alt="${item.alt}"
-                    loading="lazy"
-                >
-                <span class="sidebar-item-title">${item.title}</span>
+                    src="${escapeHTML(item.src)}"
+                    alt="${escapeHTML(item.alt)}"
+                    loading="lazy">
             </a>
         `;
     }
 
-    /* ================= SIDEBAR RENDER ================= */
-    function renderSidebar(targetId, source, limit) {
-        const target = document.getElementById(targetId);
-        if (!target) return;
-
-        const items = collectArticles(source).slice(0, limit);
-
-        target.innerHTML = items.length
-            ? items.map(sidebarHTML).join("")
-            : "<p>ప్రస్తుతం వార్తలు అందుబాటులో లేవు.</p>";
-    }
-
-    /* ================= HOMEPAGE SECTIONS ================= */
+    /* ================= RENDER HOMEPAGE SECTIONS ================= */
     function renderHomepageSections(home) {
         const output = document.getElementById(
             "homepageArticlesContent"
@@ -1133,25 +892,72 @@ document.addEventListener("DOMContentLoaded", function () {
         output.innerHTML = "";
 
         const sections = [
-            { title: "TOP NEWS", selector: ".top-news-group" },
-            { title: "LATEST NEWS", selector: "#latestSection" },
-            { title: "TRENDING NEWS", selector: "#trendingSection" },
-            { title: "ENTERTAINMENT NEWS", selector: "#entertainmentSection" },
-            { title: "NATIONAL + WORLD NEWS", selector: ".national-world-layout" },
-            { title: "BIGG BOSS", selector: ".bigboss-section" },
-            { title: "SPORTS NEWS", selector: "#sportsSection" },
-            { title: "WORLD NEWS", selector: "#worldSection" },
-            { title: "AP & TS NEWS", selector: "#aptsSection" },
-            { title: "MOVIE REVIEWS", selector: ".movie-reviews-section" },
-            { title: "BUSINESS NEWS", selector: "#businessSection" }
+            {
+                title: "TOP NEWS",
+                selector: ".top-news-group"
+            },
+            {
+                title: "LATEST NEWS",
+                selector: "#latestSection"
+            },
+            {
+                title: "TRENDING NEWS",
+                selector: "#trendingSection"
+            },
+            {
+                title: "ENTERTAINMENT NEWS",
+                selector: "#entertainmentSection"
+            },
+            {
+                title: "NATIONAL + WORLD NEWS",
+                selector: ".national-world-layout"
+            },
+            {
+                title: "BIGG BOSS",
+                selector: ".bigboss-section"
+            },
+            {
+                title: "SPORTS NEWS",
+                selector: "#sportsSection"
+            },
+            {
+                title: "WORLD NEWS",
+                selector: "#worldSection"
+            },
+            {
+                title: "AP & TS NEWS",
+                selector: "#aptsSection"
+            },
+            {
+                title: "MOVIE REVIEWS",
+                selector: ".movie-reviews-section"
+            },
+            {
+                title: "BUSINESS NEWS",
+                selector: "#businessSection"
+            }
         ];
+
+        const alreadyRendered = new Set();
 
         sections.forEach(function (section) {
             const source = home.querySelector(section.selector);
+
             if (!source) return;
 
-            const articles = collectArticles(source);
+            const articles = collectArticles(source).filter(function (item) {
+                if (alreadyRendered.has(item.href + "|" + item.title)) {
+                    return false;
+                }
+
+                return true;
+            }).slice(0, 5);
+
             if (!articles.length) return;
+
+            articles.forEach(function (item) {
+                alreadyRendered.add(item.href + "|" + item.title);
+            });
 
             const block = document.createElement("section");
             block.className = "homepage-section";
@@ -1169,84 +975,118 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         if (!output.children.length) {
-            output.innerHTML =
-                '<div class="loading">హోమ్‌పేజీలో వార్తలు దొరకలేదు.</div>';
+            output.innerHTML = `
+                <div class="loading">
+                    హోమ్‌పేజీలో ఆర్టికల్స్ దొరకలేదు.
+                    index.html ఫైల్‌ను తనిఖీ చేయండి.
+                </div>
+            `;
         }
     }
 
-    /* ================= LOAD INDEX.HTML ================= */
+    /* ================= RENDER SIDEBAR ================= */
+    function renderSidebar(targetId, source, limit, customMessage) {
+        const target = document.getElementById(targetId);
+
+        if (!target) return;
+
+        const items = collectArticles(source).slice(0, limit);
+
+        target.innerHTML = items.length
+            ? items.map(sidebarHTML).join("")
+            : `<p>${escapeHTML(
+                customMessage || "ప్రస్తుతం వార్తలు అందుబాటులో లేవు."
+              )}</p>`;
+    }
+
+    /* ================= LOAD HOMEPAGE ================= */
     fetch("index.html?v=" + Date.now(), {
         cache: "no-store"
     })
-        .then(function (response) {
-            if (!response.ok) {
-                throw new Error("index.html load failed: " + response.status);
+    .then(function (response) {
+        if (!response.ok) {
+            throw new Error("index.html load failed: " + response.status);
+        }
+
+        return response.text();
+    })
+    .then(function (html) {
+        const home = new DOMParser().parseFromString(
+            html,
+            "text/html"
+        );
+
+        /* OTHER HOMEPAGE SECTIONS: MAX 5 EACH */
+        renderHomepageSections(home);
+
+        /* LATEST NEWS: 3 ARTICLES */
+        const latestSource = home.querySelector(
+            "#latestNewsSource, #latestGrid, #latestSection"
+        );
+
+        renderSidebar(
+            "latestSidebar",
+            latestSource,
+            3,
+            "తాజా వార్తలు అందుబాటులో లేవు."
+        );
+
+        /* TRENDING NEWS: 3 ARTICLES */
+        const trendingSource = home.querySelector(
+            "#trendingSource, #trendingSidebar, #trendingSection"
+        );
+
+        renderSidebar(
+            "trendingSidebar",
+            trendingSource,
+            3,
+            "ట్రెండింగ్ వార్తలు అందుబాటులో లేవు."
+        );
+
+        /* MOVIE REVIEWS: 3 ARTICLES */
+        const movieReviewsSource = home.querySelector(
+            ".movie-reviews-section"
+        );
+
+        renderSidebar(
+            "movieReviewsSidebar",
+            movieReviewsSource,
+            3,
+            "మూవీ రివ్యూస్ అందుబాటులో లేవు."
+        );
+    })
+    .catch(function (error) {
+        console.error("BS360 homepage articles error:", error);
+
+        const homepageOutput = document.getElementById(
+            "homepageArticlesContent"
+        );
+
+        if (homepageOutput) {
+            homepageOutput.innerHTML = `
+                <div class="loading">
+                    హోమ్‌పేజీ వార్తలు లోడ్ కాలేదు.
+                    index.html ఫైల్‌ను తనిఖీ చేయండి.
+                </div>
+            `;
+        }
+
+        [
+            "latestSidebar",
+            "trendingSidebar",
+            "movieReviewsSidebar"
+        ].forEach(function (id) {
+            const target = document.getElementById(id);
+
+            if (target) {
+                target.innerHTML =
+                    "<p>వార్తలు లోడ్ కాలేదు. మళ్లీ ప్రయత్నించండి.</p>";
             }
-
-            return response.text();
-        })
-        .then(function (html) {
-            const home = new DOMParser().parseFromString(
-                html,
-                "text/html"
-            );
-
-            /* Render homepage sections */
-            renderHomepageSections(home);
-
-            /* Latest News */
-            const latestSource = home.querySelector(
-                "#latestNewsSource, #latestGrid, #latestSection"
-            );
-
-            /* Trending News */
-            const trendingSource = home.querySelector(
-                "#trendingSource, #trendingSidebar, #trendingSection"
-            );
-
-            /* Movie Reviews source */
-            const movieReviewsSource = home.querySelector(
-                ".movie-reviews-section"
-            );
-
-            /* Latest and Trending sidebars */
-            renderSidebar("latestSidebar", latestSource, 8);
-            renderSidebar("trendingSidebar", trendingSource, 8);
-
-            /* Movie Reviews: ONLY 3 ARTICLES */
-            renderSidebar(
-                "movieReviewsSidebar",
-                movieReviewsSource,
-                3
-            );
-        })
-        .catch(function (error) {
-            console.error("BS360 homepage articles error:", error);
-
-            const homepageOutput = document.getElementById(
-                "homepageArticlesContent"
-            );
-
-            if (homepageOutput) {
-                homepageOutput.innerHTML =
-                    '<div class="loading">హోమ్‌పేజీ వార్తలు లోడ్ కాలేదు. index.html తనిఖీ చేయండి.</div>';
-            }
-
-            [
-                "latestSidebar",
-                "trendingSidebar",
-                "movieReviewsSidebar"
-            ].forEach(function (id) {
-                const target = document.getElementById(id);
-
-                if (target) {
-                    target.innerHTML =
-                        "<p>వార్తలు లోడ్ కాలేదు.</p>";
-                }
-            });
         });
+    });
 });
 </script>
+
 </body>
 </html>
-
+```
