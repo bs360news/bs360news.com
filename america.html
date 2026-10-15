@@ -468,477 +468,263 @@ body.dark-mode .lang-selector .active{color:#ff4242}
 </footer>
 
 <script>
+
 /* =========================================================
-   BS 360 NEWS - ARTICLE PAGE JAVASCRIPT
-   Homepage news + Business news + Theme + Mobile Navigation
+   BS 360 NEWS - ARTICLE PAGE NEWS LOADER
+   Loads news from homepage index.html
 ========================================================= */
 
 document.addEventListener("DOMContentLoaded", function () {
     "use strict";
 
-    /* =====================================================
-       CONFIGURATION
-    ===================================================== */
-
     const HOME_URL = new URL("../index.html", window.location.href);
-    const BUSINESS_URL = new URL("../business.html", window.location.href);
 
-    const $ = (selector, parent = document) =>
-        parent.querySelector(selector);
-
-    const $$ = (selector, parent = document) =>
-        Array.from(parent.querySelectorAll(selector));
-
-    /* =====================================================
-       MOBILE NAVIGATION
-    ===================================================== */
-
-    window.toggleMobileNav = function () {
-        const nav = $("#navLinks");
-        const button = $(".mobile-menu-toggle");
-
-        if (!nav || !button) return;
-
-        const isOpen = nav.classList.toggle("mobile-open");
-
-        button.setAttribute("aria-expanded", String(isOpen));
-    };
-
-    /* =====================================================
-       DARK MODE
-    ===================================================== */
-
-    window.toggleTheme = function () {
-        const isDark = document.body.classList.toggle("dark-mode");
-        const button = $("#themeButton");
-
-        if (button) {
-            button.textContent = isDark ? "☀️ Light" : "🌙 Dark";
+    /* ARTICLE PAGE TARGET ID -> HOMEPAGE SOURCE */
+    const NEWS_SECTIONS = [
+        {
+            target: "aptsGrid",
+            sourceId: "aptsSection",
+            limit: 5
+        },
+        {
+            target: "cinemaGrid",
+            sourceId: "entertainmentSection",
+            limit: 5
+        },
+        {
+            target: "trendingSidebar",
+            sourceId: "trendingSection",
+            limit: 5
+        },
+        {
+            target: "latestSidebar",
+            sourceId: "latestSection",
+            limit: 5
+        },
+        {
+            target: "nationalGrid",
+            sourceId: "nationalSection",
+            limit: 5
+        },
+        {
+            target: "sportsGrid",
+            sourceId: "sportsSection",
+            limit: 0
+        },
+        {
+            target: "businessGrid",
+            sourceId: "businessSection",
+            limit: 0
         }
-    };
+    ];
 
-    /* =====================================================
-       URL HELPERS
-    ===================================================== */
-
-    function absoluteURL(value, baseURL) {
-        if (!value) return "";
+    /* GET A SAFE URL */
+    function makeURL(path, baseURL) {
+        if (!path) return "";
 
         try {
-            return new URL(value, baseURL).href;
+            const url = new URL(path, baseURL);
+
+            if (url.protocol !== "http:" &&
+                url.protocol !== "https:") {
+                return "";
+            }
+
+            return url.href;
         } catch (error) {
             return "";
         }
     }
 
-    function getCardLink(card) {
-        if (card.matches("a[href]")) return card;
+    /* FIND NEWS CARDS INSIDE A SECTION */
+    function getNewsCards(source) {
+        if (!source) return [];
 
-        return $("a[href]", card);
-    }
-
-    function getCardImage(card) {
-        return $("img", card);
-    }
-
-    function getCardTitle(card) {
-        const titleElement = $(
-            ".post-title, .news-title, .news-content h3, h1, h2, h3, h4, .title",
-            card
+        /*
+          Homepage sections contain article cards.
+          Select direct article cards first to avoid
+          collecting nested links/cards multiple times.
+        */
+        const articles = Array.from(
+            source.querySelectorAll("article")
         );
 
-        if (titleElement && titleElement.textContent.trim()) {
-            return titleElement.textContent.replace(/\s+/g, " ").trim();
+        if (articles.length) {
+            return articles;
         }
 
-        const image = getCardImage(card);
-
-        if (image && image.alt.trim()) {
-            return image.alt.trim();
-        }
-
-        const link = getCardLink(card);
-
-        if (link) {
-            return link.textContent.replace(/\s+/g, " ").trim();
-        }
-
-        return "";
+        return Array.from(
+            source.querySelectorAll(
+                ".news-item.post, .news-card, .post"
+            )
+        );
     }
 
-    function getCardURL(card, baseURL) {
-        const link = getCardLink(card);
+    /* BUILD A NEWS CARD */
+    function buildNewsCard(card) {
+        const link = card.querySelector("a[href]");
+        const image = card.querySelector("img");
+        const heading = card.querySelector(
+            "h3, h2, .news-content p, p"
+        );
 
-        const rawURL =
-            card.getAttribute("data-url") ||
-            card.getAttribute("href") ||
-            (link ? link.getAttribute("href") : "");
+        if (!link || !heading) return null;
 
-        return absoluteURL(rawURL, baseURL);
-    }
+        const title = heading.textContent.trim();
+        const articleURL = makeURL(
+            link.getAttribute("href"),
+            HOME_URL
+        );
 
-    function getImageURL(card, baseURL) {
-        const image = getCardImage(card);
+        if (!title || !articleURL) return null;
 
-        if (!image) return "";
+        const article = document.createElement("article");
+        article.className = "news-item post";
 
-        const rawImage =
-            image.getAttribute("data-src") ||
-            image.getAttribute("data-lazy-src") ||
-            image.getAttribute("data-original") ||
-            image.getAttribute("src") ||
-            "";
+        article.dataset.url = articleURL;
 
-        return absoluteURL(rawImage, baseURL);
-    }
+        const imageLink = document.createElement("a");
+        imageLink.href = articleURL;
 
-    /* =====================================================
-       FETCH HTML DOCUMENT
-    ===================================================== */
-
-    async function fetchDocument(pageURL) {
-        const requestURL = new URL(pageURL.href);
-
-        requestURL.searchParams.set("v", Date.now().toString());
-
-        const response = await fetch(requestURL.href, {
-            cache: "no-store"
-        });
-
-        if (!response.ok) {
-            throw new Error(
-                "Page load failed: " +
-                response.status +
-                " - " +
-                requestURL.href
+        if (image) {
+            const imageURL = makeURL(
+                image.getAttribute("src"),
+                HOME_URL
             );
+
+            if (imageURL) {
+                const img = document.createElement("img");
+
+                img.src = imageURL;
+                img.alt = image.getAttribute("alt") || title;
+                img.loading = "lazy";
+
+                imageLink.appendChild(img);
+            }
         }
 
-        const html = await response.text();
+        const content = document.createElement("div");
+        content.className = "news-content";
 
-        return new DOMParser().parseFromString(html, "text/html");
+        const paragraph = document.createElement("p");
+        const titleLink = document.createElement("a");
+
+        titleLink.href = articleURL;
+        titleLink.textContent = title;
+
+        paragraph.appendChild(titleLink);
+        content.appendChild(paragraph);
+
+        article.appendChild(imageLink);
+        article.appendChild(content);
+
+        return article;
     }
 
-    /* =====================================================
-       COLLECT NEWS CARDS
-    ===================================================== */
-
-    function collectFromSources(doc, sourceIDs, baseURL) {
-        const collected = [];
-        const seen = new Set();
-
-        sourceIDs.forEach(function (id) {
-            const source = doc.getElementById(id);
-
-            if (!source) return;
-
-            const cards = $$(".news-item.post, .news-card, .post, article", source);
-
-            cards.forEach(function (card) {
-                const title = getCardTitle(card);
-                const url = getCardURL(card, baseURL);
-                const image = getImageURL(card, baseURL);
-
-                if (!title || !url) return;
-
-                if (seen.has(url)) return;
-
-                seen.add(url);
-
-                collected.push({
-                    title: title,
-                    url: url,
-                    image: image
-                });
-            });
-        });
-
-        return collected;
-    }
-
-    function collectByCategory(doc, categoryNames, baseURL) {
-        const collected = [];
-        const seen = new Set();
-
-        $$("[data-category]").forEach(function (card) {
-            const category = (
-                card.getAttribute("data-category") || ""
-            ).trim().toLowerCase();
-
-            if (!categoryNames.includes(category)) return;
-
-            const title = getCardTitle(card);
-            const url = getCardURL(card, baseURL);
-            const image = getImageURL(card, baseURL);
-
-            if (!title || !url || seen.has(url)) return;
-
-            seen.add(url);
-
-            collected.push({
-                title: title,
-                url: url,
-                image: image
-            });
-        });
-
-        return collected;
-    }
-
-    function collectNews(doc, sourceIDs, categoryNames, baseURL) {
-        let news = collectFromSources(doc, sourceIDs, baseURL);
-
-        if (!news.length && categoryNames.length) {
-            news = collectByCategory(doc, categoryNames, baseURL);
-        }
-
-        return news;
-    }
-
-    /* =====================================================
-       RENDER NEWS CARDS
-    ===================================================== */
-
-    function renderNews(targetID, articles, limit = 5) {
-        const target = document.getElementById(targetID);
+    /* LOAD ONE SECTION */
+    function loadSection(homeDoc, config) {
+        const target = document.getElementById(config.target);
 
         if (!target) {
-            console.warn("Target element not found:", targetID);
+            console.info(
+                "Article page target not found:",
+                config.target
+            );
             return;
         }
 
-        target.replaceChildren();
+        const source = homeDoc.getElementById(config.sourceId);
 
-        const list = limit > 0
-            ? articles.slice(0, limit)
-            : articles;
+        if (!source) {
+            console.warn(
+                "Homepage source not found:",
+                config.sourceId
+            );
+            return;
+        }
 
-        list.forEach(function (article) {
-            const link = document.createElement("a");
+        const cards = getNewsCards(source);
+        const fragment = document.createDocumentFragment();
+        const usedLinks = new Set();
 
-            link.className = "news-card";
-            link.href = article.url;
+        let added = 0;
 
-            if (article.image) {
-                const image = document.createElement("img");
+        for (const card of cards) {
+            if (added >= config.limit) break;
 
-                image.src = article.image;
-                image.alt = article.title;
-                image.loading = "lazy";
+            const link = card.querySelector("a[href]");
+            if (!link) continue;
 
-                link.appendChild(image);
-            }
+            const href = makeURL(
+                link.getAttribute("href"),
+                HOME_URL
+            );
 
-            const heading = document.createElement("h3");
+            if (!href || usedLinks.has(href)) continue;
 
-            heading.textContent = article.title;
+            const newCard = buildNewsCard(card);
 
-            link.appendChild(heading);
-            target.appendChild(link);
-        });
+            if (!newCard) continue;
 
-        if (!list.length) {
-            const message = document.createElement("p");
+            usedLinks.add(href);
+            fragment.appendChild(newCard);
+            added++;
+        }
 
-            message.className = "news-loading-message";
-            message.textContent = "వార్తలు ప్రస్తుతం అందుబాటులో లేవు.";
+        if (added > 0) {
+            target.replaceChildren(fragment);
 
-            target.appendChild(message);
+            console.info(
+                config.target + ": loaded " + added + " news cards"
+            );
+        } else {
+            console.warn(
+                "No usable news cards found in:",
+                config.sourceId
+            );
         }
     }
 
-    /* =====================================================
-       HOMEPAGE CATEGORY CONFIGURATION
-       ఒక్కో విభాగంలో 5 వార్తలు
-    ===================================================== */
-
-    const HOMEPAGE_SECTIONS = [
-        {
-            target: "aptsGrid",
-            sources: [
-                "aptsSource",
-                "aptsSection",
-                "aptsGrid",
-                "latestNewsSource",
-                "legacyNewsSource"
-            ],
-            categories: [
-                "apts",
-                "ap-ts",
-                "ap & ts",
-                "andhra-pradesh",
-                "andhra pradesh",
-                "telangana",
-                "apts-news"
-            ],
-            limit: 5
-        },
-        {
-            target: "cinemaGrid",
-            sources: [
-                "entertainmentSource",
-                "cinemaGrid",
-                "moviesGrid",
-                "cinemaSection",
-                "legacyNewsSource"
-            ],
-            categories: [
-                "movies",
-                "movie",
-                "cinema",
-                "entertainment",
-                "entertainment-news"
-            ],
-            limit: 5
-        },
-        {
-            target: "latestSidebar",
-            sources: [
-                "latestNewsSource",
-                "latestGrid",
-                "legacyNewsSource"
-            ],
-            categories: [],
-            limit: 5
-        },
-        {
-            target: "trendingSidebar",
-            sources: [
-                "trendingSource",
-                "trendingGrid",
-                "legacyNewsSource"
-            ],
-            categories: [],
-            limit: 5
-        },
-        {
-            target: "nationalGrid",
-            sources: [
-                "nationalSource",
-                "nationalGrid",
-                "latestNewsSource",
-                "legacyNewsSource"
-            ],
-            categories: [
-                "national",
-                "national-news",
-                "india",
-                "india-news"
-            ],
-            limit: 5
-        }
-    ];
-
-    /* =====================================================
-       LOAD HOMEPAGE NEWS
-    ===================================================== */
-
+    /* LOAD ALL HOMEPAGE NEWS */
     async function loadHomepageNews() {
         try {
-            const doc = await fetchDocument(HOME_URL);
+            const requestURL = new URL(HOME_URL.href);
+            requestURL.searchParams.set("v", Date.now());
 
-            HOMEPAGE_SECTIONS.forEach(function (section) {
-                const articles = collectNews(
-                    doc,
-                    section.sources,
-                    section.categories,
-                    HOME_URL
-                );
-
-                renderNews(
-                    section.target,
-                    articles,
-                    section.limit
-                );
-
-                console.log(
-                    "[BS360] " +
-                    section.target +
-                    ": " +
-                    articles.length +
-                    " articles found"
-                );
+            const response = await fetch(requestURL.href, {
+                method: "GET",
+                cache: "no-store"
             });
 
-        } catch (error) {
-            console.error("[BS360] Homepage news error:", error);
-
-            [
-                "aptsGrid",
-                "cinemaGrid",
-                "latestSidebar",
-                "trendingSidebar",
-                "nationalGrid"
-            ].forEach(function (id) {
-                const target = document.getElementById(id);
-
-                if (target) {
-                    target.replaceChildren();
-
-                    const message = document.createElement("p");
-                    message.className = "news-loading-message";
-                    message.textContent = "వార్తలు లోడ్ కాలేదు.";
-
-                    target.appendChild(message);
-                }
-            });
-        }
-    }
-
-    /* =====================================================
-       BUSINESS NEWS
-    ===================================================== */
-
-    async function loadBusinessNews() {
-        try {
-            const doc = await fetchDocument(BUSINESS_URL);
-
-            let articles = collectFromSources(
-                doc,
-                [
-                    "localBusinessSource",
-                    "businessSource",
-                    "businessGrid",
-                    "businessSection",
-                    "businessNewsSource",
-                    "latestBusinessGrid",
-                    "latestNewsSource",
-                    "latestGrid"
-                ],
-                BUSINESS_URL
-            );
-
-            if (!articles.length) {
-                articles = collectByCategory(
-                    doc,
-                    ["business", "business-news"],
-                    BUSINESS_URL
+            if (!response.ok) {
+                throw new Error(
+                    "Homepage request failed: HTTP " +
+                    response.status
                 );
             }
 
-            renderNews("sportsSidebar", articles, 5);
-            renderNews("movieReviewsGrid", articles, 5);
-
-            console.log(
-                "[BS360] Business articles found:",
-                articles.length
+            const html = await response.text();
+            const parser = new DOMParser();
+            const homeDoc = parser.parseFromString(
+                html,
+                "text/html"
             );
 
-        } catch (error) {
-            console.error("[BS360] Business news error:", error);
+            NEWS_SECTIONS.forEach(function (config) {
+                loadSection(homeDoc, config);
+            });
 
-            renderNews("sportsSidebar", [], 5);
-            renderNews("movieReviewsGrid", [], 5);
+        } catch (error) {
+            console.error(
+                "BS 360 NEWS loading error:",
+                error
+            );
         }
     }
 
-    /* =====================================================
-       INITIALIZE
-    ===================================================== */
-
     loadHomepageNews();
-    loadBusinessNews();
 });
+
 </script>
 
 
