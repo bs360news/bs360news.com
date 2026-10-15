@@ -468,6 +468,103 @@ body.dark-mode .lang-selector .active{color:#ff4242}
 </footer>
 
 <script>
+
+
+
+
+  <script>
+document.addEventListener("DOMContentLoaded", async function () {
+    const sections = [
+        {
+            category: "movies",
+            target: "cinemaGrid",
+            title: "సినిమా అప్‌డేట్స్"
+        },
+        {
+            category: "apts",
+            target: "aptsGrid",
+            title: "ఆంధ్రప్రదేశ్ & తెలంగాణ వార్తలు"
+        }
+    ];
+
+    try {
+        const response = await fetch("../index.html?v=" + Date.now(), {
+            cache: "no-store"
+        });
+
+        if (!response.ok) {
+            throw new Error("హోమ్‌పేజీ లోడ్ కాలేదు");
+        }
+
+        const html = await response.text();
+        const doc = new DOMParser().parseFromString(html, "text/html");
+
+        function findCards(category) {
+            const selectors = {
+                movies: [
+                    "#cinemaGrid .news-item",
+                    "#moviesGrid .news-item",
+                    "#entertainmentSection .news-item",
+                    "[data-category='movies']",
+                    "[data-category='entertainment']"
+                ],
+                apts: [
+                    "#aptsGrid .news-item",
+                    "#aptsSection .news-item",
+                    "[data-category='apts']",
+                    "[data-category='ap-ts']",
+                    "[data-category='andhra-pradesh']",
+                    "[data-category='telangana']"
+                ]
+            };
+
+            for (const selector of selectors[category]) {
+                const found = [...doc.querySelectorAll(selector)]
+                    .filter(card =>
+                        card.querySelector("a[href]") ||
+                        card.matches("a[href]") ||
+                        card.dataset.url
+                    );
+
+                if (found.length) {
+                    return found.slice(0, 5);
+                }
+            }
+
+            return [];
+        }
+
+        sections.forEach(section => {
+            const target = document.getElementById(section.target);
+            if (!target) return;
+
+            target.replaceChildren();
+
+            const cards = findCards(section.category);
+
+            if (!cards.length) {
+                target.textContent =
+                    "హోమ్‌పేజీలో ఈ విభాగానికి సంబంధించిన వార్తలు కనిపించలేదు.";
+                return;
+            }
+
+            cards.forEach(card => {
+                target.appendChild(document.importNode(card, true));
+            });
+        });
+
+    } catch (error) {
+        console.error("హోమ్‌పేజీ వార్తల లోడ్ సమస్య:", error);
+
+        ["cinemaGrid", "aptsGrid"].forEach(id => {
+            const target = document.getElementById(id);
+            if (target) {
+                target.textContent = "వార్తలు లోడ్ కాలేదు.";
+            }
+        });
+    }
+});
+</script>
 /* MOBILE NAVIGATION */
 function toggleMobileNav(){
     const nav=document.getElementById("navLinks");
