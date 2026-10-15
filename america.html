@@ -472,7 +472,6 @@ body.dark-mode .lang-selector .active{color:#ff4242}
 
 
 
-  <script>
 document.addEventListener("DOMContentLoaded", async function () {
     const sections = [
         {
@@ -564,7 +563,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         });
     }
 });
-</script>
+
 /* MOBILE NAVIGATION */
 function toggleMobileNav(){
     const nav=document.getElementById("navLinks");
@@ -762,7 +761,7 @@ document.addEventListener("DOMContentLoaded",function(){
             renderArticles("sportsSidebar",businessArticles,0);
 
             /* Below article: first five business articles */
-            renderArticles("movieReviewsGrid",businessArticles,5);
+            renderArticles("movieReviewsGrid",businessArticles,0);
 
             console.log("BS360 business articles:",businessArticles.length);
 
