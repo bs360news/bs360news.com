@@ -652,6 +652,43 @@ body.dark-mode .sidebar-item {
     grid-template-columns: minmax(0, 1fr) 320px;
     gap: 22px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+   
+/* THREE SECTIONS BELOW BUSINESS NEWS */
+.business-bottom-sections {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    width: 100%;
+    margin-top: 25px;
+}
+
+.business-bottom-sections .sidebar-box {
+    min-width: 0;
+    padding: 12px;
+    background: #fff;
+    border: 1px solid #e1e5eb;
+    border-radius: 8px;
+}
+
+@media (max-width: 700px) {
+    .business-bottom-sections {
+        grid-template-columns: 1fr;
+    }
+}
+
+   
 </style>
 
 </head>
