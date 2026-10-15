@@ -430,6 +430,34 @@ document.addEventListener("DOMContentLoaded", function () {
       source.querySelectorAll(
         ".news-item.post, article, .news-card, .movie-card, a[href]"
       ).for
+
+     console.log("APTS PAGE:", location.href);
+
+fetch("index.html?v=" + Date.now())
+  .then(response => {
+    console.log("HOMEPAGE STATUS:", response.status);
+    return response.text();
+  })
+  .then(html => {
+    const doc = new DOMParser().parseFromString(html, "text/html");
+
+    [
+      "sportsSection",
+      "entertainmentSection",
+      "businessSection",
+      "aptsSection",
+      "latestSection",
+      "trendingSection",
+      "nationalSection"
+    ].forEach(id => {
+      console.log(
+        id,
+        "sections:", doc.querySelectorAll('[id="' + id + '"]').length,
+        "images:", doc.querySelectorAll('[id="' + id + '"] img').length
+      );
+    });
+  })
+  .catch(error => console.error("FETCH ERROR:", error));
 </script>
 
 </body>
