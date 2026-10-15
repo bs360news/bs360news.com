@@ -468,362 +468,479 @@ body.dark-mode .lang-selector .active{color:#ff4242}
 </footer>
 
 <script>
+/* =========================================================
+   BS 360 NEWS - ARTICLE PAGE JAVASCRIPT
+   Homepage news + Business news + Theme + Mobile Navigation
+========================================================= */
 
+document.addEventListener("DOMContentLoaded", function () {
+    "use strict";
 
+    /* =====================================================
+       CONFIGURATION
+    ===================================================== */
 
+    const HOME_URL = new URL("../index.html", window.location.href);
+    const BUSINESS_URL = new URL("../business.html", window.location.href);
 
-document.addEventListener("DOMContentLoaded", async function () {
-    const sections = [
-        {
-            category: "movies",
-            target: "cinemaGrid",
-            title: "సినిమా అప్‌డేట్స్"
-        },
-        {
-            category: "apts",
-            target: "aptsGrid",
-            title: "ఆంధ్రప్రదేశ్ & తెలంగాణ వార్తలు"
+    const $ = (selector, parent = document) =>
+        parent.querySelector(selector);
+
+    const $$ = (selector, parent = document) =>
+        Array.from(parent.querySelectorAll(selector));
+
+    /* =====================================================
+       MOBILE NAVIGATION
+    ===================================================== */
+
+    window.toggleMobileNav = function () {
+        const nav = $("#navLinks");
+        const button = $(".mobile-menu-toggle");
+
+        if (!nav || !button) return;
+
+        const isOpen = nav.classList.toggle("mobile-open");
+
+        button.setAttribute("aria-expanded", String(isOpen));
+    };
+
+    /* =====================================================
+       DARK MODE
+    ===================================================== */
+
+    window.toggleTheme = function () {
+        const isDark = document.body.classList.toggle("dark-mode");
+        const button = $("#themeButton");
+
+        if (button) {
+            button.textContent = isDark ? "☀️ Light" : "🌙 Dark";
         }
-    ];
+    };
 
-    try {
-        const response = await fetch("../index.html?v=" + Date.now(), {
+    /* =====================================================
+       URL HELPERS
+    ===================================================== */
+
+    function absoluteURL(value, baseURL) {
+        if (!value) return "";
+
+        try {
+            return new URL(value, baseURL).href;
+        } catch (error) {
+            return "";
+        }
+    }
+
+    function getCardLink(card) {
+        if (card.matches("a[href]")) return card;
+
+        return $("a[href]", card);
+    }
+
+    function getCardImage(card) {
+        return $("img", card);
+    }
+
+    function getCardTitle(card) {
+        const titleElement = $(
+            ".post-title, .news-title, .news-content h3, h1, h2, h3, h4, .title",
+            card
+        );
+
+        if (titleElement && titleElement.textContent.trim()) {
+            return titleElement.textContent.replace(/\s+/g, " ").trim();
+        }
+
+        const image = getCardImage(card);
+
+        if (image && image.alt.trim()) {
+            return image.alt.trim();
+        }
+
+        const link = getCardLink(card);
+
+        if (link) {
+            return link.textContent.replace(/\s+/g, " ").trim();
+        }
+
+        return "";
+    }
+
+    function getCardURL(card, baseURL) {
+        const link = getCardLink(card);
+
+        const rawURL =
+            card.getAttribute("data-url") ||
+            card.getAttribute("href") ||
+            (link ? link.getAttribute("href") : "");
+
+        return absoluteURL(rawURL, baseURL);
+    }
+
+    function getImageURL(card, baseURL) {
+        const image = getCardImage(card);
+
+        if (!image) return "";
+
+        const rawImage =
+            image.getAttribute("data-src") ||
+            image.getAttribute("data-lazy-src") ||
+            image.getAttribute("data-original") ||
+            image.getAttribute("src") ||
+            "";
+
+        return absoluteURL(rawImage, baseURL);
+    }
+
+    /* =====================================================
+       FETCH HTML DOCUMENT
+    ===================================================== */
+
+    async function fetchDocument(pageURL) {
+        const requestURL = new URL(pageURL.href);
+
+        requestURL.searchParams.set("v", Date.now().toString());
+
+        const response = await fetch(requestURL.href, {
             cache: "no-store"
         });
 
         if (!response.ok) {
-            throw new Error("హోమ్‌పేజీ లోడ్ కాలేదు");
-        }
-
-        const html = await response.text();
-        const doc = new DOMParser().parseFromString(html, "text/html");
-
-        function findCards(category) {
-            const selectors = {
-                movies: [
-                    "#cinemaGrid .news-item",
-                    "#moviesGrid .news-item",
-                    "#entertainmentSection .news-item",
-                    "[data-category='movies']",
-                    "[data-category='entertainment']"
-                ],
-                apts: [
-                    "#aptsGrid .news-item",
-                    "#aptsSection .news-item",
-                    "[data-category='apts']",
-                    "[data-category='ap-ts']",
-                    "[data-category='andhra-pradesh']",
-                    "[data-category='telangana']"
-                ]
-            };
-
-            for (const selector of selectors[category]) {
-                const found = [...doc.querySelectorAll(selector)]
-                    .filter(card =>
-                        card.querySelector("a[href]") ||
-                        card.matches("a[href]") ||
-                        card.dataset.url
-                    );
-
-                if (found.length) {
-                    return found.slice(0, 5);
-                }
-            }
-
-            return [];
-        }
-
-        sections.forEach(section => {
-            const target = document.getElementById(section.target);
-            if (!target) return;
-
-            target.replaceChildren();
-
-            const cards = findCards(section.category);
-
-            if (!cards.length) {
-                target.textContent =
-                    "హోమ్‌పేజీలో ఈ విభాగానికి సంబంధించిన వార్తలు కనిపించలేదు.";
-                return;
-            }
-
-            cards.forEach(card => {
-                target.appendChild(document.importNode(card, true));
-            });
-        });
-
-    } catch (error) {
-        console.error("హోమ్‌పేజీ వార్తల లోడ్ సమస్య:", error);
-
-        ["cinemaGrid", "aptsGrid"].forEach(id => {
-            const target = document.getElementById(id);
-            if (target) {
-                target.textContent = "వార్తలు లోడ్ కాలేదు.";
-            }
-        });
-    }
-});
-
-/* MOBILE NAVIGATION */
-function toggleMobileNav(){
-    const nav=document.getElementById("navLinks");
-    const button=document.querySelector(".mobile-menu-toggle");
-    if(!nav||!button)return;
-    const isOpen=nav.classList.toggle("mobile-open");
-    button.setAttribute("aria-expanded",String(isOpen));
-}
-
-/* DARK MODE */
-function toggleTheme(){
-    const isDark=document.body.classList.toggle("dark-mode");
-    const button=document.getElementById("themeButton");
-    if(button)button.textContent=isDark?"☀️ Light":"🌙 Dark";
-}
-
-document.addEventListener("DOMContentLoaded",function(){
-    const HOME=new URL("../index.html",window.location.href);
-    const BUSINESS=new URL("../business.html",window.location.href);
-
-    function absoluteURL(value,base){
-        if(!value)return "";
-        try{return new URL(value,base).href}
-        catch(error){return ""}
-    }
-
-    function getTitle(card,img,link){
-        const node=card.querySelector(
-            ".news-content p,.news-content h3,.post-title,.news-title,.title,h1,h2,h3,h4,p"
-        );
-        return (node?.textContent||img?.getAttribute("alt")||link?.textContent||"")
-            .replace(/\s+/g," ").trim();
-    }
-
-    function parseCard(card,base){
-        if(!card)return null;
-
-        const img=card.querySelector("img");
-        const link=card.matches("a[href]")?card:card.querySelector("a[href]");
-        const dataURL=card.getAttribute("data-url")||"";
-        const rawURL=dataURL||link?.getAttribute("href")||"";
-
-        const rawImage=img?.getAttribute("data-src")
-            ||img?.getAttribute("data-lazy-src")
-            ||img?.getAttribute("data-original")
-            ||img?.getAttribute("src")
-            ||"";
-
-        const title=getTitle(card,img,link);
-        const url=absoluteURL(rawURL,base);
-        const image=absoluteURL(rawImage,base);
-
-        if(!title||!url||!image)return null;
-
-        try{
-            if(new URL(url).origin!==HOME.origin)return null;
-        }catch(error){return null}
-
-        return {
-            title:title,
-            url:url,
-            image:image,
-            alt:img?.getAttribute("alt")||title
-        };
-    }
-
-    function uniqueArticles(items){
-        const seen=new Set();
-        return items.filter(function(item){
-            if(!item||seen.has(item.url))return false;
-            seen.add(item.url);
-            return true;
-        });
-    }
-
-    /*
-      IMPORTANT FIX:
-      business.html లో ఉన్న అసలు ID localBusinessSource.
-      ఆ source లోని .news-item.post cards ను నేరుగా చదువుతాం.
-    */
-    function readBusinessArticles(doc){
-        const source=doc.getElementById("localBusinessSource");
-        let cards=[];
-
-        if(source){
-            cards=Array.from(
-                source.querySelectorAll(".news-item.post[data-url]")
+            throw new Error(
+                "Page load failed: " +
+                response.status +
+                " - " +
+                requestURL.href
             );
         }
 
-        /* Fallback: other possible business source IDs */
-        if(!cards.length){
-            [
-                "businessSource",
-                "businessGrid",
-                "businessSection",
-                "businessNewsSource",
-                "latestBusinessGrid",
-                "latestNewsSource",
-                "latestGrid"
-            ].forEach(function(id){
-                const el=doc.getElementById(id);
-                if(!el)return;
+        const html = await response.text();
 
-                cards.push(...Array.from(el.querySelectorAll(
-                    ".news-item.post[data-url],.post[data-url],.news-card"
-                )));
-            });
-        }
-
-        /* Read matching business category posts if still needed */
-        if(!cards.length){
-            cards=Array.from(doc.querySelectorAll(
-                '.news-item.post[data-category="business"][data-url], [data-category="business"][data-url]'
-            ));
-        }
-
-        return uniqueArticles(
-            cards.map(function(card){return parseCard(card,BUSINESS)})
-        );
+        return new DOMParser().parseFromString(html, "text/html");
     }
 
-    function readSource(doc,ids,base,limit){
-        const found=[];
+    /* =====================================================
+       COLLECT NEWS CARDS
+    ===================================================== */
 
-        ids.forEach(function(id){
-            const source=doc.getElementById(id);
-            if(!source)return;
+    function collectFromSources(doc, sourceIDs, baseURL) {
+        const collected = [];
+        const seen = new Set();
 
-            const cards=Array.from(source.querySelectorAll(
-                ".news-item.post[data-url],.post[data-url],.news-card,article"
-            ));
+        sourceIDs.forEach(function (id) {
+            const source = doc.getElementById(id);
 
-            cards.forEach(function(card){
-                const item=parseCard(card,base);
-                if(item)found.push(item);
+            if (!source) return;
+
+            const cards = $$(".news-item.post, .news-card, .post, article", source);
+
+            cards.forEach(function (card) {
+                const title = getCardTitle(card);
+                const url = getCardURL(card, baseURL);
+                const image = getImageURL(card, baseURL);
+
+                if (!title || !url) return;
+
+                if (seen.has(url)) return;
+
+                seen.add(url);
+
+                collected.push({
+                    title: title,
+                    url: url,
+                    image: image
+                });
             });
         });
 
-        const result=uniqueArticles(found);
-        return limit?result.slice(0,limit):result;
+        return collected;
     }
 
-    function renderArticles(targetId,articles,limit){
-        const target=document.getElementById(targetId);
-        if(!target)return;
+    function collectByCategory(doc, categoryNames, baseURL) {
+        const collected = [];
+        const seen = new Set();
+
+        $$("[data-category]").forEach(function (card) {
+            const category = (
+                card.getAttribute("data-category") || ""
+            ).trim().toLowerCase();
+
+            if (!categoryNames.includes(category)) return;
+
+            const title = getCardTitle(card);
+            const url = getCardURL(card, baseURL);
+            const image = getImageURL(card, baseURL);
+
+            if (!title || !url || seen.has(url)) return;
+
+            seen.add(url);
+
+            collected.push({
+                title: title,
+                url: url,
+                image: image
+            });
+        });
+
+        return collected;
+    }
+
+    function collectNews(doc, sourceIDs, categoryNames, baseURL) {
+        let news = collectFromSources(doc, sourceIDs, baseURL);
+
+        if (!news.length && categoryNames.length) {
+            news = collectByCategory(doc, categoryNames, baseURL);
+        }
+
+        return news;
+    }
+
+    /* =====================================================
+       RENDER NEWS CARDS
+    ===================================================== */
+
+    function renderNews(targetID, articles, limit = 5) {
+        const target = document.getElementById(targetID);
+
+        if (!target) {
+            console.warn("Target element not found:", targetID);
+            return;
+        }
 
         target.replaceChildren();
-        const list=limit>0?articles.slice(0,limit):articles;
 
-        list.forEach(function(item){
-            const link=document.createElement("a");
-            link.className="news-card";
-            link.href=item.url;
+        const list = limit > 0
+            ? articles.slice(0, limit)
+            : articles;
 
-            const img=document.createElement("img");
-            img.src=item.image;
-            img.alt=item.alt||item.title;
-            img.loading="lazy";
+        list.forEach(function (article) {
+            const link = document.createElement("a");
 
-            const title=document.createElement("h3");
-            title.textContent=item.title;
+            link.className = "news-card";
+            link.href = article.url;
 
-            link.append(img,title);
+            if (article.image) {
+                const image = document.createElement("img");
+
+                image.src = article.image;
+                image.alt = article.title;
+                image.loading = "lazy";
+
+                link.appendChild(image);
+            }
+
+            const heading = document.createElement("h3");
+
+            heading.textContent = article.title;
+
+            link.appendChild(heading);
             target.appendChild(link);
         });
 
-        if(!list.length){
-            const message=document.createElement("p");
-            message.className="news-loading-message";
-            message.textContent="వార్తలు ప్రస్తుతం అందుబాటులో లేవు.";
+        if (!list.length) {
+            const message = document.createElement("p");
+
+            message.className = "news-loading-message";
+            message.textContent = "వార్తలు ప్రస్తుతం అందుబాటులో లేవు.";
+
             target.appendChild(message);
         }
     }
 
-    async function fetchDocument(url){
-        const requestURL=new URL(url.href);
-        requestURL.searchParams.set("v",Date.now().toString());
+    /* =====================================================
+       HOMEPAGE CATEGORY CONFIGURATION
+       ఒక్కో విభాగంలో 5 వార్తలు
+    ===================================================== */
 
-        const response=await fetch(requestURL.href,{cache:"no-store"});
-        if(!response.ok){
-            throw new Error("Page load failed: "+response.status+" "+requestURL.href);
+    const HOMEPAGE_SECTIONS = [
+        {
+            target: "aptsGrid",
+            sources: [
+                "aptsSource",
+                "aptsSection",
+                "aptsGrid",
+                "latestNewsSource",
+                "legacyNewsSource"
+            ],
+            categories: [
+                "apts",
+                "ap-ts",
+                "ap & ts",
+                "andhra-pradesh",
+                "andhra pradesh",
+                "telangana",
+                "apts-news"
+            ],
+            limit: 5
+        },
+        {
+            target: "cinemaGrid",
+            sources: [
+                "entertainmentSource",
+                "cinemaGrid",
+                "moviesGrid",
+                "cinemaSection",
+                "legacyNewsSource"
+            ],
+            categories: [
+                "movies",
+                "movie",
+                "cinema",
+                "entertainment",
+                "entertainment-news"
+            ],
+            limit: 5
+        },
+        {
+            target: "latestSidebar",
+            sources: [
+                "latestNewsSource",
+                "latestGrid",
+                "legacyNewsSource"
+            ],
+            categories: [],
+            limit: 5
+        },
+        {
+            target: "trendingSidebar",
+            sources: [
+                "trendingSource",
+                "trendingGrid",
+                "legacyNewsSource"
+            ],
+            categories: [],
+            limit: 5
+        },
+        {
+            target: "nationalGrid",
+            sources: [
+                "nationalSource",
+                "nationalGrid",
+                "latestNewsSource",
+                "legacyNewsSource"
+            ],
+            categories: [
+                "national",
+                "national-news",
+                "india",
+                "india-news"
+            ],
+            limit: 5
         }
+    ];
 
-        const html=await response.text();
-        return new DOMParser().parseFromString(html,"text/html");
+    /* =====================================================
+       LOAD HOMEPAGE NEWS
+    ===================================================== */
+
+    async function loadHomepageNews() {
+        try {
+            const doc = await fetchDocument(HOME_URL);
+
+            HOMEPAGE_SECTIONS.forEach(function (section) {
+                const articles = collectNews(
+                    doc,
+                    section.sources,
+                    section.categories,
+                    HOME_URL
+                );
+
+                renderNews(
+                    section.target,
+                    articles,
+                    section.limit
+                );
+
+                console.log(
+                    "[BS360] " +
+                    section.target +
+                    ": " +
+                    articles.length +
+                    " articles found"
+                );
+            });
+
+        } catch (error) {
+            console.error("[BS360] Homepage news error:", error);
+
+            [
+                "aptsGrid",
+                "cinemaGrid",
+                "latestSidebar",
+                "trendingSidebar",
+                "nationalGrid"
+            ].forEach(function (id) {
+                const target = document.getElementById(id);
+
+                if (target) {
+                    target.replaceChildren();
+
+                    const message = document.createElement("p");
+                    message.className = "news-loading-message";
+                    message.textContent = "వార్తలు లోడ్ కాలేదు.";
+
+                    target.appendChild(message);
+                }
+            });
+        }
     }
 
-    async function loadBusiness(){
-        try{
-            const businessDoc=await fetchDocument(BUSINESS);
-            const businessArticles=readBusinessArticles(businessDoc);
+    /* =====================================================
+       BUSINESS NEWS
+    ===================================================== */
 
-            /* Sidebar: business articles */
-            renderArticles("sportsSidebar",businessArticles,0);
+    async function loadBusinessNews() {
+        try {
+            const doc = await fetchDocument(BUSINESS_URL);
 
-            /* Below article: first five business articles */
-            renderArticles("movieReviewsGrid",businessArticles,0);
+            let articles = collectFromSources(
+                doc,
+                [
+                    "localBusinessSource",
+                    "businessSource",
+                    "businessGrid",
+                    "businessSection",
+                    "businessNewsSource",
+                    "latestBusinessGrid",
+                    "latestNewsSource",
+                    "latestGrid"
+                ],
+                BUSINESS_URL
+            );
 
-            console.log("BS360 business articles:",businessArticles.length);
-
-            if(!businessArticles.length){
-                console.error(
-                    "No business articles found. Check localBusinessSource and its data-url attributes."
+            if (!articles.length) {
+                articles = collectByCategory(
+                    doc,
+                    ["business", "business-news"],
+                    BUSINESS_URL
                 );
             }
-        }catch(error){
-            console.error("Business news loading error:",error);
-            renderArticles("sportsSidebar",[],0);
-            renderArticles("movieReviewsGrid",[],0);
+
+            renderNews("sportsSidebar", articles, 5);
+            renderNews("movieReviewsGrid", articles, 5);
+
+            console.log(
+                "[BS360] Business articles found:",
+                articles.length
+            );
+
+        } catch (error) {
+            console.error("[BS360] Business news error:", error);
+
+            renderNews("sportsSidebar", [], 5);
+            renderNews("movieReviewsGrid", [], 5);
         }
     }
 
-    /*
-      Homepage category data:
-      If the IDs exist on index.html, these sections will also populate.
-      Business news does not depend on this request.
-    */
-    async function loadHomepageSections(){
-        try{
-            const home=await fetchDocument(HOME);
+    /* =====================================================
+       INITIALIZE
+    ===================================================== */
 
-            renderArticles(
-                "latestSidebar",
-                readSource(home,["latestNewsSource","latestGrid"],HOME,home.getElementById("latestNewsSource")?5:5),
-                5
-            );
-
-            renderArticles(
-                "trendingSidebar",
-                readSource(home,["trendingSource","trendingGrid"],HOME,5),
-                5
-            );
-
-            renderArticles(
-                "nationalGrid",
-                readSource(home,["nationalSource","nationalGrid"],HOME,5),
-                5
-            );
-
-            renderArticles(
-                "aptsGrid",
-                readSource(home,["aptsSource","aptsGrid"],HOME,10),
-                10
-            );
-
-            renderArticles(
-                "cinemaGrid",
-                readSource(home,["entertainmentSource","cinemaGrid","moviesGrid"],HOME,10),
-                10
-            );
-        }catch(error){
-            console.warn("Homepage sections could not load:",error);
-        }
-    }
-
-    loadBusiness();
-    loadHomepageSections();
+    loadHomepageNews();
+    loadBusinessNews();
 });
 </script>
+
 
 </body>
 </html>
