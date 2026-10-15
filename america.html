@@ -1216,11 +1216,9 @@ body.dark-mode .lang-selector .active {
     </div>
 
  <!-- ENTERTAINMENT NEWS -->
-<section class="category-ad-layout">
-    <div class="category-news">
-        <h2>సినిమా అప్‌డేట్స్</h2>
-        <div id="cinemaGrid" class="news-grid"></div>
-    </div>
+<section class="news-section">
+    <h2 class="section-heading">సినిమా వార్తలు</h2>
+    <div id="cinemaGrid" class="news-grid"></div>
 </section>
 
 <!-- BUSINESS NEWS -->
@@ -1262,6 +1260,9 @@ body.dark-mode .lang-selector .active {
 
 <script>
 
+loadSection("cinemaGrid", "cinema");
+
+    
 /* MOBILE NAVIGATION */
 function toggleMobileNav() {
     const nav = document.getElementById("navLinks");
