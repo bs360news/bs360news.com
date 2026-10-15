@@ -481,196 +481,88 @@ body.dark-mode .lang-selector .active{color:#ff4242}
 document.addEventListener("DOMContentLoaded", function () {
     "use strict";
 
-    /* =========================================
-       PAGE URLS
-    ========================================= */
-
     const HOME_URL = new URL("../index.html", location.href);
     const SPORTS_URL = new URL("../SPORTS.html", location.href);
 
-    /* =========================================
-       HOMEPAGE SECTIONS
-    ========================================= */
-
-    const NEWS_SECTIONS = [
-        { target: "nationalGrid", sourceId: "nationalSource", limit: 5 },
-        { target: "latestSidebar", sourceId: "latestNewsSource", limit: 5 },
-        { target: "trendingSidebar", sourceId: "trendingSource", limit: 5 },
-        { target: "aptsGrid", sourceId: "aptsSource", limit: 5 },
-        { target: "cinemaGrid", sourceId: "entertainmentSource", limit: 5 },
-        { target: "movieReviewsGrid", sourceId: "businessSource", limit: 5 }
+    const configs = [
+        { target: "nationalGrid", ids: ["nationalSource", "nationalSection", "nationalGrid"], limit: 5 },
+        { target: "latestSidebar", ids: ["latestNewsSource", "latestSection", "latestGrid", "latestNews"], limit: 5 },
+        { target: "trendingSidebar", ids: ["trendingSource", "trendingSection", "trendingGrid"], limit: 5 },
+        { target: "aptsGrid", ids: ["aptsSource", "aptsSection", "aptsGrid"], limit: 5 },
+        { target: "cinemaGrid", ids: ["entertainmentSource", "cinemaSection", "moviesGrid", "cinemaGrid"], limit: 5 },
+        { target: "movieReviewsGrid", ids: ["businessSource", "businessSection", "businessGrid"], limit: 5 }
     ];
 
-    /* =========================================
-       HELPERS
-    ========================================= */
-
-    function cleanText(text) {
-        return (text || "").replace(/\s+/g, " ").trim();
+    function clean(value) {
+        return (value || "").replace(/\s+/g, " ").trim();
     }
 
-    function makeURL(path, baseURL) {
-        if (!path || !baseURL) return "";
-
+    function absoluteURL(path, base) {
+        if (!path) return "";
         try {
-            const url = new URL(path, baseURL);
-
-            if (!["http:", "https:"].includes(url.protocol)) {
-                return "";
-            }
-
-            return url.href;
-        } catch (error) {
+            const url = new URL(path, base);
+            return ["http:", "https:"].includes(url.protocol) ? url.href : "";
+        } catch {
             return "";
         }
     }
 
-    function getTitle(card) {
+    function titleOf(card) {
         if (!card) return "";
 
         const selectors = [
-            ".news-title",
-            ".post-title",
-            ".news-card-title",
-            ".news-content h3",
-            ".news-content h2",
-            "h3",
-            "h2",
-            "h4",
-            "h1",
-            ".title",
-            "p"
+            ".news-title", ".post-title", ".news-card-title",
+            ".news-content h3", ".news-content h2",
+            "h3", "h2", "h4", "h1"
         ];
 
         for (const selector of selectors) {
-            const element = card.querySelector(selector);
-            const title = cleanText(element?.textContent);
-
-            if (title) return title;
+            const el = card.querySelector(selector);
+            if (el && clean(el.textContent)) return clean(el.textContent);
         }
 
-        return cleanText(card.textContent);
-    }
-
-    function getImage(card) {
-        if (!card) return null;
-
-        return card.querySelector(
-            "img[data-src], img[data-lazy-src], img[src]"
-        );
-    }
-
-    function getCardURL(card, baseURL) {
-        if (!card) return "";
-
-        const link = card.matches("a[href]")
-            ? card
-            : card.querySelector("a[href]");
-
+        const link = card.matches("a[href]") ? card : card.querySelector("a[href]");
         if (link) {
-            return makeURL(link.getAttribute("href"), baseURL);
+            const heading = link.querySelector("h1,h2,h3,h4");
+            if (heading && clean(heading.textContent)) return clean(heading.textContent);
+            return clean(link.textContent);
         }
 
-        return makeURL(card.getAttribute("data-url"), baseURL);
+        return "";
     }
 
-    /* =========================================
-       FIND NEWS CARDS
-    ========================================= */
+    function urlOf(card, base) {
+        if (!card) return "";
+        const link = card.matches("a[href]") ? card : card.querySelector("a[href]");
+        const path = link ? link.getAttribute("href") : card.getAttribute("data-url");
+        return absoluteURL(path, base);
+    }
 
-    function findCards(source, baseURL) {
+    function findCards(source) {
         if (!source) return [];
 
         const selectors = [
             ".news-item.post",
             "article.news-card",
-            ".news-grid .news-card",
-            ".sports-grid .news-card",
-            ".sports-card",
             ".news-card",
+            ".sports-card",
             "article.news-item",
             ".post"
         ];
 
         for (const selector of selectors) {
-            const elements = Array.from(
-                source.querySelectorAll(selector)
+            const found = [...source.querySelectorAll(selector)].filter(card =>
+                titleOf(card) && urlOf(card, source.baseURI)
             );
-
-            const valid = elements.filter(function (card) {
-                return getTitle(card) && getCardURL(card, baseURL);
-            });
-
-            if (valid.length) {
-                return valid;
-            }
+            if (found.length) return found;
         }
 
-        /*
-          Card class లేకపోయినా image + link ఉన్న
-          వార్తలను గుర్తించడానికి fallback.
-        */
-
-        return Array.from(source.querySelectorAll("a[href]")).filter(
-            function (link) {
-                return link.querySelector("img") &&
-                       cleanText(link.textContent);
-            }
+        return [...source.querySelectorAll("a[href]")].filter(link =>
+            link.querySelector("img") && clean(link.textContent)
         );
     }
 
-    /* =========================================
-       BUILD NEWS CARD
-    ========================================= */
-
-    function buildCard(card, baseURL) {
-        const title = getTitle(card);
-        const articleURL = getCardURL(card, baseURL);
-        const sourceImage = getImage(card);
-
-        if (!title || !articleURL) return null;
-
-        const article = document.createElement("article");
-        article.className = "news-card";
-
-        const link = document.createElement("a");
-        link.className = "news-card-link";
-        link.href = articleURL;
-
-        if (sourceImage) {
-            const imagePath =
-                sourceImage.getAttribute("data-src") ||
-                sourceImage.getAttribute("data-lazy-src") ||
-                sourceImage.getAttribute("src");
-
-            const imageURL = makeURL(imagePath, baseURL);
-
-            if (imageURL) {
-                const img = document.createElement("img");
-
-                img.src = imageURL;
-                img.alt = sourceImage.getAttribute("alt") || title;
-                img.loading = "lazy";
-                img.decoding = "async";
-
-                link.appendChild(img);
-            }
-        }
-
-        const heading = document.createElement("h3");
-        heading.textContent = title;
-
-        link.appendChild(heading);
-        article.appendChild(link);
-
-        return article;
-    }
-
-    /* =========================================
-       RENDER NEWS
-    ========================================= */
-
-    function renderNews(target, cards, baseURL, limit) {
+    function render(target, cards, base, limit) {
         if (!target) return 0;
 
         const fragment = document.createDocumentFragment();
@@ -680,242 +572,142 @@ document.addEventListener("DOMContentLoaded", function () {
         for (const card of cards) {
             if (count >= limit) break;
 
-            const articleURL = getCardURL(card, baseURL);
+            const title = titleOf(card);
+            const url = urlOf(card, base);
 
-            if (!articleURL || seen.has(articleURL)) continue;
+            if (!title || !url || seen.has(url)) continue;
+            seen.add(url);
 
-            const newCard = buildCard(card, baseURL);
+            const item = document.createElement("article");
+            item.className = "news-card";
 
-            if (!newCard) continue;
+            const link = document.createElement("a");
+            link.className = "news-card-link";
+            link.href = url;
 
-            seen.add(articleURL);
-            fragment.appendChild(newCard);
+            const image = card.querySelector("img");
+            if (image) {
+                const path =
+                    image.getAttribute("src") ||
+                    image.getAttribute("data-src") ||
+                    image.getAttribute("data-lazy-src");
+
+                const imageURL = absoluteURL(path, base);
+                if (imageURL) {
+                    const img = document.createElement("img");
+                    img.src = imageURL;
+                    img.alt = image.getAttribute("alt") || title;
+                    img.loading = "lazy";
+                    img.onerror = function () { this.style.display = "none"; };
+                    link.appendChild(img);
+                }
+            }
+
+            const heading = document.createElement("h3");
+            heading.textContent = title;
+            link.appendChild(heading);
+            item.appendChild(link);
+            fragment.appendChild(item);
             count++;
         }
 
-        if (count > 0) {
+        if (count) {
             target.replaceChildren(fragment);
         } else {
-            target.innerHTML =
-                '<p class="news-loading-message">' +
-                'వార్తలు అందుబాటులో లేవు.</p>';
+            target.innerHTML = '<p class="news-loading-message">వార్తలు అందుబాటులో లేవు.</p>';
         }
 
         return count;
     }
 
-    /* =========================================
-       LOAD HOMEPAGE NEWS
-    ========================================= */
-
-    async function loadHomepageNews() {
-        try {
-            const requestURL = new URL(HOME_URL.href);
-            requestURL.searchParams.set("v", Date.now().toString());
-
-            const response = await fetch(requestURL.href, {
-                cache: "no-store"
-            });
-
-            if (!response.ok) {
-                throw new Error("Homepage HTTP " + response.status);
-            }
-
-            const html = await response.text();
-            const parser = new DOMParser();
-            const homeDoc = parser.parseFromString(html, "text/html");
-
-            NEWS_SECTIONS.forEach(function (config) {
-                const target = document.getElementById(config.target);
-                const source = homeDoc.getElementById(config.sourceId);
-
-                if (!target) return;
-
-                if (!source) {
-                    console.warn(
-                        "Homepage source ID దొరకలేదు:",
-                        config.sourceId
-                    );
-                    target.innerHTML =
-                        '<p class="news-loading-message">' +
-                        'ఈ విభాగంలో వార్తలు లేవు.</p>';
-                    return;
-                }
-
-                const cards = findCards(source, HOME_URL);
-
-                renderNews(
-                    target,
-                    cards,
-                    HOME_URL,
-                    config.limit
-                );
-            });
-
-        } catch (error) {
-            console.error("Homepage news error:", error);
+    function findSource(doc, ids) {
+        for (const id of ids) {
+            const element = doc.getElementById(id);
+            if (element && findCards(element).length) return element;
         }
+        return null;
     }
 
-    /* =========================================
-       LOAD SPORTS FROM SPORTS.HTML
-       INTO BUSINESS ARTICLE SIDEBAR
-    ========================================= */
+    async function fetchDocument(url) {
+        const requestURL = new URL(url.href);
+        requestURL.searchParams.set("v", Date.now().toString());
+
+        const response = await fetch(requestURL.href, { cache: "no-store" });
+        if (!response.ok) throw new Error("HTTP " + response.status);
+
+        const html = await response.text();
+        return new DOMParser().parseFromString(html, "text/html");
+    }
+
+    async function loadHomepageSections() {
+        try {
+            const doc = await fetchDocument(HOME_URL);
+
+            for (const config of configs) {
+                const target = document.getElementById(config.target);
+                if (!target) continue;
+
+                let source = findSource(doc, config.ids);
+
+                // ID దొరకకపోతే మొత్తం homepageలోని article cards నుంచి వెతుకు.
+                let cards = source ? findCards(source) : [];
+
+                if (!cards.length) {
+                    cards = findCards(doc);
+                }
+
+                render(target, cards, HOME_URL, config.limit);
+            }
+        } catch (error) {
+            console.error("Homepage sections loading failed:", error);
+        }
+    }
 
     async function loadSportsSidebar() {
         const target = document.getElementById("sportsSidebar");
-
         if (!target) return;
 
         try {
-            const requestURL = new URL(SPORTS_URL.href);
-            requestURL.searchParams.set("v", Date.now().toString());
+            const doc = await fetchDocument(SPORTS_URL);
 
-            const response = await fetch(requestURL.href, {
-                cache: "no-store"
-            });
-
-            if (!response.ok) {
-                throw new Error("SPORTS.html HTTP " + response.status);
-            }
-
-            const html = await response.text();
-            const parser = new DOMParser();
-            const sportsDoc = parser.parseFromString(html, "text/html");
-
-            /*
-              ముందుగా SPORTS.htmlలో స్పోర్ట్స్ విభాగాన్ని
-              గుర్తించడానికి ప్రయత్నిస్తుంది.
-            */
-
-            const sourceIds = [
-                "latestSportsSection",
-                "sportsNewsSection",
-                "allSportsSection",
-                "sportsSection",
-                "latestSports",
-                "sportsGrid",
-                "latestSection",
-                "sportsSource",
-                "latestNewsSource"
+            const sportsIDs = [
+                "latestSportsSection", "sportsNewsSection",
+                "allSportsSection", "sportsSection",
+                "latestSports", "sportsGrid", "latestSection",
+                "latestNewsSource", "sportsSource"
             ];
 
-            let cards = [];
+            let source = findSource(doc, sportsIDs);
+            let cards = source ? findCards(source) : [];
 
-            for (const id of sourceIds) {
-                const source = sportsDoc.getElementById(id);
+            if (!cards.length) cards = findCards(doc);
 
-                if (!source) continue;
-
-                const found = findCards(source, SPORTS_URL);
-
-                if (found.length) {
-                    cards = found;
-                    break;
-                }
-            }
-
-            /*
-              తెలిసిన IDsలో వార్తలు దొరకకపోతే
-              మొత్తం SPORTS.htmlలో వెతుకుతుంది.
-            */
-
-            if (!cards.length) {
-                cards = findCards(sportsDoc, SPORTS_URL);
-            }
-
-            /*
-              URL ఆధారంగా duplicate వార్తలను తొలగిస్తుంది.
-            */
-
-            const uniqueCards = [];
-            const seenURLs = new Set();
-
-            for (const card of cards) {
-                const articleURL = getCardURL(card, SPORTS_URL);
-
-                if (!articleURL || seenURLs.has(articleURL)) continue;
-
-                if (!getTitle(card)) continue;
-
-                seenURLs.add(articleURL);
-                uniqueCards.push(card);
-            }
-
-            target.replaceChildren();
-
-            let count = 0;
-
-            uniqueCards.forEach(function (card) {
-                const newsCard = buildCard(card, SPORTS_URL);
-
-                if (!newsCard) return;
-
-                target.appendChild(newsCard);
-                count++;
-            });
-
-            if (!count) {
-                target.innerHTML =
-                    '<p class="news-loading-message">' +
-                    'స్పోర్ట్స్ వార్తలు దొరకలేదు. ' +
-                    'SPORTS.htmlలోని ఆర్టికల్ నిర్మాణాన్ని తనిఖీ చేయాలి.' +
-                    '</p>';
-
-                console.warn(
-                    "Sports articles not found in SPORTS.html."
-                );
-            } else {
-                console.info(
-                    "Sports sidebar articles loaded:",
-                    count
-                );
-            }
-
+            render(target, cards, SPORTS_URL, Infinity);
         } catch (error) {
-            console.error("Sports sidebar error:", error);
-
+            console.error("Sports sidebar loading failed:", error);
             target.innerHTML =
-                '<p class="news-loading-message">' +
-                'స్పోర్ట్స్ వార్తలు లోడ్ కాలేదు.</p>';
+                '<p class="news-loading-message">SPORTS.html నుంచి వార్తలు లోడ్ కాలేదు.</p>';
         }
     }
 
-    /* =========================================
-       START LOADING
-    ========================================= */
-
-    loadHomepageNews();
+    loadHomepageSections();
     loadSportsSidebar();
 });
-
-
-/* =============================================
-   DARK / LIGHT THEME
-============================================= */
 
 function toggleTheme() {
     document.body.classList.toggle("dark-mode");
 
     const button = document.getElementById("themeButton");
-
     if (button) {
-        button.textContent =
-            document.body.classList.contains("dark-mode")
-                ? "☀️ Light"
-                : "🌙 Dark";
+        button.textContent = document.body.classList.contains("dark-mode")
+            ? "☀️ Light"
+            : "🌙 Dark";
     }
 }
-
-
-/* =============================================
-   MOBILE NAVIGATION
-============================================= */
 
 function toggleMobileNav() {
     const nav = document.getElementById("navLinks");
     const button = document.querySelector(".mobile-menu-toggle");
-
     if (!nav) return;
 
     nav.classList.toggle("mobile-open");
