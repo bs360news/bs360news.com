@@ -1009,27 +1009,8 @@ body.dark-mode .most-read-item {
     </div>
 
 </footer>
-
-<!-- ================= JAVASCRIPT ================= -->
 <script>
-
-    
-/* MOVIE REVIEWS: SHOW ONLY 3 ARTICLES */
-const movieReviewsSource = home.querySelector(
-    ".movie-reviews-section"
-);
-
-const movieReviewsTarget = document.getElementById(
-    "movieReviewsSidebar"
-);
-
-if (movieReviewsTarget) {
-    const reviews = collectArticles(movieReviewsSource).slice(0, 3);
-
-    movieReviewsTarget.innerHTML = reviews.length
-        ? reviews.map(sidebarHTML).join("")
-        : "<p>మూవీ రివ్యూస్ అందుబాటులో లేవు.</p>";
-}
+<!-- ================= JAVASCRIPT ================= -->
 
 document.addEventListener("DOMContentLoaded", function () {
     "use strict";
@@ -1037,14 +1018,16 @@ document.addEventListener("DOMContentLoaded", function () {
     /* ================= DARK MODE ================= */
     const themeButton = document.getElementById("themeToggle");
 
-    themeButton.addEventListener("click", function () {
-        document.body.classList.toggle("dark-mode");
+    if (themeButton) {
+        themeButton.addEventListener("click", function () {
+            document.body.classList.toggle("dark-mode");
 
-        themeButton.textContent =
-            document.body.classList.contains("dark-mode")
-                ? "☀️ Light"
-                : "🌙 Dark";
-    });
+            themeButton.textContent =
+                document.body.classList.contains("dark-mode")
+                    ? "☀️ Light"
+                    : "🌙 Dark";
+        });
+    }
 
     /* ================= HELPERS ================= */
     const clean = value =>
@@ -1057,9 +1040,7 @@ document.addEventListener("DOMContentLoaded", function () {
             "h1, h2, h3, h4, .news-content p, .news-title, p"
         );
 
-        if (!link || !image || !heading) {
-            return null;
-        }
+        if (!link || !image || !heading) return null;
 
         const href = link.getAttribute("href");
         const src =
@@ -1069,9 +1050,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const title = clean(heading.textContent);
 
-        if (!href || !src || !title) {
-            return null;
-        }
+        if (!href || !src || !title) return null;
 
         return {
             href: href,
@@ -1083,25 +1062,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /* ================= COLLECT ARTICLES ================= */
     function collectArticles(root) {
-        if (!root) {
-            return [];
-        }
+        if (!root) return [];
 
         const result = [];
         const seen = new Set();
 
         root.querySelectorAll("article").forEach(function (article) {
             const item = getArticle(article);
-
-            if (!item) {
-                return;
-            }
+            if (!item) return;
 
             const key = item.href + "|" + item.title;
 
-            if (seen.has(key)) {
-                return;
-            }
+            if (seen.has(key)) return;
 
             seen.add(key);
             result.push(item);
@@ -1110,7 +1082,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return result;
     }
 
-    /* ================= CREATE HOMEPAGE CARD ================= */
+    /* ================= CARD HTML ================= */
     function cardHTML(item) {
         return `
             <a class="homepage-card" href="${item.href}">
@@ -1124,7 +1096,7 @@ document.addEventListener("DOMContentLoaded", function () {
         `;
     }
 
-    /* ================= CREATE SIDEBAR CARD ================= */
+    /* ================= SIDEBAR HTML ================= */
     function sidebarHTML(item) {
         return `
             <a class="sidebar-item" href="${item.href}">
@@ -1138,73 +1110,48 @@ document.addEventListener("DOMContentLoaded", function () {
         `;
     }
 
-    /* ================= HOMEPAGE SECTION ORDER ================= */
+    /* ================= SIDEBAR RENDER ================= */
+    function renderSidebar(targetId, source, limit) {
+        const target = document.getElementById(targetId);
+        if (!target) return;
+
+        const items = collectArticles(source).slice(0, limit);
+
+        target.innerHTML = items.length
+            ? items.map(sidebarHTML).join("")
+            : "<p>ప్రస్తుతం వార్తలు అందుబాటులో లేవు.</p>";
+    }
+
+    /* ================= HOMEPAGE SECTIONS ================= */
     function renderHomepageSections(home) {
         const output = document.getElementById(
             "homepageArticlesContent"
         );
 
+        if (!output) return;
+
         output.innerHTML = "";
 
         const sections = [
-            {
-                title: "TOP NEWS",
-                selector: ".top-news-group"
-            },
-            {
-                title: "LATEST NEWS",
-                selector: "#latestSection"
-            },
-            {
-                title: "TRENDING NEWS",
-                selector: "#trendingSection"
-            },
-            {
-                title: "ENTERTAINMENT NEWS",
-                selector: "#entertainmentSection"
-            },
-            {
-                title: "NATIONAL + WORLD NEWS",
-                selector: ".national-world-layout"
-            },
-            {
-                title: "BIGG BOSS",
-                selector: ".bigboss-section"
-            },
-            {
-                title: "SPORTS NEWS",
-                selector: "#sportsSection"
-            },
-            {
-                title: "WORLD NEWS",
-                selector: "#worldSection"
-            },
-            {
-                title: "AP & TS NEWS",
-                selector: "#aptsSection"
-            },
-            {
-                title: "MOVIE REVIEWS",
-                selector: ".movie-reviews-section"
-            },
-            {
-                title: "BUSINESS NEWS",
-                selector: "#businessSection"
-            }
+            { title: "TOP NEWS", selector: ".top-news-group" },
+            { title: "LATEST NEWS", selector: "#latestSection" },
+            { title: "TRENDING NEWS", selector: "#trendingSection" },
+            { title: "ENTERTAINMENT NEWS", selector: "#entertainmentSection" },
+            { title: "NATIONAL + WORLD NEWS", selector: ".national-world-layout" },
+            { title: "BIGG BOSS", selector: ".bigboss-section" },
+            { title: "SPORTS NEWS", selector: "#sportsSection" },
+            { title: "WORLD NEWS", selector: "#worldSection" },
+            { title: "AP & TS NEWS", selector: "#aptsSection" },
+            { title: "MOVIE REVIEWS", selector: ".movie-reviews-section" },
+            { title: "BUSINESS NEWS", selector: "#businessSection" }
         ];
 
         sections.forEach(function (section) {
             const source = home.querySelector(section.selector);
-
-            if (!source) {
-                return;
-            }
+            if (!source) return;
 
             const articles = collectArticles(source);
-
-            if (!articles.length) {
-                return;
-            }
+            if (!articles.length) return;
 
             const block = document.createElement("section");
             block.className = "homepage-section";
@@ -1214,10 +1161,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const grid = document.createElement("div");
             grid.className = "homepage-cards";
-
-            grid.innerHTML = articles
-                .map(cardHTML)
-                .join("");
+            grid.innerHTML = articles.map(cardHTML).join("");
 
             block.appendChild(heading);
             block.appendChild(grid);
@@ -1225,41 +1169,18 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         if (!output.children.length) {
-            output.innerHTML = `
-                <div class="loading">
-                    హోమ్‌పేజీలో చదవగలిగే ఆర్టికల్స్ దొరకలేదు.
-                    index.html లో article నిర్మాణాన్ని తనిఖీ చేయండి.
-                </div>
-            `;
+            output.innerHTML =
+                '<div class="loading">హోమ్‌పేజీలో వార్తలు దొరకలేదు.</div>';
         }
     }
 
-    /* ================= SIDEBAR RENDER ================= */
-    function renderSidebar(targetId, source, limit) {
-        const target = document.getElementById(targetId);
-
-        if (!target) {
-            return;
-        }
-
-        const items = source
-            ? collectArticles(source).slice(0, limit)
-            : [];
-
-        target.innerHTML = items.length
-            ? items.map(sidebarHTML).join("")
-            : "<p>ప్రస్తుతం వార్తలు అందుబాటులో లేవు.</p>";
-    }
-
-    /* ================= LOAD HOMEPAGE ================= */
+    /* ================= LOAD INDEX.HTML ================= */
     fetch("index.html?v=" + Date.now(), {
         cache: "no-store"
     })
         .then(function (response) {
             if (!response.ok) {
-                throw new Error(
-                    "index.html load failed: " + response.status
-                );
+                throw new Error("index.html load failed: " + response.status);
             }
 
             return response.text();
@@ -1270,53 +1191,62 @@ document.addEventListener("DOMContentLoaded", function () {
                 "text/html"
             );
 
-            /* Homepage sections in the configured order */
+            /* Render homepage sections */
             renderHomepageSections(home);
 
-            /* Sidebar source elements */
+            /* Latest News */
             const latestSource = home.querySelector(
                 "#latestNewsSource, #latestGrid, #latestSection"
             );
 
+            /* Trending News */
             const trendingSource = home.querySelector(
                 "#trendingSource, #trendingSidebar, #trendingSection"
             );
 
-            const mostReadSource = home.querySelector(
-                "#mostReadSource, #mostReadList, #mostReadSidebar"
+            /* Movie Reviews source */
+            const movieReviewsSource = home.querySelector(
+                ".movie-reviews-section"
             );
 
+            /* Latest and Trending sidebars */
             renderSidebar("latestSidebar", latestSource, 8);
             renderSidebar("trendingSidebar", trendingSource, 8);
-            renderSidebar("mostReadSidebar", mostReadSource, 8);
+
+            /* Movie Reviews: ONLY 3 ARTICLES */
+            renderSidebar(
+                "movieReviewsSidebar",
+                movieReviewsSource,
+                3
+            );
         })
         .catch(function (error) {
-            console.error(
-                "BS360 homepage articles error:",
-                error
+            console.error("BS360 homepage articles error:", error);
+
+            const homepageOutput = document.getElementById(
+                "homepageArticlesContent"
             );
 
-            document.getElementById(
-                "homepageArticlesContent"
-            ).innerHTML = `
-                <div class="loading">
-                    హోమ్‌పేజీ వార్తలు లోడ్ కాలేదు.
-                    index.html ఫైల్‌ను తనిఖీ చేయండి.
-                </div>
-            `;
+            if (homepageOutput) {
+                homepageOutput.innerHTML =
+                    '<div class="loading">హోమ్‌పేజీ వార్తలు లోడ్ కాలేదు. index.html తనిఖీ చేయండి.</div>';
+            }
 
-            document.getElementById("latestSidebar").innerHTML =
-                "<p>వార్తలు లోడ్ కాలేదు.</p>";
+            [
+                "latestSidebar",
+                "trendingSidebar",
+                "movieReviewsSidebar"
+            ].forEach(function (id) {
+                const target = document.getElementById(id);
 
-            document.getElementById("trendingSidebar").innerHTML =
-                "<p>వార్తలు లోడ్ కాలేదు.</p>";
-
-            document.getElementById("mostReadSidebar").innerHTML =
-                "<p>వార్తలు లోడ్ కాలేదు.</p>";
+                if (target) {
+                    target.innerHTML =
+                        "<p>వార్తలు లోడ్ కాలేదు.</p>";
+                }
+            });
         });
 });
 </script>
-
 </body>
 </html>
 
