@@ -13,7 +13,13 @@
 <link rel="icon" type="image/png" href="dp.png.png">
 <link rel="canonical" href="https://bs360news.com/business.html">
 
+
 <style>
+/* =====================================================
+   BS 360 NEWS - BUSINESS PAGE COMPLETE CSS
+   FULL WIDTH + DESKTOP + TABLET + MOBILE
+===================================================== */
+
 /* ================= RESET ================= */
 * {
     box-sizing: border-box;
@@ -25,10 +31,12 @@ html {
 
 body {
     margin: 0;
+    width: 100%;
     background: #f3f5f7;
     color: #111827;
     font-family: Arial, "Noto Sans Telugu", "Segoe UI", sans-serif;
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
 img {
@@ -47,24 +55,26 @@ button {
     font: inherit;
 }
 
-.top-header,
-.nav-bar {
-    background: #fff;
-    border-bottom: 1px solid #e5e7eb;
-}
-
+/* ================= COMMON WIDTH ================= */
 .header-inner,
 .nav-inner,
 .page,
 .breaking,
 .footer-inner,
 .copyright {
-    width: min(1400px, 96%);
+    width: 96%;
+    max-width: 1400px;
     margin-left: auto;
     margin-right: auto;
 }
 
 /* ================= HEADER ================= */
+.top-header,
+.nav-bar {
+    background: #fff;
+    border-bottom: 1px solid #e5e7eb;
+}
+
 .header-inner {
     min-height: 68px;
     display: flex;
@@ -144,6 +154,7 @@ button {
     font-size: 13px;
     font-weight: 900;
     white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .breaking-text {
@@ -152,19 +163,26 @@ button {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    min-width: 0;
 }
 
 /* ================= PAGE ================= */
 .page {
+    display: block;
+    width: 96%;
+    max-width: 1400px;
     margin-top: 15px;
     margin-bottom: 35px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .page-title {
+    width: 100%;
     background: #fff;
     border-left: 5px solid #e50914;
     padding: 12px 15px;
-    margin-bottom: 18px;
+    margin: 0 0 18px;
     font-size: 24px;
     font-weight: 900;
 }
@@ -175,21 +193,29 @@ button {
     grid-template-columns: minmax(0, 1fr) 320px;
     gap: 22px;
     align-items: start;
+    width: 100%;
+    max-width: none;
 }
 
 .movies-main {
-    min-width: 0;
+    display: block;
     width: 100%;
+    min-width: 0;
+    max-width: none;
 }
 
 /* ================= SECTION HEADINGS ================= */
 .section,
 .homepage-section {
-    margin-bottom: 28px;
+    display: block;
+    width: 100%;
     min-width: 0;
+    max-width: none;
+    margin: 0 0 28px;
 }
 
 .section-head {
+    width: 100%;
     border-bottom: 2px solid #e50914;
     padding-bottom: 7px;
     margin-bottom: 12px;
@@ -207,6 +233,7 @@ button {
 }
 
 .homepage-section > h2 {
+    width: 100%;
     border-bottom: 2px solid #e50914;
     padding-bottom: 7px;
 }
@@ -218,6 +245,8 @@ button {
     grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 12px;
     width: 100%;
+    max-width: none;
+    min-width: 0;
     align-items: start;
 }
 
@@ -227,6 +256,7 @@ button {
     display: block;
     width: 100%;
     min-width: 0;
+    max-width: none;
     background: #fff;
     border-radius: 6px;
     overflow: hidden;
@@ -250,6 +280,7 @@ button {
 
 .movie-card-content {
     padding: 9px;
+    min-width: 0;
 }
 
 .movie-card-title,
@@ -274,22 +305,25 @@ button {
     display: flex;
     flex-direction: column;
     gap: 18px;
+    width: 100%;
     min-width: 0;
+    max-width: none;
 }
 
 .sidebar-box {
+    width: 100%;
+    min-width: 0;
     background: #fff;
     border: 1px solid #e5e7eb;
     border-radius: 8px;
     padding: 14px;
-    min-width: 0;
 }
 
 .sidebar-title {
     font-size: 19px;
     font-weight: 900;
     padding-bottom: 9px;
-    margin-bottom: 5px;
+    margin: 0 0 5px;
     border-bottom: 3px solid #e50914;
 }
 
@@ -334,6 +368,31 @@ button {
     color: #075aaa;
 }
 
+/* ================= HOMEPAGE LOADED CONTENT ================= */
+#homepageArticlesContent {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+}
+
+#homepageArticlesContent > section,
+#homepageArticlesContent > div {
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+}
+
+/* Allow nested article sections to use available width */
+#homepageArticlesContent .section,
+#homepageArticlesContent .homepage-section,
+#homepageArticlesContent .movies-grid,
+#homepageArticlesContent .homepage-cards {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+}
+
 /* ================= LOADING ================= */
 .loading {
     background: #fff;
@@ -347,6 +406,7 @@ button {
 
 /* ================= FOOTER ================= */
 .site-footer {
+    width: 100%;
     background: #111827;
     color: #fff;
     margin-top: 35px;
@@ -425,6 +485,19 @@ body.dark-mode .sidebar-item {
     border-color: #374151;
 }
 
+/* ================= LARGE DESKTOP ================= */
+@media (min-width: 1401px) {
+    .page,
+    .header-inner,
+    .nav-inner,
+    .breaking,
+    .footer-inner,
+    .copyright {
+        width: 96%;
+        max-width: 1600px;
+    }
+}
+
 /* ================= TABLET ================= */
 @media (min-width: 601px) and (max-width: 1100px) {
     .main-layout {
@@ -484,9 +557,10 @@ body.dark-mode .sidebar-item {
 
     .main-layout {
         display: block;
+        width: 100%;
     }
 
-    /* MOBILE: ONE ARTICLE PER ROW */
+    /* ONE ARTICLE PER ROW */
     .movies-grid,
     .homepage-cards {
         grid-template-columns: minmax(0, 1fr);
@@ -536,6 +610,7 @@ body.dark-mode .sidebar-item {
     .article-sidebar {
         display: flex;
         flex-direction: column;
+        width: 100%;
         margin-top: 22px;
         gap: 12px;
     }
@@ -569,59 +644,8 @@ body.dark-mode .sidebar-item {
         color: #fff;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-    
-/* BUSINESS PAGE - FULL WIDTH FIX */
-.business-page,
-#homepageArticlesContent,
-.homepage-content,
-.container {
-    width: 100%;
-    max-width: 1240px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.business-layout,
-.homepage-layout,
-.content-layout {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 320px;
-    gap: 24px;
-    width: 100%;
-    align-items: start;
-}
-
-#businessGrid,
-#bigboss10Section,
-#sportsSection,
-#aptsSection,
-#cinemaSection,
-#businessSection {
-    width: 100%;
-    min-width: 0;
-}
-
-@media (max-width: 768px) {
-    .business-layout,
-    .homepage-layout,
-    .content-layout {
-        grid-template-columns: minmax(0, 1fr);
-    }
-}
-
 </style>
+
 </head>
 
 <body>
