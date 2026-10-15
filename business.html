@@ -952,25 +952,26 @@ body.dark-mode .most-read-item {
         <aside class="article-sidebar">
 
             <section class="sidebar-box">
-                <div class="sidebar-title">LATEST NEWS</div>
+                <div class="sidebar-title">తాజా వార్తలు</div>
                 <div id="latestSidebar">
                     <div class="loading">వార్తలు లోడ్ అవుతున్నాయి...</div>
                 </div>
             </section>
 
             <section class="sidebar-box">
-                <div class="sidebar-title">TRENDING NEWS</div>
+                <div class="sidebar-title">ట్రెండింగ్ వార్తలు</div>
                 <div id="trendingSidebar">
                     <div class="loading">వార్తలు లోడ్ అవుతున్నాయి...</div>
                 </div>
             </section>
 
-            <section class="sidebar-box">
-                <div class="sidebar-title">MOST READ</div>
-                <div id="mostReadSidebar">
-                    <div class="loading">వార్తలు లోడ్ అవుతున్నాయి...</div>
-                </div>
-            </section>
+<section class="sidebar-box">
+    <div class="sidebar-title"> మూవీ రివ్యూస్</div>
+    <div id="movieReviewsSidebar">
+        <div class="loading">మూవీ రివ్యూస్ లోడ్ అవుతున్నాయి...</div>
+    </div>
+</section>
+
 
         </aside>
 
@@ -1011,6 +1012,25 @@ body.dark-mode .most-read-item {
 
 <!-- ================= JAVASCRIPT ================= -->
 <script>
+
+    
+/* MOVIE REVIEWS: SHOW ONLY 3 ARTICLES */
+const movieReviewsSource = home.querySelector(
+    ".movie-reviews-section"
+);
+
+const movieReviewsTarget = document.getElementById(
+    "movieReviewsSidebar"
+);
+
+if (movieReviewsTarget) {
+    const reviews = collectArticles(movieReviewsSource).slice(0, 3);
+
+    movieReviewsTarget.innerHTML = reviews.length
+        ? reviews.map(sidebarHTML).join("")
+        : "<p>మూవీ రివ్యూస్ అందుబాటులో లేవు.</p>";
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     "use strict";
 
