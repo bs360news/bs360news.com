@@ -3643,3 +3643,211 @@ body {
 
 
 
+/* =========================================
+   BS 360 NEWS - EQUAL TITLE ALIGNMENT FIX
+   Laptop + Mobile
+   ఈ కోడ్‌ను style.css చివర పెట్టండి
+========================================= */
+
+/* 1. TOP FEATURED ARTICLE */
+.top-main-column > .news-item.post .news-content p {
+    min-height: 4.65em;
+    line-height: 1.55;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    overflow: hidden;
+    overflow-wrap: anywhere;
+}
+
+/* 2. TOP BOTTOM CARDS */
+.top-bottom-articles .bottom-news-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    height: 100%;
+}
+
+.top-bottom-articles .bottom-news-card > a {
+    display: block;
+    flex-shrink: 0;
+}
+
+.top-bottom-articles .bottom-news-card img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    object-fit: cover;
+}
+
+.top-bottom-articles .bottom-news-card h3 {
+    min-height: 2.9em;
+    margin: 7px 0 5px;
+    font-size: 14px;
+    line-height: 1.45;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+    overflow-wrap: anywhere;
+}
+
+/* 3. LATEST + TRENDING */
+#latestGrid > .news-item,
+#trendingSidebar > .news-item {
+    align-items: flex-start;
+    min-width: 0;
+}
+
+#latestGrid .news-content,
+#trendingSidebar .news-content {
+    flex: 1;
+    min-width: 0;
+}
+
+#latestGrid .news-content p,
+#trendingSidebar .news-content p {
+    min-height: 4.35em;
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.45;
+    font-weight: 600;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    overflow: hidden;
+    overflow-wrap: anywhere;
+}
+
+/* 4. MORE TOP NEWS */
+.top-side-article .article-text h3 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    overflow: hidden;
+    overflow-wrap: anywhere;
+    line-height: 1.45;
+    min-height: 4.35em;
+}
+
+/* 5. ENTERTAINMENT, SPORTS, BUSINESS, AP & TS */
+#entertainmentSection .entertainment-featured h3,
+#sportsSection .entertainment-featured h3,
+#businessSection .entertainment-featured h3,
+#aptsSection .entertainment-featured h3 {
+    min-height: 2.9em;
+    line-height: 1.45;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+    overflow-wrap: anywhere;
+}
+
+#entertainmentSection .entertainment-small-grid h3,
+#sportsSection .entertainment-small-grid h3,
+#businessSection .entertainment-small-grid h3,
+#aptsSection .entertainment-small-grid h3,
+#entertainmentSection .entertainment-bottom-grid h3,
+#sportsSection .entertainment-bottom-grid h3,
+#businessSection .entertainment-bottom-grid h3,
+#aptsSection .entertainment-bottom-grid h3 {
+    min-height: 2.9em;
+    margin: 6px 0 0;
+    line-height: 1.45;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+    overflow-wrap: anywhere;
+}
+
+/* 6. NATIONAL + WORLD NEWS */
+#nationalGrid h3,
+#worldGrid h3,
+#nationalSection .national-world-grid h3,
+#worldSection .national-world-grid h3 {
+    min-height: 2.9em;
+    line-height: 1.45;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+    overflow-wrap: anywhere;
+}
+
+/* 7. MOBILE */
+@media (max-width: 700px) {
+
+    .top-main-column > .news-item.post .news-content p {
+        min-height: 4.65em;
+        font-size: 17px;
+    }
+
+    .top-bottom-articles .bottom-news-card h3 {
+        min-height: 2.8em;
+        font-size: 13px;
+    }
+
+    #latestGrid .news-content p,
+    #trendingSidebar .news-content p {
+        min-height: 4.2em;
+        font-size: 13px;
+        line-height: 1.4;
+    }
+
+    .top-side-article .article-text h3 {
+        min-height: 4.2em;
+        font-size: 13px;
+    }
+
+    #entertainmentSection .entertainment-featured h3,
+    #sportsSection .entertainment-featured h3,
+    #businessSection .entertainment-featured h3,
+    #aptsSection .entertainment-featured h3 {
+        min-height: 2.8em;
+        font-size: 16px;
+    }
+
+    #entertainmentSection .entertainment-small-grid h3,
+    #sportsSection .entertainment-small-grid h3,
+    #businessSection .entertainment-small-grid h3,
+    #aptsSection .entertainment-small-grid h3,
+    #entertainmentSection .entertainment-bottom-grid h3,
+    #sportsSection .entertainment-bottom-grid h3,
+    #businessSection .entertainment-bottom-grid h3,
+    #aptsSection .entertainment-bottom-grid h3 {
+        min-height: 2.8em;
+        font-size: 12px;
+    }
+
+    #nationalGrid h3,
+    #worldGrid h3,
+    #nationalSection .national-world-grid h3,
+    #worldSection .national-world-grid h3 {
+        min-height: 2.8em;
+        font-size: 12px;
+    }
+}
+
+/* VERY SMALL MOBILE */
+@media (max-width: 360px) {
+    #latestGrid .news-content p,
+    #trendingSidebar .news-content p {
+        font-size: 12px;
+    }
+
+    .top-bottom-articles .bottom-news-card h3 {
+        font-size: 12px;
+    }
+}
+
