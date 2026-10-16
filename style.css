@@ -5010,3 +5010,142 @@ body .business-national-world-row .national-world-grid article:first-child {
         gap: 20px !important;
     }
 }
+
+
+
+
+/* ===== BS360: BUSINESS | NATIONAL | WORLD ===== */
+
+.business-national-world-row {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 18px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    align-items: start !important;
+    clear: both !important;
+    box-sizing: border-box !important;
+}
+
+.business-national-world-row > #businessSection,
+.business-national-world-row > #nationalSection,
+.business-national-world-row > #worldSection {
+    display: block !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    float: none !important;
+    clear: none !important;
+    grid-column: auto !important;
+    grid-row: auto !important;
+    box-sizing: border-box !important;
+}
+
+/* Section headings */
+.business-national-world-row .section-heading {
+    display: block;
+    width: 100%;
+    margin: 0 0 12px;
+    font-size: 20px;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+/* Business: one main story + small stories */
+.business-national-world-row #businessSection .entertainment-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 12px !important;
+}
+
+.business-national-world-row #businessSection .entertainment-featured,
+.business-national-world-row #businessSection .entertainment-small-grid {
+    width: 100% !important;
+    min-width: 0 !important;
+}
+
+.business-national-world-row #businessSection .entertainment-featured img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    object-fit: cover;
+}
+
+.business-national-world-row #businessSection .entertainment-small-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+}
+
+.business-national-world-row #businessSection .entertainment-small-grid img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Hide extra bottom cards only in Business */
+.business-national-world-row #businessSection > .entertainment-bottom-grid {
+    display: none !important;
+}
+
+/* National + World: 1 large card and 2 smaller cards */
+.business-national-world-row .national-world-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+    width: 100% !important;
+}
+
+.business-national-world-row .national-world-grid article:first-child {
+    grid-column: 1 / -1 !important;
+}
+
+.business-national-world-row .national-world-grid img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    object-fit: cover;
+}
+
+.business-national-world-row article {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.business-national-world-row article h3 {
+    font-size: 15px;
+    line-height: 1.45;
+    margin: 7px 0;
+}
+
+/* Tablet */
+@media (min-width: 701px) and (max-width: 1050px) {
+    .business-national-world-row {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+
+    .business-national-world-row > #worldSection {
+        grid-column: 1 / -1 !important;
+    }
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+    .business-national-world-row {
+        grid-template-columns: minmax(0, 1fr) !important;
+        gap: 24px !important;
+    }
+
+    .business-national-world-row > #businessSection,
+    .business-national-world-row > #nationalSection,
+    .business-national-world-row > #worldSection {
+        grid-column: auto !important;
+    }
+}
