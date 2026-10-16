@@ -1059,54 +1059,85 @@ document.addEventListener("DOMContentLoaded", function(){
 
 
     /* =====================================================
-       GET ARTICLES
+       GET ARTICLES - SUPPORT HOMEPAGE CARD STRUCTURES
     ===================================================== */
 
     function getArticles(source){
+        if(!source) return [];
 
-        if(!source){
-            return [];
+        let items = [];
+        const cardSelector = [
+            ".news-item.post", "article", ".news-card", ".movie-card",
+            ".post-card", ".latest-news-card", ".trending-card",
+            ".top-news-card", ".review-card", ".news-item"
+        ].join(",");
+
+        if(source.matches && source.matches(cardSelector)) items.push(source);
+        items.push(...Array.from(source.querySelectorAll(cardSelector)));
+
+        // Some homepage sections use linked image cards instead of <article> tags.
+        if(!items.length){
+            items = Array.from(source.querySelectorAll("a[href]")).filter(function(a){
+                return !!a.querySelector("img");
+            });
         }
 
-        const items = [];
-        if(source.matches && source.matches(".news-item.post, article")){
-            items.push(source);
-        }
-        items.push(...Array.from(source.querySelectorAll(".news-item.post, article")));
-
-        return items
-        .map(function(item){
+        const articles = items.map(function(item){
             const image = item.querySelector("img");
-            const title = item.querySelector(
-                ".news-content p, .news-content h3, .news-content a, h3, h2, p, .news-title, .article-title"
+            const link = (item.matches && item.matches("a[href]")) ? item : item.querySelector("a[href]");
+            const titleNode = item.querySelector(
+                ".news-content p, .news-content h3, .news-content a, .news-title, .article-title, h1, h2, h3, h4, p, .title"
             );
-            const link = item.querySelector("a[href]");
+            let title = cleanText(titleNode ? titleNode.textContent : "");
+            if(!title && link) title = cleanText(link.textContent);
+            if(!title && image) title = cleanText(image.getAttribute("alt") || "");
 
             return {
-                title: cleanText(title ? title.textContent : item.getAttribute("data-title") || ""),
-                image: image ? (image.getAttribute("src") || image.getAttribute("data-src") || "") : "",
+                title: title,
+                image: image ? (image.getAttribute("src") || image.getAttribute("data-src") || image.getAttribute("data-lazy-src") || "") : "",
                 alt: image ? (image.getAttribute("alt") || "") : "",
-                url: item.getAttribute("data-url") || (link ? link.getAttribute("href") : "") || ""
+                url: item.getAttribute("data-url") || (link ? (link.getAttribute("href") || "") : "")
             };
-        })
-        .filter(function(article, index, array){
+        }).filter(function(article){
             return article.title && article.image && article.url &&
-                array.findIndex(function(other){ return other.url === article.url; }) === index;
+                !article.url.startsWith("#") && !/^javascript:/i.test(article.url);
+        });
+
+        return articles.filter(function(article, index, array){
+            return array.findIndex(function(other){ return other.url === article.url; }) === index;
         });
     }
 
-    /* Try known Homepage source IDs, then use the first one containing articles. */
     function getFirstAvailableArticles(home, ids){
         for(const id of ids){
             const source = home.getElementById(id);
             const articles = getArticles(source);
-            if(articles.length){
-                return articles;
+            if(articles.length) return articles;
+        }
+        return [];
+    }
+
+    // Find a Homepage section by its visible heading if its ID is different.
+    function getArticlesByHeading(home, labels){
+        const wanted = labels.map(function(label){ return cleanText(label).toLowerCase(); });
+        const headings = Array.from(home.querySelectorAll("h1,h2,h3,h4,.section-title,.section-head,.sidebar-title,.category-title"));
+        for(const heading of headings){
+            const text = cleanText(heading.textContent).toLowerCase();
+            if(!wanted.some(function(label){ return text === label || text.includes(label); })) continue;
+            let parent = heading;
+            for(let level = 0; level < 5 && parent; level++, parent = parent.parentElement){
+                const articles = getArticles(parent);
+                if(articles.length) return articles;
             }
         }
         return [];
     }
 
+    function getSectionArticles(home, ids, headingLabels){
+        return getFirstAvailableArticles(home, ids).length
+            ? getFirstAvailableArticles(home, ids)
+            : getArticlesByHeading(home, headingLabels);
+    }
 
     /* =====================================================
        NORMAL CARD
@@ -1271,21 +1302,23 @@ document.addEventListener("DOMContentLoaded", function(){
         });
 
 
-        const topNews = getFirstAvailableArticles(home, [
-            "topNewsSource", "topNewsGrid", "topNews", "topStory", "topStoryGrid", "topStorySection"
-        ]);
+        const topNews = getSectionArticles(home, [
+            "topNewsSource", "topNewsGrid", "topNews", "topStory", "topStoryGrid", "topStorySection", "topNewsSection"
+        ], ["Top News", "Top Story", "టాప్ న్యూస్", "ముఖ్య వార్తలు", "ప్రధాన వార్తలు"]);
 
-        const trending = getFirstAvailableArticles(home, [
-            "trendingSource", "trendingGrid", "trendingSidebar", "trendingSection", "trendingNews"
-        ]);
+        const trending = getSectionArticles(home, [
+            "trendingSource", "trendingGrid", "trendingSection", "trendingNews", "trendingTrack"
+        ], ["Trending News", "Trending", "ట్రెండింగ్ న్యూస్", "ట్రెండింగ్"]);
 
-        const latest = getFirstAvailableArticles(home, [
-            "latestNewsSource", "latestGrid", "latestSidebar", "latestSection", "latestNews"
-        ]);
+        const latest = getSectionArticles(home, [
+            "latestNewsSource", "latestGrid", "latestSection", "latestNews", "latestNewsList"
+        ], ["Latest News", "Latest", "తాజా వార్తలు", "తాజా వార్త"]);
 
-        const movieReviews = getFirstAvailableArticles(home, [
-            "movieReviewsSource", "movieReviewsGrid", "movieReviewsSection", "movieReviews", "reviewsGrid", "reviewsSection", "entertainmentSource"
-        ]);
+        const movieReviews = getSectionArticles(home, [
+            "movieReviewsSource", "movieReviewsGrid", "movieReviewsSection", "movieReviews",
+            "movieReviewGrid", "movieReviewSection", "reviewsGrid", "reviewsSection",
+            "cinemaGrid", "cinemaSection", "movieReviewsTrack", "reviewsTrack"
+        ], ["Movie Reviews", "Movie Review", "మూవీ రివ్యూస్", "మూవీ రివ్యూ", "సినిమా రివ్యూస్", "సినిమా రివ్యూ"]);
 
 
         /* =================================================
