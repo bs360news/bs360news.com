@@ -3988,573 +3988,237 @@ body {
 
 
 
+/* =========================================
+   BS 360 NEWS - HOMEPAGE SECTION LAYOUT
+========================================= */
 
-
-
-/* =========================================================
-   BS 360 NEWS — HOMEPAGE LAYOUT UPDATE
-   Desktop + Tablet + Mobile
-========================================================= */
-
-* {
+.homepage-news-layout {
+    width: min(1400px, 96%);
+    margin: 20px auto;
+    display: block;
     box-sizing: border-box;
 }
 
-:root {
-    --bs-blue: #075aaa;
-    --bs-red: #e60000;
-    --bs-border: #e5e7eb;
-    --bs-text: #171717;
-    --bs-muted: #666;
-    --bs-gap: 22px;
-}
-
-body {
-    margin: 0;
-    color: var(--bs-text);
-    font-family: Arial, "Noto Sans Telugu", sans-serif;
-    background: #fff;
-}
-
-.homepage-news-layout {
-    width: min(1200px, 94%);
-    margin: 20px auto 40px;
-}
-
-/* COMMON SECTION HEADINGS */
-
-.homepage-news-layout h2,
-.homepage-news-layout h3 {
-    overflow-wrap: anywhere;
-}
-
-.homepage-news-layout section {
-    min-width: 0;
-}
-
-.top-news-title,
-.section-title,
-.entertainment-section > h2,
-.national-world-section > h2 {
-    margin: 0 0 16px;
-    padding: 0 0 9px;
-    border-bottom: 2px solid var(--bs-blue);
-    font-size: 23px;
-    line-height: 1.4;
-    font-weight: 800;
-}
-
-.section-title::after,
-.entertainment-section > h2::after,
-.national-world-section > h2::after {
-    content: "";
-    display: block;
-    width: 65px;
-    height: 3px;
-    background: var(--bs-red);
-    margin-top: 8px;
-}
-
-/* TOP NEWS */
-
-.top-news-group {
+.top-content-layout,
+.sports-apts-trending-layout {
     display: grid;
-    grid-template-columns: minmax(0, 1.8fr) minmax(280px, 1fr);
-    gap: var(--bs-gap);
+    grid-template-columns: minmax(0, 2fr) minmax(260px, 0.85fr);
+    gap: 22px;
     align-items: start;
     margin-bottom: 28px;
 }
 
-.top-main-column,
-.top-side-column {
+.top-left-column,
+.sports-apts-main {
     min-width: 0;
 }
 
-.top-main-column img,
-.top-side-column img {
-    display: block;
+.top-main-column,
+.top-side-column,
+.entertainment-section,
+.latest-news-column,
+.trending-news-column,
+.sports-section,
+.apts-section,
+.business-section,
+.national-world-section {
+    min-width: 0;
     width: 100%;
-    height: auto;
-    object-fit: cover;
+    box-sizing: border-box;
 }
 
-.top-main-column > a img,
-.top-main-column > img {
-    aspect-ratio: 16 / 9;
+.top-news-group {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: 18px;
+    margin-bottom: 28px;
 }
 
-.top-main-column h2,
-.top-main-column h3 {
-    line-height: 1.5;
-    margin: 10px 0;
+.latest-news-column,
+.trending-news-column {
+    position: relative;
+    align-self: stretch;
+    height: fit-content;
 }
 
-.top-side-articles {
+.latest-news-list,
+.trending-news-list {
     display: flex;
     flex-direction: column;
     gap: 14px;
 }
 
-.top-side-article {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 115px;
-    gap: 12px;
-    align-items: center;
-    padding-bottom: 13px;
-    border-bottom: 1px solid var(--bs-border);
-}
-
-.top-side-article img {
-    width: 115px;
-    aspect-ratio: 16 / 10;
-    border-radius: 3px;
-}
-
-.top-side-article h3 {
-    margin: 0;
-    font-size: 16px;
-    line-height: 1.5;
-}
-
-.top-bottom-articles {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 15px;
-    margin-top: 20px;
-}
-
-.bottom-news-card img {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-}
-
-.bottom-news-card h3 {
-    font-size: 16px;
-    line-height: 1.5;
-    margin: 8px 0 0;
-}
-
-/* LATEST NEWS + TRENDING SIDEBAR */
-
-.latest-trending-layout {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 310px;
-    gap: var(--bs-gap);
-    align-items: start;
-    margin-bottom: 30px;
-}
-
-.latest-news-column,
-.trending-news-column {
-    min-width: 0;
-}
-
-#latestGrid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 16px;
-}
-
-#latestGrid article,
-#latestGrid .news-card {
-    min-width: 0;
-}
-
-#latestGrid img {
-    width: 100%;
-    aspect-ratio: 16 / 10;
-    object-fit: cover;
-}
-
-#latestGrid h3 {
-    font-size: 16px;
-    line-height: 1.5;
-    margin: 8px 0;
-}
-
-#trendingSidebar,
-.trending-sidebar,
-.trending-list {
-    display: flex;
-    flex-direction: column;
-    gap: 13px;
-}
-
-#trendingSidebar article,
-#trendingSidebar .news-card,
-.trending-list article {
+.latest-news-list .news-item,
+.trending-news-list .news-item {
     display: grid;
     grid-template-columns: 105px minmax(0, 1fr);
-    gap: 12px;
-    align-items: center;
+    gap: 10px;
+    align-items: start;
     padding-bottom: 12px;
-    border-bottom: 1px solid var(--bs-border);
+    border-bottom: 1px solid #ddd;
 }
 
-#trendingSidebar img,
-.trending-list img {
-    width: 105px;
+.latest-news-list img,
+.trending-news-list img {
+    display: block;
+    width: 100%;
     aspect-ratio: 16 / 10;
     object-fit: cover;
+    border-radius: 5px;
 }
 
-#trendingSidebar h3,
-.trending-list h3 {
-    margin: 0;
-    font-size: 15px;
-    line-height: 1.5;
+.latest-news-list a,
+.trending-news-list a {
+    text-decoration: none;
 }
 
-/* ENTERTAINMENT / SPORTS / AP & TS / BUSINESS SECTION */
-
-.entertainment-section {
-    min-width: 0;
-    margin: 0 0 32px;
+.entertainment-section,
+.sports-section,
+.apts-section,
+.business-section {
+    margin: 0 0 28px;
 }
 
 .entertainment-layout {
     display: grid;
-    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
-    gap: 20px;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    gap: 16px;
     align-items: start;
-}
-
-.entertainment-featured {
-    min-width: 0;
 }
 
 .entertainment-featured img {
     display: block;
     width: 100%;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-}
-
-.entertainment-featured h3,
-.entertainment-featured h2 {
-    margin: 10px 0;
-    font-size: 22px;
-    line-height: 1.5;
-}
-
-.entertainment-small-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-}
-
-.entertainment-small-grid article,
-.entertainment-small-grid .news-card {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 125px;
-    gap: 12px;
-    align-items: center;
-    padding-bottom: 13px;
-    border-bottom: 1px solid var(--bs-border);
-}
-
-.entertainment-small-grid img {
-    grid-column: 2;
-    grid-row: 1;
-    width: 125px;
     aspect-ratio: 16 / 10;
     object-fit: cover;
 }
 
-.entertainment-small-grid h3 {
-    grid-column: 1;
-    grid-row: 1;
-    margin: 0;
-    font-size: 16px;
-    line-height: 1.5;
+.entertainment-small-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.entertainment-small-grid img,
+.entertainment-bottom-grid img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
 }
 
 .entertainment-bottom-grid {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 15px;
-    margin-top: 20px;
+    gap: 14px;
+    margin-top: 16px;
 }
-
-.entertainment-bottom-grid article img,
-.entertainment-bottom-grid .news-card img {
-    display: block;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-}
-
-.entertainment-bottom-grid h3 {
-    margin: 8px 0 0;
-    font-size: 15px;
-    line-height: 1.5;
-}
-
-/* WORLD + NATIONAL NEWS — BIG IMAGE ABOVE, SMALL CARDS BELOW */
 
 .national-world-section {
-    min-width: 0;
-    margin: 0 0 32px;
+    margin-bottom: 28px;
 }
 
-.national-world-grid {
+/* Business / World / National featured layout */
+.featured-news-layout {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 17px;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    gap: 16px;
     align-items: start;
 }
 
-.national-world-grid article,
-.national-world-grid .news-card {
-    min-width: 0;
-}
-
-.national-world-grid img {
+.featured-news-main img {
     display: block;
     width: 100%;
     aspect-ratio: 16 / 9;
     object-fit: cover;
 }
 
-.national-world-grid h3 {
-    margin: 8px 0 0;
-    font-size: 16px;
-    line-height: 1.5;
+.featured-news-small {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
 }
 
-/* First card becomes the large featured story */
-.national-world-grid article:first-child,
-.national-world-grid .news-card:first-child {
-    grid-column: span 2;
-    grid-row: span 2;
-}
-
-.national-world-grid article:first-child img,
-.national-world-grid .news-card:first-child img {
-    aspect-ratio: 16 / 10;
-}
-
-.national-world-grid article:first-child h3,
-.national-world-grid .news-card:first-child h3 {
-    font-size: 21px;
-    line-height: 1.5;
-}
-
-/* Keep category sections from stretching across unrelated rows */
-#entertainmentSection,
-#sportsSection,
-#aptsSection,
-#businessSection,
-#worldSection,
-#nationalSection {
+.featured-news-small img {
+    display: block;
     width: 100%;
-    min-width: 0;
-}
-
-/* LINKS */
-
-.homepage-news-layout a {
-    color: inherit;
-    text-decoration: none;
-}
-
-.homepage-news-layout a:hover h2,
-.homepage-news-layout a:hover h3 {
-    color: var(--bs-blue);
-}
-
-/* IMAGES */
-
-.homepage-news-layout img {
-    max-width: 100%;
-    height: auto;
-}
-
-.top-main-column img,
-.top-side-article img,
-.bottom-news-card img,
-#latestGrid img,
-#trendingSidebar img,
-.entertainment-featured img,
-.entertainment-small-grid img,
-.entertainment-bottom-grid img,
-.national-world-grid img {
-    height: auto;
+    aspect-ratio: 16 / 10;
     object-fit: cover;
 }
 
-/* TABLET */
-
-@media (max-width: 900px) {
-    :root {
-        --bs-gap: 16px;
-    }
-
-    .homepage-news-layout {
-        width: 95%;
-    }
-
-    .top-news-group {
-        grid-template-columns: minmax(0, 1.5fr) minmax(230px, 1fr);
-    }
-
-    .latest-trending-layout {
-        grid-template-columns: minmax(0, 1fr) 260px;
-    }
-
-    #latestGrid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .entertainment-layout {
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    }
-
-    .entertainment-bottom-grid,
-    .national-world-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    .top-side-article {
-        grid-template-columns: minmax(0, 1fr) 95px;
-    }
-
-    .top-side-article img {
-        width: 95px;
-    }
+.featured-news-main a,
+.featured-news-small a {
+    text-decoration: none;
 }
 
-/* MOBILE */
+/* Keep Bigg Boss and Movie Reviews styles independent */
+.bigboss-section,
+.movie-reviews-section {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 28px;
+}
 
-@media (max-width: 600px) {
-    :root {
-        --bs-gap: 18px;
-    }
-
-    .homepage-news-layout {
-        width: 94%;
-        margin-top: 12px;
-    }
-
-    .top-news-group,
-    .latest-trending-layout,
-    .entertainment-layout {
-        grid-template-columns: minmax(0, 1fr);
+/* Tablet */
+@media (max-width: 900px) {
+    .top-content-layout,
+    .sports-apts-trending-layout {
+        grid-template-columns: minmax(0, 1.7fr) minmax(220px, 0.9fr);
+        gap: 14px;
     }
 
     .top-news-group {
-        gap: 20px;
+        grid-template-columns: 1fr;
     }
 
-    .top-news-title,
-    .section-title,
-    .entertainment-section > h2,
-    .national-world-section > h2 {
-        font-size: 20px;
-    }
-
-    .top-main-column h2,
-    .entertainment-featured h3,
-    .entertainment-featured h2 {
-        font-size: 20px;
-    }
-
-    .top-bottom-articles {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 12px;
-    }
-
-    .bottom-news-card h3 {
-        font-size: 14px;
-    }
-
-    #latestGrid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 12px;
-    }
-
-    #latestGrid h3 {
-        font-size: 14px;
-    }
-
-    .latest-trending-layout {
-        gap: 25px;
-    }
-
-    /* Mobile sidebar stories: image left, text right */
-    #trendingSidebar article,
-    #trendingSidebar .news-card,
-    .trending-list article {
-        grid-template-columns: 100px minmax(0, 1fr);
-        gap: 11px;
-    }
-
-    #trendingSidebar img,
-    .trending-list img {
-        width: 100px;
-    }
-
-    #trendingSidebar h3,
-    .trending-list h3 {
-        font-size: 14px;
-    }
-
-    .entertainment-small-grid article,
-    .entertainment-small-grid .news-card {
-        grid-template-columns: minmax(0, 1fr) 105px;
-    }
-
-    .entertainment-small-grid img {
-        width: 105px;
-    }
-
-    .entertainment-small-grid h3 {
-        font-size: 14px;
+    .entertainment-layout {
+        grid-template-columns: 1fr;
     }
 
     .entertainment-bottom-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 13px;
     }
 
-    .entertainment-bottom-grid h3 {
-        font-size: 14px;
-    }
-
-    .national-world-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 13px;
-    }
-
-    .national-world-grid article:first-child,
-    .national-world-grid .news-card:first-child {
-        grid-column: 1 / -1;
-        grid-row: auto;
-    }
-
-    .national-world-grid article:first-child img,
-    .national-world-grid .news-card:first-child img {
-        aspect-ratio: 16 / 9;
-    }
-
-    .national-world-grid article:first-child h3,
-    .national-world-grid .news-card:first-child h3 {
-        font-size: 19px;
+    .featured-news-layout {
+        grid-template-columns: 1fr;
     }
 }
 
-/* SMALL MOBILE */
+/* Mobile */
+@media (max-width: 600px) {
+    .homepage-news-layout {
+        width: 94%;
+    }
 
-@media (max-width: 380px) {
-    .top-bottom-articles,
-    #latestGrid,
-    .entertainment-bottom-grid,
-    .national-world-grid {
+    .top-content-layout,
+    .sports-apts-trending-layout {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 22px;
+    }
+
+    .top-news-group {
         grid-template-columns: minmax(0, 1fr);
     }
 
     .top-side-article {
-        grid-template-columns: minmax(0, 1fr) 95px;
+        min-width: 0;
+    }
+
+    .entertainment-small-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .entertainment-bottom-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .latest-news-list .news-item,
+    .trending-news-list .news-item {
+        grid-template-columns: 95px minmax(0, 1fr);
+    }
+
+    .featured-news-small {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
