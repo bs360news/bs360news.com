@@ -228,7 +228,7 @@ a{
 
 .movies-grid{
     display:grid;
-    grid-template-columns:repeat(6,minmax(0,1fr));
+    grid-template-columns:repeat(4,minmax(0,1fr));
     gap:12px;
 }
 
@@ -480,7 +480,7 @@ body.dark-mode .most-read-item{
     }
 
     .movies-grid{
-        grid-template-columns:repeat(4,minmax(0,1fr));
+        grid-template-columns:repeat(2,minmax(0,1fr));
     }
 
     .article-sidebar{
@@ -1046,84 +1046,6 @@ body.dark-mode .sidebar-bottom-card{
             </section>
 
 
-            <!-- SPORTS -->
-
-            <section class="section">
-
-                <div class="section-head">
-
-                    <h2>
-                        <span>ALL</span> Sports
-                    </h2>
-
-                </div>
-
-                <div
-                    id="sportsGrid"
-                    class="movies-grid"
-                >
-
-                    <div class="loading">
-                        Sports News Loading...
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <!-- AP & TS -->
-
-            <section class="section">
-
-                <div class="section-head">
-
-                    <h2>
-                        <span>AP & TS</span> News
-                    </h2>
-
-                </div>
-
-                <div
-                    id="aptsGrid"
-                    class="movies-grid"
-                >
-
-                    <div class="loading">
-                        AP & TS News Loading...
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <!-- BUSINESS -->
-
-            <section class="section">
-
-                <div class="section-head">
-
-                    <h2>
-                        <span>BUSINESS</span> News
-                    </h2>
-
-                </div>
-
-                <div
-                    id="businessGrid"
-                    class="movies-grid"
-                >
-
-                    <div class="loading">
-                        Business News Loading...
-                    </div>
-
-                </div>
-
-            </section>
-
-
         </div>
 
 
@@ -1509,40 +1431,16 @@ document.addEventListener("DOMContentLoaded", function(){
         });
 
 
-        const sports =
-            getArticles(
-                home.getElementById(
-                    "sportsSource"
-                )
-            );
-
-
-        const apts =
-            getArticles(
-                home.getElementById(
-                    "aptsSource"
-                )
-            );
-
-
-        const business =
-            getArticles(
-                home.getElementById(
-                    "businessSource"
-                )
-            );
-
-
         const latest = getFirstAvailableArticles(home, [
-            "latestNewsSource", "latestGrid", "latestSidebar", "latestSection"
+            "latestNewsSource", "latestGrid", "latestSidebar", "latestSection", "latestNews"
         ]);
 
         const trending = getFirstAvailableArticles(home, [
-            "trendingSource", "trendingGrid", "trendingSection", "trendingSidebar"
+            "trendingSource", "trendingGrid", "trendingSidebar", "trendingSection", "trendingNews"
         ]);
 
         const mostRead = getFirstAvailableArticles(home, [
-            "mostReadSource", "mostReadList", "mostReadSidebar"
+            "mostReadSource", "mostReadList", "mostReadSidebar", "mostReadSection", "mostRead"
         ]);
 
 
@@ -1552,45 +1450,9 @@ document.addEventListener("DOMContentLoaded", function(){
 
         show(
             "moviesGrid",
-            movies
-                .map(cardHTML)
-                .join("")
-        );
-
-
-        /* =================================================
-           SPORTS
-        ================================================= */
-
-        show(
-            "sportsGrid",
-            sports
-                .map(cardHTML)
-                .join("")
-        );
-
-
-        /* =================================================
-           AP & TS
-        ================================================= */
-
-        show(
-            "aptsGrid",
-            apts
-                .map(cardHTML)
-                .join("")
-        );
-
-
-        /* =================================================
-           BUSINESS
-        ================================================= */
-
-        show(
-            "businessGrid",
-            business
-                .map(cardHTML)
-                .join("")
+            movies.length
+                ? movies.map(cardHTML).join("")
+                : '<div class="loading">Movies articles index.html లో కనిపించలేదు. Homepage source ID / article structure చెక్ చేయండి.</div>'
         );
 
 
@@ -1696,21 +1558,9 @@ document.addEventListener("DOMContentLoaded", function(){
             "Movies:",
             movies.length
         );
-
-        console.log(
-            "Sports:",
-            sports.length
-        );
-
-        console.log(
-            "AP & TS:",
-            apts.length
-        );
-
-        console.log(
-            "Business:",
-            business.length
-        );
+        console.log("Homepage Latest articles:", latest.length);
+        console.log("Homepage Trending articles:", trending.length);
+        console.log("Homepage Most Read articles:", mostRead.length);
 
         console.log(
             "Latest:",
@@ -1751,35 +1601,6 @@ document.addEventListener("DOMContentLoaded", function(){
             `
         );
 
-
-        show(
-            "sportsGrid",
-            `
-                <div class="loading">
-                    Sports News load కాలేదు.
-                </div>
-            `
-        );
-
-
-        show(
-            "aptsGrid",
-            `
-                <div class="loading">
-                    AP & TS News load కాలేదు.
-                </div>
-            `
-        );
-
-
-        show(
-            "businessGrid",
-            `
-                <div class="loading">
-                    Business News load కాలేదు.
-                </div>
-            `
-        );
 
     });
 
