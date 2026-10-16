@@ -3857,3 +3857,106 @@ body {
 
 
 
+
+/* ======================================
+   BS 360 NEWS - TOP SIDEBAR ALIGNMENT FIX
+====================================== */
+
+.top-news-group {
+    display: grid !important;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) !important;
+    gap: 18px !important;
+    align-items: start !important;
+}
+
+.top-main-column,
+.top-side-column {
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.top-side-column {
+    display: block !important;
+    align-self: start !important;
+}
+
+.top-side-articles {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.top-side-article {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) 105px !important;
+    align-items: center !important;
+    gap: 10px !important;
+    width: 100% !important;
+    min-height: 0 !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 0 12px !important;
+    border-bottom: 1px solid #ddd;
+    box-sizing: border-box !important;
+}
+
+.top-side-article .article-text {
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.top-side-article .article-text h3 {
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 1.45 !important;
+    font-size: 14px !important;
+    min-height: 0 !important;
+    overflow-wrap: anywhere;
+}
+
+.top-side-article > a {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.top-side-article > a img {
+    display: block !important;
+    width: 100% !important;
+    height: 72px !important;
+    object-fit: cover !important;
+    margin: 0 !important;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .top-news-group {
+        grid-template-columns: minmax(0, 1fr) !important;
+        gap: 18px !important;
+    }
+
+    .top-side-articles {
+        gap: 10px !important;
+    }
+
+    .top-side-article {
+        grid-template-columns: minmax(0, 1fr) 100px !important;
+        gap: 10px !important;
+        padding-bottom: 10px !important;
+    }
+
+    .top-side-article > a img {
+        height: 68px !important;
+    }
+
+    .top-side-article .article-text h3 {
+        font-size: 13px !important;
+    }
+}
