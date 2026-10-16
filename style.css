@@ -3857,7 +3857,6 @@ body {
 
 
 
-```css
 /* =====================================
    BS 360 NEWS - REMOVE SECTION GAPS
    Desktop + Mobile
@@ -3951,4 +3950,91 @@ body {
         margin-bottom: 16px !important;
     }
 }
-```
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* FIX: HOMEPAGE SECTIONS LARGE GAP */
+
+main.homepage-news-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 22px !important;
+    height: auto !important;
+    min-height: 0 !important;
+}
+
+/* TOP NEWS ROW */
+.homepage-news-layout > .top-news-group {
+    display: grid !important;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) !important;
+    align-items: start !important;
+    gap: 20px !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+}
+
+/* LATEST + TRENDING ROW */
+.homepage-news-layout > .latest-trending-layout {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    align-items: start !important;
+    gap: 20px !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+}
+
+/* ALL SECTIONS FOLLOW NORMAL DOCUMENT FLOW */
+.homepage-news-layout > section,
+.homepage-news-layout > .national-world-layout,
+.homepage-news-layout > .ad-space {
+    position: relative !important;
+    top: auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+/* REMOVE UNNECESSARY EMPTY HEIGHTS */
+.top-main-column,
+.top-side-column,
+.top-side-articles,
+.latest-news-column,
+.trending-news-column {
+    height: auto !important;
+    min-height: 0 !important;
+}
+
+/* NATIONAL / WORLD */
+.national-world-layout,
+.national-world-section {
+    height: auto !important;
+    min-height: 0 !important;
+}
+
+/* MOBILE */
+@media (max-width: 700px) {
+    .homepage-news-layout {
+        gap: 18px !important;
+    }
+
+    .homepage-news-layout > .top-news-group,
+    .homepage-news-layout > .latest-trending-layout {
+        grid-template-columns: minmax(0, 1fr) !important;
+        gap: 16px !important;
+    }
+}
