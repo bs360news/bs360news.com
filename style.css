@@ -5028,8 +5028,7 @@ body {
 
 
 
-
-/* BUSINESS + NATIONAL + WORLD - SAME ROW */
+/* BUSINESS - NATIONAL - WORLD: THREE COLUMNS */
 
 .business-national-world-row {
     display: grid !important;
@@ -5039,26 +5038,61 @@ body {
     align-items: start !important;
 }
 
-.business-national-world-row > section,
-.business-national-world-row #businessSection,
-.business-national-world-row #nationalSection,
-.business-national-world-row #worldSection {
+.business-national-world-row > section {
     display: block !important;
+    float: none !important;
+    clear: none !important;
     width: 100% !important;
     min-width: 0 !important;
     max-width: 100% !important;
     margin: 0 !important;
-    float: none !important;
-    grid-column: auto !important;
+    box-sizing: border-box !important;
 }
 
-/* Remove old float/clear rules affecting these sections */
-#businessSection,
-#nationalSection,
-#worldSection {
-    clear: none !important;
-    float: none !important;
-    box-sizing: border-box !important;
+/* Business featured article first, then two small cards */
+.business-national-world-row #businessSection .entertainment-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+}
+
+.business-national-world-row #businessSection .entertainment-featured {
+    width: 100% !important;
+}
+
+.business-national-world-row #businessSection .entertainment-small-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+    margin-top: 12px !important;
+}
+
+.business-national-world-row #businessSection .entertainment-small-grid article:nth-child(n+3),
+.business-national-world-row #businessSection .entertainment-bottom-grid {
+    display: none !important;
+}
+
+/* National and World: one large card + two small cards */
+.business-national-world-row .national-world-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+}
+
+.business-national-world-row .national-world-grid article:first-child {
+    grid-column: 1 / -1 !important;
+}
+
+.business-national-world-row img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+.business-national-world-row h3 {
+    overflow-wrap: anywhere;
 }
 
 /* Tablet */
