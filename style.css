@@ -5108,3 +5108,67 @@ body {
         grid-template-columns: 1fr !important;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+/* FORCE BUSINESS, NATIONAL, WORLD SIDE BY SIDE */
+
+body .business-national-world-row {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    grid-auto-flow: row !important;
+    align-items: start !important;
+    gap: 16px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    clear: both !important;
+    float: none !important;
+    box-sizing: border-box !important;
+}
+
+body .business-national-world-row > #businessSection,
+body .business-national-world-row > #nationalSection,
+body .business-national-world-row > #worldSection {
+    display: block !important;
+    grid-column: auto !important;
+    grid-row: auto !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    float: none !important;
+    clear: none !important;
+    position: relative !important;
+    box-sizing: border-box !important;
+}
+
+body .business-national-world-row .entertainment-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+}
+
+body .business-national-world-row .national-world-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    width: 100% !important;
+}
+
+body .business-national-world-row .national-world-grid article:first-child {
+    grid-column: 1 / -1 !important;
+}
+
+@media (max-width: 700px) {
+    body .business-national-world-row {
+        grid-template-columns: 1fr !important;
+    }
+}
