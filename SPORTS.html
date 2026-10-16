@@ -1,29 +1,28 @@
-<!DOCTYPE html><html lang="te"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sports News | BS 360 NEWS</title>
-    <meta name="description"
-content="BS 360 NEWS Sports News - తెలుగు స్పోర్ట్స్ తాజా వార్తలు, క్రికెట్, క్రీడా వార్తలు, ఆటగాళ్ల అప్డేట్స్."
+<!DOCTYPE html>
+<html lang="te">
 
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sports News | BS 360 NEWS</title>
+
+<meta
+    name="description"
+    content="BS 360 NEWS Sports News - తెలుగు స్పోర్ట్స్ తాజా వార్తలు, క్రికెట్, క్రీడా వార్తలు, ఆటగాళ్ల అప్డేట్స్."
 >
-<meta name="robots"
-content="index, follow, max-image-preview:large"
 
+<meta
+    name="robots"
+    content="index, follow, max-image-preview:large"
 >
 
-<link
-    rel="icon"
-    type="image/png"
-    href="dp.png.png"
-><link
-    rel="apple-touch-icon"
-    href="dp.png.png"
-><style>
+<link rel="icon" type="image/png" href="dp.png.png">
+<link rel="apple-touch-icon" href="dp.png.png">
 
-/* =========================================================
-   BS 360 NEWS - SPORTS PAGE
-   DESKTOP / LAPTOP = ORIGINAL LAYOUT
-   TABLET = 2 COLUMNS
-   MOBILE = TEXT LEFT + IMAGE RIGHT
-========================================================= */
+<style>
 
 *{
     box-sizing:border-box;
@@ -38,13 +37,7 @@ body{
     padding:0;
     background:#f3f5f7;
     color:#111827;
-
-    font-family:
-        Arial,
-        "Noto Sans Telugu",
-        "Segoe UI",
-        sans-serif;
-
+    font-family:Arial,"Noto Sans Telugu","Segoe UI",sans-serif;
     line-height:1.6;
 }
 
@@ -60,9 +53,7 @@ a{
 }
 
 
-/* =========================================================
-   HEADER
-========================================================= */
+/* HEADER */
 
 .top-header{
     background:#fff;
@@ -72,13 +63,10 @@ a{
 .header-inner{
     width:min(1400px,96%);
     margin:auto;
-
     min-height:68px;
-
     display:flex;
     align-items:center;
     justify-content:space-between;
-
     gap:15px;
 }
 
@@ -96,11 +84,8 @@ a{
 .home-btn{
     background:#e50914;
     color:#fff;
-
     padding:8px 16px;
-
     border-radius:6px;
-
     font-weight:700;
 }
 
@@ -109,14 +94,11 @@ a{
 }
 
 
-/* =========================================================
-   NAVIGATION
-========================================================= */
+/* NAVIGATION */
 
 .nav-bar{
     background:#fff;
     border-bottom:1px solid #e5e7eb;
-
     position:sticky;
     top:0;
     z-index:100;
@@ -125,14 +107,10 @@ a{
 .nav-inner{
     width:min(1400px,96%);
     margin:auto;
-
     display:flex;
     align-items:center;
-
     gap:5px;
-
     overflow-x:auto;
-
     scrollbar-width:none;
 }
 
@@ -142,16 +120,11 @@ a{
 
 .nav-inner a{
     flex:0 0 auto;
-
     padding:11px 15px;
-
     font-size:14px;
     font-weight:700;
-
     white-space:nowrap;
-
     color:#111827;
-
     border-bottom:3px solid transparent;
 }
 
@@ -165,99 +138,66 @@ a{
 }
 
 
-/* =========================================================
-   BREAKING NEWS
-========================================================= */
+/* BREAKING NEWS */
 
 .breaking{
     width:min(1400px,96%);
     margin:12px auto 0;
-
     background:#fff;
-
     display:flex;
     align-items:center;
-
     overflow:hidden;
-
     border-radius:6px;
-
     border:1px solid #e5e7eb;
 }
 
 .breaking-title{
     background:#e50914;
     color:#fff;
-
     padding:8px 16px;
-
     font-size:13px;
     font-weight:900;
-
     white-space:nowrap;
 }
 
 .breaking-text{
     padding:8px 15px;
-
     font-size:14px;
-
     white-space:nowrap;
     overflow:hidden;
     text-overflow:ellipsis;
-
     color:#111827;
 }
 
 
-/* =========================================================
-   PAGE
-========================================================= */
+/* PAGE */
 
 .page{
     width:min(1400px,96%);
     margin:15px auto 35px;
 }
 
-
-/* =========================================================
-   PAGE TITLE
-========================================================= */
-
 .page-title{
     background:#fff;
-
     border-left:5px solid #e50914;
-
     padding:12px 15px;
-
     margin-bottom:18px;
-
     font-size:24px;
     font-weight:900;
 }
 
 
-/* =========================================================
-   MAIN LAYOUT
-========================================================= */
+/* MAIN LAYOUT */
 
 .main-layout{
     display:grid;
-
-    grid-template-columns:
-        minmax(0,1fr)
-        320px;
-
+    grid-template-columns:minmax(0,1fr) 320px;
     gap:22px;
-
     align-items:start;
 }
 
 
-/* =========================================================
-   SECTION
-========================================================= */
+/* SECTION */
 
 .section{
     margin-bottom:30px;
@@ -267,20 +207,15 @@ a{
     display:flex;
     align-items:center;
     justify-content:space-between;
-
     margin-bottom:12px;
-
     border-bottom:2px solid #e50914;
-
     padding-bottom:7px;
 }
 
 .section-head h2{
     margin:0;
-
     font-size:21px;
     font-weight:900;
-
     color:#111827;
 }
 
@@ -289,56 +224,34 @@ a{
 }
 
 
-/* =========================================================
-   ARTICLE GRID
-   DESKTOP / LAPTOP ORIGINAL = 6 COLUMNS
-========================================================= */
+/* ALL ARTICLE GRIDS */
 
 .movies-grid{
     display:grid;
-
-    grid-template-columns:
-        repeat(6,minmax(0,1fr));
-
-    column-gap:14px;
-    row-gap:18px;
-
-    width:100%;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:12px;
 }
 
 
-/* =========================================================
-   ARTICLE CARD
-========================================================= */
+/* ARTICLE CARD */
 
 .movie-card{
     display:block;
-
     background:#fff;
-
     border-radius:7px;
-
     overflow:hidden;
-
     min-width:0;
-
-    transition:
-        transform .2s ease,
-        box-shadow .2s ease;
+    transition:transform .2s ease,box-shadow .2s ease;
 }
 
 .movie-card:hover{
     transform:translateY(-3px);
-
-    box-shadow:
-        0 5px 18px rgba(0,0,0,.10);
+    box-shadow:0 5px 18px rgba(0,0,0,.10);
 }
 
 .movie-card img{
     width:100%;
-
     aspect-ratio:16 / 9;
-
     object-fit:cover;
 }
 
@@ -348,83 +261,53 @@ a{
 
 .movie-card-title{
     margin:0;
-
     color:#111827;
-
     font-size:14px;
-
     line-height:1.45;
-
     font-weight:800;
-
     display:-webkit-box;
-
     -webkit-line-clamp:4;
-
     -webkit-box-orient:vertical;
-
     overflow:hidden;
 }
 
 
-/* =========================================================
-   SIDEBAR
-========================================================= */
+/* SIDEBAR */
 
 .article-sidebar{
     display:flex;
-
     flex-direction:column;
-
     gap:18px;
-
-    position:sticky;
-
-    top:80px;
+    min-height:0;
+    min-width:0;
 }
 
 .sidebar-box{
     background:#fff;
-
     border-radius:8px;
-
     padding:14px;
-
     border:1px solid #e5e7eb;
 }
 
 .sidebar-title{
     font-size:19px;
-
     line-height:1.3;
-
     font-weight:900;
-
     color:#111827;
-
     padding-bottom:9px;
-
     margin-bottom:5px;
-
     border-bottom:3px solid #e50914;
 }
 
 
-/* =========================================================
-   SIDEBAR ARTICLE
-========================================================= */
+/* SIDEBAR ARTICLE */
 
 .sidebar-item{
     display:flex;
-
     gap:10px;
-
     padding:10px 0;
-
     border-bottom:1px solid #e5e7eb;
-
     text-decoration:none;
-
     color:inherit;
 }
 
@@ -435,50 +318,32 @@ a{
 .sidebar-item img{
     width:100px;
     height:65px;
-
     object-fit:cover;
-
     border-radius:6px;
-
     flex-shrink:0;
 }
 
 .sidebar-item-title{
     font-size:14px;
-
     line-height:1.4;
-
     font-weight:700;
-
     color:#1f2937;
-
     display:-webkit-box;
-
     -webkit-line-clamp:3;
-
     -webkit-box-orient:vertical;
-
     overflow:hidden;
 }
 
 
-/* =========================================================
-   MOST READ
-========================================================= */
+/* MOST READ */
 
 .most-read-item{
     display:flex;
-
     align-items:center;
-
     gap:10px;
-
     padding:10px 0;
-
     border-bottom:1px solid #e5e7eb;
-
     text-decoration:none;
-
     color:inherit;
 }
 
@@ -489,96 +354,66 @@ a{
 .most-read-item img{
     width:95px;
     height:65px;
-
     object-fit:cover;
-
     border-radius:6px;
-
     flex-shrink:0;
 }
 
 .most-read-title{
     font-size:14px;
-
     line-height:1.4;
-
     font-weight:700;
-
     color:#1f2937;
-
     display:-webkit-box;
-
     -webkit-line-clamp:3;
-
     -webkit-box-orient:vertical;
-
     overflow:hidden;
 }
 
 
-/* =========================================================
-   LOADING
-========================================================= */
+/* LOADING */
 
 .loading{
     grid-column:1 / -1;
-
     background:#fff;
-
     padding:25px;
-
     text-align:center;
-
     border-radius:8px;
-
     color:#666;
 }
 
 
-/* =========================================================
-   FOOTER
-========================================================= */
+/* FOOTER */
 
 .site-footer{
     background:#111827;
-
     color:#fff;
-
     margin-top:35px;
-
     padding:30px 0 15px;
 }
 
 .footer-inner{
     width:min(1400px,96%);
-
     margin:auto;
-
     display:grid;
-
     grid-template-columns:1fr 1fr;
-
     gap:40px;
 }
 
 .footer-column h3,
 .footer-contact h3{
     margin:0 0 12px;
-
     font-size:18px;
 }
 
 .footer-links{
     display:flex;
-
     flex-wrap:wrap;
-
     gap:8px 15px;
 }
 
 .footer-links a{
     color:#d1d5db;
-
     font-size:14px;
 }
 
@@ -588,32 +423,22 @@ a{
 
 .footer-contact p{
     margin:5px 0;
-
     color:#d1d5db;
-
     font-size:14px;
 }
 
 .copyright{
     width:min(1400px,96%);
-
     margin:25px auto 0;
-
     padding-top:15px;
-
     border-top:1px solid #374151;
-
     text-align:center;
-
     color:#9ca3af;
-
     font-size:13px;
 }
 
 
-/* =========================================================
-   DARK MODE
-========================================================= */
+/* DARK MODE */
 
 body.dark-mode{
     background:#0b1120;
@@ -648,10 +473,7 @@ body.dark-mode .most-read-item{
 }
 
 
-/* =========================================================
-   TABLET
-   601px - 1100px
-========================================================= */
+/* TABLET */
 
 @media(min-width:601px) and (max-width:1100px){
 
@@ -660,32 +482,19 @@ body.dark-mode .most-read-item{
     }
 
     .movies-grid{
-        grid-template-columns:
-            repeat(2,minmax(0,1fr));
-
-        column-gap:12px;
-        row-gap:16px;
+        grid-template-columns:repeat(2,minmax(0,1fr));
     }
 
     .article-sidebar{
-        position:static;
-
         display:grid;
-
-        grid-template-columns:
-            repeat(2,minmax(0,1fr));
-
+        grid-template-columns:repeat(2,minmax(0,1fr));
         align-items:start;
     }
 
 }
 
 
-/* =========================================================
-   MOBILE
-   ONLY UNDER 600px
-   TEXT LEFT + IMAGE RIGHT
-========================================================= */
+/* MOBILE */
 
 @media(max-width:600px){
 
@@ -702,12 +511,10 @@ body.dark-mode .most-read-item{
         font-size:13px;
     }
 
-
     .nav-inner a{
         padding:9px 11px;
         font-size:12px;
     }
-
 
     .breaking{
         margin-top:8px;
@@ -723,7 +530,6 @@ body.dark-mode .most-read-item{
         padding:7px 10px;
     }
 
-
     .page{
         width:94%;
         margin-top:10px;
@@ -734,110 +540,70 @@ body.dark-mode .most-read-item{
         padding:10px 12px;
     }
 
-
     .main-layout{
         display:block;
     }
 
 
     /* =========================================
-       MOBILE NEWS CARD
+       MOBILE NEWS
        LEFT = TEXT
        RIGHT = IMAGE
     ========================================= */
 
     .movies-grid{
         display:grid;
-
         grid-template-columns:1fr;
-
-        gap:8px;
-
-        width:100%;
+        gap:0;
     }
-
 
     .movie-card{
-        width:100%;
-
-        min-height:92px;
-
         display:flex;
-
         flex-direction:row-reverse;
-
-        align-items:stretch;
-
-        border-radius:6px;
-
-        overflow:hidden;
+        align-items:center;
+        width:100%;
+        min-height:95px;
+        border-radius:0;
+        border-bottom:1px solid #e5e7eb;
+        background:#fff;
+        box-shadow:none;
+        transform:none;
     }
 
-
-    /* RIGHT SIDE IMAGE */
+    .movie-card:hover{
+        transform:none;
+        box-shadow:none;
+    }
 
     .movie-card img{
-        width:115px;
-
-        min-width:115px;
-
-        height:92px;
-
+        width:105px;
+        height:70px;
         aspect-ratio:auto;
-
         object-fit:cover;
-
+        border-radius:5px;
         flex-shrink:0;
+        margin-left:10px;
     }
-
-
-    /* LEFT SIDE TEXT */
 
     .movie-card-content{
-        width:calc(100% - 115px);
-
-        padding:9px 10px;
-
-        display:flex;
-
-        align-items:flex-start;
-
-        justify-content:center;
-
-        flex-direction:column;
+        flex:1;
+        min-width:0;
+        padding:7px 0;
     }
-
 
     .movie-card-title{
-        width:100%;
-
         margin:0;
-
         font-size:13px;
-
         line-height:1.45;
-
         font-weight:800;
-
-        display:-webkit-box;
-
         -webkit-line-clamp:4;
-
-        -webkit-box-orient:vertical;
-
-        overflow:hidden;
     }
 
 
-    /* =========================================
-       SIDEBAR
-    ========================================= */
+    /* SIDEBAR */
 
     .article-sidebar{
-        position:static;
-
         margin-top:22px;
-
         gap:12px;
     }
 
@@ -867,548 +633,291 @@ body.dark-mode .most-read-item{
         font-size:13px;
     }
 
-
-    /* =========================================
-       FOOTER
-    ========================================= */
-
     .footer-inner{
         grid-template-columns:1fr;
-
         gap:22px;
     }
 
     .footer-links{
         display:grid;
-
         grid-template-columns:1fr 1fr;
     }
 
 }
 
 
-/* =========================================================
-   SMALL MOBILE
-========================================================= */
+/* SMALL MOBILE */
 
 @media(max-width:380px){
 
+    .movies-grid{
+        grid-template-columns:1fr;
+        gap:0;
+    }
+
+    .movie-card{
+        min-height:90px;
+    }
+
     .movie-card img{
-        width:105px;
-
-        min-width:105px;
-
-        height:86px;
+        width:95px;
+        height:64px;
     }
 
     .movie-card-content{
-        width:calc(100% - 105px);
-
-        padding:8px;
+        padding:5px 0;
     }
 
     .movie-card-title{
         font-size:12px;
-
         line-height:1.4;
-
-        -webkit-line-clamp:4;
-    }
-
-    .movies-grid{
-        gap:7px;
     }
 
 }
 
-</style></head><body><!-- =====================================================
-     HEADER
-===================================================== --><header class="top-header"><div class="header-inner">
 
-    <div class="logo">
-        BS <span>360</span> NEWS
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header class="top-header">
+
+    <div class="header-inner">
+
+        <div class="logo">
+            BS <span>360</span> NEWS
+        </div>
+
+      
+
     </div>
 
+</header>
+
+
+<nav class="nav-bar">
+
+    <div class="nav-inner">
+
+        <a href="index.html">
+            హోమ్ 
+        </a>
+
+        <a href="MOVIES.html">
+            మూవీస్ 
+        </a>
+
+        <a href="SPORTS.html" class="active">
+            స్పోర్ట్స్ 
+        </a>
+
+        <a href="AP&TS.html">
+            ఏపీ & టీస్ 
+        </a>
+
+        <a href="business.html">
+            బిజినెస్ 
+        </a>
+
+    </div>
+
+</nav>
+
+
+<div class="breaking">
+
+    <div class="breaking-title">
+        BREAKING NEWS
+    </div>
+
+    <div class="breaking-text">
+        క్రికెట్, స్పోర్ట్స్ ప్రపంచంలోని తాజా వార్తలు, మ్యాచ్ అప్డేట్స్, ఆటగాళ్ల వార్తలు...
+    </div>
 
 </div>
 
-</header><!-- =====================================================
-     NAVIGATION
-===================================================== --><nav class="nav-bar"><div class="nav-inner">
 
-    <a href="index.html">
-        హోమ్
-    </a>
+<main class="page">
 
-    <a href="MOVIES.html">
-        మూవీస్
-    </a>
-
-    <a
-        href="SPORTS.html"
-        class="active"
-    >
-        స్పోర్ట్స్
-    </a>
-
-    <a href="AP&TS.html">
-        ఏపీ & టీస్
-    </a>
-
-    <a href="business.html">
-        బిజినెస్
-    </a>
-
-</div>
-
-</nav><!-- =====================================================
-     BREAKING NEWS
-===================================================== --><div class="breaking"><div class="breaking-title">
-    BREAKING NEWS
-</div>
-
-<div class="breaking-text">
-    క్రికెట్, స్పోర్ట్స్ ప్రపంచంలోని తాజా వార్తలు, మ్యాచ్ అప్డేట్స్, ఆటగాళ్ల వార్తలు...
-</div>
-
-</div><!-- =====================================================
-     MAIN PAGE
-===================================================== --><main class="page">
-<div class="main-layout">
+ 
+    <div class="main-layout">
 
 
-    <!-- =================================================
-         LEFT CONTENT
-    ================================================== -->
-
-    <div class="movies-main">
+        <div class="movies-main">
 
 
-        <!-- SPORTS -->
+            <!-- =====================================================
+                 DIRECT SPORTS ARTICLES
+            ====================================================== -->
 
-        <section class="section">
+            <div id="localSportsSource" hidden>
 
-            <div class="section-head">
+                <article class="news-item post" data-url="india-west-indies-2nd-odi-shubman-gill-double-century-rohit-century/">
+                    <img src="india-west-indies-2nd-odi-shubman-gill-double-century-rohit-century.jpg" alt="వెస్టిండీస్‌పై భారత్ ఘన విజయం.. గిల్ డబుల్ సెంచరీతో దుమ్మురేపాడు">
+                    <div class="news-content"><p>వెస్టిండీస్‌పై భారత్ ఘన విజయం.. గిల్ డబుల్ సెంచరీతో దుమ్మురేపాడు</p></div>
+                </article>
 
-                <h2>
-                    <span>     </span> వార్తలు
-                </h2>
+                <article class="news-item post" data-url="shubman-gill-62-ball-century/">
+                    <img src="shubman-gill-62-ball-century.png" alt="గిల్ విధ్వంసం.. 62 బంతుల్లో సెంచరీ">
+                    <div class="news-content"><p>గిల్ విధ్వంసం.. 62 బంతుల్లో సెంచరీ!</p></div>
+                </article>
+
+                <article class="news-item post" data-url="rohit-sharma-century-72-balls-100-runs/">
+                    <img src="rohit-sharma-century-72-balls-100-runs.png" alt="రోహిత్ శర్మ విధ్వంసం.. 72 బంతుల్లో సెంచరీ">
+                    <div class="news-content"><p>రోహిత్ శర్మ విధ్వంసం.. 72 బంతుల్లో సెంచరీ</p></div>
+                </article>
+
+                <article class="news-item post" data-url="india-vs-west-indies-2nd-odi-guwahati/">
+                    <img src="india-vs-west-indies-2nd-odi-guwahati.png" alt="భారత్ vs వెస్టిండీస్ 2వ వన్డే.. టాస్ గెలిచి బౌలింగ్ ఎంచుకున్న టీమిండియా">
+                    <div class="news-content"><p>భారత్ vs వెస్టిండీస్ 2వ వన్డే.. టాస్ గెలిచి బౌలింగ్ ఎంచుకున్న టీమిండియా</p></div>
+                </article>
+
+                <article class="news-item post" data-url="esha-singh-25m-pistol-silver-medal/">
+                    <img src="esha-singh-25m-pistol-silver-medal.png" alt="భారత షూటర్ ఈషా సింగ్‌కు రజత పతకం.. 25 మీటర్ల పిస్టల్‌లో అద్భుత పోరాటం">
+                    <div class="news-content"><p>భారత షూటర్ ఈషా సింగ్‌కు రజత పతకం.. 25 మీటర్ల పిస్టల్‌లో అద్భుత పోరాటం</p></div>
+                </article>
+
+                <article class="news-item post" data-url="india-asian-games-cricket-semifinal/">
+                    <img src="india-asian-games-cricket-semifinal.png" alt="భారత్ ఏషియన్ గేమ్స్ క్రికెట్ సెమీఫైనల్‌కు">
+                    <div class="news-content"><p>భారత్ ఏషియన్ గేమ్స్ క్రికెట్ సెమీఫైనల్‌కు.. వర్షంతో అఫ్గాన్‌తో క్వార్టర్‌ఫైనల్ రద్దు</p></div>
+                </article>
+
+                <article class="news-item post" data-url="india-vs-afghanistan-asian-games-2026/">
+                    <img src="india-vs-afghanistan-asian-games-2026.png" alt="ఆసియా క్రీడల్లో భారత్‌కు భారీ ఊరట">
+                    <div class="news-content"><p>ఆసియా క్రీడల్లో భారత్‌కు భారీ ఊరట.. అఫ్గానిస్థాన్‌తో మ్యాచ్ రద్దు, సెమీస్‌కు టీమిండియా</p></div>
+                </article>
+
+                <article class="news-item post" data-url="rohit-sharma-west-indies-odi-record/">
+                    <img src="rohit-sharma-west-indies-odi-record.jpg" alt="రేపటి నుంచే వన్డేలు.. రోహిత్‌ను ఊరిస్తున్న అరుదైన రికార్డు">
+                    <div class="news-content"><p>రేపటి నుంచే వన్డేలు.. రోహిత్‌ను ఊరిస్తున్న అరుదైన రికార్డు</p></div>
+                </article>
+
+                <article class="news-item post" data-url="asian-games-india-27-medals/">
+                    <img src="asian-games-india-27-medals.png" alt="ఏషియన్ గేమ్స్‌లో భారత్ 27 పతకాలు">
+                    <div class="news-content"><p>ఏషియన్ గేమ్స్‌లో భారత్ 27 పతకాలు.. 3 స్వర్ణాలు, 11 రజతాలు, 13 కాంస్యాలు</p></div>
+                </article>
 
             </div>
 
-            <div
-                id="sportsGrid"
-                class="movies-grid"
-            >
-
-                <div class="loading">
-                 స్పోర్  వార్తలు Loading...
+            <!-- SPORTS ARTICLES ONLY -->
+            <section class="section">
+                <div class="section-head">
+                    <h2><span>ALL</span> SPORTS NEWS</h2>
                 </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =================================================
-             LOCAL SPORTS SOURCE
-        ================================================== -->
-
-        <div id="localSportsSource" hidden>
-
-
-        
-
-            <article
-                class="news-item post"
-                data-url="india-west-indies-2nd-odi-shubman-gill-double-century-rohit-century/"
-            >
-
-                <img
-                    src="india-west-indies-2nd-odi-shubman-gill-double-century-rohit-century.jpg"
-                    alt="వెస్టిండీస్‌పై భారత్ ఘన విజయం.. గిల్ డబుల్ సెంచరీతో దుమ్మురేపాడు"
-                >
-
-                <div class="news-content">
-
-                    <p>
-                        వెస్టిండీస్‌పై భారత్ ఘన విజయం.. గిల్ డబుల్ సెంచరీతో దుమ్మురేపాడు
-                    </p>
-
+                <div id="sportsGrid" class="movies-grid">
+                    <div class="loading">Sports News Loading...</div>
                 </div>
+            </section>
 
-            </article>
-
-
-            <article
-                class="news-item post"
-                data-url="shubman-gill-62-ball-century/"
-            >
-
-                <img
-                    src="shubman-gill-62-ball-century.png"
-                    alt="గిల్ విధ్వంసం.. 62 బంతుల్లో సెంచరీ"
-                >
-
-                <div class="news-content">
-
-                    <p>
-                        గిల్ విధ్వంసం.. 62 బంతుల్లో సెంచరీ!
-                    </p>
-
-                </div>
-
-            </article>
-
-
-            <article
-                class="news-item post"
-                data-url="rohit-sharma-century-72-balls-100-runs/"
-            >
-
-                <img
-                    src="rohit-sharma-century-72-balls-100-runs.png"
-                    alt="రోహిత్ శర్మ విధ్వంసం.. 72 బంతుల్లో సెంచరీ"
-                >
-
-                <div class="news-content">
-
-                    <p>
-                        రోహిత్ శర్మ విధ్వంసం.. 72 బంతుల్లో సెంచరీ
-                    </p>
-
-                </div>
-
-            </article>
-
-
-            <article
-                class="news-item post"
-                data-url="india-vs-west-indies-2nd-odi-guwahati/"
-            >
-
-                <img
-                    src="india-vs-west-indies-2nd-odi-guwahati.png"
-                    alt="భారత్ vs వెస్టిండీస్ 2వ వన్డే.. టాస్ గెలిచి బౌలింగ్ ఎంచుకున్న టీమిండియా"
-                >
-
-                <div class="news-content">
-
-                    <p>
-                        భారత్ vs వెస్టిండీస్ 2వ వన్డే.. టాస్ గెలిచి బౌలింగ్ ఎంచుకున్న టీమిండియా
-                    </p>
-
-                </div>
-
-            </article>
-
-
-            <article
-                class="news-item post"
-                data-url="esha-singh-25m-pistol-silver-medal/"
-            >
-
-                <img
-                    src="esha-singh-25m-pistol-silver-medal.png"
-                    alt="భారత షూటర్ ఈషా సింగ్‌కు రజత పతకం.. 25 మీటర్ల పిస్టల్‌లో అద్భుత పోరాటం"
-                >
-
-                <div class="news-content">
-
-                    <p>
-                        భారత షూటర్ ఈషా సింగ్‌కు రజత పతకం.. 25 మీటర్ల పిస్టల్‌లో అద్భుత పోరాటం
-                    </p>
-
-                </div>
-
-            </article>
-
-
-            <article
-                class="news-item post"
-                data-url="india-asian-games-cricket-semifinal/"
-            >
-
-                <img
-                    src="india-asian-games-cricket-semifinal.png"
-                    alt="భారత్ ఏషియన్ గేమ్స్ క్రికెట్ సెమీఫైనల్‌కు"
-                >
-
-                <div class="news-content">
-
-                    <p>
-                        భారత్ ఏషియన్ గేమ్స్ క్రికెట్ సెమీఫైనల్‌కు.. వర్షంతో అఫ్గాన్‌తో క్వార్టర్‌ఫైనల్ రద్దు
-                    </p>
-
-                </div>
-
-            </article>
-
-
-            <article
-                class="news-item post"
-                data-url="india-vs-afghanistan-asian-games-2026/"
-            >
-
-                <img
-                    src="india-vs-afghanistan-asian-games-2026.png"
-                    alt="ఆసియా క్రీడల్లో భారత్‌కు భారీ ఊరట"
-                >
-
-                <div class="news-content">
-
-                    <p>
-                        ఆసియా క్రీడల్లో భారత్‌కు భారీ ఊరట.. అఫ్గానిస్థాన్‌తో మ్యాచ్ రద్దు, సెమీస్‌కు టీమిండియా
-                    </p>
-
-                </div>
-
-            </article>
-
-
-            <article
-                class="news-item post"
-                data-url="rohit-sharma-west-indies-odi-record/"
-            >
-
-                <img
-                    src="rohit-sharma-west-indies-odi-record.jpg"
-                    alt="రేపటి నుంచే వన్డేలు.. రోహిత్‌ను ఊరిస్తున్న అరుదైన రికార్డు"
-                >
-
-                <div class="news-content">
-
-                    <p>
-                        రేపటి నుంచే వన్డేలు.. రోహిత్‌ను ఊరిస్తున్న అరుదైన రికార్డు
-                    </p>
-
-                </div>
-
-            </article>
-
-
-            <article
-                class="news-item post"
-                data-url="asian-games-india-27-medals/"
-            >
-
-                <img
-                    src="asian-games-india-27-medals.png"
-                    alt="ఏషియన్ గేమ్స్‌లో భారత్ 27 పతకాలు"
-                >
-
-                <div class="news-content">
-
-                    <p>
-                        ఏషియన్ గేమ్స్‌లో భారత్ 27 పతకాలు.. 3 స్వర్ణాలు, 11 రజతాలు, 13 కాంస్యాలు
-                    </p>
-
-                </div>
-
-            </article>
-
-
-          
 
         </div>
 
 
-        <!-- MOVIES -->
+        <!-- HOMEPAGE SECTIONS SHOWN ONLY IN SIDEBAR -->
 
-        <section class="section">
+        <aside class="article-sidebar">
 
-            <div class="section-head">
-
-                <h2>
-                    <span>మూవీస్</span> వార్తలు
-                </h2>
-
+            <div class="sidebar-box">
+                <div class="sidebar-title">Top News</div>
+                <div id="topNewsSidebar"></div>
             </div>
 
-            <div
-                id="moviesGrid"
-                class="movies-grid"
-            >
-
-                <div class="loading">
-                   మూవీస్  వార్తలు Loading...
-                </div>
-
+            <div class="sidebar-box">
+                <div class="sidebar-title">Trending News</div>
+                <div id="trendingSidebar"></div>
             </div>
 
-        </section>
-
-
-        <!-- AP & TS -->
-
-        <section class="section">
-
-            <div class="section-head">
-
-                <h2>
-                    <span> ఏపీ & టీస్</span></span>  వార్తలు
-                </h2>
-
+            <div class="sidebar-box">
+                <div class="sidebar-title">Latest News</div>
+                <div id="latestSidebar"></div>
             </div>
 
-            <div
-                id="aptsGrid"
-                class="movies-grid"
-            >
-
-                <div class="loading">
-                     ఏపీ & టీస్ వార్తలు Loading...
-                </div>
-
+            <div class="sidebar-box">
+                <div class="sidebar-title">Movie Reviews</div>
+                <div id="movieReviewsSidebar"></div>
             </div>
 
-        </section>
-
-
-        <!-- BUSINESS -->
-
-        <section class="section">
-
-            <div class="section-head">
-
-                <h2>
-                    <span>బిజినెస్</span>  వార్తలు
-                </h2>
-
-            </div>
-
-            <div
-                id="businessGrid"
-                class="movies-grid"
-            >
-
-                <div class="loading">
-                    బిజినెస్  వార్తలు Loading...
-                </div>
-
-            </div>
-
-        </section>
+        </aside>
 
 
     </div>
 
-
-    <!-- =================================================
-         RIGHT SIDEBAR
-    ================================================== -->
-
-    <aside class="article-sidebar">
+</main>
 
 
-        <div class="sidebar-box">
+<footer class="site-footer">
 
-            <div class="sidebar-title">
-               మోస్ట్ రీడ్  వార్తలు
+    <div class="footer-inner">
+
+        <div class="footer-column">
+
+            <h3>
+                ముఖ్యమైన లింకులు
+            </h3>
+
+            <div class="footer-links">
+
+                <a href="advertise.html">
+                    Advertise With Us
+                </a>
+
+                <a href="about.html">
+                    About Us
+                </a>
+
+                <a href="contact.html">
+                    Contact Us
+                </a>
+
+                <a href="Privacy Policy.html">
+                    Privacy Policy
+                </a>
+
+                <a href="disclaimer.html">
+                    Disclaimer
+                </a>
+
+                <a href="terms.html">
+                    Terms & Conditions
+                </a>
+
             </div>
-
-            <div id="mostReadSidebar"></div>
 
         </div>
 
 
-        <div class="sidebar-box">
+        <div class="footer-contact">
 
-            <div class="sidebar-title">
-                ట్రేండింగ్  వార్తలు
-            </div>
+            <h3>
+                Contact
+            </h3>
 
-            <div id="trendingSidebar"></div>
+            <p>
+                newsb386@gmail.com
+            </p>
 
-        </div>
-
-
-        <div class="sidebar-box">
-
-            <div class="sidebar-title">
-              లేటెస్ట్  వార్తలు
-            </div>
-
-            <div id="latestSidebar"></div>
-
-        </div>
-
-
-    </aside>
-
-
-</div>
-
-</main><!-- =====================================================
-     FOOTER
-===================================================== --><footer class="site-footer"><div class="footer-inner">
-
-
-    <div class="footer-column">
-
-        <h3>
-            ముఖ్యమైన లింకులు
-        </h3>
-
-        <div class="footer-links">
-
-            <a href="advertise.html">
-                Advertise With Us
-            </a>
-
-            <a href="about.html">
-                About Us
-            </a>
-
-            <a href="contact.html">
-                Contact Us
-            </a>
-
-            <a href="Privacy Policy.html">
-                Privacy Policy
-            </a>
-
-            <a href="disclaimer.html">
-                Disclaimer
-            </a>
-
-            <a href="terms.html">
-                Terms & Conditions
-            </a>
+            <p>
+                Follow us for latest updates.
+            </p>
 
         </div>
 
     </div>
 
 
-    <div class="footer-contact">
-
-        <h3>
-            Contact
-        </h3>
-
-        <p>
-            newsb386@gmail.com
-        </p>
-
-        <p>
-            Follow us for latest updates.
-        </p>
-
+    <div class="copyright">
+        © 2026 BS 360 NEWS. All Rights Reserved.
     </div>
 
-</div>
+</footer>
 
 
-<div class="copyright">
-
-    © 2026 BS 360 NEWS. All Rights Reserved.
-
-</div>
-
-</footer><!-- =====================================================
-     JAVASCRIPT
-===================================================== --><script>
+<script>
 
 document.addEventListener("DOMContentLoaded", function(){
 
@@ -1416,7 +925,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
 
     /* =====================================================
-       CLEAN TEXT
+       HELPERS
     ===================================================== */
 
     function cleanText(text){
@@ -1429,78 +938,88 @@ document.addEventListener("DOMContentLoaded", function(){
 
 
     /* =====================================================
-       GET ARTICLES
+       GET ARTICLES - SUPPORT HOMEPAGE CARD STRUCTURES
     ===================================================== */
 
     function getArticles(source){
+        if(!source) return [];
 
-        if(!source){
-            return [];
+        let items = [];
+        const cardSelector = [
+            ".news-item.post", "article", ".news-card", ".movie-card",
+            ".post-card", ".latest-news-card", ".trending-card",
+            ".top-news-card", ".review-card", ".news-item"
+        ].join(",");
+
+        if(source.matches && source.matches(cardSelector)) items.push(source);
+        items.push(...Array.from(source.querySelectorAll(cardSelector)));
+
+        // Some homepage sections use linked image cards instead of <article> tags.
+        if(!items.length){
+            items = Array.from(source.querySelectorAll("a[href]")).filter(function(a){
+                return !!a.querySelector("img");
+            });
         }
 
-        return Array.from(
-
-            source.querySelectorAll(
-                ".news-item.post"
-            )
-
-        )
-
-        .map(function(item){
-
-            const image =
-                item.querySelector("img");
-
-            const title =
-                item.querySelector(
-                    ".news-content p"
-                ) ||
-                item.querySelector(
-                    ".news-content h3"
-                ) ||
-                item.querySelector("p");
+        const articles = items.map(function(item){
+            const image = item.querySelector("img");
+            const link = (item.matches && item.matches("a[href]")) ? item : item.querySelector("a[href]");
+            const titleNode = item.querySelector(
+                ".news-content p, .news-content h3, .news-content a, .news-title, .article-title, h1, h2, h3, h4, p, .title"
+            );
+            let title = cleanText(titleNode ? titleNode.textContent : "");
+            if(!title && link) title = cleanText(link.textContent);
+            if(!title && image) title = cleanText(image.getAttribute("alt") || "");
 
             return {
-
-                title:
-                    cleanText(
-                        title
-                            ? title.textContent
-                            : ""
-                    ),
-
-                image:
-                    image
-                        ? image.getAttribute("src") || ""
-                        : "",
-
-                alt:
-                    image
-                        ? image.getAttribute("alt") || ""
-                        : "",
-
-                url:
-                    item.getAttribute("data-url") || ""
-
+                title: title,
+                image: image ? (image.getAttribute("src") || image.getAttribute("data-src") || image.getAttribute("data-lazy-src") || "") : "",
+                alt: image ? (image.getAttribute("alt") || "") : "",
+                url: item.getAttribute("data-url") || (link ? (link.getAttribute("href") || "") : "")
             };
-
-        })
-
-        .filter(function(article){
-
-            return (
-                article.title &&
-                article.image &&
-                article.url
-            );
-
+        }).filter(function(article){
+            return article.title && article.image && article.url &&
+                !article.url.startsWith("#") && !/^javascript:/i.test(article.url);
         });
 
+        return articles.filter(function(article, index, array){
+            return array.findIndex(function(other){ return other.url === article.url; }) === index;
+        });
     }
 
+    function getFirstAvailableArticles(home, ids){
+        for(const id of ids){
+            const source = home.getElementById(id);
+            const articles = getArticles(source);
+            if(articles.length) return articles;
+        }
+        return [];
+    }
+
+    // Find a Homepage section by its visible heading if its ID is different.
+    function getArticlesByHeading(home, labels){
+        const wanted = labels.map(function(label){ return cleanText(label).toLowerCase(); });
+        const headings = Array.from(home.querySelectorAll("h1,h2,h3,h4,.section-title,.section-head,.sidebar-title,.category-title"));
+        for(const heading of headings){
+            const text = cleanText(heading.textContent).toLowerCase();
+            if(!wanted.some(function(label){ return text === label || text.includes(label); })) continue;
+            let parent = heading;
+            for(let level = 0; level < 5 && parent; level++, parent = parent.parentElement){
+                const articles = getArticles(parent);
+                if(articles.length) return articles;
+            }
+        }
+        return [];
+    }
+
+    function getSectionArticles(home, ids, headingLabels){
+        return getFirstAvailableArticles(home, ids).length
+            ? getFirstAvailableArticles(home, ids)
+            : getArticlesByHeading(home, headingLabels);
+    }
 
     /* =====================================================
-       CARD HTML
+       NORMAL CARD
     ===================================================== */
 
     function cardHTML(article){
@@ -1534,7 +1053,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
 
     /* =====================================================
-       SIDEBAR HTML
+       SIDEBAR
     ===================================================== */
 
     function sidebarHTML(article){
@@ -1564,36 +1083,6 @@ document.addEventListener("DOMContentLoaded", function(){
 
 
     /* =====================================================
-       MOST READ HTML
-    ===================================================== */
-
-    function mostReadHTML(article){
-
-        return `
-
-            <a
-                href="${article.url}"
-                class="most-read-item"
-            >
-
-                <img
-                    src="${article.image}"
-                    alt="${article.alt || article.title}"
-                    loading="lazy"
-                >
-
-                <div class="most-read-title">
-                    ${article.title}
-                </div>
-
-            </a>
-
-        `;
-
-    }
-
-
-    /* =====================================================
        SHOW
     ===================================================== */
 
@@ -1610,7 +1099,33 @@ document.addEventListener("DOMContentLoaded", function(){
 
 
     /* =====================================================
-       LOAD INDEX.HTML
+       LAPTOP: SIDEBAR MUST END WITH SPORTS ARTICLES
+       Keep the sidebar beside the Sports section only.
+       Do not let sidebar content extend below the sports list.
+    ===================================================== */
+
+    function matchSidebarToSportsHeight(){
+        const moviesMain = document.querySelector(".movies-main");
+        const sidebar = document.querySelector(".article-sidebar");
+
+        if(!moviesMain || !sidebar) return;
+
+        if(window.innerWidth > 1100){
+            const sportsHeight = Math.ceil(moviesMain.getBoundingClientRect().height);
+            sidebar.style.height = sportsHeight + "px";
+            sidebar.style.maxHeight = sportsHeight + "px";
+            sidebar.style.overflow = "hidden";
+        } else {
+            sidebar.style.height = "";
+            sidebar.style.maxHeight = "";
+            sidebar.style.overflow = "";
+        }
+    }
+
+    window.addEventListener("resize", matchSidebarToSportsHeight);
+
+    /* =====================================================
+       LOAD INDEX
     ===================================================== */
 
     fetch(
@@ -1648,204 +1163,76 @@ document.addEventListener("DOMContentLoaded", function(){
 
 
         /* =================================================
-           SPORTS FROM INDEX
+           HOME SOURCES
         ================================================= */
 
-        const indexSports =
-            getArticles(
-                home.getElementById(
-                    "sportsSource"
-                )
-            );
+        const indexSports = getArticles(
+            home.getElementById("sportsSource")
+        );
 
+        const localSports = getArticles(
+            document.getElementById("localSportsSource")
+        );
 
-        /* =================================================
-           LOCAL SPORTS
-        ================================================= */
-
-        const localSports =
-            getArticles(
-                document.getElementById(
-                    "localSportsSource"
-                )
-            );
-
-
-        /* =================================================
-           SPORTS
-           LOCAL FIRST + DUPLICATES REMOVED
-        ================================================= */
-
-        const sports = [
-
-            ...localSports,
-            ...indexSports
-
-        ]
-
-        .filter(function(article,index,array){
-
-            return (
-
-                array.findIndex(
-                    function(item){
-
-                        return (
-                            item.url ===
-                            article.url
-                        );
-
-                    }
-                ) === index
-
-            );
-
+        /* Local sports first, then homepage sports; remove duplicate URLs. */
+        const sports = [...localSports, ...indexSports].filter(function(article,index,array){
+            return array.findIndex(function(item){ return item.url === article.url; }) === index;
         });
 
 
-        /* =================================================
-           MOVIES
-        ================================================= */
+        const topNews = getSectionArticles(home, [
+            "topNewsSource", "topNewsGrid", "topNews", "topStory", "topStoryGrid", "topStorySection", "topNewsSection"
+        ], ["Top News", "Top Story", "టాప్ న్యూస్", "ముఖ్య వార్తలు", "ప్రధాన వార్తలు"]);
 
-        const movies =
-            getArticles(
-                home.getElementById(
-                    "entertainmentSource"
-                )
-            );
+        const trending = getSectionArticles(home, [
+            "trendingSource", "trendingGrid", "trendingSection", "trendingNews", "trendingTrack"
+        ], ["Trending News", "Trending", "ట్రెండింగ్ న్యూస్", "ట్రెండింగ్"]);
 
+        const latest = getSectionArticles(home, [
+            "latestNewsSource", "latestGrid", "latestSection", "latestNews", "latestNewsList"
+        ], ["Latest News", "Latest", "తాజా వార్తలు", "తాజా వార్త"]);
 
-        /* =================================================
-           AP & TS
-        ================================================= */
-
-        const apts =
-            getArticles(
-                home.getElementById(
-                    "aptsSource"
-                )
-            );
+        const movieReviews = getSectionArticles(home, [
+            "movieReviewsSource", "movieReviewsGrid", "movieReviewsSection", "movieReviews",
+            "movieReviewGrid", "movieReviewSection", "reviewsGrid", "reviewsSection",
+            "cinemaGrid", "cinemaSection", "movieReviewsTrack", "reviewsTrack"
+        ], ["Movie Reviews", "Movie Review", "మూవీ రివ్యూస్", "మూవీ రివ్యూ", "సినిమా రివ్యూస్", "సినిమా రివ్యూ"]);
 
 
         /* =================================================
-           BUSINESS
+           SPORTS ARTICLES
         ================================================= */
-
-        const business =
-            getArticles(
-                home.getElementById(
-                    "businessSource"
-                )
-            );
-
-
-        /* =================================================
-           LATEST
-        ================================================= */
-
-        const latest =
-            getArticles(
-                home.getElementById(
-                    "latestNewsSource"
-                )
-            );
-
-
-        /* =================================================
-           TRENDING
-        ================================================= */
-
-        const trending =
-            getArticles(
-                home.getElementById(
-                    "trendingSource"
-                )
-            );
-
-
-        /* =================================================
-           MOST READ
-        ================================================= */
-
-        const mostRead =
-            getArticles(
-                home.getElementById(
-                    "mostReadSource"
-                )
-            );
-
-
-        /* =================================================
-           SPORTS
-        ================================================= */
-
         show(
             "sportsGrid",
-            sports
-                .map(cardHTML)
-                .join("")
+            sports.length
+                ? sports.map(cardHTML).join("")
+                : '<div class="loading">Homepage / local Sports articles దొరకలేదు.</div>'
         );
 
 
         /* =================================================
-           MOVIES
+           TOP NEWS (HOMEPAGE ONLY IN SIDEBAR)
         ================================================= */
 
         show(
-            "moviesGrid",
-            movies
-                .map(cardHTML)
-                .join("")
+            "topNewsSidebar",
+            topNews.slice(0, 5).map(sidebarHTML).join("") ||
+                '<div class="loading">Homepage Top News articles దొరకలేదు.</div>'
         );
-
-
-        /* =================================================
-           AP & TS
-        ================================================= */
-
-        show(
-            "aptsGrid",
-            apts
-                .map(cardHTML)
-                .join("")
-        );
-
-
-        /* =================================================
-           BUSINESS
-        ================================================= */
-
-        show(
-            "businessGrid",
-            business
-                .map(cardHTML)
-                .join("")
-        );
-
-
-        /* =================================================
-           MOST READ
-        ================================================= */
-
-        show(
-            "mostReadSidebar",
-            mostRead
-                .slice(0,8)
-                .map(mostReadHTML)
-                .join("")
-        );
-
 
         /* =================================================
            TRENDING
         ================================================= */
 
         show(
+
             "trendingSidebar",
+
             trending
                 .slice(0,8)
                 .map(sidebarHTML)
                 .join("")
+
         );
 
 
@@ -1855,12 +1242,23 @@ document.addEventListener("DOMContentLoaded", function(){
 
         show(
             "latestSidebar",
-            latest
-                .slice(0,8)
-                .map(sidebarHTML)
-                .join("")
+            latest.slice(0, 5).map(sidebarHTML).join("") ||
+                '<div class="loading">Homepage Latest News articles దొరకలేదు.</div>'
         );
 
+        /* =================================================
+           MOVIE REVIEWS (HOMEPAGE ONLY IN SIDEBAR)
+        ================================================= */
+
+        show(
+            "movieReviewsSidebar",
+            movieReviews.slice(0, 5).map(sidebarHTML).join("") ||
+                '<div class="loading">Homepage Movie Reviews articles దొరకలేదు.</div>'
+        );
+
+        /* On laptop, match the sidebar height to the end of sports articles. */
+        matchSidebarToSportsHeight();
+        requestAnimationFrame(matchSidebarToSportsHeight);
 
         /* =================================================
            CONSOLE
@@ -1874,45 +1272,13 @@ document.addEventListener("DOMContentLoaded", function(){
             "BS360 SPORTS PAGE LOADED"
         );
 
-        console.log(
-            "Local Sports:",
-            localSports.length
-        );
-
-        console.log(
-            "Sports Total:",
-            sports.length
-        );
-
-        console.log(
-            "Movies:",
-            movies.length
-        );
-
-        console.log(
-            "AP & TS:",
-            apts.length
-        );
-
-        console.log(
-            "Business:",
-            business.length
-        );
-
-        console.log(
-            "Latest:",
-            latest.length
-        );
-
-        console.log(
-            "Trending:",
-            trending.length
-        );
-
-        console.log(
-            "Most Read:",
-            mostRead.length
-        );
+        console.log("Local Sports:", localSports.length);
+        console.log("Homepage Sports:", indexSports.length);
+        console.log("Sports total:", sports.length);
+        console.log("Homepage Top News articles:", topNews.length);
+        console.log("Homepage Trending articles:", trending.length);
+        console.log("Homepage Latest articles:", latest.length);
+        console.log("Homepage Movie Reviews articles:", movieReviews.length);
 
         console.log(
             "================================"
@@ -1920,10 +1286,6 @@ document.addEventListener("DOMContentLoaded", function(){
 
     })
 
-
-    /* =====================================================
-       ERROR
-    ===================================================== */
 
     .catch(function(error){
 
@@ -1935,41 +1297,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
         show(
             "sportsGrid",
-            `
-                <div class="loading">
-                    Sports News load కాలేదు.
-                </div>
-            `
-        );
-
-
-        show(
-            "moviesGrid",
-            `
-                <div class="loading">
-                    Movies News load కాలేదు.
-                </div>
-            `
-        );
-
-
-        show(
-            "aptsGrid",
-            `
-                <div class="loading">
-                    AP & TS News load కాలేదు.
-                </div>
-            `
-        );
-
-
-        show(
-            "businessGrid",
-            `
-                <div class="loading">
-                    Business News load కాలేదు.
-                </div>
-            `
+            '<div class="loading">Sports News load కాలేదు. index.html అందుబాటులో ఉందో చూడండి.</div>'
         );
 
     });
@@ -1996,5 +1324,9 @@ document.addEventListener("DOMContentLoaded", function(){
 
 });
 
-</script></body>
+</script>
+
+
+</body>
+
 </html>
