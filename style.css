@@ -4503,3 +4503,414 @@ body {
         grid-column: 1 / -1;
     }
 }
+
+
+
+/* =========================================
+   BS 360 NEWS - HOMEPAGE LAYOUT CORRECTION
+   Add this CSS at the END of style.css
+========================================= */
+
+/* MAIN CONTAINER */
+.homepage-news-layout {
+    display: block !important;
+    width: min(1400px, 96%) !important;
+    max-width: 1400px;
+    margin: 0 auto !important;
+    box-sizing: border-box;
+}
+
+.homepage-news-layout *,
+.homepage-news-layout *::before,
+.homepage-news-layout *::after {
+    box-sizing: border-box;
+}
+
+/* =========================================
+   1. TOP NEWS + ENTERTAINMENT LEFT
+      LATEST NEWS RIGHT
+========================================= */
+
+.top-content-layout {
+    display: grid !important;
+    grid-template-columns: minmax(0, 2fr) minmax(280px, 0.85fr) !important;
+    gap: 22px !important;
+    align-items: stretch !important;
+    width: 100%;
+}
+
+.top-left-column {
+    display: flex !important;
+    flex-direction: column !important;
+    min-width: 0;
+}
+
+.top-news-group {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) !important;
+    gap: 16px !important;
+    align-items: start;
+    min-width: 0;
+}
+
+.top-main-column,
+.top-side-column {
+    min-width: 0;
+    width: 100%;
+}
+
+.top-main-column .news-item img,
+.top-main-column > article img {
+    max-width: 100%;
+}
+
+.top-side-articles {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.top-side-article {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) 100px;
+    gap: 10px;
+    align-items: center;
+    min-width: 0;
+}
+
+.top-side-article img {
+    display: block;
+    width: 100%;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.top-side-article h3 {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.45;
+}
+
+.top-side-article a {
+    text-decoration: none;
+}
+
+.top-bottom-articles {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 14px;
+}
+
+.top-bottom-articles .bottom-news-card img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+.top-bottom-articles .bottom-news-card h3 {
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 7px 0;
+}
+
+/* Latest column stretches down to Entertainment's bottom */
+#latestSection {
+    display: flex !important;
+    flex-direction: column;
+    align-self: stretch !important;
+    height: auto !important;
+    min-width: 0;
+    width: 100%;
+    margin: 0 !important;
+}
+
+#latestGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+#latestGrid > article {
+    display: grid;
+    grid-template-columns: 100px minmax(0, 1fr);
+    gap: 10px;
+    align-items: center;
+    min-width: 0;
+}
+
+#latestGrid > article img {
+    width: 100%;
+    height: 72px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+#latestGrid .news-content p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Entertainment remains underneath Top News */
+#entertainmentSection {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    margin-top: 24px !important;
+}
+
+#entertainmentSection .entertainment-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    gap: 14px;
+}
+
+#entertainmentSection .entertainment-featured img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+#entertainmentSection .entertainment-small-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+#entertainmentSection .entertainment-small-grid img,
+#entertainmentSection .entertainment-bottom-grid img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+#entertainmentSection .entertainment-bottom-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 14px;
+}
+
+/* =========================================
+   2. SPORTS + AP & TS LEFT
+      TRENDING RIGHT
+========================================= */
+
+.sports-apts-trending-layout {
+    display: grid !important;
+    grid-template-columns: minmax(0, 2fr) minmax(280px, 0.85fr) !important;
+    gap: 22px !important;
+    align-items: stretch !important;
+    width: 100%;
+    margin-top: 26px !important;
+}
+
+.sports-apts-left-column {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 26px !important;
+    min-width: 0;
+}
+
+#sportsSection,
+#aptsSection {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    margin: 0 !important;
+}
+
+#trendingSection {
+    display: flex !important;
+    flex-direction: column;
+    align-self: stretch !important;
+    width: 100%;
+    height: auto !important;
+    min-width: 0;
+    margin: 0 !important;
+}
+
+#trendingSidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+#trendingSidebar > article {
+    display: grid;
+    grid-template-columns: 100px minmax(0, 1fr);
+    gap: 10px;
+    align-items: center;
+    min-width: 0;
+}
+
+#trendingSidebar > article img {
+    display: block;
+    width: 100%;
+    height: 72px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+#trendingSidebar .news-content p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Sports and AP/TS cards */
+#sportsSection .entertainment-layout,
+#aptsSection .entertainment-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    gap: 14px;
+}
+
+#sportsSection .entertainment-featured img,
+#aptsSection .entertainment-featured img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+#sportsSection .entertainment-small-grid,
+#aptsSection .entertainment-small-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+#sportsSection .entertainment-small-grid img,
+#aptsSection .entertainment-small-grid img,
+#sportsSection .entertainment-bottom-grid img,
+#aptsSection .entertainment-bottom-grid img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+#sportsSection .entertainment-bottom-grid,
+#aptsSection .entertainment-bottom-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 14px;
+}
+
+/* =========================================
+   3. WORLD + NATIONAL NEWS
+      ONE LARGE + TWO SMALL CARDS
+========================================= */
+
+.national-world-section {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    margin: 28px 0 !important;
+}
+
+.national-world-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 16px !important;
+    width: 100%;
+}
+
+.national-world-grid article {
+    min-width: 0;
+}
+
+.national-world-grid article:first-child {
+    grid-column: 1 / -1;
+}
+
+.national-world-grid article a {
+    display: block;
+    text-decoration: none;
+}
+
+.national-world-grid article:first-child img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.national-world-grid article:not(:first-child) img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.national-world-grid article h3 {
+    margin: 8px 0;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* =========================================
+   BUSINESS: ONE LARGE + TWO SMALL CARDS
+========================================= */
+
+#businessSection {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    margin: 28px 0 !important;
+}
+
+/* Large feature card on top */
+#businessSection > .entertainment-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 14px;
+}
+
+#businessSection .entertainment-featured {
+    width: 100%;
+    min-width: 0;
+}
+
+#businessSection .entertainment-featured img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/* Two small cards underneath */
+#businessSection .entertainment-small-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 14px;
+}
+
+/* Show exactly two small cards in this layout */
+#businessSection .entertainment-small-grid > article:nth-child(n+3) {
+    display: none !important;
+}
+
+#businessSection .entertainment-small-grid img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/* Hide the extra business grid so only two small cards follow */
+#businessSection > .entertainment-bottom-grid {
+    display: none
