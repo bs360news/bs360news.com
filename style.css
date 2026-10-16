@@ -215,3 +215,31 @@ body.dark-mode .ad-space{background:#222;border-color:#444}
   .top-side-article h3{font-size:13px}
   .latest-news-column .news-content p,.trending-news-list .news-content p{font-size:13px}
 }
+
+
+
+
+
+
+
+
+/* MOVIE REVIEWS - LIGHT BLUE BACKGROUND */
+#movieReviewsSection,
+.movie-reviews-section,
+#movieReviewsSection .movie-reviews-container {
+    background-color: #e3f2fd !important;
+}
+
+/* Movie Reviews heading */
+#movieReviewsSection h2,
+.movie-reviews-section h2 {
+    color: #075aaa !important;
+}
+
+/* Movie Review cards */
+#movieReviewsSection article,
+.movie-reviews-section article {
+    background-color: #ffffff !important;
+    border-radius: 8px;
+    padding: 10px;
+}
