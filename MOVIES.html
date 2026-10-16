@@ -278,6 +278,8 @@ a{
     display:flex;
     flex-direction:column;
     gap:18px;
+    min-height:0;
+    min-width:0;
 }
 
 .sidebar-box{
@@ -1220,6 +1222,32 @@ document.addEventListener("DOMContentLoaded", function(){
 
 
     /* =====================================================
+       LAPTOP: SIDEBAR MUST END WITH MOVIES ARTICLES
+       Keep the sidebar beside the Movies section only.
+       Do not let sidebar content extend below the movie list.
+    ===================================================== */
+
+    function matchSidebarToMoviesHeight(){
+        const moviesMain = document.querySelector(".movies-main");
+        const sidebar = document.querySelector(".article-sidebar");
+
+        if(!moviesMain || !sidebar) return;
+
+        if(window.innerWidth > 1100){
+            const moviesHeight = Math.ceil(moviesMain.getBoundingClientRect().height);
+            sidebar.style.height = moviesHeight + "px";
+            sidebar.style.maxHeight = moviesHeight + "px";
+            sidebar.style.overflow = "hidden";
+        } else {
+            sidebar.style.height = "";
+            sidebar.style.maxHeight = "";
+            sidebar.style.overflow = "";
+        }
+    }
+
+    window.addEventListener("resize", matchSidebarToMoviesHeight);
+
+    /* =====================================================
        LOAD INDEX
     ===================================================== */
 
@@ -1379,6 +1407,9 @@ document.addEventListener("DOMContentLoaded", function(){
                 '<div class="loading">Homepage Movie Reviews articles దొరకలేదు.</div>'
         );
 
+        /* On laptop, match the sidebar height to the end of movie articles. */
+        matchSidebarToMoviesHeight();
+        requestAnimationFrame(matchSidebarToMoviesHeight);
 
         /* =================================================
            CONSOLE
