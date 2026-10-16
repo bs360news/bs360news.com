@@ -5022,3 +5022,65 @@ body {
         font-size: 13px !important;
     }
 }
+
+
+
+
+
+
+
+/* BUSINESS | NATIONAL | WORLD - SIDE BY SIDE */
+
+.business-national-world-row {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 20px !important;
+    width: 100%;
+    margin: 28px 0;
+    align-items: start;
+}
+
+.business-national-world-row > section {
+    width: 100% !important;
+    min-width: 0;
+    margin: 0 !important;
+}
+
+.business-national-world-row .entertainment-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px;
+}
+
+.business-national-world-row .entertainment-featured img,
+.business-national-world-row .national-world-grid img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+.business-national-world-row .entertainment-small-grid,
+.business-national-world-row .national-world-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px;
+}
+
+.business-national-world-row .entertainment-small-grid img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+.business-national-world-row .entertainment-small-grid > article:nth-child(n+3),
+.business-national-world-row .entertainment-bottom-grid {
+    display: none !important;
+}
+
+@media (max-width: 650px) {
+    .business-national-world-row {
+        grid-template-columns: minmax(0, 1fr) !important;
+        gap: 24px !important;
+    }
+}
