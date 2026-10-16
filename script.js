@@ -23,5 +23,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
-
+[
+  ".homepage-news-layout",
+  ".top-news-group",
+  ".latest-trending-layout",
+  "#latestSection",
+  "#trendingSection",
+  "#entertainmentSection"
+].map(s => {
+  const e = document.querySelector(s);
+  if (!e) return { section: s, missing: true };
+  const r = e.getBoundingClientRect();
+  const c = getComputedStyle(e);
+  return {
+    section: s,
+    top: Math.round(r.top + scrollY),
+    height: Math.round(r.height),
+    marginTop: c.marginTop,
+    marginBottom: c.marginBottom,
+    display: c.display,
+    position: c.position
+  };
+});
 
