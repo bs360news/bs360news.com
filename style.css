@@ -223,23 +223,23 @@ body.dark-mode .ad-space{background:#222;border-color:#444}
 
 
 
-/* MOVIE REVIEWS - LIGHT BLUE BACKGROUND */
+/* MOVIE REVIEWS - DARK BLUE BACKGROUND */
 #movieReviewsSection,
 .movie-reviews-section,
 #movieReviewsSection .movie-reviews-container {
-    background-color: #e3f2fd !important;
+    background-color: #90CAF9 !important;
 }
 
-/* Movie Reviews heading */
+/* Section Heading */
 #movieReviewsSection h2,
 .movie-reviews-section h2 {
-    color: #075aaa !important;
+    color: #003366 !important;
 }
 
-/* Movie Review cards */
+/* Movie Review Cards */
 #movieReviewsSection article,
 .movie-reviews-section article {
-    background-color: #ffffff !important;
+    background-color: #E3F2FD !important;
     border-radius: 8px;
     padding: 10px;
 }
