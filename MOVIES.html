@@ -675,116 +675,6 @@ body.dark-mode .most-read-item{
 
 
 
-/* LATEST + TRENDING ARTICLES - BOTTOM ROW */
-
-.sidebar-bottom-section{
-    width:100%;
-    margin:28px 0;
-    padding:16px;
-    background:#fff;
-    border:1px solid #e5e7eb;
-    border-radius:8px;
-}
-
-.sidebar-bottom-heading{
-    margin:0 0 14px;
-    padding-bottom:9px;
-    font-size:21px;
-    font-weight:900;
-    color:#111827;
-    border-bottom:3px solid #e50914;
-}
-
-.sidebar-bottom-grid{
-    display:grid;
-    grid-template-columns:repeat(8,minmax(0,1fr));
-    gap:12px;
-}
-
-.sidebar-bottom-card{
-    display:block;
-    min-width:0;
-    overflow:hidden;
-    color:#111827;
-    background:#f8fafc;
-    border:1px solid #e5e7eb;
-    border-radius:7px;
-}
-
-.sidebar-bottom-card img{
-    display:block;
-    width:100%;
-    aspect-ratio:16/9;
-    object-fit:cover;
-}
-
-.sidebar-bottom-card h3{
-    margin:0;
-    padding:9px;
-    font-size:13px;
-    line-height:1.5;
-    font-weight:800;
-    display:-webkit-box;
-    -webkit-line-clamp:3;
-    -webkit-box-orient:vertical;
-    overflow:hidden;
-}
-
-.sidebar-bottom-card:hover{
-    color:#e50914;
-}
-
-body.dark-mode .sidebar-bottom-section{
-    background:#111827;
-    border-color:#374151;
-}
-
-body.dark-mode .sidebar-bottom-heading,
-body.dark-mode .sidebar-bottom-card{
-    color:#f9fafb;
-}
-
-body.dark-mode .sidebar-bottom-card{
-    background:#1f2937;
-    border-color:#374151;
-}
-
-@media(min-width:601px) and (max-width:1100px){
-    .sidebar-bottom-grid{
-        grid-template-columns:repeat(4,minmax(0,1fr));
-    }
-}
-
-@media(max-width:600px){
-    .sidebar-bottom-section{
-        padding:11px;
-        margin:22px 0;
-    }
-
-    .sidebar-bottom-heading{
-        font-size:18px;
-    }
-
-    .sidebar-bottom-grid{
-        display:flex;
-        gap:10px;
-        overflow-x:auto;
-        padding-bottom:8px;
-        scroll-snap-type:x mandatory;
-        -webkit-overflow-scrolling:touch;
-    }
-
-    .sidebar-bottom-card{
-        flex:0 0 155px;
-        scroll-snap-align:start;
-    }
-
-    .sidebar-bottom-card h3{
-        padding:7px;
-        font-size:12px;
-    }
-}
-
 </style>
 
 </head>
@@ -1049,55 +939,34 @@ body.dark-mode .sidebar-bottom-card{
         </div>
 
 
-        <!-- SIDEBAR -->
+        <!-- HOMEPAGE SECTIONS SHOWN ONLY IN SIDEBAR -->
 
         <aside class="article-sidebar">
 
             <div class="sidebar-box">
-
-                <div class="sidebar-title">
-                    Most Read
-                </div>
-
-                <div id="mostReadSidebar"></div>
-
+                <div class="sidebar-title">Top News</div>
+                <div id="topNewsSidebar"></div>
             </div>
 
-
             <div class="sidebar-box">
-
-                <div class="sidebar-title">
-                    Trending News
-                </div>
-
+                <div class="sidebar-title">Trending News</div>
                 <div id="trendingSidebar"></div>
-
             </div>
 
+            <div class="sidebar-box">
+                <div class="sidebar-title">Latest News</div>
+                <div id="latestSidebar"></div>
+            </div>
 
             <div class="sidebar-box">
-
-                <div class="sidebar-title">
-                    Latest News
-                </div>
-
-                <div id="latestSidebar"></div>
-
+                <div class="sidebar-title">Movie Reviews</div>
+                <div id="movieReviewsSidebar"></div>
             </div>
 
         </aside>
 
 
     </div>
-
-
-    <!-- LATEST + TRENDING ARTICLES BELOW MAIN LAYOUT -->
-    <section class="sidebar-bottom-section">
-        <h2 class="sidebar-bottom-heading">Latest &amp; Trending News</h2>
-        <div id="sidebarBottomGrid" class="sidebar-bottom-grid">
-            <div class="loading">వార్తలు లోడ్ అవుతున్నాయి...</div>
-        </div>
-    </section>
 
 </main>
 
@@ -1199,33 +1068,34 @@ document.addEventListener("DOMContentLoaded", function(){
             return [];
         }
 
-        return Array.from(
-            source.querySelectorAll(".news-item.post, article")
-        )
-        .map(function(item){
+        const items = [];
+        if(source.matches && source.matches(".news-item.post, article")){
+            items.push(source);
+        }
+        items.push(...Array.from(source.querySelectorAll(".news-item.post, article")));
 
+        return items
+        .map(function(item){
             const image = item.querySelector("img");
             const title = item.querySelector(
-                ".news-content p, .news-content h3, .news-content a, h3, h2, p, .news-title"
+                ".news-content p, .news-content h3, .news-content a, h3, h2, p, .news-title, .article-title"
             );
             const link = item.querySelector("a[href]");
 
             return {
-                title: cleanText(title ? title.textContent : ""),
+                title: cleanText(title ? title.textContent : item.getAttribute("data-title") || ""),
                 image: image ? (image.getAttribute("src") || image.getAttribute("data-src") || "") : "",
                 alt: image ? (image.getAttribute("alt") || "") : "",
                 url: item.getAttribute("data-url") || (link ? link.getAttribute("href") : "") || ""
             };
-
         })
         .filter(function(article, index, array){
             return article.title && article.image && article.url &&
                 array.findIndex(function(other){ return other.url === article.url; }) === index;
         });
-
     }
 
-    /* Try the named homepage source first, then the visible homepage grids. */
+    /* Try known Homepage source IDs, then use the first one containing articles. */
     function getFirstAvailableArticles(home, ids){
         for(const id of ids){
             const source = home.getElementById(id);
@@ -1292,36 +1162,6 @@ document.addEventListener("DOMContentLoaded", function(){
                 >
 
                 <div class="sidebar-item-title">
-                    ${article.title}
-                </div>
-
-            </a>
-
-        `;
-
-    }
-
-
-    /* =====================================================
-       MOST READ
-    ===================================================== */
-
-    function mostReadHTML(article){
-
-        return `
-
-            <a
-                href="${article.url}"
-                class="most-read-item"
-            >
-
-                <img
-                    src="${article.image}"
-                    alt="${article.alt || article.title}"
-                    loading="lazy"
-                >
-
-                <div class="most-read-title">
                     ${article.title}
                 </div>
 
@@ -1431,16 +1271,20 @@ document.addEventListener("DOMContentLoaded", function(){
         });
 
 
-        const latest = getFirstAvailableArticles(home, [
-            "latestNewsSource", "latestGrid", "latestSidebar", "latestSection", "latestNews"
+        const topNews = getFirstAvailableArticles(home, [
+            "topNewsSource", "topNewsGrid", "topNews", "topStory", "topStoryGrid", "topStorySection"
         ]);
 
         const trending = getFirstAvailableArticles(home, [
             "trendingSource", "trendingGrid", "trendingSidebar", "trendingSection", "trendingNews"
         ]);
 
-        const mostRead = getFirstAvailableArticles(home, [
-            "mostReadSource", "mostReadList", "mostReadSidebar", "mostReadSection", "mostRead"
+        const latest = getFirstAvailableArticles(home, [
+            "latestNewsSource", "latestGrid", "latestSidebar", "latestSection", "latestNews"
+        ]);
+
+        const movieReviews = getFirstAvailableArticles(home, [
+            "movieReviewsSource", "movieReviewsGrid", "movieReviewsSection", "movieReviews", "reviewsGrid", "reviewsSection", "entertainmentSource"
         ]);
 
 
@@ -1457,20 +1301,14 @@ document.addEventListener("DOMContentLoaded", function(){
 
 
         /* =================================================
-           MOST READ
+           TOP NEWS (HOMEPAGE ONLY IN SIDEBAR)
         ================================================= */
 
         show(
-
-            "mostReadSidebar",
-
-            mostRead
-                .slice(0,8)
-                .map(mostReadHTML)
-                .join("")
-
+            "topNewsSidebar",
+            topNews.slice(0, 5).map(sidebarHTML).join("") ||
+                '<div class="loading">Homepage Top News articles దొరకలేదు.</div>'
         );
-
 
         /* =================================================
            TRENDING
@@ -1493,47 +1331,19 @@ document.addEventListener("DOMContentLoaded", function(){
         ================================================= */
 
         show(
-
             "latestSidebar",
-
-            latest
-                .slice(0,8)
-                .map(sidebarHTML)
-                .join("")
-
+            latest.slice(0, 5).map(sidebarHTML).join("") ||
+                '<div class="loading">Homepage Latest News articles దొరకలేదు.</div>'
         );
 
         /* =================================================
-           LATEST + TRENDING BOTTOM ROW
+           MOVIE REVIEWS (HOMEPAGE ONLY IN SIDEBAR)
         ================================================= */
 
-        const bottomArticles = [
-            ...latest.slice(0, 4),
-            ...trending.slice(0, 4)
-        ];
-
-        const uniqueBottomArticles = bottomArticles.filter(
-            function(article, index, array){
-                return array.findIndex(function(item){
-                    return item.url === article.url;
-                }) === index;
-            }
-        );
-
         show(
-            "sidebarBottomGrid",
-            uniqueBottomArticles.map(function(article){
-                return `
-                    <a href="${article.url}" class="sidebar-bottom-card">
-                        <img
-                            src="${article.image}"
-                            alt="${article.alt || article.title}"
-                            loading="lazy"
-                        >
-                        <h3>${article.title}</h3>
-                    </a>
-                `;
-            }).join("")
+            "movieReviewsSidebar",
+            movieReviews.slice(0, 5).map(sidebarHTML).join("") ||
+                '<div class="loading">Homepage Movie Reviews articles దొరకలేదు.</div>'
         );
 
 
@@ -1558,24 +1368,10 @@ document.addEventListener("DOMContentLoaded", function(){
             "Movies:",
             movies.length
         );
-        console.log("Homepage Latest articles:", latest.length);
+        console.log("Homepage Top News articles:", topNews.length);
         console.log("Homepage Trending articles:", trending.length);
-        console.log("Homepage Most Read articles:", mostRead.length);
-
-        console.log(
-            "Latest:",
-            latest.length
-        );
-
-        console.log(
-            "Trending:",
-            trending.length
-        );
-
-        console.log(
-            "Most Read:",
-            mostRead.length
-        );
+        console.log("Homepage Latest articles:", latest.length);
+        console.log("Homepage Movie Reviews articles:", movieReviews.length);
 
         console.log(
             "================================"
