@@ -2295,27 +2295,6 @@ body.dark-mode .bottom-news-card p {
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* ==========================================
    BS360NEWS - ALL CATEGORY SECTIONS
    Compact Laptop Width
@@ -2459,22 +2438,6 @@ body.dark-mode .bottom-news-card p {
         gap: 8px;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* ==============================
    NATIONAL NEWS SECTION
 ============================== */
@@ -2561,18 +2524,6 @@ body.dark-mode .bottom-news-card p {
         margin-top: 6px;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
 /* NATIONAL NEWS - BELOW LATEST NEWS */
 #latestSection {
     grid-column: 1 / -1;
@@ -2586,11 +2537,6 @@ body.dark-mode .bottom-news-card p {
     grid-row: auto;
     clear: both;
 }
-
-
-
-
-
 
 
 /* NATIONAL NEWS - BESIDE LATEST NEWS */
@@ -2625,16 +2571,6 @@ body.dark-mode .bottom-news-card p {
         margin-top: 20px;
     }
 }
-
-
-
-
-
-
-
-
-
-
 
 /* ==========================================
    CSS ONLY: ENTERTAINMENT పక్కన NATIONAL NEWS
@@ -2684,22 +2620,6 @@ body.dark-mode .bottom-news-card p {
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @media (min-width: 1051px) {
     .national-world-layout {
         display: grid !important;
@@ -2728,23 +2648,6 @@ body.dark-mode .bottom-news-card p {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* LATEST NEWS + TRENDING NEWS */
 
 .latest-trending-layout {
@@ -2764,11 +2667,6 @@ body.dark-mode .bottom-news-card p {
         grid-template-columns: 1fr;
     }
 }
-
-
-
-
-
 
 
 /* LAPTOP: LATEST + TRENDING EQUAL WIDTH */
@@ -2905,16 +2803,6 @@ body.dark-mode .bottom-news-card p {
 }
 
 
-
-
-
-
-
-
-
-
-
-
 /* NATIONAL NEWS - REMOVE RIGHT SIDE SPACE */
 
 .national-world-layout {
@@ -2935,12 +2823,6 @@ body.dark-mode .bottom-news-card p {
     width: 100% !important;
     max-width: 100% !important;
 }
-
-
-
-
-
-
 
 /* ================= MOVIE REVIEWS ================= */
 
@@ -3184,15 +3066,6 @@ body.dark-mode .bottom-news-card p {
 }
 
 
-
-
-
-
-
-
-
-
-
 /* MOVIE REVIEWS - FULL WIDTH */
 
 .movie-reviews-section {
@@ -3208,15 +3081,6 @@ body.dark-mode .bottom-news-card p {
     max-width: none !important;
     box-sizing: border-box;
 }
-
-
-
-
-
-
-
-
-
 
 
 
@@ -3248,13 +3112,6 @@ body.dark-mode .bottom-news-card p {
 
 
 
-
-
-
-
-
-
-
 /* ADVERTISEMENT SPACE - LAPTOP + MOBILE */
 
 .ad-space {
@@ -3272,18 +3129,6 @@ body.dark-mode .bottom-news-card p {
     color: #777;
     font-size: 12px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -3333,15 +3178,6 @@ body {
         grid-template-columns: minmax(0, 1fr);
     }
 }
-
-
-
-
-
-
-
-
-
 
 
 
@@ -4199,24 +4035,6 @@ body {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
