@@ -4222,3 +4222,284 @@ body {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================
+   BS 360 NEWS - HOMEPAGE LAYOUT
+========================================== */
+
+.homepage-news-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+/* Top News + Entertainment LEFT, Latest RIGHT */
+.top-content-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(260px, 0.85fr);
+    gap: 22px;
+    align-items: stretch;
+    width: 100%;
+}
+
+.top-left-column {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    min-width: 0;
+}
+
+.top-news-group {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+    gap: 16px;
+    align-items: start;
+}
+
+.top-main-column,
+.top-side-column,
+.latest-news-column,
+.trending-news-column,
+.sports-apts-left-column {
+    min-width: 0;
+}
+
+.top-main-column > .news-item img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    display: block;
+}
+
+.top-bottom-articles {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.top-bottom-articles img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    display: block;
+}
+
+.top-side-articles {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.top-side-article {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 100px;
+    gap: 10px;
+    align-items: center;
+}
+
+.top-side-article img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+}
+
+/* Latest News */
+.latest-news-column {
+    height: 100%;
+}
+
+.latest-news-list,
+.trending-news-list {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+.latest-news-list .news-item,
+.trending-news-list .news-item {
+    display: grid;
+    grid-template-columns: 105px minmax(0, 1fr);
+    gap: 10px;
+    align-items: start;
+}
+
+.latest-news-list img,
+.trending-news-list img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    display: block;
+}
+
+/* Entertainment / Sports / AP-TS / Business */
+.entertainment-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr);
+    gap: 14px;
+}
+
+.entertainment-featured img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    display: block;
+}
+
+.entertainment-small-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.entertainment-small-grid img,
+.entertainment-bottom-grid img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+.entertainment-bottom-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 14px;
+}
+
+/* Sports + AP-TS LEFT, Trending RIGHT */
+.sports-apts-trending-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(260px, 0.85fr);
+    gap: 22px;
+    align-items: stretch;
+    width: 100%;
+}
+
+.sports-apts-left-column {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.trending-news-column {
+    height: 100%;
+}
+
+/* World / National: first article large, next two small */
+.national-world-section {
+    width: 100%;
+    min-width: 0;
+}
+
+.national-world-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.national-world-grid article:first-child {
+    grid-column: 1 / -1;
+}
+
+.national-world-grid img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+.national-world-grid article:not(:first-child) img {
+    aspect-ratio: 16 / 9;
+}
+
+/* Business main + smaller stories */
+#businessSection {
+    width: 100%;
+    min-width: 0;
+}
+
+/* Prevent layout overflow */
+.homepage-news-layout section,
+.homepage-news-layout article {
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+.homepage-news-layout img {
+    max-width: 100%;
+}
+
+.homepage-news-layout a {
+    overflow-wrap: anywhere;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .top-content-layout,
+    .sports-apts-trending-layout {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .top-news-group {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .top-bottom-articles {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .top-side-article {
+        grid-template-columns: minmax(0, 1fr) 95px;
+    }
+
+    .entertainment-layout {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .entertainment-bottom-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .latest-news-list .news-item,
+    .trending-news-list .news-item {
+        grid-template-columns: 95px minmax(0, 1fr);
+    }
+
+    .latest-news-column,
+    .trending-news-column {
+        height: auto;
+    }
+
+    .national-world-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .national-world-grid article:first-child {
+        grid-column: 1 / -1;
+    }
+}
