@@ -1278,55 +1278,41 @@ document.addEventListener("DOMContentLoaded", function(){
         }
 
         return Array.from(
-            source.querySelectorAll(".news-item.post")
+            source.querySelectorAll(".news-item.post, article")
         )
-
         .map(function(item){
 
-            const image =
-                item.querySelector("img");
-
-            const title =
-                item.querySelector(".news-content p") ||
-                item.querySelector(".news-content h3") ||
-                item.querySelector("p");
+            const image = item.querySelector("img");
+            const title = item.querySelector(
+                ".news-content p, .news-content h3, .news-content a, h3, h2, p, .news-title"
+            );
+            const link = item.querySelector("a[href]");
 
             return {
-
-                title:
-                    cleanText(
-                        title
-                            ? title.textContent
-                            : ""
-                    ),
-
-                image:
-                    image
-                        ? image.getAttribute("src") || ""
-                        : "",
-
-                alt:
-                    image
-                        ? image.getAttribute("alt") || ""
-                        : "",
-
-                url:
-                    item.getAttribute("data-url") || ""
-
+                title: cleanText(title ? title.textContent : ""),
+                image: image ? (image.getAttribute("src") || image.getAttribute("data-src") || "") : "",
+                alt: image ? (image.getAttribute("alt") || "") : "",
+                url: item.getAttribute("data-url") || (link ? link.getAttribute("href") : "") || ""
             };
 
         })
-
-        .filter(function(article){
-
-            return (
-                article.title &&
-                article.image &&
-                article.url
-            );
-
+        .filter(function(article, index, array){
+            return article.title && article.image && article.url &&
+                array.findIndex(function(other){ return other.url === article.url; }) === index;
         });
 
+    }
+
+    /* Try the named homepage source first, then the visible homepage grids. */
+    function getFirstAvailableArticles(home, ids){
+        for(const id of ids){
+            const source = home.getElementById(id);
+            const articles = getArticles(source);
+            if(articles.length){
+                return articles;
+            }
+        }
+        return [];
     }
 
 
@@ -1547,28 +1533,17 @@ document.addEventListener("DOMContentLoaded", function(){
             );
 
 
-        const latest =
-            getArticles(
-                home.getElementById(
-                    "latestNewsSource"
-                )
-            );
+        const latest = getFirstAvailableArticles(home, [
+            "latestNewsSource", "latestGrid", "latestSidebar", "latestSection"
+        ]);
 
+        const trending = getFirstAvailableArticles(home, [
+            "trendingSource", "trendingGrid", "trendingSection", "trendingSidebar"
+        ]);
 
-        const trending =
-            getArticles(
-                home.getElementById(
-                    "trendingSource"
-                )
-            );
-
-
-        const mostRead =
-            getArticles(
-                home.getElementById(
-                    "mostReadSource"
-                )
-            );
+        const mostRead = getFirstAvailableArticles(home, [
+            "mostReadSource", "mostReadList", "mostReadSidebar"
+        ]);
 
 
         /* =================================================
