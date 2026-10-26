@@ -308,3 +308,85 @@ body.dark-mode .ad-space{background:#222;border-color:#444}
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* BS 360 NEWS — Manual Scroll Navigation */
+.bs-navigation {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    width: 100%;
+    max-width: 100%;
+    padding: 8px 10px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    scrollbar-width: thin;
+    scroll-behavior: smooth;
+}
+
+.bs-navigation a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+    flex: 0 0 auto;
+    white-space: nowrap;
+
+    padding: 9px 12px;
+    font-size: 14px;
+    line-height: 1.4;
+    text-decoration: none;
+}
+
+/* Home icon size */
+.bs-navigation .nav-home svg {
+    width: 17px;
+    height: 17px;
+    flex-shrink: 0;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .bs-navigation {
+        gap: 4px;
+        padding: 7px 8px;
+    }
+
+    .bs-navigation a {
+        padding: 8px 10px;
+        font-size: 13px;
+    }
+
+    .bs-navigation .nav-home svg {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+/* Small mobile */
+@media (max-width: 360px) {
+    .bs-navigation a {
+        padding: 7px 8px;
+        font-size: 12px;
+    }
+}
+
+
