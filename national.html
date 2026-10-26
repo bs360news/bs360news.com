@@ -495,6 +495,30 @@ body.dark-mode .sidebar-item{border-color:#374151}
         line-height:1.4;
     }
 }
+
+    /* Main articles and sidebar should end together */
+.news-page-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    align-items: stretch;
+    gap: 24px;
+}
+
+.news-main-content,
+.news-sidebar {
+    min-width: 0;
+    height: fit-content;
+}
+
+.news-sidebar {
+    align-self: start;
+}
+
+@media (max-width: 768px) {
+    .news-page-layout {
+        grid-template-columns: 1fr;
+    }
+}
 </style>
 </head>
 
