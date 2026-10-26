@@ -496,27 +496,35 @@ body.dark-mode .sidebar-item{border-color:#374151}
     }
 }
 
-    /* Main articles and sidebar should end together */
-.news-page-layout {
+ /* NATIONAL PAGE — MAIN & SIDEBAR HEIGHT FIX */
+
+.national-page-layout {
     display: grid;
     grid-template-columns: minmax(0, 1fr) 320px;
-    align-items: stretch;
+    align-items: start;
     gap: 24px;
 }
 
-.news-main-content,
-.news-sidebar {
+.national-main-content,
+.national-sidebar {
     min-width: 0;
     height: fit-content;
-}
-
-.news-sidebar {
     align-self: start;
 }
 
+/* Sidebar articles should not overflow */
+.national-sidebar {
+    overflow: hidden;
+}
+
 @media (max-width: 768px) {
-    .news-page-layout {
+    .national-page-layout {
         grid-template-columns: 1fr;
+    }
+
+    .national-main-content,
+    .national-sidebar {
+        width: 100%;
     }
 }
 </style>
