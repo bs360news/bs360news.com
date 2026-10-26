@@ -1,38 +1,20 @@
+
 <!DOCTYPE html>
 <html lang="te">
-
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Business News | BS 360 NEWS</title>
-
-<meta
-    name="description"
-    content="BS 360 NEWS బిజినెస్ వార్తలు, స్టాక్ మార్కెట్, బంగారం, వెండి, ఆర్థిక వ్యవస్థ, కంపెనీల తాజా అప్‌డేట్స్."
->
-
-<meta
-    name="robots"
-    content="index, follow, max-image-preview:large"
->
+<meta name="description" content="BS 360 NEWS బిజినెస్ వార్తలు - భారత ఆర్థిక వ్యవస్థ, స్టాక్ మార్కెట్, బంగారం ధరలు, బ్యాంకింగ్, వ్యాపార రంగ తాజా వార్తలు.">
+<meta name="robots" content="index, follow, max-image-preview:large">
 
 <link rel="icon" type="image/png" href="dp.png.png">
-<link rel="canonical" href="https://bs360news.com/business.html">
 <link rel="apple-touch-icon" href="dp.png.png">
 
 <style>
-
-*{
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
     margin:0;
     padding:0;
@@ -41,26 +23,11 @@ body{
     font-family:Arial,"Noto Sans Telugu","Segoe UI",sans-serif;
     line-height:1.6;
 }
-
-img{
-    display:block;
-    width:100%;
-    max-width:100%;
-}
-
-a{
-    color:inherit;
-    text-decoration:none;
-}
-
+img{display:block;width:100%;max-width:100%}
+a{color:inherit;text-decoration:none}
 
 /* HEADER */
-
-.top-header{
-    background:#fff;
-    border-bottom:1px solid #e5e7eb;
-}
-
+.top-header{background:#fff;border-bottom:1px solid #e5e7eb}
 .header-inner{
     width:min(1400px,96%);
     margin:auto;
@@ -70,33 +37,10 @@ a{
     justify-content:space-between;
     gap:15px;
 }
-
-.logo{
-    font-size:30px;
-    font-weight:900;
-    letter-spacing:.5px;
-    color:#111827;
-}
-
-.logo span{
-    color:#e50914;
-}
-
-.home-btn{
-    background:#e50914;
-    color:#fff;
-    padding:8px 16px;
-    border-radius:6px;
-    font-weight:700;
-}
-
-.home-btn:hover{
-    background:#c7000b;
-}
-
+.logo{font-size:30px;font-weight:900;letter-spacing:.5px;color:#111827}
+.logo span{color:#e50914}
 
 /* NAVIGATION */
-
 .nav-bar{
     background:#fff;
     border-bottom:1px solid #e5e7eb;
@@ -104,7 +48,6 @@ a{
     top:0;
     z-index:100;
 }
-
 .nav-inner{
     width:min(1400px,96%);
     margin:auto;
@@ -114,11 +57,7 @@ a{
     overflow-x:auto;
     scrollbar-width:none;
 }
-
-.nav-inner::-webkit-scrollbar{
-    display:none;
-}
-
+.nav-inner::-webkit-scrollbar{display:none}
 .nav-inner a{
     flex:0 0 auto;
     padding:11px 15px;
@@ -128,19 +67,10 @@ a{
     color:#111827;
     border-bottom:3px solid transparent;
 }
-
-.nav-inner a:hover{
-    color:#e50914;
-}
-
-.nav-inner a.active{
-    color:#e50914;
-    border-bottom:3px solid #e50914;
-}
-
+.nav-inner a:hover{color:#e50914}
+.nav-inner a.active{color:#e50914;border-bottom:3px solid #e50914}
 
 /* BREAKING NEWS */
-
 .breaking{
     width:min(1400px,96%);
     margin:12px auto 0;
@@ -151,7 +81,6 @@ a{
     border-radius:6px;
     border:1px solid #e5e7eb;
 }
-
 .breaking-title{
     background:#e50914;
     color:#fff;
@@ -160,7 +89,6 @@ a{
     font-weight:900;
     white-space:nowrap;
 }
-
 .breaking-text{
     padding:8px 15px;
     font-size:14px;
@@ -170,14 +98,8 @@ a{
     color:#111827;
 }
 
-
 /* PAGE */
-
-.page{
-    width:min(1400px,96%);
-    margin:15px auto 35px;
-}
-
+.page{width:min(1400px,96%);margin:15px auto 35px}
 .page-title{
     background:#fff;
     border-left:5px solid #e50914;
@@ -187,23 +109,15 @@ a{
     font-weight:900;
 }
 
-
 /* MAIN LAYOUT */
-
 .main-layout{
     display:grid;
     grid-template-columns:minmax(0,1fr) 320px;
     gap:22px;
-    align-items:start;
+    align-items:stretch;
 }
-
-
-/* SECTION */
-
-.section{
-    margin-bottom:30px;
-}
-
+.business-main{min-width:0}
+.section{margin-bottom:30px}
 .section-head{
     display:flex;
     align-items:center;
@@ -212,31 +126,21 @@ a{
     border-bottom:2px solid #e50914;
     padding-bottom:7px;
 }
-
 .section-head h2{
     margin:0;
     font-size:21px;
     font-weight:900;
     color:#111827;
 }
+.section-head h2 span{color:#e50914}
 
-.section-head h2 span{
-    color:#e50914;
-}
-
-
-/* ALL ARTICLE GRIDS */
-
-.movies-grid{
+/* ARTICLE GRID */
+.business-grid{
     display:grid;
     grid-template-columns:repeat(4,minmax(0,1fr));
     gap:12px;
 }
-
-
-/* ARTICLE CARD */
-
-.movie-card{
+.business-card{
     display:block;
     background:#fff;
     border-radius:7px;
@@ -244,23 +148,17 @@ a{
     min-width:0;
     transition:transform .2s ease,box-shadow .2s ease;
 }
-
-.movie-card:hover{
+.business-card:hover{
     transform:translateY(-3px);
     box-shadow:0 5px 18px rgba(0,0,0,.10);
 }
-
-.movie-card img{
+.business-card img{
     width:100%;
-    aspect-ratio:16 / 9;
+    aspect-ratio:16/9;
     object-fit:cover;
 }
-
-.movie-card-content{
-    padding:9px;
-}
-
-.movie-card-title{
+.business-card-content{padding:9px}
+.business-card-title{
     margin:0;
     color:#111827;
     font-size:14px;
@@ -272,24 +170,20 @@ a{
     overflow:hidden;
 }
 
-
 /* SIDEBAR */
-
 .article-sidebar{
     display:flex;
     flex-direction:column;
     gap:18px;
-    min-height:0;
     min-width:0;
+    align-self:stretch;
 }
-
 .sidebar-box{
     background:#fff;
     border-radius:8px;
     padding:14px;
     border:1px solid #e5e7eb;
 }
-
 .sidebar-title{
     font-size:19px;
     line-height:1.3;
@@ -299,23 +193,15 @@ a{
     margin-bottom:5px;
     border-bottom:3px solid #e50914;
 }
-
-
-/* SIDEBAR ARTICLE */
-
-.sidebar-item{
+.sidebar-item,.most-read-item{
     display:flex;
+    align-items:center;
     gap:10px;
     padding:10px 0;
     border-bottom:1px solid #e5e7eb;
-    text-decoration:none;
     color:inherit;
 }
-
-.sidebar-item:last-child{
-    border-bottom:none;
-}
-
+.sidebar-item:last-child,.most-read-item:last-child{border-bottom:none}
 .sidebar-item img{
     width:100px;
     height:65px;
@@ -323,8 +209,7 @@ a{
     border-radius:6px;
     flex-shrink:0;
 }
-
-.sidebar-item-title{
+.sidebar-item-title,.most-read-title{
     font-size:14px;
     line-height:1.4;
     font-weight:700;
@@ -334,24 +219,6 @@ a{
     -webkit-box-orient:vertical;
     overflow:hidden;
 }
-
-
-/* MOST READ */
-
-.most-read-item{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    padding:10px 0;
-    border-bottom:1px solid #e5e7eb;
-    text-decoration:none;
-    color:inherit;
-}
-
-.most-read-item:last-child{
-    border-bottom:none;
-}
-
 .most-read-item img{
     width:95px;
     height:65px;
@@ -359,23 +226,8 @@ a{
     border-radius:6px;
     flex-shrink:0;
 }
-
-.most-read-title{
-    font-size:14px;
-    line-height:1.4;
-    font-weight:700;
-    color:#1f2937;
-    display:-webkit-box;
-    -webkit-line-clamp:3;
-    -webkit-box-orient:vertical;
-    overflow:hidden;
-}
-
-
-/* LOADING */
-
 .loading{
-    grid-column:1 / -1;
+    grid-column:1/-1;
     background:#fff;
     padding:25px;
     text-align:center;
@@ -383,16 +235,13 @@ a{
     color:#666;
 }
 
-
 /* FOOTER */
-
 .site-footer{
     background:#111827;
     color:#fff;
     margin-top:35px;
     padding:30px 0 15px;
 }
-
 .footer-inner{
     width:min(1400px,96%);
     margin:auto;
@@ -400,34 +249,11 @@ a{
     grid-template-columns:1fr 1fr;
     gap:40px;
 }
-
-.footer-column h3,
-.footer-contact h3{
-    margin:0 0 12px;
-    font-size:18px;
-}
-
-.footer-links{
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px 15px;
-}
-
-.footer-links a{
-    color:#d1d5db;
-    font-size:14px;
-}
-
-.footer-links a:hover{
-    color:#fff;
-}
-
-.footer-contact p{
-    margin:5px 0;
-    color:#d1d5db;
-    font-size:14px;
-}
-
+.footer-column h3,.footer-contact h3{margin:0 0 12px;font-size:18px}
+.footer-links{display:flex;flex-wrap:wrap;gap:8px 15px}
+.footer-links a{color:#d1d5db;font-size:14px}
+.footer-links a:hover{color:#fff}
+.footer-contact p{margin:5px 0;color:#d1d5db;font-size:14px}
 .copyright{
     width:min(1400px,96%);
     margin:25px auto 0;
@@ -438,127 +264,53 @@ a{
     font-size:13px;
 }
 
-
 /* DARK MODE */
-
-body.dark-mode{
-    background:#0b1120;
-    color:#f9fafb;
-}
-
+body.dark-mode{background:#0b1120;color:#f9fafb}
 body.dark-mode .top-header,
 body.dark-mode .nav-bar,
 body.dark-mode .breaking,
 body.dark-mode .page-title,
-body.dark-mode .movie-card,
+body.dark-mode .business-card,
 body.dark-mode .sidebar-box{
     background:#111827;
     color:#f9fafb;
     border-color:#374151;
 }
-
 body.dark-mode .logo,
 body.dark-mode .nav-inner a,
 body.dark-mode .breaking-text,
 body.dark-mode .section-head h2,
-body.dark-mode .movie-card-title,
+body.dark-mode .business-card-title,
 body.dark-mode .sidebar-title,
 body.dark-mode .sidebar-item-title,
-body.dark-mode .most-read-title{
-    color:#f9fafb;
-}
-
+body.dark-mode .most-read-title{color:#f9fafb}
 body.dark-mode .sidebar-item,
-body.dark-mode .most-read-item{
-    border-color:#374151;
-}
-
+body.dark-mode .most-read-item{border-color:#374151}
 
 /* TABLET */
-
 @media(min-width:601px) and (max-width:1100px){
-
-    .main-layout{
-        grid-template-columns:1fr;
-    }
-
-    .movies-grid{
-        grid-template-columns:repeat(2,minmax(0,1fr));
-    }
-
+    .main-layout{grid-template-columns:1fr;align-items:start}
+    .business-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
     .article-sidebar{
         display:grid;
         grid-template-columns:repeat(2,minmax(0,1fr));
         align-items:start;
     }
-
 }
 
-
 /* MOBILE */
-
 @media(max-width:600px){
-
-    .header-inner{
-        min-height:58px;
-    }
-
-    .logo{
-        font-size:22px;
-    }
-
-    .home-btn{
-        padding:6px 11px;
-        font-size:13px;
-    }
-
-    .nav-inner a{
-        padding:9px 11px;
-        font-size:12px;
-    }
-
-    .breaking{
-        margin-top:8px;
-    }
-
-    .breaking-title{
-        padding:7px 10px;
-        font-size:10px;
-    }
-
-    .breaking-text{
-        font-size:12px;
-        padding:7px 10px;
-    }
-
-    .page{
-        width:94%;
-        margin-top:10px;
-    }
-
-    .page-title{
-        font-size:20px;
-        padding:10px 12px;
-    }
-
-    .main-layout{
-        display:block;
-    }
-
-
-    /* =========================================
-       MOBILE NEWS
-       LEFT = TEXT
-       RIGHT = IMAGE
-    ========================================= */
-
-    .movies-grid{
-        display:grid;
-        grid-template-columns:1fr;
-        gap:0;
-    }
-
-    .movie-card{
+    .header-inner{min-height:58px}
+    .logo{font-size:22px}
+    .nav-inner a{padding:9px 11px;font-size:12px}
+    .breaking{margin-top:8px}
+    .breaking-title{padding:7px 10px;font-size:10px}
+    .breaking-text{font-size:12px;padding:7px 10px}
+    .page{width:94%;margin-top:10px}
+    .page-title{font-size:20px;padding:10px 12px}
+    .main-layout{display:block}
+    .business-grid{display:grid;grid-template-columns:1fr;gap:0}
+    .business-card{
         display:flex;
         flex-direction:row-reverse;
         align-items:center;
@@ -570,13 +322,8 @@ body.dark-mode .most-read-item{
         box-shadow:none;
         transform:none;
     }
-
-    .movie-card:hover{
-        transform:none;
-        box-shadow:none;
-    }
-
-    .movie-card img{
+    .business-card:hover{transform:none;box-shadow:none}
+    .business-card img{
         width:105px;
         height:70px;
         aspect-ratio:auto;
@@ -585,234 +332,86 @@ body.dark-mode .most-read-item{
         flex-shrink:0;
         margin-left:10px;
     }
-
-    .movie-card-content{
-        flex:1;
-        min-width:0;
-        padding:7px 0;
-    }
-
-    .movie-card-title{
+    .business-card-content{flex:1;min-width:0;padding:7px 0}
+    .business-card-title{
         margin:0;
         font-size:13px;
         line-height:1.45;
         font-weight:800;
         -webkit-line-clamp:4;
     }
-
-
-    /* SIDEBAR */
-
-    .article-sidebar{
-        margin-top:22px;
-        gap:12px;
-    }
-
-    .sidebar-box{
-        padding:11px;
-    }
-
-    .sidebar-title{
-        font-size:17px;
-    }
-
-    .sidebar-item img{
-        width:90px;
-        height:62px;
-    }
-
-    .sidebar-item-title{
-        font-size:13px;
-    }
-
-    .most-read-item img{
-        width:90px;
-        height:62px;
-    }
-
-    .most-read-title{
-        font-size:13px;
-    }
-
-    .footer-inner{
-        grid-template-columns:1fr;
-        gap:22px;
-    }
-
-    .footer-links{
-        display:grid;
-        grid-template-columns:1fr 1fr;
-    }
-
+    .article-sidebar{margin-top:22px;gap:12px}
+    .sidebar-box{padding:11px}
+    .sidebar-title{font-size:17px}
+    .sidebar-item img,.most-read-item img{width:90px;height:62px}
+    .sidebar-item-title,.most-read-title{font-size:13px}
+    .footer-inner{grid-template-columns:1fr;gap:22px}
+    .footer-links{display:grid;grid-template-columns:1fr 1fr}
 }
-
-
-/* SMALL MOBILE */
-
 @media(max-width:380px){
-
-    .movies-grid{
-        grid-template-columns:1fr;
-        gap:0;
-    }
-
-    .movie-card{
-        min-height:90px;
-    }
-
-    .movie-card img{
-        width:95px;
-        height:64px;
-    }
-
-    .movie-card-content{
-        padding:5px 0;
-    }
-
-    .movie-card-title{
-        font-size:12px;
-        line-height:1.4;
-    }
-
+    .business-card{min-height:90px}
+    .business-card img{width:95px;height:64px}
+    .business-card-content{padding:5px 0}
+    .business-card-title{font-size:12px;line-height:1.4}
 }
-
-
-
 </style>
-
 </head>
 
-
 <body>
-
-
 <header class="top-header">
-
     <div class="header-inner">
-
-        <div class="logo">
-            BS <span>360</span> NEWS
-        </div>
-
-      
-
+        <div class="logo">BS <span>360</span> NEWS</div>
     </div>
-
 </header>
 
-
 <nav class="nav-bar">
-
     <div class="nav-inner">
-
-        <a href="index.html">
-            హోమ్ 
-        </a>
-
-        <a href="MOVIES.html" >
-            మూవీస్ 
-        </a>
-
-        <a href="SPORTS.html">
-            స్పోర్ట్స్ 
-        </a>
-
-        <a href="AP%26TS.html">
-            ఏపీ &amp; టీఎస్ 
-        </a>
-
-        <a href="business.html">
-            బిజినెస్ 
-        </a>
-
+        <a href="index.html">హోమ్</a>
+        <a href="MOVIES.html">మూవీస్</a>
+        <a href="SPORTS.html">స్పోర్ట్స్</a>
+        <a href="AP%26TS.html">ఏపీ &amp; టీఎస్</a>
+        <a href="business.html" class="active">బిజినెస్</a>
     </div>
-
 </nav>
 
-
 <div class="breaking">
-
-    <div class="breaking-title">
-        BREAKING NEWS
-    </div>
-
-    <div class="breaking-text">
-        బిజినెస్, స్టాక్ మార్కెట్, బంగారం, వెండి, ఆర్థిక వ్యవస్థకు సంబంధించిన తాజా వార్తలు
-    </div>
-
+    <div class="breaking-title">BUSINESS NEWS</div>
+    <div class="breaking-text">వ్యాపారం, ఆర్థిక వ్యవస్థ, బ్యాంకింగ్, బంగారం ధరలు, స్టాక్ మార్కెట్ తాజా వార్తలు...</div>
 </div>
 
-
 <main class="page">
-
-  
+    <h1 class="page-title">బిజినెస్ వార్తలు</h1>
 
     <div class="main-layout">
+        <div class="business-main">
 
-
-        <div class="movies-main">
-
-
-            <!-- =====================================================
-                 DIRECT BUSINESS ARTICLES
-            ====================================================== -->
-
+            <!-- LOCAL BUSINESS ARTICLES -->
             <div id="localBusinessSource" hidden>
-                <a class="movie-card" href="phonepe-upi-mdr-expansion/">
-                    <img src="phonepe-upi-mdr-expansion.png" alt="PhonePe UPI MDR" loading="lazy">
-                    <div class="movie-card-content"><h3 class="movie-card-title">UPIలో MDR మార్పులు.. గ్రామీణ మార్కెట్‌పై PhonePe భారీ ఫోకస్</h3></div>
-                </a>
-                <a class="movie-card" href="containe-technologies-rights-issue/">
-                    <img src="containe-technologies-rights-issue.png" alt="కంటెయిన్ టెక్నాలజీస్ రైట్స్ ఇష్యూ" loading="lazy">
-                    <div class="movie-card-content"><h3 class="movie-card-title">కంటెయిన్ టెక్నాలజీస్ రైట్స్ ఇష్యూ.. రూ.20.98 కోట్ల సమీకరణకు నేడు చివరి రోజు</h3></div>
-                </a>
-                <a class="movie-card" href="nirmala-sitharaman-economy-growth/">
-                    <img src="nirmala-sitharaman-economy-growth.jpg" alt="భారత ఆర్థిక వ్యవస్థ" loading="lazy">
-                    <div class="movie-card-content"><h3 class="movie-card-title">దాదాపు 8 శాతం వృద్ధి దిశగా భారత ఆర్థిక వ్యవస్థ.. నిర్మలా సీతారామన్ కీలక వ్యాఖ్యలు</h3></div>
-                </a>
+
+                <!-- మీ నిజమైన బిజినెస్ ఆర్టికల్స్‌ను ఇక్కడ చేర్చండి -->
+                <article class="news-item post" data-url="nirmala-sitharaman-economy-growth/">
+                    <img src="nirmala-sitharaman-economy-growth.jpg" alt="భారత ఆర్థిక వ్యవస్థ వృద్ధిపై నిర్మలా సీతారామన్ వ్యాఖ్యలు">
+                    <div class="news-content">
+                        <p>దాదాపు 8 శాతం వృద్ధి దిశగా భారత ఆర్థిక వ్యవస్థ.. నిర్మలా సీతారామన్ కీలక వ్యాఖ్యలు</p>
+                    </div>
+                </article>
+
             </div>
-
-
-            <!-- BUSINESS NEWS -->
 
             <section class="section">
-
                 <div class="section-head">
-
-                    <h3>
-                        <span>బిజినెస్</span> వార్తలు
-                    </h3>
-
+                    <h2><span>బిజినెస్</span> వార్తలు</h2>
                 </div>
 
-                <div
-                    id="businessGrid"
-                    class="movies-grid"
-                >
-
-                    <div class="loading">
-                        బిజినెస్ వార్తలు లోడ్ అవుతున్నాయి...
-                    </div>
-
+                <div id="businessGrid" class="business-grid">
+                    <div class="loading">Business News Loading...</div>
                 </div>
-
             </section>
-
-
         </div>
 
-
-        <!-- HOMEPAGE SECTIONS SHOWN ONLY IN SIDEBAR -->
-
         <aside class="article-sidebar">
-
             <div class="sidebar-box">
-                <div class="sidebar-title"> టాప్ వార్తలు</div>
-                <div id="topNewsSidebar"></div>
-            </div>
-
-            <div class="sidebar-box">
-                <div class="sidebar-title">ట్రెండింగ్ వార్తలు </div>
+                <div class="sidebar-title">ట్రెండింగ్ వార్తలు</div>
                 <div id="trendingSidebar"></div>
             </div>
 
@@ -821,120 +420,70 @@ body.dark-mode .most-read-item{
                 <div id="latestSidebar"></div>
             </div>
 
-
+            <div class="sidebar-box">
+                <div class="sidebar-title">టాప్ వార్తలు</div>
+                <div id="topNewsSidebar"></div>
+            </div>
         </aside>
-
-
     </div>
-
 </main>
 
-
 <footer class="site-footer">
-
     <div class="footer-inner">
-
         <div class="footer-column">
-
-            <h3>
-                ముఖ్యమైన లింకులు
-            </h3>
-
+            <h3>ముఖ్యమైన లింకులు</h3>
             <div class="footer-links">
-
-                <a href="advertise.html">
-                    Advertise With Us
-                </a>
-
-                <a href="about.html">
-                    About Us
-                </a>
-
-                <a href="contact.html">
-                    Contact Us
-                </a>
-
-                <a href="Privacy Policy.html">
-                    Privacy Policy
-                </a>
-
-                <a href="disclaimer.html">
-                    Disclaimer
-                </a>
-
-                <a href="terms.html">
-                    Terms & Conditions
-                </a>
-
+                <a href="advertise.html">Advertise With Us</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact Us</a>
+                <a href="Privacy Policy.html">Privacy Policy</a>
+                <a href="disclaimer.html">Disclaimer</a>
+                <a href="terms.html">Terms &amp; Conditions</a>
             </div>
-
         </div>
-
 
         <div class="footer-contact">
-
-            <h3>
-                Contact
-            </h3>
-
-            <p>
-                newsb386@gmail.com
-            </p>
-
-            <p>
-                Follow us for latest updates.
-            </p>
-
+            <h3>Contact</h3>
+            <p>newsb386@gmail.com</p>
+            <p>Follow us for latest updates.</p>
         </div>
-
     </div>
-
-
-    <div class="copyright">
-        © 2026 BS 360 NEWS. All Rights Reserved.
-    </div>
-
+    <div class="copyright">© 2026 BS 360 NEWS. All Rights Reserved.</div>
 </footer>
 
-
 <script>
-
 document.addEventListener("DOMContentLoaded", function(){
-
     "use strict";
 
-
-    /* =====================================================
-       HELPERS
-    ===================================================== */
-
     function cleanText(text){
-
-        return String(text || "")
-            .replace(/\s+/g," ")
-            .trim();
-
+        return String(text || "").replace(/\s+/g," ").trim();
     }
 
-
-    /* =====================================================
-       GET ARTICLES - SUPPORT HOMEPAGE CARD STRUCTURES
-    ===================================================== */
+    function escapeHTML(value){
+        return String(value || "").replace(/[&<>"']/g,function(char){
+            return {
+                "&":"&amp;",
+                "<":"&lt;",
+                ">":"&gt;",
+                '"':"&quot;",
+                "'":"&#39;"
+            }[char];
+        });
+    }
 
     function getArticles(source){
         if(!source) return [];
 
-        let items = [];
-        const cardSelector = [
-            ".news-item.post", "article", ".news-card", ".movie-card",
-            ".post-card", ".latest-news-card", ".trending-card",
-            ".top-news-card", ".review-card", ".news-item"
+        const selector = [
+            ".news-item.post","article",".news-card",".business-card",
+            ".post-card",".latest-news-card",".trending-card",
+            ".top-news-card",".news-item"
         ].join(",");
 
-        if(source.matches && source.matches(cardSelector)) items.push(source);
-        items.push(...Array.from(source.querySelectorAll(cardSelector)));
+        let items = [];
+        if(source.matches && source.matches(selector)) items.push(source);
+        items.push(...Array.from(source.querySelectorAll(selector)));
 
-        // Some homepage sections use linked image cards instead of <article> tags.
         if(!items.length){
             items = Array.from(source.querySelectorAll("a[href]")).filter(function(a){
                 return !!a.querySelector("img");
@@ -943,390 +492,212 @@ document.addEventListener("DOMContentLoaded", function(){
 
         const articles = items.map(function(item){
             const image = item.querySelector("img");
-            const link = (item.matches && item.matches("a[href]")) ? item : item.querySelector("a[href]");
+            const link = item.matches && item.matches("a[href]")
+                ? item
+                : item.querySelector("a[href]");
+
             const titleNode = item.querySelector(
-                ".news-content p, .news-content h3, .news-content a, .news-title, .article-title, h1, h2, h3, h4, p, .title"
+                ".news-content p,.news-content h3,.news-title,.article-title,h1,h2,h3,h4,p,.title"
             );
-            let title = cleanText(titleNode ? titleNode.textContent : "");
-            if(!title && link) title = cleanText(link.textContent);
-            if(!title && image) title = cleanText(image.getAttribute("alt") || "");
+
+            const title = cleanText(
+                titleNode ? titleNode.textContent :
+                (link ? link.textContent : (image ? image.alt : ""))
+            );
 
             return {
-                title: title,
-                image: image ? (image.getAttribute("src") || image.getAttribute("data-src") || image.getAttribute("data-lazy-src") || "") : "",
-                alt: image ? (image.getAttribute("alt") || "") : "",
-                url: item.getAttribute("data-url") || (link ? (link.getAttribute("href") || "") : "")
+                title:title,
+                image:image ? (
+                    image.getAttribute("src") ||
+                    image.getAttribute("data-src") ||
+                    image.getAttribute("data-lazy-src") || ""
+                ) : "",
+                alt:image ? (image.getAttribute("alt") || "") : "",
+                url:item.getAttribute("data-url") ||
+                    (link ? (link.getAttribute("href") || "") : "")
             };
         }).filter(function(article){
             return article.title && article.image && article.url &&
-                !article.url.startsWith("#") && !/^javascript:/i.test(article.url);
+                !article.url.startsWith("#") &&
+                !/^javascript:/i.test(article.url);
         });
 
-        return articles.filter(function(article, index, array){
-            return array.findIndex(function(other){ return other.url === article.url; }) === index;
+        return articles.filter(function(article,index,array){
+            return array.findIndex(function(other){
+                return other.url === article.url;
+            }) === index;
         });
     }
 
-    function getFirstAvailableArticles(home, ids){
+    function getByIds(home,ids){
         for(const id of ids){
-            const source = home.getElementById(id);
-            const articles = getArticles(source);
+            const articles = getArticles(home.getElementById(id));
             if(articles.length) return articles;
         }
         return [];
     }
 
-    // Find only the category section matching the heading.
-    // Do not walk up to the whole homepage wrapper: that mixes AP & TS,
-    // entertainment and business articles together.
-    function getArticlesByHeading(home, labels){
-        const wanted = labels.map(function(label){ return cleanText(label).toLowerCase(); });
-        const headings = Array.from(home.querySelectorAll("h1,h2,h3,h4,.section-title,.section-head,.sidebar-title,.category-title"));
+    function getByHeading(home,labels){
+        const wanted = labels.map(function(label){
+            return cleanText(label).toLowerCase();
+        });
+
+        const headings = Array.from(home.querySelectorAll(
+            "h1,h2,h3,h4,.section-title,.section-head,.sidebar-title,.category-title"
+        ));
 
         for(const heading of headings){
-            const text = cleanText(heading.textContent).toLowerCase();
-            if(!wanted.some(function(label){ return text === label || text.includes(label); })) continue;
+            const headingText = cleanText(heading.textContent).toLowerCase();
+            if(!wanted.some(function(label){
+                return headingText === label || headingText.includes(label);
+            })) continue;
 
-            const section = heading.closest(
-                'section, .homepage-section, .category-section, .news-section, .business-section, [id="businessSection"]'
-            );
-            if(section){
-                const articles = getArticles(section);
+            let parent = heading;
+            for(let level = 0; level < 5 && parent; level++,parent = parent.parentElement){
+                const articles = getArticles(parent);
                 if(articles.length) return articles;
-            }
-
-            // Fallback only to a small local wrapper, never the entire page layout.
-            const localParent = heading.parentElement;
-            if(localParent){
-                const articles = getArticles(localParent);
-                if(articles.length && articles.length <= 12) return articles;
             }
         }
         return [];
     }
 
-    function getSectionArticles(home, ids, headingLabels){
-        const identifiedArticles = getFirstAvailableArticles(home, ids);
-        if(identifiedArticles.length) return identifiedArticles;
-        return getArticlesByHeading(home, headingLabels);
+    function getSectionArticles(home,ids,labels){
+        const articles = getByIds(home,ids);
+        return articles.length ? articles : getByHeading(home,labels);
     }
 
-    /* =====================================================
-       NORMAL CARD
-    ===================================================== */
-
-    function cardHTML(article){
-
+    function businessCardHTML(article){
         return `
-
-            <a
-                href="${article.url}"
-                class="movie-card"
-            >
-
-                <img
-                    src="${article.image}"
-                    alt="${article.alt || article.title}"
-                    loading="lazy"
-                >
-
-                <div class="movie-card-content">
-
-                    <h3 class="movie-card-title">
-                        ${article.title}
-                    </h3>
-
+            <a href="${escapeHTML(article.url)}" class="business-card">
+                <img src="${escapeHTML(article.image)}"
+                     alt="${escapeHTML(article.alt || article.title)}"
+                     loading="lazy">
+                <div class="business-card-content">
+                    <h3 class="business-card-title">${escapeHTML(article.title)}</h3>
                 </div>
-
-            </a>
-
-        `;
-
+            </a>`;
     }
-
-
-    /* =====================================================
-       SIDEBAR
-    ===================================================== */
 
     function sidebarHTML(article){
-
         return `
-
-            <a
-                href="${article.url}"
-                class="sidebar-item"
-            >
-
-                <img
-                    src="${article.image}"
-                    alt="${article.alt || article.title}"
-                    loading="lazy"
-                >
-
-                <div class="sidebar-item-title">
-                    ${article.title}
-                </div>
-
-            </a>
-
-        `;
-
+            <a href="${escapeHTML(article.url)}" class="sidebar-item">
+                <img src="${escapeHTML(article.image)}"
+                     alt="${escapeHTML(article.alt || article.title)}"
+                     loading="lazy">
+                <div class="sidebar-item-title">${escapeHTML(article.title)}</div>
+            </a>`;
     }
-
-
-    /* =====================================================
-       SHOW
-    ===================================================== */
 
     function show(id,html){
-
-        const element =
-            document.getElementById(id);
-
-        if(element){
-            element.innerHTML = html;
-        }
-
+        const element = document.getElementById(id);
+        if(element) element.innerHTML = html;
     }
 
-
-    /* =====================================================
-       LAPTOP: SIDEBAR MUST END WITH BUSINESS ARTICLES
-       Keep the sidebar beside the Business section only.
-       Do not let sidebar content extend below the movie list.
-    ===================================================== */
-
-    function matchSidebarToAptsHeight(){
-        const moviesMain = document.querySelector(".movies-main");
+    /*
+      IMPORTANT:
+      Don't force a fixed height on the sidebar.
+      Let all sidebar articles remain visible.
+    */
+    function resetSidebarHeight(){
         const sidebar = document.querySelector(".article-sidebar");
-
-        if(!moviesMain || !sidebar) return;
-
-        if(window.innerWidth > 1100){
-            const moviesHeight = Math.ceil(moviesMain.getBoundingClientRect().height);
-            sidebar.style.height = moviesHeight + "px";
-            sidebar.style.maxHeight = moviesHeight + "px";
-            sidebar.style.overflow = "hidden";
-        } else {
-            sidebar.style.height = "";
-            sidebar.style.maxHeight = "";
-            sidebar.style.overflow = "";
-        }
+        if(!sidebar) return;
+        sidebar.style.height = "auto";
+        sidebar.style.maxHeight = "none";
+        sidebar.style.overflow = "visible";
     }
 
-    window.addEventListener("resize", matchSidebarToAptsHeight);
+    window.addEventListener("resize",resetSidebarHeight);
 
-    /* =====================================================
-       LOAD INDEX
-    ===================================================== */
-
-    fetch(
-        "index.html?v=" + Date.now(),
-        {
-            cache:"no-store"
-        }
-    )
-
+    fetch("index.html?v=" + Date.now(),{cache:"no-store"})
     .then(function(response){
-
-        if(!response.ok){
-
-            throw new Error(
-                "index.html load failed"
-            );
-
-        }
-
+        if(!response.ok) throw new Error("index.html load failed");
         return response.text();
-
     })
-
-
     .then(function(html){
+        const parser = new DOMParser();
+        const home = parser.parseFromString(html,"text/html");
 
-        const parser =
-            new DOMParser();
+        const localBusiness = getArticles(
+            document.getElementById("localBusinessSource")
+        );
 
-        const home =
-            parser.parseFromString(
-                html,
-                "text/html"
-            );
+        const homeBusiness = getSectionArticles(home,[
+            "businessSource","businessGrid","businessNewsSource",
+            "businessNewsGrid","businessSection","businessNewsSection"
+        ],[
+            "Business News","Business","బిజినెస్ వార్తలు","బిజినెస్"
+        ]);
 
-
-        /* =================================================
-           HOME SOURCES
-        ================================================= */
-
-        const homeBusiness = getSectionArticles(home, [
-            "businessSource", "businessGrid", "businessSection", "businessNewsSource",
-            "businessNewsGrid", "businessArticlesSource", "businessArticlesGrid"
-        ], ["Business News", "Business", "బిజినెస్ వార్తలు", "బిజినెస్", "వ్యాపార వార్తలు"]);
-
-        const localBusiness = getArticles(document.getElementById("localBusinessSource"));
-
-
-        /* =================================================
-           LOCAL AP & TS ARTICLES FIRST
-           THEN HOMEPAGE AP & TS ARTICLES
-           
-           DUPLICATE URL REMOVE
-        ================================================= */
-
-        const businessArticles = [
-
-            ...localBusiness,
-            ...homeBusiness
-
-        ]
-
-        .filter(function(article,index,array){
-
+        const allBusiness = [...localBusiness,...homeBusiness].filter(function(article,index,array){
             return array.findIndex(function(item){
-
                 return item.url === article.url;
-
             }) === index;
-
         });
 
+        const trending = getSectionArticles(home,[
+            "trendingSource","trendingGrid","trendingSection","trendingNews","trendingTrack"
+        ],[
+            "Trending News","Trending","ట్రెండింగ్ వార్తలు","ట్రెండింగ్"
+        ]);
 
-        const topNews = getSectionArticles(home, [
-            "topNewsSource", "topNewsGrid", "topNews", "topStory", "topStoryGrid", "topStorySection", "topNewsSection"
-        ], ["Top News", "Top Story", "టాప్ న్యూస్", "ముఖ్య వార్తలు", "ప్రధాన వార్తలు"]);
+        const latest = getSectionArticles(home,[
+            "latestNewsSource","latestGrid","latestSection","latestNews","latestNewsList"
+        ],[
+            "Latest News","Latest","తాజా వార్తలు","తాజా వార్త"
+        ]);
 
-        const trending = getSectionArticles(home, [
-            "trendingSource", "trendingGrid", "trendingSection", "trendingNews", "trendingTrack"
-        ], ["Trending News", "Trending", "ట్రెండింగ్ న్యూస్", "ట్రెండింగ్"]);
-
-        const latest = getSectionArticles(home, [
-            "latestNewsSource", "latestGrid", "latestSection", "latestNews", "latestNewsList"
-        ], ["Latest News", "Latest", "తాజా వార్తలు", "తాజా వార్త"]);
-
-
-        /* =================================================
-           MOVIES
-        ================================================= */
+        const topNews = getSectionArticles(home,[
+            "topNewsSource","topNewsGrid","topNews","topStory","topStoryGrid","topStorySection"
+        ],[
+            "Top News","Top Story","టాప్ న్యూస్","టాప్ వార్తలు","ముఖ్య వార్తలు","ప్రధాన వార్తలు"
+        ]);
 
         show(
             "businessGrid",
-            businessArticles.length
-                ? businessArticles.map(cardHTML).join("")
-                : '<div class="loading">బిజినెస్ వార్తలు దొరకలేదు. index.htmlలో businessSource లేదా businessGrid ID ఉందో చెక్ చేయండి.</div>'
+            allBusiness.length
+                ? allBusiness.map(businessCardHTML).join("")
+                : '<div class="loading">బిజినెస్ ఆర్టికల్స్ దొరకలేదు. localBusinessSource లేదా index.html లోని businessSource ID చెక్ చేయండి.</div>'
         );
 
-
-        /* =================================================
-           TOP NEWS (HOMEPAGE ONLY IN SIDEBAR)
-        ================================================= */
-
         show(
-            "topNewsSidebar",
-            topNews.slice(0, 5).map(sidebarHTML).join("") ||
-                '<div class="loading">Homepage Top News articles దొరకలేదు.</div>'
-        );
-
-        /* =================================================
-           TRENDING
-        ================================================= */
-
-        show(
-
             "trendingSidebar",
-
-            trending
-                .slice(0,8)
-                .map(sidebarHTML)
-                .join("")
-
+            trending.slice(0,8).map(sidebarHTML).join("") ||
+            '<p>ట్రెండింగ్ వార్తలు అందుబాటులో లేవు.</p>'
         );
-
-
-        /* =================================================
-           LATEST
-        ================================================= */
 
         show(
             "latestSidebar",
-            latest.slice(0, 5).map(sidebarHTML).join("") ||
-                '<div class="loading">Homepage Latest News articles దొరకలేదు.</div>'
+            latest.slice(0,5).map(sidebarHTML).join("") ||
+            '<p>తాజా వార్తలు అందుబాటులో లేవు.</p>'
         );
-
-        /* On laptop, match the sidebar height to the end of Business articles. */
-        matchSidebarToAptsHeight();
-        requestAnimationFrame(matchSidebarToAptsHeight);
-
-        /* =================================================
-           CONSOLE
-        ================================================= */
-
-        console.log(
-            "================================"
-        );
-
-        console.log(
-            "BS360 BUSINESS PAGE LOADED"
-        );
-
-        console.log("Local Business articles:", localBusiness.length);
-        console.log("Business articles:", businessArticles.length);
-        console.log("Homepage Top News articles:", topNews.length);
-        console.log("Homepage Trending articles:", trending.length);
-        console.log("Homepage Latest articles:", latest.length);
-
-        console.log(
-            "================================"
-        );
-
-    })
-
-
-    .catch(function(error){
-
-        console.error(
-            "BS360 BUSINESS ERROR:",
-            error
-        );
-
 
         show(
-            "businessGrid",
-            `
-                <div class="loading">
-                    బిజినెస్ వార్తలు లోడ్ కాలేదు.
-                </div>
-            `
+            "topNewsSidebar",
+            topNews.slice(0,5).map(sidebarHTML).join("") ||
+            '<p>టాప్ వార్తలు అందుబాటులో లేవు.</p>'
         );
 
+        resetSidebarHeight();
 
+        console.log("BS360 BUSINESS PAGE LOADED");
+        console.log("Local business articles:",localBusiness.length);
+        console.log("Homepage business articles:",homeBusiness.length);
+        console.log("Total business articles:",allBusiness.length);
+        console.log("Trending articles:",trending.length);
+        console.log("Latest articles:",latest.length);
+        console.log("Top news articles:",topNews.length);
+    })
+    .catch(function(error){
+        console.error("BS360 BUSINESS ERROR:",error);
+        show("businessGrid",'<div class="loading">బిజినెస్ వార్తలు లోడ్ కాలేదు. మళ్లీ ప్రయత్నించండి.</div>');
     });
 
-
-    /* =====================================================
-       DISABLE IMAGE DRAGGING
-    ===================================================== */
-
-    document
-        .querySelectorAll("img")
-        .forEach(function(img){
-
-            img.addEventListener(
-                "dragstart",
-                function(e){
-
-                    e.preventDefault();
-
-                }
-            );
-
+    document.querySelectorAll("img").forEach(function(img){
+        img.addEventListener("dragstart",function(event){
+            event.preventDefault();
         });
-
+    });
 });
-
 </script>
-
-
 </body>
-
 </html>
