@@ -451,205 +451,408 @@ body.dark-mode .most-read-item{border-color:#374151}
     <div class="copyright">© 2026 BS 360 NEWS. All Rights Reserved.</div>
 </footer>
 
+
 <script>
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded", function () {
     "use strict";
 
-    function cleanText(text){
-        return String(text || "").replace(/\s+/g," ").trim();
+    let trendingArticles = [];
+    let latestArticles = [];
+    let topNewsArticles = [];
+
+    function cleanText(text) {
+        return String(text || "").replace(/\s+/g, " ").trim();
     }
 
-    function escapeHTML(value){
-        return String(value || "").replace(/[&<>"']/g,function(char){
+    function escapeHTML(value) {
+        return String(value || "").replace(/[&<>"']/g, function (char) {
             return {
-                "&":"&amp;",
-                "<":"&lt;",
-                ">":"&gt;",
-                '"':"&quot;",
-                "'":"&#39;"
+                "&": "&amp;",
+                "<": "&lt;",
+                ">": "&gt;",
+                '"': "&quot;",
+                "'": "&#39;"
             }[char];
         });
     }
 
-    function getArticles(source){
-        if(!source) return [];
+    function getArticles(source) {
+        if (!source) return [];
 
         const selector = [
-            ".news-item.post","article",".news-card",".business-card",
-            ".post-card",".latest-news-card",".trending-card",
-            ".top-news-card",".news-item"
+            ".news-item.post",
+            "article",
+            ".news-card",
+            ".business-card",
+            ".post-card",
+            ".latest-news-card",
+            ".trending-card",
+            ".top-news-card",
+            ".news-item"
         ].join(",");
 
         let items = [];
-        if(source.matches && source.matches(selector)) items.push(source);
-        items.push(...Array.from(source.querySelectorAll(selector)));
 
-        if(!items.length){
-            items = Array.from(source.querySelectorAll("a[href]")).filter(function(a){
-                return !!a.querySelector("img");
-            });
+        if (source.matches && source.matches(selector)) {
+            items.push(source);
         }
 
-        const articles = items.map(function(item){
+        items.push(...Array.from(source.querySelectorAll(selector)));
+
+        if (!items.length) {
+            items = Array.from(source.querySelectorAll("a[href]"))
+                .filter(function (a) {
+                    return !!a.querySelector("img");
+                });
+        }
+
+        const articles = items.map(function (item) {
             const image = item.querySelector("img");
+
             const link = item.matches && item.matches("a[href]")
                 ? item
                 : item.querySelector("a[href]");
 
             const titleNode = item.querySelector(
-                ".news-content p,.news-content h3,.news-title,.article-title,h1,h2,h3,h4,p,.title"
+                ".news-content p,.news-content h3,.news-title," +
+                ".article-title,h1,h2,h3,h4,p,.title"
             );
 
             const title = cleanText(
-                titleNode ? titleNode.textContent :
-                (link ? link.textContent : (image ? image.alt : ""))
+                titleNode
+                    ? titleNode.textContent
+                    : (link ? link.textContent : (image ? image.alt : ""))
             );
 
             return {
-                title:title,
-                image:image ? (
-                    image.getAttribute("src") ||
-                    image.getAttribute("data-src") ||
-                    image.getAttribute("data-lazy-src") || ""
-                ) : "",
-                alt:image ? (image.getAttribute("alt") || "") : "",
-                url:item.getAttribute("data-url") ||
+                title: title,
+                image: image
+                    ? (
+                        image.getAttribute("src") ||
+                        image.getAttribute("data-src") ||
+                        image.getAttribute("data-lazy-src") ||
+                        ""
+                    )
+                    : "",
+                alt: image ? (image.getAttribute("alt") || "") : "",
+                url: item.getAttribute("data-url") ||
                     (link ? (link.getAttribute("href") || "") : "")
             };
-        }).filter(function(article){
-            return article.title && article.image && article.url &&
+        }).filter(function (article) {
+            return article.title &&
+                article.image &&
+                article.url &&
                 !article.url.startsWith("#") &&
                 !/^javascript:/i.test(article.url);
         });
 
-        return articles.filter(function(article,index,array){
-            return array.findIndex(function(other){
+        return articles.filter(function (article, index, array) {
+            return array.findIndex(function (other) {
                 return other.url === article.url;
             }) === index;
         });
     }
 
-    function getByIds(home,ids){
-        for(const id of ids){
+    function getByIds(home, ids) {
+        for (const id of ids) {
             const articles = getArticles(home.getElementById(id));
-            if(articles.length) return articles;
+            if (articles.length) return articles;
         }
+
         return [];
     }
 
-    function getByHeading(home,labels){
-        const wanted = labels.map(function(label){
+    function getByHeading(home, labels) {
+        const wanted = labels.map(function (label) {
             return cleanText(label).toLowerCase();
         });
 
         const headings = Array.from(home.querySelectorAll(
-            "h1,h2,h3,h4,.section-title,.section-head,.sidebar-title,.category-title"
+            "h1,h2,h3,h4,.section-title,.section-head," +
+            ".sidebar-title,.category-title"
         ));
 
-        for(const heading of headings){
+        for (const heading of headings) {
             const headingText = cleanText(heading.textContent).toLowerCase();
-            if(!wanted.some(function(label){
+
+            if (!wanted.some(function (label) {
                 return headingText === label || headingText.includes(label);
-            })) continue;
+            })) {
+                continue;
+            }
 
             let parent = heading;
-            for(let level = 0; level < 5 && parent; level++,parent = parent.parentElement){
+
+            for (
+                let level = 0;
+                level < 5 && parent;
+                level++, parent = parent.parentElement
+            ) {
                 const articles = getArticles(parent);
-                if(articles.length) return articles;
+                if (articles.length) return articles;
             }
         }
+
         return [];
     }
 
-    function getSectionArticles(home,ids,labels){
-        const articles = getByIds(home,ids);
-        return articles.length ? articles : getByHeading(home,labels);
+    function getSectionArticles(home, ids, labels) {
+        const articles = getByIds(home, ids);
+        return articles.length ? articles : getByHeading(home, labels);
     }
 
-    function businessCardHTML(article){
+    function businessCardHTML(article) {
         return `
             <a href="${escapeHTML(article.url)}" class="business-card">
-                <img src="${escapeHTML(article.image)}"
-                     alt="${escapeHTML(article.alt || article.title)}"
-                     loading="lazy">
+                <img
+                    src="${escapeHTML(article.image)}"
+                    alt="${escapeHTML(article.alt || article.title)}"
+                    loading="lazy"
+                >
                 <div class="business-card-content">
-                    <h3 class="business-card-title">${escapeHTML(article.title)}</h3>
+                    <h3 class="business-card-title">
+                        ${escapeHTML(article.title)}
+                    </h3>
                 </div>
-            </a>`;
+            </a>
+        `;
     }
 
-    function sidebarHTML(article){
+    function sidebarHTML(article) {
         return `
             <a href="${escapeHTML(article.url)}" class="sidebar-item">
-                <img src="${escapeHTML(article.image)}"
-                     alt="${escapeHTML(article.alt || article.title)}"
-                     loading="lazy">
-                <div class="sidebar-item-title">${escapeHTML(article.title)}</div>
-            </a>`;
+                <img
+                    src="${escapeHTML(article.image)}"
+                    alt="${escapeHTML(article.alt || article.title)}"
+                    loading="lazy"
+                >
+                <div class="sidebar-item-title">
+                    ${escapeHTML(article.title)}
+                </div>
+            </a>
+        `;
     }
 
-    function show(id,html){
+    function show(id, html) {
         const element = document.getElementById(id);
-        if(element) element.innerHTML = html;
+        if (element) element.innerHTML = html;
     }
 
     /*
-      IMPORTANT:
-      Don't force a fixed height on the sidebar.
-      Let all sidebar articles remain visible.
+      SIDEBAR FIT:
+      Desktop: Sidebar content fits the main Business section height.
+      Mobile: All sidebar articles remain visible.
+      No overflow:hidden is used, so articles are not clipped.
     */
-    function resetSidebarHeight(){
+    function fitSidebarToMain() {
+        const main = document.querySelector(".business-main");
         const sidebar = document.querySelector(".article-sidebar");
-        if(!sidebar) return;
+
+        if (!main || !sidebar) return;
+
+        const boxes = Array.from(
+            sidebar.querySelectorAll(".sidebar-box")
+        );
+
+        // Reset everything before recalculating.
         sidebar.style.height = "auto";
+        sidebar.style.minHeight = "0";
         sidebar.style.maxHeight = "none";
         sidebar.style.overflow = "visible";
+        sidebar.style.justifyContent = "flex-start";
+
+        boxes.forEach(function (box) {
+            box.style.display = "";
+        });
+
+        // On mobile/tablet, keep all sidebar articles visible.
+        if (window.innerWidth <= 1100) {
+            renderSidebarArticles(
+                trendingArticles.slice(0, 8),
+                latestArticles.slice(0, 5),
+                topNewsArticles.slice(0, 5)
+            );
+            return;
+        }
+
+        let trendingCount = Math.min(8, trendingArticles.length);
+        let latestCount = Math.min(5, latestArticles.length);
+        let topCount = Math.min(5, topNewsArticles.length);
+
+        function paintSidebar() {
+            renderSidebarArticles(
+                trendingArticles.slice(0, trendingCount),
+                latestArticles.slice(0, latestCount),
+                topNewsArticles.slice(0, topCount)
+            );
+        }
+
+        paintSidebar();
+
+        // Wait for layout to update before measuring.
+        requestAnimationFrame(function () {
+            const targetHeight = main.getBoundingClientRect().height;
+
+            if (!targetHeight) return;
+
+            let attempts = 0;
+
+            function reduceUntilItFits() {
+                const sidebarHeight = sidebar.getBoundingClientRect().height;
+
+                if (
+                    sidebarHeight <= targetHeight ||
+                    attempts >= 50
+                ) {
+                    // Spread the sidebar boxes over the main section height.
+                    sidebar.style.height = targetHeight + "px";
+                    sidebar.style.minHeight = targetHeight + "px";
+                    sidebar.style.maxHeight = "none";
+                    sidebar.style.overflow = "visible";
+                    sidebar.style.justifyContent = "space-between";
+                    return;
+                }
+
+                attempts++;
+
+                // Remove articles from the bottom section first.
+                if (topCount > 0) {
+                    topCount--;
+                } else if (latestCount > 0) {
+                    latestCount--;
+                } else if (trendingCount > 0) {
+                    trendingCount--;
+                } else {
+                    sidebar.style.height = targetHeight + "px";
+                    sidebar.style.minHeight = targetHeight + "px";
+                    sidebar.style.justifyContent = "space-between";
+                    return;
+                }
+
+                paintSidebar();
+
+                requestAnimationFrame(reduceUntilItFits);
+            }
+
+            reduceUntilItFits();
+        });
     }
 
-    window.addEventListener("resize",resetSidebarHeight);
+    function renderSidebarArticles(trending, latest, topNews) {
+        show(
+            "trendingSidebar",
+            trending.length
+                ? trending.map(sidebarHTML).join("")
+                : '<p>ట్రెండింగ్ వార్తలు అందుబాటులో లేవు.</p>'
+        );
 
-    fetch("index.html?v=" + Date.now(),{cache:"no-store"})
-    .then(function(response){
-        if(!response.ok) throw new Error("index.html load failed");
+        show(
+            "latestSidebar",
+            latest.length
+                ? latest.map(sidebarHTML).join("")
+                : '<p>తాజా వార్తలు అందుబాటులో లేవు.</p>'
+        );
+
+        show(
+            "topNewsSidebar",
+            topNews.length
+                ? topNews.map(sidebarHTML).join("")
+                : '<p>టాప్ వార్తలు అందుబాటులో లేవు.</p>'
+        );
+    }
+
+    // Keep the sidebar updated when screen size changes.
+    let resizeTimer;
+
+    window.addEventListener("resize", function () {
+        clearTimeout(resizeTimer);
+
+        resizeTimer = setTimeout(function () {
+            fitSidebarToMain();
+        }, 200);
+    });
+
+    fetch("index.html?v=" + Date.now(), {
+        cache: "no-store"
+    })
+    .then(function (response) {
+        if (!response.ok) {
+            throw new Error("index.html load failed");
+        }
+
         return response.text();
     })
-    .then(function(html){
+    .then(function (html) {
         const parser = new DOMParser();
-        const home = parser.parseFromString(html,"text/html");
+        const home = parser.parseFromString(html, "text/html");
 
         const localBusiness = getArticles(
             document.getElementById("localBusinessSource")
         );
 
-        const homeBusiness = getSectionArticles(home,[
-            "businessSource","businessGrid","businessNewsSource",
-            "businessNewsGrid","businessSection","businessNewsSection"
-        ],[
-            "Business News","Business","బిజినెస్ వార్తలు","బిజినెస్"
+        const homeBusiness = getSectionArticles(home, [
+            "businessSource",
+            "businessGrid",
+            "businessNewsSource",
+            "businessNewsGrid",
+            "businessSection",
+            "businessNewsSection"
+        ], [
+            "Business News",
+            "Business",
+            "బిజినెస్ వార్తలు",
+            "బిజినెస్"
         ]);
 
-        const allBusiness = [...localBusiness,...homeBusiness].filter(function(article,index,array){
-            return array.findIndex(function(item){
+        const allBusiness = [
+            ...localBusiness,
+            ...homeBusiness
+        ].filter(function (article, index, array) {
+            return array.findIndex(function (item) {
                 return item.url === article.url;
             }) === index;
         });
 
-        const trending = getSectionArticles(home,[
-            "trendingSource","trendingGrid","trendingSection","trendingNews","trendingTrack"
-        ],[
-            "Trending News","Trending","ట్రెండింగ్ వార్తలు","ట్రెండింగ్"
+        trendingArticles = getSectionArticles(home, [
+            "trendingSource",
+            "trendingGrid",
+            "trendingSection",
+            "trendingNews",
+            "trendingTrack"
+        ], [
+            "Trending News",
+            "Trending",
+            "ట్రెండింగ్ వార్తలు",
+            "ట్రెండింగ్"
         ]);
 
-        const latest = getSectionArticles(home,[
-            "latestNewsSource","latestGrid","latestSection","latestNews","latestNewsList"
-        ],[
-            "Latest News","Latest","తాజా వార్తలు","తాజా వార్త"
+        latestArticles = getSectionArticles(home, [
+            "latestNewsSource",
+            "latestGrid",
+            "latestSection",
+            "latestNews",
+            "latestNewsList"
+        ], [
+            "Latest News",
+            "Latest",
+            "తాజా వార్తలు",
+            "తాజా వార్త"
         ]);
 
-        const topNews = getSectionArticles(home,[
-            "topNewsSource","topNewsGrid","topNews","topStory","topStoryGrid","topStorySection"
-        ],[
-            "Top News","Top Story","టాప్ న్యూస్","టాప్ వార్తలు","ముఖ్య వార్తలు","ప్రధాన వార్తలు"
+        topNewsArticles = getSectionArticles(home, [
+            "topNewsSource",
+            "topNewsGrid",
+            "topNews",
+            "topStory",
+            "topStoryGrid",
+            "topStorySection"
+        ], [
+            "Top News",
+            "Top Story",
+            "టాప్ న్యూస్",
+            "టాప్ వార్తలు",
+            "ముఖ్య వార్తలు",
+            "ప్రధాన వార్తలు"
         ]);
 
         show(
@@ -659,45 +862,57 @@ document.addEventListener("DOMContentLoaded", function(){
                 : '<div class="loading">బిజినెస్ ఆర్టికల్స్ దొరకలేదు. localBusinessSource లేదా index.html లోని businessSource ID చెక్ చేయండి.</div>'
         );
 
-        show(
-            "trendingSidebar",
-            trending.slice(0,8).map(sidebarHTML).join("") ||
-            '<p>ట్రెండింగ్ వార్తలు అందుబాటులో లేవు.</p>'
+        renderSidebarArticles(
+            trendingArticles.slice(0, 8),
+            latestArticles.slice(0, 5),
+            topNewsArticles.slice(0, 5)
         );
 
-        show(
-            "latestSidebar",
-            latest.slice(0,5).map(sidebarHTML).join("") ||
-            '<p>తాజా వార్తలు అందుబాటులో లేవు.</p>'
-        );
+        // Recalculate after the cards have been inserted.
+        requestAnimationFrame(function () {
+            fitSidebarToMain();
+        });
 
-        show(
-            "topNewsSidebar",
-            topNews.slice(0,5).map(sidebarHTML).join("") ||
-            '<p>టాప్ వార్తలు అందుబాటులో లేవు.</p>'
-        );
+        // Recalculate after images finish loading, because image heights
+        // can change the total height of the main article section.
+        document.querySelectorAll(
+            ".business-main img, .article-sidebar img"
+        ).forEach(function (img) {
+            if (!img.complete) {
+                img.addEventListener("load", fitSidebarToMain, {
+                    once: true
+                });
 
-        resetSidebarHeight();
+                img.addEventListener("error", fitSidebarToMain, {
+                    once: true
+                });
+            }
+        });
 
         console.log("BS360 BUSINESS PAGE LOADED");
-        console.log("Local business articles:",localBusiness.length);
-        console.log("Homepage business articles:",homeBusiness.length);
-        console.log("Total business articles:",allBusiness.length);
-        console.log("Trending articles:",trending.length);
-        console.log("Latest articles:",latest.length);
-        console.log("Top news articles:",topNews.length);
+        console.log("Local business articles:", localBusiness.length);
+        console.log("Homepage business articles:", homeBusiness.length);
+        console.log("Total business articles:", allBusiness.length);
+        console.log("Trending articles:", trendingArticles.length);
+        console.log("Latest articles:", latestArticles.length);
+        console.log("Top news articles:", topNewsArticles.length);
     })
-    .catch(function(error){
-        console.error("BS360 BUSINESS ERROR:",error);
-        show("businessGrid",'<div class="loading">బిజినెస్ వార్తలు లోడ్ కాలేదు. మళ్లీ ప్రయత్నించండి.</div>');
+    .catch(function (error) {
+        console.error("BS360 BUSINESS ERROR:", error);
+
+        show(
+            "businessGrid",
+            '<div class="loading">బిజినెస్ వార్తలు లోడ్ కాలేదు. మళ్లీ ప్రయత్నించండి.</div>'
+        );
     });
 
-    document.querySelectorAll("img").forEach(function(img){
-        img.addEventListener("dragstart",function(event){
+    document.querySelectorAll("img").forEach(function (img) {
+        img.addEventListener("dragstart", function (event) {
             event.preventDefault();
         });
     });
 });
 </script>
+
 </body>
 </html>
