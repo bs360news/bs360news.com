@@ -5,11 +5,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>National News | BS 360 NEWS</title>
-<meta name="description" content="BS 360 NEWS జాతీయ వార్తలు - భారతదేశ తాజా వార్తలు, రాజకీయాలు, కేంద్ర ప్రభుత్వ నిర్ణయాలు, దేశవ్యాప్త పరిణామాలు.">
+<title>జాతీయ వార్తలు | BS 360 NEWS</title>
+<meta name="description" content="BS 360 NEWS జాతీయ వార్తలు - భారతదేశ రాజకీయాలు, ప్రభుత్వ పథకాలు, రైల్వే, ఉద్యోగాలు, బ్యాంకింగ్ తదితర వార్తలు.">
 <meta name="author" content="BS 360 NEWS">
 <meta name="robots" content="index, follow, max-image-preview:large">
-
 <link rel="canonical" href="https://bs360news.com/national.html">
 <link rel="icon" type="image/png" href="dp.png.png">
 <link rel="apple-touch-icon" href="dp.png.png">
@@ -17,139 +16,99 @@
 <style>
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;padding:0;background:#f3f5f7;color:#111827;font-family:Arial,"Noto Sans Telugu","Segoe UI",sans-serif;line-height:1.6}
-img{display:block;width:100%;max-width:100%}
+body{margin:0;background:#f3f5f7;color:#111827;font-family:Arial,"Noto Sans Telugu","Segoe UI",sans-serif;line-height:1.6}
+img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 
 .top-header,.nav-bar{background:#fff;border-bottom:1px solid #e5e7eb}
-.header-inner{width:min(1400px,96%);margin:auto;min-height:68px;display:flex;align-items:center;justify-content:space-between;gap:15px}
-.logo{font-size:30px;font-weight:900;letter-spacing:.5px;color:#111827}
+.header-inner{width:min(1400px,96%);margin:auto;min-height:68px;display:flex;align-items:center}
+.logo{font-size:30px;font-weight:900;color:#111827}
 .logo span{color:#e50914}
 
 .nav-bar{position:sticky;top:0;z-index:100}
-.nav-inner{width:min(1400px,96%);margin:auto;display:flex;align-items:center;gap:5px;overflow-x:auto;scrollbar-width:none}
+.nav-inner{width:min(1400px,96%);margin:auto;display:flex;gap:5px;overflow-x:auto;scrollbar-width:none}
 .nav-inner::-webkit-scrollbar{display:none}
-.nav-inner a{flex:0 0 auto;padding:11px 15px;font-size:14px;font-weight:700;white-space:nowrap;color:#111827;border-bottom:3px solid transparent}
+.nav-inner a{flex:0 0 auto;padding:11px 15px;font-size:14px;font-weight:700;white-space:nowrap;border-bottom:3px solid transparent}
 .nav-inner a:hover,.nav-inner a.active{color:#e50914}
 .nav-inner a.active{border-bottom-color:#e50914}
 
-.breaking{width:min(1400px,96%);margin:12px auto 0;background:#fff;display:flex;align-items:center;overflow:hidden;border-radius:6px;border:1px solid #e5e7eb}
+.breaking{width:min(1400px,96%);margin:12px auto 0;background:#fff;display:flex;align-items:center;overflow:hidden;border:1px solid #e5e7eb;border-radius:6px}
 .breaking-title{background:#e50914;color:#fff;padding:8px 16px;font-size:13px;font-weight:900;white-space:nowrap}
-.breaking-text{padding:8px 15px;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#111827}
+.breaking-text{padding:8px 15px;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 
 .page{width:min(1400px,96%);margin:15px auto 35px}
 .page-title{background:#fff;border-left:5px solid #e50914;padding:12px 15px;margin-bottom:18px;font-size:24px;font-weight:900}
 
-/* MAIN LAYOUT */
-.main-layout{
-    display:grid;
-    grid-template-columns:minmax(0,1fr) 320px;
-    gap:22px;
-    align-items:start;
-}
+.main-layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:22px;align-items:start}
 .national-main{min-width:0}
-.section{margin-bottom:0}
-.section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;border-bottom:2px solid #e50914;padding-bottom:7px}
-.section-head h2{margin:0;font-size:21px;font-weight:900;color:#111827}
+.section-head{margin-bottom:12px;border-bottom:2px solid #e50914;padding-bottom:7px}
+.section-head h2{margin:0;font-size:21px;font-weight:900}
 .section-head h2 span{color:#e50914}
 
-/* NATIONAL GRID */
 .national-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
-.national-card{display:block;background:#fff;border-radius:7px;overflow:hidden;min-width:0;transition:transform .2s ease,box-shadow .2s ease}
-.national-card:hover{transform:translateY(-3px);box-shadow:0 5px 18px rgba(0,0,0,.10)}
-.national-card img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.national-card{display:block;background:#fff;border-radius:7px;overflow:hidden;min-width:0;transition:transform .2s,box-shadow .2s}
+.national-card:hover{transform:translateY(-3px);box-shadow:0 5px 18px #00000012}
+.national-card img{width:100%;aspect-ratio:16/9;object-fit:cover;background:#e5e7eb}
 .national-card-content{padding:9px}
-.national-card-title{margin:0;color:#111827;font-size:14px;line-height:1.45;font-weight:800;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.national-card-title{margin:0;font-size:14px;line-height:1.5;font-weight:800;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
 
-/* SIDEBAR */
-.article-sidebar{
-    display:flex;
-    flex-direction:column;
-    gap:12px;
-    min-width:0;
-    align-self:start;
-    overflow:hidden;
-}
-.sidebar-box{background:#fff;border-radius:8px;padding:14px;border:1px solid #e5e7eb;min-width:0}
-.sidebar-title{font-size:19px;line-height:1.3;font-weight:900;color:#111827;padding-bottom:9px;margin-bottom:5px;border-bottom:3px solid #e50914}
-.sidebar-item{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid #e5e7eb;color:inherit;min-width:0}
-.sidebar-item:last-child{border-bottom:none}
-.sidebar-item img{width:100px;height:65px;object-fit:cover;border-radius:6px;flex-shrink:0}
-.sidebar-item-title{font-size:14px;line-height:1.4;font-weight:700;color:#1f2937;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;overflow-wrap:anywhere}
-.loading{grid-column:1/-1;background:#fff;padding:20px;text-align:center;border-radius:8px;color:#666}
+.article-sidebar{display:flex;flex-direction:column;gap:12px;min-width:0}
+.sidebar-box{background:#fff;border:1px solid #e5e7eb;border-radius:8px;padding:14px;min-width:0}
+.sidebar-title{font-size:19px;font-weight:900;padding-bottom:9px;margin-bottom:5px;border-bottom:3px solid #e50914}
+.sidebar-item{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid #e5e7eb;min-width:0}
+.sidebar-item:last-child{border-bottom:0}
+.sidebar-item img{width:90px;height:62px;object-fit:cover;border-radius:5px;flex-shrink:0;background:#e5e7eb}
+.sidebar-item-title{font-size:13px;line-height:1.45;font-weight:700;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 
-/* FOOTER */
 .site-footer{background:#111827;color:#fff;margin-top:35px;padding:30px 0 15px}
 .footer-inner{width:min(1400px,96%);margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:40px}
-.footer-column h3,.footer-contact h3{margin:0 0 12px;font-size:18px}
+.footer-inner h3{margin:0 0 12px;font-size:18px}
 .footer-links{display:flex;flex-wrap:wrap;gap:8px 15px}
-.footer-links a{color:#d1d5db;font-size:14px}
-.footer-links a:hover{color:#fff}
-.footer-contact p{margin:5px 0;color:#d1d5db;font-size:14px}
+.footer-links a,.footer-contact p{color:#d1d5db;font-size:14px}
+.footer-contact p{margin:5px 0}
 .copyright{width:min(1400px,96%);margin:25px auto 0;padding-top:15px;border-top:1px solid #374151;text-align:center;color:#9ca3af;font-size:13px}
 
-/* DARK MODE */
 body.dark-mode{background:#0b1120;color:#f9fafb}
-body.dark-mode .top-header,
-body.dark-mode .nav-bar,
-body.dark-mode .breaking,
-body.dark-mode .page-title,
-body.dark-mode .national-card,
-body.dark-mode .sidebar-box{background:#111827;color:#f9fafb;border-color:#374151}
-body.dark-mode .logo,
-body.dark-mode .nav-inner a,
-body.dark-mode .breaking-text,
-body.dark-mode .section-head h2,
-body.dark-mode .national-card-title,
-body.dark-mode .sidebar-title,
-body.dark-mode .sidebar-item-title{color:#f9fafb}
+body.dark-mode .top-header,body.dark-mode .nav-bar,body.dark-mode .breaking,body.dark-mode .page-title,body.dark-mode .national-card,body.dark-mode .sidebar-box{background:#111827;color:#f9fafb;border-color:#374151}
+body.dark-mode .logo,body.dark-mode .nav-inner a,body.dark-mode .breaking-text,body.dark-mode .national-card-title,body.dark-mode .sidebar-title,body.dark-mode .sidebar-item-title{color:#f9fafb}
 body.dark-mode .sidebar-item{border-color:#374151}
 
-/* TABLET */
 @media(min-width:601px) and (max-width:1100px){
-    .main-layout{grid-template-columns:1fr}
-    .national-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-    .article-sidebar{height:auto!important;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:start;overflow:visible}
+.main-layout{grid-template-columns:1fr}
+.national-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.article-sidebar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 
-/* MOBILE */
 @media(max-width:600px){
-    .header-inner{min-height:58px}
-    .logo{font-size:22px}
-    .nav-inner a{padding:9px 11px;font-size:12px}
-    .breaking{margin-top:8px}
-    .breaking-title{padding:7px 10px;font-size:10px}
-    .breaking-text{font-size:12px;padding:7px 10px}
-    .page{width:94%;margin-top:10px}
-    .page-title{font-size:20px;padding:10px 12px}
-    .main-layout{display:block}
-    .national-grid{display:grid;grid-template-columns:1fr;gap:0}
-    .national-card{display:flex;flex-direction:row-reverse;align-items:center;width:100%;min-height:95px;border-radius:0;border-bottom:1px solid #e5e7eb;background:#fff;box-shadow:none;transform:none}
-    .national-card:hover{transform:none;box-shadow:none}
-    .national-card img{width:105px;height:70px;aspect-ratio:auto;object-fit:cover;border-radius:5px;flex-shrink:0;margin-left:10px}
-    .national-card-content{flex:1;min-width:0;padding:7px 0}
-    .national-card-title{margin:0;font-size:13px;line-height:1.45;font-weight:800;-webkit-line-clamp:4}
-    .article-sidebar{height:auto!important;margin-top:22px;gap:12px;display:flex;overflow:visible}
-    .sidebar-box{padding:11px}
-    .sidebar-title{font-size:17px}
-    .sidebar-item img{width:90px;height:62px}
-    .sidebar-item-title{font-size:13px}
-    .footer-inner{grid-template-columns:1fr;gap:22px}
-    .footer-links{display:grid;grid-template-columns:1fr 1fr}
+.header-inner{min-height:58px}
+.logo{font-size:22px}
+.nav-inner a{padding:9px 11px;font-size:12px}
+.breaking{margin-top:8px}
+.breaking-title{padding:7px 10px;font-size:10px}
+.breaking-text{font-size:12px;padding:7px 10px}
+.page{width:94%;margin-top:10px}
+.page-title{font-size:20px;padding:10px 12px}
+.main-layout{display:block}
+.national-grid{grid-template-columns:1fr;gap:0}
+.national-card{display:flex;flex-direction:row-reverse;align-items:center;min-height:96px;border-radius:0;border-bottom:1px solid #e5e7eb;padding:8px;background:#fff}
+.national-card:hover{transform:none;box-shadow:none}
+.national-card img{width:105px;height:70px;aspect-ratio:auto;object-fit:cover;border-radius:5px;flex-shrink:0;margin-left:10px}
+.national-card-content{flex:1;min-width:0;padding:0}
+.national-card-title{font-size:13px;-webkit-line-clamp:4}
+.article-sidebar{margin-top:22px;display:flex}
+.sidebar-box{padding:11px}
+.sidebar-title{font-size:17px}
+.footer-inner{grid-template-columns:1fr;gap:22px}
+.footer-links{display:grid;grid-template-columns:1fr 1fr}
 }
-
-/* SMALL MOBILE */
 @media(max-width:380px){
-    .national-card{min-height:90px}
-    .national-card img{width:95px;height:64px}
-    .national-card-content{padding:5px 0}
-    .national-card-title{font-size:12px;line-height:1.4}
+.national-card img{width:95px;height:64px}
+.national-card-title{font-size:12px}
 }
 </style>
 </head>
 
 <body>
-
 <header class="top-header">
     <div class="header-inner">
         <a href="index.html" class="logo">BS <span>360</span> NEWS</a>
@@ -172,9 +131,7 @@ body.dark-mode .sidebar-item{border-color:#374151}
 
 <div class="breaking">
     <div class="breaking-title">BREAKING NEWS</div>
-    <div class="breaking-text">
-        భారతదేశ తాజా వార్తలు, రాజకీయ పరిణామాలు, కేంద్ర ప్రభుత్వ నిర్ణయాలు...
-    </div>
+    <div class="breaking-text">భారతదేశ వార్తలు, రాజకీయ పరిణామాలు, ప్రజలకు ఉపయోగపడే సమాచారం</div>
 </div>
 
 <main class="page">
@@ -183,67 +140,81 @@ body.dark-mode .sidebar-item{border-color:#374151}
     <div class="main-layout">
         <div class="national-main">
             <section class="section">
-                <div class="section-head">
-                    <h2><span>జాతీయ వార్తలు</span></h2>
-                </div>
+                <div class="section-head"><h2><span>జాతీయ వార్తలు</span></h2></div>
+
                 <div id="nationalGrid" class="national-grid">
-                    <div class="loading">జాతీయ వార్తలు లోడ్ అవుతున్నాయి...</div>
-                    
-<article>
-    <a href="national-voter-roll-review.html">
-        <img src="images/national1.jpg" alt="ఓటర్ల జాబితా సమీక్ష" loading="lazy">
-        <h3>ఓటర్ల జాబితాపై ఎన్నికల సంఘం కీలక నిర్ణయం.. సమీక్షకు ఆదేశాలు</h3>
-    </a>
-</article>
 
-<article>
-    <a href="national-brics-forum.html">
-        <img src="images/national2.jpg" alt="బ్రిక్స్ పార్లమెంటరీ ఫోరం" loading="lazy">
-        <h3>న్యూఢిల్లీలో బ్రిక్స్ పార్లమెంటరీ ఫోరం.. అంతర్జాతీయ అంశాలపై చర్చ</h3>
-    </a>
-</article>
+                    <article class="national-card">
+                        <a href="national-voter-roll-review.html">
+                            <img src="images/national1.jpg" alt="ఓటర్ల జాబితా సమీక్ష" loading="lazy">
+                            <div class="national-card-content">
+                                <h3 class="national-card-title">ఓటర్ల జాబితా తనిఖీ చేసుకోవడం ఎందుకు ముఖ్యం? ఓటర్లు తెలుసుకోవాల్సిన విషయాలు</h3>
+                            </div>
+                        </a>
+                    </article>
 
-<article>
-    <a href="national-digital-security.html">
-        <img src="images/national3.jpg" alt="డిజిటల్ భద్రత" loading="lazy">
-        <h3>డిజిటల్ సర్టిఫికెట్ల భద్రతపై హెచ్చరిక.. వెబ్‌సైట్ నిర్వాహకులు అప్రమత్తంగా ఉండాలి</h3>
-    </a>
-</article>
+                    <article class="national-card">
+                        <a href="national-brics-forum.html">
+                            <img src="images/national2.jpg" alt="అంతర్జాతీయ సమావేశాలు" loading="lazy">
+                            <div class="national-card-content">
+                                <h3 class="national-card-title">అంతర్జాతీయ సమావేశాల్లో భారత్ పాత్ర.. దేశ ప్రయోజనాలపై చర్చ</h3>
+                            </div>
+                        </a>
+                    </article>
 
-<article>
-    <a href="national-government-jobs.html">
-        <img src="images/national4.jpg" alt="ప్రభుత్వ ఉద్యోగాల సమాచారం" loading="lazy">
-        <h3>ప్రభుత్వ ఉద్యోగాలకు సిద్ధమవుతున్నారా? నోటిఫికేషన్‌లో ఈ వివరాలు తప్పక చూడండి</h3>
-    </a>
-</article>
+                    <article class="national-card">
+                        <a href="national-digital-security.html">
+                            <img src="images/national3.jpg" alt="డిజిటల్ భద్రత" loading="lazy">
+                            <div class="national-card-content">
+                                <h3 class="national-card-title">డిజిటల్ మోసాల పట్ల అప్రమత్తంగా ఉండండి.. వ్యక్తిగత వివరాలను ఎలా కాపాడుకోవాలి?</h3>
+                            </div>
+                        </a>
+                    </article>
 
-<article>
-    <a href="national-railway-news.html">
-        <img src="images/national5.jpg" alt="భారతీయ రైల్వే" loading="lazy">
-        <h3>రైలు ప్రయాణికులకు ముఖ్య సూచనలు.. ప్రయాణానికి ముందు వివరాలు తనిఖీ చేయండి</h3>
-    </a>
-</article>
+                    <article class="national-card">
+                        <a href="national-government-jobs.html">
+                            <img src="images/national4.jpg" alt="ప్రభుత్వ ఉద్యోగాల సమాచారం" loading="lazy">
+                            <div class="national-card-content">
+                                <h3 class="national-card-title">ప్రభుత్వ ఉద్యోగాలకు దరఖాస్తు చేసే ముందు నోటిఫికేషన్‌లో చూడాల్సిన అంశాలు</h3>
+                            </div>
+                        </a>
+                    </article>
 
-<article>
-    <a href="national-banking-safety.html">
-        <img src="images/national6.jpg" alt="బ్యాంకింగ్ భద్రత" loading="lazy">
-        <h3>ఆన్‌లైన్ బ్యాంకింగ్‌లో జాగ్రత్త.. OTP, UPI PIN వివరాలు ఎవరికీ చెప్పొద్దు</h3>
-    </a>
-</article>
+                    <article class="national-card">
+                        <a href="national-railway-news.html">
+                            <img src="images/national5.jpg" alt="భారతీయ రైల్వే" loading="lazy">
+                            <div class="national-card-content">
+                                <h3 class="national-card-title">రైలు ప్రయాణానికి ముందు టికెట్, సమయాలు, ప్రయాణ వివరాలు తనిఖీ చేయండి</h3>
+                            </div>
+                        </a>
+                    </article>
 
-<article>
-    <a href="national-student-scholarships.html">
-        <img src="images/national7.jpg" alt="విద్యార్థుల స్కాలర్‌షిప్‌లు" loading="lazy">
-        <h3>విద్యార్థుల స్కాలర్‌షిప్‌లు.. దరఖాస్తు చేసే ముందు అర్హతలు పరిశీలించండి</h3>
-    </a>
-</article>
+                    <article class="national-card">
+                        <a href="national-banking-safety.html">
+                            <img src="images/national6.jpg" alt="ఆన్‌లైన్ బ్యాంకింగ్ భద్రత" loading="lazy">
+                            <div class="national-card-content">
+                                <h3 class="national-card-title">ఆన్‌లైన్ బ్యాంకింగ్‌లో జాగ్రత్తలు.. OTP, UPI PIN ఎవరికీ చెప్పకండి</h3>
+                            </div>
+                        </a>
+                    </article>
 
-<article>
-    <a href="national-government-schemes.html">
-        <img src="images/national8.jpg" alt="ప్రభుత్వ సంక్షేమ పథకాలు" loading="lazy">
-        <h3>కేంద్ర ప్రభుత్వ పథకాల ప్రయోజనాలు.. అధికారిక సమాచారాన్ని ఇలా తెలుసుకోండి</h3>
-    </a>
-</article>
+                    <article class="national-card">
+                        <a href="national-student-scholarships.html">
+                            <img src="images/national7.jpg" alt="విద్యార్థుల స్కాలర్‌షిప్ సమాచారం" loading="lazy">
+                            <div class="national-card-content">
+                                <h3 class="national-card-title">స్కాలర్‌షిప్‌లకు దరఖాస్తు చేసే విద్యార్థులు అర్హతలు, చివరి తేదీలు తెలుసుకోండి</h3>
+                            </div>
+                        </a>
+                    </article>
+
+                    <article class="national-card">
+                        <a href="national-government-schemes.html">
+                            <img src="images/national8.jpg" alt="ప్రభుత్వ పథకాల సమాచారం" loading="lazy">
+                            <div class="national-card-content">
+                                <h3 class="national-card-title">ప్రభుత్వ సంక్షేమ పథకాల వివరాలు తెలుసుకునే ముందు అధికారిక సమాచారం పరిశీలించండి</h3>
+                            </div>
+                        </a>
+                    </article>
 
                 </div>
             </section>
@@ -252,17 +223,38 @@ body.dark-mode .sidebar-item{border-color:#374151}
         <aside class="article-sidebar">
             <div class="sidebar-box">
                 <div class="sidebar-title">ట్రెండింగ్ వార్తలు</div>
-                <div id="trendingSidebar"></div>
+                <a class="sidebar-item" href="national-digital-security.html">
+                    <img src="images/national3.jpg" alt="డిజిటల్ భద్రత" loading="lazy">
+                    <div class="sidebar-item-title">డిజిటల్ మోసాల నుంచి వ్యక్తిగత వివరాలను ఎలా కాపాడుకోవాలి?</div>
+                </a>
+                <a class="sidebar-item" href="national-government-jobs.html">
+                    <img src="images/national4.jpg" alt="ప్రభుత్వ ఉద్యోగాలు" loading="lazy">
+                    <div class="sidebar-item-title">ప్రభుత్వ ఉద్యోగాల నోటిఫికేషన్‌లో తప్పనిసరిగా చూడాల్సిన అంశాలు</div>
+                </a>
             </div>
 
             <div class="sidebar-box">
                 <div class="sidebar-title">తాజా వార్తలు</div>
-                <div id="latestSidebar"></div>
+                <a class="sidebar-item" href="national-railway-news.html">
+                    <img src="images/national5.jpg" alt="రైల్వే సమాచారం" loading="lazy">
+                    <div class="sidebar-item-title">రైలు ప్రయాణానికి ముందు తెలుసుకోవాల్సిన ముఖ్యమైన వివరాలు</div>
+                </a>
+                <a class="sidebar-item" href="national-banking-safety.html">
+                    <img src="images/national6.jpg" alt="బ్యాంకింగ్ భద్రత" loading="lazy">
+                    <div class="sidebar-item-title">ఆన్‌లైన్ బ్యాంకింగ్‌లో మోసాలను నివారించేందుకు జాగ్రత్తలు</div>
+                </a>
             </div>
 
             <div class="sidebar-box">
                 <div class="sidebar-title">టాప్ వార్తలు</div>
-                <div id="topNewsSidebar"></div>
+                <a class="sidebar-item" href="national-voter-roll-review.html">
+                    <img src="images/national1.jpg" alt="ఓటర్ల జాబితా" loading="lazy">
+                    <div class="sidebar-item-title">ఓటర్ల జాబితాలో మీ వివరాలు సరిగ్గా ఉన్నాయో తనిఖీ చేసుకోండి</div>
+                </a>
+                <a class="sidebar-item" href="national-government-schemes.html">
+                    <img src="images/national8.jpg" alt="ప్రభుత్వ పథకాలు" loading="lazy">
+                    <div class="sidebar-item-title">ప్రభుత్వ పథకాల అర్హతలు, దరఖాస్తు వివరాలు అధికారికంగా తెలుసుకోండి</div>
+                </a>
             </div>
         </aside>
     </div>
@@ -281,18 +273,17 @@ body.dark-mode .sidebar-item{border-color:#374151}
                 <a href="terms.html">Terms &amp; Conditions</a>
             </div>
         </div>
-
         <div class="footer-contact">
             <h3>Contact</h3>
             <p>newsb386@gmail.com</p>
             <p>Follow us for latest updates.</p>
         </div>
     </div>
-
-    <div class="copyright">
-        © 2026 BS 360 NEWS. All Rights Reserved.
-    </div>
+    <div class="copyright">© 2026 BS 360 NEWS. All Rights Reserved.</div>
 </footer>
+
+</body>
+
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
