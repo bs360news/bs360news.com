@@ -243,3 +243,68 @@ body.dark-mode .ad-space{background:#222;border-color:#444}
     border-radius: 8px;
     padding: 10px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================
+   ALL SECTIONS — LIGHT NEWS HEADLINES
+   Main / Hero headlines remain unchanged
+========================================= */
+
+/* Top side small news */
+.top-side-article h3,
+.top-side-article h3 a {
+    font-weight: 400 !important;
+}
+
+/* Latest and Trending news */
+.latest-news-column .news-content p,
+.trending-news-list .news-content p {
+    font-weight: 400 !important;
+}
+
+/* Small news cards */
+.bottom-news-card h3,
+.entertainment-small-grid h3,
+.entertainment-bottom-grid h3 {
+    font-weight: 400 !important;
+}
+
+/* Sports, AP & TS, Entertainment, Business,
+   National and World sections */
+.entertainment-featured h3,
+.entertainment-small-grid article h3,
+.national-world-grid h3,
+#businessSection h3,
+#nationalSection h3,
+#worldSection h3,
+#sportsSection h3,
+#aptsSection h3 {
+    font-weight: 400 !important;
+}
+
+/* Bigg Boss and Movie Reviews */
+.bigboss-card h3,
+.movie-review-card h3 {
+    font-weight: 400 !important;
+}
+
+/* Main headline under the large image:
+   Keep existing bold appearance */
+.top-main-column > .news-item .news-content p {
+    font-weight: 800 !important;
+}
+
+
+
+
