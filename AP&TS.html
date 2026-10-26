@@ -536,6 +536,50 @@ body.dark-mode .loading{
         line-height:1.4;
     }
 }
+
+
+    
+/* Main articles and sidebar should end together */
+.sports-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    align-items: stretch;
+    gap: 24px;
+}
+
+.sports-main,
+.sports-sidebar {
+    min-width: 0;
+    height: auto;
+    max-height: none;
+    overflow: visible;
+}
+
+.sports-sidebar {
+    display: flex;
+    flex-direction: column;
+    align-self: stretch;
+}
+
+.sports-sidebar section {
+    height: auto;
+    max-height: none;
+    overflow: visible;
+}
+
+@media (max-width: 768px) {
+    .sports-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .sports-sidebar {
+        height: auto;
+        max-height: none;
+        overflow: visible;
+    }
+}
+
+    
 </style>
 </head>
 
