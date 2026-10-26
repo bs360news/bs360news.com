@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+<html lang="te">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Movies News | BS 360 NEWS</title>
+
+<meta
+    name="description"
+    content="BS 360 NEWS Movies News - తెలుగు సినిమా తాజా వార్తలు, మూవీ అప్డేట్స్, హీరో హీరోయిన్ల వార్తలు."
+>
+
+<meta
+    name="robots"
+    content="index, follow, max-image-preview:large"
+>
+
+<link rel="icon" type="image/png" href="dp.png.png">
+<link rel="apple-touch-icon" href="dp.png.png">
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    padding:0;
+    background:#f3f5f7;
+    color:#111827;
+    font-family:Arial,"Noto Sans Telugu","Segoe UI",sans-serif;
+    line-height:1.6;
+}
+
+img{
+    display:block;
+    width:100%;
+    max-width:100%;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+
+/* HEADER */
+
+.top-header{
+    background:#fff;
+    border-bottom:1px solid #e5e7eb;
+}
+
+.header-inner{
+    width:min(1400px,96%);
+    margin:auto;
+    min-height:68px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+}
+
+.logo{
+    font-size:30px;
+    font-weight:900;
+    letter-spacing:.5px;
+    color:#111827;
+}
+
+.logo span{
+    color:#e50914;
+}
+
+.home-btn{
+    background:#e50914;
+    color:#fff;
+    padding:8px 16px;
+    border-radius:6px;
+    font-weight:700;
+}
+
+.home-btn:hover{
+    background:#c7000b;
+}
+
+
+/* NAVIGATION */
+
+.nav-bar{
+    background:#fff;
+    border-bottom:1px solid #e5e7eb;
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.nav-inner{
+    width:min(1400px,96%);
+    margin:auto;
+    display:flex;
+    align-items:center;
+    gap:5px;
+    overflow-x:auto;
+    scrollbar-width:none;
+}
+
+.nav-inner::-webkit-scrollbar{
+    display:none;
+}
+
+.nav-inner a{
+    flex:0 0 auto;
+    padding:11px 15px;
+    font-size:14px;
+    font-weight:700;
+    white-space:nowrap;
+    color:#111827;
+    border-bottom:3px solid transparent;
+}
+
+.nav-inner a:hover{
+    color:#e50914;
+}
+
+.nav-inner a.active{
+    color:#e50914;
+    border-bottom:3px solid #e50914;
+}
+
+
+/* BREAKING NEWS */
+
+.breaking{
+    width:min(1400px,96%);
+    margin:12px auto 0;
+    background:#fff;
+    display:flex;
+    align-items:center;
+    overflow:hidden;
+    border-radius:6px;
+    border:1px solid #e5e7eb;
+}
+
+.breaking-title{
+    background:#e50914;
+    color:#fff;
+    padding:8px 16px;
+    font-size:13px;
+    font-weight:900;
+    white-space:nowrap;
+}
+
+.breaking-text{
+    padding:8px 15px;
+    font-size:14px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    color:#111827;
+}
+
+
+/* PAGE */
+
+.page{
+    width:min(1400px,96%);
+    margin:15px auto 35px;
+}
+
+.page-title{
+    background:#fff;
+    border-left:5px solid #e50914;
+    padding:12px 15px;
+    margin-bottom:18px;
+    font-size:24px;
+    font-weight:900;
+}
+
+
+/* MAIN LAYOUT */
+
+.main-layout{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) 320px;
+    gap:22px;
+    align-items:start;
+}
+
+
+/* SECTION */
+
+.section{
+    margin-bottom:30px;
+}
+
+.section-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:12px;
+    border-bottom:2px solid #e50914;
+    padding-bottom:7px;
+}
+
+.section-head h2{
+    margin:0;
+    font-size:21px;
+    font-weight:900;
+    color:#111827;
+}
+
+.section-head h2 span{
+    color:#e50914;
+}
+
+
+/* ALL ARTICLE GRIDS */
+
+.movies-grid{
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:12px;
+}
+
+
+/* ARTICLE CARD */
+
+.movie-card{
+    display:block;
+    background:#fff;
+    border-radius:7px;
+    overflow:hidden;
+    min-width:0;
+    transition:transform .2s ease,box-shadow .2s ease;
+}
+
+.movie-card:hover{
+    transform:translateY(-3px);
+    box-shadow:0 5px 18px rgba(0,0,0,.10);
+}
+
+.movie-card img{
+    width:100%;
+    aspect-ratio:16 / 9;
+    object-fit:cover;
+}
+
+.movie-card-content{
+    padding:9px;
+}
+
+.movie-card-title{
+    margin:0;
+    color:#111827;
+    font-size:14px;
+    line-height:1.45;
+    font-weight:800;
+    display:-webkit-box;
+    -webkit-line-clamp:4;
+    -webkit-box-orient:vertical;
+    overflow:hidden;
+}
+
+
+/* SIDEBAR */
+
+.article-sidebar{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+    min-height:0;
+    min-width:0;
+}
+
+.sidebar-box{
+    background:#fff;
+    border-radius:8px;
+    padding:14px;
+    border:1px solid #e5e7eb;
+}
+
+.sidebar-title{
+    font-size:19px;
+    line-height:1.3;
+    font-weight:900;
+    color:#111827;
+    padding-bottom:9px;
+    margin-bottom:5px;
+    border-bottom:3px solid #e50914;
+}
+
+
+/* SIDEBAR ARTICLE */
+
+.sidebar-item{
+    display:flex;
+    gap:10px;
+    padding:10px 0;
+    border-bottom:1px solid #e5e7eb;
+    text-decoration:none;
+    color:inherit;
+}
+
+.sidebar-item:last-child{
+    border-bottom:none;
+}
+
+.sidebar-item img{
+    width:100px;
+    height:65px;
+    object-fit:cover;
+    border-radius:6px;
+    flex-shrink:0;
+}
+
+.sidebar-item-title{
+    font-size:14px;
+    line-height:1.4;
+    font-weight:700;
+    color:#1f2937;
+    display:-webkit-box;
+    -webkit-line-clamp:3;
+    -webkit-box-orient:vertical;
+    overflow:hidden;
+}
+
+
+/* MOST READ */
+
+.most-read-item{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:10px 0;
+    border-bottom:1px solid #e5e7eb;
+    text-decoration:none;
+    color:inherit;
+}
+
+.most-read-item:last-child{
+    border-bottom:none;
+}
+
+.most-read-item img{
+    width:95px;
+    height:65px;
+    object-fit:cover;
+    border-radius:6px;
+    flex-shrink:0;
+}
+
+.most-read-title{
+    font-size:14px;
+    line-height:1.4;
+    font-weight:700;
+    color:#1f2937;
+    display:-webkit-box;
+    -webkit-line-clamp:3;
+    -webkit-box-orient:vertical;
+    overflow:hidden;
+}
+
+
+/* LOADING */
+
+.loading{
+    grid-column:1 / -1;
+    background:#fff;
+    padding:25px;
+    text-align:center;
+    border-radius:8px;
+    color:#666;
+}
+
+
+/* FOOTER */
+
+.site-footer{
+    background:#111827;
+    color:#fff;
+    margin-top:35px;
+    padding:30px 0 15px;
+}
+
+.footer-inner{
+    width:min(1400px,96%);
+    margin:auto;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+}
+
+.footer-column h3,
+.footer-contact h3{
+    margin:0 0 12px;
+    font-size:18px;
+}
+
+.footer-links{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px 15px;
+}
+
+.footer-links a{
+    color:#d1d5db;
+    font-size:14px;
+}
+
+.footer-links a:hover{
+    color:#fff;
+}
+
+.footer-contact p{
+    margin:5px 0;
+    color:#d1d5db;
+    font-size:14px;
+}
+
+.copyright{
+    width:min(1400px,96%);
+    margin:25px auto 0;
+    padding-top:15px;
+    border-top:1px solid #374151;
+    text-align:center;
+    color:#9ca3af;
+    font-size:13px;
+}
+
+
+/* DARK MODE */
+
+body.dark-mode{
+    background:#0b1120;
+    color:#f9fafb;
+}
+
+body.dark-mode .top-header,
+body.dark-mode .nav-bar,
+body.dark-mode .breaking,
+body.dark-mode .page-title,
+body.dark-mode .movie-card,
+body.dark-mode .sidebar-box{
+    background:#111827;
+    color:#f9fafb;
+    border-color:#374151;
+}
+
+body.dark-mode .logo,
+body.dark-mode .nav-inner a,
+body.dark-mode .breaking-text,
+body.dark-mode .section-head h2,
+body.dark-mode .movie-card-title,
+body.dark-mode .sidebar-title,
+body.dark-mode .sidebar-item-title,
+body.dark-mode .most-read-title{
+    color:#f9fafb;
+}
+
+body.dark-mode .sidebar-item,
+body.dark-mode .most-read-item{
+    border-color:#374151;
+}
+
+
+/* TABLET */
+
+@media(min-width:601px) and (max-width:1100px){
+
+    .main-layout{
+        grid-template-columns:1fr;
+    }
+
+    .movies-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+    }
+
+    .article-sidebar{
+        display:grid;
+        grid-template-columns:repeat(2,minmax(0,1fr));
+        align-items:start;
+    }
+
+}
+
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+    .header-inner{
+        min-height:58px;
+    }
+
+    .logo{
+        font-size:22px;
+    }
+
+    .home-btn{
+        padding:6px 11px;
+        font-size:13px;
+    }
+
+    .nav-inner a{
+        padding:9px 11px;
+        font-size:12px;
+    }
+
+    .breaking{
+        margin-top:8px;
+    }
+
+    .breaking-title{
+        padding:7px 10px;
+        font-size:10px;
+    }
+
+    .breaking-text{
+        font-size:12px;
+        padding:7px 10px;
+    }
+
+    .page{
+        width:94%;
+        margin-top:10px;
+    }
+
+    .page-title{
+        font-size:20px;
+        padding:10px 12px;
+    }
+
+    .main-layout{
+        display:block;
+    }
+
+
+    /* =========================================
+       MOBILE NEWS
+       LEFT = TEXT
+       RIGHT = IMAGE
+    ========================================= */
+
+    .movies-grid{
+        display:grid;
+        grid-template-columns:1fr;
+        gap:0;
+    }
+
+    .movie-card{
+        display:flex;
+        flex-direction:row-reverse;
+        align-items:center;
+        width:100%;
+        min-height:95px;
+        border-radius:0;
+        border-bottom:1px solid #e5e7eb;
+        background:#fff;
+        box-shadow:none;
+        transform:none;
+    }
+
+    .movie-card:hover{
+        transform:none;
+        box-shadow:none;
+    }
+
+    .movie-card img{
+        width:105px;
+        height:70px;
+        aspect-ratio:auto;
+        object-fit:cover;
+        border-radius:5px;
+        flex-shrink:0;
+        margin-left:10px;
+    }
+
+    .movie-card-content{
+        flex:1;
+        min-width:0;
+        padding:7px 0;
+    }
+
+    .movie-card-title{
+        margin:0;
+        font-size:13px;
+        line-height:1.45;
+        font-weight:800;
+        -webkit-line-clamp:4;
+    }
+
+
+    /* SIDEBAR */
+
+    .article-sidebar{
+        margin-top:22px;
+        gap:12px;
+    }
+
+    .sidebar-box{
+        padding:11px;
+    }
+
+    .sidebar-title{
+        font-size:17px;
+    }
+
+    .sidebar-item img{
+        width:90px;
+        height:62px;
+    }
+
+    .sidebar-item-title{
+        font-size:13px;
+    }
+
+    .most-read-item img{
+        width:90px;
+        height:62px;
+    }
+
+    .most-read-title{
+        font-size:13px;
+    }
+
+    .footer-inner{
+        grid-template-columns:1fr;
+        gap:22px;
+    }
+
+    .footer-links{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+    }
+
+}
+
+
+/* SMALL MOBILE */
+
+@media(max-width:380px){
+
+    .movies-grid{
+        grid-template-columns:1fr;
+        gap:0;
+    }
+
+    .movie-card{
+        min-height:90px;
+    }
+
+    .movie-card img{
+        width:95px;
+        height:64px;
+    }
+
+    .movie-card-content{
+        padding:5px 0;
+    }
+
+    .movie-card-title{
+        font-size:12px;
+        line-height:1.4;
+    }
+
+}
+
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header class="top-header">
+
+    <div class="header-inner">
+
+        <div class="logo">
+            BS <span>360</span> NEWS
+        </div>
+
+      
+
+    </div>
+
+</header>
+
+
+<nav class="nav-bar">
+
+    <div class="nav-inner">
+
+       
+      <a href="index.html" class="nav-home">
+    <span class="home-icon">⌂</span>
+    <span>హోమ్</span>
+</a>
+<a href="moviereviews.html">మూవీ రివ్యూస్</a>
+
+<a href="national.html">జాతీయ వార్తలు</a>
+
+<a href="international.html">అంతర్జాతీయ వార్తలు</a>
+
+<a href="tajavarthalu.html">తాజా వార్తలు</a>
+        <a href="MOVIES.html" class="active">
+            మూవీస్ 
+        </a>
+
+        <a href="SPORTS.html">
+            స్పోర్ట్స్ 
+        </a>
+
+        <a href="AP&TS.html">
+            ఏపీ & టీస్ 
+        </a>
+
+        <a href="business.html">
+            బిజినెస్ 
+        </a>
+
+    </div>
+
+</nav>
+
+
+<div class="breaking">
+
+    <div class="breaking-title">
+        BREAKING NEWS
+    </div>
+
+    <div class="breaking-text">
+        సినిమా ప్రపంచంలోని తాజా వార్తలు, మూవీరివ్యూస్, అప్డేట్స్,...
+    </div>
+
+</div>
+
+
+<main class="page">
+
+ 
+    <div class="main-layout">
+
+
+        <div class="movies-main">
+
+
+            <!-- =====================================================
+                 DIRECT MOVIE ARTICLES
+            ====================================================== -->
+
+            <div id="localMoviesSource" hidden>
+
+
+        
+    
+
+                <article class="news-item post" data-url="ranabali-movie-review-vijay-deverakonda-rashmika-mandanna/">
+
+                    <img
+                        src="ranabali-movie-review-vijay-deverakonda-rashmika-mandanna.jpg"
+                        alt="రణబాలి మూవీ రివ్యూ - విజయ్ దేవరకొండ, రష్మిక మందన్న
+                    >
+
+                    <div class="news-content">
+
+                        <p>
+                            రణబాలి మూవీ రివ్యూ: విజయ్ దేవరకొండ నటన ఎలా ఉంది?ు
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+        
+                <article class="news-item post" data-url="crazy-kalyanam-movie-review-anupama-parameswaran/">
+
+                    <img
+                        src="crazy-kalyanam-movie-review-anupama-parameswaran.png"
+                        alt="క్రేజీ కళ్యాణం మూవీ రివ్యూ - అనుపమ పరమేశ్వరన్"
+                    >
+
+                    <div class="news-content">
+
+                        <p>
+                            రేజీ కళ్యాణం మూవీ రివ్యూ: సినిమా ఎలా ఉంది?
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+            
+              
+
+
+
+               
+            </div>
+
+
+            <!-- MOVIES -->
+
+            <section class="section">
+
+                <div class="section-head">
+
+                    <h2>
+                        <span>ఎంటర్టైన్‌మెంట్</span> 
+                    </h2>
+
+                </div>
+
+                <div
+                    id="moviesGrid"
+                    class="movies-grid"
+                >
+
+                    <div class="loading">
+                        Movies News Loading...
+                    </div>
+
+                </div>
+
+            </section>
+
+
+        </div>
+
+
+        <!-- HOMEPAGE SECTIONS SHOWN ONLY IN SIDEBAR -->
+
+        <aside class="article-sidebar">
+
+            
+
+            <div class="sidebar-box">
+                <div class="sidebar-title">ట్రెండింగ్ వార్తలు</div>
+                <div id="trendingSidebar"></div>
+            </div>
+
+            <div class="sidebar-box">
+                <div class="sidebar-title">తాజా వార్తల</div>
+                <div id="latestSidebar"></div>
+            </div>
+
+            <div class="sidebar-box">
+                <div class="sidebar-title">టాప్ వార్తల</div>
+                <div id="movieReviewsSidebar"></div>
+            </div>
+
+        </aside>
+
+
+    </div>
+
+</main>
+
+
+<footer class="site-footer">
+
+    <div class="footer-inner">
+
+        <div class="footer-column">
+
+            <h3>
+                ముఖ్యమైన లింకులు
+            </h3>
+
+            <div class="footer-links">
+
+                <a href="advertise.html">
+                    Advertise With Us
+                </a>
+
+                <a href="about.html">
+                    About Us
+                </a>
+
+                <a href="contact.html">
+                    Contact Us
+                </a>
+
+                <a href="Privacy Policy.html">
+                    Privacy Policy
+                </a>
+
+                <a href="disclaimer.html">
+                    Disclaimer
+                </a>
+
+                <a href="terms.html">
+                    Terms & Conditions
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-contact">
+
+            <h3>
+                Contact
+            </h3>
+
+            <p>
+                newsb386@gmail.com
+            </p>
+
+            <p>
+                Follow us for latest updates.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="copyright">
+        © 2026 BS 360 NEWS. All Rights Reserved.
+    </div>
+
+</footer>
+
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function(){
+
+    "use strict";
+
+
+    /* =====================================================
+       HELPERS
+    ===================================================== */
+
+    function cleanText(text){
+
+        return String(text || "")
+            .replace(/\s+/g," ")
+            .trim();
+
+    }
+
+
+    /* =====================================================
+       GET ARTICLES - SUPPORT HOMEPAGE CARD STRUCTURES
+    ===================================================== */
+
+    function getArticles(source){
+        if(!source) return [];
+
+        let items = [];
+        const cardSelector = [
+            ".news-item.post", "article", ".news-card", ".movie-card",
+            ".post-card", ".latest-news-card", ".trending-card",
+            ".top-news-card", ".review-card", ".news-item"
+        ].join(",");
+
+        if(source.matches && source.matches(cardSelector)) items.push(source);
+        items.push(...Array.from(source.querySelectorAll(cardSelector)));
+
+        // Some homepage sections use linked image cards instead of <article> tags.
+        if(!items.length){
+            items = Array.from(source.querySelectorAll("a[href]")).filter(function(a){
+                return !!a.querySelector("img");
+            });
+        }
+
+        const articles = items.map(function(item){
+            const image = item.querySelector("img");
+            const link = (item.matches && item.matches("a[href]")) ? item : item.querySelector("a[href]");
+            const titleNode = item.querySelector(
+                ".news-content p, .news-content h3, .news-content a, .news-title, .article-title, h1, h2, h3, h4, p, .title"
+            );
+            let title = cleanText(titleNode ? titleNode.textContent : "");
+            if(!title && link) title = cleanText(link.textContent);
+            if(!title && image) title = cleanText(image.getAttribute("alt") || "");
+
+            return {
+                title: title,
+                image: image ? (image.getAttribute("src") || image.getAttribute("data-src") || image.getAttribute("data-lazy-src") || "") : "",
+                alt: image ? (image.getAttribute("alt") || "") : "",
+                url: item.getAttribute("data-url") || (link ? (link.getAttribute("href") || "") : "")
+            };
+        }).filter(function(article){
+            return article.title && article.image && article.url &&
+                !article.url.startsWith("#") && !/^javascript:/i.test(article.url);
+        });
+
+        return articles.filter(function(article, index, array){
+            return array.findIndex(function(other){ return other.url === article.url; }) === index;
+        });
+    }
+
+    function getFirstAvailableArticles(home, ids){
+        for(const id of ids){
+            const source = home.getElementById(id);
+            const articles = getArticles(source);
+            if(articles.length) return articles;
+        }
+        return [];
+    }
+
+    // Find a Homepage section by its visible heading if its ID is different.
+    function getArticlesByHeading(home, labels){
+        const wanted = labels.map(function(label){ return cleanText(label).toLowerCase(); });
+        const headings = Array.from(home.querySelectorAll("h1,h2,h3,h4,.section-title,.section-head,.sidebar-title,.category-title"));
+        for(const heading of headings){
+            const text = cleanText(heading.textContent).toLowerCase();
+            if(!wanted.some(function(label){ return text === label || text.includes(label); })) continue;
+            let parent = heading;
+            for(let level = 0; level < 5 && parent; level++, parent = parent.parentElement){
+                const articles = getArticles(parent);
+                if(articles.length) return articles;
+            }
+        }
+        return [];
+    }
+
+    function getSectionArticles(home, ids, headingLabels){
+        return getFirstAvailableArticles(home, ids).length
+            ? getFirstAvailableArticles(home, ids)
+            : getArticlesByHeading(home, headingLabels);
+    }
+
+    /* =====================================================
+       NORMAL CARD
+    ===================================================== */
+
+    function cardHTML(article){
+
+        return `
+
+            <a
+                href="${article.url}"
+                class="movie-card"
+            >
+
+                <img
+                    src="${article.image}"
+                    alt="${article.alt || article.title}"
+                    loading="lazy"
+                >
+
+                <div class="movie-card-content">
+
+                    <h3 class="movie-card-title">
+                        ${article.title}
+                    </h3>
+
+                </div>
+
+            </a>
+
+        `;
+
+    }
+
+
+    /* =====================================================
+       SIDEBAR
+    ===================================================== */
+
+    function sidebarHTML(article){
+
+        return `
+
+            <a
+                href="${article.url}"
+                class="sidebar-item"
+            >
+
+                <img
+                    src="${article.image}"
+                    alt="${article.alt || article.title}"
+                    loading="lazy"
+                >
+
+                <div class="sidebar-item-title">
+                    ${article.title}
+                </div>
+
+            </a>
+
+        `;
+
+    }
+
+
+    /* =====================================================
+       SHOW
+    ===================================================== */
+
+    function show(id,html){
+
+        const element =
+            document.getElementById(id);
+
+        if(element){
+            element.innerHTML = html;
+        }
+
+    }
+
+
+    /* =====================================================
+       LAPTOP: SIDEBAR MUST END WITH MOVIES ARTICLES
+       Keep the sidebar beside the Movies section only.
+       Do not let sidebar content extend below the movie list.
+    ===================================================== */
+
+    function matchSidebarToMoviesHeight(){
+        const moviesMain = document.querySelector(".movies-main");
+        const sidebar = document.querySelector(".article-sidebar");
+
+        if(!moviesMain || !sidebar) return;
+
+        if(window.innerWidth > 1100){
+            const moviesHeight = Math.ceil(moviesMain.getBoundingClientRect().height);
+            sidebar.style.height = moviesHeight + "px";
+            sidebar.style.maxHeight = moviesHeight + "px";
+            sidebar.style.overflow = "hidden";
+        } else {
+            sidebar.style.height = "";
+            sidebar.style.maxHeight = "";
+            sidebar.style.overflow = "";
+        }
+    }
+
+    window.addEventListener("resize", matchSidebarToMoviesHeight);
+
+    /* =====================================================
+       LOAD INDEX
+    ===================================================== */
+
+    fetch(
+        "index.html?v=" + Date.now(),
+        {
+            cache:"no-store"
+        }
+    )
+
+    .then(function(response){
+
+        if(!response.ok){
+
+            throw new Error(
+                "index.html load failed"
+            );
+
+        }
+
+        return response.text();
+
+    })
+
+
+    .then(function(html){
+
+        const parser =
+            new DOMParser();
+
+        const home =
+            parser.parseFromString(
+                html,
+                "text/html"
+            );
+
+
+        /* =================================================
+           HOME SOURCES
+        ================================================= */
+
+        const homeMovies =
+            getArticles(
+                home.getElementById(
+                    "entertainmentSource"
+                )
+            );
+
+
+        const localMovies =
+            getArticles(
+                document.getElementById(
+                    "localMoviesSource"
+                )
+            );
+
+
+        /* =================================================
+           LOCAL MOVIES FIRST
+           THEN HOME MOVIES
+           
+           DUPLICATE URL REMOVE
+        ================================================= */
+
+        const movies = [
+
+            ...localMovies,
+            ...homeMovies
+
+        ]
+
+        .filter(function(article,index,array){
+
+            return array.findIndex(function(item){
+
+                return item.url === article.url;
+
+            }) === index;
+
+        });
+
+
+        const topNews = getSectionArticles(home, [
+            "topNewsSource", "topNewsGrid", "topNews", "topStory", "topStoryGrid", "topStorySection", "topNewsSection"
+        ], ["Top News", "Top Story", "టాప్ న్యూస్", "ముఖ్య వార్తలు", "ప్రధాన వార్తలు"]);
+
+        const trending = getSectionArticles(home, [
+            "trendingSource", "trendingGrid", "trendingSection", "trendingNews", "trendingTrack"
+        ], ["Trending News", "Trending", "ట్రెండింగ్ న్యూస్", "ట్రెండింగ్"]);
+
+        const latest = getSectionArticles(home, [
+            "latestNewsSource", "latestGrid", "latestSection", "latestNews", "latestNewsList"
+        ], ["Latest News", "Latest", "తాజా వార్తలు", "తాజా వార్త"]);
+
+        const movieReviews = getSectionArticles(home, [
+            "movieReviewsSource", "movieReviewsGrid", "movieReviewsSection", "movieReviews",
+            "movieReviewGrid", "movieReviewSection", "reviewsGrid", "reviewsSection",
+            "cinemaGrid", "cinemaSection", "movieReviewsTrack", "reviewsTrack"
+        ], ["Movie Reviews", "Movie Review", "మూవీ రివ్యూస్", "మూవీ రివ్యూ", "సినిమా రివ్యూస్", "సినిమా రివ్యూ"]);
+
+
+        /* =================================================
+           MOVIES
+        ================================================= */
+
+        show(
+            "moviesGrid",
+            movies.length
+                ? movies.map(cardHTML).join("")
+                : '<div class="loading">Movies articles index.html లో కనిపించలేదు. Homepage source ID / article structure చెక్ చేయండి.</div>'
+        );
+
+
+        /* =================================================
+           TOP NEWS (HOMEPAGE ONLY IN SIDEBAR)
+        ================================================= */
+
+        show(
+            "topNewsSidebar",
+            topNews.slice(0, 5).map(sidebarHTML).join("") ||
+                '<div class="loading">Homepage Top News articles దొరకలేదు.</div>'
+        );
+
+        /* =================================================
+           TRENDING
+        ================================================= */
+
+        show(
+
+            "trendingSidebar",
+
+            trending
+                .slice(0,8)
+                .map(sidebarHTML)
+                .join("")
+
+        );
+
+
+        /* =================================================
+           LATEST
+        ================================================= */
+
+        show(
+            "latestSidebar",
+            latest.slice(0, 5).map(sidebarHTML).join("") ||
+                '<div class="loading">Homepage Latest News articles దొరకలేదు.</div>'
+        );
+
+        /* =================================================
+           MOVIE REVIEWS (HOMEPAGE ONLY IN SIDEBAR)
+        ================================================= */
+
+        show(
+            "movieReviewsSidebar",
+            movieReviews.slice(0, 5).map(sidebarHTML).join("") ||
+                '<div class="loading">Homepage Movie Reviews articles దొరకలేదు.</div>'
+        );
+
+        /* On laptop, match the sidebar height to the end of movie articles. */
+        matchSidebarToMoviesHeight();
+        requestAnimationFrame(matchSidebarToMoviesHeight);
+
+        /* =================================================
+           CONSOLE
+        ================================================= */
+
+        console.log(
+            "================================"
+        );
+
+        console.log(
+            "BS360 MOVIES PAGE LOADED"
+        );
+
+        console.log(
+            "Local Movies:",
+            localMovies.length
+        );
+
+        console.log(
+            "Movies:",
+            movies.length
+        );
+        console.log("Homepage Top News articles:", topNews.length);
+        console.log("Homepage Trending articles:", trending.length);
+        console.log("Homepage Latest articles:", latest.length);
+        console.log("Homepage Movie Reviews articles:", movieReviews.length);
+
+        console.log(
+            "================================"
+        );
+
+    })
+
+
+    .catch(function(error){
+
+        console.error(
+            "BS360 MOVIES ERROR:",
+            error
+        );
+
+
+        show(
+            "moviesGrid",
+            `
+                <div class="loading">
+                    Movies News load కాలేదు.
+                </div>
+            `
+        );
+
+
+    });
+
+
+    /* =====================================================
+       DISABLE IMAGE DRAGGING
+    ===================================================== */
+
+    document
+        .querySelectorAll("img")
+        .forEach(function(img){
+
+            img.addEventListener(
+                "dragstart",
+                function(e){
+
+                    e.preventDefault();
+
+                }
+            );
+
+        });
+
+});
+
+</script>
+
+
+</body>
+
+</html>
