@@ -1,0 +1,927 @@
+
+<!DOCTYPE html>
+<html lang="te">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>National News | BS 360 NEWS</title>
+
+<meta name="description" content="BS 360 NEWS జాతీయ వార్తలు - భారతదేశ తాజా వార్తలు, రాజకీయాలు, కేంద్ర ప్రభుత్వ నిర్ణయాలు, దేశవ్యాప్త పరిణామాలు.">
+<meta name="author" content="BS 360 NEWS">
+<meta name="robots" content="index, follow, max-image-preview:large">
+
+<link rel="canonical" href="https://bs360news.com/national.html">
+<link rel="icon" type="image/png" href="dp.png.png">
+<link rel="apple-touch-icon" href="dp.png.png">
+
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+
+body{
+    margin:0;
+    padding:0;
+    background:#f3f5f7;
+    color:#111827;
+    font-family:Arial,"Noto Sans Telugu","Segoe UI",sans-serif;
+    line-height:1.6;
+}
+
+img{display:block;width:100%;max-width:100%}
+a{color:inherit;text-decoration:none}
+
+/* HEADER */
+.top-header{
+    background:#fff;
+    border-bottom:1px solid #e5e7eb;
+}
+
+.header-inner{
+    width:min(1400px,96%);
+    margin:auto;
+    min-height:68px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+}
+
+.logo{
+    font-size:30px;
+    font-weight:900;
+    letter-spacing:.5px;
+    color:#111827;
+}
+
+.logo span{color:#e50914}
+
+/* NAVIGATION */
+.nav-bar{
+    background:#fff;
+    border-bottom:1px solid #e5e7eb;
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.nav-inner{
+    width:min(1400px,96%);
+    margin:auto;
+    display:flex;
+    align-items:center;
+    gap:5px;
+    overflow-x:auto;
+    scrollbar-width:none;
+}
+
+.nav-inner::-webkit-scrollbar{display:none}
+
+.nav-inner a{
+    flex:0 0 auto;
+    padding:11px 15px;
+    font-size:14px;
+    font-weight:700;
+    white-space:nowrap;
+    color:#111827;
+    border-bottom:3px solid transparent;
+}
+
+.nav-inner a:hover{color:#e50914}
+
+.nav-inner a.active{
+    color:#e50914;
+    border-bottom:3px solid #e50914;
+}
+
+/* BREAKING NEWS */
+.breaking{
+    width:min(1400px,96%);
+    margin:12px auto 0;
+    background:#fff;
+    display:flex;
+    align-items:center;
+    overflow:hidden;
+    border-radius:6px;
+    border:1px solid #e5e7eb;
+}
+
+.breaking-title{
+    background:#e50914;
+    color:#fff;
+    padding:8px 16px;
+    font-size:13px;
+    font-weight:900;
+    white-space:nowrap;
+}
+
+.breaking-text{
+    padding:8px 15px;
+    font-size:14px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    color:#111827;
+}
+
+/* PAGE */
+.page{
+    width:min(1400px,96%);
+    margin:15px auto 35px;
+}
+
+.page-title{
+    background:#fff;
+    border-left:5px solid #e50914;
+    padding:12px 15px;
+    margin-bottom:18px;
+    font-size:24px;
+    font-weight:900;
+}
+
+/* MAIN LAYOUT */
+.main-layout{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) 320px;
+    gap:22px;
+    align-items:start;
+}
+
+.national-main{min-width:0}
+
+/* SECTION */
+.section{margin-bottom:30px}
+
+.section-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:12px;
+    border-bottom:2px solid #e50914;
+    padding-bottom:7px;
+}
+
+.section-head h2{
+    margin:0;
+    font-size:21px;
+    font-weight:900;
+    color:#111827;
+}
+
+.section-head h2 span{color:#e50914}
+
+/* NEWS GRID */
+.national-grid{
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:12px;
+}
+
+/* NEWS CARD */
+.national-card{
+    display:block;
+    background:#fff;
+    border-radius:7px;
+    overflow:hidden;
+    min-width:0;
+    transition:transform .2s ease,box-shadow .2s ease;
+}
+
+.national-card:hover{
+    transform:translateY(-3px);
+    box-shadow:0 5px 18px rgba(0,0,0,.10);
+}
+
+.national-card img{
+    width:100%;
+    aspect-ratio:16/9;
+    object-fit:cover;
+}
+
+.national-card-content{padding:9px}
+
+.national-card-title{
+    margin:0;
+    color:#111827;
+    font-size:14px;
+    line-height:1.45;
+    font-weight:800;
+    display:-webkit-box;
+    -webkit-line-clamp:4;
+    -webkit-box-orient:vertical;
+    overflow:hidden;
+}
+
+/* SIDEBAR */
+.article-sidebar{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+    min-width:0;
+}
+
+.sidebar-box{
+    background:#fff;
+    border-radius:8px;
+    padding:14px;
+    border:1px solid #e5e7eb;
+}
+
+.sidebar-title{
+    font-size:19px;
+    line-height:1.3;
+    font-weight:900;
+    color:#111827;
+    padding-bottom:9px;
+    margin-bottom:5px;
+    border-bottom:3px solid #e50914;
+}
+
+/* SIDEBAR ARTICLES */
+.sidebar-item{
+    display:flex;
+    gap:10px;
+    padding:10px 0;
+    border-bottom:1px solid #e5e7eb;
+    color:inherit;
+}
+
+.sidebar-item:last-child{border-bottom:none}
+
+.sidebar-item img{
+    width:100px;
+    height:65px;
+    object-fit:cover;
+    border-radius:6px;
+    flex-shrink:0;
+}
+
+.sidebar-item-title{
+    font-size:14px;
+    line-height:1.4;
+    font-weight:700;
+    color:#1f2937;
+    display:-webkit-box;
+    -webkit-line-clamp:3;
+    -webkit-box-orient:vertical;
+    overflow:hidden;
+}
+
+/* LOADING */
+.loading{
+    grid-column:1/-1;
+    background:#fff;
+    padding:25px;
+    text-align:center;
+    border-radius:8px;
+    color:#666;
+}
+
+/* FOOTER */
+.site-footer{
+    background:#111827;
+    color:#fff;
+    margin-top:35px;
+    padding:30px 0 15px;
+}
+
+.footer-inner{
+    width:min(1400px,96%);
+    margin:auto;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+}
+
+.footer-column h3,
+.footer-contact h3{
+    margin:0 0 12px;
+    font-size:18px;
+}
+
+.footer-links{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px 15px;
+}
+
+.footer-links a{
+    color:#d1d5db;
+    font-size:14px;
+}
+
+.footer-links a:hover{color:#fff}
+
+.footer-contact p{
+    margin:5px 0;
+    color:#d1d5db;
+    font-size:14px;
+}
+
+.copyright{
+    width:min(1400px,96%);
+    margin:25px auto 0;
+    padding-top:15px;
+    border-top:1px solid #374151;
+    text-align:center;
+    color:#9ca3af;
+    font-size:13px;
+}
+
+/* DARK MODE SUPPORT */
+body.dark-mode{
+    background:#0b1120;
+    color:#f9fafb;
+}
+
+body.dark-mode .top-header,
+body.dark-mode .nav-bar,
+body.dark-mode .breaking,
+body.dark-mode .page-title,
+body.dark-mode .national-card,
+body.dark-mode .sidebar-box{
+    background:#111827;
+    color:#f9fafb;
+    border-color:#374151;
+}
+
+body.dark-mode .logo,
+body.dark-mode .nav-inner a,
+body.dark-mode .breaking-text,
+body.dark-mode .section-head h2,
+body.dark-mode .national-card-title,
+body.dark-mode .sidebar-title,
+body.dark-mode .sidebar-item-title{
+    color:#f9fafb;
+}
+
+body.dark-mode .sidebar-item{border-color:#374151}
+
+/* TABLET */
+@media(min-width:601px) and (max-width:1100px){
+    .main-layout{grid-template-columns:1fr}
+    .national-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+
+    .article-sidebar{
+        display:grid;
+        grid-template-columns:repeat(2,minmax(0,1fr));
+        align-items:start;
+    }
+}
+
+/* MOBILE */
+@media(max-width:600px){
+    .header-inner{min-height:58px}
+    .logo{font-size:22px}
+
+    .nav-inner a{
+        padding:9px 11px;
+        font-size:12px;
+    }
+
+    .breaking{margin-top:8px}
+
+    .breaking-title{
+        padding:7px 10px;
+        font-size:10px;
+    }
+
+    .breaking-text{
+        font-size:12px;
+        padding:7px 10px;
+    }
+
+    .page{
+        width:94%;
+        margin-top:10px;
+    }
+
+    .page-title{
+        font-size:20px;
+        padding:10px 12px;
+    }
+
+    .main-layout{display:block}
+
+    /* TEXT LEFT - IMAGE RIGHT */
+    .national-grid{
+        display:grid;
+        grid-template-columns:1fr;
+        gap:0;
+    }
+
+    .national-card{
+        display:flex;
+        flex-direction:row-reverse;
+        align-items:center;
+        width:100%;
+        min-height:95px;
+        border-radius:0;
+        border-bottom:1px solid #e5e7eb;
+        background:#fff;
+        box-shadow:none;
+        transform:none;
+    }
+
+    .national-card:hover{
+        transform:none;
+        box-shadow:none;
+    }
+
+    .national-card img{
+        width:105px;
+        height:70px;
+        aspect-ratio:auto;
+        object-fit:cover;
+        border-radius:5px;
+        flex-shrink:0;
+        margin-left:10px;
+    }
+
+    .national-card-content{
+        flex:1;
+        min-width:0;
+        padding:7px 0;
+    }
+
+    .national-card-title{
+        margin:0;
+        font-size:13px;
+        line-height:1.45;
+        font-weight:800;
+        -webkit-line-clamp:4;
+    }
+
+    .article-sidebar{
+        margin-top:22px;
+        gap:12px;
+    }
+
+    .sidebar-box{padding:11px}
+    .sidebar-title{font-size:17px}
+
+    .sidebar-item img{
+        width:90px;
+        height:62px;
+    }
+
+    .sidebar-item-title{font-size:13px}
+
+    .footer-inner{
+        grid-template-columns:1fr;
+        gap:22px;
+    }
+
+    .footer-links{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+/* SMALL MOBILE */
+@media(max-width:380px){
+    .national-card{min-height:90px}
+
+    .national-card img{
+        width:95px;
+        height:64px;
+    }
+
+    .national-card-content{padding:5px 0}
+
+    .national-card-title{
+        font-size:12px;
+        line-height:1.4;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="top-header">
+    <div class="header-inner">
+        <a href="index.html" class="logo">BS <span>360</span> NEWS</a>
+    </div>
+</header>
+
+<nav class="nav-bar">
+    <div class="nav-inner">
+        <a href="index.html">హోమ్</a>
+        <a href="MOVIES.html">ఎంటర్టైన్మెంట్</a>
+        <a href="SPORTS.html">స్పోర్ట్స్</a>
+        <a href="AP%26TS.html">ఏపీ&amp;టీఎస్</a>
+        <a href="business.html">బిజినెస్</a>
+        <a href="moviereviews.html">మూవీ రివ్యూస్</a>
+        <a href="national.html" class="active">జాతీయ వార్తలు</a>
+        <a href="international.html">అంతర్జాతీయ వార్తలు</a>
+        <a href="tajavarthalu.html">తాజా వార్తలు</a>
+    </div>
+</nav>
+
+<div class="breaking">
+    <div class="breaking-title">BREAKING NEWS</div>
+    <div class="breaking-text">
+        భారతదేశ తాజా వార్తలు, రాజకీయ పరిణామాలు, కేంద్ర ప్రభుత్వ నిర్ణయాలు...
+    </div>
+</div>
+
+<main class="page">
+
+    <div class="page-title">జాతీయ వార్తలు</div>
+
+    <div class="main-layout">
+
+        <div class="national-main">
+
+            <section class="section">
+                <div class="section-head">
+                    <h2><span>జాతీయ వార్తలు</span></h2>
+                </div>
+
+                <div id="nationalGrid" class="national-grid">
+                    <div class="loading">జాతీయ వార్తలు లోడ్ అవుతున్నాయి...</div>
+                </div>
+            </section>
+
+        </div>
+
+        <aside class="article-sidebar">
+
+            <div class="sidebar-box">
+                <div class="sidebar-title">ట్రెండింగ్ వార్తలు</div>
+                <div id="trendingSidebar"></div>
+            </div>
+
+            <div class="sidebar-box">
+                <div class="sidebar-title">తాజా వార్తలు</div>
+                <div id="latestSidebar"></div>
+            </div>
+
+            <div class="sidebar-box">
+                <div class="sidebar-title">టాప్ వార్తలు</div>
+                <div id="topNewsSidebar"></div>
+            </div>
+
+        </aside>
+
+    </div>
+</main>
+
+<footer class="site-footer">
+
+    <div class="footer-inner">
+
+        <div class="footer-column">
+            <h3>ముఖ్యమైన లింకులు</h3>
+
+            <div class="footer-links">
+                <a href="advertise.html">Advertise With Us</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact Us</a>
+                <a href="Privacy%20Policy.html">Privacy Policy</a>
+                <a href="disclaimer.html">Disclaimer</a>
+                <a href="terms.html">Terms &amp; Conditions</a>
+            </div>
+        </div>
+
+        <div class="footer-contact">
+            <h3>Contact</h3>
+            <p>newsb386@gmail.com</p>
+            <p>Follow us for latest updates.</p>
+        </div>
+
+    </div>
+
+    <div class="copyright">
+        © 2026 BS 360 NEWS. All Rights Reserved.
+    </div>
+
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+    "use strict";
+
+    function cleanText(text){
+        return String(text || "").replace(/\s+/g," ").trim();
+    }
+
+    function getArticles(source){
+        if(!source) return [];
+
+        const selectors = [
+            ".news-item.post",
+            "article",
+            ".news-card",
+            ".national-card",
+            ".post-card",
+            ".latest-news-card",
+            ".trending-card",
+            ".top-news-card",
+            ".news-item"
+        ].join(",");
+
+        let items = [];
+
+        if(source.matches && source.matches(selectors)){
+            items.push(source);
+        }
+
+        items.push(...Array.from(source.querySelectorAll(selectors)));
+
+        if(!items.length){
+            items = Array.from(source.querySelectorAll("a[href]")).filter(function(a){
+                return !!a.querySelector("img");
+            });
+        }
+
+        const articles = items.map(function(item){
+            const image = item.querySelector("img");
+
+            const link = item.matches && item.matches("a[href]")
+                ? item
+                : item.querySelector("a[href]");
+
+            const titleNode = item.querySelector(
+                ".news-content p, .news-content h3, .news-title, .article-title, h1, h2, h3, h4, p, .title"
+            );
+
+            let title = cleanText(titleNode ? titleNode.textContent : "");
+
+            if(!title && link){
+                title = cleanText(link.textContent);
+            }
+
+            if(!title && image){
+                title = cleanText(image.getAttribute("alt"));
+            }
+
+            return {
+                title:title,
+                image:image ? (
+                    image.getAttribute("src") ||
+                    image.getAttribute("data-src") ||
+                    image.getAttribute("data-lazy-src") || ""
+                ) : "",
+                alt:image ? (image.getAttribute("alt") || "") : "",
+                url:item.getAttribute("data-url") ||
+                    (link ? link.getAttribute("href") || "" : "")
+            };
+        }).filter(function(article){
+            return article.title &&
+                article.image &&
+                article.url &&
+                !article.url.startsWith("#") &&
+                !/^javascript:/i.test(article.url);
+        });
+
+        return articles.filter(function(article,index,array){
+            return array.findIndex(function(other){
+                return other.url === article.url;
+            }) === index;
+        });
+    }
+
+    function getByIds(home, ids){
+        for(const id of ids){
+            const source = home.getElementById(id);
+            const articles = getArticles(source);
+
+            if(articles.length){
+                return articles;
+            }
+        }
+
+        return [];
+    }
+
+    function getByHeading(home, labels){
+        const wanted = labels.map(function(label){
+            return cleanText(label).toLowerCase();
+        });
+
+        const headings = Array.from(
+            home.querySelectorAll(
+                "h1,h2,h3,h4,.section-title,.section-heading,.section-head,.sidebar-title,.category-title"
+            )
+        );
+
+        for(const heading of headings){
+            const headingText = cleanText(heading.textContent).toLowerCase();
+
+            if(!wanted.some(function(label){
+                return headingText === label || headingText.includes(label);
+            })){
+                continue;
+            }
+
+            let parent = heading;
+
+            for(let level = 0; level < 5 && parent; level++, parent = parent.parentElement){
+                const articles = getArticles(parent);
+
+                if(articles.length){
+                    return articles;
+                }
+            }
+        }
+
+        return [];
+    }
+
+    function getSectionArticles(home, ids, labels){
+        const articles = getByIds(home, ids);
+
+        if(articles.length){
+            return articles;
+        }
+
+        return getByHeading(home, labels);
+    }
+
+    function escapeHTML(value){
+        return String(value || "").replace(/[&<>"']/g, function(char){
+            return {
+                "&":"&amp;",
+                "<":"&lt;",
+                ">":"&gt;",
+                '"':"&quot;",
+                "'":"&#39;"
+            }[char];
+        });
+    }
+
+    function cardHTML(article){
+        return `
+            <a href="${escapeHTML(article.url)}" class="national-card">
+                <img
+                    src="${escapeHTML(article.image)}"
+                    alt="${escapeHTML(article.alt || article.title)}"
+                    loading="lazy"
+                >
+                <div class="national-card-content">
+                    <h3 class="national-card-title">${escapeHTML(article.title)}</h3>
+                </div>
+            </a>
+        `;
+    }
+
+    function sidebarHTML(article){
+        return `
+            <a href="${escapeHTML(article.url)}" class="sidebar-item">
+                <img
+                    src="${escapeHTML(article.image)}"
+                    alt="${escapeHTML(article.alt || article.title)}"
+                    loading="lazy"
+                >
+                <div class="sidebar-item-title">${escapeHTML(article.title)}</div>
+            </a>
+        `;
+    }
+
+    function show(id, html){
+        const element = document.getElementById(id);
+
+        if(element){
+            element.innerHTML = html;
+        }
+    }
+
+    fetch("index.html?v=" + Date.now(), {
+        cache:"no-store"
+    })
+    .then(function(response){
+        if(!response.ok){
+            throw new Error("index.html load failed");
+        }
+
+        return response.text();
+    })
+    .then(function(html){
+        const parser = new DOMParser();
+        const home = parser.parseFromString(html, "text/html");
+
+        /*
+          NATIONAL SOURCE:
+          index.htmlలోని అసలు nationalSection
+          దానిలోని .national-world-grid
+        */
+        const nationalSection = home.getElementById("nationalSection");
+
+        let national = [];
+
+        if(nationalSection){
+            const nationalGrid = nationalSection.querySelector(".national-world-grid");
+            national = getArticles(nationalGrid);
+        }
+
+        /*
+          Homepage sidebar sources
+        */
+        const trending = getSectionArticles(home, [
+            "trendingSource",
+            "trendingGrid",
+            "trendingSection",
+            "trendingNews",
+            "trendingTrack"
+        ], [
+            "Trending News",
+            "Trending",
+            "ట్రెండింగ్ వార్తలు",
+            "ట్రెండింగ్"
+        ]);
+
+        const latest = getSectionArticles(home, [
+            "latestNewsSource",
+            "latestGrid",
+            "latestSection",
+            "latestNews",
+            "latestNewsList"
+        ], [
+            "Latest News",
+            "Latest",
+            "తాజా వార్తలు",
+            "తాజా వార్త"
+        ]);
+
+        const topNews = getSectionArticles(home, [
+            "topNewsSource",
+            "topNewsGrid",
+            "topNews",
+            "topStory",
+            "topStoryGrid",
+            "topStorySection",
+            "topNewsSection"
+        ], [
+            "Top News",
+            "Top Story",
+            "టాప్ వార్తలు",
+            "టాప్ న్యూస్",
+            "ముఖ్య వార్తలు",
+            "ప్రధాన వార్తలు"
+        ]);
+
+        /*
+          Render national articles
+        */
+        show(
+            "nationalGrid",
+            national.length
+                ? national.map(cardHTML).join("")
+                : '<div class="loading">జాతీయ వార్తలు దొరకలేదు. index.html లోని nationalSection, national-world-grid ను చెక్ చేయండి.</div>'
+        );
+
+        /*
+          Render trending
+        */
+        show(
+            "trendingSidebar",
+            trending.slice(0,8).map(sidebarHTML).join("") ||
+            '<div class="loading">ట్రెండింగ్ వార్తలు దొరకలేదు.</div>'
+        );
+
+        /*
+          Render latest
+        */
+        show(
+            "latestSidebar",
+            latest.slice(0,5).map(sidebarHTML).join("") ||
+            '<div class="loading">తాజా వార్తలు దొరకలేదు.</div>'
+        );
+
+        /*
+          Render top news
+        */
+        show(
+            "topNewsSidebar",
+            topNews.slice(0,5).map(sidebarHTML).join("") ||
+            '<div class="loading">టాప్ వార్తలు దొరకలేదు.</div>'
+        );
+
+        console.log("BS360 NATIONAL PAGE LOADED");
+        console.log("National articles:", national.length);
+        console.log("Trending articles:", trending.length);
+        console.log("Latest articles:", latest.length);
+        console.log("Top news articles:", topNews.length);
+    })
+    .catch(function(error){
+        console.error("BS360 NATIONAL ERROR:", error);
+
+        show(
+            "nationalGrid",
+            '<div class="loading">జాతీయ వార్తలు లోడ్ కాలేదు. index.html ఫైల్ అందుబాటులో ఉందో చెక్ చేయండి.</div>'
+        );
+    });
+
+    document.querySelectorAll("img").forEach(function(img){
+        img.addEventListener("dragstart", function(event){
+            event.preventDefault();
+        });
+    });
+});
+</script>
+
+</body>
+</html>
