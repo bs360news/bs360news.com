@@ -1,13 +1,11 @@
 
 <!DOCTYPE html>
 <html lang="te">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>National News | BS 360 NEWS</title>
-
 <meta name="description" content="BS 360 NEWS జాతీయ వార్తలు - భారతదేశ తాజా వార్తలు, రాజకీయాలు, కేంద్ర ప్రభుత్వ నిర్ణయాలు, దేశవ్యాప్త పరిణామాలు.">
 <meta name="author" content="BS 360 NEWS">
 <meta name="robots" content="index, follow, max-image-preview:large">
@@ -19,126 +17,28 @@
 <style>
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-
-body{
-    margin:0;
-    padding:0;
-    background:#f3f5f7;
-    color:#111827;
-    font-family:Arial,"Noto Sans Telugu","Segoe UI",sans-serif;
-    line-height:1.6;
-}
-
+body{margin:0;padding:0;background:#f3f5f7;color:#111827;font-family:Arial,"Noto Sans Telugu","Segoe UI",sans-serif;line-height:1.6}
 img{display:block;width:100%;max-width:100%}
 a{color:inherit;text-decoration:none}
 
-/* HEADER */
-.top-header{
-    background:#fff;
-    border-bottom:1px solid #e5e7eb;
-}
-
-.header-inner{
-    width:min(1400px,96%);
-    margin:auto;
-    min-height:68px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:15px;
-}
-
-.logo{
-    font-size:30px;
-    font-weight:900;
-    letter-spacing:.5px;
-    color:#111827;
-}
-
+.top-header,.nav-bar{background:#fff;border-bottom:1px solid #e5e7eb}
+.header-inner{width:min(1400px,96%);margin:auto;min-height:68px;display:flex;align-items:center;justify-content:space-between;gap:15px}
+.logo{font-size:30px;font-weight:900;letter-spacing:.5px;color:#111827}
 .logo span{color:#e50914}
 
-/* NAVIGATION */
-.nav-bar{
-    background:#fff;
-    border-bottom:1px solid #e5e7eb;
-    position:sticky;
-    top:0;
-    z-index:100;
-}
-
-.nav-inner{
-    width:min(1400px,96%);
-    margin:auto;
-    display:flex;
-    align-items:center;
-    gap:5px;
-    overflow-x:auto;
-    scrollbar-width:none;
-}
-
+.nav-bar{position:sticky;top:0;z-index:100}
+.nav-inner{width:min(1400px,96%);margin:auto;display:flex;align-items:center;gap:5px;overflow-x:auto;scrollbar-width:none}
 .nav-inner::-webkit-scrollbar{display:none}
+.nav-inner a{flex:0 0 auto;padding:11px 15px;font-size:14px;font-weight:700;white-space:nowrap;color:#111827;border-bottom:3px solid transparent}
+.nav-inner a:hover,.nav-inner a.active{color:#e50914}
+.nav-inner a.active{border-bottom-color:#e50914}
 
-.nav-inner a{
-    flex:0 0 auto;
-    padding:11px 15px;
-    font-size:14px;
-    font-weight:700;
-    white-space:nowrap;
-    color:#111827;
-    border-bottom:3px solid transparent;
-}
+.breaking{width:min(1400px,96%);margin:12px auto 0;background:#fff;display:flex;align-items:center;overflow:hidden;border-radius:6px;border:1px solid #e5e7eb}
+.breaking-title{background:#e50914;color:#fff;padding:8px 16px;font-size:13px;font-weight:900;white-space:nowrap}
+.breaking-text{padding:8px 15px;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#111827}
 
-.nav-inner a:hover{color:#e50914}
-
-.nav-inner a.active{
-    color:#e50914;
-    border-bottom:3px solid #e50914;
-}
-
-/* BREAKING NEWS */
-.breaking{
-    width:min(1400px,96%);
-    margin:12px auto 0;
-    background:#fff;
-    display:flex;
-    align-items:center;
-    overflow:hidden;
-    border-radius:6px;
-    border:1px solid #e5e7eb;
-}
-
-.breaking-title{
-    background:#e50914;
-    color:#fff;
-    padding:8px 16px;
-    font-size:13px;
-    font-weight:900;
-    white-space:nowrap;
-}
-
-.breaking-text{
-    padding:8px 15px;
-    font-size:14px;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
-    color:#111827;
-}
-
-/* PAGE */
-.page{
-    width:min(1400px,96%);
-    margin:15px auto 35px;
-}
-
-.page-title{
-    background:#fff;
-    border-left:5px solid #e50914;
-    padding:12px 15px;
-    margin-bottom:18px;
-    font-size:24px;
-    font-weight:900;
-}
+.page{width:min(1400px,96%);margin:15px auto 35px}
+.page-title{background:#fff;border-left:5px solid #e50914;padding:12px 15px;margin-bottom:18px;font-size:24px;font-weight:900}
 
 /* MAIN LAYOUT */
 .main-layout{
@@ -147,464 +47,104 @@ a{color:inherit;text-decoration:none}
     gap:22px;
     align-items:start;
 }
-
 .national-main{min-width:0}
-
-/* SECTION */
-.section{margin-bottom:30px}
-
-.section-head{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    margin-bottom:12px;
-    border-bottom:2px solid #e50914;
-    padding-bottom:7px;
-}
-
-.section-head h2{
-    margin:0;
-    font-size:21px;
-    font-weight:900;
-    color:#111827;
-}
-
+.section{margin-bottom:0}
+.section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;border-bottom:2px solid #e50914;padding-bottom:7px}
+.section-head h2{margin:0;font-size:21px;font-weight:900;color:#111827}
 .section-head h2 span{color:#e50914}
 
-/* NEWS GRID */
-.national-grid{
-    display:grid;
-    grid-template-columns:repeat(4,minmax(0,1fr));
-    gap:12px;
-}
-
-/* NEWS CARD */
-.national-card{
-    display:block;
-    background:#fff;
-    border-radius:7px;
-    overflow:hidden;
-    min-width:0;
-    transition:transform .2s ease,box-shadow .2s ease;
-}
-
-.national-card:hover{
-    transform:translateY(-3px);
-    box-shadow:0 5px 18px rgba(0,0,0,.10);
-}
-
-.national-card img{
-    width:100%;
-    aspect-ratio:16/9;
-    object-fit:cover;
-}
-
+/* NATIONAL GRID */
+.national-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.national-card{display:block;background:#fff;border-radius:7px;overflow:hidden;min-width:0;transition:transform .2s ease,box-shadow .2s ease}
+.national-card:hover{transform:translateY(-3px);box-shadow:0 5px 18px rgba(0,0,0,.10)}
+.national-card img{width:100%;aspect-ratio:16/9;object-fit:cover}
 .national-card-content{padding:9px}
-
-.national-card-title{
-    margin:0;
-    color:#111827;
-    font-size:14px;
-    line-height:1.45;
-    font-weight:800;
-    display:-webkit-box;
-    -webkit-line-clamp:4;
-    -webkit-box-orient:vertical;
-    overflow:hidden;
-}
+.national-card-title{margin:0;color:#111827;font-size:14px;line-height:1.45;font-weight:800;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
 
 /* SIDEBAR */
 .article-sidebar{
     display:flex;
     flex-direction:column;
-    gap:18px;
+    gap:12px;
     min-width:0;
-}
-
-.sidebar-box{
-    background:#fff;
-    border-radius:8px;
-    padding:14px;
-    border:1px solid #e5e7eb;
-}
-
-.sidebar-title{
-    font-size:19px;
-    line-height:1.3;
-    font-weight:900;
-    color:#111827;
-    padding-bottom:9px;
-    margin-bottom:5px;
-    border-bottom:3px solid #e50914;
-}
-
-/* SIDEBAR ARTICLES */
-.sidebar-item{
-    display:flex;
-    gap:10px;
-    padding:10px 0;
-    border-bottom:1px solid #e5e7eb;
-    color:inherit;
-}
-
-.sidebar-item:last-child{border-bottom:none}
-
-.sidebar-item img{
-    width:100px;
-    height:65px;
-    object-fit:cover;
-    border-radius:6px;
-    flex-shrink:0;
-}
-
-.sidebar-item-title{
-    font-size:14px;
-    line-height:1.4;
-    font-weight:700;
-    color:#1f2937;
-    display:-webkit-box;
-    -webkit-line-clamp:3;
-    -webkit-box-orient:vertical;
+    align-self:start;
     overflow:hidden;
 }
-
-/* LOADING */
-.loading{
-    grid-column:1/-1;
-    background:#fff;
-    padding:25px;
-    text-align:center;
-    border-radius:8px;
-    color:#666;
-}
+.sidebar-box{background:#fff;border-radius:8px;padding:14px;border:1px solid #e5e7eb;min-width:0}
+.sidebar-title{font-size:19px;line-height:1.3;font-weight:900;color:#111827;padding-bottom:9px;margin-bottom:5px;border-bottom:3px solid #e50914}
+.sidebar-item{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid #e5e7eb;color:inherit;min-width:0}
+.sidebar-item:last-child{border-bottom:none}
+.sidebar-item img{width:100px;height:65px;object-fit:cover;border-radius:6px;flex-shrink:0}
+.sidebar-item-title{font-size:14px;line-height:1.4;font-weight:700;color:#1f2937;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;overflow-wrap:anywhere}
+.loading{grid-column:1/-1;background:#fff;padding:20px;text-align:center;border-radius:8px;color:#666}
 
 /* FOOTER */
-.site-footer{
-    background:#111827;
-    color:#fff;
-    margin-top:35px;
-    padding:30px 0 15px;
-}
-
-.footer-inner{
-    width:min(1400px,96%);
-    margin:auto;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:40px;
-}
-
-.footer-column h3,
-.footer-contact h3{
-    margin:0 0 12px;
-    font-size:18px;
-}
-
-.footer-links{
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px 15px;
-}
-
-.footer-links a{
-    color:#d1d5db;
-    font-size:14px;
-}
-
+.site-footer{background:#111827;color:#fff;margin-top:35px;padding:30px 0 15px}
+.footer-inner{width:min(1400px,96%);margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.footer-column h3,.footer-contact h3{margin:0 0 12px;font-size:18px}
+.footer-links{display:flex;flex-wrap:wrap;gap:8px 15px}
+.footer-links a{color:#d1d5db;font-size:14px}
 .footer-links a:hover{color:#fff}
+.footer-contact p{margin:5px 0;color:#d1d5db;font-size:14px}
+.copyright{width:min(1400px,96%);margin:25px auto 0;padding-top:15px;border-top:1px solid #374151;text-align:center;color:#9ca3af;font-size:13px}
 
-.footer-contact p{
-    margin:5px 0;
-    color:#d1d5db;
-    font-size:14px;
-}
-
-.copyright{
-    width:min(1400px,96%);
-    margin:25px auto 0;
-    padding-top:15px;
-    border-top:1px solid #374151;
-    text-align:center;
-    color:#9ca3af;
-    font-size:13px;
-}
-
-/* DARK MODE SUPPORT */
-body.dark-mode{
-    background:#0b1120;
-    color:#f9fafb;
-}
-
+/* DARK MODE */
+body.dark-mode{background:#0b1120;color:#f9fafb}
 body.dark-mode .top-header,
 body.dark-mode .nav-bar,
 body.dark-mode .breaking,
 body.dark-mode .page-title,
 body.dark-mode .national-card,
-body.dark-mode .sidebar-box{
-    background:#111827;
-    color:#f9fafb;
-    border-color:#374151;
-}
-
+body.dark-mode .sidebar-box{background:#111827;color:#f9fafb;border-color:#374151}
 body.dark-mode .logo,
 body.dark-mode .nav-inner a,
 body.dark-mode .breaking-text,
 body.dark-mode .section-head h2,
 body.dark-mode .national-card-title,
 body.dark-mode .sidebar-title,
-body.dark-mode .sidebar-item-title{
-    color:#f9fafb;
-}
-
+body.dark-mode .sidebar-item-title{color:#f9fafb}
 body.dark-mode .sidebar-item{border-color:#374151}
 
 /* TABLET */
 @media(min-width:601px) and (max-width:1100px){
     .main-layout{grid-template-columns:1fr}
     .national-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-
-    .article-sidebar{
-        display:grid;
-        grid-template-columns:repeat(2,minmax(0,1fr));
-        align-items:start;
-    }
+    .article-sidebar{height:auto!important;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:start;overflow:visible}
 }
 
 /* MOBILE */
 @media(max-width:600px){
     .header-inner{min-height:58px}
     .logo{font-size:22px}
-
-    .nav-inner a{
-        padding:9px 11px;
-        font-size:12px;
-    }
-
+    .nav-inner a{padding:9px 11px;font-size:12px}
     .breaking{margin-top:8px}
-
-    .breaking-title{
-        padding:7px 10px;
-        font-size:10px;
-    }
-
-    .breaking-text{
-        font-size:12px;
-        padding:7px 10px;
-    }
-
-    .page{
-        width:94%;
-        margin-top:10px;
-    }
-
-    .page-title{
-        font-size:20px;
-        padding:10px 12px;
-    }
-
+    .breaking-title{padding:7px 10px;font-size:10px}
+    .breaking-text{font-size:12px;padding:7px 10px}
+    .page{width:94%;margin-top:10px}
+    .page-title{font-size:20px;padding:10px 12px}
     .main-layout{display:block}
-
-    /* TEXT LEFT - IMAGE RIGHT */
-    .national-grid{
-        display:grid;
-        grid-template-columns:1fr;
-        gap:0;
-    }
-
-    .national-card{
-        display:flex;
-        flex-direction:row-reverse;
-        align-items:center;
-        width:100%;
-        min-height:95px;
-        border-radius:0;
-        border-bottom:1px solid #e5e7eb;
-        background:#fff;
-        box-shadow:none;
-        transform:none;
-    }
-
-    .national-card:hover{
-        transform:none;
-        box-shadow:none;
-    }
-
-    .national-card img{
-        width:105px;
-        height:70px;
-        aspect-ratio:auto;
-        object-fit:cover;
-        border-radius:5px;
-        flex-shrink:0;
-        margin-left:10px;
-    }
-
-    .national-card-content{
-        flex:1;
-        min-width:0;
-        padding:7px 0;
-    }
-
-    .national-card-title{
-        margin:0;
-        font-size:13px;
-        line-height:1.45;
-        font-weight:800;
-        -webkit-line-clamp:4;
-    }
-
-    .article-sidebar{
-        margin-top:22px;
-        gap:12px;
-    }
-
+    .national-grid{display:grid;grid-template-columns:1fr;gap:0}
+    .national-card{display:flex;flex-direction:row-reverse;align-items:center;width:100%;min-height:95px;border-radius:0;border-bottom:1px solid #e5e7eb;background:#fff;box-shadow:none;transform:none}
+    .national-card:hover{transform:none;box-shadow:none}
+    .national-card img{width:105px;height:70px;aspect-ratio:auto;object-fit:cover;border-radius:5px;flex-shrink:0;margin-left:10px}
+    .national-card-content{flex:1;min-width:0;padding:7px 0}
+    .national-card-title{margin:0;font-size:13px;line-height:1.45;font-weight:800;-webkit-line-clamp:4}
+    .article-sidebar{height:auto!important;margin-top:22px;gap:12px;display:flex;overflow:visible}
     .sidebar-box{padding:11px}
     .sidebar-title{font-size:17px}
-
-    .sidebar-item img{
-        width:90px;
-        height:62px;
-    }
-
+    .sidebar-item img{width:90px;height:62px}
     .sidebar-item-title{font-size:13px}
-
-    .footer-inner{
-        grid-template-columns:1fr;
-        gap:22px;
-    }
-
-    .footer-links{
-        display:grid;
-        grid-template-columns:1fr 1fr;
-    }
+    .footer-inner{grid-template-columns:1fr;gap:22px}
+    .footer-links{display:grid;grid-template-columns:1fr 1fr}
 }
 
 /* SMALL MOBILE */
 @media(max-width:380px){
     .national-card{min-height:90px}
-
-    .national-card img{
-        width:95px;
-        height:64px;
-    }
-
+    .national-card img{width:95px;height:64px}
     .national-card-content{padding:5px 0}
-
-    .national-card-title{
-        font-size:12px;
-        line-height:1.4;
-    }
+    .national-card-title{font-size:12px;line-height:1.4}
 }
-
- /* NATIONAL PAGE — MAIN & SIDEBAR HEIGHT FIX */
-
-.national-page-layout {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 320px;
-    align-items: start;
-    gap: 24px;
-}
-
-.national-main-content,
-.national-sidebar {
-    min-width: 0;
-    height: fit-content;
-    align-self: start;
-}
-
-/* Sidebar articles should not overflow */
-.national-sidebar {
-    overflow: hidden;
-}
-
-@media (max-width: 768px) {
-    .national-page-layout {
-        grid-template-columns: 1fr;
-    }
-
-    .national-main-content,
-    .national-sidebar {
-        width: 100%;
-    }
-}
-    
-/* NATIONAL PAGE — MATCH SIDEBAR TO MAIN CONTENT */
-
-.main-layout {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 320px;
-    gap: 22px;
-    align-items: stretch;
-}
-
-.national-main {
-    min-width: 0;
-    min-height: 0;
-}
-
-.national-main > .section {
-    margin-bottom: 0;
-}
-
-.article-sidebar {
-    min-width: 0;
-    min-height: 0;
-    height: 100%;
-    align-self: stretch;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    overflow: hidden;
-}
-
-.article-sidebar .sidebar-box {
-    min-height: 0;
-    flex: 0 1 auto;
-    overflow: hidden;
-}
-
-.article-sidebar .sidebar-item {
-    min-width: 0;
-}
-
-.article-sidebar .sidebar-item-title {
-    overflow-wrap: anywhere;
-}
-
-/* Tablet */
-@media (min-width: 601px) and (max-width: 1100px) {
-    .main-layout {
-        grid-template-columns: 1fr;
-        align-items: start;
-    }
-
-    .article-sidebar {
-        height: auto;
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        align-items: start;
-        overflow: visible;
-    }
-
-    .article-sidebar .sidebar-box {
-        min-width: 0;
-    }
-}
-
-/* Mobile */
-@media (max-width: 600px) {
-    .main-layout {
-        display: block;
-    }
-
-    .article-sidebar {
-        height: auto;
-        display: flex;
-        overflow: visible;
-        margin-top: 22px;
-    }
-}
-
 </style>
 </head>
 
@@ -638,27 +178,21 @@ body.dark-mode .sidebar-item{border-color:#374151}
 </div>
 
 <main class="page">
-
     <div class="page-title">జాతీయ వార్తలు</div>
 
     <div class="main-layout">
-
         <div class="national-main">
-
             <section class="section">
                 <div class="section-head">
                     <h2><span>జాతీయ వార్తలు</span></h2>
                 </div>
-
                 <div id="nationalGrid" class="national-grid">
                     <div class="loading">జాతీయ వార్తలు లోడ్ అవుతున్నాయి...</div>
                 </div>
             </section>
-
         </div>
 
         <aside class="article-sidebar">
-
             <div class="sidebar-box">
                 <div class="sidebar-title">ట్రెండింగ్ వార్తలు</div>
                 <div id="trendingSidebar"></div>
@@ -673,19 +207,14 @@ body.dark-mode .sidebar-item{border-color:#374151}
                 <div class="sidebar-title">టాప్ వార్తలు</div>
                 <div id="topNewsSidebar"></div>
             </div>
-
         </aside>
-
     </div>
 </main>
 
 <footer class="site-footer">
-
     <div class="footer-inner">
-
         <div class="footer-column">
             <h3>ముఖ్యమైన లింకులు</h3>
-
             <div class="footer-links">
                 <a href="advertise.html">Advertise With Us</a>
                 <a href="about.html">About Us</a>
@@ -701,19 +230,28 @@ body.dark-mode .sidebar-item{border-color:#374151}
             <p>newsb386@gmail.com</p>
             <p>Follow us for latest updates.</p>
         </div>
-
     </div>
 
     <div class="copyright">
         © 2026 BS 360 NEWS. All Rights Reserved.
     </div>
-
 </footer>
-
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
     "use strict";
+
+    const mainGrid = document.getElementById("nationalGrid");
+    const mainSection = document.querySelector(".national-main > .section");
+    const sidebar = document.querySelector(".article-sidebar");
+
+    const sidebarIds = [
+        "trendingSidebar",
+        "latestSidebar",
+        "topNewsSidebar"
+    ];
+
+    const originalSidebarHTML = {};
 
     function cleanText(text) {
         return String(text || "").replace(/\s+/g, " ").trim();
@@ -883,16 +421,113 @@ document.addEventListener("DOMContentLoaded", function () {
         const element = document.getElementById(id);
         if (!element) return;
 
-        /*
-         * Main National articles సంఖ్యకు మించి sidebar cards ఉండవు.
-         * Main articles లేనప్పుడు sidebar కూడా ఖాళీగా ఉంటుంది.
-         */
-        const count = Math.min(limit, mainCount, articles.length);
-        const visibleArticles = articles.slice(0, count);
+        const visibleArticles = articles.slice(
+            0,
+            Math.min(limit, mainCount, articles.length)
+        );
 
         element.innerHTML = visibleArticles.length
             ? visibleArticles.map(sidebarHTML).join("")
             : '<div class="loading">' + escapeHTML(emptyMessage) + '</div>';
+    }
+
+    /*
+     * DESKTOP HEIGHT MATCH:
+     * Sidebar content main National section కంటే పొడవుగా ఉంటే,
+     * చివరి sidebar cards‌ను ఒక్కొక్కటిగా తొలగిస్తుంది.
+     * చివరికి sidebar కింద అంచు main section కింద అంచుతో సమానంగా ఉంటుంది.
+     */
+    function fitSidebarToMain() {
+        if (!mainSection || !sidebar) return;
+
+        /* Tablet/mobileలో sidebar main కింద వస్తుంది; అక్కడ trim చేయకూడదు. */
+        if (window.innerWidth <= 1100) {
+            sidebar.style.height = "auto";
+            sidebar.style.overflow = "visible";
+            sidebarIds.forEach(function (id) {
+                const element = document.getElementById(id);
+                if (element && originalSidebarHTML[id] !== undefined) {
+                    element.innerHTML = originalSidebarHTML[id];
+                }
+            });
+            return;
+        }
+
+        /* Resize చేసినప్పుడు అసలు cards‌ను తిరిగి తెచ్చి మళ్లీ fit చేయాలి. */
+        sidebarIds.forEach(function (id) {
+            const element = document.getElementById(id);
+            if (element && originalSidebarHTML[id] !== undefined) {
+                element.innerHTML = originalSidebarHTML[id];
+            }
+        });
+
+        const targetHeight = Math.ceil(
+            mainSection.getBoundingClientRect().height
+        );
+
+        sidebar.style.height = targetHeight + "px";
+        sidebar.style.maxHeight = targetHeight + "px";
+        sidebar.style.overflow = "hidden";
+
+        let safety = 0;
+
+        while (sidebar.scrollHeight > targetHeight + 1 && safety < 200) {
+            safety++;
+
+            const boxes = Array.from(
+                sidebar.querySelectorAll(".sidebar-box")
+            );
+
+            let removed = false;
+
+            /* కింద ఉన్న Top News నుంచి అవసరమైతే cards తొలగించు. */
+            for (let i = boxes.length - 1; i >= 0; i--) {
+                const box = boxes[i];
+                const items = box.querySelectorAll(".sidebar-item");
+
+                if (items.length) {
+                    items[items.length - 1].remove();
+                    removed = true;
+
+                    /* ఖాళీ box మిగిలితే దాని title‌తో పాటు తీసేయి. */
+                    if (!box.querySelector(".sidebar-item")) {
+                        box.remove();
+                    }
+
+                    break;
+                }
+            }
+
+            /* Articles తీసేసినా ఇంకా ఎత్తు ఎక్కువైతే, కింది ఖాళీ box తీసేయి. */
+            if (!removed) {
+                const lastBox = sidebar.querySelector(".sidebar-box:last-child");
+
+                if (lastBox) {
+                    lastBox.remove();
+                    removed = true;
+                }
+            }
+
+            if (!removed) break;
+        }
+
+        /* Sidebar‌కు main content‌తో ఒకే bottom edge. */
+        sidebar.style.height = targetHeight + "px";
+        sidebar.style.maxHeight = targetHeight + "px";
+        sidebar.style.overflow = "hidden";
+    }
+
+    let resizeFrame = null;
+
+    function scheduleSidebarFit() {
+        if (resizeFrame !== null) {
+            cancelAnimationFrame(resizeFrame);
+        }
+
+        resizeFrame = requestAnimationFrame(function () {
+            resizeFrame = null;
+            fitSidebarToMain();
+        });
     }
 
     fetch("index.html?v=" + Date.now(), {
@@ -972,10 +607,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 : '<div class="loading">జాతీయ వార్తలు దొరకలేదు. index.html లో nationalSection చెక్ చేయండి.</div>'
         );
 
-        /*
-         * మూడు sidebars‌లోనూ National main articles సంఖ్యను
-         * గరిష్ఠ పరిమితిగా ఉపయోగిస్తున్నాం.
-         */
+        /* SIDEBARS */
         renderSidebar(
             "trendingSidebar",
             trending,
@@ -1000,11 +632,32 @@ document.addEventListener("DOMContentLoaded", function () {
             "టాప్ వార్తలు లేవు."
         );
 
+        /* Sidebar యొక్క అసలు HTML‌ను ఉంచు; resizeలో మళ్లీ ఉపయోగిస్తాం. */
+        sidebarIds.forEach(function (id) {
+            const element = document.getElementById(id);
+            if (element) {
+                originalSidebarHTML[id] = element.innerHTML;
+            }
+        });
+
+        /*
+         * Images load అయిన తర్వాత main section height మారవచ్చు.
+         * అందుకే మొదట render తర్వాత, images load అయిన తర్వాత కూడా fit చేస్తాం.
+         */
+        scheduleSidebarFit();
+
+        document.querySelectorAll(".article-sidebar img").forEach(function (img) {
+            if (!img.complete) {
+                img.addEventListener("load", scheduleSidebarFit, { once: true });
+                img.addEventListener("error", scheduleSidebarFit, { once: true });
+            }
+        });
+
         console.log("BS360 NATIONAL PAGE LOADED");
-        console.log("National:", national.length);
-        console.log("Trending:", trending.length);
-        console.log("Latest:", latest.length);
-        console.log("Top News:", topNews.length);
+        console.log("National articles:", national.length);
+        console.log("Trending articles:", trending.length);
+        console.log("Latest articles:", latest.length);
+        console.log("Top news articles:", topNews.length);
     })
     .catch(function (error) {
         console.error("BS360 NATIONAL ERROR:", error);
@@ -1020,6 +673,8 @@ document.addEventListener("DOMContentLoaded", function () {
             event.preventDefault();
         });
     });
+
+    window.addEventListener("resize", scheduleSidebarFit);
 });
 </script>
 
