@@ -579,7 +579,56 @@ body.dark-mode .loading{
     }
 }
 
-    
+  
+/* BUSINESS PAGE — Latest News full card fix */
+
+#latestSection,
+#latestGrid,
+.latest-section,
+.latest-grid {
+    height: auto;
+    max-height: none;
+    overflow: visible;
+}
+
+#latestGrid,
+.latest-grid {
+    align-items: stretch;
+}
+
+#latestGrid .news-item,
+.latest-grid .news-item,
+#latestSection .news-item {
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    overflow: visible;
+}
+
+#latestGrid .news-item a,
+.latest-grid .news-item a {
+    height: auto;
+    overflow: visible;
+}
+
+#latestGrid .news-item h3,
+.latest-grid .news-item h3,
+#latestSection .news-item h3 {
+    height: auto;
+    max-height: none;
+    overflow: visible;
+    display: block;
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+
+#latestGrid img,
+.latest-grid img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+  
 </style>
 </head>
 
