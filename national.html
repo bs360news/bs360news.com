@@ -11,7 +11,7 @@
 
 <meta
     name="description"
-    content="BS 360 NEWS జాతీయ వార్తలు - భారతదేశ తాజా వార్తలు, రాజకీయాలు, కేంద్ర ప్రభుత్వ నిర్ణయాలు, దేశవ్యాప్త పరిణామాలు."
+    content="BS 360 NEWS National News - భారతదేశ తాజా జాతీయ వార్తలు, కేంద్ర ప్రభుత్వ నిర్ణయాలు, దేశవ్యాప్త పరిణామాలు."
 >
 
 <meta
@@ -716,7 +716,7 @@ body.dark-mode .most-read-item{
             స్పోర్ట్స్ 
         </a>
 
-        <a href="AP%26TS.html">
+        <a href="AP&TS.html">
             ఏపీ & టీస్ 
         </a>
 
@@ -736,7 +736,7 @@ body.dark-mode .most-read-item{
     </div>
 
     <div class="breaking-text">
-        దేశవ్యాప్తంగా తాజా జాతీయ వార్తలు, కేంద్ర ప్రభుత్వ నిర్ణయాలు, రాజకీయాలు, ముఖ్య పరిణామాలు...
+        భారతదేశ తాజా జాతీయ వార్తలు, కేంద్ర ప్రభుత్వ నిర్ణయాలు, దేశవ్యాప్త పరిణామాలు...
     </div>
 
 </div>
@@ -752,10 +752,12 @@ body.dark-mode .most-read-item{
 
 
             <!-- =====================================================
-                 DIRECT MOVIE ARTICLES
+                 DIRECT NATIONAL ARTICLES
             ====================================================== -->
 
-            <div id="localNationalSource" hidden></div>
+            <div id="localNationalSource" hidden>
+
+            </div>
 
                 </article>
 
@@ -893,7 +895,7 @@ body.dark-mode .most-read-item{
             </div>
 
 
-            <!-- NATIONAL -->
+            <!-- NATIONAL NEWS -->
 
             <section class="section">
 
@@ -939,8 +941,8 @@ body.dark-mode .most-read-item{
             </div>
 
             <div class="sidebar-box">
-                <div class="sidebar-title">టాప్ వార్తల</div>
-                <div id="nationalNewsSidebar"></div>
+                <div class="sidebar-title">టాప్ వార్తలు</div>
+                <div id="topNewsSidebar"></div>
             </div>
 
         </aside>
@@ -1201,20 +1203,20 @@ document.addEventListener("DOMContentLoaded", function(){
 
     /* =====================================================
        LAPTOP: SIDEBAR MUST END WITH NATIONAL ARTICLES
-       Keep the sidebar beside the National section only.
-       Do not let sidebar content extend below the national list.
+       Keep the sidebar beside the National News section only.
+       Do not let sidebar content extend below the movie list.
     ===================================================== */
 
     function matchSidebarToNationalHeight(){
-        const nationalMain = document.querySelector(".national-main");
+        const moviesMain = document.querySelector(".national-main");
         const sidebar = document.querySelector(".article-sidebar");
 
-        if(!nationalMain || !sidebar) return;
+        if(!moviesMain || !sidebar) return;
 
         if(window.innerWidth > 1100){
-            const nationalHeight = Math.ceil(nationalMain.getBoundingClientRect().height);
-            sidebar.style.height = nationalHeight + "px";
-            sidebar.style.maxHeight = nationalHeight + "px";
+            const moviesHeight = Math.ceil(moviesMain.getBoundingClientRect().height);
+            sidebar.style.height = moviesHeight + "px";
+            sidebar.style.maxHeight = moviesHeight + "px";
             sidebar.style.overflow = "hidden";
         } else {
             sidebar.style.height = "";
@@ -1267,19 +1269,14 @@ document.addEventListener("DOMContentLoaded", function(){
            HOME SOURCES
         ================================================= */
 
-        const homeNational =
-            getArticles(
-                home.getElementById(
-                    "nationalNewsSource"
-                )
-            );
-
+        const homeNational = getSectionArticles(home, [
+            "nationalNewsSource", "nationalSource", "nationalNewsGrid",
+            "nationalGrid", "nationalNewsSection", "nationalNews"
+        ], ["National News", "National Update", "జాతీయ వార్తలు", "దేశ వార్తలు", "జాతీయ వార్త"]);
 
         const localNational =
             getArticles(
-                document.getElementById(
-                    "localNationalSource"
-                )
+                document.getElementById("localNationalSource")
             );
 
 
@@ -1290,7 +1287,7 @@ document.addEventListener("DOMContentLoaded", function(){
            DUPLICATE URL REMOVE
         ================================================= */
 
-        const national = [
+        const nationalArticles = [
 
             ...localNational,
             ...homeNational
@@ -1320,20 +1317,15 @@ document.addEventListener("DOMContentLoaded", function(){
             "latestNewsSource", "latestGrid", "latestSection", "latestNews", "latestNewsList"
         ], ["Latest News", "Latest", "తాజా వార్తలు", "తాజా వార్త"]);
 
-        const nationalNews = getSectionArticles(home, [
-            "nationalNewsSource", "nationalNewsGrid", "nationalNewsSection", "nationalGrid", "nationalSection"
-        ], ["National News", "National Updates", "జాతీయ వార్తలు", "జాతీయ వార్తలు", "దేశ వార్తలు"]);
-
-
-        /* =================================================
+                /* =================================================
            NATIONAL
         ================================================= */
 
         show(
             "nationalGrid",
-            national.length
-                ? national.map(cardHTML).join("")
-                : '<div class="loading">National articles index.html లో కనిపించలేదు. Homepage source ID / article structure చెక్ చేయండి.</div>'
+            nationalArticles.length
+                ? nationalArticles.map(cardHTML).join("")
+                : '<div class="loading">జాతీయ వార్తలు లోడ్ కాలేదు. index.html లో nationalNewsSource / nationalSource ID ఉందో చూడండి.</div>'
         );
 
 
@@ -1374,13 +1366,13 @@ document.addEventListener("DOMContentLoaded", function(){
         );
 
         /* =================================================
-           MOVIE REVIEWS (HOMEPAGE ONLY IN SIDEBAR)
+           TOP NEWS (HOMEPAGE ONLY IN SIDEBAR)
         ================================================= */
 
         show(
-            "nationalNewsSidebar",
-            nationalNews.slice(0, 5).map(sidebarHTML).join("") ||
-                '<div class="loading">Homepage National News articles దొరకలేదు.</div>'
+            "topNewsSidebar",
+            topNews.slice(0, 5).map(sidebarHTML).join("") ||
+                '<div class="loading">Homepage Top News articles దొరకలేదు.</div>'
         );
 
         /* On laptop, match the sidebar height to the end of national articles. */
@@ -1400,18 +1392,18 @@ document.addEventListener("DOMContentLoaded", function(){
         );
 
         console.log(
-            "Local National:",
+            "Local National Articles:",
             localNational.length
         );
 
         console.log(
-            "National:",
-            national.length
+            "National Articles:",
+            nationalArticles.length
         );
         console.log("Homepage Top News articles:", topNews.length);
         console.log("Homepage Trending articles:", trending.length);
         console.log("Homepage Latest articles:", latest.length);
-        console.log("Homepage National News articles:", nationalNews.length);
+        console.log("Homepage Movie Reviews articles:", movieReviews.length);
 
         console.log(
             "================================"
