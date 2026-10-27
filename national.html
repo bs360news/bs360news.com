@@ -920,7 +920,7 @@ body.dark-mode .most-read-item{
         </div>
 
 
-        <!-- HOMEPAGE SECTIONS SHOWN ONLY IN SIDEBAR -->
+          <!-- HOMEPAGE SECTIONS SHOWN ONLY IN SIDEBAR -->
 
         <aside class="article-sidebar">
 
@@ -937,8 +937,8 @@ body.dark-mode .most-read-item{
             </div>
 
             <div class="sidebar-box">
-                <div class="sidebar-title">టాప్ వార్తలు</div>
-                <div id="topNewsSidebar"></div>
+                <div class="sidebar-title">టాప్ వార్తల</div>
+                <div id="movieReviewsSidebar"></div>
             </div>
 
         </aside>
@@ -1045,7 +1045,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
         let items = [];
         const cardSelector = [
-            ".news-item.post", "article", ".news-card", ".national-card",
+            ".news-item.post", "article", ".news-card", ".movie-card",
             ".post-card", ".latest-news-card", ".trending-card",
             ".top-news-card", ".review-card", ".news-item"
         ].join(",");
@@ -1127,7 +1127,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
             <a
                 href="${article.url}"
-                class="national-card"
+                class="movie-card"
             >
 
                 <img
@@ -1136,9 +1136,9 @@ document.addEventListener("DOMContentLoaded", function(){
                     loading="lazy"
                 >
 
-                <div class="national-card-content">
+                <div class="movie-card-content">
 
-                    <h3 class="national-card-title">
+                    <h3 class="movie-card-title">
                         ${article.title}
                     </h3>
 
@@ -1198,13 +1198,13 @@ document.addEventListener("DOMContentLoaded", function(){
 
 
     /* =====================================================
-       LAPTOP: SIDEBAR MUST END WITH NATIONAL ARTICLES
-       Keep the sidebar beside the National News section only.
+       LAPTOP: SIDEBAR MUST END WITH MOVIES ARTICLES
+       Keep the sidebar beside the Movies section only.
        Do not let sidebar content extend below the movie list.
     ===================================================== */
 
-    function matchSidebarToNationalHeight(){
-        const moviesMain = document.querySelector(".national-main");
+    function matchSidebarToMoviesHeight(){
+        const moviesMain = document.querySelector(".movies-main");
         const sidebar = document.querySelector(".article-sidebar");
 
         if(!moviesMain || !sidebar) return;
@@ -1221,7 +1221,7 @@ document.addEventListener("DOMContentLoaded", function(){
         }
     }
 
-    window.addEventListener("resize", matchSidebarToNationalHeight);
+    window.addEventListener("resize", matchSidebarToMoviesHeight);
 
     /* =====================================================
        LOAD INDEX
@@ -1265,28 +1265,33 @@ document.addEventListener("DOMContentLoaded", function(){
            HOME SOURCES
         ================================================= */
 
-        const homeNational = getSectionArticles(home, [
-            "nationalNewsSource", "nationalSource", "nationalNewsGrid",
-            "nationalGrid", "nationalNewsSection", "nationalNews"
-        ], ["National News", "National Update", "జాతీయ వార్తలు", "దేశ వార్తలు", "జాతీయ వార్త"]);
-
-        const localNational =
+        const homeMovies =
             getArticles(
-                document.getElementById("localNationalSource")
+                home.getElementById(
+                    "entertainmentSource"
+                )
+            );
+
+
+        const localMovies =
+            getArticles(
+                document.getElementById(
+                    "localMoviesSource"
+                )
             );
 
 
         /* =================================================
-           LOCAL NATIONAL FIRST
-           THEN HOME NATIONAL
+           LOCAL MOVIES FIRST
+           THEN HOME MOVIES
            
            DUPLICATE URL REMOVE
         ================================================= */
 
-        const nationalArticles = [
+        const movies = [
 
-            ...localNational,
-            ...homeNational
+            ...localMovies,
+            ...homeMovies
 
         ]
 
@@ -1313,15 +1318,22 @@ document.addEventListener("DOMContentLoaded", function(){
             "latestNewsSource", "latestGrid", "latestSection", "latestNews", "latestNewsList"
         ], ["Latest News", "Latest", "తాజా వార్తలు", "తాజా వార్త"]);
 
-                /* =================================================
-           NATIONAL
+        const movieReviews = getSectionArticles(home, [
+            "movieReviewsSource", "movieReviewsGrid", "movieReviewsSection", "movieReviews",
+            "movieReviewGrid", "movieReviewSection", "reviewsGrid", "reviewsSection",
+            "cinemaGrid", "cinemaSection", "movieReviewsTrack", "reviewsTrack"
+        ], ["Movie Reviews", "Movie Review", "మూవీ రివ్యూస్", "మూవీ రివ్యూ", "సినిమా రివ్యూస్", "సినిమా రివ్యూ"]);
+
+
+        /* =================================================
+           MOVIES
         ================================================= */
 
         show(
-            "nationalGrid",
-            nationalArticles.length
-                ? nationalArticles.map(cardHTML).join("")
-                : '<div class="loading">జాతీయ వార్తలు లోడ్ కాలేదు. index.html లో nationalNewsSource / nationalSource ID ఉందో చూడండి.</div>'
+            "moviesGrid",
+            movies.length
+                ? movies.map(cardHTML).join("")
+                : '<div class="loading">Movies articles index.html లో కనిపించలేదు. Homepage source ID / article structure చెక్ చేయండి.</div>'
         );
 
 
@@ -1362,18 +1374,18 @@ document.addEventListener("DOMContentLoaded", function(){
         );
 
         /* =================================================
-           TOP NEWS (HOMEPAGE ONLY IN SIDEBAR)
+           MOVIE REVIEWS (HOMEPAGE ONLY IN SIDEBAR)
         ================================================= */
 
         show(
-            "topNewsSidebar",
-            topNews.slice(0, 5).map(sidebarHTML).join("") ||
-                '<div class="loading">Homepage Top News articles దొరకలేదు.</div>'
+            "movieReviewsSidebar",
+            movieReviews.slice(0, 5).map(sidebarHTML).join("") ||
+                '<div class="loading">Homepage Movie Reviews articles దొరకలేదు.</div>'
         );
 
-        /* On laptop, match the sidebar height to the end of national articles. */
-        matchSidebarToNationalHeight();
-        requestAnimationFrame(matchSidebarToNationalHeight);
+        /* On laptop, match the sidebar height to the end of movie articles. */
+        matchSidebarToMoviesHeight();
+        requestAnimationFrame(matchSidebarToMoviesHeight);
 
         /* =================================================
            CONSOLE
@@ -1384,17 +1396,17 @@ document.addEventListener("DOMContentLoaded", function(){
         );
 
         console.log(
-            "BS360 NATIONAL PAGE LOADED"
+            "BS360 MOVIES PAGE LOADED"
         );
 
         console.log(
-            "Local National Articles:",
-            localNational.length
+            "Local Movies:",
+            localMovies.length
         );
 
         console.log(
-            "National Articles:",
-            nationalArticles.length
+            "Movies:",
+            movies.length
         );
         console.log("Homepage Top News articles:", topNews.length);
         console.log("Homepage Trending articles:", trending.length);
@@ -1411,16 +1423,16 @@ document.addEventListener("DOMContentLoaded", function(){
     .catch(function(error){
 
         console.error(
-            "BS360 NATIONAL ERROR:",
+            "BS360 MOVIES ERROR:",
             error
         );
 
 
         show(
-            "nationalGrid",
+            "moviesGrid",
             `
                 <div class="loading">
-                    National News load కాలేదు.
+                    Movies News load కాలేదు.
                 </div>
             `
         );
