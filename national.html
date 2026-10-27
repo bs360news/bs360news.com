@@ -678,58 +678,29 @@ body.dark-mode .most-read-item{
 
 
 
+/* =========================================
+   BS 360 NEWS - STICKY NAVIGATION
+   Original position + scroll freeze
+   No background or color changes
+========================================= */
 
-/* FIXED NAVIGATION - ALWAYS VISIBLE */
 .bs-navigation {
-    position: fixed !important;
+    position: sticky !important;
     top: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
     z-index: 99999;
 
-    display: flex;
-    align-items: center;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    overflow-y: hidden;
-    white-space: nowrap;
-
-    background: #111;
+    /* Keep existing design */
+    background: inherit;
     box-sizing: border-box;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
 }
 
-.bs-navigation::-webkit-scrollbar {
-    display: none;
-}
-
+/* Keep navigation links in their original style */
 .bs-navigation a {
-    flex: 0 0 auto;
-    white-space: nowrap;
+    flex-shrink: 0;
 }
 
-/* NAVIGATION FIXED HEIGHT SPACE */
-body {
-    padding-top: 50px;
-}
-
-/* MOBILE */
-@media (max-width: 768px) {
-    .bs-navigation {
-        min-height: 46px;
-    }
-
-    .bs-navigation a {
-        padding: 12px 10px;
-        font-size: 13px;
-    }
-
-    body {
-        padding-top: 46px;
-    }
-}
+/* Do not change existing navigation colors,
+   backgrounds, font sizes or padding */
 
 
 </style>
