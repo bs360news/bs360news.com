@@ -677,6 +677,61 @@ body.dark-mode .most-read-item{
 
 
 
+
+
+/* FIXED NAVIGATION - ALWAYS VISIBLE */
+.bs-navigation {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 99999;
+
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+
+    background: #111;
+    box-sizing: border-box;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.bs-navigation::-webkit-scrollbar {
+    display: none;
+}
+
+.bs-navigation a {
+    flex: 0 0 auto;
+    white-space: nowrap;
+}
+
+/* NAVIGATION FIXED HEIGHT SPACE */
+body {
+    padding-top: 50px;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .bs-navigation {
+        min-height: 46px;
+    }
+
+    .bs-navigation a {
+        padding: 12px 10px;
+        font-size: 13px;
+    }
+
+    body {
+        padding-top: 46px;
+    }
+}
+
+
 </style>
 
 </head>
@@ -700,34 +755,29 @@ body.dark-mode .most-read-item{
 </header>
 
 
-<nav class="nav-bar">
+    <!-- NAVIGATION -->
+       <!-- NAVIGATION -->
+<nav class="bs-navigation">
+    <a href="index.html" class="nav-home">
+        <svg viewBox="0 0 24 24" width="17" height="17"
+             fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round"
+             stroke-linejoin="round" aria-hidden="true">
+            <path d="m3 10 9-7 9 7"></path>
+            <path d="M5 9v12h14V9"></path>
+            <path d="M9 21v-7h6v7"></path>
+        </svg>
+        <span>హోమ్</span>
+    </a>
 
-    <div class="nav-inner">
-
-        <a href="index.html">
-            హోమ్ 
-        </a>
-
-        <a href="MOVIES.html">
-            మూవీస్ 
-        </a>
-
-        <a href="SPORTS.html">
-            స్పోర్ట్స్ 
-        </a>
-
-        <a href="AP&TS.html">
-            ఏపీ & టీస్ 
-        </a>
-
-        <a href="business.html">
-            బిజినెస్ 
-        </a>
-  <a href="national.html"  class="active">
-  జాతీయ వార్తలు
-        </a>
-    </div>
-
+    <a href="MOVIES.html">ఎంటర్టైన్మెంట్</a>
+    <a href="SPORTS.html">స్పోర్ట్స్</a>
+    <a href="AP%26TS.html">ఏపీ&amp;టీఎస్</a>
+    <a href="business.html">బిజినెస్</a>
+    <a href="moviereviews.html">మూవీ రివ్యూస్</a>
+    <a href="national.html">జాతీయ వార్తలు</a>
+    <a href="international.html">అంతర్జాతీయ వార్తలు</a>
+    <a href="tajavarthalu.html">తాజా వార్తలు</a>
 </nav>
 
 
@@ -763,6 +813,65 @@ body.dark-mode .most-read-item{
 
 
 
+
+<div id="localNationalSource" hidden>
+
+    <!-- NATIONAL ARTICLE 1 -->
+    <article class="news-item post"
+        data-url="india-gst-rules-changes-november-2026/">
+        <a href="india-gst-rules-changes-november-2026/">
+            <img src="images/india-gst-rules-changes.jpg"
+                 alt="భారత్‌లో జీఎస్టీ నిబంధనల్లో మార్పులు"
+                 loading="lazy">
+            <h3>నవంబర్ 1 నుంచి జీఎస్టీ నిబంధనల్లో మార్పులు.. వ్యాపారులకు కీలక అప్‌డేట్</h3>
+        </a>
+    </article>
+
+    <!-- NATIONAL ARTICLE 2 -->
+    <article class="news-item post"
+        data-url="supreme-court-national-voter-list-update/">
+        <a href="supreme-court-national-voter-list-update/">
+            <img src="images/supreme-court-voter-list.jpg"
+                 alt="సుప్రీంకోర్టు మరియు ఓటర్ల జాబితా"
+                 loading="lazy">
+            <h3>ఓటర్ల జాబితా సవరణపై సుప్రీంకోర్టులో కీలక పరిణామాలు</h3>
+        </a>
+    </article>
+
+    <!-- NATIONAL ARTICLE 3 -->
+    <article class="news-item post"
+        data-url="pm-modi-rbi-data-centre-odisha-2026/">
+        <a href="pm-modi-rbi-data-centre-odisha-2026/">
+            <img src="images/rbi-data-centre-odisha.jpg"
+                 alt="ఆర్‌బీఐ డేటా సెంటర్"
+                 loading="lazy">
+            <h3>ఒడిశాలో ఆర్‌బీఐ డేటా సెంటర్.. డిజిటల్ భద్రతకు మరింత బలం</h3>
+        </a>
+    </article>
+
+    <!-- NATIONAL ARTICLE 4 -->
+    <article class="news-item post"
+        data-url="india-brics-parliamentary-forum-2026/">
+        <a href="india-brics-parliamentary-forum-2026/">
+            <img src="images/brics-parliamentary-forum.jpg"
+                 alt="బ్రిక్స్ పార్లమెంటరీ ఫోరం"
+                 loading="lazy">
+            <h3>ఢిల్లీలో బ్రిక్స్ పార్లమెంటరీ ఫోరం.. అంతర్జాతీయ అంశాలపై చర్చ</h3>
+        </a>
+    </article>
+
+    <!-- NATIONAL ARTICLE 5 -->
+    <article class="news-item post"
+        data-url="india-cyclone-preparedness-october-2026/">
+        <a href="india-cyclone-preparedness-october-2026/">
+            <img src="images/india-cyclone-preparedness.jpg"
+                 alt="తుపాను ముందస్తు సన్నద్ధత"
+                 loading="lazy">
+            <h3>తుపాను ముప్పు వేళ అప్రమత్తత.. ప్రభావిత ప్రాంతాల్లో ముందస్తు చర్యలు</h3>
+        </a>
+    </article>
+
+</div>
 
 
                
