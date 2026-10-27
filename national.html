@@ -7,11 +7,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>National News | BS 360 NEWS</title>
+<title>Movies News | BS 360 NEWS</title>
 
 <meta
     name="description"
-    content="BS 360 NEWS National News - భారతదేశ తాజా జాతీయ వార్తలు, కేంద్ర ప్రభుత్వ నిర్ణయాలు, దేశవ్యాప్త పరిణామాలు."
+    content="BS 360 NEWS Movies News - తెలుగు సినిమా తాజా వార్తలు, మూవీ అప్డేట్స్, హీరో హీరోయిన్ల వార్తలు."
 >
 
 <meta
@@ -226,7 +226,7 @@ a{
 
 /* ALL ARTICLE GRIDS */
 
-.national-grid{
+.movies-grid{
     display:grid;
     grid-template-columns:repeat(4,minmax(0,1fr));
     gap:12px;
@@ -235,7 +235,7 @@ a{
 
 /* ARTICLE CARD */
 
-.national-card{
+.movie-card{
     display:block;
     background:#fff;
     border-radius:7px;
@@ -244,22 +244,22 @@ a{
     transition:transform .2s ease,box-shadow .2s ease;
 }
 
-.national-card:hover{
+.movie-card:hover{
     transform:translateY(-3px);
     box-shadow:0 5px 18px rgba(0,0,0,.10);
 }
 
-.national-card img{
+.movie-card img{
     width:100%;
     aspect-ratio:16 / 9;
     object-fit:cover;
 }
 
-.national-card-content{
+.movie-card-content{
     padding:9px;
 }
 
-.national-card-title{
+.movie-card-title{
     margin:0;
     color:#111827;
     font-size:14px;
@@ -449,7 +449,7 @@ body.dark-mode .top-header,
 body.dark-mode .nav-bar,
 body.dark-mode .breaking,
 body.dark-mode .page-title,
-body.dark-mode .national-card,
+body.dark-mode .movie-card,
 body.dark-mode .sidebar-box{
     background:#111827;
     color:#f9fafb;
@@ -460,7 +460,7 @@ body.dark-mode .logo,
 body.dark-mode .nav-inner a,
 body.dark-mode .breaking-text,
 body.dark-mode .section-head h2,
-body.dark-mode .national-card-title,
+body.dark-mode .movie-card-title,
 body.dark-mode .sidebar-title,
 body.dark-mode .sidebar-item-title,
 body.dark-mode .most-read-title{
@@ -481,7 +481,7 @@ body.dark-mode .most-read-item{
         grid-template-columns:1fr;
     }
 
-    .national-grid{
+    .movies-grid{
         grid-template-columns:repeat(2,minmax(0,1fr));
     }
 
@@ -551,13 +551,13 @@ body.dark-mode .most-read-item{
        RIGHT = IMAGE
     ========================================= */
 
-    .national-grid{
+    .movies-grid{
         display:grid;
         grid-template-columns:1fr;
         gap:0;
     }
 
-    .national-card{
+    .movie-card{
         display:flex;
         flex-direction:row-reverse;
         align-items:center;
@@ -570,12 +570,12 @@ body.dark-mode .most-read-item{
         transform:none;
     }
 
-    .national-card:hover{
+    .movie-card:hover{
         transform:none;
         box-shadow:none;
     }
 
-    .national-card img{
+    .movie-card img{
         width:105px;
         height:70px;
         aspect-ratio:auto;
@@ -585,13 +585,13 @@ body.dark-mode .most-read-item{
         margin-left:10px;
     }
 
-    .national-card-content{
+    .movie-card-content{
         flex:1;
         min-width:0;
         padding:7px 0;
     }
 
-    .national-card-title{
+    .movie-card-title{
         margin:0;
         font-size:13px;
         line-height:1.45;
@@ -650,25 +650,25 @@ body.dark-mode .most-read-item{
 
 @media(max-width:380px){
 
-    .national-grid{
+    .movies-grid{
         grid-template-columns:1fr;
         gap:0;
     }
 
-    .national-card{
+    .movie-card{
         min-height:90px;
     }
 
-    .national-card img{
+    .movie-card img{
         width:95px;
         height:64px;
     }
 
-    .national-card-content{
+    .movie-card-content{
         padding:5px 0;
     }
 
-    .national-card-title{
+    .movie-card-title{
         font-size:12px;
         line-height:1.4;
     }
@@ -699,29 +699,35 @@ body.dark-mode .most-read-item{
 
 </header>
 
-        <!-- NAVIGATION -->
-       <!-- NAVIGATION -->
-<nav class="bs-navigation">
-    <a href="index.html" class="nav-home">
-        <svg viewBox="0 0 24 24" width="17" height="17"
-             fill="none" stroke="currentColor"
-             stroke-width="2" stroke-linecap="round"
-             stroke-linejoin="round" aria-hidden="true">
-            <path d="m3 10 9-7 9 7"></path>
-            <path d="M5 9v12h14V9"></path>
-            <path d="M9 21v-7h6v7"></path>
-        </svg>
-        <span>హోమ్</span>
-    </a>
 
-    <a href="MOVIES.html">ఎంటర్టైన్మెంట్</a>
-    <a href="SPORTS.html">స్పోర్ట్స్</a>
-    <a href="AP%26TS.html">ఏపీ&amp;టీఎస్</a>
-    <a href="business.html">బిజినెస్</a>
-    <a href="moviereviews.html">మూవీ రివ్యూస్</a>
-    <a href="national.html">జాతీయ వార్తలు</a>
-    <a href="international.html">అంతర్జాతీయ వార్తలు</a>
-    <a href="tajavarthalu.html">తాజా వార్తలు</a>
+<nav class="nav-bar">
+
+    <div class="nav-inner">
+
+        <a href="index.html">
+            హోమ్ 
+        </a>
+
+        <a href="MOVIES.html" class="active">
+            మూవీస్ 
+        </a>
+
+        <a href="SPORTS.html">
+            స్పోర్ట్స్ 
+        </a>
+
+        <a href="AP&TS.html">
+            ఏపీ & టీస్ 
+        </a>
+
+        <a href="business.html">
+            బిజినెస్ 
+        </a>
+  <a href="national.html">
+  జాతీయ వార్తలు
+        </a>
+    </div>
+
 </nav>
 
 
@@ -732,7 +738,7 @@ body.dark-mode .most-read-item{
     </div>
 
     <div class="breaking-text">
-        భారతదేశ తాజా జాతీయ వార్తలు, కేంద్ర ప్రభుత్వ నిర్ణయాలు, దేశవ్యాప్త పరిణామాలు...
+        సినిమా ప్రపంచంలోని తాజా వార్తలు, మూవీ అప్డేట్స్, హీరో హీరోయిన్ల వార్తలు...
     </div>
 
 </div>
@@ -744,16 +750,32 @@ body.dark-mode .most-read-item{
     <div class="main-layout">
 
 
-        <div class="national-main">
+        <div class="movies-main">
 
 
             <!-- =====================================================
-                 DIRECT NATIONAL ARTICLES
+                 DIRECT MOVIE ARTICLES
             ====================================================== -->
 
-            <div id="localNationalSource" hidden>
 
-            </div>
+
+        <div id="localNationalSource" hidden>
+
+
+                <article class="news-item post" data-url="nani-the-paradise-box-office-collections/">
+
+                    <img
+                        src="nani-the-paradise-box-office-collections.png"
+                        alt="భారీ వసూళ్లతో దూసుకెళ్తున్న నాని ‘ది ప్యారడైజ్’.. బాక్సాఫీస్ వద్ద జోరు"
+                    >
+
+                    <div class="news-content">
+
+                        <p>
+                            భారీ వసూళ్లతో దూసుకెళ్తున్న నాని ‘ది ప్యారడైజ్’.. బాక్సాఫీస్ వద్ద జోరు
+                        </p>
+
+                    </div>
 
                 </article>
 
@@ -891,36 +913,30 @@ body.dark-mode .most-read-item{
             </div>
 
 
-            <!-- NATIONAL NEWS -->
+         
 
-            <section class="section">
+<section class="section">
 
-                <div class="section-head">
+    <div class="section-head">
+        <h2>
+            <span>జాతీయ వార్తలు</span>
+        </h2>
+    </div>
 
-                    <h2>
-                        <span>జాతీయ వార్తలు</span> 
-                    </h2>
+    <div
+        id="nationalGrid"
+        class="movies-grid"
+    >
+        <div class="loading">
+            National News Loading...
+        </div>
+    </div>
 
-                </div>
-
-                <div
-                    id="nationalGrid"
-                    class="national-grid"
-                >
-
-                    <div class="loading">
-                        National News Loading...
-                    </div>
-
-                </div>
-
-            </section>
-
-
+</section>
         </div>
 
 
-          <!-- HOMEPAGE SECTIONS SHOWN ONLY IN SIDEBAR -->
+        <!-- HOMEPAGE SECTIONS SHOWN ONLY IN SIDEBAR -->
 
         <aside class="article-sidebar">
 
