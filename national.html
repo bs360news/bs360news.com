@@ -678,30 +678,163 @@ body.dark-mode .most-read-item{
 
 
 
-/* =========================================
-   BS 360 NEWS - STICKY NAVIGATION
-   Original position + scroll freeze
-   No background or color changes
-========================================= */
 
-.bs-navigation {
-    position: sticky !important;
+
+
+
+    
+/* ==========================================
+   BS 360 NEWS - STICKY HEADER
+   Same design as your screenshot
+========================================== */
+
+/* HEADER - LOGO + BRAND + DARK + LIVE */
+.bs-header {
+    position: sticky;
     top: 0;
     z-index: 99999;
+    width: 100%;
+    background: #ffffff;
+}
 
-    /* Keep existing design */
-    background: inherit;
+/* HEADER TOP */
+.bs-header-top {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     box-sizing: border-box;
 }
 
-/* Keep navigation links in their original style */
-.bs-navigation a {
-    flex-shrink: 0;
+/* BRAND AREA */
+.bs-brand {
+    display: flex;
+    align-items: center;
 }
 
-/* Do not change existing navigation colors,
-   backgrounds, font sizes or padding */
+/* LOGO */
+.bs-logo {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
 
+/* BRAND NAME */
+.bs-brand-name {
+    display: flex;
+    flex-direction: column;
+}
+
+/* HEADER ACTIONS */
+.bs-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+/* DARK BUTTON */
+.bs-dark-btn {
+    cursor: pointer;
+}
+
+/* LIVE */
+.bs-live {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.bs-live-dot {
+    display: inline-block;
+    border-radius: 50%;
+    background: #e60000;
+    width: 12px;
+    height: 12px;
+}
+
+/* ==========================================
+   NAVIGATION - ORIGINAL BLUE DESIGN
+========================================== */
+
+.bs-navigation {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+
+    background: #0759a5;
+    box-sizing: border-box;
+
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+}
+
+.bs-navigation::-webkit-scrollbar {
+    display: none;
+}
+
+/* NAVIGATION LINKS */
+.bs-navigation a {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+/* ==========================================
+   STICKY HEADER ON SCROLL
+   Header and navigation stay together
+========================================== */
+
+.bs-header {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    z-index: 99999;
+    align-self: start;
+}
+
+/* Keep navigation inside the header */
+.bs-header .bs-navigation {
+    position: relative;
+}
+
+/* ==========================================
+   MOBILE RESPONSIVE
+   Preserve existing colors and design
+========================================== */
+
+@media (max-width: 768px) {
+
+    .bs-header {
+        width: 100%;
+    }
+
+    .bs-header-top {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .bs-navigation {
+        width: 100%;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+
+    .bs-navigation a {
+        flex-shrink: 0;
+    }
+}
 
 </style>
 
@@ -711,25 +844,36 @@ body.dark-mode .most-read-item{
 <body>
 
 
-<header class="top-header">
+<!-- HEADER -->
+    <header class="bs-header">
+        <div class="bs-header-top">
+            <div class="bs-brand">
+                <a href="index.html">
+                    <img src="dp.png.png" alt="BS 360 NEWS" class="bs-logo">
+                </a>
+                <div class="bs-brand-name">
+                    <a href="index.html" class="bs-brand-title">
+                        <span class="brand-bs">BS</span>
+                        <span class="brand-360">360</span>
+                        <span class="brand-news">NEWS</span>
+                    </a>
+                    <span class="bs-tagline">Fast | Fair | Fearless</span>
+                </div>
+            </div>
 
-    <div class="header-inner">
-
-        <div class="logo">
-            BS <span>360</span> NEWS
+            <div class="bs-header-actions">
+                <button type="button" id="themeToggle" class="bs-dark-btn">🌙 Dark</button>
+                <div class="bs-live">
+                    <span class="bs-live-dot"></span>
+                    LIVE
+                </div>
+            </div>
         </div>
 
-      
-
-    </div>
-
-</header>
-
-
-    <!-- NAVIGATION -->
+        <!-- NAVIGATION -->
        <!-- NAVIGATION -->
 <nav class="bs-navigation">
-    <a href="index.html" class="nav-home">
+    <a href="index.html"  >
         <svg viewBox="0 0 24 24" width="17" height="17"
              fill="none" stroke="currentColor"
              stroke-width="2" stroke-linecap="round"
@@ -746,10 +890,12 @@ body.dark-mode .most-read-item{
     <a href="AP%26TS.html">ఏపీ&amp;టీఎస్</a>
     <a href="business.html">బిజినెస్</a>
     <a href="moviereviews.html">మూవీ రివ్యూస్</a>
-    <a href="national.html">జాతీయ వార్తలు</a>
+    <a href="national.html"   class="active">జాతీయ వార్తలు</a>
     <a href="international.html">అంతర్జాతీయ వార్తలు</a>
     <a href="tajavarthalu.html">తాజా వార్తలు</a>
 </nav>
+        
+    </header> 
 
 
 <div class="breaking">
