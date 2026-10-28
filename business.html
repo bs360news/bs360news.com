@@ -269,35 +269,38 @@ body.dark-mode .loading{background:#111827;color:#ddd}
 
 
 
+/* BUSINESS PAGE: SIDEBAR MUST END WITH MAIN ARTICLES */
 
-
- /* BUSINESS ARTICLES: LAPTOP ROW 4 CARDS */
 @media (min-width: 1101px) {
-    #businessGrid {
+    .main-layout {
         display: grid !important;
-        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
-        gap: 12px !important;
-        width: 100% !important;
+        grid-template-columns: minmax(0, 1fr) 320px !important;
+        gap: 22px !important;
+        align-items: start !important;
     }
 
-    #businessGrid .business-card {
-        display: block !important;
-        width: 100% !important;
+    .business-main {
         min-width: 0 !important;
-    }
-
-    #businessGrid .business-card img {
-        width: 100% !important;
-        aspect-ratio: 16 / 9 !important;
         height: auto !important;
-        object-fit: cover !important;
+        min-height: 0 !important;
     }
 
-    #businessGrid .business-card-content {
-        padding: 8px !important;
+    .article-sidebar {
+        display: flex !important;
+        flex-direction: column !important;
+        align-self: start !important;
+        height: auto !important;
+        min-height: 0 !important;
+        max-height: none !important;
+        overflow: visible !important;
+        gap: 12px !important;
+    }
+
+    .article-sidebar .sidebar-box {
+        flex: 0 0 auto !important;
+        min-height: 0 !important;
     }
 }
-
 </style>
 </head>
 
