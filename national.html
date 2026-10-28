@@ -149,20 +149,27 @@ body.dark-mode .loading{background:#111827;color:#ddd}
 
 
 
-
-/* HEADER FIXED కాకూడదు */
+/* HEADER SCROLL అవ్వాలి */
 .bs-header {
-    position: static !important;
+    position: relative !important;
+    top: auto !important;
+    z-index: auto !important;
 }
 
-/* NAVIGATION — మొదట ఉన్న చోటే ఉండాలి,
-   స్క్రోల్ చేసినప్పుడు పైకి అంటుకోవాలి */
+/* NAVIGATION మాత్రమే STICKY */
 .bs-navigation {
+    position: -webkit-sticky !important;
     position: sticky !important;
     top: 0 !important;
-    z-index: 99999 !important;
+    z-index: 999999 !important;
     width: 100%;
     background: #111 !important;
+}
+
+/* Navigation parent overflow సమస్యను సరిచేయాలి */
+.bs-header,
+.bs-header > div {
+    overflow: visible;
 }
 </style>
 </head>
