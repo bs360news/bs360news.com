@@ -212,6 +212,43 @@ body.dark-mode .sidebar-item{border-color:#374151}
     height: auto;
     align-self: start;
 }
+
+ 
+/* Sidebar మొత్తం ఎత్తు Main articles ఎత్తుతో సమానంగా ఉండాలి */
+@media (min-width: 1101px) {
+    .main-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 320px;
+        gap: 22px;
+        align-items: stretch;
+    }
+
+    .international-main {
+        min-width: 0;
+        height: auto;
+    }
+
+    .article-sidebar {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 10px;
+        height: 100%;
+        min-height: 0;
+        align-self: stretch;
+        overflow: hidden;
+    }
+
+    .article-sidebar .sidebar-box {
+        flex: 0 0 auto;
+        margin: 0;
+    }
+
+    .article-sidebar .sidebar-box:nth-child(3) {
+        display: none;
+    }
+}
+
 </style>
 </head>
 
