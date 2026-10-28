@@ -15,486 +15,1010 @@
 <link rel="icon" type="image/png" href="dp.png.png">
 <link rel="apple-touch-icon" href="dp.png.png">
 
+
 <style>
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-
-body{
-    margin:0;
-    padding:0;
-    background:#f3f5f7;
-    color:#111827;
-    font-family:Arial,"Noto Sans Telugu","Segoe UI",sans-serif;
-    line-height:1.6;
+/* ================= BASE ================= */
+* {
+    box-sizing: border-box;
 }
 
-img{display:block;width:100%;max-width:100%}
-a{color:inherit;text-decoration:none}
-
-/* HEADER */
-.top-header{
-    background:#fff;
-    border-bottom:1px solid #e5e7eb;
+html {
+    scroll-behavior: smooth;
 }
 
-.header-inner{
-    width:min(1400px,96%);
-    margin:auto;
-    min-height:68px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:15px;
+body {
+    margin: 0;
+    padding: 0;
+    background: #f3f5f7;
+    color: #111827;
+    font-family: Arial, "Noto Sans Telugu", "Segoe UI", sans-serif;
+    line-height: 1.6;
 }
 
-.logo{
-    font-size:30px;
-    font-weight:900;
-    letter-spacing:.5px;
-    color:#111827;
+img {
+    display: block;
+    max-width: 100%;
 }
 
-.logo span{color:#e50914}
-
-/* NAVIGATION */
-.nav-bar{
-    background:#fff;
-    border-bottom:1px solid #e5e7eb;
-    position:sticky;
-    top:0;
-    z-index:100;
+a {
+    color: inherit;
+    text-decoration: none;
 }
 
-.nav-inner{
-    width:min(1400px,96%);
-    margin:auto;
-    display:flex;
-    align-items:center;
-    gap:5px;
-    overflow-x:auto;
-    scrollbar-width:none;
+/* ================= OLD HEADER SUPPORT ================= */
+.top-header {
+    background: #fff;
+    border-bottom: 1px solid #e5e7eb;
 }
 
-.nav-inner::-webkit-scrollbar{display:none}
-
-.nav-inner a{
-    flex:0 0 auto;
-    padding:11px 15px;
-    font-size:14px;
-    font-weight:700;
-    white-space:nowrap;
-    color:#111827;
-    border-bottom:3px solid transparent;
+.header-inner {
+    width: min(1400px, 96%);
+    margin: auto;
+    min-height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
 }
 
-.nav-inner a:hover{color:#e50914}
-
-.nav-inner a.active{
-    color:#e50914;
-    border-bottom:3px solid #e50914;
+.logo {
+    font-size: 30px;
+    font-weight: 900;
+    letter-spacing: .5px;
+    color: #111827;
 }
 
-/* BREAKING NEWS */
-.breaking{
-    width:min(1400px,96%);
-    margin:12px auto 0;
-    background:#fff;
-    display:flex;
-    align-items:center;
-    overflow:hidden;
-    border-radius:6px;
-    border:1px solid #e5e7eb;
+.logo span {
+    color: #e50914;
 }
 
-.breaking-title{
-    background:#e50914;
-    color:#fff;
-    padding:8px 16px;
-    font-size:13px;
-    font-weight:900;
-    white-space:nowrap;
+.home-btn {
+    background: #e50914;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 700;
 }
 
-.breaking-text{
-    padding:8px 15px;
-    font-size:14px;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
-    color:#111827;
+.home-btn:hover {
+    background: #c7000b;
 }
 
-/* PAGE */
-.page{
-    width:min(1400px,96%);
-    margin:15px auto 35px;
+.nav-bar {
+    background: #fff;
+    border-bottom: 1px solid #e5e7eb;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
-.main-layout{
-    display:grid;
-    grid-template-columns:minmax(0,1fr) 320px;
-    gap:22px;
-    align-items:start;
+.nav-inner {
+    width: min(1400px, 96%);
+    margin: auto;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
 }
 
-.sports-main{min-width:0}
-
-.section{margin-bottom:30px}
-
-.section-head{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    margin-bottom:12px;
-    border-bottom:2px solid #e50914;
-    padding-bottom:7px;
+.nav-inner::-webkit-scrollbar {
+    display: none;
 }
 
-.section-head h2{
-    margin:0;
-    font-size:21px;
-    font-weight:900;
-    color:#111827;
+.nav-inner a {
+    flex: 0 0 auto;
+    padding: 11px 15px;
+    font-size: 14px;
+    font-weight: 700;
+    white-space: nowrap;
+    color: #111827;
+    border-bottom: 3px solid transparent;
 }
 
-.section-head h2 span{color:#e50914}
-
-/* SPORTS GRID */
-.sports-grid{
-    display:grid;
-    grid-template-columns:repeat(4,minmax(0,1fr));
-    gap:12px;
+.nav-inner a:hover {
+    color: #e50914;
 }
 
-/* SPORTS CARD */
-.sport-card{
-    display:block;
-    background:#fff;
-    border-radius:7px;
-    overflow:hidden;
-    min-width:0;
-    transition:transform .2s ease,box-shadow .2s ease;
+.nav-inner a.active {
+    color: #e50914;
+    border-bottom: 3px solid #e50914;
 }
 
-.sport-card:hover{
-    transform:translateY(-3px);
-    box-shadow:0 5px 18px rgba(0,0,0,.10);
+/* ================= BS 360 HEADER ================= */
+.bs-header {
+    position: relative;
+    z-index: 1000;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    color: #111;
+    border: 0 !important;
+    box-shadow: none !important;
 }
 
-.sport-card img{
-    width:100%;
-    aspect-ratio:16/9;
-    object-fit:cover;
-    background:#e5e7eb;
+.bs-header-top {
+    width: 100%;
+    max-width: 1240px;
+    min-height: 82px;
+    margin: 0 auto;
+    padding: 12px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
 }
 
-.sport-card-content{padding:9px}
-
-.sport-card-title{
-    margin:0;
-    color:#111827;
-    font-size:14px;
-    line-height:1.45;
-    font-weight:800;
-    display:-webkit-box;
-    -webkit-line-clamp:4;
-    -webkit-box-orient:vertical;
-    overflow:hidden;
+.bs-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
 }
 
-/* SIDEBAR */
-.article-sidebar{
-    display:flex;
-    flex-direction:column;
-    gap:18px;
-    min-height:0;
-    min-width:0;
+.bs-logo {
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+    flex-shrink: 0;
 }
 
-.sidebar-box{
-    background:#fff;
-    border-radius:8px;
-    padding:14px;
-    border:1px solid #e5e7eb;
-    min-width:0;
+.bs-brand-name {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
 }
 
-.sidebar-title{
-    font-size:19px;
-    line-height:1.3;
-    font-weight:900;
-    color:#111827;
-    padding-bottom:9px;
-    margin-bottom:5px;
-    border-bottom:3px solid #e50914;
+.bs-brand-title {
+    display: inline-flex;
+    align-items: center;
+    font-size: 25px;
+    line-height: 1.1;
+    font-weight: 900;
+    letter-spacing: -.5px;
+    white-space: nowrap;
 }
 
-.sidebar-item{
-    display:flex;
-    gap:10px;
-    padding:10px 0;
-    border-bottom:1px solid #e5e7eb;
-    text-decoration:none;
-    color:inherit;
+.brand-bs,
+.brand-news {
+    color: #111;
 }
 
-.sidebar-item:last-child{border-bottom:none}
-
-.sidebar-item img{
-    width:100px;
-    height:65px;
-    object-fit:cover;
-    border-radius:6px;
-    flex-shrink:0;
-    background:#e5e7eb;
+.brand-360 {
+    color: #e60000;
+    margin-left: 3px;
 }
 
-.sidebar-item-title{
-    font-size:14px;
-    line-height:1.4;
-    font-weight:700;
-    color:#1f2937;
-    display:-webkit-box;
-    -webkit-line-clamp:3;
-    -webkit-box-orient:vertical;
-    overflow:hidden;
+.brand-news {
+    margin-left: 4px;
 }
 
-/* LOADING */
-.loading{
-    grid-column:1/-1;
-    background:#fff;
-    padding:25px;
-    text-align:center;
-    border-radius:8px;
-    color:#666;
+.bs-brand-name > span {
+    font-size: 12px;
+    color: #555;
 }
 
-/* FOOTER */
-.site-footer{
-    background:#111827;
-    color:#fff;
-    margin-top:35px;
-    padding:30px 0 15px;
+/* ================= DARK BUTTON + LIVE ================= */
+.bs-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-shrink: 0;
 }
 
-.footer-inner{
-    width:min(1400px,96%);
-    margin:auto;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:40px;
+.bs-dark-btn {
+    padding: 8px 13px;
+    background: #fff;
+    color: #111;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
 }
 
-.footer-column h3,.footer-contact h3{
-    margin:0 0 12px;
-    font-size:18px;
+.bs-dark-btn:hover {
+    background: #eee;
 }
 
-.footer-links{
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px 15px;
+.bs-live {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #e60000;
+    font-size: 12px;
+    font-weight: 900;
+    white-space: nowrap;
 }
 
-.footer-links a{
-    color:#d1d5db;
-    font-size:14px;
+.bs-live-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #e60000;
+    flex-shrink: 0;
+    animation: bsLivePulse 1.2s infinite;
 }
 
-.footer-links a:hover{color:#fff}
-
-.footer-contact p{
-    margin:5px 0;
-    color:#d1d5db;
-    font-size:14px;
+@keyframes bsLivePulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: .35; }
 }
 
-.copyright{
-    width:min(1400px,96%);
-    margin:25px auto 0;
-    padding-top:15px;
-    border-top:1px solid #374151;
-    text-align:center;
-    color:#9ca3af;
-    font-size:13px;
+/* ================= NAVIGATION ================= */
+.bs-navigation {
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    width: 100%;
+    min-height: 46px;
+    margin: 0;
+    padding: 0 max(2%, calc((100% - 1240px) / 2));
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0;
+    background: #075aaa;
+    border: 0 !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
 }
 
-/* DARK MODE SUPPORT */
-body.dark-mode{
-    background:#0b1120;
-    color:#f9fafb;
+.bs-navigation::-webkit-scrollbar {
+    display: none;
+}
+
+.bs-navigation a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    flex: 0 0 auto;
+    padding: 14px 17px;
+    margin: 0;
+    color: #fff;
+    background: transparent;
+    border: 0 !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+    font-size: 14px;
+    line-height: 1.4;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.bs-navigation a:hover,
+.bs-navigation a.active {
+    color: #fff;
+    background: #064b8c;
+    border: 0 !important;
+    box-shadow: none !important;
+}
+
+.bs-header::before,
+.bs-header::after,
+.bs-navigation::before,
+.bs-navigation::after {
+    content: none !important;
+    display: none !important;
+}
+
+.bs-header,
+.bs-navigation,
+.bs-navigation a {
+    outline: none !important;
+    text-decoration: none;
+}
+
+/* ================= BREAKING NEWS ================= */
+.breaking {
+    width: min(1400px, 96%);
+    margin: 12px auto 0;
+    padding: 0;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+    border-top: 0 !important;
+    border-radius: 6px;
+    box-shadow: none !important;
+}
+
+.breaking-title {
+    background: #e50914;
+    color: #fff;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 900;
+    white-space: nowrap;
+}
+
+.breaking-text {
+    min-width: 0;
+    padding: 8px 15px;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #111827;
+}
+
+/* ================= PAGE ================= */
+.page {
+    width: min(1400px, 96%);
+    margin: 15px auto 35px;
+}
+
+.page-title {
+    margin-bottom: 18px;
+    padding: 12px 15px;
+    background: #fff;
+    border-left: 5px solid #e50914;
+    font-size: 24px;
+    font-weight: 900;
+}
+
+/* ================= MAIN LAYOUT ================= */
+.main-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: 22px;
+    align-items: start;
+}
+
+.sports-main,
+.business-main {
+    min-width: 0;
+    height: auto;
+}
+
+/* ================= SECTION ================= */
+.section {
+    min-width: 0;
+    margin-bottom: 30px;
+}
+
+.section-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    padding-bottom: 7px;
+    border-bottom: 2px solid #e50914;
+}
+
+.section-head h2 {
+    margin: 0;
+    color: #111827;
+    font-size: 21px;
+    font-weight: 900;
+}
+
+.section-head h2 span {
+    color: #e50914;
+}
+
+/* ================= SPORTS ARTICLE GRIDS ================= */
+.sports-grid,
+.business-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+    min-width: 0;
+}
+
+/* ================= SPORTS ARTICLE CARDS ================= */
+.sport-card,
+.business-card {
+    display: block;
+    min-width: 0;
+    overflow: hidden;
+    background: #fff;
+    border-radius: 7px;
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.sport-card:hover,
+.business-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 18px rgba(0, 0, 0, .10);
+}
+
+.sport-card img,
+.business-card img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+.sport-card-content,
+.business-card-content {
+    min-width: 0;
+    padding: 9px;
+}
+
+.sport-card-title,
+.business-card-title {
+    display: -webkit-box;
+    margin: 0;
+    overflow: hidden;
+    color: #111827;
+    font-size: 14px;
+    line-height: 1.45;
+    font-weight: 800;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+}
+
+/* ================= SIDEBAR ================= */
+.article-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    min-width: 0;
+    min-height: 0;
+    align-self: start;
+}
+
+.sidebar-box {
+    min-width: 0;
+    padding: 14px;
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+}
+
+.sidebar-title {
+    margin-bottom: 5px;
+    padding-bottom: 9px;
+    border-bottom: 3px solid #e50914;
+    color: #111827;
+    font-size: 19px;
+    line-height: 1.3;
+    font-weight: 900;
+}
+
+/* ================= SIDEBAR ARTICLES ================= */
+.sidebar-item,
+.most-read-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    color: inherit;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.sidebar-item:last-child,
+.most-read-item:last-child {
+    border-bottom: 0;
+}
+
+.sidebar-item img {
+    width: 100px;
+    height: 65px;
+    flex: 0 0 100px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.most-read-item img {
+    width: 95px;
+    height: 65px;
+    flex: 0 0 95px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.sidebar-item-title,
+.most-read-title {
+    display: -webkit-box;
+    min-width: 0;
+    overflow: hidden;
+    color: #1f2937;
+    font-size: 14px;
+    line-height: 1.4;
+    font-weight: 700;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+/* ================= LOADING ================= */
+.loading {
+    grid-column: 1 / -1;
+    padding: 25px;
+    background: #fff;
+    border-radius: 8px;
+    color: #666;
+    text-align: center;
+}
+
+/* ================= FOOTER ================= */
+.site-footer {
+    margin-top: 35px;
+    padding: 30px 0 15px;
+    background: #111827;
+    color: #fff;
+}
+
+.footer-inner {
+    width: min(1400px, 96%);
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.footer-column h3,
+.footer-contact h3 {
+    margin: 0 0 12px;
+    font-size: 18px;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 15px;
+}
+
+.footer-links a {
+    color: #d1d5db;
+    font-size: 14px;
+}
+
+.footer-links a:hover {
+    color: #fff;
+}
+
+.footer-contact p {
+    margin: 5px 0;
+    color: #d1d5db;
+    font-size: 14px;
+}
+
+.copyright {
+    width: min(1400px, 96%);
+    margin: 25px auto 0;
+    padding-top: 15px;
+    border-top: 1px solid #374151;
+    color: #9ca3af;
+    font-size: 13px;
+    text-align: center;
+}
+
+/* ================= DARK MODE ================= */
+body.dark-mode {
+    background: #111;
+    color: #fff;
 }
 
 body.dark-mode .top-header,
 body.dark-mode .nav-bar,
 body.dark-mode .breaking,
+body.dark-mode .page-title,
 body.dark-mode .sport-card,
-body.dark-mode .sidebar-box{
-    background:#111827;
-    color:#f9fafb;
-    border-color:#374151;
+body.dark-mode .business-card,
+body.dark-mode .sidebar-box {
+    background: #111827;
+    color: #f9fafb;
+    border-color: #374151;
 }
 
-body.dark-mode .logo,
-body.dark-mode .nav-inner a,
-body.dark-mode .breaking-text,
+body.dark-mode .bs-header {
+    background: #111;
+    color: #fff;
+}
+
+body.dark-mode .brand-bs,
+body.dark-mode .brand-news,
 body.dark-mode .section-head h2,
 body.dark-mode .sport-card-title,
+body.dark-mode .business-card-title,
 body.dark-mode .sidebar-title,
-body.dark-mode .sidebar-item-title{
-    color:#f9fafb;
+body.dark-mode .sidebar-item-title,
+body.dark-mode .most-read-title,
+body.dark-mode .breaking-text,
+body.dark-mode .nav-inner a {
+    color: #f9fafb;
 }
 
-body.dark-mode .sidebar-item{border-color:#374151}
-
-body.dark-mode .sport-card{
-    border:1px solid #374151;
+body.dark-mode .brand-360 {
+    color: #ff3333;
 }
 
-/* TABLET */
-@media(min-width:601px) and (max-width:1100px){
-    .main-layout{grid-template-columns:1fr}
-    .sports-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-    .article-sidebar{
-        display:grid;
-        grid-template-columns:repeat(2,minmax(0,1fr));
-        align-items:start;
-    }
+body.dark-mode .bs-brand-name > span {
+    color: #bbb;
 }
 
-/* MOBILE */
-@media(max-width:600px){
-    .header-inner{min-height:58px}
-    .logo{font-size:22px}
+body.dark-mode .bs-dark-btn {
+    background: #222;
+    color: #fff;
+    border-color: #666;
+}
 
-    .nav-inner a{
-        padding:9px 11px;
-        font-size:12px;
+body.dark-mode .sidebar-item,
+body.dark-mode .most-read-item {
+    border-color: #374151;
+}
+
+/* ================= DESKTOP LAYOUT ================= */
+@media (min-width: 1101px) {
+    .main-layout {
+        grid-template-columns: minmax(0, 1fr) 320px;
+        align-items: start;
     }
 
-    .breaking{margin-top:8px}
-    .breaking-title{padding:7px 10px;font-size:10px}
-    .breaking-text{font-size:12px;padding:7px 10px}
-
-    .page{
-        width:94%;
-        margin-top:10px;
+    .sports-grid,
+    .business-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 
-    .main-layout{display:block}
-
-    /* Mobile: text left, image right */
-    .sports-grid{
-        display:grid;
-        grid-template-columns:1fr;
-        gap:0;
-    }
-
-    .sport-card{
-        display:flex;
-        flex-direction:row-reverse;
-        align-items:center;
-        width:100%;
-        min-height:95px;
-        border-radius:0;
-        border-bottom:1px solid #e5e7eb;
-        background:#fff;
-        box-shadow:none;
-        transform:none;
-    }
-
-    .sport-card:hover{
-        transform:none;
-        box-shadow:none;
-    }
-
-    .sport-card img{
-        width:105px;
-        height:70px;
-        aspect-ratio:auto;
-        object-fit:cover;
-        border-radius:5px;
-        flex-shrink:0;
-        margin-left:10px;
-    }
-
-    .sport-card-content{
-        flex:1;
-        min-width:0;
-        padding:7px 0;
-    }
-
-    .sport-card-title{
-        margin:0;
-        font-size:13px;
-        line-height:1.45;
-        font-weight:800;
-        -webkit-line-clamp:4;
-    }
-
-    .article-sidebar{
-        margin-top:22px;
-        gap:12px;
-    }
-
-    .sidebar-box{padding:11px}
-    .sidebar-title{font-size:17px}
-
-    .sidebar-item img{
-        width:90px;
-        height:62px;
-    }
-
-    .sidebar-item-title{font-size:13px}
-
-    .footer-inner{
-        grid-template-columns:1fr;
-        gap:22px;
-    }
-
-    .footer-links{
-        display:grid;
-        grid-template-columns:1fr 1fr;
+    .article-sidebar {
+        align-self: start;
+        height: auto;
+        max-height: none;
+        overflow: visible;
     }
 }
 
-/* SMALL MOBILE */
-@media(max-width:380px){
-    .sport-card{min-height:90px}
-
-    .sport-card img{
-        width:95px;
-        height:64px;
+/* ================= TABLET ================= */
+@media (min-width: 601px) and (max-width: 1100px) {
+    .main-layout {
+        grid-template-columns: 1fr;
     }
 
-    .sport-card-content{padding:5px 0}
-
-    .sport-card-title{
-        font-size:12px;
-        line-height:1.4;
+    .sports-grid,
+    .business-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+
+    .article-sidebar {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        align-items: start;
+        height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
+    }
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 600px) {
+    .bs-header-top {
+        min-height: 65px;
+        padding: 9px 10px;
+        gap: 8px;
+    }
+
+    .bs-brand {
+        gap: 8px;
+    }
+
+    .bs-logo {
+        width: 42px;
+        height: 42px;
+    }
+
+    .bs-brand-title {
+        font-size: 19px;
+    }
+
+    .bs-brand-name > span {
+        font-size: 10px;
+    }
+
+    .bs-header-actions {
+        gap: 8px;
+    }
+
+    .bs-dark-btn {
+        padding: 6px 9px;
+        font-size: 11px;
+    }
+
+    .bs-live {
+        gap: 4px;
+        font-size: 10px;
+    }
+
+    .bs-live-dot {
+        width: 6px;
+        height: 6px;
+    }
+
+    .bs-navigation {
+        justify-content: flex-start;
+        padding: 0;
+    }
+
+    .bs-navigation a {
+        padding: 12px 15px;
+        font-size: 12px;
+    }
+
+    .header-inner {
+        min-height: 58px;
+    }
+
+    .logo {
+        font-size: 22px;
+    }
+
+    .home-btn {
+        padding: 6px 11px;
+        font-size: 13px;
+    }
+
+    .nav-inner a {
+        padding: 9px 11px;
+        font-size: 12px;
+    }
+
+    .breaking {
+        margin-top: 8px;
+    }
+
+    .breaking-title {
+        padding: 7px 10px;
+        font-size: 10px;
+    }
+
+    .breaking-text {
+        padding: 7px 10px;
+        font-size: 12px;
+    }
+
+    .page {
+        width: 94%;
+        margin-top: 10px;
+    }
+
+    .page-title {
+        padding: 10px 12px;
+        font-size: 20px;
+    }
+
+    .main-layout {
+        display: block;
+    }
+
+    .sports-grid,
+    .business-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .sport-card,
+    .business-card {
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        width: 100%;
+        min-height: 95px;
+        border-radius: 0;
+        border-bottom: 1px solid #e5e7eb;
+        background: #fff;
+        box-shadow: none;
+        transform: none;
+    }
+
+    .sport-card:hover,
+    .business-card:hover {
+        transform: none;
+        box-shadow: none;
+    }
+
+    .sport-card img,
+    .business-card img {
+        width: 105px;
+        height: 70px;
+        aspect-ratio: auto;
+        object-fit: cover;
+        border-radius: 5px;
+        flex: 0 0 105px;
+        margin-left: 10px;
+    }
+
+    .sport-card-content,
+    .business-card-content {
+        flex: 1;
+        min-width: 0;
+        padding: 7px 0;
+    }
+
+    .sport-card-title,
+    .business-card-title {
+        font-size: 13px;
+        line-height: 1.45;
+        -webkit-line-clamp: 4;
+    }
+
+    .article-sidebar {
+        margin-top: 22px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
+    }
+
+    .sidebar-box {
+        padding: 11px;
+    }
+
+    .sidebar-title {
+        font-size: 17px;
+    }
+
+    .sidebar-item img,
+    .most-read-item img {
+        width: 90px;
+        height: 62px;
+        flex-basis: 90px;
+    }
+
+    .sidebar-item-title,
+    .most-read-title {
+        font-size: 13px;
+    }
+
+    .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    .footer-links {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* ================= VERY SMALL MOBILE ================= */
+@media (max-width: 400px) {
+    .bs-brand-name > span {
+        display: none;
+    }
+
+    .bs-brand-title {
+        font-size: 17px;
+    }
+
+    .bs-logo {
+        width: 38px;
+        height: 38px;
+    }
+}
+
+@media (max-width: 380px) {
+    .sports-grid,
+    .business-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .sport-card,
+    .business-card {
+        min-height: 90px;
+    }
+
+    .sport-card img,
+    .business-card img {
+        width: 95px;
+        height: 64px;
+        flex-basis: 95px;
+    }
+
+    .sport-card-content,
+    .business-card-content {
+        padding: 5px 0;
+    }
+
+    .sport-card-title,
+    .business-card-title {
+        font-size: 12px;
+        line-height: 1.4;
+    }
+}
+
+/* ================= REMOVE ARTICLE BORDERS ================= */
+.sport-card,
+.business-card,
+.news-item,
+.post,
+.sidebar-item,
+.most-read-item {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* ================= REMOVE BOTTOM LINES ================= */
+.sport-card,
+.business-card,
+.sidebar-item,
+.most-read-item {
+    border-bottom: none !important;
+}
+
+/* ================= REMOVE HOVER BORDERS ================= */
+.sport-card:hover,
+.business-card:hover,
+.news-item:hover,
+.post:hover {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* ================= MOBILE BORDER REMOVAL ================= */
+@media (max-width: 600px) {
+    .sport-card,
+    .business-card,
+    .news-item,
+    .post {
+        border: none !important;
+        border-bottom: none !important;
+        box-shadow: none !important;
+    }
+}
+
+/* ================= WHITE ARTICLE BACKGROUND ================= */
+.sport-card,
+.business-card,
+.news-item,
+.post,
+.sidebar-item,
+.most-read-item {
+    background: #ffffff !important;
+    border: none !important;
+    border-bottom: none !important;
+    outline: none !important;
+    box-shadow: none !important;
 }
 </style>
+
 </head>
 
 <body>
-
-<header class="top-header">
-    <div class="header-inner">
-        <a class="logo" href="index.html">BS <span>360</span> NEWS</a>
-    </div>
+<header class="bs-header">
+ <div class="bs-header-top">
+  <div class="bs-brand">
+   <a href="index.html" aria-label="BS 360 NEWS Home"><img src="dp.png.png" alt="BS 360 NEWS" class="bs-logo"></a>
+   <div class="bs-brand-name">
+    <a href="index.html" class="bs-brand-title"><span class="brand-bs">BS</span><span class="brand-360">360</span><span class="brand-news">NEWS</span></a>
+    <span class="bs-tagline">Fast | Fair | Fearless</span>
+   </div>
+  </div>
+  <div class="bs-header-actions">
+   <button type="button" id="themeToggle" class="bs-dark-btn">🌙 Dark</button>
+   <div class="bs-live"><span class="bs-live-dot"></span> LIVE</div>
+  </div>
+ </div>
+ <nav class="bs-navigation" aria-label="ప్రధాన నావిగేషన్">
+  <a href="index.html"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 10 9-7 9 7"></path><path d="M5 9v12h14V9"></path><path d="M9 21v-7h6v7"></path></svg><span>హోమ్</span></a>
+  <a href="MOVIES.html" class="active ">ఎంటర్టైన్మెంట్</a>
+  <a href="SPORTS.html">స్పోర్ట్స్</a>
+  <a href="AP%26TS.html">ఏపీ&amp;టీఎస్</a>
+  <a href="business.html"  ">బిజినెస్</a>
+  <a href="moviereviews.html">మూవీ రివ్యూస్</a>
+  <a href="national.html">జాతీయ వార్తలు</a>
+  <a href="international.html">అంతర్జాతీయ వార్తలు</a>
+  <a href="tajavarthalu.html">తాజా వార్తలు</a>
+ </nav>
 </header>
 
-<nav class="nav-bar">
-    <div class="nav-inner">
-        <a href="index.html">హోమ్</a>
-        <a href="MOVIES.html">మూవీస్</a>
-        <a href="SPORTS.html" class="active">స్పోర్ట్స్</a>
-        <a href="AP%26TS.html">ఏపీ &amp; టీఎస్</a>
-        <a href="business.html">బిజినెస్</a>
-    </div>
-</nav>
+
+
 
 <div class="breaking">
     <div class="breaking-title">BREAKING NEWS</div>
@@ -628,19 +1152,54 @@ body.dark-mode .sport-card{
     </div>
 </footer>
 
+
 <script>
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded", function () {
     "use strict";
 
-    function cleanText(text){
-        return String(text || "").replace(/\s+/g," ").trim();
+    /* =====================================================
+       HELPERS
+    ===================================================== */
+
+    function cleanText(text) {
+        return String(text || "").replace(/\s+/g, " ").trim();
     }
 
-    function getArticles(source){
-        if(!source) return [];
+    function escapeHTML(value) {
+        return String(value || "").replace(/[&<>"']/g, function (char) {
+            return {
+                "&": "&amp;",
+                "<": "&lt;",
+                ">": "&gt;",
+                '"': "&quot;",
+                "'": "&#39;"
+            }[char];
+        });
+    }
 
-        const selectors = [
+    function safeURL(url) {
+        url = String(url || "").trim();
+
+        if (!url || url.startsWith("#") || /^javascript:/i.test(url)) {
+            return "";
+        }
+
+        return url;
+    }
+
+    /* =====================================================
+       GET ARTICLES
+       Supports homepage article structures
+    ===================================================== */
+
+    function getArticles(source) {
+        if (!source) return [];
+
+        let items = [];
+
+        const cardSelector = [
             ".news-item.post",
+            "article",
             ".news-card",
             ".sport-card",
             ".movie-card",
@@ -648,99 +1207,123 @@ document.addEventListener("DOMContentLoaded", function(){
             ".latest-news-card",
             ".trending-card",
             ".top-news-card",
-            ".news-item",
-            "article"
+            ".review-card",
+            ".news-item"
         ].join(",");
 
-        let items = [];
-
-        if(source.matches && source.matches(selectors)){
+        if (source.matches && source.matches(cardSelector)) {
             items.push(source);
         }
 
-        items.push(...Array.from(source.querySelectorAll(selectors)));
+        items.push(...Array.from(source.querySelectorAll(cardSelector)));
 
-        if(!items.length){
-            items = Array.from(source.querySelectorAll("a[href]")).filter(function(a){
+        /* Fallback: linked image cards */
+        if (!items.length) {
+            items = Array.from(source.querySelectorAll("a[href]")).filter(function (a) {
                 return !!a.querySelector("img");
             });
         }
 
-        const articles = items.map(function(item){
+        const articles = items.map(function (item) {
             const image = item.querySelector("img");
+
             const link = item.matches && item.matches("a[href]")
                 ? item
                 : item.querySelector("a[href]");
 
             const titleNode = item.querySelector(
-                ".news-content p, .news-content h3, .news-title, .article-title, h1, h2, h3, h4, p, .title"
+                ".news-content p, .news-content h3, .news-content a, " +
+                ".news-title, .article-title, .sport-card-title, " +
+                "h1, h2, h3, h4, p, .title"
             );
 
             let title = cleanText(titleNode ? titleNode.textContent : "");
 
-            if(!title && link) title = cleanText(link.textContent);
-            if(!title && image) title = cleanText(image.getAttribute("alt"));
+            if (!title && link) {
+                title = cleanText(link.textContent);
+            }
 
-            const url = item.getAttribute("data-url") ||
-                (link ? link.getAttribute("href") : "");
+            if (!title && image) {
+                title = cleanText(image.getAttribute("alt") || "");
+            }
 
-            const imageUrl = image
-                ? image.getAttribute("src") ||
-                  image.getAttribute("data-src") ||
-                  image.getAttribute("data-lazy-src") || ""
-                : "";
+            let imageURL = "";
+
+            if (image) {
+                imageURL =
+                    image.getAttribute("src") ||
+                    image.getAttribute("data-src") ||
+                    image.getAttribute("data-lazy-src") ||
+                    "";
+            }
+
+            const url = safeURL(
+                item.getAttribute("data-url") ||
+                (link ? link.getAttribute("href") : "")
+            );
 
             return {
-                title:title,
-                image:imageUrl,
-                alt:image ? image.getAttribute("alt") || "" : "",
-                url:url || ""
+                title: title,
+                image: imageURL,
+                alt: image ? (image.getAttribute("alt") || "") : "",
+                url: url
             };
-        }).filter(function(article){
-            return article.title &&
-                article.image &&
-                article.url &&
-                !article.url.startsWith("#") &&
-                !/^javascript:/i.test(article.url);
+        }).filter(function (article) {
+            return article.title && article.image && article.url;
         });
 
-        return articles.filter(function(article,index,array){
-            return array.findIndex(function(other){
+        /* Remove duplicate URLs */
+        return articles.filter(function (article, index, array) {
+            return array.findIndex(function (other) {
                 return other.url === article.url;
             }) === index;
         });
     }
 
-    function getFirstAvailableArticles(home, ids){
-        for(const id of ids){
-            const articles = getArticles(home.getElementById(id));
-            if(articles.length) return articles;
+    /* =====================================================
+       HOMEPAGE SOURCE HELPERS
+    ===================================================== */
+
+    function getFirstAvailableArticles(home, ids) {
+        for (const id of ids) {
+            const source = home.getElementById(id);
+            const articles = getArticles(source);
+
+            if (articles.length) {
+                return articles;
+            }
         }
+
         return [];
     }
 
-    function getArticlesByHeading(home, labels){
-        const wanted = labels.map(function(label){
+    function getArticlesByHeading(home, labels) {
+        const wanted = labels.map(function (label) {
             return cleanText(label).toLowerCase();
         });
 
-        const headings = Array.from(home.querySelectorAll(
-            "h1,h2,h3,h4,.section-title,.section-head,.sidebar-title,.category-title"
-        ));
+        const headings = Array.from(
+            home.querySelectorAll(
+                "h1,h2,h3,h4,.section-title,.section-head," +
+                ".sidebar-title,.category-title"
+            )
+        );
 
-        for(const heading of headings){
-            const headingText = cleanText(heading.textContent).toLowerCase();
+        for (const heading of headings) {
+            const text = cleanText(heading.textContent).toLowerCase();
 
-            if(!wanted.some(function(label){
-                return headingText === label || headingText.includes(label);
-            })) continue;
+            if (!wanted.some(function (label) {
+                return text === label || text.includes(label);
+            })) {
+                continue;
+            }
 
             let parent = heading;
 
-            for(let level = 0; level < 4 && parent; level++, parent = parent.parentElement){
+            for (let level = 0; level < 5 && parent; level++, parent = parent.parentElement) {
                 const articles = getArticles(parent);
 
-                if(articles.length){
+                if (articles.length) {
                     return articles;
                 }
             }
@@ -749,25 +1332,33 @@ document.addEventListener("DOMContentLoaded", function(){
         return [];
     }
 
-    function getSectionArticles(home, ids, labels){
+    function getSectionArticles(home, ids, headingLabels) {
         const articles = getFirstAvailableArticles(home, ids);
 
-        return articles.length ? articles : getArticlesByHeading(home, labels);
+        if (articles.length) {
+            return articles;
+        }
+
+        return getArticlesByHeading(home, headingLabels);
     }
 
-    function escapeHTML(value){
-        return String(value || "").replace(/[&<>"']/g,function(char){
-            return {
-                "&":"&amp;",
-                "<":"&lt;",
-                ">":"&gt;",
-                '"':"&quot;",
-                "'":"&#39;"
-            }[char];
+    /* =====================================================
+       REMOVE DUPLICATES
+    ===================================================== */
+
+    function uniqueArticles(articles) {
+        return articles.filter(function (article, index, array) {
+            return array.findIndex(function (item) {
+                return item.url === article.url;
+            }) === index;
         });
     }
 
-    function cardHTML(article){
+    /* =====================================================
+       SPORTS CARD
+    ===================================================== */
+
+    function cardHTML(article) {
         return `
             <a href="${escapeHTML(article.url)}" class="sport-card">
                 <img
@@ -776,13 +1367,19 @@ document.addEventListener("DOMContentLoaded", function(){
                     loading="lazy"
                 >
                 <div class="sport-card-content">
-                    <h3 class="sport-card-title">${escapeHTML(article.title)}</h3>
+                    <h3 class="sport-card-title">
+                        ${escapeHTML(article.title)}
+                    </h3>
                 </div>
             </a>
         `;
     }
 
-    function sidebarHTML(article){
+    /* =====================================================
+       SIDEBAR CARD
+    ===================================================== */
+
+    function sidebarHTML(article) {
         return `
             <a href="${escapeHTML(article.url)}" class="sidebar-item">
                 <img
@@ -790,147 +1387,296 @@ document.addEventListener("DOMContentLoaded", function(){
                     alt="${escapeHTML(article.alt || article.title)}"
                     loading="lazy"
                 >
-                <div class="sidebar-item-title">${escapeHTML(article.title)}</div>
+                <div class="sidebar-item-title">
+                    ${escapeHTML(article.title)}
+                </div>
             </a>
         `;
     }
 
-    function show(id, html){
+    /* =====================================================
+       SHOW CONTENT
+    ===================================================== */
+
+    function show(id, html) {
         const element = document.getElementById(id);
-        if(element) element.innerHTML = html;
+
+        if (element) {
+            element.innerHTML = html;
+        }
     }
 
-    function matchSidebarToSportsHeight(){
-        const main = document.querySelector(".sports-main");
+    /* =====================================================
+       SIDEBAR HEIGHT
+       Desktop: sidebar ends with Sports section
+       Mobile/tablet: natural height
+    ===================================================== */
+
+    function matchSidebarToSportsHeight() {
+        const sportsMain = document.querySelector(".sports-main");
         const sidebar = document.querySelector(".article-sidebar");
 
-        if(!main || !sidebar) return;
+        if (!sportsMain || !sidebar) return;
 
-        if(window.innerWidth > 1100){
-            const height = Math.ceil(main.getBoundingClientRect().height);
-            sidebar.style.height = height + "px";
-            sidebar.style.maxHeight = height + "px";
-            sidebar.style.overflow = "hidden";
-        }else{
+        if (window.innerWidth > 1100) {
+            const sportsHeight = Math.ceil(
+                sportsMain.getBoundingClientRect().height
+            );
+
+            sidebar.style.height = sportsHeight + "px";
+            sidebar.style.maxHeight = sportsHeight + "px";
+            sidebar.style.overflowY = "auto";
+            sidebar.style.overflowX = "hidden";
+        } else {
             sidebar.style.height = "";
             sidebar.style.maxHeight = "";
-            sidebar.style.overflow = "";
+            sidebar.style.overflowY = "";
+            sidebar.style.overflowX = "";
         }
     }
 
     window.addEventListener("resize", matchSidebarToSportsHeight);
 
-    fetch("index.html?v=" + Date.now(), {cache:"no-store"})
-    .then(function(response){
-        if(!response.ok) throw new Error("index.html load failed");
+    /* =====================================================
+       LOAD HOMEPAGE
+    ===================================================== */
+
+    fetch("index.html?v=" + Date.now(), {
+        cache: "no-store"
+    })
+    .then(function (response) {
+        if (!response.ok) {
+            throw new Error("index.html load failed");
+        }
+
         return response.text();
     })
-    .then(function(html){
+    .then(function (html) {
         const parser = new DOMParser();
-        const home = parser.parseFromString(html,"text/html");
+        const home = parser.parseFromString(html, "text/html");
 
-        /* Sports: local articles first, homepage articles next */
+        /* ================================================
+           SPORTS SOURCE
+           First: localSportsSource
+           Next: homepage Sports section
+        ================================================ */
+
         const localSports = getArticles(
             document.getElementById("localSportsSource")
         );
 
-        let indexSports = getArticles(
-            home.getElementById("sportsSource")
+        const homeSports = getSectionArticles(
+            home,
+            [
+                "sportsSource",
+                "sportsGrid",
+                "sportsSection",
+                "sportsNewsSection",
+                "sportsNewsSource",
+                "sportsTrack",
+                "afterSportsGrid"
+            ],
+            [
+                "Sports",
+                "Sports News",
+                "క్రీడా వార్తలు",
+                "స్పోర్ట్స్",
+                "క్రీడలు"
+            ]
         );
 
-        if(!indexSports.length){
-            indexSports = getSectionArticles(home,[
-                "sportsGrid",
-                "sportsNewsSource",
-                "sportsNewsSection",
-                "sportsSidebar",
-                "afterSportsGrid"
-            ],[
-                "Sports News",
-                "Sports",
-                "క్రీడా వార్తలు",
-                "క్రీడల వార్తలు",
-                "స్పోర్ట్స్"
-            ]);
-        }
-
-        const sports = [...localSports,...indexSports].filter(function(article,index,array){
-            return array.findIndex(function(item){
-                return item.url === article.url;
-            }) === index;
-        });
-
-        const trending = getSectionArticles(home,[
-            "trendingSource","trendingGrid","trendingSection","trendingNews","trendingTrack"
-        ],[
-            "Trending News","Trending","ట్రెండింగ్ వార్తలు","ట్రెండింగ్"
+        /* Local Sports first, homepage Sports after */
+        const sports = uniqueArticles([
+            ...localSports,
+            ...homeSports
         ]);
 
-        const latest = getSectionArticles(home,[
-            "latestNewsSource","latestGrid","latestSection","latestNews","latestNewsList"
-        ],[
-            "Latest News","Latest","తాజా వార్తలు","తాజా వార్త"
-        ]);
+        /* ================================================
+           HOMEPAGE SIDEBAR SOURCES
+        ================================================ */
 
-        const topNews = getSectionArticles(home,[
-            "topNewsSource","topNewsGrid","topNews","topStory","topStoryGrid","topStorySection","topNewsSection"
-        ],[
-            "Top News","Top Story","టాప్ న్యూస్","టాప్ వార్తలు","ముఖ్య వార్తలు","ప్రధాన వార్తలు"
-        ]);
+        const topNews = getSectionArticles(
+            home,
+            [
+                "topNewsSource",
+                "topNewsGrid",
+                "topNews",
+                "topStory",
+                "topStoryGrid",
+                "topStorySection",
+                "topNewsSection"
+            ],
+            [
+                "Top News",
+                "Top Story",
+                "టాప్ న్యూస్",
+                "ముఖ్య వార్తలు",
+                "ప్రధాన వార్తలు"
+            ]
+        );
+
+        const trending = getSectionArticles(
+            home,
+            [
+                "trendingSource",
+                "trendingGrid",
+                "trendingSection",
+                "trendingNews",
+                "trendingTrack",
+                "trendingSidebar"
+            ],
+            [
+                "Trending News",
+                "Trending",
+                "ట్రెండింగ్ న్యూస్",
+                "ట్రెండింగ్"
+            ]
+        );
+
+        const latest = getSectionArticles(
+            home,
+            [
+                "latestNewsSource",
+                "latestGrid",
+                "latestSection",
+                "latestNews",
+                "latestNewsList",
+                "latestSidebar"
+            ],
+            [
+                "Latest News",
+                "Latest",
+                "తాజా వార్తలు",
+                "తాజా వార్త"
+            ]
+        );
+
+        const movieReviews = getSectionArticles(
+            home,
+            [
+                "movieReviewsSource",
+                "movieReviewsGrid",
+                "movieReviewsSection",
+                "movieReviews",
+                "movieReviewGrid",
+                "movieReviewSection",
+                "reviewsGrid",
+                "reviewsSection",
+                "cinemaGrid",
+                "cinemaSection",
+                "movieReviewsTrack",
+                "reviewsTrack"
+            ],
+            [
+                "Movie Reviews",
+                "Movie Review",
+                "మూవీ రివ్యూస్",
+                "మూవీ రివ్యూ",
+                "సినిమా రివ్యూస్",
+                "సినిమా రివ్యూ"
+            ]
+        );
+
+        /* ================================================
+           DISPLAY SPORTS
+        ================================================ */
 
         show(
             "sportsGrid",
             sports.length
                 ? sports.map(cardHTML).join("")
-                : '<div class="loading">Sports articles దొరకలేదు. localSportsSource లేదా index.html sportsSource ID చెక్ చేయండి.</div>'
+                : '<div class="loading">క్రీడా వార్తలు కనిపించలేదు. localSportsSource లేదా Homepage Sports section చెక్ చేయండి.</div>'
         );
+
+        /* ================================================
+           TOP NEWS SIDEBAR
+        ================================================ */
+
+        show(
+            "topNewsSidebar",
+            topNews.slice(0, 5).map(sidebarHTML).join("") ||
+            '<div class="loading">Homepage Top News articles దొరకలేదు.</div>'
+        );
+
+        /* ================================================
+           TRENDING SIDEBAR
+        ================================================ */
 
         show(
             "trendingSidebar",
-            trending.slice(0,8).map(sidebarHTML).join("") ||
-            '<div class="loading">Trending వార్తలు దొరకలేదు.</div>'
+            trending.slice(0, 8).map(sidebarHTML).join("") ||
+            '<div class="loading">Homepage Trending articles దొరకలేదు.</div>'
         );
+
+        /* ================================================
+           LATEST SIDEBAR
+        ================================================ */
 
         show(
             "latestSidebar",
-            latest.slice(0,5).map(sidebarHTML).join("") ||
-            '<div class="loading">Latest వార్తలు దొరకలేదు.</div>'
+            latest.slice(0, 5).map(sidebarHTML).join("") ||
+            '<div class="loading">Homepage Latest News articles దొరకలేదు.</div>'
         );
+
+        /* ================================================
+           MOVIE REVIEWS SIDEBAR
+        ================================================ */
 
         show(
             "movieReviewsSidebar",
-            topNews.slice(0,5).map(sidebarHTML).join("") ||
-            '<div class="loading">Top News వార్తలు దొరకలేదు.</div>'
+            movieReviews.slice(0, 5).map(sidebarHTML).join("") ||
+            '<div class="loading">Homepage Movie Reviews articles దొరకలేదు.</div>'
         );
 
-        document.querySelectorAll(".sports-grid img,.article-sidebar img").forEach(function(img){
-            img.addEventListener("error",function(){
-                this.style.visibility = "hidden";
-            });
-        });
+        /* ================================================
+           MATCH SIDEBAR HEIGHT
+        ================================================ */
 
         matchSidebarToSportsHeight();
-        requestAnimationFrame(matchSidebarToSportsHeight);
 
+        requestAnimationFrame(function () {
+            matchSidebarToSportsHeight();
+        });
+
+        /* Recheck after images load */
+        document.querySelectorAll(".sports-main img").forEach(function (img) {
+            if (!img.complete) {
+                img.addEventListener("load", matchSidebarToSportsHeight, {
+                    once: true
+                });
+            }
+        });
+
+        /* ================================================
+           CONSOLE
+        ================================================ */
+
+        console.log("================================");
         console.log("BS360 SPORTS PAGE LOADED");
-        console.log("Local sports:",localSports.length);
-        console.log("Homepage sports:",indexSports.length);
-        console.log("Total sports:",sports.length);
-        console.log("Trending:",trending.length);
-        console.log("Latest:",latest.length);
-        console.log("Top news:",topNews.length);
+        console.log("Local Sports:", localSports.length);
+        console.log("Homepage Sports:", homeSports.length);
+        console.log("Total Sports:", sports.length);
+        console.log("Homepage Top News:", topNews.length);
+        console.log("Homepage Trending:", trending.length);
+        console.log("Homepage Latest:", latest.length);
+        console.log("Homepage Movie Reviews:", movieReviews.length);
+        console.log("================================");
     })
-    .catch(function(error){
-        console.error("BS360 SPORTS ERROR:",error);
+    .catch(function (error) {
+        console.error("BS360 SPORTS ERROR:", error);
 
         show(
             "sportsGrid",
-            '<div class="loading">Sports News load కాలేదు. index.html అందుబాటులో ఉందో చూడండి.</div>'
+            '<div class="loading">క్రీడా వార్తలు లోడ్ కాలేదు. index.html మార్గాన్ని చెక్ చేయండి.</div>'
         );
     });
 
-    document.querySelectorAll("img").forEach(function(img){
-        img.addEventListener("dragstart",function(event){
+    /* =====================================================
+       DISABLE IMAGE DRAGGING
+    ===================================================== */
+
+    document.querySelectorAll("img").forEach(function (img) {
+        img.addEventListener("dragstart", function (event) {
             event.preventDefault();
         });
     });
