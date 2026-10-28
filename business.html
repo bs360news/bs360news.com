@@ -190,6 +190,32 @@ body.dark-mode .loading{background:#111827;color:#ddd}
 
 
 
+/* BUSINESS PAGE: SIDEBAR HEIGHT ALIGNMENT */
+
+@media (min-width: 1101px) {
+    .main-layout {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) 320px !important;
+        gap: 22px !important;
+        align-items: stretch !important;
+    }
+
+    .movies-main {
+        min-width: 0 !important;
+    }
+
+    .article-sidebar {
+        height: 100% !important;
+        min-height: 0 !important;
+        overflow: hidden !important;
+        align-self: stretch !important;
+    }
+
+    .article-sidebar .sidebar-box {
+        min-height: 0 !important;
+        overflow: hidden !important;
+    }
+}
 
 
 /* BUSINESS PAGE: ARTICLE TITLES NORMAL FONT */
