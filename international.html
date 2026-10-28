@@ -538,6 +538,81 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
+
+ 
+/* International articles మరియు sidebar ఒకే ఎత్తులో ముగియాలి */
+.international-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: 22px;
+    align-items: stretch;
+}
+
+.international-main {
+    min-width: 0;
+}
+
+.article-sidebar {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    height: 100%;
+}
+
+.article-sidebar .sidebar-box {
+    flex: 0 0 auto;
+    margin-bottom: 18px;
+}
+
+/* మొబైల్ */
+@media (max-width: 768px) {
+    .international-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .article-sidebar {
+        height: auto;
+    }
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const internationalGrid = document.getElementById("internationalGrid");
+    const sidebar = document.querySelector(".article-sidebar");
+
+    if (!internationalGrid || !sidebar) return;
+
+    function matchInternationalHeight() {
+        if (window.innerWidth <= 768) {
+            sidebar.style.height = "auto";
+            return;
+        }
+
+        sidebar.style.height = internationalGrid.offsetHeight + "px";
+    }
+
+    // Articles లోడ్ అయినప్పుడు, వాటి ఎత్తు మారినప్పుడు సర్దుబాటు
+    const observer = new MutationObserver(function () {
+        requestAnimationFrame(matchInternationalHeight);
+    });
+
+    observer.observe(internationalGrid, {
+        childList: true,
+        subtree: true
+    });
+
+    window.addEventListener("load", matchInternationalHeight);
+    window.addEventListener("resize", matchInternationalHeight);
+
+    internationalGrid.querySelectorAll("img").forEach(function (img) {
+        img.addEventListener("load", matchInternationalHeight);
+    });
+
+    matchInternationalHeight();
+});
+
 </script>
 
 </body>
