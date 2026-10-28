@@ -874,29 +874,32 @@ a {
 }
 
 
+/* SPORTS ARTICLES — REMOVE BOLD TEXT */
 
-.sport-card-title,
+html body .sports-grid .sport-card .sport-card-title {
+    font-family: Arial, "Noto Sans Telugu", "Segoe UI", sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    -webkit-text-stroke: 0 !important;
+    text-shadow: none !important;
+}
 
-.business-card-title {
+/* SPORTS SIDEBAR ARTICLES */
 
-    display: -webkit-box;
+html body .article-sidebar .sidebar-item-title,
+html body .article-sidebar .most-read-title {
+    font-weight: 400 !important;
+    -webkit-text-stroke: 0 !important;
+    text-shadow: none !important;
+}
 
-    margin: 0;
+/* MOBILE SPORTS ARTICLES */
 
-    overflow: hidden;
-
-    color: #111827;
-
-    font-size: 14px;
-
-    line-height: 1.45;
-
-    font-weight: 800;
-
-    -webkit-line-clamp: 4;
-
-    -webkit-box-orient: vertical;
-
+@media (max-width: 600px) {
+    html body .sports-grid .sport-card .sport-card-title {
+        font-size: 13px !important;
+        font-weight: 400 !important;
+    }
 }
 
 
