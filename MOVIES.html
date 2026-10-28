@@ -951,6 +951,34 @@ body.dark-mode .bs-navigation {
 }
     
 
+
+
+
+
+/* SCROLL LINE / BORDER REMOVE */
+.bs-navigation {
+    border: none !important;
+    border-bottom: 0 !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+.bs-navigation a {
+    border-bottom: 3px solid transparent !important;
+    box-shadow: none !important;
+}
+
+.bs-navigation a:hover,
+.bs-navigation a.active {
+    border-bottom-color: transparent !important;
+}
+
+/* STICKY NAV SHADOW REMOVE */
+.bs-navigation {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 9999 !important;
+}
 </style>
 </head>
 
