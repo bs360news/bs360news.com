@@ -151,6 +151,34 @@ body.dark-mode .loading{background:#111827;color:#ddd}
 
 
 
+ /* HEADER — FIXED తీసేయాలి */
+.bs-header {
+    position: static !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    transform: none !important;
+}
+
+/* HEADER లోని LOGO, DARK, LIVE కూడా FIXED కాకూడదు */
+.bs-header .logo,
+.bs-header .themeToggle,
+.bs-header .bs-dark-btn,
+.bs-header .live-btn {
+    position: static !important;
+}
+
+/* NAVIGATION మాత్రమే STICKY */
+.bs-navigation {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 9999 !important;
+}
+
+
+
+
+
  .article-sidebar::-webkit-scrollbar {
     display: none !important;
     width: 0 !important;
