@@ -150,22 +150,19 @@ body.dark-mode .loading{background:#111827;color:#ddd}
 
 
 
- /* HEADER — SCROLL అవ్వాలి */
+/* HEADER FIXED కాకూడదు */
 .bs-header {
     position: static !important;
-    top: auto !important;
 }
 
-/* NAVIGATION — FIXED */
+/* NAVIGATION — మొదట ఉన్న చోటే ఉండాలి,
+   స్క్రోల్ చేసినప్పుడు పైకి అంటుకోవాలి */
 .bs-navigation {
-    position: fixed !important;
+    position: sticky !important;
     top: 0 !important;
-    left: 0;
-    right: 0;
+    z-index: 99999 !important;
     width: 100%;
-    z-index: 999999 !important;
     background: #111 !important;
-    box-sizing: border-box;
 }
 </style>
 </head>
