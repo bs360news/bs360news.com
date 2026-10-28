@@ -412,6 +412,9 @@ body.dark-mode .loading{background:#111827;color:#ddd}
 document.addEventListener("DOMContentLoaded", function () {
     "use strict";
 
+    /* =====================================
+       1. DARK MODE
+    ===================================== */
     const themeToggle = document.getElementById("themeToggle");
 
     if (themeToggle) {
@@ -424,12 +427,15 @@ document.addEventListener("DOMContentLoaded", function () {
             document.body.classList.toggle("dark-mode");
 
             const isDark = document.body.classList.contains("dark-mode");
-            themeToggle.textContent = isDark ? "☀️ Light" : "🌙 Dark";
 
+            themeToggle.textContent = isDark ? "☀️ Light" : "🌙 Dark";
             localStorage.setItem("bs360-theme", isDark ? "dark" : "light");
         });
     }
 
+    /* =====================================
+       2. HELPER FUNCTIONS
+    ===================================== */
     function cleanText(text) {
         return String(text || "").replace(/\s+/g, " ").trim();
     }
@@ -446,7 +452,20 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    function getArticles(source) {
+    function resolveURL(url, baseURL) {
+        if (!url) return "";
+
+        try {
+            return new URL(url, baseURL || location.href).href;
+        } catch (error) {
+            return url;
+        }
+    }
+
+    /* =====================================
+       3. READ ARTICLES FROM HTML
+    ===================================== */
+    function getArticles(source, baseURL) {
         if (!source) return [];
 
         const selector = [
@@ -478,7 +497,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const articles = items.map(function (item) {
             const image = item.querySelector("img");
-            const link = item.matches("a[href]") ? item : item.querySelector("a[href]");
+
+            const link = item.matches("a[href]")
+                ? item
+                : item.querySelector("a[href]");
 
             const titleNode = item.querySelector(
                 ".news-content p, .news-content h3, .news-title, " +
@@ -491,20 +513,23 @@ document.addEventListener("DOMContentLoaded", function () {
                 image ? image.getAttribute("alt") : ""
             );
 
-            let imageURL = image
-                ? image.getAttribute("src") ||
-                  image.getAttribute("data-src") ||
-                  image.getAttribute("data-lazy-src") || ""
-                : "";
+            let imageURL = "";
 
-            let articleURL = item.getAttribute("data-url") ||
+            if (image) {
+                imageURL =
+                    image.getAttribute("src") ||
+                    image.getAttribute("data-src") ||
+                    image.getAttribute("data-lazy-src") ||
+                    image.getAttribute("data-original") ||
+                    "";
+            }
+
+            let articleURL =
+                item.getAttribute("data-url") ||
                 (link ? link.getAttribute("href") || "" : "");
 
-            // Resolve relative image paths and article links against homepage.
-            try {
-                if (imageURL) imageURL = new URL(imageURL, location.href).href;
-                if (articleURL) articleURL = new URL(articleURL, location.href).href;
-            } catch (error) {}
+            imageURL = resolveURL(imageURL, baseURL);
+            articleURL = resolveURL(articleURL, baseURL);
 
             return {
                 title: title,
@@ -516,26 +541,45 @@ document.addEventListener("DOMContentLoaded", function () {
             return article.title &&
                 article.image &&
                 article.url &&
-                !article.url.startsWith("#") &&
                 !/^javascript:/i.test(article.url);
         });
 
-        return articles.filter(function (article, index, array) {
-            return array.findIndex(function (other) {
-                return other.url === article.url;
-            }) === index;
+        return uniqueArticles(articles);
+    }
+
+    /* =====================================
+       4. REMOVE DUPLICATE ARTICLES
+    ===================================== */
+    function uniqueArticles(articles) {
+        const seen = new Set();
+
+        return articles.filter(function (article) {
+            if (!article.url || seen.has(article.url)) {
+                return false;
+            }
+
+            seen.add(article.url);
+            return true;
         });
     }
 
-    function getByIds(home, ids) {
+    /* =====================================
+       5. FIND HOME PAGE ARTICLES
+    ===================================== */
+    function getByIds(home, ids, baseURL) {
         for (const id of ids) {
-            const articles = getArticles(home.getElementById(id));
-            if (articles.length) return articles;
+            const element = home.getElementById(id);
+            const articles = getArticles(element, baseURL);
+
+            if (articles.length) {
+                return articles;
+            }
         }
+
         return [];
     }
 
-    function getByHeading(home, labels) {
+    function getByHeading(home, labels, baseURL) {
         const wanted = labels.map(function (label) {
             return cleanText(label).toLowerCase();
         });
@@ -545,44 +589,51 @@ document.addEventListener("DOMContentLoaded", function () {
         ));
 
         for (const heading of headings) {
-            const text = cleanText(heading.textContent).toLowerCase();
+            const headingText = cleanText(heading.textContent).toLowerCase();
 
             if (!wanted.some(function (label) {
-                return text === label || text.includes(label);
-            })) continue;
+                return headingText === label || headingText.includes(label);
+            })) {
+                continue;
+            }
 
             let parent = heading;
 
             for (let level = 0; level < 5 && parent; level++, parent = parent.parentElement) {
-                const articles = getArticles(parent);
-                if (articles.length) return articles;
+                const articles = getArticles(parent, baseURL);
+
+                if (articles.length) {
+                    return articles;
+                }
             }
         }
 
         return [];
     }
 
-    function getSectionArticles(home, ids, labels) {
-        const articles = getByIds(home, ids);
-        return articles.length ? articles : getByHeading(home, labels);
+    function getSectionArticles(home, ids, labels, baseURL) {
+        const articles = getByIds(home, ids, baseURL);
+
+        return articles.length
+            ? articles
+            : getByHeading(home, labels, baseURL);
     }
 
-    function uniqueArticles(articles) {
-        return articles.filter(function (article, index, array) {
-            return array.findIndex(function (other) {
-                return other.url === article.url;
-            }) === index;
-        });
-    }
-
+    /* =====================================
+       6. ARTICLE CARD HTML
+    ===================================== */
     function businessCardHTML(article) {
         return `
             <a href="${escapeHTML(article.url)}" class="business-card">
-                <img src="${escapeHTML(article.image)}"
-                     alt="${escapeHTML(article.alt || article.title)}"
-                     loading="lazy">
+                <img
+                    src="${escapeHTML(article.image)}"
+                    alt="${escapeHTML(article.alt || article.title)}"
+                    loading="lazy"
+                >
                 <div class="business-card-content">
-                    <h3 class="business-card-title">${escapeHTML(article.title)}</h3>
+                    <h3 class="business-card-title">
+                        ${escapeHTML(article.title)}
+                    </h3>
                 </div>
             </a>
         `;
@@ -591,19 +642,29 @@ document.addEventListener("DOMContentLoaded", function () {
     function sidebarHTML(article) {
         return `
             <a href="${escapeHTML(article.url)}" class="sidebar-item">
-                <img src="${escapeHTML(article.image)}"
-                     alt="${escapeHTML(article.alt || article.title)}"
-                     loading="lazy">
-                <div class="sidebar-item-title">${escapeHTML(article.title)}</div>
+                <img
+                    src="${escapeHTML(article.image)}"
+                    alt="${escapeHTML(article.alt || article.title)}"
+                    loading="lazy"
+                >
+                <div class="sidebar-item-title">
+                    ${escapeHTML(article.title)}
+                </div>
             </a>
         `;
     }
 
     function show(id, html) {
         const element = document.getElementById(id);
-        if (element) element.innerHTML = html;
+
+        if (element) {
+            element.innerHTML = html;
+        }
     }
 
+    /* =====================================
+       7. SIDEBAR DATA
+    ===================================== */
     let trendingArticles = [];
     let latestArticles = [];
     let topNewsArticles = [];
@@ -631,133 +692,89 @@ document.addEventListener("DOMContentLoaded", function () {
         );
     }
 
+    /* =====================================
+       8. SIDEBAR HEIGHT
+       Desktop: sidebar ends with main articles.
+       Mobile/tablet: normal vertical layout.
+    ===================================== */
+    let sidebarFitTimer = null;
+
     function fitSidebarToMain() {
         const main = document.querySelector(".business-main");
         const sidebar = document.querySelector(".article-sidebar");
 
         if (!main || !sidebar) return;
 
-        sidebar.style.height = "";
-        sidebar.style.maxHeight = "";
-        sidebar.style.minHeight = "";
-        sidebar.style.overflow = "visible";
-        sidebar.style.justifyContent = "flex-start";
-
-        if (window.innerWidth > 1100) {
-            const mainHeight = Math.ceil(main.getBoundingClientRect().height);
-            sidebar.style.minHeight = mainHeight + "px";
-            sidebar.style.justifyContent = "space-between";
+        if (sidebarFitTimer) {
+            clearTimeout(sidebarFitTimer);
         }
-    }
 
-    window.addEventListener("resize", fitSidebarToMain);
-
-    fetch("index.html?v=" + Date.now(), { cache: "no-store" })
-        .then(function (response) {
-            if (!response.ok) throw new Error("index.html load failed");
-            return response.text();
-        })
-        .then(function (html) {
-            const home = new DOMParser().parseFromString(html, "text/html");
-
-            const localBusiness = getArticles(
-                document.getElementById("localBusinessSource")
+        sidebarFitTimer = setTimeout(function () {
+            const boxes = Array.from(
+                sidebar.querySelectorAll(".sidebar-box")
             );
 
-            const homeBusiness = getSectionArticles(home, [
-                "businessSource",
-                "businessGrid",
-                "businessNewsSource",
-                "businessNewsGrid",
-                "businessSection",
-                "businessNewsSection"
-            ], [
-                "Business News",
-                "బిజినెస్ వార్తలు",
-                "బిజినెస్"
-            ]);
+            /* Reset previous height restrictions */
+            sidebar.style.removeProperty("height");
+            sidebar.style.removeProperty("max-height");
+            sidebar.style.removeProperty("min-height");
+            sidebar.style.removeProperty("overflow");
 
-            const allBusiness = uniqueArticles([
-                ...localBusiness,
-                ...homeBusiness
-            ]);
+            boxes.forEach(function (box) {
+                box.style.removeProperty("max-height");
+                box.style.removeProperty("overflow");
+                box.style.removeProperty("display");
+            });
 
-            trendingArticles = getSectionArticles(home, [
-                "trendingSource",
-                "trendingGrid",
-                "trendingSection",
-                "trendingNews",
-                "trendingTrack"
-            ], [
-                "Trending News",
-                "Trending",
-                "ట్రెండింగ్ వార్తలు",
-                "ట్రెండింగ్"
-            ]);
+            /* Mobile and tablet */
+            if (window.innerWidth <= 1100) {
+                sidebar.style.height = "auto";
+                sidebar.style.maxHeight = "none";
+                sidebar.style.overflow = "visible";
+                return;
+            }
 
-            latestArticles = getSectionArticles(home, [
-                "latestNewsSource",
-                "latestGrid",
-                "latestSection",
-                "latestNews",
-                "latestNewsList"
-            ], [
-                "Latest News",
-                "తాజా వార్తలు",
-                "తాజా వార్త"
-            ]);
+            /* Measure the full main article column */
+            const mainHeight = Math.ceil(main.getBoundingClientRect().height);
 
-            topNewsArticles = getSectionArticles(home, [
-                "topNewsSource",
-                "topNewsGrid",
-                "topNews",
-                "topStory",
-                "topStoryGrid",
-                "topStorySection",
-                "topNewsSection"
-            ], [
-                "Top News",
-                "Top Story",
-                "టాప్ వార్తలు",
-                "ముఖ్య వార్తలు",
-                "ప్రధాన వార్తలు"
-            ]);
+            if (!mainHeight) return;
 
-            show(
-                "businessGrid",
-                allBusiness.length
-                    ? allBusiness.map(businessCardHTML).join("")
-                    : '<div class="loading">బిజినెస్ వార్తలు దొరకలేదు. localBusinessSource లేదా index.html లోని business source ID చెక్ చేయండి.</div>'
-            );
+            sidebar.style.height = mainHeight + "px";
+            sidebar.style.maxHeight = mainHeight + "px";
+            sidebar.style.overflow = "hidden";
 
-            renderSidebar();
-            requestAnimationFrame(fitSidebarToMain);
+            let remainingHeight = mainHeight;
 
-            document.querySelectorAll(".business-main img, .article-sidebar img").forEach(function (img) {
-                if (!img.complete) {
-                    img.addEventListener("load", fitSidebarToMain, { once: true });
-                    img.addEventListener("error", fitSidebarToMain, { once: true });
+            boxes.forEach(function (box) {
+                if (remainingHeight <= 0) {
+                    box.style.display = "none";
+                    return;
+                }
+
+                const style = getComputedStyle(box);
+                const marginTop = parseFloat(style.marginTop) || 0;
+                const marginBottom = parseFloat(style.marginBottom) || 0;
+
+                const boxHeight = box.getBoundingClientRect().height;
+                const totalHeight = boxHeight + marginTop + marginBottom;
+
+                if (totalHeight <= remainingHeight) {
+                    remainingHeight -= totalHeight;
+                } else {
+                    /*
+                      If the remaining space is too small,
+                      hide this entire sidebar box rather than
+                      showing a partially cut-off box.
+                    */
+                    box.style.display = "none";
                 }
             });
+        }, 100);
+    }
 
-            console.log("BS360 BUSINESS PAGE LOADED", {
-                localBusiness: localBusiness.length,
-                homeBusiness: homeBusiness.length,
-                totalBusiness: allBusiness.length,
-                trending: trendingArticles.length,
-                latest: latestArticles.length,
-                topNews: topNewsArticles.length
-            });
-        })
-        .catch(function (error) {
-            console.error("BS360 BUSINESS ERROR:", error);
-            show(
-                "businessGrid",
-                '<div class="loading">బిజినెస్ వార్తలు లోడ్ కాలేదు. index.html ఫైల్‌ను తనిఖీ చేయండి.</div>'
-            );
-        });
-
-    // Remove article card boxes and use light titles.
+    /* =====================================
+       9. REMOVE CARD BOXES / LIGHT TITLES
+    ===================================== */
     function removeBusinessBoxes() {
         document.querySelectorAll(
             "#businessGrid .business-card, " +
@@ -785,93 +802,213 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    const observer = new MutationObserver(removeBusinessBoxes);
-    observer.observe(document.documentElement, { childList: true, subtree: true });
-    removeBusinessBoxes();
+    /* =====================================
+       10. LOAD HOME PAGE AND BUSINESS NEWS
+    ===================================== */
+    const homeURL = new URL("index.html", location.href);
 
-    document.querySelectorAll("img").forEach(function (img) {
-        img.addEventListener("dragstart", function (event) {
-            event.preventDefault();
-        });
-    });
-});
-
- 
-document.addEventListener("DOMContentLoaded", function () {
-    "use strict";
-
-    function fitBusinessSidebar() {
-        const mainLayout = document.querySelector(".main-layout");
-        const mainContent = document.querySelector(".movies-main");
-        const sidebar = document.querySelector(".article-sidebar");
-
-        if (!mainLayout || !mainContent || !sidebar) return;
-
-        // Laptop/Desktop మాత్రమే
-        if (window.innerWidth <= 1100) {
-            sidebar.style.height = "auto";
-            sidebar.style.overflow = "visible";
-            sidebar.querySelectorAll(".sidebar-box").forEach(function (box) {
-                box.style.display = "";
-            });
-            return;
+    fetch(homeURL.href + "?v=" + Date.now(), {
+        cache: "no-store"
+    })
+    .then(function (response) {
+        if (!response.ok) {
+            throw new Error("index.html load failed");
         }
 
-        // Main articles పూర్తిగా render అయ్యే వరకు వేచి ఉండాలి
+        return response.text();
+    })
+    .then(function (html) {
+        const home = new DOMParser().parseFromString(html, "text/html");
+
+        /*
+          Resolve relative home-page links and images
+          against index.html, not business.html.
+        */
+        const homeBaseURL = homeURL.href;
+
+        const localBusiness = getArticles(
+            document.getElementById("localBusinessSource"),
+            location.href
+        );
+
+        const homeBusiness = getSectionArticles(
+            home,
+            [
+                "businessSource",
+                "businessGrid",
+                "businessNewsSource",
+                "businessNewsGrid",
+                "businessSection",
+                "businessNewsSection"
+            ],
+            [
+                "Business News",
+                "బిజినెస్ వార్తలు",
+                "బిజినెస్"
+            ],
+            homeBaseURL
+        );
+
+        const allBusiness = uniqueArticles([
+            ...localBusiness,
+            ...homeBusiness
+        ]);
+
+        trendingArticles = getSectionArticles(
+            home,
+            [
+                "trendingSource",
+                "trendingGrid",
+                "trendingSection",
+                "trendingNews",
+                "trendingTrack"
+            ],
+            [
+                "Trending News",
+                "Trending",
+                "ట్రెండింగ్ వార్తలు",
+                "ట్రెండింగ్"
+            ],
+            homeBaseURL
+        );
+
+        latestArticles = getSectionArticles(
+            home,
+            [
+                "latestNewsSource",
+                "latestGrid",
+                "latestSection",
+                "latestNews",
+                "latestNewsList"
+            ],
+            [
+                "Latest News",
+                "తాజా వార్తలు",
+                "తాజా వార్త"
+            ],
+            homeBaseURL
+        );
+
+        topNewsArticles = getSectionArticles(
+            home,
+            [
+                "topNewsSource",
+                "topNewsGrid",
+                "topNews",
+                "topStory",
+                "topStoryGrid",
+                "topStorySection",
+                "topNewsSection"
+            ],
+            [
+                "Top News",
+                "Top Story",
+                "టాప్ వార్తలు",
+                "ముఖ్య వార్తలు",
+                "ప్రధాన వార్తలు"
+            ],
+            homeBaseURL
+        );
+
+        show(
+            "businessGrid",
+            allBusiness.length
+                ? allBusiness.map(businessCardHTML).join("")
+                : '<div class="loading">బిజినెస్ వార్తలు దొరకలేదు. localBusinessSource లేదా index.html లోని business source ID చెక్ చేయండి.</div>'
+        );
+
+        renderSidebar();
+        removeBusinessBoxes();
+
         requestAnimationFrame(function () {
-            const mainHeight = mainContent.offsetHeight;
+            fitSidebarToMain();
 
-            sidebar.style.height = mainHeight + "px";
-            sidebar.style.maxHeight = mainHeight + "px";
-            sidebar.style.overflow = "hidden";
-
-            let remainingHeight = mainHeight;
-            const boxes = Array.from(sidebar.querySelectorAll(".sidebar-box"));
-
-            boxes.forEach(function (box) {
-                box.style.display = "";
-
-                const style = getComputedStyle(box);
-                const marginTop = parseFloat(style.marginTop) || 0;
-                const marginBottom = parseFloat(style.marginBottom) || 0;
-                const requiredHeight = box.scrollHeight + marginTop + marginBottom;
-
-                if (remainingHeight <= 0) {
-                    box.style.display = "none";
-                    return;
-                }
-
-                if (requiredHeight > remainingHeight) {
-                    box.style.maxHeight = Math.max(0, remainingHeight - marginTop - marginBottom) + "px";
-                    box.style.overflow = "hidden";
-                    remainingHeight = 0;
-                } else {
-                    box.style.maxHeight = "";
-                    box.style.overflow = "hidden";
-                    remainingHeight -= requiredHeight;
-                }
-            });
+            requestAnimationFrame(fitSidebarToMain);
         });
-    }
 
-    window.addEventListener("load", fitBusinessSidebar);
-    window.addEventListener("resize", fitBusinessSidebar);
+        console.log("BS360 BUSINESS PAGE LOADED", {
+            localBusiness: localBusiness.length,
+            homeBusiness: homeBusiness.length,
+            totalBusiness: allBusiness.length,
+            trending: trendingArticles.length,
+            latest: latestArticles.length,
+            topNews: topNewsArticles.length
+        });
+    })
+    .catch(function (error) {
+        console.error("BS360 BUSINESS ERROR:", error);
 
-    const observer = new MutationObserver(fitBusinessSidebar);
-    const grid = document.getElementById("businessGrid");
+        show(
+            "businessGrid",
+            '<div class="loading">బిజినెస్ వార్తలు లోడ్ కాలేదు. index.html ఫైల్‌ను తనిఖీ చేయండి.</div>'
+        );
+    });
 
-    if (grid) {
-        observer.observe(grid, {
+    /* =====================================
+       11. RECHECK AFTER RESIZE / IMAGE LOAD
+    ===================================== */
+    window.addEventListener("resize", function () {
+        fitSidebarToMain();
+    });
+
+    document.addEventListener("load", function (event) {
+        if (
+            event.target &&
+            event.target.tagName === "IMG" &&
+            (
+                event.target.closest(".business-main") ||
+                event.target.closest(".article-sidebar")
+            )
+        ) {
+            fitSidebarToMain();
+        }
+    }, true);
+
+    /* Recheck if business articles are inserted dynamically */
+    const businessGrid = document.getElementById("businessGrid");
+
+    if (businessGrid) {
+        const businessObserver = new MutationObserver(function () {
+            removeBusinessBoxes();
+            fitSidebarToMain();
+        });
+
+        businessObserver.observe(businessGrid, {
             childList: true,
             subtree: true
         });
     }
 
-    setTimeout(fitBusinessSidebar, 500);
-    setTimeout(fitBusinessSidebar, 1500);
-});
+    /* Recheck if sidebar articles are inserted dynamically */
+    const sidebar = document.querySelector(".article-sidebar");
 
+    if (sidebar) {
+        const sidebarObserver = new MutationObserver(function () {
+            removeBusinessBoxes();
+            fitSidebarToMain();
+        });
+
+        sidebarObserver.observe(sidebar, {
+            childList: true,
+            subtree: true
+        });
+    }
+
+    /* Prevent images from being dragged */
+    document.querySelectorAll("img").forEach(function (img) {
+        img.addEventListener("dragstart", function (event) {
+            event.preventDefault();
+        });
+    });
+
+    /* Initial checks */
+    removeBusinessBoxes();
+    window.addEventListener("load", fitSidebarToMain);
+    setTimeout(fitSidebarToMain, 500);
+    setTimeout(fitSidebarToMain, 1500);
+});
 </script>
+
 
 </body>
 </html>
