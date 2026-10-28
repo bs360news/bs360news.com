@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>International News | BS 360 NEWS</title>
+ 
 <meta name="description" content="BS 360 NEWS అంతర్జాతీయ వార్తలు - ప్రపంచ రాజకీయాలు, దేశాల మధ్య సంబంధాలు, విదేశీ పరిణామాలు మరియు తాజా ప్రపంచ వార్తలు.">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://bs360news.com/international.html">
@@ -49,7 +50,31 @@ button{font:inherit}
 
 /* PAGE */
 .page{width:min(1400px,96%);margin:15px auto 35px}
-.main-layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:22px;align-items:start}
+.main-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: 22px;
+    align-items: stretch;
+}
+
+.international-main {
+    min-width: 0;
+    align-self: stretch;
+}
+
+.article-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    min-width: 0;
+    align-self: stretch;
+    height: 100%;
+}
+
+.article-sidebar .sidebar-box {
+    flex: 0 0 auto;
+}
+ 
 .international-main{min-width:0}
 .section{margin-bottom:30px}
 .section-heading{margin:0 0 14px;padding:0 0 8px;border-bottom:2px solid #e50914;font-size:21px;font-weight:700;color:#e50914}
@@ -564,6 +589,40 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+
+
+
+function adjustInternationalSidebar() {
+    const main = document.querySelector(".international-main");
+    const sidebar = document.querySelector(".article-sidebar");
+
+    if (!main || !sidebar) return;
+
+    if (window.innerWidth <= 1100) {
+        sidebar.style.height = "auto";
+        return;
+    }
+
+    sidebar.style.height = main.offsetHeight + "px";
+}
+
+window.addEventListener("load", adjustInternationalSidebar);
+window.addEventListener("resize", adjustInternationalSidebar);
+
+const internationalGrid = document.getElementById("internationalGrid");
+
+if (internationalGrid) {
+    new MutationObserver(function () {
+        requestAnimationFrame(adjustInternationalSidebar);
+    }).observe(internationalGrid, {
+        childList: true,
+        subtree: true
+    });
+}
+
+document.querySelectorAll(".international-main img").forEach(function (img) {
+    img.addEventListener("load", adjustInternationalSidebar);
+});
 
 </script>
 
