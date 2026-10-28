@@ -944,6 +944,47 @@ sidebar.style.msOverflowStyle = "none";
     });
 
 });
+
+
+
+
+
+
+
+
+
+(function () {
+    function removeNationalArticleBoxes() {
+        const selectors = [
+            "#nationalGrid",
+            "#topNewsSidebar",
+            "#latestSidebar",
+            "#trendingSidebar",
+            ".movies-main",
+            ".article-sidebar"
+        ];
+
+        document.querySelectorAll(selectors.join(",")).forEach(function (container) {
+            container.querySelectorAll("article, .news-item, .post, .news-card, .post-card").forEach(function (card) {
+                card.style.setProperty("border", "none", "important");
+                card.style.setProperty("outline", "none", "important");
+                card.style.setProperty("box-shadow", "none", "important");
+                card.style.setProperty("border-radius", "0", "important");
+                card.style.setProperty("background", "transparent", "important");
+            });
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", removeNationalArticleBoxes);
+    window.addEventListener("load", removeNationalArticleBoxes);
+
+    const observer = new MutationObserver(removeNationalArticleBoxes);
+    observer.observe(document.documentElement, {
+        childList: true,
+        subtree: true
+    });
+})();
+
 </script>
 </body>
 </html>
