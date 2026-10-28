@@ -985,6 +985,75 @@ body.dark-mode .most-read-item {
     outline: none !important;
     box-shadow: none !important;
 }
+
+
+
+
+
+
+    
+/* AP & TS NEWS GRID */
+#aptsGrid.movies-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+    width: 100%;
+    height: auto;
+    max-height: none;
+    overflow: visible;
+}
+
+/* AP & TS NEWS CARDS */
+#aptsGrid .movie-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-width: 0;
+    height: 100%;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+#aptsGrid .movie-card img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    height: auto;
+    object-fit: cover;
+}
+
+#aptsGrid .movie-card-content {
+    padding: 10px;
+    flex: 1;
+}
+
+#aptsGrid .movie-card-title {
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* TABLET */
+@media (max-width: 1100px) {
+    #aptsGrid.movies-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 700px) {
+    #aptsGrid.movies-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    #aptsGrid .movie-card-title {
+        font-size: 14px;
+        line-height: 1.45;
+    }
+}
+
 </style>
 
 
