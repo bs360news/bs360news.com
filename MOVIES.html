@@ -677,56 +677,312 @@ body.dark-mode .most-read-item{
 
 
 
-</style>
 
+    /* ================= BS 360 NEWS HEADER ================= */
+
+.bs-header {
+    width: 100%;
+    background: #fff;
+    color: #111;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+    z-index: 20;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.bs-header-top {
+    width: 100%;
+    max-width: 1240px;
+    min-height: 82px;
+    margin: 0 auto;
+    padding: 12px 22px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+/* LOGO + BRAND */
+
+.bs-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+}
+
+.bs-logo {
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+    display: block;
+}
+
+.bs-brand-name {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.bs-brand-title {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    font-size: 25px;
+    line-height: 1.1;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+}
+
+.brand-bs,
+.brand-news {
+    color: #111;
+}
+
+.brand-360 {
+    color: #e60000;
+    margin-left: 3px;
+}
+
+.brand-news {
+    margin-left: 4px;
+}
+
+.bs-brand-name > span {
+    font-size: 12px;
+    color: #555;
+}
+
+/* DARK + LIVE */
+
+.bs-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-shrink: 0;
+}
+
+.bs-dark-btn {
+    padding: 8px 13px;
+    background: #fff;
+    color: #111;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.bs-dark-btn:hover {
+    background: #eee;
+}
+
+.bs-live {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #e60000;
+    font-size: 12px;
+    font-weight: 900;
+}
+
+.bs-live-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #e60000;
+    display: inline-block;
+    animation: bsLivePulse 1.2s infinite;
+}
+
+@keyframes bsLivePulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.35;
+    }
+}
+
+/* NAVIGATION */
+
+.bs-navigation {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0;
+    padding: 0 max(2%, calc((100% - 1240px) / 2));
+    box-sizing: border-box;
+    background: #075aaa;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    scrollbar-width: thin;
+}
+
+.bs-navigation a {
+    display: inline-block;
+    padding: 14px 19px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.bs-navigation a:hover {
+    background: #e60000;
+    color: #fff;
+}
+
+/* ================= DARK MODE ================= */
+
+body.dark-mode {
+    background: #111;
+    color: #fff;
+}
+
+body.dark-mode .bs-header {
+    background: #111;
+    color: #fff;
+    border-color: #333;
+}
+
+body.dark-mode .brand-bs,
+body.dark-mode .brand-news {
+    color: #fff;
+}
+
+body.dark-mode .brand-360 {
+    color: #ff3333;
+}
+
+body.dark-mode .bs-brand-name > span {
+    color: #bbb;
+}
+
+body.dark-mode .bs-dark-btn {
+    background: #222;
+    color: #fff;
+    border-color: #666;
+}
+
+body.dark-mode .bs-dark-btn:hover {
+    background: #fff;
+    color: #111;
+}
+
+body.dark-mode .bs-navigation {
+    background: #075aaa;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 600px) {
+
+    .bs-header-top {
+        min-height: 65px;
+        padding: 9px 10px;
+        gap: 8px;
+    }
+
+    .bs-brand {
+        gap: 8px;
+    }
+
+    .bs-logo {
+        width: 42px;
+        height: 42px;
+    }
+
+    .bs-brand-title {
+        font-size: 19px;
+    }
+
+    .bs-brand-name > span {
+        font-size: 10px;
+    }
+
+    .bs-header-actions {
+        gap: 8px;
+    }
+
+    .bs-dark-btn {
+        padding: 6px 9px;
+        font-size: 11px;
+    }
+
+    .bs-live {
+        font-size: 10px;
+        gap: 4px;
+    }
+
+    .bs-live-dot {
+        width: 6px;
+        height: 6px;
+    }
+
+    .bs-navigation {
+        justify-content: flex-start;
+        padding: 0;
+    }
+
+    .bs-navigation a {
+        padding: 12px 15px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 400px) {
+    .bs-brand-name > span {
+        display: none;
+    }
+
+    .bs-brand-title {
+        font-size: 17px;
+    }
+
+    .bs-logo {
+        width: 38px;
+        height: 38px;
+    }
+}
+    
+
+</style>
 </head>
 
-
 <body>
-
-
-<header class="top-header">
-
-    <div class="header-inner">
-
-        <div class="logo">
-            BS <span>360</span> NEWS
-        </div>
-
-      
-
-    </div>
-
+<header class="bs-header">
+ <div class="bs-header-top">
+  <div class="bs-brand">
+   <a href="index.html" aria-label="BS 360 NEWS Home"><img src="dp.png.png" alt="BS 360 NEWS" class="bs-logo"></a>
+   <div class="bs-brand-name">
+    <a href="index.html" class="bs-brand-title"><span class="brand-bs">BS</span><span class="brand-360">360</span><span class="brand-news">NEWS</span></a>
+    <span class="bs-tagline">Fast | Fair | Fearless</span>
+   </div>
+  </div>
+  <div class="bs-header-actions">
+   <button type="button" id="themeToggle" class="bs-dark-btn">🌙 Dark</button>
+   <div class="bs-live"><span class="bs-live-dot"></span> LIVE</div>
+  </div>
+ </div>
+ <nav class="bs-navigation" aria-label="ప్రధాన నావిగేషన్">
+  <a href="index.html"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 10 9-7 9 7"></path><path d="M5 9v12h14V9"></path><path d="M9 21v-7h6v7"></path></svg><span>హోమ్</span></a>
+  <a href="MOVIES.html">ఎంటర్టైన్మెంట్</a>
+  <a href="SPORTS.html">స్పోర్ట్స్</a>
+  <a href="AP%26TS.html">ఏపీ&amp;టీఎస్</a>
+  <a href="business.html"  class="active">బిజినెస్</a>
+  <a href="moviereviews.html">మూవీ రివ్యూస్</a>
+  <a href="national.html">జాతీయ వార్తలు</a>
+  <a href="international.html">అంతర్జాతీయ వార్తలు</a>
+  <a href="tajavarthalu.html">తాజా వార్తలు</a>
+ </nav>
 </header>
 
 
-<nav class="nav-bar">
-
-    <div class="nav-inner">
-
-        <a href="index.html">
-            హోమ్ 
-        </a>
-
-        <a href="MOVIES.html" class="active">
-            మూవీస్ 
-        </a>
-
-        <a href="SPORTS.html">
-            స్పోర్ట్స్ 
-        </a>
-
-        <a href="AP&TS.html">
-            ఏపీ & టీస్ 
-        </a>
-
-        <a href="business.html">
-            బిజినెస్ 
-        </a>
-
-    </div>
-
-</nav>
 
 
 <div class="breaking">
@@ -1482,6 +1738,47 @@ document.addEventListener("DOMContentLoaded", function(){
         });
 
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const themeButton = document.getElementById("themeToggle");
+
+    if (!themeButton) return;
+
+    // గతంలో ఎంచుకున్న థీమ్‌ను గుర్తుంచుకోవడం
+    if (localStorage.getItem("bs360-theme") === "dark") {
+        document.body.classList.add("dark-mode");
+    }
+
+    updateThemeButton();
+
+    themeButton.addEventListener("click", function () {
+        document.body.classList.toggle("dark-mode");
+
+        const isDark = document.body.classList.contains("dark-mode");
+
+        localStorage.setItem("bs360-theme", isDark ? "dark" : "light");
+
+        updateThemeButton();
+    });
+
+    function updateThemeButton() {
+        const isDark = document.body.classList.contains("dark-mode");
+        themeButton.textContent = isDark ? "☀️ Light" : "🌙 Dark";
+    }
+});
+
 
 </script>
 
