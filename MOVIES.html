@@ -979,6 +979,37 @@ body.dark-mode .bs-navigation {
     top: 0 !important;
     z-index: 9999 !important;
 }
+
+
+/* NAV BAR కింద కనిపిస్తున్న గీత తొలగించడానికి */
+.bs-navigation {
+    border: none !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+    margin-bottom: 0 !important;
+}
+
+/* NAV కింద ఉన్న ఎలిమెంట్ల షాడో తొలగించడానికి */
+.bs-navigation + * {
+    box-shadow: none !important;
+}
+
+/* Breaking news bar పై అదనపు గీత రాకుండా */
+.breaking {
+    border-top: none !important;
+    box-shadow: none !important;
+    margin-top: 12px !important;
+}
+
+/* NAV links కింద గీత రాకుండా */
+.bs-navigation a,
+.bs-navigation a:hover,
+.bs-navigation a.active {
+    box-shadow: none !important;
+    border-bottom-color: transparent !important;
+}
+
 </style>
 </head>
 
