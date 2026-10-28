@@ -795,6 +795,82 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
+ 
+document.addEventListener("DOMContentLoaded", function () {
+    "use strict";
+
+    function fitBusinessSidebar() {
+        const mainLayout = document.querySelector(".main-layout");
+        const mainContent = document.querySelector(".movies-main");
+        const sidebar = document.querySelector(".article-sidebar");
+
+        if (!mainLayout || !mainContent || !sidebar) return;
+
+        // Laptop/Desktop మాత్రమే
+        if (window.innerWidth <= 1100) {
+            sidebar.style.height = "auto";
+            sidebar.style.overflow = "visible";
+            sidebar.querySelectorAll(".sidebar-box").forEach(function (box) {
+                box.style.display = "";
+            });
+            return;
+        }
+
+        // Main articles పూర్తిగా render అయ్యే వరకు వేచి ఉండాలి
+        requestAnimationFrame(function () {
+            const mainHeight = mainContent.offsetHeight;
+
+            sidebar.style.height = mainHeight + "px";
+            sidebar.style.maxHeight = mainHeight + "px";
+            sidebar.style.overflow = "hidden";
+
+            let remainingHeight = mainHeight;
+            const boxes = Array.from(sidebar.querySelectorAll(".sidebar-box"));
+
+            boxes.forEach(function (box) {
+                box.style.display = "";
+
+                const style = getComputedStyle(box);
+                const marginTop = parseFloat(style.marginTop) || 0;
+                const marginBottom = parseFloat(style.marginBottom) || 0;
+                const requiredHeight = box.scrollHeight + marginTop + marginBottom;
+
+                if (remainingHeight <= 0) {
+                    box.style.display = "none";
+                    return;
+                }
+
+                if (requiredHeight > remainingHeight) {
+                    box.style.maxHeight = Math.max(0, remainingHeight - marginTop - marginBottom) + "px";
+                    box.style.overflow = "hidden";
+                    remainingHeight = 0;
+                } else {
+                    box.style.maxHeight = "";
+                    box.style.overflow = "hidden";
+                    remainingHeight -= requiredHeight;
+                }
+            });
+        });
+    }
+
+    window.addEventListener("load", fitBusinessSidebar);
+    window.addEventListener("resize", fitBusinessSidebar);
+
+    const observer = new MutationObserver(fitBusinessSidebar);
+    const grid = document.getElementById("businessGrid");
+
+    if (grid) {
+        observer.observe(grid, {
+            childList: true,
+            subtree: true
+        });
+    }
+
+    setTimeout(fitBusinessSidebar, 500);
+    setTimeout(fitBusinessSidebar, 1500);
+});
+
 </script>
 
 </body>
