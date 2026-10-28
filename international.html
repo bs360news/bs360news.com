@@ -606,6 +606,65 @@ body.dark-mode .sidebar-item{border-color:#374151}
 
     .international-card-title{font-size:12px}
 }
+   /* SIDEBAR SCROLLBAR FIX */
+.article-sidebar {
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    overflow-y: visible !important;
+    overflow-x: hidden !important;
+    align-self: stretch !important;
+}
+
+.article-sidebar .sidebar-box {
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    overflow-y: visible !important;
+}
+
+.main-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    align-items: stretch;
+    gap: 24px;
+}
+
+/* SIDEBAR NEWS IMAGES */
+.article-sidebar img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* REMOVE INTERNAL SCROLLBARS */
+.article-sidebar,
+.article-sidebar .sidebar-box,
+.article-sidebar .sidebar-content {
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+}
+
+.article-sidebar::-webkit-scrollbar,
+.article-sidebar .sidebar-box::-webkit-scrollbar,
+.article-sidebar .sidebar-content::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .main-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .article-sidebar {
+        width: 100%;
+        height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
+    }
+}
 </style>
 
 </head>
