@@ -1017,46 +1017,7 @@ body.dark-mode .most-read-item {
 
 
 
-    /* EACH SIDEBAR BOX — SEPARATE MANUAL SCROLL */
-.article-sidebar {
-    height: auto !important;
-    max-height: none !important;
-    overflow: visible !important;
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-}
 
-.article-sidebar .sidebar-box {
-    height: 320px;
-    min-height: 320px;
-    overflow-y: auto !important;
-    overflow-x: hidden !important;
-    scrollbar-width: thin;
-    scrollbar-color: #888 #eeeeee;
-}
-
-/* SIDEBAR SCROLLBAR */
-.article-sidebar .sidebar-box::-webkit-scrollbar {
-    width: 6px;
-}
-
-.article-sidebar .sidebar-box::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 5px;
-}
-
-.article-sidebar .sidebar-box::-webkit-scrollbar-track {
-    background: #eeeeee;
-}
-
-/* MOBILE: SIDEBARS NORMAL HEIGHT */
-@media (max-width: 1100px) {
-    .article-sidebar .sidebar-box {
-        height: 320px;
-        min-height: 320px;
-    }
-}
 </style>
 </head>
 
@@ -1846,56 +1807,6 @@ document.addEventListener("DOMContentLoaded", function(){
 });
 
 
-
-
-
-
-
-
-
-
-
-
-
-document.addEventListener("DOMContentLoaded", function () {
-    const themeButton = document.getElementById("themeToggle");
-
-    if (!themeButton) return;
-
-    // గతంలో ఎంచుకున్న థీమ్‌ను గుర్తుంచుకోవడం
-    if (localStorage.getItem("bs360-theme") === "dark") {
-        document.body.classList.add("dark-mode");
-    }
-
-    updateThemeButton();
-
-    themeButton.addEventListener("click", function () {
-        document.body.classList.toggle("dark-mode");
-
-        const isDark = document.body.classList.contains("dark-mode");
-
-        localStorage.setItem("bs360-theme", isDark ? "dark" : "light");
-
-        updateThemeButton();
-    });
-
-    function updateThemeButton() {
-        const isDark = document.body.classList.contains("dark-mode");
-        themeButton.textContent = isDark ? "☀️ Light" : "🌙 Dark";
-    }
-});
-
-
-
-    function matchSidebarToNationalHeight() {
-    const sidebar = document.querySelector(".article-sidebar");
-
-    if (!sidebar) return;
-
-    sidebar.style.setProperty("height", "auto", "important");
-    sidebar.style.setProperty("max-height", "none", "important");
-    sidebar.style.setProperty("overflow", "visible", "important");
-}
 
 </script>
 
