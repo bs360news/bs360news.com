@@ -1217,6 +1217,15 @@ document.addEventListener("DOMContentLoaded", function () {
         return String(text || "").replace(/\s+/g, " ").trim();
     }
 
+    function uniqueArticles(articles) {
+        return articles.filter(function (article, index, array) {
+            return article.url &&
+                array.findIndex(function (item) {
+                    return item.url === article.url;
+                }) === index;
+        });
+    }
+
     /* =====================================================
        GET ARTICLES
     ===================================================== */
@@ -1225,10 +1234,18 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!source) return [];
 
         let items = [];
+
         const cardSelector = [
-            ".news-item.post", "article", ".news-card", ".movie-card",
-            ".post-card", ".latest-news-card", ".trending-card",
-            ".top-news-card", ".review-card", ".news-item"
+            ".news-item.post",
+            "article",
+            ".news-card",
+            ".movie-card",
+            ".post-card",
+            ".latest-news-card",
+            ".trending-card",
+            ".top-news-card",
+            ".review-card",
+            ".news-item"
         ].join(",");
 
         if (source.matches && source.matches(cardSelector)) {
@@ -1238,13 +1255,16 @@ document.addEventListener("DOMContentLoaded", function () {
         items.push(...Array.from(source.querySelectorAll(cardSelector)));
 
         if (!items.length) {
-            items = Array.from(source.querySelectorAll("a[href]")).filter(function (a) {
+            items = Array.from(
+                source.querySelectorAll("a[href]")
+            ).filter(function (a) {
                 return !!a.querySelector("img");
             });
         }
 
         const articles = items.map(function (item) {
             const image = item.querySelector("img");
+
             const link = item.matches && item.matches("a[href]")
                 ? item
                 : item.querySelector("a[href]");
@@ -1254,23 +1274,34 @@ document.addEventListener("DOMContentLoaded", function () {
                 ".news-title, .article-title, h1, h2, h3, h4, p, .title"
             );
 
-            let title = cleanText(titleNode ? titleNode.textContent : "");
+            let title = cleanText(
+                titleNode ? titleNode.textContent : ""
+            );
 
-            if (!title && link) title = cleanText(link.textContent);
-            if (!title && image) title = cleanText(image.getAttribute("alt") || "");
+            if (!title && link) {
+                title = cleanText(link.textContent);
+            }
+
+            if (!title && image) {
+                title = cleanText(image.getAttribute("alt") || "");
+            }
+
+            let imageURL = "";
+
+            if (image) {
+                imageURL =
+                    image.getAttribute("src") ||
+                    image.getAttribute("data-src") ||
+                    image.getAttribute("data-lazy-src") ||
+                    "";
+            }
 
             return {
                 title: title,
-                image: image
-                    ? (
-                        image.getAttribute("src") ||
-                        image.getAttribute("data-src") ||
-                        image.getAttribute("data-lazy-src") || ""
-                    )
-                    : "",
+                image: imageURL,
                 alt: image ? (image.getAttribute("alt") || "") : "",
                 url: item.getAttribute("data-url") ||
-                    (link ? (link.getAttribute("href") || "") : "")
+                    (link ? link.getAttribute("href") || "" : "")
             };
         }).filter(function (article) {
             return article.title &&
@@ -1280,23 +1311,29 @@ document.addEventListener("DOMContentLoaded", function () {
                 !/^javascript:/i.test(article.url);
         });
 
-        return articles.filter(function (article, index, array) {
-            return array.findIndex(function (other) {
-                return other.url === article.url;
-            }) === index;
-        });
+        return uniqueArticles(articles);
     }
+
+    /* =====================================================
+       GET ARTICLES BY SOURCE ID
+    ===================================================== */
 
     function getFirstAvailableArticles(home, ids) {
         for (const id of ids) {
             const source = home.getElementById(id);
             const articles = getArticles(source);
-            if (articles.length) return articles;
+
+            if (articles.length) {
+                return articles;
+            }
         }
+
         return [];
     }
 
-    /* Find homepage sections by heading when IDs differ. */
+    /* =====================================================
+       FIND ARTICLES BY HEADING
+    ===================================================== */
 
     function getArticlesByHeading(home, labels) {
         const wanted = labels.map(function (label) {
@@ -1311,17 +1348,28 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
         for (const heading of headings) {
-            const text = cleanText(heading.textContent).toLowerCase();
+            const text = cleanText(
+                heading.textContent
+            ).toLowerCase();
 
             if (!wanted.some(function (label) {
                 return text === label || text.includes(label);
-            })) continue;
+            })) {
+                continue;
+            }
 
             let parent = heading;
 
-            for (let level = 0; level < 5 && parent; level++, parent = parent.parentElement) {
+            for (
+                let level = 0;
+                level < 5 && parent;
+                level++, parent = parent.parentElement
+            ) {
                 const articles = getArticles(parent);
-                if (articles.length) return articles;
+
+                if (articles.length) {
+                    return articles;
+                }
             }
         }
 
@@ -1330,11 +1378,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function getSectionArticles(home, ids, headingLabels) {
         const byId = getFirstAvailableArticles(home, ids);
-        return byId.length ? byId : getArticlesByHeading(home, headingLabels);
+
+        if (byId.length) {
+            return byId;
+        }
+
+        return getArticlesByHeading(home, headingLabels);
     }
 
     /* =====================================================
-       NORMAL CARD
+       ARTICLE CARD
        AP & TS GRID
     ===================================================== */
 
@@ -1346,6 +1399,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     alt="${article.alt || article.title}"
                     loading="lazy"
                 >
+
                 <div class="movie-card-content">
                     <h3 class="movie-card-title">
                         ${article.title}
@@ -1356,7 +1410,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     /* =====================================================
-       SIDEBAR
+       SIDEBAR CARD
     ===================================================== */
 
     function sidebarHTML(article) {
@@ -1367,6 +1421,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     alt="${article.alt || article.title}"
                     loading="lazy"
                 >
+
                 <div class="sidebar-item-title">
                     ${article.title}
                 </div>
@@ -1388,22 +1443,34 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /* =====================================================
        SIDEBAR HEIGHT
-       AP & TS MAIN SECTION HEIGHT
+       SIDEBAR ENDS WITH AP & TS SECTION
     ===================================================== */
 
     function matchSidebarToAptsHeight() {
-        const aptsMain = document.querySelector(".apts-main");
+        const aptsGrid = document.getElementById("aptsGrid");
         const sidebar = document.querySelector(".article-sidebar");
 
-        if (!aptsMain || !sidebar) return;
+        if (!aptsGrid || !sidebar) return;
+
+        const aptsSection = aptsGrid.closest(".section");
+        const aptsMain = document.querySelector(".apts-main");
+
+        if (!aptsSection || !aptsMain) return;
 
         if (window.innerWidth > 1100) {
-            const sectionHeight = Math.ceil(
-                aptsMain.getBoundingClientRect().height
+            const sectionBottom =
+                aptsSection.getBoundingClientRect().bottom;
+
+            const sidebarTop =
+                sidebar.getBoundingClientRect().top;
+
+            const height = Math.max(
+                0,
+                Math.ceil(sectionBottom - sidebarTop)
             );
 
-            sidebar.style.height = sectionHeight + "px";
-            sidebar.style.maxHeight = sectionHeight + "px";
+            sidebar.style.height = height + "px";
+            sidebar.style.maxHeight = height + "px";
             sidebar.style.overflow = "hidden";
         } else {
             sidebar.style.height = "";
@@ -1412,7 +1479,21 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    window.addEventListener("resize", matchSidebarToAptsHeight);
+    let sidebarUpdateFrame = 0;
+
+    function scheduleSidebarUpdate() {
+        if (sidebarUpdateFrame) {
+            cancelAnimationFrame(sidebarUpdateFrame);
+        }
+
+        sidebarUpdateFrame = requestAnimationFrame(function () {
+            sidebarUpdateFrame = 0;
+            matchSidebarToAptsHeight();
+        });
+    }
+
+    window.addEventListener("resize", scheduleSidebarUpdate);
+    window.addEventListener("load", scheduleSidebarUpdate);
 
     /* =====================================================
        LOAD HOMEPAGE
@@ -1430,12 +1511,14 @@ document.addEventListener("DOMContentLoaded", function () {
     })
     .then(function (html) {
         const parser = new DOMParser();
-        const home = parser.parseFromString(html, "text/html");
+
+        const home = parser.parseFromString(
+            html,
+            "text/html"
+        );
 
         /* =================================================
-           AP & TS SOURCES
-           LOCAL AP & TS ARTICLES FIRST
-           HOMEPAGE AP & TS ARTICLES NEXT
+           AP & TS HOMEPAGE ARTICLES
         ================================================= */
 
         const homeApts = getSectionArticles(
@@ -1447,7 +1530,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 "aptsNewsGrid",
                 "aptsSection",
                 "afterApTsGrid",
-                "aptsNews"
+                "aptsNews",
+                "localAptsSource"
             ],
             [
                 "ఏపీ & తెలంగాణ తాజా వార్తలు",
@@ -1460,79 +1544,120 @@ document.addEventListener("DOMContentLoaded", function () {
             ]
         );
 
+        /* =================================================
+           LOCAL AP & TS ARTICLES
+        ================================================= */
+
         const localApts = getArticles(
             document.getElementById("localAptsSource")
         );
 
-        const apts = [
+        /* LOCAL ARTICLES FIRST, HOMEPAGE ARTICLES NEXT */
+
+        const apts = uniqueArticles([
             ...localApts,
             ...homeApts
-        ].filter(function (article, index, array) {
-            return array.findIndex(function (item) {
-                return item.url === article.url;
-            }) === index;
-        });
+        ]);
 
         /* =================================================
-           HOMEPAGE SIDEBAR SOURCES
-           KEEPING OTHER SECTIONS UNCHANGED
+           HOMEPAGE TOP NEWS
         ================================================= */
 
         const topNews = getSectionArticles(
             home,
             [
-                "topNewsSource", "topNewsGrid", "topNews",
-                "topStory", "topStoryGrid", "topStorySection",
+                "topNewsSource",
+                "topNewsGrid",
+                "topNews",
+                "topStory",
+                "topStoryGrid",
+                "topStorySection",
                 "topNewsSection"
             ],
             [
-                "Top News", "Top Story", "టాప్ న్యూస్",
-                "ముఖ్య వార్తలు", "ప్రధాన వార్తలు"
-            ]
-        );
-
-        const trending = getSectionArticles(
-            home,
-            [
-                "trendingSource", "trendingGrid", "trendingSection",
-                "trendingNews", "trendingTrack"
-            ],
-            [
-                "Trending News", "Trending", "ట్రెండింగ్ న్యూస్",
-                "ట్రెండింగ్"
-            ]
-        );
-
-        const latest = getSectionArticles(
-            home,
-            [
-                "latestNewsSource", "latestGrid", "latestSection",
-                "latestNews", "latestNewsList"
-            ],
-            [
-                "Latest News", "Latest", "తాజా వార్తలు",
-                "తాజా వార్త"
-            ]
-        );
-
-        const movieReviews = getSectionArticles(
-            home,
-            [
-                "movieReviewsSource", "movieReviewsGrid",
-                "movieReviewsSection", "movieReviews",
-                "movieReviewGrid", "movieReviewSection",
-                "reviewsGrid", "reviewsSection", "cinemaGrid",
-                "cinemaSection", "movieReviewsTrack", "reviewsTrack"
-            ],
-            [
-                "Movie Reviews", "Movie Review", "మూవీ రివ్యూస్",
-                "మూవీ రివ్యూ", "సినిమా రివ్యూస్", "సినిమా రివ్యూ"
+                "Top News",
+                "Top Story",
+                "టాప్ న్యూస్",
+                "ముఖ్య వార్తలు",
+                "ప్రధాన వార్తలు"
             ]
         );
 
         /* =================================================
-           AP & TS GRID
-           REPLACES MOVIES GRID
+           HOMEPAGE TRENDING
+        ================================================= */
+
+        const trending = getSectionArticles(
+            home,
+            [
+                "trendingSource",
+                "trendingGrid",
+                "trendingSection",
+                "trendingNews",
+                "trendingTrack"
+            ],
+            [
+                "Trending News",
+                "Trending",
+                "ట్రెండింగ్ న్యూస్",
+                "ట్రెండింగ్"
+            ]
+        );
+
+        /* =================================================
+           HOMEPAGE LATEST NEWS
+        ================================================= */
+
+        const latest = getSectionArticles(
+            home,
+            [
+                "latestNewsSource",
+                "latestGrid",
+                "latestSection",
+                "latestNews",
+                "latestNewsList"
+            ],
+            [
+                "Latest News",
+                "Latest",
+                "తాజా వార్తలు",
+                "తాజా వార్త"
+            ]
+        );
+
+        /* =================================================
+           HOMEPAGE MOVIE REVIEWS
+        ================================================= */
+
+        const movieReviews = getSectionArticles(
+            home,
+            [
+                "movieReviewsSource",
+                "movieReviewsGrid",
+                "movieReviewsSection",
+                "movieReviews",
+                "movieReviewGrid",
+                "movieReviewSection",
+                "reviewsGrid",
+                "reviewsSection",
+                "cinemaGrid",
+                "cinemaSection",
+                "movieReviewsTrack",
+                "reviewsTrack"
+            ],
+            [
+                "Movie Reviews",
+                "Movie Review",
+                "మూవీ రివ్యూస్",
+                "మూవీ రివ్యూ",
+                "సినిమా రివ్యూస్",
+                "సినిమా రివ్యూ"
+            ]
+        );
+
+        /* =================================================
+           RENDER AP & TS ARTICLES
+           NO ARTICLE LIMIT
         ================================================= */
 
         show(
@@ -1543,7 +1668,7 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
         /* =================================================
-           TOP NEWS SIDEBAR
+           RENDER TOP NEWS SIDEBAR
         ================================================= */
 
         show(
@@ -1553,7 +1678,7 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
         /* =================================================
-           TRENDING SIDEBAR
+           RENDER TRENDING SIDEBAR
         ================================================= */
 
         show(
@@ -1563,7 +1688,7 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
         /* =================================================
-           LATEST SIDEBAR
+           RENDER LATEST SIDEBAR
         ================================================= */
 
         show(
@@ -1573,7 +1698,7 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
         /* =================================================
-           MOVIE REVIEWS SIDEBAR
+           RENDER MOVIE REVIEWS SIDEBAR
            UNCHANGED
         ================================================= */
 
@@ -1584,15 +1709,35 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
         /* =================================================
-           UPDATE SIDEBAR HEIGHT
+           UPDATE SIDEBAR AFTER ARTICLES RENDER
         ================================================= */
 
-        matchSidebarToAptsHeight();
+        scheduleSidebarUpdate();
 
-        requestAnimationFrame(matchSidebarToAptsHeight);
+        /* Images can change card heights after loading. */
+
+        const aptsGrid = document.getElementById("aptsGrid");
+
+        if (aptsGrid) {
+            aptsGrid.querySelectorAll("img").forEach(function (img) {
+                if (!img.complete) {
+                    img.addEventListener(
+                        "load",
+                        scheduleSidebarUpdate,
+                        { once: true }
+                    );
+
+                    img.addEventListener(
+                        "error",
+                        scheduleSidebarUpdate,
+                        { once: true }
+                    );
+                }
+            });
+        }
 
         /* =================================================
-           CONSOLE LOGS
+           CONSOLE
         ================================================= */
 
         console.log("================================");
@@ -1613,6 +1758,8 @@ document.addEventListener("DOMContentLoaded", function () {
             "aptsGrid",
             '<div class="loading">AP &amp; TS వార్తలు లోడ్ కాలేదు. index.html ఫైల్‌ను చెక్ చేయండి.</div>'
         );
+
+        scheduleSidebarUpdate();
     });
 
     /* =====================================================
