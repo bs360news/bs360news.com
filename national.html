@@ -149,6 +149,12 @@ body.dark-mode .loading{background:#111827;color:#ddd}
 
 
 
+
+
+ .article-sidebar::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+}
 </style>
 </head>
 
@@ -539,7 +545,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
             sidebar.style.height = height + "px";
             sidebar.style.maxHeight = height + "px";
-            sidebar.style.overflow = "auto";
+           sidebar.style.overflowY = "auto";
+sidebar.style.overflowX = "hidden";
+sidebar.style.scrollbarWidth = "none";
+sidebar.style.msOverflowStyle = "none";
         } else {
             sidebar.style.height = "";
             sidebar.style.maxHeight = "";
