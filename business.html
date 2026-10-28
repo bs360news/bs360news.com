@@ -438,15 +438,11 @@ body.dark-mode .loading{background:#111827;color:#ddd}
     <div class="copyright">© 2026 BS 360 NEWS. All Rights Reserved.</div>
 </footer>
 
-
-
 <script>
 document.addEventListener("DOMContentLoaded", function () {
     "use strict";
 
-    /* =====================================
-       1. DARK MODE
-    ===================================== */
+    /* 1. DARK MODE */
     const themeToggle = document.getElementById("themeToggle");
 
     if (themeToggle) {
@@ -459,15 +455,13 @@ document.addEventListener("DOMContentLoaded", function () {
             document.body.classList.toggle("dark-mode");
 
             const isDark = document.body.classList.contains("dark-mode");
-
             themeToggle.textContent = isDark ? "☀️ Light" : "🌙 Dark";
+
             localStorage.setItem("bs360-theme", isDark ? "dark" : "light");
         });
     }
 
-    /* =====================================
-       2. HELPER FUNCTIONS
-    ===================================== */
+    /* 2. HELPER FUNCTIONS */
     function cleanText(text) {
         return String(text || "").replace(/\s+/g, " ").trim();
     }
@@ -494,9 +488,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    /* =====================================
-       3. READ ARTICLES FROM HTML
-    ===================================== */
+    /* 3. READ ARTICLES FROM HTML */
     function getArticles(source, baseURL) {
         if (!source) return [];
 
@@ -579,33 +571,25 @@ document.addEventListener("DOMContentLoaded", function () {
         return uniqueArticles(articles);
     }
 
-    /* =====================================
-       4. REMOVE DUPLICATE ARTICLES
-    ===================================== */
+    /* 4. REMOVE DUPLICATES */
     function uniqueArticles(articles) {
         const seen = new Set();
 
         return articles.filter(function (article) {
-            if (!article.url || seen.has(article.url)) {
-                return false;
-            }
+            if (!article.url || seen.has(article.url)) return false;
 
             seen.add(article.url);
             return true;
         });
     }
 
-    /* =====================================
-       5. FIND HOME PAGE ARTICLES
-    ===================================== */
+    /* 5. FIND HOME PAGE ARTICLES */
     function getByIds(home, ids, baseURL) {
         for (const id of ids) {
             const element = home.getElementById(id);
             const articles = getArticles(element, baseURL);
 
-            if (articles.length) {
-                return articles;
-            }
+            if (articles.length) return articles;
         }
 
         return [];
@@ -634,9 +618,7 @@ document.addEventListener("DOMContentLoaded", function () {
             for (let level = 0; level < 5 && parent; level++, parent = parent.parentElement) {
                 const articles = getArticles(parent, baseURL);
 
-                if (articles.length) {
-                    return articles;
-                }
+                if (articles.length) return articles;
             }
         }
 
@@ -645,15 +627,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function getSectionArticles(home, ids, labels, baseURL) {
         const articles = getByIds(home, ids, baseURL);
-
-        return articles.length
-            ? articles
-            : getByHeading(home, labels, baseURL);
+        return articles.length ? articles : getByHeading(home, labels, baseURL);
     }
 
-    /* =====================================
-       6. ARTICLE CARD HTML
-    ===================================== */
+    /* 6. ARTICLE CARD HTML */
     function businessCardHTML(article) {
         return `
             <a href="${escapeHTML(article.url)}" class="business-card">
@@ -663,9 +640,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     loading="lazy"
                 >
                 <div class="business-card-content">
-                    <h3 class="business-card-title">
-                        ${escapeHTML(article.title)}
-                    </h3>
+                    <h3 class="business-card-title">${escapeHTML(article.title)}</h3>
                 </div>
             </a>
         `;
@@ -679,24 +654,17 @@ document.addEventListener("DOMContentLoaded", function () {
                     alt="${escapeHTML(article.alt || article.title)}"
                     loading="lazy"
                 >
-                <div class="sidebar-item-title">
-                    ${escapeHTML(article.title)}
-                </div>
+                <div class="sidebar-item-title">${escapeHTML(article.title)}</div>
             </a>
         `;
     }
 
     function show(id, html) {
         const element = document.getElementById(id);
-
-        if (element) {
-            element.innerHTML = html;
-        }
+        if (element) element.innerHTML = html;
     }
 
-    /* =====================================
-       7. SIDEBAR DATA
-    ===================================== */
+    /* 7. SIDEBAR DATA */
     let trendingArticles = [];
     let latestArticles = [];
     let topNewsArticles = [];
@@ -724,12 +692,11 @@ document.addEventListener("DOMContentLoaded", function () {
         );
     }
 
-    /* =====================================
-       8. SIDEBAR HEIGHT
-       Desktop: sidebar ends with main articles.
-       Mobile/tablet: normal vertical layout.
-    ===================================== */
-    let sidebarFitTimer = null;
+    /* 8. SIDEBAR HEIGHT FIX
+       Desktop: sidebar height matches business-main.
+       Tablet/mobile: sidebar remains normal.
+    */
+    let sidebarFitFrame = 0;
 
     function fitSidebarToMain() {
         const main = document.querySelector(".business-main");
@@ -737,76 +704,30 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (!main || !sidebar) return;
 
-        if (sidebarFitTimer) {
-            clearTimeout(sidebarFitTimer);
+        if (sidebarFitFrame) {
+            cancelAnimationFrame(sidebarFitFrame);
         }
 
-        sidebarFitTimer = setTimeout(function () {
-            const boxes = Array.from(
-                sidebar.querySelectorAll(".sidebar-box")
-            );
-
-            /* Reset previous height restrictions */
-            sidebar.style.removeProperty("height");
-            sidebar.style.removeProperty("max-height");
-            sidebar.style.removeProperty("min-height");
-            sidebar.style.removeProperty("overflow");
-
-            boxes.forEach(function (box) {
-                box.style.removeProperty("max-height");
-                box.style.removeProperty("overflow");
-                box.style.removeProperty("display");
-            });
-
-            /* Mobile and tablet */
+        sidebarFitFrame = requestAnimationFrame(function () {
             if (window.innerWidth <= 1100) {
-                sidebar.style.height = "auto";
-                sidebar.style.maxHeight = "none";
-                sidebar.style.overflow = "visible";
+                sidebar.style.removeProperty("height");
+                sidebar.style.removeProperty("max-height");
+                sidebar.style.removeProperty("overflow");
                 return;
             }
 
-            /* Measure the full main article column */
             const mainHeight = Math.ceil(main.getBoundingClientRect().height);
 
-            if (!mainHeight) return;
+            if (mainHeight <= 0) return;
 
-            sidebar.style.height = mainHeight + "px";
-            sidebar.style.maxHeight = mainHeight + "px";
-            sidebar.style.overflow = "hidden";
-
-            let remainingHeight = mainHeight;
-
-            boxes.forEach(function (box) {
-                if (remainingHeight <= 0) {
-                    box.style.display = "none";
-                    return;
-                }
-
-                const style = getComputedStyle(box);
-                const marginTop = parseFloat(style.marginTop) || 0;
-                const marginBottom = parseFloat(style.marginBottom) || 0;
-
-                const boxHeight = box.getBoundingClientRect().height;
-                const totalHeight = boxHeight + marginTop + marginBottom;
-
-                if (totalHeight <= remainingHeight) {
-                    remainingHeight -= totalHeight;
-                } else {
-                    /*
-                      If the remaining space is too small,
-                      hide this entire sidebar box rather than
-                      showing a partially cut-off box.
-                    */
-                    box.style.display = "none";
-                }
-            });
-        }, 100);
+            sidebar.style.setProperty("height", mainHeight + "px", "important");
+            sidebar.style.setProperty("max-height", mainHeight + "px", "important");
+            sidebar.style.setProperty("overflow", "hidden", "important");
+            sidebar.style.setProperty("align-self", "start", "important");
+        });
     }
 
-    /* =====================================
-       9. REMOVE CARD BOXES / LIGHT TITLES
-    ===================================== */
+    /* 9. REMOVE CARD BOXES / LIGHT TITLES */
     function removeBusinessBoxes() {
         document.querySelectorAll(
             "#businessGrid .business-card, " +
@@ -834,9 +755,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    /* =====================================
-       10. LOAD HOME PAGE AND BUSINESS NEWS
-    ===================================== */
+    /* 10. LOAD HOME PAGE AND BUSINESS NEWS */
     const homeURL = new URL("index.html", location.href);
 
     fetch(homeURL.href + "?v=" + Date.now(), {
@@ -851,11 +770,6 @@ document.addEventListener("DOMContentLoaded", function () {
     })
     .then(function (html) {
         const home = new DOMParser().parseFromString(html, "text/html");
-
-        /*
-          Resolve relative home-page links and images
-          against index.html, not business.html.
-        */
         const homeBaseURL = homeURL.href;
 
         const localBusiness = getArticles(
@@ -952,10 +866,14 @@ document.addEventListener("DOMContentLoaded", function () {
         renderSidebar();
         removeBusinessBoxes();
 
-        requestAnimationFrame(function () {
-            fitSidebarToMain();
+        fitSidebarToMain();
 
-            requestAnimationFrame(fitSidebarToMain);
+        /* Recheck after images finish loading */
+        document.querySelectorAll(".business-main img").forEach(function (img) {
+            if (!img.complete) {
+                img.addEventListener("load", fitSidebarToMain, { once: true });
+                img.addEventListener("error", fitSidebarToMain, { once: true });
+            }
         });
 
         console.log("BS360 BUSINESS PAGE LOADED", {
@@ -976,54 +894,29 @@ document.addEventListener("DOMContentLoaded", function () {
         );
     });
 
-    /* =====================================
-       11. RECHECK AFTER RESIZE / IMAGE LOAD
-    ===================================== */
-    window.addEventListener("resize", function () {
-        fitSidebarToMain();
-    });
+    /* 11. RECHECK WHEN NEEDED */
+    window.addEventListener("resize", fitSidebarToMain);
+    window.addEventListener("load", fitSidebarToMain);
 
     document.addEventListener("load", function (event) {
         if (
             event.target &&
             event.target.tagName === "IMG" &&
-            (
-                event.target.closest(".business-main") ||
-                event.target.closest(".article-sidebar")
-            )
+            event.target.closest(".business-main")
         ) {
             fitSidebarToMain();
         }
     }, true);
 
-    /* Recheck if business articles are inserted dynamically */
-    const businessGrid = document.getElementById("businessGrid");
+    /* Update height if the business article column changes size */
+    const businessMain = document.querySelector(".business-main");
 
-    if (businessGrid) {
-        const businessObserver = new MutationObserver(function () {
-            removeBusinessBoxes();
+    if (businessMain && "ResizeObserver" in window) {
+        const mainResizeObserver = new ResizeObserver(function () {
             fitSidebarToMain();
         });
 
-        businessObserver.observe(businessGrid, {
-            childList: true,
-            subtree: true
-        });
-    }
-
-    /* Recheck if sidebar articles are inserted dynamically */
-    const sidebar = document.querySelector(".article-sidebar");
-
-    if (sidebar) {
-        const sidebarObserver = new MutationObserver(function () {
-            removeBusinessBoxes();
-            fitSidebarToMain();
-        });
-
-        sidebarObserver.observe(sidebar, {
-            childList: true,
-            subtree: true
-        });
+        mainResizeObserver.observe(businessMain);
     }
 
     /* Prevent images from being dragged */
@@ -1033,13 +926,10 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    /* Initial checks */
     removeBusinessBoxes();
-    window.addEventListener("load", fitSidebarToMain);
-    setTimeout(fitSidebarToMain, 500);
-    setTimeout(fitSidebarToMain, 1500);
 });
 </script>
+
 
 
 </body>
