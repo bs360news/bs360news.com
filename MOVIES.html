@@ -952,63 +952,45 @@ body.dark-mode .bs-navigation {
     
 
 
+/* NAVIGATION: STICKY SCROLL LINE FIX */
 
-
-
-/* SCROLL LINE / BORDER REMOVE */
-.bs-navigation {
-    border: none !important;
-    border-bottom: 0 !important;
+.bs-header {
+    border-bottom: none !important;
     box-shadow: none !important;
+}
+
+.bs-navigation {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 9999 !important;
+
+    border: none !important;
+    border-bottom: none !important;
     outline: none !important;
+    box-shadow: none !important;
+
+    margin-bottom: 0 !important;
+    background-clip: padding-box !important;
 }
 
 .bs-navigation a {
-    border-bottom: 3px solid transparent !important;
+    border: none !important;
     box-shadow: none !important;
 }
 
 .bs-navigation a:hover,
 .bs-navigation a.active {
-    border-bottom-color: transparent !important;
-}
-
-/* STICKY NAV SHADOW REMOVE */
-.bs-navigation {
-    position: sticky !important;
-    top: 0 !important;
-    z-index: 9999 !important;
-}
-
-
-/* NAV BAR కింద కనిపిస్తున్న గీత తొలగించడానికి */
-.bs-navigation {
     border: none !important;
-    border-bottom: none !important;
-    box-shadow: none !important;
-    outline: none !important;
-    margin-bottom: 0 !important;
-}
-
-/* NAV కింద ఉన్న ఎలిమెంట్ల షాడో తొలగించడానికి */
-.bs-navigation + * {
     box-shadow: none !important;
 }
 
-/* Breaking news bar పై అదనపు గీత రాకుండా */
+/* BREAKING NEWS TOP GAP */
 .breaking {
     border-top: none !important;
     box-shadow: none !important;
     margin-top: 12px !important;
 }
 
-/* NAV links కింద గీత రాకుండా */
-.bs-navigation a,
-.bs-navigation a:hover,
-.bs-navigation a.active {
-    box-shadow: none !important;
-    border-bottom-color: transparent !important;
-}
 
 </style>
 </head>
