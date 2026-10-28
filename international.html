@@ -194,6 +194,25 @@ body.dark-mode .sidebar-item{border-color:#374151}
     margin-bottom: 0 !important;
 }
 
+.main-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: 22px;
+    align-items: start;
+}
+
+.international-main {
+    min-width: 0;
+}
+
+.article-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    min-width: 0;
+    height: auto;
+    align-self: start;
+}
 </style>
 </head>
 
