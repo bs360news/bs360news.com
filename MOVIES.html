@@ -943,6 +943,109 @@ body.dark-mode .most-read-item {
         line-height: 1.4;
     }
 }
+
+
+
+/* REMOVE ALL ARTICLE BORDERS AND OUTLINES */
+
+.movie-card,
+.business-card,
+.news-item,
+.post,
+.sidebar-item,
+.most-read-item {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* REMOVE BOTTOM LINES BETWEEN ARTICLES */
+
+.movie-card,
+.business-card,
+.sidebar-item,
+.most-read-item {
+    border-bottom: none !important;
+}
+
+/* REMOVE ARTICLE HOVER BORDERS AND SHADOWS */
+
+.movie-card:hover,
+.business-card:hover,
+.news-item:hover,
+.post:hover {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* MOBILE ARTICLE BORDERS REMOVE */
+
+@media (max-width: 600px) {
+    .movie-card,
+    .business-card,
+    .news-item,
+    .post {
+        border: none !important;
+        border-bottom: none !important;
+        box-shadow: none !important;
+    }
+}
+
+
+
+
+
+
+    /* ARTICLES WHITE BACKGROUND — NO BORDERS */
+.movie-card,
+.business-card,
+.news-item,
+.post,
+.sidebar-item,
+.most-read-item {
+    background: #ffffff !important;
+    border: none !important;
+    border-bottom: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* ARTICLE HOVER */
+.movie-card:hover,
+.business-card:hover,
+.news-item:hover,
+.post:hover,
+.sidebar-item:hover,
+.most-read-item:hover {
+    background: #ffffff !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* ARTICLE TEXT */
+.movie-card h3,
+.business-card h3,
+.news-item h3,
+.post h3,
+.sidebar-item h3,
+.most-read-item h3 {
+    background: #ffffff !important;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+    .movie-card,
+    .business-card,
+    .news-item,
+    .post {
+        background: #ffffff !important;
+        border: none !important;
+        border-bottom: none !important;
+        box-shadow: none !important;
+    }
+}
+
 </style>
 </head>
 
