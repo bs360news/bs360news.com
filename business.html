@@ -240,6 +240,38 @@ body.dark-mode .loading{background:#111827;color:#ddd}
 }
 
 
+
+
+
+
+
+ /* BUSINESS ARTICLES: LAPTOP ROW 4 CARDS */
+@media (min-width: 1101px) {
+    #businessGrid {
+        display: grid !important;
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+        gap: 12px !important;
+        width: 100% !important;
+    }
+
+    #businessGrid .business-card {
+        display: block !important;
+        width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    #businessGrid .business-card img {
+        width: 100% !important;
+        aspect-ratio: 16 / 9 !important;
+        height: auto !important;
+        object-fit: cover !important;
+    }
+
+    #businessGrid .business-card-content {
+        padding: 8px !important;
+    }
+}
+
 </style>
 </head>
 
