@@ -145,6 +145,30 @@ body.dark-mode .sidebar-item{border-color:#374151}
  .international-card img{width:95px;height:64px}
  .international-card-title{font-size:12px}
 }
+
+/* International page: articles మరియు sidebar ఒకే ఎత్తులో ఉండాలి */
+.international-layout,
+.national-world-layout,
+.article-layout {
+    align-items: stretch !important;
+}
+
+.article-sidebar {
+    align-self: stretch !important;
+    height: auto !important;
+    min-height: 0 !important;
+}
+
+.article-sidebar .sidebar-box {
+    height: auto !important;
+    flex-shrink: 0;
+}
+
+/* Sidebar చివరి బాక్స్ కింద అదనపు ఖాళీ వద్దు */
+.article-sidebar .sidebar-box:last-child {
+    margin-bottom: 0 !important;
+}
+
 </style>
 </head>
 
