@@ -223,6 +223,67 @@ body.dark-mode .loading{background:#111827;color:#ddd}
     font-weight: 400 !important;
 }
 
+
+
+
+
+
+
+
+
+
+/* NATIONAL PAGE - REMOVE ARTICLE BOXES AND BORDERS */
+
+#nationalGrid article,
+#nationalGrid .news-item,
+#nationalGrid .post,
+#nationalGrid .news-card,
+#nationalGrid .post-card,
+#topNewsSidebar article,
+#topNewsSidebar .news-item,
+#latestSidebar article,
+#latestSidebar .news-item,
+#trendingSidebar article,
+#trendingSidebar .news-item {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+}
+
+/* Remove borders from inner elements */
+#nationalGrid article *,
+#topNewsSidebar article *,
+#latestSidebar article *,
+#trendingSidebar article * {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* Remove decorative borders */
+#nationalGrid article::before,
+#nationalGrid article::after,
+#topNewsSidebar article::before,
+#topNewsSidebar article::after,
+#latestSidebar article::before,
+#latestSidebar article::after,
+#trendingSidebar article::before,
+#trendingSidebar article::after {
+    display: none !important;
+    border: none !important;
+}
+
+/* Keep article images clean */
+#nationalGrid article img,
+#topNewsSidebar article img,
+#latestSidebar article img,
+#trendingSidebar article img {
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+}
+
 </style>
 </head>
 
