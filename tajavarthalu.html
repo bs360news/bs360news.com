@@ -142,6 +142,40 @@ body.dark-mode .loading{background:#111827;color:#ddd}
  .movie-card-content{padding:5px 0}
  .movie-card-title{font-size:12px;line-height:1.4}
 }
+
+ #nationalSidebarArticles .sidebar-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid #e5e7eb;
+    text-decoration: none;
+    color: inherit;
+}
+
+#nationalSidebarArticles .sidebar-item img {
+    width: 100px;
+    height: 65px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+#nationalSidebarArticles .sidebar-item-title {
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 400;
+}
+
+@media (max-width: 600px) {
+    #nationalSidebarArticles .sidebar-item img {
+        width: 90px;
+        height: 62px;
+    }
+
+    #nationalSidebarArticles .sidebar-item-title {
+        font-size: 13px;
+    }
+}
 </style>
 </head>
 
@@ -211,10 +245,12 @@ body.dark-mode .loading{background:#111827;color:#ddd}
    <div class="sidebar-box"><div class="sidebar-title">ట్రెండింగ్ వార్తలు</div><div id="trendingSidebar"></div></div>
 
 
+   
+
     <div class="sidebar-box">
         <div class="sidebar-title">జాతీయ వార్తలు</div>
         <div id="nationalSidebarArticles">
-            <p>వార్తలు లోడ్ అవుతున్నాయి...</p>
+            <p class="loading">వార్తలు లోడ్ అవుతున్నాయి...</p>
         </div>
     </div>
 
@@ -422,73 +458,120 @@ document.addEventListener("DOMContentLoaded", function(){
 
 
 
+document.addEventListener("DOMContentLoaded", async function () {
+    const target = document.getElementById("nationalSidebarArticles");
+    if (!target) return;
 
+    function extractArticles(source) {
+        if (!source) return [];
 
+        return Array.from(
+            source.querySelectorAll("article.news-item.post")
+        ).map(function (article) {
+            const link = article.querySelector("a[href]");
+            const img = article.querySelector("img");
+            const title = article.querySelector("h3, h2, h4");
 
+            if (!link || !img || !title) return null;
 
- document.addEventListener("DOMContentLoaded", async function () {
-    const sidebar = document.getElementById("localNationalSource");
-
-    if (!sidebar) return;
+            return {
+                title: title.textContent.trim(),
+                url: link.getAttribute("href"),
+                image: img.getAttribute("src") ||
+                       img.getAttribute("data-src"),
+                alt: img.getAttribute("alt") || title.textContent.trim()
+            };
+        }).filter(function (item) {
+            return item && item.title && item.url && item.image;
+        });
+    }
 
     try {
-        const response = await fetch("national.html?v=" + Date.now());
+        // national.html లోని స్థానిక వార్తలు
+        const nationalResponse = await fetch(
+            "national.html?v=" + Date.now(),
+            { cache: "no-store" }
+        );
 
-        if (!response.ok) {
+        if (!nationalResponse.ok) {
             throw new Error("national.html లోడ్ కాలేదు");
         }
 
-        const html = await response.text();
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(html, "text/html");
+        const nationalHTML = await nationalResponse.text();
+        const nationalDoc = new DOMParser().parseFromString(
+            nationalHTML, "text/html"
+        );
 
-        const source = doc.getElementById("localNationalSource");
+        let articles = extractArticles(
+            nationalDoc.getElementById("localNationalSource")
+        );
 
-        if (source) {
-            sidebar.innerHTML = source.innerHTML;
-        } else {
-            sidebar.innerHTML =
-                '<p class="loading">జాతీయ వార్తలు అందుబాటులో లేవు.</p>';
+        // Homepage లోని జాతీయ వార్తలను కూడా వెతకండి
+        const homeResponse = await fetch(
+            "index.html?v=" + Date.now(),
+            { cache: "no-store" }
+        );
+
+        if (homeResponse.ok) {
+            const homeHTML = await homeResponse.text();
+            const homeDoc = new DOMParser().parseFromString(
+                homeHTML, "text/html"
+            );
+
+            const ids = [
+                "nationalNewsSource",
+                "nationalSource",
+                "nationalNewsGrid",
+                "nationalGrid",
+                "nationalNewsSection"
+            ];
+
+            for (const id of ids) {
+                const source = homeDoc.getElementById(id);
+                const found = extractArticles(source);
+
+                if (found.length) {
+                    articles = articles.concat(found);
+                    break;
+                }
+            }
         }
-    } catch (error) {
-        console.error("National News Error:", error);
 
-        sidebar.innerHTML =
-            '<p class="loading">జాతీయ వార్తలు లోడ్ కాలేదు.</p>';
+        // Duplicate articles తొలగించండి
+        articles = articles.filter(function (item, index, array) {
+            return array.findIndex(function (other) {
+                return other.url === item.url;
+            }) === index;
+        });
+
+        if (!articles.length) {
+            target.innerHTML =
+                '<p class="loading">జాతీయ వార్తలు దొరకలేదు. national.html, index.html source IDs తనిఖీ చేయండి.</p>';
+            return;
+        }
+
+        target.innerHTML = articles.map(function (item) {
+            return `
+                <a class="sidebar-item"
+                   href="${item.url}">
+                    <img src="${item.image}"
+                         alt="${item.alt}"
+                         loading="lazy">
+                    <div class="sidebar-item-title">
+                        ${item.title}
+                    </div>
+                </a>
+            `;
+        }).join("");
+
+    } catch (error) {
+        console.error("National Sidebar Error:", error);
+
+        target.innerHTML =
+            '<p class="loading">వార్తలు లోడ్ కాలేదు.</p>';
     }
 });
 
- document.addEventListener("DOMContentLoaded", async function () {
-    const sidebar = document.getElementById("localNationalSource");
-
-    if (!sidebar) return;
-
-    try {
-        const response = await fetch("national.html?v=" + Date.now());
-
-        if (!response.ok) {
-            throw new Error("national.html లోడ్ కాలేదు");
-        }
-
-        const html = await response.text();
-        const doc = new DOMParser().parseFromString(html, "text/html");
-
-        // జాతీయ వార్తల ఆర్టికల్స్
-        const source = doc.getElementById("nationalGrid");
-
-        if (source && source.children.length > 0) {
-            sidebar.innerHTML = source.innerHTML;
-        } else {
-            sidebar.innerHTML =
-                '<p class="loading">జాతీయ వార్తలు దొరకలేదు.</p>';
-        }
-    } catch (error) {
-        console.error("National News Error:", error);
-
-        sidebar.innerHTML =
-            '<p class="loading">జాతీయ వార్తలు లోడ్ కాలేదు.</p>';
-    }
-});
 </script>
 </body>
 </html>
