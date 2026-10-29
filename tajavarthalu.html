@@ -455,6 +455,38 @@ document.addEventListener("DOMContentLoaded", function(){
             '<p class="loading">జాతీయ వార్తలు లోడ్ కాలేదు.</p>';
     }
 });
+
+ document.addEventListener("DOMContentLoaded", async function () {
+    const sidebar = document.getElementById("localNationalSource");
+
+    if (!sidebar) return;
+
+    try {
+        const response = await fetch("national.html?v=" + Date.now());
+
+        if (!response.ok) {
+            throw new Error("national.html లోడ్ కాలేదు");
+        }
+
+        const html = await response.text();
+        const doc = new DOMParser().parseFromString(html, "text/html");
+
+        // జాతీయ వార్తల ఆర్టికల్స్
+        const source = doc.getElementById("nationalGrid");
+
+        if (source && source.children.length > 0) {
+            sidebar.innerHTML = source.innerHTML;
+        } else {
+            sidebar.innerHTML =
+                '<p class="loading">జాతీయ వార్తలు దొరకలేదు.</p>';
+        }
+    } catch (error) {
+        console.error("National News Error:", error);
+
+        sidebar.innerHTML =
+            '<p class="loading">జాతీయ వార్తలు లోడ్ కాలేదు.</p>';
+    }
+});
 </script>
 </body>
 </html>
