@@ -822,19 +822,51 @@ body.dark-mode .most-read-item {
         gap: 0;
     }
 
-    .apts-card,
-    .business-card {
-        display: flex;
-        flex-direction: row-reverse;
-        align-items: center;
-        width: 100%;
-        min-height: 95px;
-        border-radius: 0;
-        border-bottom: 1px solid #e5e7eb;
-        background: #fff;
-        box-shadow: none;
-        transform: none;
+
+.apts-card,
+.business-card,
+#aptsGrid .movie-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    min-height: 95px;
+    border-radius: 0;
+    border-bottom: 1px solid #e5e7eb;
+    background: #fff;
+    box-shadow: none;
+    transform: none;
+}
+
+#aptsGrid .movie-card img {
+    order: 2;
+    width: 105px;
+    height: 70px;
+    flex: 0 0 105px;
+    object-fit: cover;
+    margin-left: 10px;
+    border-radius: 5px;
+}
+
+#aptsGrid .movie-card-content {
+    order: 1;
+    flex: 1;
+    min-width: 0;
+    padding: 7px 0;
+}
+
+@media (max-width: 700px) {
+    #aptsGrid.movies-grid {
+        grid-template-columns: 1fr !important;
+        gap: 0 !important;
     }
+
+    #aptsGrid .movie-card-title {
+        font-size: 14px;
+        line-height: 1.45;
+        font-weight: 400;
+    }
+}
 
     .apts-card:hover,
     .business-card:hover {
