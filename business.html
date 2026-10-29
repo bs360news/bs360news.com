@@ -13,6 +13,72 @@
 <link rel="apple-touch-icon" href="dp.png.png">
 
 <style>
+
+
+/* BUSINESS NEWS: MOBILE TEXT LEFT, IMAGE RIGHT */
+@media (max-width: 600px) {
+
+    #businessGrid {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 0 !important;
+        width: 100% !important;
+    }
+
+    #businessGrid .business-card {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        min-height: 95px !important;
+        padding: 9px 0 !important;
+        margin: 0 !important;
+        border: none !important;
+        border-bottom: 1px solid #e5e7eb !important;
+        border-radius: 0 !important;
+        background: #fff !important;
+        box-shadow: none !important;
+        transform: none !important;
+    }
+
+    #businessGrid .business-card img {
+        order: 2 !important;
+        display: block !important;
+        width: 105px !important;
+        min-width: 105px !important;
+        max-width: 105px !important;
+        height: 70px !important;
+        aspect-ratio: auto !important;
+        object-fit: cover !important;
+        margin: 0 0 0 10px !important;
+        border-radius: 5px !important;
+        flex-shrink: 0 !important;
+    }
+
+    #businessGrid .business-card-content {
+        order: 1 !important;
+        flex: 1 1 auto !important;
+        min-width: 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        background: transparent !important;
+    }
+
+    #businessGrid .business-card-title {
+        margin: 0 !important;
+        padding: 0 !important;
+        font-size: 13px !important;
+        line-height: 1.5 !important;
+        font-weight: 400 !important;
+        color: #111827 !important;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 4 !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+    }
+}
+
     /* NAVIGATION SIZE REDUCE */
 .bs-navigation {
     gap: 8px !important;
