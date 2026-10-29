@@ -176,6 +176,28 @@ body.dark-mode .loading{background:#111827;color:#ddd}
         font-size: 13px;
     }
 }
+
+
+/* Sidebar లో scrollbar గీతను దాచడం */
+.article-sidebar,
+.article-sidebar .sidebar-box,
+#trendingSidebar,
+#latestSidebar,
+#topNewsSidebar,
+#nationalSidebarArticles {
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+}
+
+.article-sidebar::-webkit-scrollbar,
+.article-sidebar .sidebar-box::-webkit-scrollbar,
+#trendingSidebar::-webkit-scrollbar,
+#latestSidebar::-webkit-scrollbar,
+#topNewsSidebar::-webkit-scrollbar,
+#nationalSidebarArticles::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+}
 </style>
 </head>
 
