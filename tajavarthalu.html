@@ -209,7 +209,15 @@ body.dark-mode .loading{background:#111827;color:#ddd}
 
   <aside class="article-sidebar">
    <div class="sidebar-box"><div class="sidebar-title">ట్రెండింగ్ వార్తలు</div><div id="trendingSidebar"></div></div>
-   <div class="sidebar-box"><div class="sidebar-title">తాజా వార్తలు</div><div id="latestSidebar"></div></div>
+
+
+    <div class="sidebar-box">
+        <div class="sidebar-title">జాతీయ వార్తలు</div>
+
+        <div id="localNationalSource"></div>
+    </div>
+
+
    <div class="sidebar-box"><div class="sidebar-title">టాప్ వార్తలు</div><div id="topNewsSidebar"></div></div>
    
   </aside>
@@ -386,6 +394,66 @@ document.addEventListener("DOMContentLoaded", function(){
  });
 
  document.querySelectorAll("img").forEach(img=>img.addEventListener("dragstart",e=>e.preventDefault()));
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ document.addEventListener("DOMContentLoaded", async function () {
+    const sidebar = document.getElementById("localNationalSource");
+
+    if (!sidebar) return;
+
+    try {
+        const response = await fetch("national.html?v=" + Date.now());
+
+        if (!response.ok) {
+            throw new Error("national.html లోడ్ కాలేదు");
+        }
+
+        const html = await response.text();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, "text/html");
+
+        const source = doc.getElementById("localNationalSource");
+
+        if (source) {
+            sidebar.innerHTML = source.innerHTML;
+        } else {
+            sidebar.innerHTML =
+                '<p class="loading">జాతీయ వార్తలు అందుబాటులో లేవు.</p>';
+        }
+    } catch (error) {
+        console.error("National News Error:", error);
+
+        sidebar.innerHTML =
+            '<p class="loading">జాతీయ వార్తలు లోడ్ కాలేదు.</p>';
+    }
 });
 </script>
 </body>
