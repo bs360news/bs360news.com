@@ -1217,6 +1217,70 @@ body.dark-mode .most-read-item {
         flex-direction: column;
     }
 }
+
+
+
+
+
+
+    
+/* MAIN LAYOUT */
+.main-layout {
+    display: block !important;
+    width: 100%;
+}
+
+/* ENTERTAINMENT + SIDEBAR */
+.section-layout {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: 22px;
+    width: 100%;
+    align-items: start;
+}
+
+.section-layout > .section {
+    min-width: 0;
+    margin-bottom: 30px;
+}
+
+.section-layout > .article-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    min-width: 0;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    align-self: start;
+}
+
+/* TABLET */
+@media (max-width: 1100px) {
+    .section-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .section-layout > .article-sidebar {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+    .section-layout {
+        display: flex !important;
+        flex-direction: column;
+    }
+
+    .section-layout > .article-sidebar {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+}
+
     
 </style>
 </head>
@@ -1460,57 +1524,47 @@ body.dark-mode .most-read-item {
             </div>
 
 
-            <!-- MOVIES -->
 
-            <section class="section">
+            <!-- ENTERTAINMENT WITH SIDEBAR -->
+<div class="section-layout">
 
-                <div class="section-head">
+    <section class="section">
 
-                    <h2>
-                        <span>ఎంటర్టైన్‌మెంట్</span> 
-                    </h2>
-
-                </div>
-
-                <div
-                    id="moviesGrid"
-                    class="movies-grid"
-                >
-
-                    <div class="loading">
-                        Movies News Loading...
-                    </div>
-
-                </div>
-
-            </section>
-
-
+        <div class="section-head">
+            <h2>
+                <span>ఎంటర్టైన్‌మెంట్</span>
+            </h2>
         </div>
 
-
-        <!-- HOMEPAGE SECTIONS SHOWN ONLY IN SIDEBAR -->
-
-        <aside class="article-sidebar">
-
-            
-
-            <div class="sidebar-box">
-                <div class="sidebar-title">ట్రెండింగ్ వార్తలు</div>
-                <div id="trendingSidebar"></div>
+        <div id="moviesGrid" class="movies-grid">
+            <div class="loading">
+                Movies News Loading...
             </div>
+        </div>
 
-            <div class="sidebar-box">
-                <div class="sidebar-title">తాజా వార్తలు</div>
-                <div id="latestSidebar"></div>
-            </div>
+    </section>
 
-            <div class="sidebar-box">
-                <div class="sidebar-title">టాప్ వార్తలు </div>
-                <div id="movieReviewsSidebar"></div>
-            </div>
+    <!-- ENTERTAINMENT SIDEBAR -->
+    <aside class="article-sidebar">
 
-        </aside>
+        <div class="sidebar-box">
+            <div class="sidebar-title">ట్రెండింగ్ వార్తలు</div>
+            <div id="trendingSidebar"></div>
+        </div>
+
+        <div class="sidebar-box">
+            <div class="sidebar-title">తాజా వార్తలు</div>
+            <div id="latestSidebar"></div>
+        </div>
+
+        <div class="sidebar-box">
+            <div class="sidebar-title">టాప్ వార్తలు</div>
+            <div id="movieReviewsSidebar"></div>
+        </div>
+
+    </aside>
+
+</div>
 
 
     </div>
