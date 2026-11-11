@@ -2392,6 +2392,55 @@ nav,
 }
 
 
+
+
+
+
+
+
+
+    
+/* SIDEBAR HEIGHT = MAIN SPORTS ARTICLES HEIGHT */
+
+.main-layout {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) 320px !important;
+    gap: 22px !important;
+    align-items: start !important;
+}
+
+.sports-main {
+    min-width: 0;
+    height: auto !important;
+}
+
+.article-sidebar {
+    display: flex !important;
+    flex-direction: column !important;
+    align-self: start !important;
+    height: auto;
+    max-height: none;
+    min-height: 0;
+    overflow: hidden !important;
+}
+
+.article-sidebar .sidebar-box {
+    flex-shrink: 0;
+}
+
+@media (max-width: 900px) {
+    .main-layout {
+        display: block !important;
+    }
+
+    .article-sidebar {
+        height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
+    }
+}
+
+
 </style>
 
 </head>
@@ -3303,6 +3352,93 @@ document.addEventListener("DOMContentLoaded", function () {
 
         localStorage.setItem("bs360-theme", isDark ? "dark" : "light");
     });
+});
+
+
+
+
+     
+/* =====================================
+   SIDEBAR END WITH MAIN SPORTS ARTICLES
+===================================== */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const sportsMain = document.querySelector(".sports-main");
+    const sidebar = document.querySelector(".article-sidebar");
+
+    if (!sportsMain || !sidebar) return;
+
+    function fitSidebarToMain() {
+
+        // Mobile / Tablet: normal layout
+        if (window.innerWidth <= 900) {
+            sidebar.style.height = "auto";
+            sidebar.style.maxHeight = "none";
+            sidebar.style.overflow = "visible";
+            sidebar.querySelectorAll(".sidebar-item").forEach(item => {
+                item.style.display = "";
+            });
+            sidebar.querySelectorAll(".sidebar-box").forEach(box => {
+                box.style.display = "";
+            });
+            return;
+        }
+
+        // Main articles total height
+        const mainHeight = sportsMain.getBoundingClientRect().height;
+
+        if (!mainHeight) return;
+
+        // Match sidebar height with main articles
+        sidebar.style.height = mainHeight + "px";
+        sidebar.style.maxHeight = mainHeight + "px";
+        sidebar.style.overflow = "hidden";
+
+        // Restore sidebar items before measuring
+        sidebar.querySelectorAll(".sidebar-item").forEach(item => {
+            item.style.display = "";
+        });
+
+        sidebar.querySelectorAll(".sidebar-box").forEach(box => {
+            box.style.display = "";
+        });
+
+        // Hide articles from the bottom until content fits
+        let items = Array.from(
+            sidebar.querySelectorAll(".sidebar-item")
+        );
+
+        while (sidebar.scrollHeight > sidebar.clientHeight && items.length) {
+
+            const lastItem = items.pop();
+            lastItem.style.display = "none";
+
+            const box = lastItem.closest(".sidebar-box");
+
+            if (box) {
+                const remaining = box.querySelectorAll(
+                    ".sidebar-item:not([style*='display: none'])"
+                );
+
+                if (!remaining.length) {
+                    box.style.display = "none";
+                }
+            }
+        }
+    }
+
+    // Watch main article height changes
+    if ("ResizeObserver" in window) {
+        const observer = new ResizeObserver(fitSidebarToMain);
+        observer.observe(sportsMain);
+    }
+
+    window.addEventListener("resize", fitSidebarToMain);
+
+    // Initial adjustment
+    fitSidebarToMain();
+
 });
 
 </script>
