@@ -1,18 +1,38 @@
-/* Latest Sidebar - Same Text Size as Top News */
+
+/* =========================================
+   LATEST SIDEBAR - EXACT TOP NEWS TEXT SIZE
+========================================= */
 
 #latestSidebar .sidebar-item-title,
 #latestSidebar .news-content p,
-#latestSidebar .news-content h3 {
-    font-size: inherit;
-    line-height: inherit;
+#latestSidebar .news-content h2,
+#latestSidebar .news-content h3,
+#latestSidebar .news-item h2,
+#latestSidebar .news-item h3,
+#latestSidebar .news-item a {
+    font-size: 14px !important;
+    line-height: 1.4 !important;
+    font-weight: 400 !important;
+    margin: 0 !important;
 }
 
-/* Top News text size match */
-#latestSidebar .sidebar-item-title {
-    font-size: 14px;
-    line-height: 1.5;
-    font-weight: 500;
+/* Keep same text size on mobile */
+@media (max-width: 768px) {
+
+    #latestSidebar .sidebar-item-title,
+    #latestSidebar .news-content p,
+    #latestSidebar .news-content h2,
+    #latestSidebar .news-content h3,
+    #latestSidebar .news-item h2,
+    #latestSidebar .news-item h3,
+    #latestSidebar .news-item a {
+        font-size: 14px !important;
+        line-height: 1.4 !important;
+        font-weight: 400 !important;
+    }
+
 }
+
 /* BS 360 NEWS - COMPLETE DARK MODE FIX */
 
 body.dark-mode {
