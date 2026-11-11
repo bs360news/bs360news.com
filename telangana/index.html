@@ -302,6 +302,23 @@ content="BS 360 NEWS మూవీ రివ్యూస్ - తెలుగు 
     </div>
 
 </footer>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
 
+    const source = document.getElementById("localMovieReviewsSource");
+    const grid = document.getElementById("moviesGrid");
+
+    if (!source || !grid) return;
+
+    const articles = source.querySelectorAll(".news-item.post");
+
+    grid.innerHTML = "";
+
+    articles.forEach(article => {
+        grid.appendChild(article.cloneNode(true));
+    });
+
+});
+</script>
 </body>
 </html>
