@@ -2181,6 +2181,30 @@ document.addEventListener("DOMContentLoaded", async function () {
     });
 
 });
+
+    function renderSidebars() {
+
+    const mainCount = $("moviesGrid")
+        ? $("moviesGrid").children.length
+        : 0;
+
+    const sidebarCount = Math.max(0, mainCount);
+
+    showArticles(
+        "trendingSidebar",
+        trending.slice(0, sidebarCount)
+    );
+
+    showArticles(
+        "latestSidebar",
+        latest.slice(0, sidebarCount)
+    );
+
+    showArticles(
+        "movieReviewsSidebar",
+        topNews.slice(0, sidebarCount)
+    );
+}
 </script>
 
 
