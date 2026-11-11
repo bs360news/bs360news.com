@@ -8,10 +8,14 @@
 <title>International News | BS 360 NEWS</title>
 <meta name="description" content="BS 360 NEWS అంతర్జాతీయ వార్తలు - ప్రపంచ రాజకీయాలు, దేశాల మధ్య సంబంధాలు, విదేశీ పరిణామాలు మరియు తాజా ప్రపంచ వార్తలు.">
 <meta name="robots" content="index, follow, max-image-preview:large">
-<link rel="canonical" href="https://bs360news.com/international.html">
+<link rel="canonical" href="https://bs360news.com/inter-national/">
 <link rel="icon" type="image/png" href="dp.png.png">
 <link rel="apple-touch-icon" href="dp.png.png">
+<!-- Homepage Common CSS -->
+<link rel="stylesheet" href="/style.css?v=20261111">
 
+<!-- Homepage Common JavaScript -->
+<script src="/script.js?v=20261111" defer></script>
 
 <style>
 
@@ -675,45 +679,68 @@ body.dark-mode .sidebar-item{border-color:#374151}
 
 <body>
 
+<!-- HEADER -->
 <header class="bs-header">
+
     <div class="bs-header-top">
+
         <div class="bs-brand">
-            <a href="index.html" aria-label="BS 360 NEWS Home">
-                <img src="dp.png.png" alt="BS 360 NEWS" class="bs-logo">
+
+            <a href="/" aria-label="BS 360 NEWS Home">
+                <img src="/dp.png.png" alt="BS 360 NEWS" class="bs-logo">
             </a>
 
             <div class="bs-brand-name">
-                <a href="index.html" class="bs-brand-title">
+
+                <a href="/" class="bs-brand-title">
                     <span class="brand-bs">BS</span>
                     <span class="brand-360">360</span>
                     <span class="brand-news">NEWS</span>
                 </a>
+
                 <span class="bs-tagline">Fast | Fair | Fearless</span>
+
             </div>
+
         </div>
 
         <div class="bs-header-actions">
-            <button type="button" id="themeToggle" class="bs-dark-btn">🌙 Dark</button>
+
+            <button type="button" id="themeToggle" class="bs-dark-btn">
+                🌙 Dark
+            </button>
+
             <div class="bs-live">
-                <span class="bs-live-dot"></span> LIVE
+                <span class="bs-live-dot"></span>
+                LIVE
             </div>
+
         </div>
+
     </div>
 
+    <!-- NAVIGATION -->
     <nav class="bs-navigation" aria-label="ప్రధాన నావిగేషన్">
-        <a href="index.html">⌂ <span>హోమ్</span></a>
-       <a href="tajavarthalu.html">తాజా వార్తలు</a>
-        <a href="MOVIES.html">ఎంటర్టైన్మెంట్</a>
-        <a href="SPORTS.html">స్పోర్ట్స్</a>
-         <a href="andhrapradesh.html">ఆంధ్రప్రదేశ్</a>
-<a href="telangana.html">తెలంగాణ</a>
-        <a href="business.html">బిజినెస్</a>
-        <a href="moviereviews.html">మూవీ రివ్యూస్</a>
-        <a href="national.html">జాతీయ వార్తలు</a>
-        <a href="international.html" class="active">అంతర్జాతీయ వార్తలు</a>
-       
+
+        <a href="/">
+            <span>⌂</span>
+            <span>హోమ్</span>
+        </a>
+
+        <a href="/latest-news/">తాజా వార్తలు</a>
+        <a href="/entertainment/">ఎంటర్టైన్మెంట్</a>
+        <a href="/sports/">స్పోర్ట్స్</a>
+        <a href="/andhra-pradesh/">ఆంధ్రప్రదేశ్</a>
+        <a href="/telangana/">తెలంగాణ</a>
+        <a href="/business/">బిజినెస్</a>
+        <a href="/movie-reviews/" class="active">మూవీ రివ్యూస్</a>
+        <a href="/national/">జాతీయ వార్తలు</a>
+        <a href="/inter-national/">అంతర్జాతీయ వార్తలు</a>
+
     </nav>
+
 </header>
+
 
 <div class="breaking">
     <div class="breaking-title">BREAKING NEWS</div>
@@ -721,46 +748,150 @@ body.dark-mode .sidebar-item{border-color:#374151}
         ప్రపంచవ్యాప్తంగా తాజా అంతర్జాతీయ వార్తలు, రాజకీయ పరిణామాలు, ముఖ్యమైన అప్‌డేట్స్...
     </div>
 </div>
-
+   <!-- MAIN CONTENT -->
 <main class="page">
+
+    
+
     <div class="main-layout">
 
-        <div class="international-main">
-            <section class="national-world-section" id="internationalSection">
-                <h1 class="section-heading">అంతర్జాతీయ వార్తలు</h1>
+        <div class="movies-main">
 
-                <div id="internationalGrid" class="national-world-grid">
-                    <div class="loading">అంతర్జాతీయ వార్తలు లోడ్ అవుతున్నాయి...</div>
+            <section class="section">
+
+                <div class="section-head">
+                    <h2>
+                        <span> ంతర్జాతీయ వార్తలు</span>
+                    </h2>
                 </div>
+
+                <div id="moviesGrid" class="movies-grid">
+
+                    <div class="loading">
+                        ంతర్జాతీయ వార్తలు లోడ్ అవుతున్నాయి...
+                    </div>
+
+                </div>
+
             </section>
+
         </div>
 
+        <!-- SIDEBAR -->
         <aside class="article-sidebar">
 
             <div class="sidebar-box">
-                <h2 class="sidebar-title">ట్రెండింగ్ వార్తలు</h2>
+                <div class="sidebar-title">ట్రెండింగ్ వార్తలు</div>
                 <div id="trendingSidebar">
-                    <div class="loading">లోడ్ అవుతున్నాయి...</div>
+                    <p class="loading">వార్తలు లోడ్ అవుతున్నాయి...</p>
                 </div>
             </div>
 
             <div class="sidebar-box">
-                <h2 class="sidebar-title">తాజా వార్తలు</h2>
+                <div class="sidebar-title">తాజా వార్తలు</div>
                 <div id="latestSidebar">
-                    <div class="loading">లోడ్ అవుతున్నాయి...</div>
+                    <p class="loading">వార్తలు లోడ్ అవుతున్నాయి...</p>
                 </div>
             </div>
 
             <div class="sidebar-box">
-                <h2 class="sidebar-title">టాప్ వార్తలు</h2>
+                <div class="sidebar-title">టాప్ వార్తలు</div>
                 <div id="topNewsSidebar">
-                    <div class="loading">లోడ్ అవుతున్నాయి...</div>
+                    <p class="loading">వార్తలు లోడ్ అవుతున్నాయి...</p>
                 </div>
             </div>
 
         </aside>
+
     </div>
+
 </main>
+
+
+<!-- 15 LOCAL MOVIE REVIEW ARTICLES -->
+<div id="localMovieReviewsSource" hidden>
+
+<article class="news-item post"
+data-url="/donald-trump-international-trade-update/">
+<img src="/donald-trump-international-trade-update.jpg" alt="అమెరికా వాణిజ్య విధానాలు" loading="lazy">
+<div class="news-content">
+<p>అమెరికా వాణిజ్య విధానాలపై ట్రంప్ కీలక నిర్ణయం.. ప్రపంచ దేశాల్లో చర్చ</p>
+</div>
+</article>
+
+<article class="news-item post"
+data-url="/russia-ukraine-war-latest-update/">
+<img src="/russia-ukraine-war-latest-update.jpg" alt="రష్యా ఉక్రెయిన్ యుద్ధం" loading="lazy">
+<div class="news-content">
+<p>రష్యా-ఉక్రెయిన్ యుద్ధంపై మరో కీలక పరిణామం.. అంతర్జాతీయంగా ఉత్కంఠ</p>
+</div>
+</article>
+
+<article class="news-item post"
+data-url="/israel-middle-east-conflict-update/">
+<img src="/israel-middle-east-conflict-update.jpg" alt="మధ్యప్రాచ్య పరిణామాలు" loading="lazy">
+<div class="news-content">
+<p>మధ్యప్రాచ్యంలో ఉద్రిక్తతలు.. ఇజ్రాయెల్ పరిణామాలపై ప్రపంచ దేశాల దృష్టి</p>
+</div>
+</article>
+
+<article class="news-item post"
+data-url="/china-us-relations-latest-news/">
+<img src="/china-us-relations-latest-news.jpg" alt="చైనా అమెరికా సంబంధాలు" loading="lazy">
+<div class="news-content">
+<p>చైనా-అమెరికా మధ్య సంబంధాల్లో కీలక పరిణామం.. ప్రపంచ ఆర్థిక వ్యవస్థపై ప్రభావం?</p>
+</div>
+</article>
+
+<article class="news-item post"
+data-url="/united-nations-global-meeting-update/">
+<img src="/united-nations-global-meeting-update.jpg" alt="ఐక్యరాజ్యసమితి సమావేశం" loading="lazy">
+<div class="news-content">
+<p>ఐక్యరాజ్యసమితి సమావేశంలో ప్రపంచ దేశాల కీలక అంశాలపై చర్చ</p>
+</div>
+</article>
+
+<article class="news-item post"
+data-url="/global-oil-prices-latest-update/">
+<img src="/global-oil-prices-latest-update.jpg" alt="అంతర్జాతీయ చమురు ధరలు" loading="lazy">
+<div class="news-content">
+<p>అంతర్జాతీయ మార్కెట్‌లో చమురు ధరల్లో మార్పులు.. భారత్‌పై ప్రభావం ఎంత?</p>
+</div>
+</article>
+
+<article class="news-item post"
+data-url="/european-union-new-decisions/">
+<img src="/european-union-new-decisions.jpg" alt="యూరోపియన్ యూనియన్ నిర్ణయాలు" loading="lazy">
+<div class="news-content">
+<p>యూరోపియన్ యూనియన్ కీలక నిర్ణయాలు.. అంతర్జాతీయ వాణిజ్యంపై ప్రభావం</p>
+</div>
+</article>
+
+<article class="news-item post"
+data-url="/nasa-space-mission-latest-update/">
+<img src="/nasa-space-mission-latest-update.jpg" alt="నాసా అంతరిక్ష పరిశోధనలు" loading="lazy">
+<div class="news-content">
+<p>నాసా అంతరిక్ష పరిశోధనల్లో మరో ముందడుగు.. కొత్త మిషన్‌పై ఆసక్తి</p>
+</div>
+</article>
+
+<article class="news-item post"
+data-url="/global-economy-world-bank-update/">
+<img src="/global-economy-world-bank-update.jpg" alt="ప్రపంచ ఆర్థిక వ్యవస్థ" loading="lazy">
+<div class="news-content">
+<p>ప్రపంచ ఆర్థిక వ్యవస్థపై వరల్డ్ బ్యాంక్ అంచనాలు.. దేశాలకు కీలక సూచనలు</p>
+</div>
+</article>
+
+<article class="news-item post"
+data-url="/international-climate-change-summit/">
+<img src="/international-climate-change-summit.jpg" alt="అంతర్జాతీయ వాతావరణ సదస్సు" loading="lazy">
+<div class="news-content">
+<p>వాతావరణ మార్పులపై అంతర్జాతీయ సదస్సు.. ప్రపంచ దేశాల కొత్త లక్ష్యాలు</p>
+</div>
+</article>
+
+</div>
 
 <footer class="site-footer">
     <div class="footer-inner">
