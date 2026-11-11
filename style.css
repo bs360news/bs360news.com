@@ -1,3 +1,65 @@
+
+/* =====================================
+   SIDEBAR - LEFT IMAGE RIGHT TEXT
+===================================== */
+
+.article-sidebar .sidebar-item {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 10px !important;
+
+    width: 100%;
+    padding: 10px 0;
+    text-decoration: none;
+    border-bottom: 1px solid #e5e5e5;
+    box-sizing: border-box;
+}
+
+.article-sidebar .sidebar-item img {
+    width: 95px !important;
+    height: 68px !important;
+    min-width: 95px !important;
+    object-fit: cover !important;
+    display: block !important;
+    border-radius: 5px;
+}
+
+.article-sidebar .sidebar-item-title {
+    flex: 1 !important;
+    min-width: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 600;
+    color: #222;
+    text-align: left;
+}
+
+/* Dark Mode */
+
+body.dark-mode .article-sidebar .sidebar-item {
+    border-bottom-color: #444;
+}
+
+body.dark-mode .article-sidebar .sidebar-item-title {
+    color: #fff;
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .article-sidebar .sidebar-item img {
+        width: 85px !important;
+        height: 62px !important;
+        min-width: 85px !important;
+    }
+
+    .article-sidebar .sidebar-item-title {
+        font-size: 13px;
+    }
+
+}
 /* =========================================================
    BS 360 NEWS — HOMEPAGE STYLE.CSS
    Based on the supplied index.html structure
