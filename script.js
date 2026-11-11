@@ -36,6 +36,67 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+/* =====================================
+   MOVIE REVIEWS PAGE - 15 ARTICLES
+===================================== */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const moviesGrid = document.getElementById("moviesGrid");
+    const movieSource = document.getElementById("localMovieReviewsSource");
+
+    // Movie Reviews పేజీ కాకపోతే ఈ కోడ్ పనిచేయదు
+    if (!moviesGrid || !movieSource) return;
+
+    const articles = movieSource.querySelectorAll(".news-item.post");
+
+    if (!articles.length) {
+        moviesGrid.innerHTML = "<p>ప్రస్తుతం మూవీ రివ్యూస్ అందుబాటులో లేవు.</p>";
+        return;
+    }
+
+    moviesGrid.innerHTML = "";
+
+    articles.forEach(function (article) {
+
+        const clone = article.cloneNode(true);
+
+        const url = clone.getAttribute("data-url");
+        const image = clone.querySelector("img");
+        const title = clone.querySelector(".news-content p");
+
+        if (!url || !title) return;
+
+        // Article URL
+        clone.style.cursor = "pointer";
+        clone.setAttribute("role", "link");
+        clone.setAttribute("tabindex", "0");
+
+        clone.addEventListener("click", function () {
+            window.location.href = url;
+        });
+
+        clone.addEventListener("keydown", function (event) {
+            if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                window.location.href = url;
+            }
+        });
+
+        // Image loading
+        if (image) {
+            image.loading = "lazy";
+            image.onerror = function () {
+                this.style.display = "none";
+            };
+        }
+
+        moviesGrid.appendChild(clone);
+
+    });
+
+});
+
 
 
 
