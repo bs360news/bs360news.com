@@ -1,6 +1,112 @@
 
 document.addEventListener("DOMContentLoaded", function () {
 
+    const grid = document.getElementById("latestNewsGrid");
+
+    if (!grid) return;
+
+    const HOME_URL = "https://bs360news.com/";
+
+    async function loadLatestMainArticles() {
+
+        try {
+
+            const response = await fetch(
+                HOME_URL + "?v=" + Date.now(),
+                { cache: "no-store" }
+            );
+
+            if (!response.ok) {
+                throw new Error("Homepage loading failed");
+            }
+
+            const html = await response.text();
+
+            const parser = new DOMParser();
+
+            const doc = parser.parseFromString(html, "text/html");
+
+            // Homepage latest articles source
+            const source = doc.getElementById("latestNewsSource");
+
+            if (!source) {
+                grid.innerHTML =
+                    "<p>Homepageలో latestNewsSource కనిపించలేదు.</p>";
+                return;
+            }
+
+            const articles = source.querySelectorAll(
+                ".news-item.post, article.post"
+            );
+
+            grid.innerHTML = "";
+
+            if (!articles.length) {
+                grid.innerHTML =
+                    "<p>ప్రస్తుతం తాజా వార్తలు అందుబాటులో లేవు.</p>";
+                return;
+            }
+
+            articles.forEach(function (article) {
+
+                const clone = article.cloneNode(true);
+
+                const image = clone.querySelector("img");
+
+                if (image) {
+
+                    const imageSrc =
+                        image.getAttribute("src");
+
+                    if (imageSrc) {
+                        image.src = new URL(
+                            imageSrc,
+                            HOME_URL
+                        ).href;
+                    }
+
+                    image.loading = "lazy";
+                }
+
+                const articleUrl =
+                    clone.getAttribute("data-url");
+
+                if (articleUrl) {
+
+                    clone.style.cursor = "pointer";
+
+                    clone.addEventListener("click", function () {
+
+                        window.location.href = new URL(
+                            articleUrl,
+                            HOME_URL
+                        ).href;
+
+                    });
+
+                }
+
+                grid.appendChild(clone);
+
+            });
+
+        } catch (error) {
+
+            console.error("Latest articles error:", error);
+
+            grid.innerHTML =
+                "<p>వార్తలు లోడ్ కాలేదు. మళ్లీ ప్రయత్నించండి.</p>";
+
+        }
+
+    }
+
+    loadLatestMainArticles();
+
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+
     const sidebar = document.getElementById("latestSidebar");
 
     if (!sidebar) return;
