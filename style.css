@@ -1,4 +1,79 @@
 
+/* ==========================================
+   MOBILE - MAIN & SIDEBAR SAME IMAGE SIZE
+========================================== */
+
+@media screen and (max-width: 768px) {
+
+    /* Main Articles + Sidebar Articles */
+    #moviesGrid .news-item.post > img,
+    .article-sidebar .sidebar-item > img {
+
+        width: 125px !important;
+        min-width: 125px !important;
+        max-width: 125px !important;
+
+        height: 88px !important;
+        min-height: 88px !important;
+
+        flex: 0 0 125px !important;
+
+        object-fit: cover !important;
+        display: block !important;
+        border-radius: 5px !important;
+    }
+
+    /* Main Articles Layout */
+    #moviesGrid .news-item.post {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        align-items: center !important;
+        gap: 12px !important;
+    }
+
+    /* Sidebar Layout */
+    .article-sidebar .sidebar-item {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        align-items: center !important;
+        gap: 12px !important;
+    }
+
+    /* Main Article Text */
+    #moviesGrid .news-item.post .news-content p {
+        font-size: 13px !important;
+        font-weight: 400 !important;
+        line-height: 1.5 !important;
+    }
+
+    /* Sidebar Text */
+    .article-sidebar .sidebar-item-title {
+        font-size: 13px !important;
+        font-weight: 400 !important;
+        line-height: 1.5 !important;
+    }
+
+}
+
+/* Very Small Mobiles */
+@media screen and (max-width: 380px) {
+
+    #moviesGrid .news-item.post > img,
+    .article-sidebar .sidebar-item > img {
+        width: 110px !important;
+        min-width: 110px !important;
+        max-width: 110px !important;
+
+        height: 80px !important;
+        min-height: 80px !important;
+
+        flex: 0 0 110px !important;
+    }
+
+}
+
 /* Mobile Main Articles - Bigger Images */
 
 @media screen and (max-width: 768px) {
