@@ -1,4 +1,18 @@
+/* Latest Sidebar - Same Text Size as Top News */
 
+#latestSidebar .sidebar-item-title,
+#latestSidebar .news-content p,
+#latestSidebar .news-content h3 {
+    font-size: inherit;
+    line-height: inherit;
+}
+
+/* Top News text size match */
+#latestSidebar .sidebar-item-title {
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 500;
+}
 /* BS 360 NEWS - COMPLETE DARK MODE FIX */
 
 body.dark-mode {
