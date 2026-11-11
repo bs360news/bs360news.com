@@ -2356,6 +2356,42 @@ nav,
     }
 }
 
+
+
+    
+.main-layout {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) 320px !important;
+    gap: 22px !important;
+    align-items: stretch !important;
+}
+
+.sports-main {
+    min-width: 0;
+}
+
+.article-sidebar {
+    display: flex !important;
+    flex-direction: column !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    align-self: stretch !important;
+}
+
+@media (max-width: 900px) {
+    .main-layout {
+        grid-template-columns: 1fr !important;
+    }
+
+    .article-sidebar {
+        height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
+    }
+}
+
+
 </style>
 
 </head>
@@ -3245,6 +3281,30 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
+
+     
+document.addEventListener("DOMContentLoaded", function () {
+    const themeToggle = document.getElementById("themeToggle");
+
+    if (!themeToggle) return;
+
+    // Saved theme
+    if (localStorage.getItem("bs360-theme") === "dark") {
+        document.body.classList.add("dark-mode");
+        themeToggle.textContent = "☀️ Light";
+    }
+
+    themeToggle.addEventListener("click", function () {
+        document.body.classList.toggle("dark-mode");
+
+        const isDark = document.body.classList.contains("dark-mode");
+
+        themeToggle.textContent = isDark ? "☀️ Light" : "🌙 Dark";
+
+        localStorage.setItem("bs360-theme", isDark ? "dark" : "light");
+    });
+});
+
 </script>
 </body>
 </html>
