@@ -1,19 +1,11 @@
-/* MAIN ARTICLES - 9:16 IMAGES */
-
-.movies-grid .news-item img {
-    width: 100%;
-    aspect-ratio: 9 / 16;
-    height: auto;
-    object-fit: cover;
-    display: block;
-}
-
-@media (max-width: 768px) {
+/* LAPTOP ONLY - 16:9 MAIN ARTICLE IMAGES */
+@media (min-width: 769px) {
     .movies-grid .news-item img {
         width: 100%;
-        aspect-ratio: 9 / 16;
+        aspect-ratio: 16 / 9;
         height: auto;
         object-fit: cover;
+        display: block;
     }
 }
 /* MOBILE SIDEBAR - LEFT IMAGE RIGHT TEXT */
