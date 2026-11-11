@@ -1,4 +1,35 @@
 
+/* MOBILE - INCREASE ARTICLE TEXT SIZE */
+@media only screen and (max-width: 768px) {
+
+    /* Main Articles */
+    #moviesGrid .news-item.post .news-content p {
+        font-size: 17px !important;
+        line-height: 1.6 !important;
+        font-weight: 500 !important;
+    }
+
+    #moviesGrid .news-item.post {
+        min-height: 125px !important;
+        padding: 12px !important;
+        margin-bottom: 12px !important;
+    }
+
+    /* Sidebar Articles */
+    .article-sidebar .sidebar-item-title {
+        font-size: 16px !important;
+        line-height: 1.6 !important;
+        font-weight: 500 !important;
+    }
+
+    .article-sidebar .sidebar-item {
+        min-height: 105px !important;
+        padding: 10px !important;
+        margin-bottom: 10px !important;
+    }
+
+}
+
 /* ==========================================
    MOBILE - MAIN & SIDEBAR SAME IMAGE SIZE
 ========================================== */
