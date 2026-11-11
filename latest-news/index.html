@@ -354,5 +354,62 @@ content="BS 360 NEWS తాజా వార్తలు - ఆంధ్రప్�
 </footer>
 
 
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const grid = document.getElementById("latestNewsGrid");
+    const source = document.getElementById("localLatestNewsSource");
+
+    if (!grid || !source) {
+        console.error("Latest News Grid or Source not found");
+        return;
+    }
+
+    const articles = source.querySelectorAll(
+        "article.news-item.post"
+    );
+
+    console.log("Latest Articles Found:", articles.length);
+
+    if (articles.length === 0) {
+        grid.innerHTML = "<p>ఆర్టికల్స్ అందుబాటులో లేవు.</p>";
+        return;
+    }
+
+    grid.innerHTML = "";
+
+    articles.forEach(function (article) {
+
+        const clone = article.cloneNode(true);
+
+        const img = clone.querySelector("img");
+
+        if (img) {
+            const imagePath = img.getAttribute("src");
+
+            img.src = new URL(
+                imagePath,
+                "https://bs360news.com/"
+            ).href;
+
+            img.loading = "lazy";
+        }
+
+        const url = clone.getAttribute("data-url");
+
+        if (url) {
+            clone.addEventListener("click", function () {
+                window.location.href = url;
+            });
+        }
+
+        grid.appendChild(clone);
+
+    });
+
+    console.log("Latest News Loaded Successfully");
+
+});
+</script>
 </body>
 </html>
