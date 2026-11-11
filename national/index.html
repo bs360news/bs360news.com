@@ -198,7 +198,43 @@
  <div class="copyright">© 2026 BS 360 NEWS. All Rights Reserved.</div>
 </footer>
 
+<script>
+document.addEventListener("DOMContentLoaded", function () {
 
+    const source = document.getElementById("localMovieReviewsSource");
+    const grid = document.getElementById("moviesGrid");
+
+    if (!source || !grid) {
+        console.error("Telangana source or moviesGrid not found");
+        return;
+    }
+
+    const articles = source.querySelectorAll(
+        "article.news-item.post"
+    );
+
+    if (!articles.length) {
+        console.error("Telangana articles not found");
+        return;
+    }
+
+    grid.innerHTML = "";
+
+    articles.forEach(article => {
+
+        const clone = article.cloneNode(true);
+
+        clone.hidden = false;
+        clone.style.display = "";
+
+        grid.appendChild(clone);
+
+    });
+
+    console.log("Telangana Articles Loaded:", articles.length);
+
+});
+</script>
 
 </body>
 </html>
