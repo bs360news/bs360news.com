@@ -22,6 +22,22 @@
 <link rel="icon" type="image/png" href="dp.png.png">
 <link rel="apple-touch-icon" href="dp.png.png">
 <style>
+
+    /* MAIN ARTICLES + SIDEBAR SAME HEIGHT */
+@media (min-width: 1101px) {
+    .section-layout {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) 320px;
+        align-items: stretch !important;
+    }
+
+    .section-layout > .article-sidebar {
+        height: 100% !important;
+        max-height: 100% !important;
+        overflow: hidden !important;
+        align-self: stretch !important;
+    }
+}
 /* ================= BASE ================= */
 * {
     box-sizing: border-box;
