@@ -1405,6 +1405,32 @@ body.dark-mode .most-read-item {
         overflow: visible !important;
     }
 }
+
+
+
+    /* DESKTOP: SIDEBAR CONTENT FIT TO MAIN ARTICLES */
+@media (min-width: 1101px) {
+    .section-layout {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) 320px;
+        gap: 22px;
+        align-items: start !important;
+    }
+
+    .section-layout > .section {
+        min-width: 0;
+    }
+
+    .section-layout > .article-sidebar {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
+        align-self: start !important;
+    }
+}
 </style>
 </head>
 
@@ -1717,320 +1743,373 @@ body.dark-mode .most-read-item {
 </footer>
 
 
-
-
 <script>
-document.addEventListener("DOMContentLoaded", async function () {
+document.addEventListener("DOMContentLoaded", function () {
     "use strict";
 
-    const HOME_URL = new URL("/", location.origin).href;
-    const $ = id => document.getElementById(id);
+    /* =====================================
+       BS 360 NEWS - ENTERTAINMENT PAGE JS
+    ===================================== */
+
+    const $ = (id) => document.getElementById(id);
+
+    const HOME_URL = new URL("/", window.location.origin).href;
+    const HOME_CACHE_URL = HOME_URL + "?v=" + Date.now();
+
+    const localSource = $("localMoviesSource");
+    const moviesGrid = $("moviesGrid");
+
+    const trendingSidebar = $("trendingSidebar");
+    const latestSidebar = $("latestSidebar");
+    const topNewsSidebar = $("movieReviewsSidebar");
 
     let trending = [];
     let latest = [];
     let topNews = [];
 
-    let sidebarObserver = null;
+    let localMovies = [];
+    let homeMovies = [];
 
-    /* =========================
-       DARK MODE
-    ========================= */
-
-    const themeToggle = $("themeToggle");
-
-    if (themeToggle) {
-        if (localStorage.getItem("bs360-theme") === "dark") {
-            document.body.classList.add("dark-mode");
-            themeToggle.textContent = "☀️ Light";
-        }
-
-        themeToggle.addEventListener("click", function () {
-            document.body.classList.toggle("dark-mode");
-
-            const dark = document.body.classList.contains("dark-mode");
-
-            localStorage.setItem(
-                "bs360-theme",
-                dark ? "dark" : "light"
-            );
-
-            themeToggle.textContent =
-                dark ? "☀️ Light" : "🌙 Dark";
-        });
-    }
-
-    /* =========================
-       HELPERS
-    ========================= */
+    /* =====================================
+       TEXT CLEANUP
+    ===================================== */
 
     function cleanText(value) {
-        return String(value || "")
+        return (value || "")
             .replace(/\s+/g, " ")
             .trim();
     }
 
-    function getImage(item) {
-        const img = item.querySelector("img");
+    /* =====================================
+       URL HELPERS
+    ===================================== */
+
+    function resolveURL(value, base = HOME_URL) {
+        if (!value) return "";
+
+        try {
+            return new URL(value, base).href;
+        } catch (error) {
+            return value;
+        }
+    }
+
+    function getArticleURL(article, base = HOME_URL) {
+        let url =
+            article.getAttribute("data-url") ||
+            article.querySelector("a[href]")?.getAttribute("href") ||
+            "";
+
+        if (!url) return "";
+
+        return resolveURL(url, base);
+    }
+
+    function getArticleImage(article, base = HOME_URL) {
+        const img = article.querySelector("img");
 
         if (!img) return "";
 
-        return (
+        const src =
+            img.getAttribute("src") ||
             img.getAttribute("data-src") ||
             img.getAttribute("data-lazy-src") ||
-            img.getAttribute("src") ||
-            ""
-        );
+            "";
+
+        return resolveURL(src, base);
     }
 
-    function getArticles(source) {
+    function getArticleTitle(article) {
+        const heading = article.querySelector(
+            "h1, h2, h3, h4, .title, .news-title"
+        );
+
+        if (heading) {
+            return cleanText(heading.textContent);
+        }
+
+        const img = article.querySelector("img");
+
+        if (img) {
+            return cleanText(img.getAttribute("alt"));
+        }
+
+        return cleanText(article.textContent);
+    }
+
+    /* =====================================
+       EXTRACT ARTICLES FROM SOURCE
+    ===================================== */
+
+    function getArticles(source, base = HOME_URL) {
         if (!source) return [];
 
-        const selectors = [
-            ".news-item.post",
-            ".news-item",
-            "article",
-            ".news-card",
-            ".movie-card",
-            ".post-card",
-            ".latest-news-card",
-            ".trending-card",
-            ".top-news-card",
-            ".most-read-item",
-            ".bottom-news-card",
-            ".top-side-article"
-        ].join(",");
-
-        let items = [];
-
-        if (source.matches?.(selectors)) {
-            items.push(source);
-        }
-
-        items.push(...source.querySelectorAll(selectors));
-
-        if (!items.length) {
-            items = Array.from(
-                source.querySelectorAll("a[href]")
-            ).filter(a => a.querySelector("img"));
-        }
-
-        const result = items.map(item => {
-            const img = item.querySelector("img");
-
-            const link = item.matches("a[href]")
-                ? item
-                : item.querySelector("a[href]");
-
-            const titleNode = item.querySelector(
-                ".news-content p, " +
-                ".article-text p, " +
-                ".news-title, " +
-                ".article-title, " +
-                ".movie-card-title, " +
-                "h3, h2, h4, p"
-            );
-
-            const title = cleanText(
-                titleNode?.textContent ||
-                link?.textContent ||
-                img?.alt ||
-                ""
-            );
-
-            const rawURL =
-                item.getAttribute("data-url") ||
-                link?.getAttribute("href") ||
-                "";
-
-            const image = getImage(item);
-
-            if (!title || !rawURL || !image) return null;
-
-            if (
-                rawURL.startsWith("#") ||
-                /^javascript:/i.test(rawURL)
-            ) return null;
-
-            try {
-                return {
-                    title,
-                    url: new URL(rawURL, HOME_URL).href,
-                    image: new URL(image, HOME_URL).href,
-                    alt: img?.alt || title
-                };
-            } catch (error) {
-                return null;
-            }
-        }).filter(Boolean);
-
-        return result.filter((item, index, array) =>
-            array.findIndex(
-                other => other.url === item.url
-            ) === index
-        );
-    }
-
-    /* =========================
-       HOMEPAGE SOURCE FINDER
-    ========================= */
-
-    function getSource(home, ids, headings) {
-
-        for (const id of ids) {
-            const source = home.getElementById(id);
-
-            if (!source) continue;
-
-            const articles = getArticles(source);
-
-            if (articles.length) return articles;
-        }
-
-        const headingList = Array.from(
-            home.querySelectorAll(
-                "h1,h2,h3,h4,.section-title,.section-head,.sidebar-title"
-            )
+        const elements = source.querySelectorAll(
+            ".news-item.post, article.news-item, .movie-card, .news-card"
         );
 
-        for (const heading of headingList) {
-            const headingText =
-                cleanText(heading.textContent).toLowerCase();
+        const result = [];
+        const usedURLs = new Set();
 
-            const matched = headings.some(label =>
-                headingText.includes(label.toLowerCase())
-            );
+        elements.forEach(function (article) {
+            const title = getArticleTitle(article);
+            const url = getArticleURL(article, base);
+            const image = getArticleImage(article, base);
 
-            if (!matched) continue;
+            if (!title || !url) return;
 
-            let parent = heading;
+            if (usedURLs.has(url)) return;
 
-            for (let i = 0; i < 6 && parent; i++) {
-                const articles = getArticles(parent);
+            usedURLs.add(url);
 
-                if (articles.length) return articles;
+            result.push({
+                title: title,
+                url: url,
+                image: image,
+                alt: article.querySelector("img")?.getAttribute("alt") || title
+            });
+        });
 
-                parent = parent.parentElement;
-            }
-        }
-
-        return [];
+        return result;
     }
 
-    /* =========================
-       MOVIE CARD
-    ========================= */
+    /* =====================================
+       CREATE MAIN MOVIE CARD
+    ===================================== */
 
     function createMovieCard(article) {
+        const card = document.createElement("article");
 
-        const card = document.createElement("a");
+        card.className = "movie-card news-item post";
+        card.setAttribute("data-url", article.url);
 
-        card.href = article.url;
-        card.className = "movie-card";
+        const link = document.createElement("a");
+        link.href = article.url;
 
-        const img = document.createElement("img");
+        if (article.image) {
+            const img = document.createElement("img");
 
-        img.src = article.image;
-        img.alt = article.alt;
-        img.loading = "lazy";
+            img.src = article.image;
+            img.alt = article.alt || article.title;
+            img.loading = "lazy";
+
+            link.appendChild(img);
+        }
 
         const content = document.createElement("div");
+        content.className = "movie-content";
 
-        content.className = "movie-card-content";
+        const heading = document.createElement("h3");
+        heading.textContent = article.title;
 
-        const title = document.createElement("h3");
-
-        title.className = "movie-card-title";
-        title.textContent = article.title;
-
-        content.appendChild(title);
-
-        card.append(img, content);
+        content.appendChild(heading);
+        link.appendChild(content);
+        card.appendChild(link);
 
         return card;
     }
 
-    /* =========================
-       SIDEBAR CARD
-    ========================= */
+    /* =====================================
+       CREATE SIDEBAR ARTICLE
+    ===================================== */
 
     function createSidebarArticle(article) {
-
         const item = document.createElement("article");
 
         item.className = "news-item post";
 
-        const imageLink = document.createElement("a");
+        item.setAttribute("data-url", article.url);
 
-        imageLink.href = article.url;
-        imageLink.className = "sidebar-image";
+        const link = document.createElement("a");
+        link.href = article.url;
+        link.className = "sidebar-link";
 
-        const img = document.createElement("img");
+        if (article.image) {
+            const img = document.createElement("img");
 
-        img.src = article.image;
-        img.alt = article.alt;
-        img.loading = "lazy";
+            img.className = "sidebar-image";
+            img.src = article.image;
+            img.alt = article.alt || article.title;
+            img.loading = "lazy";
 
-        imageLink.appendChild(img);
+            link.appendChild(img);
+        }
 
         const content = document.createElement("div");
-
         content.className = "news-content";
 
-        const paragraph = document.createElement("p");
+        const heading = document.createElement("h3");
+        heading.textContent = article.title;
 
-        const titleLink = document.createElement("a");
-
-        titleLink.href = article.url;
-        titleLink.textContent = article.title;
-
-        paragraph.appendChild(titleLink);
-        content.appendChild(paragraph);
-
-        item.append(imageLink, content);
+        content.appendChild(heading);
+        link.appendChild(content);
+        item.appendChild(link);
 
         return item;
     }
 
-    /* =========================
-       DISPLAY SIDEBAR ARTICLES
-    ========================= */
+    /* =====================================
+       RENDER SIDEBAR ARTICLES
+    ===================================== */
 
-    function showArticles(targetId, articles) {
+    function showArticles(container, articles) {
+        if (!container) return;
 
-        const target = $(targetId);
+        container.innerHTML = "";
 
-        if (!target) return;
+        if (!articles || articles.length === 0) {
+            return;
+        }
 
-        target.replaceChildren();
-
-        const fragment = document.createDocumentFragment();
-
-        articles.forEach(article => {
-            fragment.appendChild(
+        articles.forEach(function (article) {
+            container.appendChild(
                 createSidebarArticle(article)
             );
         });
-
-        if (!articles.length) {
-            const message = document.createElement("p");
-
-            message.className = "loading";
-            message.textContent =
-                "వార్తలు ప్రస్తుతం అందుబాటులో లేవు.";
-
-            fragment.appendChild(message);
-        }
-
-        target.appendChild(fragment);
     }
 
-    /* =========================
-       SIDEBAR HEIGHT FIX
-       MAIN ARTICLES HEIGHT = SIDEBAR HEIGHT
-    ========================= */
+    /* =====================================
+       LOAD HOMEPAGE SIDEBAR SOURCES
+    ===================================== */
 
-    function syncSidebarHeight() {
+    function findSource(doc, ids) {
+        for (const id of ids) {
+            const element = doc.getElementById(id);
 
+            if (element) return element;
+        }
+
+        return null;
+    }
+
+    async function loadHomepageArticles() {
+        try {
+            const response = await fetch(HOME_CACHE_URL, {
+                cache: "no-store"
+            });
+
+            if (!response.ok) {
+                throw new Error("Homepage loading failed");
+            }
+
+            const html = await response.text();
+
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, "text/html");
+
+            /* TRENDING */
+
+            const trendingSource = findSource(doc, [
+                "trendingSource",
+                "trendingGrid",
+                "trendingNewsSource"
+            ]);
+
+            /* LATEST */
+
+            const latestSource = findSource(doc, [
+                "latestNewsSource",
+                "latestNewsGrid",
+                "latestGrid",
+                "latestSource"
+            ]);
+
+            /* TOP NEWS / MOST READ */
+
+            const topNewsSource = findSource(doc, [
+                "mostReadSource",
+                "mostReadGrid",
+                "topNewsSource",
+                "movieReviewsSource",
+                "mostRead"
+            ]);
+
+            trending = getArticles(trendingSource, HOME_URL);
+            latest = getArticles(latestSource, HOME_URL);
+            topNews = getArticles(topNewsSource, HOME_URL);
+
+            renderSidebars();
+
+        } catch (error) {
+            console.error(
+                "BS 360 NEWS Homepage loading error:",
+                error
+            );
+        }
+    }
+
+    /* =====================================
+       LOAD LOCAL ENTERTAINMENT ARTICLES
+    ===================================== */
+
+    function loadLocalMovies() {
+        localMovies = getArticles(localSource, HOME_URL);
+
+        renderMovies();
+    }
+
+    /* =====================================
+       REMOVE DUPLICATE ARTICLES
+    ===================================== */
+
+    function uniqueArticles(articles) {
+        const seen = new Set();
+
+        return articles.filter(function (article) {
+            if (!article.url || seen.has(article.url)) {
+                return false;
+            }
+
+            seen.add(article.url);
+            return true;
+        });
+    }
+
+    /* =====================================
+       RENDER MOVIES GRID
+    ===================================== */
+
+    function renderMovies() {
+        if (!moviesGrid) return;
+
+        const allMovies = uniqueArticles([
+            ...localMovies,
+            ...homeMovies
+        ]);
+
+        moviesGrid.innerHTML = "";
+
+        allMovies.forEach(function (article) {
+            moviesGrid.appendChild(
+                createMovieCard(article)
+            );
+        });
+
+        requestAnimationFrame(function () {
+            requestAnimationFrame(syncSidebarArticles);
+        });
+    }
+
+    /* =====================================
+       RENDER ALL SIDEBARS
+    ===================================== */
+
+    function renderSidebars() {
+        showArticles(trendingSidebar, trending);
+        showArticles(latestSidebar, latest);
+        showArticles(topNewsSidebar, topNews);
+
+        requestAnimationFrame(function () {
+            requestAnimationFrame(syncSidebarArticles);
+        });
+    }
+
+    /* =====================================
+       SIDEBAR HEIGHT MATCH
+       SHOW COMPLETE ARTICLES ONLY
+    ===================================== */
+
+    function syncSidebarArticles() {
         const mainSection = document.querySelector(
             ".section-layout > .section"
         );
@@ -2041,305 +2120,135 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         if (!mainSection || !sidebar) return;
 
-        if (window.innerWidth > 1100) {
-
-            const mainHeight = mainSection.getBoundingClientRect().height;
-
-            sidebar.style.height = mainHeight + "px";
-            sidebar.style.minHeight = "0";
-            sidebar.style.maxHeight = mainHeight + "px";
-            sidebar.style.overflow = "hidden";
-            sidebar.style.alignSelf = "start";
-
-        } else {
-
-            sidebar.style.height = "auto";
-            sidebar.style.minHeight = "0";
-            sidebar.style.maxHeight = "none";
-            sidebar.style.overflow = "visible";
-            sidebar.style.alignSelf = "auto";
-        }
-    }
-
-    /* =========================
-       RENDER ALL SIDEBARS
-    ========================= */
-
-    function renderSidebars() {
-
-        showArticles(
-            "trendingSidebar",
-            trending
+        const allItems = Array.from(
+            sidebar.querySelectorAll(".sidebar-box .news-item")
         );
 
-        showArticles(
-            "latestSidebar",
-            latest
+        const boxes = Array.from(
+            sidebar.querySelectorAll(".sidebar-box")
         );
 
-        showArticles(
-            "movieReviewsSidebar",
-            topNews
-        );
+        /* MOBILE / TABLET */
 
-        requestAnimationFrame(function () {
-            syncSidebarHeight();
-        });
-    }
+        if (window.innerWidth <= 1100) {
+            sidebar.style.height = "";
+            sidebar.style.maxHeight = "";
+            sidebar.style.overflow = "";
 
-    /* =========================
-       FETCH HOMEPAGE
-    ========================= */
-
-    try {
-
-        const response = await fetch(
-            HOME_URL + "?v=" + Date.now(),
-            { cache: "no-store" }
-        );
-
-        if (!response.ok) {
-            throw new Error(
-                "Homepage loading failed: " + response.status
-            );
-        }
-
-        const html = await response.text();
-
-        const parser = new DOMParser();
-
-        const home = parser.parseFromString(
-            html,
-            "text/html"
-        );
-
-        /* TRENDING */
-
-        trending = getSource(
-            home,
-            [
-                "trendingSource",
-                "trendingGrid",
-                "trendingSection",
-                "trendingNews",
-                "trendingTrack",
-                "trendingSidebar"
-            ],
-            [
-                "ట్రెండింగ్ వార్తలు",
-                "ట్రెండింగ్ న్యూస్",
-                "trending news",
-                "trending"
-            ]
-        );
-
-        /* LATEST */
-
-        latest = getSource(
-            home,
-            [
-                "latestNewsSource",
-                "latestNewsGrid",
-                "latestGrid",
-                "latestSection",
-                "latestNews",
-                "latestNewsList"
-            ],
-            [
-                "తాజా వార్తలు",
-                "తాజా వార్త",
-                "latest news",
-                "latest updates"
-            ]
-        );
-
-        /* MOST READ / TOP NEWS */
-
-        topNews = getSource(
-            home,
-            [
-                "mostReadSource",
-                "mostReadGrid",
-                "mostReadSection",
-                "mostRead",
-                "topNewsSource",
-                "topNewsGrid",
-                "topNewsSection",
-                "topNews",
-                "mostReadSidebar"
-            ],
-            [
-                "most read",
-                "most viewed",
-                "టాప్ వార్తలు",
-                "టాప్ న్యూస్",
-                "ముఖ్య వార్తలు",
-                "ప్రధాన వార్తలు"
-            ]
-        );
-
-        /* LOCAL MOVIES */
-
-        const localMovies = getArticles(
-            $("localMoviesSource")
-        );
-
-        /* HOMEPAGE ENTERTAINMENT */
-
-        const homeMovies = getSource(
-            home,
-            [
-                "entertainmentSource",
-                "entertainmentGrid",
-                "moviesSource",
-                "moviesGrid",
-                "cinemaGrid"
-            ],
-            [
-                "ఎంటర్టైన్మెంట్",
-                "ఎంటర్టైన్‌మెంట్",
-                "entertainment news",
-                "movies news"
-            ]
-        );
-
-        /* COMBINE MOVIES */
-
-        const movies = [
-            ...localMovies,
-            ...homeMovies
-        ].filter((article, index, array) =>
-            array.findIndex(
-                other => other.url === article.url
-            ) === index
-        );
-
-        /* DISPLAY MOVIES */
-
-        const moviesGrid = $("moviesGrid");
-
-        if (moviesGrid) {
-
-            moviesGrid.replaceChildren();
-
-            if (movies.length) {
-
-                const fragment =
-                    document.createDocumentFragment();
-
-                movies.forEach(article => {
-                    fragment.appendChild(
-                        createMovieCard(article)
-                    );
-                });
-
-                moviesGrid.appendChild(fragment);
-
-            } else {
-
-                moviesGrid.textContent =
-                    "Movies News అందుబాటులో లేవు.";
-            }
-        }
-
-        /* DISPLAY SIDEBARS */
-
-        renderSidebars();
-
-        /* WATCH MAIN SECTION HEIGHT CHANGES */
-
-        const mainSection = document.querySelector(
-            ".section-layout > .section"
-        );
-
-        if (mainSection && "ResizeObserver" in window) {
-
-            sidebarObserver = new ResizeObserver(function () {
-                syncSidebarHeight();
+            allItems.forEach(function (item) {
+                item.style.display = "";
             });
 
-            sidebarObserver.observe(mainSection);
+            boxes.forEach(function (box) {
+                box.style.display = "";
+            });
+
+            return;
         }
 
-        /* IMAGE LOAD ALSO UPDATES HEIGHT */
+        /* RESET BEFORE MEASUREMENT */
 
-        document.querySelectorAll("#moviesGrid img").forEach(img => {
+        allItems.forEach(function (item) {
+            item.style.display = "";
+        });
 
-            if (!img.complete) {
-                img.addEventListener(
-                    "load",
-                    syncSidebarHeight,
-                    { once: true }
-                );
+        boxes.forEach(function (box) {
+            box.style.display = "";
+        });
 
-                img.addEventListener(
-                    "error",
-                    syncSidebarHeight,
-                    { once: true }
-                );
+        sidebar.style.height = "auto";
+        sidebar.style.maxHeight = "none";
+        sidebar.style.overflow = "visible";
+
+        const mainHeight = mainSection.getBoundingClientRect().height;
+
+        if (!mainHeight) return;
+
+        const sidebarTop = sidebar.getBoundingClientRect().top;
+        const bottomLimit = sidebarTop + mainHeight;
+
+        let foundOverflow = false;
+
+        /* CHECK EACH COMPLETE ARTICLE */
+
+        allItems.forEach(function (item) {
+            if (foundOverflow) {
+                item.style.display = "none";
+                return;
+            }
+
+            const itemRect = item.getBoundingClientRect();
+
+            if (itemRect.bottom > bottomLimit + 1) {
+                item.style.display = "none";
+                foundOverflow = true;
             }
         });
 
-        /* DEBUG */
+        /* HIDE EMPTY SIDEBAR BOXES */
 
-        console.log("BS360 MOVIES PAGE LOADED");
-        console.log("Local Movies:", localMovies.length);
-        console.log("Homepage Movies:", homeMovies.length);
-        console.log("Total Movies:", movies.length);
-        console.log("Trending:", trending.length);
-        console.log("Latest:", latest.length);
-        console.log("Top News:", topNews.length);
+        boxes.forEach(function (box) {
+            const visibleItems = Array.from(
+                box.querySelectorAll(".news-item")
+            ).filter(function (item) {
+                return getComputedStyle(item).display !== "none";
+            });
 
-    } catch (error) {
-
-        console.error("BS360 NEWS ERROR:", error);
-
-        [
-            "trendingSidebar",
-            "latestSidebar",
-            "movieReviewsSidebar"
-        ].forEach(id => {
-
-            const element = $(id);
-
-            if (element) {
-                element.textContent =
-                    "Homepage వార్తలు లోడ్ కాలేదు. మళ్లీ ప్రయత్నించండి.";
+            if (visibleItems.length === 0) {
+                box.style.display = "none";
             }
         });
 
-        const grid = $("moviesGrid");
+        /* MATCH SIDEBAR HEIGHT TO MAIN SECTION */
 
-        if (grid) {
-            grid.textContent =
-                "Movies News లోడ్ కాలేదు.";
-        }
+        sidebar.style.height = mainHeight + "px";
+        sidebar.style.maxHeight = mainHeight + "px";
+        sidebar.style.overflow = "hidden";
     }
 
-    /* =========================
-       RESIZE FIX
-    ========================= */
+    /* =====================================
+       OBSERVE MAIN SECTION SIZE
+    ===================================== */
 
-    window.addEventListener("resize", function () {
-        requestAnimationFrame(syncSidebarHeight);
-    });
+    const mainSection = document.querySelector(
+        ".section-layout > .section"
+    );
 
-    /* =========================
-       DISABLE IMAGE DRAG
-    ========================= */
-
-    document.querySelectorAll("img").forEach(img => {
-
-        img.addEventListener("dragstart", function (event) {
-            event.preventDefault();
+    if (mainSection && "ResizeObserver" in window) {
+        const resizeObserver = new ResizeObserver(function () {
+            requestAnimationFrame(syncSidebarArticles);
         });
 
+        resizeObserver.observe(mainSection);
+    }
+
+    /* =====================================
+       IMAGE LOAD - RECHECK HEIGHT
+    ===================================== */
+
+    document.addEventListener("load", function (event) {
+        if (event.target && event.target.tagName === "IMG") {
+            requestAnimationFrame(syncSidebarArticles);
+        }
+    }, true);
+
+    /* =====================================
+       WINDOW RESIZE
+    ===================================== */
+
+    window.addEventListener("resize", function () {
+        requestAnimationFrame(syncSidebarArticles);
     });
+
+    /* =====================================
+       START
+    ===================================== */
+
+    loadLocalMovies();
+    loadHomepageArticles();
 
 });
 </script>
-
-
 
 
 
