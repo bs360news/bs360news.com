@@ -929,7 +929,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             show(
                 "topNewsSidebar",
-                topNews.slice(0, 5).map(sidebarHTML).join("") ||
+               topNews.map(sidebarHTML).join("") ||
                 '<div class="loading">Top News దొరకలేదు.</div>'
             );
 
@@ -937,7 +937,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
             show(
                 "trendingSidebar",
-                trending.slice(0, 8).map(sidebarHTML).join("") ||
+             trending.map(sidebarHTML).join("")
+                ||
                 '<div class="loading">Trending News దొరకలేదు.</div>'
             );
 
@@ -945,7 +946,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             show(
                 "latestSidebar",
-                latest.slice(0, 5).map(sidebarHTML).join("") ||
+              latest.map(sidebarHTML).join("") ||
                 '<div class="loading">Latest News దొరకలేదు.</div>'
             );
 
