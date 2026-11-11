@@ -1,4 +1,37 @@
 
+/* Sidebar titles - Light font */
+
+.article-sidebar .news-content p,
+.article-sidebar .news-content h3,
+.article-sidebar .sidebar-item-title,
+.article-sidebar .sidebar-content p {
+    font-weight: 400 !important;
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+    color: #333 !important;
+    text-align: left !important;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .article-sidebar .news-content p,
+    .article-sidebar .news-content h3,
+    .article-sidebar .sidebar-item-title,
+    .article-sidebar .sidebar-content p {
+        font-weight: 400 !important;
+        font-size: 12.5px !important;
+        line-height: 1.45 !important;
+    }
+}
+
+/* Dark mode */
+body.dark-mode .article-sidebar .news-content p,
+body.dark-mode .article-sidebar .news-content h3,
+body.dark-mode .article-sidebar .sidebar-item-title {
+    color: #eee !important;
+    font-weight: 400 !important;
+}
+
 /* =========================================
    BS 360 NEWS - SIDEBAR LEFT IMAGE RIGHT TEXT
 ========================================= */
