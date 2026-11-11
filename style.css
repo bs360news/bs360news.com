@@ -769,15 +769,13 @@ button {
 /* HEADER */
 
 .bs-header {
-    position: sticky;
-    position: -webkit-sticky;
-    top: 0;
-    z-index: 99999;
+    position: relative !important;
+    top: auto !important;
+    z-index: auto !important;
     width: 100%;
     background: #fff;
-    box-shadow: 0 2px 7px rgba(0,0,0,.08);
+    box-shadow: none;
 }
-
 .bs-header-top {
     width: min(1400px, 96%);
     min-height: 78px;
