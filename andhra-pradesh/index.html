@@ -1727,30 +1727,32 @@ body.dark-mode .most-read-item {
     </div>
 </footer>
 
-   <script>  
+<script>
 document.addEventListener("DOMContentLoaded", async function () {
     "use strict";
 
-    const HOME_URL = new URL("/", location.origin).href;
+    const HOME_URL = location.origin + "/";
     const $ = id => document.getElementById(id);
 
     let trending = [];
     let latest = [];
     let topNews = [];
 
-    /* =========================
+    /* =================================
        DARK MODE
-    ========================= */
+    ================================= */
 
     const themeToggle = $("themeToggle");
 
     if (themeToggle) {
+
         if (localStorage.getItem("bs360-theme") === "dark") {
             document.body.classList.add("dark-mode");
             themeToggle.textContent = "☀️ Light";
         }
 
         themeToggle.addEventListener("click", function () {
+
             document.body.classList.toggle("dark-mode");
 
             const dark = document.body.classList.contains("dark-mode");
@@ -1765,9 +1767,10 @@ document.addEventListener("DOMContentLoaded", async function () {
         });
     }
 
-    /* =========================
-       HELPERS
-    ========================= */
+
+    /* =================================
+       TEXT CLEANUP
+    ================================= */
 
     function cleanText(value) {
         return String(value || "")
@@ -1775,7 +1778,13 @@ document.addEventListener("DOMContentLoaded", async function () {
             .trim();
     }
 
+
+    /* =================================
+       ARTICLE IMAGE
+    ================================= */
+
     function getImage(item) {
+
         const img = item.querySelector("img");
 
         if (!img) return "";
@@ -1788,39 +1797,42 @@ document.addEventListener("DOMContentLoaded", async function () {
         );
     }
 
+
+    /* =================================
+       READ ARTICLES
+    ================================= */
+
     function getArticles(source) {
+
         if (!source) return [];
 
         const selectors = [
+            "article.news-item.post",
+            "article.news-item",
+            "article",
             ".news-item.post",
             ".news-item",
-            "article",
-            ".news-card",
             ".movie-card",
+            ".news-card",
             ".post-card",
             ".latest-news-card",
             ".trending-card",
-            ".top-news-card",
-            ".most-read-item",
-            ".bottom-news-card",
-            ".top-side-article"
+            ".most-read-item"
         ].join(",");
 
         let items = [];
 
-        if (source.matches?.(selectors)) {
+        if (source.matches && source.matches(selectors)) {
             items.push(source);
         }
 
-        items.push(...source.querySelectorAll(selectors));
+        items.push(
+            ...source.querySelectorAll(selectors)
+        );
 
-        if (!items.length) {
-            items = Array.from(
-                source.querySelectorAll("a[href]")
-            ).filter(a => a.querySelector("img"));
-        }
+        const result = [];
 
-        const result = items.map(item => {
+        items.forEach(item => {
 
             const img = item.querySelector("img");
 
@@ -1829,8 +1841,8 @@ document.addEventListener("DOMContentLoaded", async function () {
                 : item.querySelector("a[href]");
 
             const titleNode = item.querySelector(
+                ".news-content h3, " +
                 ".news-content p, " +
-                ".article-text p, " +
                 ".news-title, " +
                 ".article-title, " +
                 ".movie-card-title, " +
@@ -1849,40 +1861,55 @@ document.addEventListener("DOMContentLoaded", async function () {
                 link?.getAttribute("href") ||
                 "";
 
-            const image = getImage(item);
+            const rawImage = getImage(item);
 
-            if (!title || !rawURL || !image) return null;
+            if (!title || !rawURL || !rawImage) return;
 
             if (
                 rawURL.startsWith("#") ||
                 /^javascript:/i.test(rawURL)
-            ) return null;
+            ) return;
 
             try {
-                return {
-                    title,
-                    url: new URL(rawURL, HOME_URL).href,
-                    image: new URL(image, HOME_URL).href,
+
+                const articleURL = new URL(
+                    rawURL,
+                    HOME_URL
+                ).href;
+
+                const imageURL = new URL(
+                    rawImage,
+                    HOME_URL
+                ).href;
+
+                result.push({
+                    title: title,
+                    url: articleURL,
+                    image: imageURL,
                     alt: img?.alt || title
-                };
+                });
+
             } catch (error) {
-                return null;
+
+                console.warn("Article URL error:", rawURL);
+
             }
 
-        }).filter(Boolean);
+        });
 
-        return result.filter((item, index, array) =>
+        return result.filter((article, index, array) =>
             array.findIndex(
-                other => other.url === item.url
+                other => other.url === article.url
             ) === index
         );
     }
 
-    /* =========================
-       HOMEPAGE SOURCE FINDER
-    ========================= */
 
-    function getSource(home, ids, headings) {
+    /* =================================
+       HOMEPAGE SOURCE FINDER
+    ================================= */
+
+    function getSource(home, ids) {
 
         for (const id of ids) {
 
@@ -1892,46 +1919,27 @@ document.addEventListener("DOMContentLoaded", async function () {
 
             const articles = getArticles(source);
 
-            if (articles.length) return articles;
-        }
+            if (articles.length) {
 
-        const headingList = Array.from(
-            home.querySelectorAll(
-                "h1,h2,h3,h4,.section-title,.section-head,.sidebar-title"
-            )
-        );
+                console.log(
+                    "Homepage source found:",
+                    id,
+                    articles.length
+                );
 
-        for (const heading of headingList) {
-
-            const headingText =
-                cleanText(heading.textContent).toLowerCase();
-
-            const matched = headings.some(label =>
-                headingText.includes(label.toLowerCase())
-            );
-
-            if (!matched) continue;
-
-            let parent = heading;
-
-            for (let i = 0; i < 6 && parent; i++) {
-
-                const articles = getArticles(parent);
-
-                if (articles.length) return articles;
-
-                parent = parent.parentElement;
+                return articles;
             }
         }
 
         return [];
     }
 
-    /* =========================
-       AP ARTICLE CARD
-    ========================= */
 
-    function createApCard(article) {
+    /* =================================
+       MAIN ANDHRA CARD
+    ================================= */
+
+    function createMainCard(article) {
 
         const card = document.createElement("a");
 
@@ -1955,20 +1963,24 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         content.appendChild(title);
 
-        card.append(img, content);
+        card.appendChild(img);
+        card.appendChild(content);
 
         return card;
     }
 
-    /* =========================
-       SIDEBAR ARTICLE CARD
-    ========================= */
 
-    function createSidebarArticle(article) {
+    /* =================================
+       SIDEBAR CARD
+    ================================= */
+
+    function createSidebarCard(article) {
 
         const item = document.createElement("article");
 
         item.className = "news-item post";
+
+        item.setAttribute("data-url", article.url);
 
         const imageLink = document.createElement("a");
 
@@ -1995,19 +2007,20 @@ document.addEventListener("DOMContentLoaded", async function () {
         titleLink.textContent = article.title;
 
         paragraph.appendChild(titleLink);
-
         content.appendChild(paragraph);
 
-        item.append(imageLink, content);
+        item.appendChild(imageLink);
+        item.appendChild(content);
 
         return item;
     }
 
-    /* =========================
-       DISPLAY SIDEBAR ARTICLES
-    ========================= */
 
-    function showArticles(targetId, articles) {
+    /* =================================
+       DISPLAY SIDEBAR
+    ================================= */
+
+    function showSidebar(targetId, articles) {
 
         const target = $(targetId);
 
@@ -2015,38 +2028,39 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         target.replaceChildren();
 
+        if (!articles.length) {
+
+            const message = document.createElement("p");
+
+            message.textContent =
+                "వార్తలు ప్రస్తుతం అందుబాటులో లేవు.";
+
+            target.appendChild(message);
+
+            return;
+        }
+
         const fragment = document.createDocumentFragment();
 
         articles.forEach(article => {
 
             fragment.appendChild(
-                createSidebarArticle(article)
+                createSidebarCard(article)
             );
 
         });
 
-        if (!articles.length) {
-
-            const message = document.createElement("p");
-
-            message.className = "loading";
-
-            message.textContent =
-                "వార్తలు ప్రస్తుతం అందుబాటులో లేవు.";
-
-            fragment.appendChild(message);
-        }
-
         target.appendChild(fragment);
     }
 
-    /* =====================================
-       SIDEBAR ARTICLES FIT TO MAIN ARTICLES
-    ===================================== */
+
+    /* =================================
+       SIDEBAR HEIGHT CONTROL
+    ================================= */
 
     function syncSidebarArticles() {
 
-        const mainGrid = $("apGrid");
+        const mainGrid = $("andhraGrid");
 
         const sidebar = document.querySelector(
             ".section-layout > .article-sidebar"
@@ -2054,105 +2068,190 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         if (!mainGrid || !sidebar) return;
 
-        const sidebarItems = Array.from(
-            sidebar.querySelectorAll(
-                ".sidebar-box .news-item"
-            )
+        const items = Array.from(
+            sidebar.querySelectorAll(".news-item")
         );
+
+        /* Mobile and tablet: show all */
 
         if (window.innerWidth <= 1100) {
 
-            sidebarItems.forEach(item => {
+            items.forEach(item => {
                 item.style.display = "";
             });
 
             return;
         }
 
+        /* Desktop: match main article height */
+
         const mainHeight =
             mainGrid.getBoundingClientRect().height;
 
-        const boxes = Array.from(
+        const sidebarBoxes = Array.from(
             sidebar.querySelectorAll(".sidebar-box")
         );
 
-        let usedHeight = 0;
+        let headingHeight = 0;
 
-        boxes.forEach(box => {
+        sidebarBoxes.forEach(box => {
 
             const heading = box.querySelector(".sidebar-title");
 
             if (heading) {
-                usedHeight +=
+
+                headingHeight +=
                     heading.getBoundingClientRect().height;
+
             }
-
         });
-
-        /* Sidebar gaps and box padding */
-
-        usedHeight += 40;
 
         let availableHeight = Math.max(
             0,
-            mainHeight - usedHeight
+            mainHeight - headingHeight - 55
         );
 
-        let visibleCount = 0;
+        items.forEach(item => {
+            item.style.display = "flex";
+        });
 
-        for (const item of sidebarItems) {
+        let visibleItems = new Set();
+
+        for (const item of items) {
+
+            const style = getComputedStyle(item);
 
             const itemHeight =
-                item.getBoundingClientRect().height;
+                item.getBoundingClientRect().height +
+                parseFloat(style.marginBottom || 0);
 
             if (itemHeight <= availableHeight) {
 
                 availableHeight -= itemHeight;
 
-                visibleCount++;
+                visibleItems.add(item);
 
             } else {
+
                 break;
             }
         }
 
-        sidebarItems.forEach((item, index) => {
+        items.forEach(item => {
 
             item.style.display =
-                index < visibleCount ? "flex" : "none";
+                visibleItems.has(item) ? "flex" : "none";
 
         });
     }
 
-    /* =========================
-       RENDER ALL SIDEBARS
-    ========================= */
+
+    /* =================================
+       SIDEBAR RENDER
+    ================================= */
 
     function renderSidebars() {
 
-        showArticles("trendingSidebar", trending);
+        showSidebar("trendingSidebar", trending);
 
-        showArticles("latestSidebar", latest);
+        showSidebar("latestSidebar", latest);
 
-        showArticles("movieReviewsSidebar", topNews);
+        showSidebar("movieReviewsSidebar", topNews);
 
         requestAnimationFrame(syncSidebarArticles);
     }
 
-    /* =========================
-       FETCH HOMEPAGE
-    ========================= */
+
+    /* =================================
+       DISPLAY MAIN ANDHRA ARTICLES
+    ================================= */
+
+    function renderAndhraArticles(articles) {
+
+        const grid = $("andhraGrid");
+
+        if (!grid) {
+
+            console.error(
+                "HTMLలో andhraGrid ID కనిపించలేదు."
+            );
+
+            return;
+        }
+
+        grid.replaceChildren();
+
+        if (!articles.length) {
+
+            const message = document.createElement("div");
+
+            message.className = "loading";
+
+            message.textContent =
+                "ఆంధ్రప్రదేశ్ వార్తలు అందుబాటులో లేవు.";
+
+            grid.appendChild(message);
+
+            return;
+        }
+
+        const fragment = document.createDocumentFragment();
+
+        articles.forEach(article => {
+
+            fragment.appendChild(
+                createMainCard(article)
+            );
+
+        });
+
+        grid.appendChild(fragment);
+
+        console.log(
+            "Andhra Pradesh articles displayed:",
+            articles.length
+        );
+    }
+
+
+    /* =================================
+       LOAD HOMEPAGE + LOCAL ARTICLES
+    ================================= */
 
     try {
 
+        /* 1. Local Andhra articles */
+
+        const localSource = $("localAndhraSource");
+
+        if (!localSource) {
+
+            throw new Error(
+                "localAndhraSource ID HTMLలో లేదు."
+            );
+        }
+
+        const localAndhra = getArticles(localSource);
+
+        console.log(
+            "Local Andhra articles:",
+            localAndhra.length
+        );
+
+
+        /* 2. Fetch homepage */
+
         const response = await fetch(
             HOME_URL + "?v=" + Date.now(),
-            { cache: "no-store" }
+            {
+                cache: "no-store"
+            }
         );
 
         if (!response.ok) {
+
             throw new Error(
-                "Homepage loading failed: " + response.status
+                "Homepage fetch error: " + response.status
             );
         }
 
@@ -2165,9 +2264,41 @@ document.addEventListener("DOMContentLoaded", async function () {
             "text/html"
         );
 
-        /* =========================
-           TRENDING
-        ========================= */
+
+        /* 3. Homepage Andhra articles */
+
+        const homeAndhra = getSource(
+            home,
+            [
+                "andhraPradeshSource",
+                "andhraPradeshGrid",
+                "apSource",
+                "apNewsSource",
+                "apNewsGrid"
+            ]
+        );
+
+
+        /* 4. Combine local + homepage Andhra */
+
+        const allAndhra = [
+            ...localAndhra,
+            ...homeAndhra
+        ].filter((article, index, array) =>
+            array.findIndex(
+                other => other.url === article.url
+            ) === index
+        );
+
+
+        /* 5. Render main articles */
+
+        renderAndhraArticles(allAndhra);
+
+
+        /* =================================
+           HOMEPAGE SIDEBAR SOURCES
+        ================================= */
 
         trending = getSource(
             home,
@@ -2176,20 +2307,9 @@ document.addEventListener("DOMContentLoaded", async function () {
                 "trendingGrid",
                 "trendingSection",
                 "trendingNews",
-                "trendingTrack",
-                "trendingSidebar"
-            ],
-            [
-                "ట్రెండింగ్ వార్తలు",
-                "ట్రెండింగ్ న్యూస్",
-                "trending news",
-                "trending"
+                "trendingTrack"
             ]
         );
-
-        /* =========================
-           LATEST
-        ========================= */
 
         latest = getSource(
             home,
@@ -2200,18 +2320,8 @@ document.addEventListener("DOMContentLoaded", async function () {
                 "latestSection",
                 "latestNews",
                 "latestNewsList"
-            ],
-            [
-                "తాజా వార్తలు",
-                "తాజా వార్త",
-                "latest news",
-                "latest updates"
             ]
         );
-
-        /* =========================
-           MOST READ / TOP NEWS
-        ========================= */
 
         topNews = getSource(
             home,
@@ -2223,109 +2333,26 @@ document.addEventListener("DOMContentLoaded", async function () {
                 "topNewsSource",
                 "topNewsGrid",
                 "topNewsSection",
-                "topNews",
-                "mostReadSidebar"
-            ],
-            [
-                "most read",
-                "most viewed",
-                "టాప్ వార్తలు",
-                "టాప్ న్యూస్",
-                "ముఖ్య వార్తలు",
-                "ప్రధాన వార్తలు"
+                "topNews"
             ]
         );
 
-        /* =========================
-           LOCAL ANDHRA PRADESH
-        ========================= */
 
-        const localAp = getArticles(
-            $("localApSource")
-        );
-
-        /* =========================
-           HOMEPAGE ANDHRA PRADESH
-        ========================= */
-
-        const homeAp = getSource(
-            home,
-            [
-                "aptsSource",
-                "aptsGrid",
-                "andhraPradeshSource",
-                "andhraPradeshGrid",
-                "apSource",
-                "apGrid",
-                "afterApTsGrid"
-            ],
-            [
-                "ఆంధ్రప్రదేశ్ వార్తలు",
-                "ఆంధ్రప్రదేశ్",
-                "andhra pradesh news",
-                "andhra pradesh",
-                "ap news"
-            ]
-        );
-
-        /* =========================
-           COMBINE AP ARTICLES
-        ========================= */
-
-        const apArticles = [
-            ...localAp,
-            ...homeAp
-        ].filter((article, index, array) =>
-            array.findIndex(
-                other => other.url === article.url
-            ) === index
-        );
-
-        /* =========================
-           DISPLAY AP ARTICLES
-        ========================= */
-
-        const apGrid = $("apGrid");
-
-        if (apGrid) {
-
-            apGrid.replaceChildren();
-
-            if (apArticles.length) {
-
-                const fragment =
-                    document.createDocumentFragment();
-
-                apArticles.forEach(article => {
-
-                    fragment.appendChild(
-                        createApCard(article)
-                    );
-
-                });
-
-                apGrid.appendChild(fragment);
-
-            } else {
-
-                apGrid.textContent =
-                    "Andhra Pradesh News అందుబాటులో లేవు.";
-            }
-        }
-
-        /* =========================
-           DISPLAY SIDEBARS
-        ========================= */
+        /* 6. Render homepage sidebars */
 
         renderSidebars();
 
-        /* =========================
-           WATCH MAIN GRID
-        ========================= */
 
-        const mainGrid = $("apGrid");
+        /* =================================
+           OBSERVE MAIN GRID
+        ================================= */
 
-        if (mainGrid && "ResizeObserver" in window) {
+        const mainGrid = $("andhraGrid");
+
+        if (
+            mainGrid &&
+            "ResizeObserver" in window
+        ) {
 
             const observer = new ResizeObserver(function () {
 
@@ -2336,11 +2363,14 @@ document.addEventListener("DOMContentLoaded", async function () {
             observer.observe(mainGrid);
         }
 
-        /* =========================
-           IMAGE LOAD HEIGHT FIX
-        ========================= */
 
-        document.querySelectorAll("#apGrid img").forEach(img => {
+        /* =================================
+           IMAGE LOAD UPDATE
+        ================================= */
+
+        document.querySelectorAll(
+            "#andhraGrid img"
+        ).forEach(img => {
 
             if (!img.complete) {
 
@@ -2356,19 +2386,23 @@ document.addEventListener("DOMContentLoaded", async function () {
                     { once: true }
                 );
             }
+
         });
 
-        /* =========================
-           DEBUG
-        ========================= */
 
-        console.log("BS360 ANDHRA PRADESH PAGE LOADED");
+        /* =================================
+           CONSOLE REPORT
+        ================================= */
 
-        console.log("Local AP:", localAp.length);
+        console.log("--------------------------------");
 
-        console.log("Homepage AP:", homeAp.length);
+        console.log("BS 360 NEWS ANDHRA PAGE");
 
-        console.log("Total AP:", apArticles.length);
+        console.log("Local Andhra:", localAndhra.length);
+
+        console.log("Homepage Andhra:", homeAndhra.length);
+
+        console.log("Total Andhra:", allAndhra.length);
 
         console.log("Trending:", trending.length);
 
@@ -2376,35 +2410,30 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         console.log("Top News:", topNews.length);
 
+        console.log("--------------------------------");
+
+
     } catch (error) {
 
-        console.error("BS360 AP NEWS ERROR:", error);
+        console.error(
+            "ANDHRA PAGE ERROR:",
+            error
+        );
 
-        [
-            "trendingSidebar",
-            "latestSidebar",
-            "movieReviewsSidebar"
-        ].forEach(id => {
-
-            const element = $(id);
-
-            if (element) {
-                element.textContent =
-                    "Homepage వార్తలు లోడ్ కాలేదు. మళ్లీ ప్రయత్నించండి.";
-            }
-        });
-
-        const grid = $("apGrid");
+        const grid = $("andhraGrid");
 
         if (grid) {
+
             grid.textContent =
-                "Andhra Pradesh News లోడ్ కాలేదు.";
+                "వార్తలు లోడ్ కాలేదు: " + error.message;
+
         }
     }
 
-    /* =========================
-       RESIZE FIX
-    ========================= */
+
+    /* =================================
+       WINDOW RESIZE
+    ================================= */
 
     window.addEventListener("resize", function () {
 
@@ -2412,20 +2441,23 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     });
 
-    /* =========================
-       DISABLE IMAGE DRAG
-    ========================= */
+
+    /* =================================
+       IMAGE DRAG DISABLE
+    ================================= */
 
     document.querySelectorAll("img").forEach(img => {
 
         img.addEventListener("dragstart", function (event) {
+
             event.preventDefault();
+
         });
 
     });
 
 });
-               </script>
+</script>
 
 
     
