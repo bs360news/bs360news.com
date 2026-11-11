@@ -2228,6 +2228,54 @@ nav,
     background: #004c99 !important;
     color: #ffffff !important;
 }
+    /* BS 360 NEWS BLUE NAVIGATION */
+.bs-header > nav.bs-navigation {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    width: 100% !important;
+    min-height: 46px !important;
+    background-color: #075aaa !important;
+    padding: 0 2% !important;
+    gap: 0 !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    white-space: nowrap !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 99999 !important;
+    scrollbar-width: none !important;
+}
+
+.bs-header > nav.bs-navigation::-webkit-scrollbar {
+    display: none !important;
+}
+
+.bs-header > nav.bs-navigation a {
+    display: inline-flex !important;
+    align-items: center !important;
+    flex: 0 0 auto !important;
+    padding: 12px 15px !important;
+    color: #ffffff !important;
+    background: transparent !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    text-decoration: none !important;
+    border: none !important;
+}
+
+.bs-header > nav.bs-navigation a:hover,
+.bs-header > nav.bs-navigation a.active {
+    background-color: #064b8c !important;
+    color: #ffffff !important;
+}
+
+@media (max-width: 600px) {
+    .bs-header > nav.bs-navigation a {
+        padding: 11px 12px !important;
+        font-size: 12px !important;
+    }
+}
 </style>
 
 </head>
@@ -2246,7 +2294,7 @@ nav,
    <div class="bs-live"><span class="bs-live-dot"></span> LIVE</div>
   </div>
  </div>
-  <nav>
+<nav class="bs-navigation">
   <a href="/index.html">
     <svg viewBox="0 0 24 24" width="17" height="17" fill="none"
       stroke="currentColor" stroke-width="2"
