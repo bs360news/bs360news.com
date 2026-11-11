@@ -2,6 +2,62 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     const grid = document.getElementById("latestNewsGrid");
+    const source = document.getElementById("localLatestNewsSource");
+
+    if (!grid || !source) return;
+
+    function loadLatestArticles() {
+
+        const articles = source.querySelectorAll(
+            "article.news-item.post"
+        );
+
+        grid.innerHTML = "";
+
+        if (articles.length === 0) {
+            grid.innerHTML = "<p>ప్రస్తుతం వార్తలు అందుబాటులో లేవు.</p>";
+            return;
+        }
+
+        articles.forEach(function (article) {
+
+            const clone = article.cloneNode(true);
+
+            const image = clone.querySelector("img");
+
+            if (image) {
+                image.loading = "lazy";
+
+                const src = image.getAttribute("src");
+
+                if (src) {
+                    image.src = new URL(src, window.location.origin).href;
+                }
+            }
+
+            const url = clone.getAttribute("data-url");
+
+            if (url) {
+                clone.style.cursor = "pointer";
+
+                clone.addEventListener("click", function () {
+                    window.location.href = url;
+                });
+            }
+
+            grid.appendChild(clone);
+
+        });
+
+    }
+
+    loadLatestArticles();
+
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const grid = document.getElementById("latestNewsGrid");
 
     if (!grid) return;
 
