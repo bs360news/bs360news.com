@@ -1243,7 +1243,19 @@ body.dark-mode .most-read-item {
     width: 100%;
     align-items: start;
 }
+.main-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: 22px;
+    align-items: stretch;
+}
 
+.article-sidebar {
+    height: auto;
+    max-height: none;
+    overflow: visible;
+    align-self: stretch;
+}
 .section-layout > .section {
     min-width: 0;
     margin: 0;
@@ -1653,6 +1665,7 @@ body.dark-mode .most-read-item {
 </footer>
 
 
+
 <script>
 document.addEventListener("DOMContentLoaded", async function () {
     "use strict";
@@ -1924,10 +1937,11 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 
     /* =========================
-       DISPLAY SIDEBAR ARTICLES
+       DISPLAY ALL SIDEBAR ARTICLES
+       NO LIMIT
     ========================= */
 
-    function showArticles(targetId, articles, limit) {
+    function showArticles(targetId, articles) {
 
         const target = $(targetId);
 
@@ -1935,17 +1949,15 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         target.replaceChildren();
 
-        const selected = articles.slice(0, limit);
-
         const fragment = document.createDocumentFragment();
 
-        selected.forEach(article => {
+        articles.forEach(article => {
             fragment.appendChild(
                 createSidebarArticle(article)
             );
         });
 
-        if (!selected.length) {
+        if (!articles.length) {
             const message = document.createElement("p");
 
             message.className = "loading";
@@ -1959,115 +1971,25 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 
     /* =========================
-       SIDEBAR HEIGHT FIT
-       MAIN ENTERTAINMENT HEIGHT
-    ========================= */
-
-    function fitSidebarToMoviesHeight() {
-
-        const mainSection = document.querySelector(
-            ".section-layout > .section"
-        );
-
-        const sidebar = document.querySelector(
-            ".section-layout > .article-sidebar"
-        );
-
-        if (!mainSection || !sidebar) return;
-
-        /* Mobile / Tablet: no trimming */
-        if (window.innerWidth <= 1100) {
-
-            renderSidebars();
-
-            sidebar.style.maxHeight = "none";
-            sidebar.style.overflow = "visible";
-
-            return;
-        }
-
-        sidebar.style.maxHeight = "none";
-        sidebar.style.overflow = "visible";
-
-        const availableHeight =
-            mainSection.getBoundingClientRect().height;
-
-        let safety = 100;
-
-        /*
-         * Sidebar height ఎక్కువగా ఉంటే
-         * చివరి articles ఒక్కొక్కటిగా తొలగించు.
-         */
-
-        while (
-            sidebar.scrollHeight > availableHeight &&
-            safety > 0
-        ) {
-            safety--;
-
-            const boxes = Array.from(
-                sidebar.querySelectorAll(".sidebar-box")
-            ).reverse();
-
-            let removed = false;
-
-            for (const box of boxes) {
-
-                const articles = box.querySelectorAll(
-                    ".news-item"
-                );
-
-                if (articles.length > 0) {
-
-                    articles[articles.length - 1].remove();
-
-                    removed = true;
-                    break;
-                }
-
-                /* Empty box కూడా స్థలం తీసుకుంటే తొలగించు */
-                box.remove();
-
-                removed = true;
-                break;
-            }
-
-            if (!removed) break;
-        }
-
-        console.log(
-            "Entertainment height:",
-            Math.round(availableHeight)
-        );
-
-        console.log(
-            "Sidebar final height:",
-            Math.round(sidebar.scrollHeight)
-        );
-    }
-
-    /* =========================
-       RENDER SIDEBARS
+       RENDER ALL SIDEBARS
+       HOMEPAGE ARTICLES UNLIMITED
     ========================= */
 
     function renderSidebars() {
 
         showArticles(
             "trendingSidebar",
-            trending,
-            8
+            trending
         );
 
         showArticles(
             "latestSidebar",
-            latest,
-            8
+            latest
         );
 
         showArticles(
             "movieReviewsSidebar",
-            topNews,
-            8
+            topNews
         );
     }
 
@@ -2226,39 +2148,9 @@ document.addEventListener("DOMContentLoaded", async function () {
             }
         }
 
-        /* DISPLAY SIDEBARS */
+        /* DISPLAY ALL SIDEBAR ARTICLES */
 
         renderSidebars();
-
-        /* WAIT FOR LAYOUT */
-
-        requestAnimationFrame(function () {
-
-            fitSidebarToMoviesHeight();
-
-            /*
-             * Main section height మారినప్పుడు
-             * Sidebar మళ్లీ సరిపోల్చు.
-             */
-
-            const mainSection = document.querySelector(
-                ".section-layout > .section"
-            );
-
-            if ("ResizeObserver" in window && mainSection) {
-
-                const observer = new ResizeObserver(function () {
-
-                    if (window.innerWidth > 1100) {
-                        renderSidebars();
-                        fitSidebarToMoviesHeight();
-                    }
-
-                });
-
-                observer.observe(mainSection);
-            }
-        });
 
         /* DEBUG */
 
@@ -2295,26 +2187,6 @@ document.addEventListener("DOMContentLoaded", async function () {
                 "Movies News లోడ్ కాలేదు.";
         }
     }
-
-    /* =========================
-       WINDOW RESIZE
-    ========================= */
-
-    let resizeFrame = null;
-
-    window.addEventListener("resize", function () {
-
-        if (resizeFrame) {
-            cancelAnimationFrame(resizeFrame);
-        }
-
-        resizeFrame = requestAnimationFrame(function () {
-
-            renderSidebars();
-            fitSidebarToMoviesHeight();
-
-        });
-    });
 
     /* =========================
        DISABLE IMAGE DRAG
