@@ -23,6 +23,78 @@
 <link rel="apple-touch-icon" href="dp.png.png">
 <style>
 
+/* =====================================
+   FINAL: MAIN ARTICLES AND SIDEBAR
+   ===================================== */
+
+.section-layout {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: 22px;
+    width: 100%;
+    align-items: stretch !important;
+}
+
+.section-layout > .section {
+    min-width: 0;
+    margin: 0;
+}
+
+.section-layout > .article-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    min-width: 0;
+    height: 100%;
+    max-height: 100%;
+    overflow: hidden;
+    align-self: stretch;
+}
+
+.section-layout .sidebar-box {
+    width: 100%;
+    min-width: 0;
+    flex-shrink: 0;
+}
+
+/* TABLET */
+@media (min-width: 601px) and (max-width: 1100px) {
+    .section-layout {
+        grid-template-columns: 1fr;
+        align-items: start !important;
+    }
+
+    .section-layout > .article-sidebar {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        height: auto;
+        max-height: none;
+        overflow: visible;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+    .section-layout {
+        display: flex !important;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .section-layout > .section,
+    .section-layout > .article-sidebar {
+        width: 100%;
+    }
+
+    .section-layout > .article-sidebar {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        max-height: none;
+        overflow: visible;
+    }
+}
+
     /* MAIN ARTICLES + SIDEBAR SAME HEIGHT */
 @media (min-width: 1101px) {
     .section-layout {
