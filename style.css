@@ -1498,3 +1498,94 @@ body.dark-mode .loading {
 
 }
 
+
+/* =========================================
+   BS 360 NEWS - ALL 3 SIDEBARS SAME TEXT SIZE
+   Trending | Latest | Top News
+========================================= */
+
+/* All sidebar headlines - same size */
+#trendingSidebar .news-item h2,
+#trendingSidebar .news-item h3,
+#trendingSidebar .news-item a,
+#trendingSidebar .sidebar-item-title,
+
+#latestSidebar .news-item h2,
+#latestSidebar .news-item h3,
+#latestSidebar .news-item a,
+#latestSidebar .sidebar-item-title,
+
+#topNewsSidebar .news-item h2,
+#topNewsSidebar .news-item h3,
+#topNewsSidebar .news-item a,
+#topNewsSidebar .sidebar-item-title,
+
+#trendingSidebar .news-content p,
+#latestSidebar .news-content p,
+#topNewsSidebar .news-content p {
+
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    font-weight: 400 !important;
+    margin: 0 !important;
+}
+
+/* Keep left image - right text */
+#trendingSidebar .news-item,
+#latestSidebar .news-item,
+#topNewsSidebar .news-item {
+
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+}
+
+/* Same image size */
+#trendingSidebar .news-item img,
+#latestSidebar .news-item img,
+#topNewsSidebar .news-item img {
+
+    width: 115px !important;
+    min-width: 115px !important;
+    height: 90px !important;
+    object-fit: cover !important;
+    flex-shrink: 0 !important;
+}
+
+/* Mobile - same text size, same layout */
+@media (max-width: 768px) {
+
+    #trendingSidebar .news-item h2,
+    #trendingSidebar .news-item h3,
+    #trendingSidebar .news-item a,
+    #latestSidebar .news-item h2,
+    #latestSidebar .news-item h3,
+    #latestSidebar .news-item a,
+    #topNewsSidebar .news-item h2,
+    #topNewsSidebar .news-item h3,
+    #topNewsSidebar .news-item a,
+    #trendingSidebar .news-content p,
+    #latestSidebar .news-content p,
+    #topNewsSidebar .news-content p {
+
+        font-size: 14px !important;
+        line-height: 1.5 !important;
+    }
+
+    #trendingSidebar .news-item img,
+    #latestSidebar .news-item img,
+    #topNewsSidebar .news-item img {
+
+        width: 105px !important;
+        min-width: 105px !important;
+        height: 78px !important;
+    }
+}
+
+/* Dark Mode */
+body.dark-mode #trendingSidebar *,
+body.dark-mode #latestSidebar *,
+body.dark-mode #topNewsSidebar * {
+    color: #f1f1f1;
+}
