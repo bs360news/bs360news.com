@@ -465,6 +465,179 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 });
 
+document.addEventListener("DOMContentLoaded", async function () {
+
+    const grid = document.getElementById("latestNewsGrid");
+
+    if (!grid) {
+        console.error("latestNewsGrid not found");
+        return;
+    }
+
+    const HOME_URL = "https://bs360news.com/";
+
+    function getArticles(source) {
+
+        if (!source) return [];
+
+        return Array.from(
+            source.querySelectorAll(
+                "article.news-item.post, .news-item.post, article.news-item"
+            )
+        );
+
+    }
+
+    function displayArticles(articles) {
+
+        if (!articles.length) return false;
+
+        grid.innerHTML = "";
+
+        articles.forEach(function (article) {
+
+            const clone = article.cloneNode(true);
+
+            const img = clone.querySelector("img");
+
+            if (img) {
+
+                const imagePath =
+                    img.getAttribute("data-src") ||
+                    img.getAttribute("src");
+
+                if (imagePath) {
+                    img.src = new URL(imagePath, HOME_URL).href;
+                }
+
+                img.loading = "lazy";
+            }
+
+            const url = article.getAttribute("data-url");
+
+            if (url) {
+
+                clone.style.cursor = "pointer";
+
+                clone.addEventListener("click", function () {
+
+                    window.location.href =
+                        new URL(url, HOME_URL).href;
+
+                });
+
+            }
+
+            grid.appendChild(clone);
+
+        });
+
+        console.log("Main articles displayed:", articles.length);
+
+        return true;
+    }
+
+
+    try {
+
+        // STEP 1: Homepage నుంచి articles తీసుకోవడం
+
+        const response = await fetch(
+            HOME_URL + "?v=" + Date.now(),
+            { cache: "no-store" }
+        );
+
+        if (!response.ok) {
+            throw new Error("Homepage fetch failed");
+        }
+
+        const html = await response.text();
+
+        const parser = new DOMParser();
+
+        const homepage = parser.parseFromString(
+            html,
+            "text/html"
+        );
+
+        const homepageSources = [
+            "latestNewsSource",
+            "latestGrid",
+            "latestSection"
+        ];
+
+        let articles = [];
+
+        for (const id of homepageSources) {
+
+            const source = homepage.getElementById(id);
+
+            if (!source) continue;
+
+            const found = getArticles(source);
+
+            if (found.length) {
+
+                articles = found;
+
+                console.log("Homepage source:", id);
+
+                break;
+            }
+
+        }
+
+
+        // STEP 2: Homepageలో articles లేకపోతే local source
+
+        if (!articles.length) {
+
+            console.warn(
+                "Homepage articles not found. Using local source."
+            );
+
+            const localSource =
+                document.getElementById("localLatestNewsSource");
+
+            articles = getArticles(localSource);
+
+        }
+
+
+        // STEP 3: Display articles
+
+        if (!displayArticles(articles)) {
+
+            grid.innerHTML =
+                "<p>ప్రస్తుతం తాజా వార్తలు అందుబాటులో లేవు.</p>";
+
+            console.error("No articles found in any source.");
+
+        }
+
+
+    } catch (error) {
+
+        console.error("Latest News Error:", error);
+
+        // Fetch విఫలమైనా local articles చూపించాలి
+
+        const localSource =
+            document.getElementById("localLatestNewsSource");
+
+        const localArticles = getArticles(localSource);
+
+        if (!displayArticles(localArticles)) {
+
+            grid.innerHTML =
+                "<p>వార్తలు లోడ్ కాలేదు. మళ్లీ ప్రయత్నించండి.</p>";
+
+        }
+
+    }
+
+});
+
     
 </script>
 </body>
