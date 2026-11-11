@@ -1,3 +1,17 @@
+/* National Articles Text Color */
+#moviesGrid .news-item,
+#moviesGrid .news-item h3,
+#moviesGrid .news-item p,
+#moviesGrid .news-item a {
+    color: var(--text-color, #222);
+}
+
+/* Dark Mode */
+body.dark-mode #moviesGrid .news-item h3,
+body.dark-mode #moviesGrid .news-item p,
+body.dark-mode #moviesGrid .news-item a {
+    color: #ffffff !important;
+}
 /* LAPTOP ONLY - 16:9 MAIN ARTICLE IMAGES */
 @media (min-width: 769px) {
     .movies-grid .news-item img {
