@@ -1,4 +1,121 @@
 
+/* =========================================
+   BS 360 NEWS - SIDEBAR LEFT IMAGE RIGHT TEXT
+========================================= */
+
+/* Sidebar article layout */
+.article-sidebar #trendingSidebar > *,
+.article-sidebar #latestSidebar > *,
+.article-sidebar #topNewsSidebar > * {
+    box-sizing: border-box;
+}
+
+/* Sidebar cards */
+.article-sidebar .news-item,
+.article-sidebar .post,
+.article-sidebar a.sidebar-item {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 10px !important;
+    width: 100% !important;
+    padding: 10px 0 !important;
+    margin: 0 !important;
+    text-align: left !important;
+    box-sizing: border-box !important;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+/* Images */
+.article-sidebar .news-item img,
+.article-sidebar .post img,
+.article-sidebar a.sidebar-item img {
+    width: 95px !important;
+    min-width: 95px !important;
+    max-width: 95px !important;
+    height: 68px !important;
+    min-height: 68px !important;
+    object-fit: cover !important;
+    display: block !important;
+    flex: 0 0 95px !important;
+    border-radius: 5px;
+}
+
+/* Text container */
+.article-sidebar .news-content,
+.article-sidebar .sidebar-content {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    width: auto !important;
+    text-align: left !important;
+}
+
+/* Article title */
+.article-sidebar .news-content p,
+.article-sidebar .news-content h3,
+.article-sidebar .sidebar-item-title,
+.article-sidebar .sidebar-content p {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    font-weight: 600 !important;
+    text-align: left !important;
+}
+
+/* Mobile layout */
+@media screen and (max-width: 768px) {
+
+    .article-sidebar .news-item,
+    .article-sidebar .post,
+    .article-sidebar a.sidebar-item {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 10px !important;
+        width: 100% !important;
+    }
+
+    .article-sidebar .news-item img,
+    .article-sidebar .post img,
+    .article-sidebar a.sidebar-item img {
+        width: 85px !important;
+        min-width: 85px !important;
+        max-width: 85px !important;
+        height: 62px !important;
+        min-height: 62px !important;
+        flex: 0 0 85px !important;
+    }
+
+    .article-sidebar .news-content,
+    .article-sidebar .sidebar-content {
+        flex: 1 1 auto !important;
+        min-width: 0 !important;
+    }
+
+    .article-sidebar .news-content p,
+    .article-sidebar .news-content h3,
+    .article-sidebar .sidebar-item-title,
+    .article-sidebar .sidebar-content p {
+        font-size: 13px !important;
+        line-height: 1.45 !important;
+        text-align: left !important;
+    }
+}
+
+/* Dark mode */
+body.dark-mode .article-sidebar .news-item,
+body.dark-mode .article-sidebar .post,
+body.dark-mode .article-sidebar a.sidebar-item {
+    border-bottom-color: #444;
+}
+
+body.dark-mode .article-sidebar .news-content p,
+body.dark-mode .article-sidebar .news-content h3,
+body.dark-mode .article-sidebar .sidebar-item-title {
+    color: #fff !important;
+}
+
 /* =====================================
    SIDEBAR - LEFT IMAGE RIGHT TEXT
 ===================================== */
