@@ -1646,6 +1646,7 @@ body.dark-mode .most-read-item {
 
 
 
+
 <script>
 document.addEventListener("DOMContentLoaded", async function () {
     "use strict";
@@ -1656,6 +1657,8 @@ document.addEventListener("DOMContentLoaded", async function () {
     let trending = [];
     let latest = [];
     let topNews = [];
+
+    let sidebarObserver = null;
 
     /* =========================
        DARK MODE
@@ -1917,8 +1920,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 
     /* =========================
-       DISPLAY ALL SIDEBAR ARTICLES
-       NO LIMIT
+       DISPLAY SIDEBAR ARTICLES
     ========================= */
 
     function showArticles(targetId, articles) {
@@ -1951,8 +1953,44 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 
     /* =========================
+       SIDEBAR HEIGHT FIX
+       MAIN ARTICLES HEIGHT = SIDEBAR HEIGHT
+    ========================= */
+
+    function syncSidebarHeight() {
+
+        const mainSection = document.querySelector(
+            ".section-layout > .section"
+        );
+
+        const sidebar = document.querySelector(
+            ".section-layout > .article-sidebar"
+        );
+
+        if (!mainSection || !sidebar) return;
+
+        if (window.innerWidth > 1100) {
+
+            const mainHeight = mainSection.getBoundingClientRect().height;
+
+            sidebar.style.height = mainHeight + "px";
+            sidebar.style.minHeight = "0";
+            sidebar.style.maxHeight = mainHeight + "px";
+            sidebar.style.overflow = "hidden";
+            sidebar.style.alignSelf = "start";
+
+        } else {
+
+            sidebar.style.height = "auto";
+            sidebar.style.minHeight = "0";
+            sidebar.style.maxHeight = "none";
+            sidebar.style.overflow = "visible";
+            sidebar.style.alignSelf = "auto";
+        }
+    }
+
+    /* =========================
        RENDER ALL SIDEBARS
-       HOMEPAGE ARTICLES UNLIMITED
     ========================= */
 
     function renderSidebars() {
@@ -1971,6 +2009,10 @@ document.addEventListener("DOMContentLoaded", async function () {
             "movieReviewsSidebar",
             topNews
         );
+
+        requestAnimationFrame(function () {
+            syncSidebarHeight();
+        });
     }
 
     /* =========================
@@ -2128,9 +2170,43 @@ document.addEventListener("DOMContentLoaded", async function () {
             }
         }
 
-        /* DISPLAY ALL SIDEBAR ARTICLES */
+        /* DISPLAY SIDEBARS */
 
         renderSidebars();
+
+        /* WATCH MAIN SECTION HEIGHT CHANGES */
+
+        const mainSection = document.querySelector(
+            ".section-layout > .section"
+        );
+
+        if (mainSection && "ResizeObserver" in window) {
+
+            sidebarObserver = new ResizeObserver(function () {
+                syncSidebarHeight();
+            });
+
+            sidebarObserver.observe(mainSection);
+        }
+
+        /* IMAGE LOAD ALSO UPDATES HEIGHT */
+
+        document.querySelectorAll("#moviesGrid img").forEach(img => {
+
+            if (!img.complete) {
+                img.addEventListener(
+                    "load",
+                    syncSidebarHeight,
+                    { once: true }
+                );
+
+                img.addEventListener(
+                    "error",
+                    syncSidebarHeight,
+                    { once: true }
+                );
+            }
+        });
 
         /* DEBUG */
 
@@ -2169,6 +2245,14 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 
     /* =========================
+       RESIZE FIX
+    ========================= */
+
+    window.addEventListener("resize", function () {
+        requestAnimationFrame(syncSidebarHeight);
+    });
+
+    /* =========================
        DISABLE IMAGE DRAG
     ========================= */
 
@@ -2181,31 +2265,8 @@ document.addEventListener("DOMContentLoaded", async function () {
     });
 
 });
-
-    function renderSidebars() {
-
-    const mainCount = $("moviesGrid")
-        ? $("moviesGrid").children.length
-        : 0;
-
-    const sidebarCount = Math.max(0, mainCount);
-
-    showArticles(
-        "trendingSidebar",
-        trending.slice(0, sidebarCount)
-    );
-
-    showArticles(
-        "latestSidebar",
-        latest.slice(0, sidebarCount)
-    );
-
-    showArticles(
-        "movieReviewsSidebar",
-        topNews.slice(0, sidebarCount)
-    );
-}
 </script>
+
 
 
 
