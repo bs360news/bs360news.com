@@ -2335,9 +2335,9 @@ a {
 
             <div class="sidebar-box">
                 <div class="sidebar-title">టాప్ వార్తలు</div>
-                <div id="movieReviewsSidebar">
-                    <div class="loading">లోడ్ అవుతోంది...</div>
-                </div>
+             <div id="topNewsSidebar">
+    <div class="loading">లోడ్ అవుతోంది...</div>
+</div>
             </div>
 
         </aside>
@@ -2374,13 +2374,13 @@ a {
 </footer>
 
 
-<script>
+  <script>
 document.addEventListener("DOMContentLoaded", function () {
     "use strict";
 
-    /* =====================================================
+    /* =========================================
        HELPERS
-    ===================================================== */
+    ========================================= */
 
     function cleanText(text) {
         return String(text || "").replace(/\s+/g, " ").trim();
@@ -2398,25 +2398,32 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    function safeURL(url) {
+    function safeURL(url, baseURL) {
         url = String(url || "").trim();
 
         if (!url || url.startsWith("#") || /^javascript:/i.test(url)) {
             return "";
         }
 
-        return url;
+        try {
+            const result = new URL(url, baseURL);
+
+            if (!["http:", "https:"].includes(result.protocol)) {
+                return "";
+            }
+
+            return result.href;
+        } catch (error) {
+            return "";
+        }
     }
 
-    /* =====================================================
+    /* =========================================
        GET ARTICLES
-       Supports homepage article structures
-    ===================================================== */
+    ========================================= */
 
-    function getArticles(source) {
+    function getArticles(source, baseURL) {
         if (!source) return [];
-
-        let items = [];
 
         const cardSelector = [
             ".news-item.post",
@@ -2429,8 +2436,11 @@ document.addEventListener("DOMContentLoaded", function () {
             ".trending-card",
             ".top-news-card",
             ".review-card",
+            ".sidebar-item",
             ".news-item"
         ].join(",");
+
+        let items = [];
 
         if (source.matches && source.matches(cardSelector)) {
             items.push(source);
@@ -2438,34 +2448,37 @@ document.addEventListener("DOMContentLoaded", function () {
 
         items.push(...Array.from(source.querySelectorAll(cardSelector)));
 
-        /* Fallback: linked image cards */
         if (!items.length) {
-            items = Array.from(source.querySelectorAll("a[href]")).filter(function (a) {
-                return !!a.querySelector("img");
-            });
+            items = Array.from(source.querySelectorAll("a[href]"))
+                .filter(function (a) {
+                    return !!a.querySelector("img");
+                });
         }
 
         const articles = items.map(function (item) {
             const image = item.querySelector("img");
 
-            const link = item.matches && item.matches("a[href]")
+            const link = item.matches("a[href]")
                 ? item
                 : item.querySelector("a[href]");
 
             const titleNode = item.querySelector(
-                ".news-content p, .news-content h3, .news-content a, " +
-                ".news-title, .article-title, .sport-card-title, " +
-                "h1, h2, h3, h4, p, .title"
+                ".news-content p, .news-content h3, " +
+                ".news-content a, .news-title, .article-title, " +
+                ".sport-card-title, h1, h2, h3, h4, p, .title, " +
+                ".sidebar-item-title"
             );
 
-            let title = cleanText(titleNode ? titleNode.textContent : "");
+            let title = cleanText(
+                titleNode ? titleNode.textContent : ""
+            );
 
             if (!title && link) {
                 title = cleanText(link.textContent);
             }
 
             if (!title && image) {
-                title = cleanText(image.getAttribute("alt") || "");
+                title = cleanText(image.getAttribute("alt"));
             }
 
             let imageURL = "";
@@ -2478,37 +2491,53 @@ document.addEventListener("DOMContentLoaded", function () {
                     "";
             }
 
-            const url = safeURL(
+            const rawURL =
                 item.getAttribute("data-url") ||
-                (link ? link.getAttribute("href") : "")
-            );
+                (link ? link.getAttribute("href") : "");
+
+            const url = safeURL(rawURL, baseURL);
+            const finalImage = safeURL(imageURL, baseURL);
 
             return {
                 title: title,
-                image: imageURL,
-                alt: image ? (image.getAttribute("alt") || "") : "",
+                image: finalImage,
+                alt: image ? image.getAttribute("alt") || title : title,
                 url: url
             };
+
         }).filter(function (article) {
             return article.title && article.image && article.url;
         });
 
-        /* Remove duplicate URLs */
-        return articles.filter(function (article, index, array) {
-            return array.findIndex(function (other) {
-                return other.url === article.url;
-            }) === index;
+        return uniqueArticles(articles);
+    }
+
+    /* =========================================
+       REMOVE DUPLICATES
+    ========================================= */
+
+    function uniqueArticles(articles) {
+        const seen = new Set();
+
+        return articles.filter(function (article) {
+            if (!article.url || seen.has(article.url)) {
+                return false;
+            }
+
+            seen.add(article.url);
+            return true;
         });
     }
 
-    /* =====================================================
+    /* =========================================
        HOMEPAGE SOURCE HELPERS
-    ===================================================== */
+    ========================================= */
 
-    function getFirstAvailableArticles(home, ids) {
+    function getFirstAvailableArticles(home, ids, baseURL) {
         for (const id of ids) {
             const source = home.getElementById(id);
-            const articles = getArticles(source);
+
+            const articles = getArticles(source, baseURL);
 
             if (articles.length) {
                 return articles;
@@ -2518,7 +2547,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return [];
     }
 
-    function getArticlesByHeading(home, labels) {
+    function getArticlesByHeading(home, labels, baseURL) {
         const wanted = labels.map(function (label) {
             return cleanText(label).toLowerCase();
         });
@@ -2541,8 +2570,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
             let parent = heading;
 
-            for (let level = 0; level < 5 && parent; level++, parent = parent.parentElement) {
-                const articles = getArticles(parent);
+            for (
+                let level = 0;
+                level < 5 && parent;
+                level++, parent = parent.parentElement
+            ) {
+                const articles = getArticles(parent, baseURL);
 
                 if (articles.length) {
                     return articles;
@@ -2553,31 +2586,27 @@ document.addEventListener("DOMContentLoaded", function () {
         return [];
     }
 
-    function getSectionArticles(home, ids, headingLabels) {
-        const articles = getFirstAvailableArticles(home, ids);
+    function getSectionArticles(home, ids, headingLabels, baseURL) {
+        const articles = getFirstAvailableArticles(
+            home,
+            ids,
+            baseURL
+        );
 
         if (articles.length) {
             return articles;
         }
 
-        return getArticlesByHeading(home, headingLabels);
+        return getArticlesByHeading(
+            home,
+            headingLabels,
+            baseURL
+        );
     }
 
-    /* =====================================================
-       REMOVE DUPLICATES
-    ===================================================== */
-
-    function uniqueArticles(articles) {
-        return articles.filter(function (article, index, array) {
-            return array.findIndex(function (item) {
-                return item.url === article.url;
-            }) === index;
-        });
-    }
-
-    /* =====================================================
+    /* =========================================
        SPORTS CARD
-    ===================================================== */
+    ========================================= */
 
     function cardHTML(article) {
         return `
@@ -2596,9 +2625,9 @@ document.addEventListener("DOMContentLoaded", function () {
         `;
     }
 
-    /* =====================================================
+    /* =========================================
        SIDEBAR CARD
-    ===================================================== */
+    ========================================= */
 
     function sidebarHTML(article) {
         return `
@@ -2615,9 +2644,9 @@ document.addEventListener("DOMContentLoaded", function () {
         `;
     }
 
-    /* =====================================================
+    /* =========================================
        SHOW CONTENT
-    ===================================================== */
+    ========================================= */
 
     function show(id, html) {
         const element = document.getElementById(id);
@@ -2627,11 +2656,22 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    /* =====================================================
+    /* =========================================
+       UNLIMITED SIDEBAR
+    ========================================= */
+
+    function showSidebar(id, articles, message) {
+        show(
+            id,
+            articles.length
+                ? articles.map(sidebarHTML).join("")
+                : `<div class="loading">${escapeHTML(message)}</div>`
+        );
+    }
+
+    /* =========================================
        SIDEBAR HEIGHT
-       Desktop: sidebar ends with Sports section
-       Mobile/tablet: natural height
-    ===================================================== */
+    ========================================= */
 
     function matchSidebarToSportsHeight() {
         const sportsMain = document.querySelector(".sports-main");
@@ -2648,6 +2688,7 @@ document.addEventListener("DOMContentLoaded", function () {
             sidebar.style.maxHeight = sportsHeight + "px";
             sidebar.style.overflowY = "auto";
             sidebar.style.overflowX = "hidden";
+
         } else {
             sidebar.style.height = "";
             sidebar.style.maxHeight = "";
@@ -2656,34 +2697,46 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    window.addEventListener("resize", matchSidebarToSportsHeight);
+    window.addEventListener(
+        "resize",
+        matchSidebarToSportsHeight
+    );
 
-    /* =====================================================
+    /* =========================================
        LOAD HOMEPAGE
-    ===================================================== */
+    ========================================= */
 
-    fetch("index.html?v=" + Date.now(), {
+    const homeURL = new URL("index.html", location.origin + "/");
+
+    homeURL.searchParams.set("v", Date.now());
+
+    fetch(homeURL.href, {
         cache: "no-store"
     })
+
     .then(function (response) {
         if (!response.ok) {
-            throw new Error("index.html load failed");
+            throw new Error("Homepage index.html load failed");
         }
 
         return response.text();
     })
+
     .then(function (html) {
         const parser = new DOMParser();
-        const home = parser.parseFromString(html, "text/html");
 
-        /* ================================================
+        const home = parser.parseFromString(
+            html,
+            "text/html"
+        );
+
+        /* =====================================
            SPORTS SOURCE
-           First: localSportsSource
-           Next: homepage Sports section
-        ================================================ */
+        ===================================== */
 
         const localSports = getArticles(
-            document.getElementById("localSportsSource")
+            document.getElementById("localSportsSource"),
+            location.href
         );
 
         const homeSports = getSectionArticles(
@@ -2703,38 +2756,51 @@ document.addEventListener("DOMContentLoaded", function () {
                 "క్రీడా వార్తలు",
                 "స్పోర్ట్స్",
                 "క్రీడలు"
-            ]
+            ],
+            homeURL.href
         );
 
-        /* Local Sports first, homepage Sports after */
         const sports = uniqueArticles([
             ...localSports,
             ...homeSports
         ]);
 
-        /* ================================================
-           HOMEPAGE SIDEBAR SOURCES
-        ================================================ */
+        /* =====================================
+           HOMEPAGE TOP NEWS / MOST READ
+        ===================================== */
 
         const topNews = getSectionArticles(
             home,
             [
+                "mostReadSource",
+                "mostReadGrid",
+                "mostReadSection",
+                "mostRead",
+                "mostReadSidebar",
                 "topNewsSource",
                 "topNewsGrid",
+                "topNewsSection",
                 "topNews",
                 "topStory",
                 "topStoryGrid",
-                "topStorySection",
-                "topNewsSection"
+                "topStorySection"
             ],
             [
+                "Most Read",
+                "Most Viewed",
                 "Top News",
-                "Top Story",
+                "Top Stories",
+                "టాప్ వార్తలు",
                 "టాప్ న్యూస్",
                 "ముఖ్య వార్తలు",
                 "ప్రధాన వార్తలు"
-            ]
+            ],
+            homeURL.href
         );
+
+        /* =====================================
+           TRENDING NEWS
+        ===================================== */
 
         const trending = getSectionArticles(
             home,
@@ -2751,8 +2817,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Trending",
                 "ట్రెండింగ్ న్యూస్",
                 "ట్రెండింగ్"
-            ]
+            ],
+            homeURL.href
         );
+
+        /* =====================================
+           LATEST NEWS
+        ===================================== */
 
         const latest = getSectionArticles(
             home,
@@ -2769,8 +2840,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Latest",
                 "తాజా వార్తలు",
                 "తాజా వార్త"
-            ]
+            ],
+            homeURL.href
         );
+
+        /* =====================================
+           MOVIE REVIEWS
+        ===================================== */
 
         const movieReviews = getSectionArticles(
             home,
@@ -2795,63 +2871,64 @@ document.addEventListener("DOMContentLoaded", function () {
                 "మూవీ రివ్యూ",
                 "సినిమా రివ్యూస్",
                 "సినిమా రివ్యూ"
-            ]
+            ],
+            homeURL.href
         );
 
-        /* ================================================
+        /* =====================================
            DISPLAY SPORTS
-        ================================================ */
+        ===================================== */
 
         show(
             "sportsGrid",
             sports.length
                 ? sports.map(cardHTML).join("")
-                : '<div class="loading">క్రీడా వార్తలు కనిపించలేదు. localSportsSource లేదా Homepage Sports section చెక్ చేయండి.</div>'
+                : '<div class="loading">క్రీడా వార్తలు కనిపించలేదు. Homepage Sports section చెక్ చేయండి.</div>'
         );
 
-        /* ================================================
-           TOP NEWS SIDEBAR
-        ================================================ */
+        /* =====================================
+           TOP NEWS SIDEBAR - UNLIMITED
+        ===================================== */
 
-        show(
+        showSidebar(
             "topNewsSidebar",
-            topNews.slice(0, 5).map(sidebarHTML).join("") ||
-            '<div class="loading">Homepage Top News articles దొరకలేదు.</div>'
+            topNews,
+            "Homepage Top News / Most Read articles దొరకలేదు."
         );
 
-        /* ================================================
-           TRENDING SIDEBAR
-        ================================================ */
+        /* =====================================
+           TRENDING SIDEBAR - UNLIMITED
+        ===================================== */
 
-        show(
+        showSidebar(
             "trendingSidebar",
-            trending.slice(0, 8).map(sidebarHTML).join("") ||
-            '<div class="loading">Homepage Trending articles దొరకలేదు.</div>'
+            trending,
+            "Homepage Trending articles దొరకలేదు."
         );
 
-        /* ================================================
-           LATEST SIDEBAR
-        ================================================ */
+        /* =====================================
+           LATEST SIDEBAR - UNLIMITED
+        ===================================== */
 
-        show(
+        showSidebar(
             "latestSidebar",
-            latest.slice(0, 5).map(sidebarHTML).join("") ||
-            '<div class="loading">Homepage Latest News articles దొరకలేదు.</div>'
+            latest,
+            "Homepage Latest News articles దొరకలేదు."
         );
 
-        /* ================================================
-           MOVIE REVIEWS SIDEBAR
-        ================================================ */
+        /* =====================================
+           MOVIE REVIEWS SIDEBAR - UNLIMITED
+        ===================================== */
 
-        show(
+        showSidebar(
             "movieReviewsSidebar",
-            movieReviews.slice(0, 5).map(sidebarHTML).join("") ||
-            '<div class="loading">Homepage Movie Reviews articles దొరకలేదు.</div>'
+            movieReviews,
+            "Homepage Movie Reviews articles దొరకలేదు."
         );
 
-        /* ================================================
+        /* =====================================
            MATCH SIDEBAR HEIGHT
-        ================================================ */
+        ===================================== */
 
         matchSidebarToSportsHeight();
 
@@ -2859,18 +2936,21 @@ document.addEventListener("DOMContentLoaded", function () {
             matchSidebarToSportsHeight();
         });
 
-        /* Recheck after images load */
-        document.querySelectorAll(".sports-main img").forEach(function (img) {
-            if (!img.complete) {
-                img.addEventListener("load", matchSidebarToSportsHeight, {
-                    once: true
-                });
+        document.querySelectorAll(".sports-main img").forEach(
+            function (img) {
+                if (!img.complete) {
+                    img.addEventListener(
+                        "load",
+                        matchSidebarToSportsHeight,
+                        { once: true }
+                    );
+                }
             }
-        });
+        );
 
-        /* ================================================
-           CONSOLE
-        ================================================ */
+        /* =====================================
+           CONSOLE DETAILS
+        ===================================== */
 
         console.log("================================");
         console.log("BS360 SPORTS PAGE LOADED");
@@ -2882,27 +2962,29 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("Homepage Latest:", latest.length);
         console.log("Homepage Movie Reviews:", movieReviews.length);
         console.log("================================");
+
     })
+
     .catch(function (error) {
         console.error("BS360 SPORTS ERROR:", error);
 
         show(
             "sportsGrid",
-            '<div class="loading">క్రీడా వార్తలు లోడ్ కాలేదు. index.html మార్గాన్ని చెక్ చేయండి.</div>'
+            '<div class="loading">క్రీడా వార్తలు లోడ్ కాలేదు. Homepage index.html మార్గాన్ని చెక్ చేయండి.</div>'
         );
     });
 
-    /* =====================================================
+    /* =========================================
        DISABLE IMAGE DRAGGING
-    ===================================================== */
+    ========================================= */
 
     document.querySelectorAll("img").forEach(function (img) {
         img.addEventListener("dragstart", function (event) {
             event.preventDefault();
         });
     });
-});
-</script>
 
+});
+                </script>
 </body>
 </html>
