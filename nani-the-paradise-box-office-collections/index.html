@@ -390,6 +390,7 @@ BS 360 NEWSలో తాజా తెలుగు సినిమా వార�
     </div>
 </footer>
 
+
 <script>
 /* MOBILE NAVIGATION */
 function toggleMobileNav() {
@@ -413,8 +414,8 @@ function toggleTheme() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
+
     const HOME = "https://bs360news.com/index.html";
-    const MOVIES = "https://bs360news.com/MOVIES.html";
 
     const otherSections = [
         { target: "nationalGrid", source: "nationalSection", limit: 5 },
@@ -431,74 +432,34 @@ document.addEventListener("DOMContentLoaded", function () {
 
         try {
             return new URL(value, base).href;
-        } catch {
+        } catch (error) {
             return "";
         }
     }
 
-    function readMovieArticles(doc) {
-        const source = doc.getElementById("localMoviesSource");
+    /* READ HOMEPAGE ARTICLES */
+    function readHomeArticles(doc, sourceId) {
+
+        const source = doc.getElementById(sourceId);
 
         if (!source) {
-            console.error("MOVIES.html: localMoviesSource not found");
+            console.error("Homepage source not found:", sourceId);
             return [];
         }
 
         const articles = [];
         const seen = new Set();
 
-        source.querySelectorAll(".news-item.post").forEach(function (item) {
-            const img = item.querySelector("img");
-            const heading = item.querySelector(
-                ".news-content p, .news-content h3, h2, h3"
-            );
-
-            const title = (
-                heading?.textContent || img?.alt || ""
-            ).replace(/\s+/g, " ").trim();
-
-            const url = absoluteURL(item.getAttribute("data-url"), MOVIES);
-
-            const image = absoluteURL(
-                img?.getAttribute("data-src") ||
-                img?.getAttribute("data-lazy-src") ||
-                img?.getAttribute("src"),
-                MOVIES
-            );
-
-            if (!title || !url || !image) return;
-
-            if (new URL(url).origin !== new URL(HOME).origin) return;
-            if (seen.has(url)) return;
-
-            seen.add(url);
-
-            articles.push({
-                title,
-                url,
-                image,
-                alt: img?.alt || title
-            });
-        });
-
-        return articles;
-    }
-
-    function readHomeArticles(doc, sourceId) {
-        const source = doc.getElementById(sourceId);
-        if (!source) return [];
-
-        const articles = [];
-        const seen = new Set();
-
         source.querySelectorAll(
-            "article, .news-card, .news-item, .post, li"
+            "article, .news-card, .news-item, .post, li, a[href]"
         ).forEach(function (card) {
+
             const link = card.matches("a[href]")
                 ? card
                 : card.querySelector("a[href]");
 
             const img = card.querySelector("img");
+
             if (!link || !img) return;
 
             const heading = card.querySelector(
@@ -512,7 +473,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 ""
             ).replace(/\s+/g, " ").trim();
 
-            const url = absoluteURL(link.getAttribute("href"), HOME);
+            const url = absoluteURL(
+                link.getAttribute("href"),
+                HOME
+            );
 
             const image = absoluteURL(
                 img.getAttribute("data-src") ||
@@ -522,64 +486,84 @@ document.addEventListener("DOMContentLoaded", function () {
             );
 
             if (!title || !url || !image) return;
+
             if (new URL(url).origin !== new URL(HOME).origin) return;
+
             if (seen.has(url)) return;
 
             seen.add(url);
+
             articles.push({
-                title,
-                url,
-                image,
+                title: title,
+                url: url,
+                image: image,
                 alt: img.alt || title
             });
+
         });
+
+        console.log(sourceId + " articles:", articles.length);
 
         return articles;
     }
 
+    /* DISPLAY ARTICLES */
     function renderArticles(targetId, articles, limit) {
+
         const target = document.getElementById(targetId);
+
         if (!target) return;
 
         target.replaceChildren();
 
-        const list = limit ? articles.slice(0, limit) : articles;
+        const list = limit
+            ? articles.slice(0, limit)
+            : articles;
 
         list.forEach(function (item) {
+
             const link = document.createElement("a");
+
             link.className = "news-card";
             link.href = item.url;
 
             const image = document.createElement("img");
+
             image.src = item.image;
             image.alt = item.alt;
             image.loading = "lazy";
 
             const title = document.createElement("h3");
+
             title.textContent = item.title;
 
             link.append(image, title);
+
             target.appendChild(link);
+
         });
     }
 
     /* MOVIE REVIEWS MUST END AT MAIN ARTICLE BOTTOM */
     function limitMovieReviewsToArticle() {
+
         const main = document.querySelector(".article-main");
         const sidebar = document.querySelector(".article-sidebar");
         const section = document.getElementById("movieReviewsSidebar");
 
         if (!main || !sidebar || !section) return;
 
-        const list = section;
         const heading = section.previousElementSibling;
 
-        list.style.maxHeight = "";
-        list.style.overflow = "";
+        section.style.maxHeight = "";
+        section.style.overflow = "";
+
+        section.parentElement.style.display = "";
 
         if (window.innerWidth <= 700) return;
 
         const mainHeight = main.getBoundingClientRect().height;
+
         const sectionTop =
             section.getBoundingClientRect().top -
             sidebar.getBoundingClientRect().top;
@@ -588,74 +572,103 @@ document.addEventListener("DOMContentLoaded", function () {
             ? heading.getBoundingClientRect().height
             : 0;
 
-        const availableHeight = mainHeight - sectionTop - headingHeight - 12;
+        const availableHeight =
+            mainHeight - sectionTop - headingHeight - 12;
 
         if (availableHeight <= 0) {
+
             section.parentElement.style.display = "none";
+
             return;
         }
 
-        section.parentElement.style.display = "";
-        list.style.maxHeight = availableHeight + "px";
-        list.style.overflow = "hidden";
+        section.style.maxHeight = availableHeight + "px";
+        section.style.overflow = "hidden";
     }
 
+    /* LOAD ALL HOMEPAGE ARTICLES */
     async function loadArticles() {
-        try {
-            const [homeResponse, moviesResponse] = await Promise.all([
-                fetch(HOME, { cache: "no-store" }),
-                fetch(MOVIES, { cache: "no-store" })
-            ]);
 
-            if (!homeResponse.ok || !moviesResponse.ok) {
-                throw new Error("Homepage or MOVIES.html could not load");
+        try {
+
+            const homeResponse = await fetch(HOME, {
+                cache: "no-store"
+            });
+
+            if (!homeResponse.ok) {
+                throw new Error("Homepage could not load");
             }
 
-            const [homeHTML, moviesHTML] = await Promise.all([
-                homeResponse.text(),
-                moviesResponse.text()
-            ]);
+            const homeHTML = await homeResponse.text();
 
             const parser = new DOMParser();
 
-            const homeDoc = parser.parseFromString(homeHTML, "text/html");
-            const moviesDoc = parser.parseFromString(moviesHTML, "text/html");
+            const homeDoc = parser.parseFromString(
+                homeHTML,
+                "text/html"
+            );
 
-            const movieArticles = readMovieArticles(moviesDoc);
-
-            renderArticles("movieReviewsGrid", movieArticles, 0);
-            renderArticles("movieReviewsSidebar", movieArticles, 30);
-
+            /* OTHER SECTIONS */
             otherSections.forEach(function (section) {
-                const articles = readHomeArticles(homeDoc, section.source);
-                renderArticles(section.target, articles, section.limit);
+
+                const articles = readHomeArticles(
+                    homeDoc,
+                    section.source
+                );
+
+                renderArticles(
+                    section.target,
+                    articles,
+                    section.limit
+                );
+
             });
+
+            /* MOVIE SIDEBAR FROM HOMEPAGE ENTERTAINMENT */
+            const entertainmentArticles = readHomeArticles(
+                homeDoc,
+                "entertainmentSection"
+            );
+
+            renderArticles(
+                "movieReviewsSidebar",
+                entertainmentArticles,
+                30
+            );
+
+            console.log(
+                "Homepage entertainment articles:",
+                entertainmentArticles.length
+            );
 
             requestAnimationFrame(function () {
                 requestAnimationFrame(limitMovieReviewsToArticle);
             });
 
-            console.log("Movie articles:", movieArticles.length);
-
         } catch (error) {
-            console.error("BS360NEWS loading error:", error);
+
+            console.error(
+                "BS360NEWS loading error:",
+                error
+            );
+
         }
     }
 
     loadArticles();
 
-    window.addEventListener("load", limitMovieReviewsToArticle);
-    window.addEventListener("resize", limitMovieReviewsToArticle);
-});
+    window.addEventListener(
+        "load",
+        limitMovieReviewsToArticle
+    );
 
-const image = absoluteURL(
-    img.getAttribute("data-src") ||
-    img.getAttribute("data-lazy-src") ||
-    img.getAttribute("src"),
-    HOME
-);
-  
-          </script>
+    window.addEventListener(
+        "resize",
+        limitMovieReviewsToArticle
+    );
+
+});
+</script>
 
   
 </body>
