@@ -1,4 +1,50 @@
 
+/* Mobile Main Articles - Bigger Images */
+
+@media screen and (max-width: 768px) {
+
+    #moviesGrid .news-item.post {
+        gap: 12px !important;
+        align-items: center !important;
+    }
+
+    #moviesGrid .news-item.post > img {
+        width: 135px !important;
+        min-width: 135px !important;
+        max-width: 135px !important;
+
+        height: 95px !important;
+        min-height: 95px !important;
+
+        flex: 0 0 135px !important;
+        object-fit: cover !important;
+        border-radius: 5px !important;
+    }
+
+    #moviesGrid .news-item.post .news-content p {
+        font-size: 13px !important;
+        line-height: 1.5 !important;
+        font-weight: 400 !important;
+    }
+
+}
+
+/* Small Mobile Screens */
+@media screen and (max-width: 380px) {
+
+    #moviesGrid .news-item.post > img {
+        width: 120px !important;
+        min-width: 120px !important;
+        max-width: 120px !important;
+
+        height: 85px !important;
+        min-height: 85px !important;
+
+        flex: 0 0 120px !important;
+    }
+
+}
+
 /* ==========================================
    MAIN MOVIE REVIEWS - MOBILE
    LEFT IMAGE | RIGHT TEXT
