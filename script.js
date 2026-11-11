@@ -1,4 +1,50 @@
 
+document.addEventListener("DOMContentLoaded", function () {
+
+    const themeButtons = document.querySelectorAll(
+        "#themeToggle, .bs-dark-btn"
+    );
+
+    function applyTheme(isDark) {
+
+        document.body.classList.toggle("dark-mode", isDark);
+
+        themeButtons.forEach(function (button) {
+            button.textContent = isDark ? "☀️ Light" : "🌙 Dark";
+            button.setAttribute("aria-pressed", isDark);
+        });
+
+        try {
+            localStorage.setItem("bs360-theme", isDark ? "dark" : "light");
+        } catch (error) {
+            console.warn("Theme preference could not be saved.");
+        }
+    }
+
+    // Load saved theme
+    let savedTheme = "light";
+
+    try {
+        savedTheme = localStorage.getItem("bs360-theme") || "light";
+    } catch (error) {}
+
+    applyTheme(savedTheme === "dark");
+
+    // Dark / Light toggle
+    themeButtons.forEach(function (button) {
+
+        button.addEventListener("click", function () {
+
+            const isDark = !document.body.classList.contains("dark-mode");
+
+            applyTheme(isDark);
+
+        });
+
+    });
+
+});
+
 /* =========================================
    BS 360 NEWS - LATEST ARTICLES
    SINGLE FETCH + AUTOMATIC RETRY
