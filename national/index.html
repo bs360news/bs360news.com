@@ -360,20 +360,46 @@ section {
 </head>
 
 <body>
+<!-- HEADER -->
 <header class="bs-header">
- <div class="bs-header-top">
-  <div class="bs-brand">
-   <a href="index.html" aria-label="BS 360 NEWS Home"><img src="dp.png.png" alt="BS 360 NEWS" class="bs-logo"></a>
-   <div class="bs-brand-name">
-    <a href="index.html" class="bs-brand-title"><span class="brand-bs">BS</span><span class="brand-360">360</span><span class="brand-news">NEWS</span></a>
-    <span class="bs-tagline">Fast | Fair | Fearless</span>
-   </div>
-  </div>
-  <div class="bs-header-actions">
-   <button type="button" id="themeToggle" class="bs-dark-btn">🌙 Dark</button>
-   <div class="bs-live"><span class="bs-live-dot"></span> LIVE</div>
-  </div>
- </div>
+
+    <div class="bs-header-top">
+
+        <div class="bs-brand">
+
+            <a href="/" aria-label="BS 360 NEWS Home">
+                <img src="/dp.png.png" alt="BS 360 NEWS" class="bs-logo">
+            </a>
+
+            <div class="bs-brand-name">
+
+                <a href="/" class="bs-brand-title">
+                    <span class="brand-bs">BS</span>
+                    <span class="brand-360">360</span>
+                    <span class="brand-news">NEWS</span>
+                </a>
+
+                <span class="bs-tagline">Fast | Fair | Fearless</span>
+
+            </div>
+
+        </div>
+
+        <div class="bs-header-actions">
+
+            <button type="button" id="themeToggle" class="bs-dark-btn">
+                🌙 Dark
+            </button>
+
+            <div class="bs-live">
+                <span class="bs-live-dot"></span>
+                LIVE
+            </div>
+
+        </div>
+
+    </div>
+
  <!-- NAVIGATION -->
     <nav class="bs-navigation" aria-label="ప్రధాన నావిగేషన్">
 
@@ -400,11 +426,65 @@ section {
  <div class="breaking-title">BREAKING NEWS</div>
  <div class="breaking-text">భారతదేశంలోని తాజా జాతీయ వార్తలు, కేంద్ర ప్రభుత్వ నిర్ణయాలు, రాజకీయాలు మరియు దేశవ్యాప్త పరిణామాలు...</div>
 </div>
-
 <main class="page">
- <div class="page-title"></div>
- <div class="main-layout">
-  <div class="movies-main">
+
+    
+
+    <div class="main-layout">
+
+        <div class="movies-main">
+
+            <section class="section">
+
+                <div class="section-head">
+                    <h2>
+                        <span>జాతీయ వార్తలు</span>
+                    </h2>
+                </div>
+
+                <div id="moviesGrid" class="movies-grid">
+
+                    <div class="loading">
+                        జాతీయ వార్తలు లోడ్ అవుతున్నాయి...
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+        <!-- SIDEBAR -->
+        <aside class="article-sidebar">
+
+            <div class="sidebar-box">
+                <div class="sidebar-title">ట్రెండింగ్ వార్తలు</div>
+                <div id="trendingSidebar">
+                    <p class="loading">వార్తలు లోడ్ అవుతున్నాయి...</p>
+                </div>
+            </div>
+
+            <div class="sidebar-box">
+                <div class="sidebar-title">తాజా వార్తలు</div>
+                <div id="latestSidebar">
+                    <p class="loading">వార్తలు లోడ్ అవుతున్నాయి...</p>
+                </div>
+            </div>
+
+            <div class="sidebar-box">
+                <div class="sidebar-title">టాప్ వార్తలు</div>
+                <div id="topNewsSidebar">
+                    <p class="loading">వార్తలు లోడ్ అవుతున్నాయి...</p>
+                </div>
+            </div>
+
+        </aside>
+
+    </div>
+
+</main>
+
+
    <!-- జాతీయ వార్తల కోసం స్థానిక కథనాలు. కొత్త కథనాలను ఈ div లో చేర్చండి. -->
   <div id="localMovieReviewsSource" hidden>
     <article class="news-item post" data-url="india-gst-rules-changes-november-2026/">
@@ -443,50 +523,7 @@ section {
 
    
    </div>
-  <section class="section">
-
-                <div class="section-head">
-                    <h2>
-                        <span>జాతీయ వార్తలు</span>
-                    </h2>
-                </div>
-
-                <div id="moviesGrid" class="movies-grid">
-
-                    <div class="loading">
-                  జాతీయ వార్తలు    లోడ్ అవుతున్నాయి...
-                    </div>
-
-                </div>
-
-            </section>
   
-  </div>
-
-  <aside class="article-sidebar">
-    <div class="sidebar-box">
-                <div class="sidebar-title">ట్రెండింగ్ వార్తలు</div>
-                <div id="trendingSidebar">
-                    <p class="loading">వార్తలు లోడ్ అవుతున్నాయి...</p>
-                </div>
-            </div>
-
-            <div class="sidebar-box">
-                <div class="sidebar-title">తాజా వార్తలు</div>
-                <div id="latestSidebar">
-                    <p class="loading">వార్తలు లోడ్ అవుతున్నాయి...</p>
-                </div>
-            </div>
-
-            <div class="sidebar-box">
-                <div class="sidebar-title">టాప్ వార్తలు</div>
-                <div id="topNewsSidebar">
-                    <p class="loading">వార్తలు లోడ్ అవుతున్నాయి...</p>
-                </div>
-            </div>
-  </aside>
- </div>
-</main>
 
 <footer class="site-footer">
  <div class="footer-inner">
