@@ -1,4 +1,80 @@
 
+/* BS 360 NEWS - COMPLETE DARK MODE FIX */
+
+body.dark-mode {
+    background: #121212 !important;
+    color: #f1f1f1 !important;
+}
+
+body.dark-mode .bs-header,
+body.dark-mode .page,
+body.dark-mode .homepage-news-layout,
+body.dark-mode .movie-reviews-section,
+body.dark-mode .business-national-world-row,
+body.dark-mode .sidebar-box,
+body.dark-mode .movie-card,
+body.dark-mode .page-title,
+body.dark-mode .breaking,
+body.dark-mode .top-content-layout,
+body.dark-mode .sports-apts-trending-layout {
+    background-color: #1e1e1e !important;
+    color: #f1f1f1 !important;
+}
+
+body.dark-mode .section-heading,
+body.dark-mode .section-head h2,
+body.dark-mode .sidebar-title,
+body.dark-mode .news-item,
+body.dark-mode .news-item h3,
+body.dark-mode .news-item p,
+body.dark-mode .news-item a,
+body.dark-mode .movie-card-title,
+body.dark-mode .sidebar-item-title,
+body.dark-mode .most-read-title,
+body.dark-mode .entertainment-featured h3,
+body.dark-mode .entertainment-small-grid h3,
+body.dark-mode .national-world-grid h3,
+body.dark-mode .top-side-article h3,
+body.dark-mode .bottom-news-card h3 {
+    color: #f1f1f1 !important;
+}
+
+body.dark-mode .latest-news-column,
+body.dark-mode .trending-news-column,
+body.dark-mode .top-side-article,
+body.dark-mode .sidebar-item,
+body.dark-mode .most-read-item {
+    border-color: #444 !important;
+}
+
+body.dark-mode .headlines-bar,
+body.dark-mode .ad-space {
+    background: #222 !important;
+    color: #eee !important;
+    border-color: #444 !important;
+}
+
+body.dark-mode .bs-dark-btn {
+    background: #333 !important;
+    color: #fff !important;
+    border-color: #555 !important;
+}
+
+body.dark-mode .movie-reviews-section,
+body.dark-mode #movieReviewsSection {
+    background: #1e1e1e !important;
+}
+
+body.dark-mode #movieReviewsSection article,
+body.dark-mode .movie-reviews-section article {
+    background: #292929 !important;
+}
+
+body.dark-mode .movie-reviews-section h2,
+body.dark-mode #movieReviewsSection h2 {
+    color: #fff !important;
+}
+
 /* SPORTS PAGE - LAPTOP SIDEBAR STICKY SCROLL */
 @media (min-width: 1101px) {
 
