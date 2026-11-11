@@ -1,4 +1,72 @@
 
+document.addEventListener("DOMContentLoaded", function () {
+
+    const sidebar = document.getElementById("latestSidebar");
+
+    if (!sidebar) return;
+
+    async function loadHomeLatestNews() {
+
+        try {
+
+            const response = await fetch(
+                "https://bs360news.com/?v=" + Date.now(),
+                { cache: "no-store" }
+            );
+
+            if (!response.ok) {
+                throw new Error("Homepage loading failed");
+            }
+
+            const html = await response.text();
+
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, "text/html");
+
+            // Homepage latest news source
+            let source =
+                doc.querySelector("#latestNewsSource") ||
+                doc.querySelector("#latestGrid");
+
+            if (!source) {
+                throw new Error("Latest news source not found");
+            }
+
+            const articles = source.querySelectorAll(
+                ".news-item.post, .news-item"
+            );
+
+            if (!articles.length) {
+                throw new Error("No latest articles found");
+            }
+
+            sidebar.innerHTML = "";
+
+            articles.forEach(article => {
+
+                const clone = article.cloneNode(true);
+
+                clone.style.display = "";
+
+                sidebar.appendChild(clone);
+
+            });
+
+        } catch (error) {
+
+            console.error("Latest Sidebar Error:", error);
+
+            sidebar.innerHTML =
+                '<p class="loading">వార్తలు లోడ్ కాలేదు. మళ్లీ ప్రయత్నించండి.</p>';
+
+        }
+
+    }
+
+    loadHomeLatestNews();
+
+});
+
 /* ================= BS 360 NEWS DARK MODE ================= */
 
 document.addEventListener("DOMContentLoaded", function () {
