@@ -1,3 +1,85 @@
+/* SIDEBAR ARTICLES FIX */
+
+.article-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-width: 0;
+    width: 100%;
+}
+
+.article-sidebar .sidebar-box {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    margin-bottom: 15px;
+}
+
+/* Sidebar article containers */
+
+#trendingSidebar,
+#latestSidebar,
+#topNewsSidebar {
+    display: flex !important;
+    flex-direction: column !important;
+    flex-wrap: nowrap !important;
+    gap: 14px;
+    width: 100%;
+    height: auto;
+    overflow: visible !important;
+    overflow-x: visible !important;
+    overflow-y: visible !important;
+    white-space: normal !important;
+}
+
+/* Individual sidebar article */
+
+.sidebar-item,
+.most-read-item {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    min-width: 0;
+    height: auto;
+    margin: 0 0 12px 0;
+    flex-shrink: 0;
+}
+
+/* Left side image */
+
+.sidebar-item img,
+.most-read-item img {
+    width: 105px;
+    height: 70px;
+    min-width: 105px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+/* Right side title */
+
+.sidebar-item h3,
+.sidebar-item-title,
+.most-read-item h3 {
+    flex: 1;
+    min-width: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0;
+    white-space: normal;
+    overflow-wrap: break-word;
+}
+
+/* Remove horizontal scrolling */
+
+#trendingSidebar *,
+#latestSidebar *,
+#topNewsSidebar * {
+    max-width: 100%;
+}
 /* National Articles Text Color */
 #moviesGrid .news-item,
 #moviesGrid .news-item h3,
