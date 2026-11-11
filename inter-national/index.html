@@ -1369,6 +1369,280 @@ document.addEventListener("DOMContentLoaded", function () {
 
     sidebar.style.height = main.offsetHeight + "px";
 }
+   
+/* =========================================
+   BS 360 NEWS - LATEST ARTICLES
+   SINGLE FETCH + AUTOMATIC RETRY
+========================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const grid = document.getElementById("latestNewsGrid");
+    const sidebar = document.getElementById("latestSidebar");
+
+    if (!grid && !sidebar) return;
+
+    const HOME_URL = "https://bs360news.com/";
+
+    let homepagePromise = null;
+
+    function getHomepage() {
+
+        if (!homepagePromise) {
+
+            homepagePromise = fetch(
+                HOME_URL + "?v=" + Date.now(),
+                {
+                    cache: "no-store"
+                }
+            )
+            .then(response => {
+
+                if (!response.ok) {
+                    throw new Error("Homepage fetch failed");
+                }
+
+                return response.text();
+
+            })
+            .then(html => {
+
+                return new DOMParser().parseFromString(
+                    html,
+                    "text/html"
+                );
+
+            })
+            .catch(error => {
+
+                homepagePromise = null;
+                throw error;
+
+            });
+
+        }
+
+        return homepagePromise;
+    }
+
+
+    function getArticles(source) {
+
+        if (!source) return [];
+
+        return Array.from(
+            source.querySelectorAll(
+                "article.news-item.post, .news-item.post"
+            )
+        );
+
+    }
+
+
+    function prepareArticle(article) {
+
+        const clone = article.cloneNode(true);
+
+        clone.querySelectorAll("img").forEach(img => {
+
+            const src =
+                img.getAttribute("data-src") ||
+                img.getAttribute("data-lazy-src") ||
+                img.getAttribute("src");
+
+            if (src) {
+                img.src = new URL(src, HOME_URL).href;
+            }
+
+            img.loading = "lazy";
+
+        });
+
+
+        clone.querySelectorAll("a[href]").forEach(link => {
+
+            const href = link.getAttribute("href");
+
+            if (href) {
+                link.href = new URL(href, HOME_URL).href;
+            }
+
+        });
+
+
+        const articleUrl = clone.getAttribute("data-url");
+
+        if (articleUrl) {
+
+            clone.style.cursor = "pointer";
+
+            clone.addEventListener("click", function (event) {
+
+                if (event.target.closest("a")) return;
+
+                window.location.href = new URL(
+                    articleUrl,
+                    HOME_URL
+                ).href;
+
+            });
+
+        }
+
+        return clone;
+
+    }
+
+
+    function showArticles(target, articles) {
+
+        if (!target) return;
+
+        if (!articles.length) return;
+
+        target.innerHTML = "";
+
+        articles.forEach(article => {
+
+            target.appendChild(
+                prepareArticle(article)
+            );
+
+        });
+
+    }
+
+
+    async function loadLatestNews() {
+
+        if (grid) {
+            grid.innerHTML = "<p>వార్తలు లోడ్ అవుతున్నాయి...</p>";
+        }
+
+        if (sidebar) {
+            sidebar.innerHTML = "<p>వార్తలు లోడ్ అవుతున్నాయి...</p>";
+        }
+
+
+        for (let attempt = 1; attempt <= 4; attempt++) {
+
+            try {
+
+                const home = await getHomepage();
+
+                const latestSource =
+                    home.getElementById("latestNewsSource");
+
+                const latestSection =
+                    home.getElementById("latestSection");
+
+
+                let mainArticles = getArticles(latestSource);
+
+                if (!mainArticles.length) {
+                    mainArticles = getArticles(latestSection);
+                }
+
+
+                let sidebarArticles = getArticles(latestSection);
+
+                if (!sidebarArticles.length) {
+                    sidebarArticles = mainArticles;
+                }
+
+
+                // Local source fallback
+                if (!mainArticles.length) {
+
+                    const localSource =
+                        document.getElementById("localLatestNewsSource");
+
+                    mainArticles = getArticles(localSource);
+
+                }
+
+
+                if (mainArticles.length) {
+
+                    showArticles(grid, mainArticles);
+
+                    console.log(
+                        "BS360 Main Latest Articles:",
+                        mainArticles.length
+                    );
+
+                }
+
+
+                if (sidebarArticles.length) {
+
+                    showArticles(sidebar, sidebarArticles);
+
+                    console.log(
+                        "BS360 Latest Sidebar:",
+                        sidebarArticles.length
+                    );
+
+                }
+
+
+                if (mainArticles.length || sidebarArticles.length) {
+                    return;
+                }
+
+
+                console.warn(
+                    "Latest articles not found. Retry:",
+                    attempt
+                );
+
+
+            } catch (error) {
+
+                console.error(
+                    "Latest News Loading Error:",
+                    error
+                );
+
+                homepagePromise = null;
+
+            }
+
+
+            if (attempt < 4) {
+
+                await new Promise(resolve =>
+                    setTimeout(resolve, 1000 * attempt)
+                );
+
+            }
+
+        }
+
+
+        // Show message only after all attempts fail
+
+        if (grid && !grid.querySelector(".news-item.post")) {
+
+            grid.innerHTML =
+                "<p>ప్రస్తుతం వార్తలు అందుబాటులో లేవు.</p>";
+
+        }
+
+        if (sidebar && !sidebar.querySelector(".news-item.post")) {
+
+            sidebar.innerHTML =
+                "<p>తాజా వార్తలు అందుబాటులో లేవు.</p>";
+
+        }
+
+    }
+
+
+    loadLatestNews();
+
+});
+
 </script>
 
 </body>
