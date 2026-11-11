@@ -1,252 +1,274 @@
 
+/* =========================================
+   BS 360 NEWS - LATEST ARTICLES
+   SINGLE FETCH + AUTOMATIC RETRY
+========================================= */
+
 document.addEventListener("DOMContentLoaded", function () {
 
     const grid = document.getElementById("latestNewsGrid");
-    const source = document.getElementById("localLatestNewsSource");
+    const sidebar = document.getElementById("latestSidebar");
 
-    if (!grid || !source) return;
+    if (!grid && !sidebar) return;
 
-    function loadLatestArticles() {
+    const HOME_URL = "https://bs360news.com/";
 
-        const articles = source.querySelectorAll(
-            "article.news-item.post"
-        );
+    let homepagePromise = null;
 
-        grid.innerHTML = "";
+    function getHomepage() {
 
-        if (articles.length === 0) {
-            grid.innerHTML = "<p>ప్రస్తుతం వార్తలు అందుబాటులో లేవు.</p>";
-            return;
+        if (!homepagePromise) {
+
+            homepagePromise = fetch(
+                HOME_URL + "?v=" + Date.now(),
+                {
+                    cache: "no-store"
+                }
+            )
+            .then(response => {
+
+                if (!response.ok) {
+                    throw new Error("Homepage fetch failed");
+                }
+
+                return response.text();
+
+            })
+            .then(html => {
+
+                return new DOMParser().parseFromString(
+                    html,
+                    "text/html"
+                );
+
+            })
+            .catch(error => {
+
+                homepagePromise = null;
+                throw error;
+
+            });
+
         }
 
-        articles.forEach(function (article) {
+        return homepagePromise;
+    }
 
-            const clone = article.cloneNode(true);
 
-            const image = clone.querySelector("img");
+    function getArticles(source) {
 
-            if (image) {
-                image.loading = "lazy";
+        if (!source) return [];
 
-                const src = image.getAttribute("src");
+        return Array.from(
+            source.querySelectorAll(
+                "article.news-item.post, .news-item.post"
+            )
+        );
 
-                if (src) {
-                    image.src = new URL(src, window.location.origin).href;
-                }
+    }
+
+
+    function prepareArticle(article) {
+
+        const clone = article.cloneNode(true);
+
+        clone.querySelectorAll("img").forEach(img => {
+
+            const src =
+                img.getAttribute("data-src") ||
+                img.getAttribute("data-lazy-src") ||
+                img.getAttribute("src");
+
+            if (src) {
+                img.src = new URL(src, HOME_URL).href;
             }
 
-            const url = clone.getAttribute("data-url");
+            img.loading = "lazy";
 
-            if (url) {
-                clone.style.cursor = "pointer";
+        });
 
-                clone.addEventListener("click", function () {
-                    window.location.href = url;
-                });
+
+        clone.querySelectorAll("a[href]").forEach(link => {
+
+            const href = link.getAttribute("href");
+
+            if (href) {
+                link.href = new URL(href, HOME_URL).href;
             }
 
-            grid.appendChild(clone);
+        });
+
+
+        const articleUrl = clone.getAttribute("data-url");
+
+        if (articleUrl) {
+
+            clone.style.cursor = "pointer";
+
+            clone.addEventListener("click", function (event) {
+
+                if (event.target.closest("a")) return;
+
+                window.location.href = new URL(
+                    articleUrl,
+                    HOME_URL
+                ).href;
+
+            });
+
+        }
+
+        return clone;
+
+    }
+
+
+    function showArticles(target, articles) {
+
+        if (!target) return;
+
+        if (!articles.length) return;
+
+        target.innerHTML = "";
+
+        articles.forEach(article => {
+
+            target.appendChild(
+                prepareArticle(article)
+            );
 
         });
 
     }
 
-    loadLatestArticles();
 
-});
+    async function loadLatestNews() {
 
-document.addEventListener("DOMContentLoaded", function () {
+        if (grid) {
+            grid.innerHTML = "<p>వార్తలు లోడ్ అవుతున్నాయి...</p>";
+        }
 
-    const grid = document.getElementById("latestNewsGrid");
+        if (sidebar) {
+            sidebar.innerHTML = "<p>వార్తలు లోడ్ అవుతున్నాయి...</p>";
+        }
 
-    if (!grid) return;
 
-    const HOME_URL = "https://bs360news.com/";
+        for (let attempt = 1; attempt <= 4; attempt++) {
 
-    async function loadLatestMainArticles() {
+            try {
 
-        try {
+                const home = await getHomepage();
 
-            const response = await fetch(
-                HOME_URL + "?v=" + Date.now(),
-                { cache: "no-store" }
-            );
+                const latestSource =
+                    home.getElementById("latestNewsSource");
 
-            if (!response.ok) {
-                throw new Error("Homepage loading failed");
-            }
+                const latestSection =
+                    home.getElementById("latestSection");
 
-            const html = await response.text();
 
-            const parser = new DOMParser();
+                let mainArticles = getArticles(latestSource);
 
-            const doc = parser.parseFromString(html, "text/html");
-
-            // Homepage latest articles source
-            const source = doc.getElementById("latestNewsSource");
-
-            if (!source) {
-                grid.innerHTML =
-                    "<p>Homepageలో latestNewsSource కనిపించలేదు.</p>";
-                return;
-            }
-
-            const articles = source.querySelectorAll(
-                ".news-item.post, article.post"
-            );
-
-            grid.innerHTML = "";
-
-            if (!articles.length) {
-                grid.innerHTML =
-                    "<p>ప్రస్తుతం తాజా వార్తలు అందుబాటులో లేవు.</p>";
-                return;
-            }
-
-            articles.forEach(function (article) {
-
-                const clone = article.cloneNode(true);
-
-                const image = clone.querySelector("img");
-
-                if (image) {
-
-                    const imageSrc =
-                        image.getAttribute("src");
-
-                    if (imageSrc) {
-                        image.src = new URL(
-                            imageSrc,
-                            HOME_URL
-                        ).href;
-                    }
-
-                    image.loading = "lazy";
+                if (!mainArticles.length) {
+                    mainArticles = getArticles(latestSection);
                 }
 
-                const articleUrl =
-                    clone.getAttribute("data-url");
 
-                if (articleUrl) {
+                let sidebarArticles = getArticles(latestSection);
 
-                    clone.style.cursor = "pointer";
+                if (!sidebarArticles.length) {
+                    sidebarArticles = mainArticles;
+                }
 
-                    clone.addEventListener("click", function () {
 
-                        window.location.href = new URL(
-                            articleUrl,
-                            HOME_URL
-                        ).href;
+                // Local source fallback
+                if (!mainArticles.length) {
 
-                    });
+                    const localSource =
+                        document.getElementById("localLatestNewsSource");
+
+                    mainArticles = getArticles(localSource);
 
                 }
 
-                grid.appendChild(clone);
 
-            });
+                if (mainArticles.length) {
 
-        } catch (error) {
+                    showArticles(grid, mainArticles);
 
-            console.error("Latest articles error:", error);
+                    console.log(
+                        "BS360 Main Latest Articles:",
+                        mainArticles.length
+                    );
+
+                }
+
+
+                if (sidebarArticles.length) {
+
+                    showArticles(sidebar, sidebarArticles);
+
+                    console.log(
+                        "BS360 Latest Sidebar:",
+                        sidebarArticles.length
+                    );
+
+                }
+
+
+                if (mainArticles.length || sidebarArticles.length) {
+                    return;
+                }
+
+
+                console.warn(
+                    "Latest articles not found. Retry:",
+                    attempt
+                );
+
+
+            } catch (error) {
+
+                console.error(
+                    "Latest News Loading Error:",
+                    error
+                );
+
+                homepagePromise = null;
+
+            }
+
+
+            if (attempt < 4) {
+
+                await new Promise(resolve =>
+                    setTimeout(resolve, 1000 * attempt)
+                );
+
+            }
+
+        }
+
+
+        // Show message only after all attempts fail
+
+        if (grid && !grid.querySelector(".news-item.post")) {
 
             grid.innerHTML =
-                "<p>వార్తలు లోడ్ కాలేదు. మళ్లీ ప్రయత్నించండి.</p>";
+                "<p>ప్రస్తుతం వార్తలు అందుబాటులో లేవు.</p>";
 
         }
 
-    }
-
-    loadLatestMainArticles();
-
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-
-    const sidebar = document.getElementById("latestSidebar");
-
-    if (!sidebar) return;
-
-    const HOME_URL = "https://bs360news.com/";
-
-    async function loadLatestSidebar() {
-
-        try {
-
-            const response = await fetch(
-                HOME_URL + "?v=" + Date.now(),
-                { cache: "no-store" }
-            );
-
-            if (!response.ok) {
-                throw new Error("Homepage fetch failed");
-            }
-
-            const html = await response.text();
-
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(html, "text/html");
-
-            // మీ Home Pageలో సరైన ID
-            const homeLatest = doc.getElementById("latestSection");
-
-            if (!homeLatest) {
-                throw new Error("latestSection not found");
-            }
-
-            // Home Page తాజా వార్తలు
-            const articles = homeLatest.querySelectorAll(
-                "article.news-item.post"
-            );
-
-            if (articles.length === 0) {
-                throw new Error("No articles found");
-            }
-
-            sidebar.innerHTML = "";
-
-            articles.forEach(article => {
-
-                const clone = article.cloneNode(true);
-
-                // Images URLs సరిచేయడం
-                clone.querySelectorAll("img").forEach(img => {
-
-                    const src = img.getAttribute("src");
-
-                    if (src) {
-                        img.src = new URL(src, HOME_URL).href;
-                    }
-
-                });
-
-                // Article links URLs సరిచేయడం
-                clone.querySelectorAll("a").forEach(link => {
-
-                    const href = link.getAttribute("href");
-
-                    if (href) {
-                        link.href = new URL(href, HOME_URL).href;
-                    }
-
-                });
-
-                sidebar.appendChild(clone);
-
-            });
-
-        } catch (error) {
-
-            console.error("Latest Sidebar Error:", error);
+        if (sidebar && !sidebar.querySelector(".news-item.post")) {
 
             sidebar.innerHTML =
-                "<p>తాజా వార్తలు లోడ్ కాలేదు.</p>";
+                "<p>తాజా వార్తలు అందుబాటులో లేవు.</p>";
 
         }
 
     }
 
-    loadLatestSidebar();
+
+    loadLatestNews();
 
 });
 
