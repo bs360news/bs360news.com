@@ -892,151 +892,324 @@
 
 
 
-<!-- =================================
-     TELANGANA NEWS SECTION
-================================= -->
+<style>
+/* =========================================
+   TELANGANA + NATIONAL NEWS LAYOUT
+========================================= */
 
-<section class="entertainment-section business-section" id="telanganaSection">
+.telangana-national-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: 22px;
+    align-items: start;
+    width: 100%;
+}
 
-    <h3 class="section-heading">
-        తెలంగాణ వార్తలు
-        <a href="telangana.html" class="more-articles">
-            మరిన్ని ఆర్టికల్స్
-        </a>
-    </h3>
+#telanganaSection,
+#nationalSection {
+    min-width: 0;
+    width: 100%;
+    margin: 0;
+}
 
-    <div class="entertainment-layout">
+/* SECTION HEADINGS */
+#telanganaSection .section-heading,
+#nationalSection .section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
 
-        <!-- TOP 5 TELANGANA ARTICLES -->
-        <div class="entertainment-top-grid">
+/* MORE ARTICLES LINK */
+#telanganaSection .more-articles,
+#nationalSection .more-articles {
+    color: #0066cc;
+    font-size: 12px;
+    font-weight: 400;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+#telanganaSection .more-articles:hover,
+#nationalSection .more-articles:hover {
+    text-decoration: underline;
+}
+
+/* TELANGANA TOP ARTICLES */
+#telanganaSection .entertainment-top-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+#telanganaSection .entertainment-top-grid article,
+#telanganaSection .entertainment-bottom-grid article {
+    min-width: 0;
+}
+
+#telanganaSection .entertainment-top-grid img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+/* TELANGANA BOTTOM 4 ARTICLES */
+#telanganaSection .entertainment-bottom-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 15px;
+}
+
+#telanganaSection .entertainment-bottom-grid img {
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+}
+
+/* TELANGANA HEADLINES */
+#telanganaSection .entertainment-top-grid h3,
+#telanganaSection .entertainment-bottom-grid h3 {
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 7px 0;
+}
+
+/* NATIONAL NEWS ARTICLES */
+#nationalSection .world-side-articles {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+#nationalSection .world-side-articles article {
+    width: 100%;
+    margin: 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+#nationalSection .world-side-articles article a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+#nationalSection .world-side-articles article img {
+    width: 105px;
+    height: 72px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+#nationalSection .world-side-articles article h3 {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* REMOVE LINK UNDERLINES */
+#telanganaSection article a,
+#nationalSection article a {
+    text-decoration: none;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+    .telangana-national-layout {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 22px;
+    }
+
+    #telanganaSection .entertainment-top-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    #telanganaSection .entertainment-top-grid img {
+        height: 110px;
+    }
+
+    #telanganaSection .entertainment-bottom-grid img {
+        height: 110px;
+    }
+
+    #telanganaSection .entertainment-top-grid h3,
+    #telanganaSection .entertainment-bottom-grid h3 {
+        font-size: 13px;
+    }
+
+    #nationalSection .world-side-articles article img {
+        width: 100px;
+        height: 65px;
+    }
+
+    #nationalSection .world-side-articles article h3 {
+        font-size: 13px;
+    }
+}
+</style>
+
+
+<!-- =========================================
+     TELANGANA + NATIONAL MAIN WRAPPER
+========================================= -->
+
+<div class="telangana-national-layout">
+
+
+    <!-- =================================
+         TELANGANA NEWS SECTION
+    ================================= -->
+
+    <section class="entertainment-section business-section" id="telanganaSection">
+
+        <h3 class="section-heading">
+            తెలంగాణ వార్తలు
+
+            
+        </h3>
+
+        <div class="entertainment-layout">
+
+            <!-- TOP 5 TELANGANA ARTICLES -->
+            <div class="entertainment-top-grid">
+
+                <article>
+                    <a href="telangana1.html">
+                        <img src="images/telangana1.jpg" alt="తెలంగాణ వార్త 1" loading="lazy">
+                        <h3>తెలంగాణ వార్త 1 శీర్షిక</h3>
+                    </a>
+                </article>
+
+                <article>
+                    <a href="telangana2.html">
+                        <img src="images/telangana2.jpg" alt="తెలంగాణ వార్త 2" loading="lazy">
+                        <h3>తెలంగాణ వార్త 2 శీర్షిక</h3>
+                    </a>
+                </article>
+
+                <article>
+                    <a href="telangana3.html">
+                        <img src="images/telangana3.jpg" alt="తెలంగాణ వార్త 3" loading="lazy">
+                        <h3>తెలంగాణ వార్త 3 శీర్షిక</h3>
+                    </a>
+                </article>
+
+                <article>
+                    <a href="telangana4.html">
+                        <img src="images/telangana4.jpg" alt="తెలంగాణ వార్త 4" loading="lazy">
+                        <h3>తెలంగాణ వార్త 4 శీర్షిక</h3>
+                    </a>
+                </article>
+
+                <article>
+                    <a href="telangana5.html">
+                        <img src="images/telangana5.jpg" alt="తెలంగాణ వార్త 5" loading="lazy">
+                        <h3>తెలంగాణ వార్త 5 శీర్షిక</h3>
+                    </a>
+                </article>
+
+            </div>
+
+        </div>
+
+        <!-- BOTTOM 4 ARTICLES -->
+        <div class="entertainment-bottom-grid">
 
             <article>
-                <a href="telangana1.html">
-                    <img src="images/telangana1.jpg" alt="తెలంగాణ వార్త 1" loading="lazy">
-                    <h3>తెలంగాణ వార్త 1 శీర్షిక</h3>
+                <a href="telangana6.html">
+                    <img src="images/telangana6.jpg" alt="తెలంగాణ వార్త 6" loading="lazy">
+                    <h3>తెలంగాణ వార్త 6 శీర్షిక</h3>
                 </a>
             </article>
 
             <article>
-                <a href="telangana2.html">
-                    <img src="images/telangana2.jpg" alt="తెలంగాణ వార్త 2" loading="lazy">
-                    <h3>తెలంగాణ వార్త 2 శీర్షిక</h3>
+                <a href="telangana7.html">
+                    <img src="images/telangana7.jpg" alt="తెలంగాణ వార్త 7" loading="lazy">
+                    <h3>తెలంగాణ వార్త 7 శీర్షిక</h3>
                 </a>
             </article>
 
             <article>
-                <a href="telangana3.html">
-                    <img src="images/telangana3.jpg" alt="తెలంగాణ వార్త 3" loading="lazy">
-                    <h3>తెలంగాణ వార్త 3 శీర్షిక</h3>
+                <a href="telangana8.html">
+                    <img src="images/telangana8.jpg" alt="తెలంగాణ వార్త 8" loading="lazy">
+                    <h3>తెలంగాణ వార్త 8 శీర్షిక</h3>
                 </a>
             </article>
 
             <article>
-                <a href="telangana4.html">
-                    <img src="images/telangana4.jpg" alt="తెలంగాణ వార్త 4" loading="lazy">
-                    <h3>తెలంగాణ వార్త 4 శీర్షిక</h3>
-                </a>
-            </article>
-
-            <article>
-                <a href="telangana5.html">
-                    <img src="images/telangana5.jpg" alt="తెలంగాణ వార్త 5" loading="lazy">
-                    <h3>తెలంగాణ వార్త 5 శీర్షిక</h3>
+                <a href="telangana9.html">
+                    <img src="images/telangana9.jpg" alt="తెలంగాణ వార్త 9" loading="lazy">
+                    <h3>తెలంగాణ వార్త 9 శీర్షిక</h3>
                 </a>
             </article>
 
         </div>
-   
- </div>
-    <!-- BOTTOM 4 ARTICLES -->
-    <div class="entertainment-bottom-grid">
 
-        <article>
-            <a href="telangana6.html">
-                <img src="images/telangana6.jpg" alt="తెలంగాణ వార్త 6" loading="lazy">
-                <h3>తెలంగాణ వార్త 6 శీర్షిక</h3>
+    </section>
+
+
+    <!-- =================================
+         NATIONAL NEWS SECTION
+    ================================= -->
+
+    <section class="world-news-side" id="nationalSection">
+
+        <h3 class="section-heading">
+            జాతీయ వార్తలు
+
+           <a href="/national/" class="more-articles"></a>
+                మరిన్ని ఆర్టికల్స్
             </a>
-        </article>
+        </h3>
 
-        <article>
-            <a href="telangana7.html">
-                <img src="images/telangana7.jpg" alt="తెలంగాణ వార్త 7" loading="lazy">
-                <h3>తెలంగాణ వార్త 7 శీర్షిక</h3>
-            </a>
-        </article>
+        <div class="world-side-articles">
 
-        <article>
-            <a href="telangana8.html">
-                <img src="images/telangana8.jpg" alt="తెలంగాణ వార్త 8" loading="lazy">
-                <h3>తెలంగాణ వార్త 8 శీర్షిక</h3>
-            </a>
-        </article>
+            <article>
+                <a href="national1.html">
+                    <img src="images/national1.jpg" alt="జాతీయ వార్త 1" loading="lazy">
+                    <h3>జాతీయ వార్త 1 శీర్షిక</h3>
+                </a>
+            </article>
 
-        <article>
-            <a href="telangana9.html">
-                <img src="images/telangana9.jpg" alt="తెలంగాణ వార్త 9" loading="lazy">
-                <h3>తెలంగాణ వార్త 9 శీర్షిక</h3>
-            </a>
-        </article>
+            <article>
+                <a href="national2.html">
+                    <img src="images/national2.jpg" alt="జాతీయ వార్త 2" loading="lazy">
+                    <h3>జాతీయ వార్త 2 శీర్షిక</h3>
+                </a>
+            </article>
 
-    </div>
-</section>
+            <article>
+                <a href="national3.html">
+                    <img src="images/national3.jpg" alt="జాతీయ వార్త 3" loading="lazy">
+                    <h3>జాతీయ వార్త 3 శీర్షిక</h3>
+                </a>
+            </article>
 
+            <article>
+                <a href="national4.html">
+                    <img src="images/national4.jpg" alt="జాతీయ వార్త 4" loading="lazy">
+                    <h3>జాతీయ వార్త 4 శీర్షిక</h3>
+                </a>
+            </article>
 
-<!-- =================================
-     NATIONAL NEWS SECTION
-================================= -->
+            <article>
+                <a href="national5.html">
+                    <img src="images/national5.jpg" alt="జాతీయ వార్త 5" loading="lazy">
+                    <h3>జాతీయ వార్త 5 శీర్షిక</h3>
+                </a>
+            </article>
 
-<section class="world-news-side" id="nationalSection">
+        </div>
 
-    <h3 class="section-heading">
-        జాతీయ వార్తలు
+    </section>
 
-        <a href="national.html" class="more-articles">
-            మరిన్ని ఆర్టికల్స్
-        </a>
-    </h3>
+</div>
 
-    <div class="world-side-articles">
-
-        <article>
-            <a href="national1.html">
-                <img src="images/national1.jpg" alt="జాతీయ వార్త 1" loading="lazy">
-                <h3>జాతీయ వార్త 1 శీర్షిక</h3>
-            </a>
-        </article>
-
-        <article>
-            <a href="national2.html">
-                <img src="images/national2.jpg" alt="జాతీయ వార్త 2" loading="lazy">
-                <h3>జాతీయ వార్త 2 శీర్షిక</h3>
-            </a>
-        </article>
-
-        <article>
-            <a href="national3.html">
-                <img src="images/national3.jpg" alt="జాతీయ వార్త 3" loading="lazy">
-                <h3>జాతీయ వార్త 3 శీర్షిక</h3>
-            </a>
-        </article>
-
-        <article>
-            <a href="national4.html">
-                <img src="images/national4.jpg" alt="జాతీయ వార్త 4" loading="lazy">
-                <h3>జాతీయ వార్త 4 శీర్షిక</h3>
-            </a>
-        </article>
-
-        <article>
-            <a href="national5.html">
-                <img src="images/national5.jpg" alt="జాతీయ వార్త 5" loading="lazy">
-                <h3>జాతీయ వార్త 5 శీర్షిక</h3>
-            </a>
-        </article>
-
-    </div>
-</section>
-  </div>
   <!-- BUSINESS + WORLD NEWS -->
 <div class="business-world-row">
 
