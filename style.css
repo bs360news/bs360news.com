@@ -1980,3 +1980,11 @@ body.dark-mode #worldSection .world-side-articles article {
 #worldSection .more-articles:hover {
     text-decoration: underline;
 }
+
+#worldSection .more-articles {
+    font-size: 12px;
+    font-weight: 400;
+    color: #0066cc;
+    text-decoration: none;
+    white-space: nowrap;
+}
