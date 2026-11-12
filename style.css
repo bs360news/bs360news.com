@@ -1959,3 +1959,24 @@ body.dark-mode #worldSection .section-heading {
 body.dark-mode #worldSection .world-side-articles article {
     border-color: #444;
 }
+
+
+
+#worldSection .section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+#worldSection .more-articles {
+    font-size: 12px;
+    font-weight: 400;
+    color: #e53935;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+#worldSection .more-articles:hover {
+    text-decoration: underline;
+}
