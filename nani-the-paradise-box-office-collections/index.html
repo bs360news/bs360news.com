@@ -97,7 +97,33 @@
     content="https://bs360news.com/nani-the-paradise-box-office-collections.png"
 >
 
+<style>/* LAPTOP - SIDEBAR AUTO SCROLL WITH PAGE */
+@media (min-width: 1101px) {
 
+    .main-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 320px;
+        gap: 22px;
+        align-items: start;
+        overflow: visible !important;
+    }
+
+    .main-content,
+    .sports-main {
+        min-width: 0;
+        overflow: visible !important;
+    }
+
+    #trendingSidebar,
+    #latestSidebar,
+    #topNewsSidebar {
+        position: static !important;
+        height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
+    }
+}
+</style>
 <!-- NEWSARTICLE STRUCTURED DATA -->
 
 <script type="application/ld+json">
