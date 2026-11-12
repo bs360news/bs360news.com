@@ -267,6 +267,37 @@ body.dark-mode .no-articles {
         -webkit-line-clamp: 2;
     }
 }
+    
+/* ARTICLE CONTENT IMAGE - 16:9 */
+
+.article-content .article-image {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 6px;
+    margin: 20px 0 10px;
+}
+
+/* LAPTOP */
+@media (min-width: 769px) {
+    .article-content .article-image {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .article-content .article-image {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        height: auto;
+    }
+}
+
 
 </style>
 <!-- NEWSARTICLE STRUCTURED DATA -->
