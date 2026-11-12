@@ -1706,3 +1706,256 @@ body.dark-mode #topNewsSidebar * {
         margin: 0 !important;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================
+   BUSINESS + WORLD NEWS
+   Business Left | World News Right
+========================================= */
+
+/* MAIN TWO COLUMN LAYOUT */
+.business-world-row {
+    display: grid !important;
+    grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr);
+    gap: 22px;
+    align-items: start;
+    width: 100%;
+    margin: 30px 0;
+    min-width: 0;
+}
+
+/* BOTH SECTIONS */
+.business-world-row > section {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+}
+
+/* SECTION HEADINGS */
+#businessSection .section-heading,
+#worldSection .section-heading {
+    margin: 0 0 15px;
+    padding-bottom: 9px;
+    border-bottom: 2px solid #ddd;
+    font-size: 21px;
+    font-weight: 800;
+}
+
+#businessSection .section-heading a,
+#worldSection .section-heading a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* BUSINESS - FEATURE + 4 SMALL ARTICLES */
+#businessSection .entertainment-layout {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 14px;
+    align-items: start;
+}
+
+#businessSection .entertainment-featured {
+    width: 100%;
+    min-width: 0;
+}
+
+#businessSection .entertainment-featured img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    object-fit: cover;
+}
+
+#businessSection .entertainment-featured h3 {
+    margin: 8px 0;
+    font-size: 18px;
+    line-height: 1.45;
+}
+
+/* BUSINESS SMALL GRID */
+#businessSection .entertainment-small-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    width: 100%;
+    min-width: 0;
+}
+
+#businessSection .entertainment-small-grid article {
+    display: block !important;
+    min-width: 0;
+}
+
+#businessSection .entertainment-small-grid img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    height: auto;
+    object-fit: cover;
+}
+
+#businessSection .entertainment-small-grid h3 {
+    margin: 6px 0;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+/* BUSINESS BOTTOM 4 ARTICLES */
+#businessSection .entertainment-bottom-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 16px;
+}
+
+#businessSection .entertainment-bottom-grid article {
+    display: block !important;
+    min-width: 0;
+}
+
+#businessSection .entertainment-bottom-grid img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    height: auto;
+    object-fit: cover;
+}
+
+#businessSection .entertainment-bottom-grid h3 {
+    margin: 6px 0;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+/* WORLD NEWS - IMAGE LEFT, TITLE RIGHT */
+#worldSection {
+    width: 100%;
+    min-width: 0;
+}
+
+#worldSection .world-side-articles {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+#worldSection .world-side-articles article {
+    width: 100%;
+    min-width: 0;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+#worldSection .world-side-articles article a {
+    display: grid;
+    grid-template-columns: 105px minmax(0, 1fr);
+    gap: 10px;
+    align-items: center;
+    text-decoration: none;
+}
+
+#worldSection .world-side-articles img {
+    display: block;
+    width: 105px;
+    height: 72px;
+    object-fit: cover;
+}
+
+#worldSection .world-side-articles h3 {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.45;
+    font-weight: 500;
+    color: inherit;
+}
+
+/* REMOVE DEFAULT LINK UNDERLINES */
+#businessSection article a,
+#worldSection article a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* TABLET */
+@media (min-width: 701px) and (max-width: 1050px) {
+
+    .business-world-row {
+        grid-template-columns: minmax(0, 1.5fr) minmax(240px, 1fr);
+        gap: 15px;
+    }
+
+    #businessSection .entertainment-layout {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    #businessSection .entertainment-bottom-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* MOBILE */
+@media (max-width: 700px) {
+
+    .business-world-row {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 25px;
+        margin: 24px 0;
+    }
+
+    #businessSection .entertainment-layout {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    #businessSection .entertainment-featured img {
+        aspect-ratio: 16 / 9;
+    }
+
+    #businessSection .entertainment-small-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    #businessSection .entertainment-bottom-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    #worldSection .world-side-articles article a {
+        grid-template-columns: 105px minmax(0, 1fr);
+    }
+
+    #worldSection .world-side-articles img {
+        width: 105px;
+        height: 72px;
+    }
+}
+
+/* DARK MODE */
+body.dark-mode #businessSection .section-heading,
+body.dark-mode #worldSection .section-heading {
+    border-color: #444;
+}
+
+body.dark-mode #worldSection .world-side-articles article {
+    border-color: #444;
+}
