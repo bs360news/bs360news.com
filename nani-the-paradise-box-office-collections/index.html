@@ -100,10 +100,10 @@
 <style>
     
 
-/* =========================================
-   BS 360 NEWS - ARTICLE BOTTOM SECTIONS
-   COMPLETE RESPONSIVE CSS
-========================================= */
+
+/* ======================================
+   BS360 - BELOW ARTICLE SECTIONS FIX
+====================================== */
 
 .below-article-sections {
     display: flex;
@@ -117,129 +117,14 @@
 .below-news-section {
     width: 100%;
     min-width: 0;
-    box-sizing: border-box;
-}
-
-.below-news-section .section-heading {
-    font-size: 21px;
-    font-weight: 800;
-    line-height: 1.5;
-    margin: 0 0 15px;
-    padding-bottom: 9px;
-    border-bottom: 2px solid #d60000;
-    color: var(--text-color, #222);
-}
-
-/* =========================================
-   8 ARTICLES - 3 COLUMN DESIGN
-========================================= */
-
-.below-news-grid {
-    display: grid;
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-    gap: 15px;
-    width: 100%;
-    min-width: 0;
-    align-items: stretch;
-}
-
-/* ARTICLE CARD */
-
-.below-news-grid .news-item {
-    grid-column: span 2;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background: var(--card-bg, #fff);
-    border: 1px solid var(--card-border, #ddd);
-    border-radius: 7px;
-    box-sizing: border-box;
-    transition: transform .2s ease;
-}
-
-.below-news-grid .news-item:hover {
-    transform: translateY(-3px);
-}
-
-/* FIRST TWO BIG ARTICLES */
-
-.below-news-grid .news-item:nth-child(1),
-.below-news-grid .news-item:nth-child(2) {
-    grid-column: span 3;
-}
-
-/* IMAGES */
-
-.below-news-grid .news-item > a:first-child {
-    display: block;
-    width: 100%;
-    overflow: hidden;
-}
-
-.below-news-grid .news-item img {
-    display: block;
-    width: 100%;
-    height: 145px;
-    object-fit: cover;
     margin: 0;
 }
-
-.below-news-grid .news-item:nth-child(1) img,
-.below-news-grid .news-item:nth-child(2) img {
-    height: 245px;
-}
-
-/* TITLES */
-
-.below-news-grid .news-item h2,
-.below-news-grid .news-item h3 {
-    margin: 0;
-    padding: 10px;
-    font-size: 14px;
-    line-height: 1.55;
-    font-weight: 700;
-    color: var(--text-color, #222);
-}
-
-.below-news-grid .news-item:nth-child(1) h2,
-.below-news-grid .news-item:nth-child(2) h2,
-.below-news-grid .news-item:nth-child(1) h3,
-.below-news-grid .news-item:nth-child(2) h3 {
-    font-size: 18px;
-    padding: 12px;
-}
-
-.below-news-grid .news-item a {
-    color: inherit;
-    text-decoration: none;
-}
-
-.below-news-grid .news-item h3 a:hover {
-    color: #d60000;
-}
-
-/* NO ARTICLES */
-
-.below-news-section .no-articles {
-    padding: 12px 0;
-    color: var(--text-color, #777);
-    font-size: 14px;
-}
-
-/* =========================================
-   NATIONAL & INTERNATIONAL
-   4 ARTICLES + SIDEBAR
-========================================= */
 
 .below-news-sidebar-layout {
     display: grid;
     grid-template-columns: minmax(0, 1fr) 280px;
     gap: 20px;
-    align-items: start;
+    align-items: stretch;
     width: 100%;
 }
 
@@ -247,36 +132,27 @@
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 14px;
+    align-content: start;
+    min-width: 0;
 }
-
-/* FOUR MAIN ARTICLES */
 
 .sidebar-main-grid .news-item {
-    grid-column: auto;
+    grid-column: auto !important;
+    min-width: 0;
 }
 
-.sidebar-main-grid .news-item img {
-    height: 155px;
-}
-
-.sidebar-main-grid .news-item h2,
-.sidebar-main-grid .news-item h3 {
-    font-size: 14px;
-    padding: 9px;
-}
-
-/* =========================================
-   LATEST NEWS SIDEBAR
-========================================= */
+/* LATEST SIDEBAR */
 
 .below-news-sidebar {
     width: 100%;
     min-width: 0;
+    align-self: stretch;
+    position: static !important;
     padding: 13px;
+    box-sizing: border-box;
+    background: var(--card-bg, #fff);
     border: 1px solid var(--card-border, #ddd);
     border-radius: 7px;
-    background: var(--card-bg, #fff);
-    box-sizing: border-box;
 }
 
 .below-news-sidebar h4 {
@@ -288,23 +164,29 @@
     color: var(--text-color, #222);
 }
 
+/* SIDEBAR ARTICLES */
+
+#articleNationalSidebar,
+#articleInternationalSidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .below-news-sidebar .news-item {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     gap: 10px;
     width: 100%;
     min-width: 0;
-    padding: 9px 0;
     margin: 0;
-    background: transparent;
+    padding: 9px 0;
     border: 0;
     border-bottom: 1px solid var(--card-border, #ddd);
     border-radius: 0;
-}
-
-.below-news-sidebar .news-item:last-child {
-    border-bottom: none;
+    background: transparent;
+    box-sizing: border-box;
 }
 
 .below-news-sidebar .news-item > a:first-child {
@@ -330,48 +212,34 @@
     margin: 0;
     padding: 0;
     font-size: 13px;
-    font-weight: 700;
     line-height: 1.5;
+    font-weight: 700;
     color: var(--text-color, #222);
 }
 
-/* =========================================
-   ARTICLE CONTENT IMAGE
-========================================= */
+/* DARK MODE */
 
-.article-content .article-image {
-    display: block;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-    object-position: center;
-    border-radius: 6px;
-    margin: 20px 0 10px;
+body.dark-mode .below-news-sidebar {
+    background: #202020;
+    border-color: #383838;
 }
 
-/* =========================================
-   TABLET
-========================================= */
+body.dark-mode .below-news-sidebar h4,
+body.dark-mode .below-news-sidebar .news-item h3,
+body.dark-mode .below-news-sidebar .news-item h2 {
+    color: #f1f1f1;
+}
 
-@media (max-width: 1000px) {
+body.dark-mode .below-news-sidebar .news-item {
+    border-bottom-color: #444;
+}
 
+/* TABLET */
+
+@media (max-width: 900px) {
     .below-news-sidebar-layout {
         grid-template-columns: minmax(0, 1fr) 230px;
-        gap: 14px;
-    }
-
-    .below-news-grid {
         gap: 12px;
-    }
-
-    .below-news-grid .news-item img {
-        height: 125px;
-    }
-
-    .below-news-grid .news-item:nth-child(1) img,
-    .below-news-grid .news-item:nth-child(2) img {
-        height: 190px;
     }
 
     .below-news-sidebar .news-item > a:first-child {
@@ -385,340 +253,25 @@
     }
 }
 
-/* =========================================
-   MOBILE
-========================================= */
+/* MOBILE */
 
 @media (max-width: 600px) {
-
-    .below-article-sections {
-        gap: 27px;
-        margin: 23px 0;
-    }
-
-    .below-news-section .section-heading {
-        font-size: 19px;
-        margin-bottom: 11px;
-    }
-
-    /* 3 COLUMN DESIGN BECOMES 2 COLUMNS */
-
-    .below-news-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 10px;
-    }
-
-    .below-news-grid .news-item,
-    .below-news-grid .news-item:nth-child(1),
-    .below-news-grid .news-item:nth-child(2) {
-        grid-column: span 1;
-    }
-
-    .below-news-grid .news-item img {
-        height: 110px;
-    }
-
-    .below-news-grid .news-item:nth-child(1) img,
-    .below-news-grid .news-item:nth-child(2) img {
-        height: 125px;
-    }
-
-    .below-news-grid .news-item h2,
-    .below-news-grid .news-item h3 {
-        font-size: 13px;
-        line-height: 1.45;
-        padding: 7px;
-    }
-
-    .below-news-grid .news-item:nth-child(1) h2,
-    .below-news-grid .news-item:nth-child(2) h2,
-    .below-news-grid .news-item:nth-child(1) h3,
-    .below-news-grid .news-item:nth-child(2) h3 {
-        font-size: 13px;
-        padding: 7px;
-    }
-
-    /* NATIONAL & INTERNATIONAL */
-
     .below-news-sidebar-layout {
         grid-template-columns: 1fr;
-        gap: 18px;
+        gap: 16px;
     }
 
     .sidebar-main-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 10px;
-    }
-
-    .sidebar-main-grid .news-item img {
-        height: 110px;
-    }
-
-    .sidebar-main-grid .news-item h2,
-    .sidebar-main-grid .news-item h3 {
-        font-size: 13px;
-    }
-
-    .below-news-sidebar {
-        width: 100%;
-    }
-
-    .below-news-sidebar .news-item > a:first-child {
-        flex: 0 0 85px;
-        width: 85px;
-    }
-
-    .below-news-sidebar .news-item img {
-        width: 85px;
-        height: 65px;
-    }
-
-    .below-news-sidebar .news-item h3 {
-        font-size: 13px;
-    }
-
-    .article-content .article-image {
-        width: 100%;
-        height: auto;
-        aspect-ratio: 16 / 9;
-    }
-}
-
-/* =========================================
-   DARK MODE
-========================================= */
-
-body.dark-mode .below-news-grid .news-item,
-body.dark-mode .below-news-sidebar {
-    background: #202020;
-    border-color: #383838;
-}
-
-body.dark-mode .below-news-section .section-heading,
-body.dark-mode .below-news-grid .news-item h2,
-body.dark-mode .below-news-grid .news-item h3,
-body.dark-mode .below-news-sidebar h4,
-body.dark-mode .below-news-sidebar .news-item h2,
-body.dark-mode .below-news-sidebar .news-item h3 {
-    color: #f1f1f1;
-}
-
-body.dark-mode .below-news-sidebar .news-item {
-    background: transparent;
-    border-bottom-color: #444;
-}
-
-body.dark-mode .below-news-grid .news-item h3 a {
-    color: #f1f1f1;
-}
-
-body.dark-mode .below-news-grid .news-item h3 a:hover {
-    color: #ff5555;
-}
-
-body.dark-mode .below-news-section .no-articles {
-    color: #bbb;
-}
-
-/* NATIONAL & INTERNATIONAL - ARTICLES + SIDEBAR */
-
-.below-news-sidebar-layout {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 280px;
-    gap: 20px;
-    align-items: stretch;
-}
-
-.sidebar-main-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 14px;
-    align-content: start;
-}
-
-.sidebar-main-grid .news-item {
-    grid-column: auto !important;
-    min-width: 0;
-}
-
-.below-news-sidebar {
-    width: 100%;
-    min-width: 0;
-    position: static !important;
-    align-self: stretch;
-}
-
-.below-news-sidebar h4 {
-    font-size: 18px;
-    margin: 0 0 14px;
-    padding-bottom: 9px;
-    border-bottom: 2px solid #d71920;
-}
-
-#articleNationalSidebar,
-#articleInternationalSidebar {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-#articleNationalSidebar .news-item,
-#articleInternationalSidebar .news-item {
-    display: flex;
-    gap: 10px;
-    align-items: flex-start;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #ddd;
-    min-width: 0;
-}
-
-#articleNationalSidebar .news-item img,
-#articleInternationalSidebar .news-item img {
-    width: 90px;
-    height: 68px;
-    object-fit: cover;
-    border-radius: 5px;
-}
-
-#articleNationalSidebar .news-item h3,
-#articleInternationalSidebar .news-item h3 {
-    font-size: 14px;
-    line-height: 1.5;
-    margin: 0;
-}
-
-/* MOBILE */
-@media (max-width: 767px) {
-    .below-news-sidebar-layout {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    .sidebar-main-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .below-news-sidebar {
         position: static !important;
-    }
-}
-    /* ======================================
-   BELOW ARTICLE MAIN + RIGHT SIDEBAR
-====================================== */
-
-.below-article-layout {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 310px;
-    gap: 24px;
-    align-items: start;
-    width: 100%;
-}
-
-.below-article-main {
-    min-width: 0;
-}
-
-.below-article-sidebar {
-    min-width: 0;
-    position: sticky;
-    top: 90px;
-}
-
-.below-news-section,
-.below-sidebar-section {
-    margin-bottom: 28px;
-    min-width: 0;
-}
-
-.below-news-grid {
-    display: grid;
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-    gap: 14px;
-}
-
-/* First 2 large articles */
-.below-news-grid .news-item:nth-child(-n+2) {
-    grid-column: span 3;
-}
-
-/* Remaining 6 small articles */
-.below-news-grid .news-item:nth-child(n+3) {
-    grid-column: span 2;
-}
-
-/* Sidebar article cards */
-.below-sidebar-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 13px;
-}
-
-.below-sidebar-grid .news-item {
-    display: flex;
-    gap: 10px;
-    align-items: flex-start;
-    min-width: 0;
-    padding-bottom: 12px;
-    border-bottom: 1px solid #ddd;
-}
-
-.below-sidebar-grid .news-item > a:first-child {
-    flex: 0 0 95px;
-    width: 95px;
-}
-
-.below-sidebar-grid .news-item img {
-    width: 95px;
-    height: 72px;
-    object-fit: cover;
-    border-radius: 5px;
-}
-
-.below-sidebar-grid .news-item h3 {
-    flex: 1;
-    min-width: 0;
-    font-size: 14px;
-    line-height: 1.5;
-    margin: 0;
-}
-
-.below-sidebar-grid .news-item a {
-    color: inherit;
-    text-decoration: none;
-}
-
-/* TABLET */
-@media (max-width: 1000px) {
-    .below-article-layout {
-        grid-template-columns: minmax(0, 1fr) 260px;
-        gap: 16px;
-    }
-
-    .below-news-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .below-news-grid .news-item {
-        grid-column: span 1 !important;
-    }
-}
-
-/* MOBILE */
-@media (max-width: 700px) {
-    .below-article-layout {
-        grid-template-columns: 1fr;
-    }
-
-    .below-article-sidebar {
-        position: static;
         width: 100%;
     }
-
-    .below-news-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 12px;
-    }
 }
+
 </style>
 <!-- NEWSARTICLE STRUCTURED DATA -->
 
@@ -984,120 +537,84 @@ BS 360 NEWSలో తాజా తెలుగు సినిమా వార�
 
 <div class="below-article-sections">
 
-    <!-- LATEST NEWS - 8 ARTICLES -->
+    <!-- LATEST NEWS -->
     <section class="below-news-section">
         <h3 class="section-heading">తాజా వార్తలు</h3>
         <div class="below-news-grid" id="articleLatestGrid"></div>
     </section>
 
-    <!-- ENTERTAINMENT - 8 ARTICLES -->
+    <!-- ENTERTAINMENT -->
     <section class="below-news-section">
         <h3 class="section-heading">ఎంటర్టైన్మెంట్</h3>
         <div class="below-news-grid" id="articleEntertainmentGrid"></div>
     </section>
 
-    <!-- SPORTS - 8 ARTICLES -->
+    <!-- SPORTS -->
     <section class="below-news-section">
         <h3 class="section-heading">స్పోర్ట్స్</h3>
         <div class="below-news-grid" id="articleSportsGrid"></div>
     </section>
 
-    <!-- ANDHRA PRADESH - 8 ARTICLES -->
+    <!-- ANDHRA PRADESH -->
     <section class="below-news-section">
         <h3 class="section-heading">ఆంధ్రప్రదేశ్</h3>
         <div class="below-news-grid" id="articleAPGrid"></div>
     </section>
 
-    <!-- TELANGANA - 8 ARTICLES -->
+    <!-- TELANGANA -->
     <section class="below-news-section">
         <h3 class="section-heading">తెలంగాణ</h3>
         <div class="below-news-grid" id="articleTelanganaGrid"></div>
     </section>
 
-    <!-- BUSINESS - 8 ARTICLES -->
+    <!-- BUSINESS -->
     <section class="below-news-section">
         <h3 class="section-heading">బిజినెస్</h3>
         <div class="below-news-grid" id="articleBusinessGrid"></div>
     </section>
 
-<!-- ======================================
-     BS 360 NEWS - BELOW ARTICLE SECTIONS
-====================================== -->
 
-<div class="below-article-layout">
+    <!-- NATIONAL NEWS + LATEST SIDEBAR -->
+    <section class="below-news-section">
 
-    <!-- LEFT MAIN CONTENT -->
-    <div class="below-article-main">
+        <h3 class="section-heading">జాతీయ వార్తలు</h3>
 
-        <section class="below-news-section">
-            <h3 class="section-heading">తాజా వార్తలు</h3>
-            <div class="below-news-grid" id="articleLatestGrid"></div>
-        </section>
+        <div class="below-news-sidebar-layout">
 
-        <section class="below-news-section">
-            <h3 class="section-heading">ఎంటర్టైన్మెంట్</h3>
-            <div class="below-news-grid" id="articleEntertainmentGrid"></div>
-        </section>
+            <div class="below-news-grid sidebar-main-grid"
+                 id="articleNationalGrid">
+            </div>
 
-        <section class="below-news-section">
-            <h3 class="section-heading">స్పోర్ట్స్</h3>
-            <div class="below-news-grid" id="articleSportsGrid"></div>
-        </section>
+            <aside class="below-news-sidebar">
+                <h4>తాజా వార్తలు</h4>
+                <div id="articleNationalSidebar"></div>
+            </aside>
 
-        <section class="below-news-section">
-            <h3 class="section-heading">ఆంధ్రప్రదేశ్</h3>
-            <div class="below-news-grid" id="articleAPGrid"></div>
-        </section>
-
-        <section class="below-news-section">
-            <h3 class="section-heading">తెలంగాణ</h3>
-            <div class="below-news-grid" id="articleTelanganaGrid"></div>
-        </section>
-
-        <section class="below-news-section">
-            <h3 class="section-heading">బిజినెస్</h3>
-            <div class="below-news-grid" id="articleBusinessGrid"></div>
-        </section>
-
-   
-<!-- RIGHT SIDEBAR: NATIONAL NEWS -->
-<section class="below-sidebar-section">
-    <h3 class="section-heading">జాతీయ వార్తలు</h3>
-
-    <div class="below-news-sidebar-layout">
-
-        <div class="below-news-grid sidebar-main-grid"
-             id="articleNationalGrid">
         </div>
+    </section>
 
-        <aside class="below-news-sidebar">
-            <h4>తాజా వార్తలు</h4>
-            <div id="articleNationalSidebar"></div>
-        </aside>
 
-    </div>
-</section>
-   </div>
+    <!-- INTERNATIONAL NEWS + LATEST SIDEBAR -->
+    <section class="below-news-section">
 
-<!-- RIGHT SIDEBAR: INTERNATIONAL NEWS -->
-<section class="below-sidebar-section">
-    <h3 class="section-heading">అంతర్జాతీయ వార్తలు</h3>
+        <h3 class="section-heading">అంతర్జాతీయ వార్తలు</h3>
 
-    <div class="below-news-sidebar-layout">
+        <div class="below-news-sidebar-layout">
 
-        <div class="below-news-grid sidebar-main-grid"
-             id="articleInternationalGrid">
+            <div class="below-news-grid sidebar-main-grid"
+                 id="articleInternationalGrid">
+            </div>
+
+            <aside class="below-news-sidebar">
+                <h4>తాజా వార్తలు</h4>
+                <div id="articleInternationalSidebar"></div>
+            </aside>
+
         </div>
+    </section>
 
-        <aside class="below-news-sidebar">
-            <h4>తాజా వార్తలు</h4>
-            <div id="articleInternationalSidebar"></div>
-        </aside>
-
-    </div>
-</section>
-         </div>  
 </div>
+
 
 
 
