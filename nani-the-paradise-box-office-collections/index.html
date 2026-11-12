@@ -652,6 +652,66 @@ body.dark-mode .below-sidebar-box .news-item a {
     color: #eee;
 }
 
+
+    
+/* LEFT ARTICLES - 2 BIG + 3 + 3 SMALL */
+
+.below-articles-content {
+    display: grid !important;
+    grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+    gap: 20px 12px;
+}
+
+/* FIRST TWO BIG ARTICLES */
+.below-articles-content .below-news-section:nth-child(1),
+.below-articles-content .below-news-section:nth-child(2) {
+    grid-column: span 3;
+}
+
+/* NEXT SIX SMALL ARTICLES */
+.below-articles-content .below-news-section:nth-child(n+3) {
+    grid-column: span 2;
+}
+
+/* MAIN LAYOUT */
+.below-articles-main-layout {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) 310px !important;
+    gap: 22px;
+    align-items: start;
+}
+
+/* RIGHT FIVE SIDEBARS */
+.below-articles-three-sidebars {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 22px;
+    min-width: 0;
+    position: sticky;
+    top: 15px;
+}
+
+/* MOBILE */
+@media(max-width:650px) {
+    .below-articles-main-layout {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .below-articles-content {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+
+    .below-articles-content .below-news-section {
+        grid-column: span 1 !important;
+    }
+
+    .below-articles-three-sidebars {
+        position: static;
+        width: 100%;
+    }
+}
+
 </style>
 <!-- NEWSARTICLE STRUCTURED DATA -->
 
@@ -911,78 +971,81 @@ BS 360 NEWSలో తాజా తెలుగు సినిమా వార�
 
 
 
+
 <!-- ======================================
      BS 360 NEWS - BELOW ARTICLE SECTIONS
 ====================================== -->
 
-<div class="below-article-sections">
+<div class="below-articles-main-layout">
 
-    <!-- LATEST NEWS -->
-    <section class="below-news-section">
-        <h3 class="section-heading">తాజా వార్తలు</h3>
-        <div class="below-news-grid" id="articleLatestGrid"></div>
-    </section>
+    <!-- LEFT SIDE: ARTICLES -->
+    <div class="below-articles-content">
 
-    <!-- ENTERTAINMENT -->
-    <section class="below-news-section">
-        <h3 class="section-heading">ఎంటర్టైన్మెంట్</h3>
-        <div class="below-news-grid" id="articleEntertainmentGrid"></div>
-    </section>
+        <section class="below-news-section">
+            <h3 class="section-heading">తాజా వార్తలు</h3>
+            <div class="below-news-grid" id="articleLatestGrid"></div>
+        </section>
 
-    <!-- SPORTS -->
-    <section class="below-news-section">
-        <h3 class="section-heading">స్పోర్ట్స్</h3>
-        <div class="below-news-grid" id="articleSportsGrid"></div>
-    </section>
+        <section class="below-news-section">
+            <h3 class="section-heading">ఎంటర్టైన్మెంట్</h3>
+            <div class="below-news-grid" id="articleEntertainmentGrid"></div>
+        </section>
 
-    <!-- ANDHRA PRADESH -->
-    <section class="below-news-section">
-        <h3 class="section-heading">ఆంధ్రప్రదేశ్</h3>
-        <div class="below-news-grid" id="articleAPGrid"></div>
-    </section>
+        <section class="below-news-section">
+            <h3 class="section-heading">స్పోర్ట్స్</h3>
+            <div class="below-news-grid" id="articleSportsGrid"></div>
+        </section>
 
-    <!-- TELANGANA -->
-    <section class="below-news-section">
-        <h3 class="section-heading">తెలంగాణ</h3>
-        <div class="below-news-grid" id="articleTelanganaGrid"></div>
-    </section>
+        <section class="below-news-section">
+            <h3 class="section-heading">ఆంధ్రప్రదేశ్</h3>
+            <div class="below-news-grid" id="articleAPGrid"></div>
+        </section>
 
-    <!-- BUSINESS -->
-    <section class="below-news-section">
-        <h3 class="section-heading">బిజినెస్</h3>
-        <div class="below-news-grid" id="articleBusinessGrid"></div>
-    </section>
+        <section class="below-news-section">
+            <h3 class="section-heading">తెలంగాణ</h3>
+            <div class="below-news-grid" id="articleTelanganaGrid"></div>
+        </section>
 
-<!-- RIGHT: FIVE SIDEBARS -->
-<aside class="below-articles-three-sidebars">
+        <section class="below-news-section">
+            <h3 class="section-heading">బిజినెస్</h3>
+            <div class="below-news-grid" id="articleBusinessGrid"></div>
+        </section>
 
-    <div class="below-sidebar-box">
-        <h4>ట్రెండింగ్ వార్తలు</h4>
-        <div id="trendingSidebar"></div>
     </div>
 
-    <div class="below-sidebar-box">
-        <h4>తాజా వార్తలు</h4>
-        <div id="latestSidebar"></div>
-    </div>
 
-    <div class="below-sidebar-box">
-        <h4>ముఖ్యమైన వార్తలు</h4>
-        <div id="topNewsSidebar"></div>
-    </div>
+    <!-- RIGHT SIDE: FIVE SIDEBARS -->
+    <aside class="below-articles-three-sidebars">
 
-    <div class="below-sidebar-box">
-        <h4>జాతీయ వార్తలు</h4>
-        <div id="articleNationalSidebar"></div>
-    </div>
+        <div class="below-sidebar-box">
+            <h4>ట్రెండింగ్ వార్తలు</h4>
+            <div id="trendingSidebar"></div>
+        </div>
 
-    <div class="below-sidebar-box">
-        <h4>అంతర్జాతీయ వార్తలు</h4>
-        <div id="articleInternationalSidebar"></div>
-    </div>
+        <div class="below-sidebar-box">
+            <h4>తాజా వార్తలు</h4>
+            <div id="latestSidebar"></div>
+        </div>
 
-</aside>
+        <div class="below-sidebar-box">
+            <h4>ముఖ్యమైన వార్తలు</h4>
+            <div id="topNewsSidebar"></div>
+        </div>
+
+        <div class="below-sidebar-box">
+            <h4>జాతీయ వార్తలు</h4>
+            <div id="articleNationalSidebar"></div>
+        </div>
+
+        <div class="below-sidebar-box">
+            <h4>అంతర్జాతీయ వార్తలు</h4>
+            <div id="articleInternationalSidebar"></div>
+        </div>
+
+    </aside>
+
 </div>
+
 
 
 
