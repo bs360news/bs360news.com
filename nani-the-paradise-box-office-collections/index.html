@@ -279,6 +279,55 @@ body.dark-mode .below-news-card .below-news-title {
     }
 }
 
+    
+.below-news-image {
+    flex: 0 0 125px;
+    width: 125px;
+    height: 78px;
+    display: block;
+    overflow: hidden;
+}
+
+.below-news-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.below-news-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.below-news-title {
+    color: #222;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+body.dark-mode .below-news-title {
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .below-news-image {
+        flex: 0 0 105px;
+        width: 105px;
+        height: 68px;
+    }
+
+    .below-news-title {
+        font-size: 14px;
+    }
+}
+
 </style>
 <!-- NEWSARTICLE STRUCTURED DATA -->
 
@@ -786,6 +835,156 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+/* BELOW ARTICLE SECTIONS LOADER */
+
+function renderBelowArticles(targetId, articles, limit) {
+
+    const target = document.getElementById(targetId);
+    if (!target) return;
+
+    target.replaceChildren();
+
+    articles.slice(0, limit).forEach(item => {
+
+        const card = document.createElement("article");
+        card.className = "below-news-card";
+
+        const imageLink = document.createElement("a");
+        imageLink.className = "below-news-image";
+        imageLink.href = item.url;
+
+        const img = document.createElement("img");
+        img.src = item.image;
+        img.alt = item.alt || item.title;
+        img.loading = "lazy";
+
+        imageLink.appendChild(img);
+
+        const content = document.createElement("div");
+        content.className = "below-news-content";
+
+        const title = document.createElement("a");
+        title.className = "below-news-title";
+        title.href = item.url;
+        title.textContent = item.title;
+
+        content.appendChild(title);
+
+        card.append(imageLink, content);
+        target.appendChild(card);
+    });
+
+    if (!articles.length) {
+        target.innerHTML =
+            '<p class="no-articles">వార్తలు అందుబాటులో లేవు.</p>';
+    }
+}
+
+function loadBelowArticleSections(homeDoc) {
+
+    const belowSections = [
+        {
+            target: "articleLatestGrid",
+            sources: ["latestGrid"],
+            limit: 8
+        },
+        {
+            target: "articleEntertainmentGrid",
+            sources: ["entertainmentSection"],
+            limit: 8
+        },
+        {
+            target: "articleSportsGrid",
+            sources: ["sportsSection"],
+            limit: 8
+        },
+        {
+            target: "articleAPGrid",
+            sources: ["aptsSection"],
+            limit: 8
+        },
+        {
+            target: "articleTelanganaGrid",
+            sources: ["telanganaSection", "telanganaGrid"],
+            limit: 8
+        },
+        {
+            target: "articleBusinessGrid",
+            sources: ["businessSection"],
+            limit: 8
+        },
+        {
+            target: "articleReviewsGrid",
+            sources: [
+                "movieReviewsSection",
+                "movieReviewsGrid",
+                "movieReviewsSource"
+            ],
+            limit: 4
+        },
+        {
+            target: "articleNationalGrid",
+            sources: ["nationalSection"],
+            limit: 4
+        },
+        {
+            target: "articleInternationalGrid",
+            sources: [
+                "worldSection",
+                "internationalSection",
+                "internationalGrid"
+            ],
+            limit: 4
+        },
+        {
+            target: "articleTopNewsGrid",
+            sources: [
+                "topNewsSource",
+                "topNewsSection",
+                "trendingSidebar"
+            ],
+            limit: 8
+        }
+    ];
+
+    belowSections.forEach(config => {
+
+        const target = document.getElementById(config.target);
+        if (!target) return;
+
+        let articles = [];
+
+        for (const sourceId of config.sources) {
+
+            if (!homeDoc.getElementById(sourceId)) continue;
+
+            articles = readHomeArticles(homeDoc, sourceId);
+
+            if (articles.length) break;
+        }
+
+        renderBelowArticles(
+            config.target,
+            articles,
+            config.limit
+        );
+    });
+}
+/* OTHER SECTIONS */
+otherSections.forEach(function (section) {
+
+    const articles = readHomeArticles(
+        homeDoc,
+        section.source
+    );
+
+    renderArticles(
+        section.target,
+        articles,
+        section.limit
+    );
+
+});
     /* MOVIE REVIEWS MUST END AT MAIN ARTICLE BOTTOM */
     function limitMovieReviewsToArticle() {
 
