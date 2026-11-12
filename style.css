@@ -1988,3 +1988,117 @@ body.dark-mode #worldSection .world-side-articles article {
     text-decoration: none;
     white-space: nowrap;
 }
+
+
+
+
+/* =================================
+   TELANGANA + NATIONAL NEWS
+================================= */
+
+/* BOTH SECTION HEADINGS */
+#telanganaSection .section-heading,
+#nationalSection .section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+/* MORE ARTICLES LINK */
+#telanganaSection .more-articles,
+#nationalSection .more-articles {
+    color: #0066cc;
+    font-size: 12px;
+    font-weight: 400;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+#telanganaSection .more-articles:hover,
+#nationalSection .more-articles:hover {
+    text-decoration: underline;
+}
+
+/* TELANGANA BOTTOM GRID */
+#telanganaSection .entertainment-bottom-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 15px;
+}
+
+#telanganaSection .entertainment-bottom-grid article {
+    min-width: 0;
+}
+
+#telanganaSection .entertainment-bottom-grid img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+#telanganaSection .entertainment-bottom-grid h3 {
+    font-size: 15px;
+    line-height: 1.5;
+    margin-top: 7px;
+}
+
+/* NATIONAL ARTICLES */
+#nationalSection .world-side-articles {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+#nationalSection .world-side-articles article {
+    width: 100%;
+    margin: 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+#nationalSection .world-side-articles article a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+#nationalSection .world-side-articles article img {
+    width: 110px;
+    height: 72px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+#nationalSection .world-side-articles article h3 {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+    #telanganaSection .entertainment-bottom-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    #telanganaSection .entertainment-bottom-grid img {
+        height: 110px;
+    }
+
+    #telanganaSection .entertainment-bottom-grid h3 {
+        font-size: 13px;
+    }
+
+    #nationalSection .world-side-articles article img {
+        width: 100px;
+        height: 65px;
+    }
+
+    #nationalSection .world-side-articles article h3 {
+        font-size: 13px;
+    }
+}
