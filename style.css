@@ -2293,3 +2293,53 @@ body.dark-mode #worldSection .world-side-articles article {
         font-size: 13px;
     }
 }
+
+/* =====================================
+   BS 360 NEWS - HOMEPAGE DARK MODE HEADINGS
+===================================== */
+
+body.dark-mode .section-heading,
+body.dark-mode .section-heading a,
+body.dark-mode .movie-reviews-heading,
+body.dark-mode .movie-reviews-heading span,
+body.dark-mode .bigboss-heading span {
+    color: #ffffff !important;
+}
+
+/* Entertainment, Sports, AP & TS */
+body.dark-mode .entertainment-section .section-heading,
+body.dark-mode #entertainmentSection .section-heading,
+body.dark-mode #sportsSection .section-heading,
+body.dark-mode #aptsSection .section-heading {
+    color: #ffffff !important;
+}
+
+/* Latest and Trending */
+body.dark-mode #latestSection .section-heading,
+body.dark-mode #trendingSection .section-heading {
+    color: #ffffff !important;
+}
+
+/* Telangana, National, Business, International */
+body.dark-mode #telanganaSection .section-heading,
+body.dark-mode #nationalSection .section-heading,
+body.dark-mode #businessSection .section-heading,
+body.dark-mode #worldSection .section-heading {
+    color: #ffffff !important;
+}
+
+body.dark-mode #telanganaSection .section-heading a,
+body.dark-mode #businessSection .section-heading a {
+    color: #ffffff !important;
+}
+
+/* More Articles link */
+body.dark-mode .more-articles {
+    color: #66b3ff !important;
+}
+
+/* Top News */
+body.dark-mode .top-main-column .section-heading,
+body.dark-mode .top-side-column .section-heading {
+    color: #ffffff !important;
+}
