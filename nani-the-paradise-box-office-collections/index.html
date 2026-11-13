@@ -735,6 +735,68 @@ body.dark-mode .below-sidebar-box .news-item {
 .below-articles-sidebar-layout {
     overflow: visible !important;
 }
+
+
+    /* MOVIE REVIEWS + NATIONAL SIDEBAR */
+
+#articleMovieReviewsSidebar,
+#articleNationalSidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
+#articleMovieReviewsSidebar .sidebar-news-item,
+#articleNationalSidebar .sidebar-news-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    box-sizing: border-box;
+}
+
+.sidebar-news-item img {
+    width: 105px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 5px;
+    flex-shrink: 0;
+}
+
+.sidebar-news-item a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.sidebar-news-item h4 {
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0;
+    font-weight: 600;
+}
+
+/* MOBILE */
+
+@media(max-width:768px) {
+
+    #articleMovieReviewsSidebar,
+    #articleNationalSidebar {
+        gap: 10px;
+    }
+
+    .sidebar-news-item img {
+        width: 95px;
+        height: 68px;
+    }
+
+    .sidebar-news-item h4 {
+        font-size: 13px;
+    }
+
+}
 </style>
 <!-- NEWSARTICLE STRUCTURED DATA -->
 
@@ -983,7 +1045,26 @@ BS 360 NEWSలో తాజా తెలుగు సినిమా వార�
                 </div>
             </div>
 
+<!-- MOVIE REVIEWS SIDEBAR -->
+<div class="sidebar-box">
 
+    <div class="sidebar-title">సినిమా రివ్యూస్</div>
+
+    <div id="articleMovieReviewsSidebar">
+    </div>
+
+</div>
+
+
+<!-- NATIONAL NEWS SIDEBAR -->
+<div class="sidebar-box">
+
+    <div class="sidebar-title">జాతీయ వార్తలు</div>
+
+    <div id="articleNationalSidebar">
+    </div>
+
+</div>
             
 
         </aside>
@@ -1796,7 +1877,170 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
- 
+
+
+/* =====================================
+   BS 360 NEWS
+   MOVIE REVIEWS + NATIONAL SIDEBAR
+   UNLIMITED AUTO LOAD
+===================================== */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const movieContainer =
+        document.getElementById("articleMovieReviewsSidebar");
+
+    const nationalContainer =
+        document.getElementById("articleNationalSidebar");
+
+    if (!movieContainer && !nationalContainer) return;
+
+    fetch("/index.html?v=" + Date.now())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Homepage loading failed");
+            }
+            return response.text();
+        })
+        .then(html => {
+
+            const parser = new DOMParser();
+
+            const doc = parser.parseFromString(
+                html,
+                "text/html"
+            );
+
+            /* =================================
+               COMMON ARTICLE RENDER FUNCTION
+            ================================= */
+
+            function renderArticles(articles, container) {
+
+                if (!container) return;
+
+                container.innerHTML = "";
+
+                const usedLinks = new Set();
+
+                articles.forEach(article => {
+
+                    const img = article.querySelector("img");
+
+                    const heading =
+                        article.querySelector("h3, h2, p");
+
+                    if (!img || !heading) return;
+
+                    let link = article.querySelector("a[href]");
+
+                    let href = link
+                        ? link.getAttribute("href")
+                        : "";
+
+                    /* MOVIE REVIEW ONCLICK SUPPORT */
+
+                    if (!href && article.getAttribute("onclick")) {
+
+                        const match =
+                            article.getAttribute("onclick")
+                            .match(/location\.href\s*=\s*['"]([^'"]+)['"]/);
+
+                        if (match) href = match[1];
+                    }
+
+                    if (!href || !img.getAttribute("src")) return;
+
+                    const fullLink = new URL(
+                        href,
+                        window.location.origin + "/"
+                    ).href;
+
+                    if (usedLinks.has(fullLink)) return;
+
+                    usedLinks.add(fullLink);
+
+                    const item = document.createElement("article");
+
+                    item.className = "sidebar-news-item";
+
+                    const imageLink = document.createElement("a");
+                    imageLink.href = fullLink;
+
+                    const image = document.createElement("img");
+
+                    image.src = new URL(
+                        img.getAttribute("src"),
+                        window.location.origin + "/"
+                    ).href;
+
+                    image.alt = img.alt || heading.textContent.trim();
+
+                    image.loading = "lazy";
+
+                    imageLink.appendChild(image);
+
+                    const textLink = document.createElement("a");
+
+                    textLink.href = fullLink;
+
+                    const title = document.createElement("h4");
+
+                    title.textContent =
+                        heading.textContent.trim();
+
+                    textLink.appendChild(title);
+
+                    item.appendChild(imageLink);
+                    item.appendChild(textLink);
+
+                    container.appendChild(item);
+
+                });
+
+            }
+
+
+            /* =================================
+               1. MOVIE REVIEWS FROM HOMEPAGE
+            ================================= */
+
+            const movieArticles = doc.querySelectorAll(
+                ".movie-reviews-section .movie-reviews-scroll .movie-review-card"
+            );
+
+            renderArticles(
+                Array.from(movieArticles),
+                movieContainer
+            );
+
+
+            /* =================================
+               2. NATIONAL NEWS FROM HOMEPAGE
+            ================================= */
+
+            const nationalArticles = doc.querySelectorAll(
+                "#nationalSection .world-side-articles article"
+            );
+
+            renderArticles(
+                Array.from(nationalArticles),
+                nationalContainer
+            );
+
+        })
+        .catch(error => {
+
+            console.error(
+                "BS360 Sidebar Error:",
+                error
+            );
+
+        });
+
+});
+
+
 </script>
   
 </body>
