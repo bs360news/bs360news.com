@@ -620,6 +620,52 @@ body.dark-mode .below-sidebar-box .news-item {
         font-size: 13px !important;
     }
 }
+
+    /* TOP NEWS - FIX IMAGE AND TEXT OVERLAP */
+
+#articleTopNewsSidebar .news-item,
+#articleTopNewsSidebar .sidebar-article,
+#articleTopNewsSidebar article {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 10px !important;
+    position: relative !important;
+}
+
+/* IMAGE LEFT */
+#articleTopNewsSidebar img {
+    display: block !important;
+    position: static !important;
+    flex: 0 0 95px !important;
+    width: 95px !important;
+    height: 68px !important;
+    object-fit: cover !important;
+}
+
+/* TEXT RIGHT */
+#articleTopNewsSidebar .news-title,
+#articleTopNewsSidebar h3,
+#articleTopNewsSidebar h4 {
+    position: static !important;
+    flex: 1 1 auto !important;
+    width: auto !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    text-align: left !important;
+    background: transparent !important;
+    transform: none !important;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+    #articleTopNewsSidebar img {
+        flex-basis: 85px !important;
+        width: 85px !important;
+        height: 62px !important;
+    }
+}
 </style>
 <!-- NEWSARTICLE STRUCTURED DATA -->
 
