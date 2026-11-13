@@ -798,26 +798,6 @@ body.dark-mode .below-sidebar-box .news-item {
 
 }
 
-/* ONLY CONTENT AREAS WHITE BACKGROUND */
-
-section,
-article,
-.sidebar {
-    background: #ffffff !important;
-    background-color: #ffffff !important;
-    color: #222222 !important;
-}
-    /* REMOVE BOX / CARD DESIGN FROM ENTIRE PAGE */
-
-html,
-body {
-    background: #fff !important;
-    color: #222 !important;
-}
-
-* {
-    box-shadow: none !important;
-}
 
 /* Remove backgrounds and borders from article containers */
 .news-item,
@@ -864,20 +844,77 @@ body {
     border-radius: 0 !important;
 }
 
-/* White background for all page sections */
-header,
-nav,
-main,
-section,
-article,
-footer,
-.container,
-.wrapper {
-    background-color: #fff !important;
-}
 
 
 /* ARTICLE CONTENT IMAGE - 16:9 */
+
+.article-content img,
+.article-body img,
+.post-content img,
+.news-content img,
+.article-image img {
+    width: 100% !important;
+    aspect-ratio: 16 / 9 !important;
+    height: auto !important;
+    object-fit: cover !important;
+    display: block;
+    margin: 15px auto;
+}
+
+    /* =====================================
+   BS 360 NEWS
+   ARTICLE CONTENT ONLY
+   HEADER / NAV / FOOTER UNTOUCHED
+===================================== */
+
+/* ONLY ARTICLE CONTENT BACKGROUND */
+
+.below-articles-main-layout,
+.below-articles-content,
+.below-news-section,
+.below-articles-three-sidebars,
+.below-sidebar-box,
+section,
+article,
+.sidebar {
+    background-color: #ffffff !important;
+    color: #222222 !important;
+}
+
+/* REMOVE ARTICLE BOX DESIGN */
+
+.below-articles-content .news-item,
+.below-sidebar-box,
+.below-sidebar-box .news-item,
+.sidebar-news-item {
+    box-shadow: none !important;
+    border-radius: 0 !important;
+}
+
+/* MAIN ARTICLE ITEMS - NO BOX */
+
+.below-articles-content .news-item {
+    border: none !important;
+    border-bottom: 1px solid #e5e5e5 !important;
+    padding: 0 0 12px !important;
+    margin: 0 0 12px !important;
+}
+
+/* SIDEBAR - NO BOX */
+
+.below-sidebar-box {
+    border: none !important;
+    box-shadow: none !important;
+    padding: 10px !important;
+}
+
+.below-sidebar-box .news-item {
+    border: none !important;
+    border-bottom: 1px solid #e5e5e5 !important;
+    background: #ffffff !important;
+}
+
+/* ARTICLE CONTENT IMAGES 16:9 */
 
 .article-content img,
 .article-body img,
