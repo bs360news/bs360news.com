@@ -1005,7 +1005,43 @@ article,
         height: 80px !important;
     }
 }
+/* SIDEBAR TITLE + MORE LINK */
 
+.article-sidebar .sidebar-title,
+.below-sidebar-box h4 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+/* MORE LINK BLUE COLOR */
+
+.sidebar-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: #0878d1 !important;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none !important;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.sidebar-more span {
+    font-size: 16px;
+    color: #0878d1;
+    transition: transform 0.2s ease;
+}
+
+.sidebar-more:hover {
+    color: #0056a8 !important;
+}
+
+.sidebar-more:hover span {
+    transform: translateX(3px);
+}
 </style>
 <!-- NEWSARTICLE STRUCTURED DATA -->
 
@@ -1256,23 +1292,21 @@ BS 360 NEWSలో తాజా తెలుగు సినిమా వార�
 
 <!-- MOVIE REVIEWS SIDEBAR -->
 <div class="sidebar-box">
-
-    <div class="sidebar-title">సినిమా రివ్యూస్</div>
-
-    <div id="articleMovieReviewsSidebar">
+    <div class="sidebar-title">
+        <span>సినిమా రివ్యూస్</span>
+        <a href="https://bs360news.com/movie-reviews/" class="sidebar-more">మరిన్ని <span>➜</span></a>
     </div>
-
+    <div id="articleMovieReviewsSidebar"></div>
 </div>
 
 
 <!-- NATIONAL NEWS SIDEBAR -->
 <div class="sidebar-box">
-
-    <div class="sidebar-title">జాతీయ వార్తలు</div>
-
-    <div id="articleNationalSidebar">
+    <div class="sidebar-title">
+        <span>జాతీయ వార్తలు</span>
+        <a href="https://bs360news.com/national/" class="sidebar-more">మరిన్ని <span>➜</span></a>
     </div>
-
+    <div id="articleNationalSidebar"></div>
 </div>
             
 
@@ -1358,10 +1392,13 @@ BS 360 NEWSలో తాజా తెలుగు సినిమా వార�
 
 
         <!-- 5. INTERNATIONAL -->
-        <div class="below-sidebar-box">
-            <h4>అంతర్జాతీయ వార్తలు</h4>
-            <div id="articleInternationalSidebar"></div>
-        </div>
+      <div class="below-sidebar-box">
+    <h4>
+        <span>అంతర్జాతీయ వార్తలు</span>
+        <a href="https://bs360news.com/inter-national/" class="sidebar-more">మరిన్ని <span>➜</span></a>
+    </h4>
+    <div id="articleInternationalSidebar"></div>
+</div>
         
 
     </aside>
