@@ -2740,3 +2740,91 @@ body.dark-mode #aptsSection .section-heading {
         display: none !important;
     }
 }
+
+/* =====================================
+   BS 360 NEWS - MOBILE NEWS GRID FIX
+   DESKTOP LAYOUT UNCHANGED
+===================================== */
+
+@media (max-width: 600px) {
+
+    /* ENTERTAINMENT / SPORTS / AP-TS /
+       TELANGANA / BUSINESS */
+
+    .entertainment-layout {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 14px !important;
+        width: 100% !important;
+        align-items: start !important;
+    }
+
+    /* Featured article */
+    .entertainment-featured {
+        width: 100% !important;
+        min-width: 0 !important;
+        margin: 0 !important;
+    }
+
+    /* Small grid items join the same grid */
+    .entertainment-small-grid {
+        display: contents !important;
+    }
+
+    .entertainment-layout article {
+        width: 100% !important;
+        min-width: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* All article images */
+    .entertainment-layout article img {
+        display: block !important;
+        width: 100% !important;
+        height: auto !important;
+        aspect-ratio: 16 / 9 !important;
+        object-fit: cover !important;
+        border-radius: 4px !important;
+    }
+
+    /* Article titles */
+    .entertainment-layout article h3 {
+        font-size: 14px !important;
+        line-height: 1.5 !important;
+        font-weight: 600 !important;
+        margin: 6px 0 0 !important;
+        padding: 0 !important;
+    }
+
+    /* Bottom articles */
+    .entertainment-bottom-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 14px !important;
+        width: 100% !important;
+        margin-top: 14px !important;
+    }
+
+    .entertainment-bottom-grid article {
+        width: 100% !important;
+        min-width: 0 !important;
+        margin: 0 !important;
+    }
+
+    .entertainment-bottom-grid img {
+        display: block !important;
+        width: 100% !important;
+        height: auto !important;
+        aspect-ratio: 16 / 9 !important;
+        object-fit: cover !important;
+        border-radius: 4px !important;
+    }
+
+    .entertainment-bottom-grid h3 {
+        font-size: 14px !important;
+        line-height: 1.5 !important;
+        margin: 6px 0 0 !important;
+    }
+
+}
