@@ -2543,3 +2543,61 @@ body.dark-mode .homepage-news-layout .news-item a {
 body.dark-mode .more-articles {
     color: #66b3ff !important;
 }
+
+/* NATIONAL & INTERNATIONAL HEADINGS */
+#nationalSection > .section-heading,
+#worldSection > .section-heading {
+    color: #222 !important;
+    font-size: 21px !important;
+    font-weight: 700 !important;
+}
+
+/* BUSINESS & TELANGANA HEADINGS */
+#businessSection .section-heading,
+#telanganaSection .section-heading {
+    color: #222 !important;
+    font-size: 21px !important;
+    font-weight: 700 !important;
+}
+
+/* BUSINESS & TELANGANA ARTICLE TEXT */
+#businessSection .news-item h3,
+#telanganaSection .news-item h3,
+#businessSection .news-item a,
+#telanganaSection .news-item a {
+    font-size: 16px !important;
+    line-height: 1.5 !important;
+}
+
+/* MORE ARTICLES - BLUE */
+#nationalSection .more-articles,
+#worldSection .more-articles {
+    color: #007bff !important;
+    font-size: 14px !important;
+    text-decoration: none !important;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+    #nationalSection > .section-heading,
+    #worldSection > .section-heading,
+    #businessSection .section-heading,
+    #telanganaSection .section-heading {
+        font-size: 19px !important;
+    }
+
+    #businessSection .news-item h3,
+    #telanganaSection .news-item h3,
+    #businessSection .news-item a,
+    #telanganaSection .news-item a {
+        font-size: 15px !important;
+    }
+}
+
+/* DARK MODE */
+body.dark-mode #nationalSection > .section-heading,
+body.dark-mode #worldSection > .section-heading,
+body.dark-mode #businessSection .section-heading,
+body.dark-mode #telanganaSection .section-heading {
+    color: #222 !important;
+}
