@@ -1581,6 +1581,93 @@ body.dark-mode .article-sidebar .news-item {
         overflow: visible;
     }
 }
+    /* SECTION HEADING + MORE LINK */
+.section-heading-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.section-heading-row .section-heading {
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+}
+
+.section-heading-row .more-link {
+    flex-shrink: 0;
+    color: #0878e8;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.section-heading-row .more-link:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+    
+/* =========================================
+   BS 360 NEWS
+   DESKTOP STICKY SIDEBAR FIX
+========================================= */
+
+@media (min-width: 900px) {
+
+    .below-articles-main-layout {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) 300px;
+        gap: 20px;
+        align-items: start !important;
+        overflow: visible !important;
+    }
+
+    /* LEFT ARTICLES - NORMAL SCROLL */
+    .below-articles-content {
+        position: relative !important;
+        min-width: 0;
+        overflow: visible !important;
+    }
+
+    /* RIGHT SIDEBAR - STICKY */
+    .below-articles-three-sidebars {
+        position: sticky !important;
+        top: 15px !important;
+        align-self: start !important;
+        height: fit-content !important;
+        max-height: calc(100vh - 30px) !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        overscroll-behavior: contain;
+    }
+
+    .below-sidebar-box {
+        position: static !important;
+    }
+}
+
+/* MOBILE & TABLET - NORMAL SCROLL */
+@media (max-width: 899px) {
+
+    .below-articles-main-layout {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .below-articles-three-sidebars {
+        position: static !important;
+        top: auto !important;
+        height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
+    }
+}
+
 </style>
 <!-- NEWSARTICLE STRUCTURED DATA -->
 
