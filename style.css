@@ -2659,3 +2659,84 @@ body.dark-mode #sportsSection .section-heading,
 body.dark-mode #aptsSection .section-heading {
     color: #222 !important;
 } 
+
+/* =====================================
+   TOP NEWS - MOBILE FIRST ARTICLE BIG
+===================================== */
+
+@media (max-width: 600px) {
+
+    /* TOP NEWS MAIN LAYOUT */
+    #topNewsSource {
+        display: block !important;
+        width: 100% !important;
+    }
+
+    #topNewsSource .top-main-column {
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    /* FIRST ARTICLE FULL WIDTH */
+    #topNewsSource .top-main-column > .news-item:first-of-type {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        margin-bottom: 16px !important;
+    }
+
+    /* FIRST ARTICLE IMAGE */
+    #topNewsSource .top-main-column > .news-item:first-of-type img {
+        display: block !important;
+        width: 100% !important;
+        height: 230px !important;
+        object-fit: cover !important;
+        border-radius: 6px !important;
+    }
+
+    /* FIRST ARTICLE HEADING BELOW IMAGE */
+    #topNewsSource .top-main-column > .news-item:first-of-type .news-content {
+        display: block !important;
+        width: 100% !important;
+        padding: 10px 0 !important;
+    }
+
+    #topNewsSource .top-main-column > .news-item:first-of-type .news-content p {
+        margin: 0 !important;
+        font-size: 19px !important;
+        line-height: 1.5 !important;
+        font-weight: 700 !important;
+    }
+
+    /* REMAINING 3 SMALL ARTICLES */
+    #topNewsSource .top-bottom-articles {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 12px !important;
+        width: 100% !important;
+    }
+
+    #topNewsSource .bottom-news-card {
+        width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    #topNewsSource .bottom-news-card img {
+        width: 100% !important;
+        height: 105px !important;
+        object-fit: cover !important;
+        border-radius: 5px !important;
+    }
+
+    #topNewsSource .bottom-news-card h3 {
+        font-size: 13px !important;
+        line-height: 1.45 !important;
+        margin-top: 6px !important;
+    }
+
+    /* TOP NEWS SIDE ARTICLES */
+    #topNewsSource .top-side-column {
+        display: none !important;
+    }
+}
