@@ -2343,32 +2343,29 @@ body.dark-mode .top-main-column .section-heading,
 body.dark-mode .top-side-column .section-heading {
     color: #ffffff !important;
 }
+/* =====================================
+   BS 360 NEWS - HOMEPAGE SECTION TITLES
+===================================== */
 
-/* HOMEPAGE SECTION TITLES - DARK & BOLD */
-
-.homepage-news-layout .section-heading {
-    color: #111 !important;
-    font-size: 22px !important;
+/* LIGHT MODE */
+body:not(.dark-mode) .homepage-news-layout h3.section-heading,
+body:not(.dark-mode) .homepage-news-layout h3.section-heading a {
+    color: #111111 !important;
     font-weight: 800 !important;
-    line-height: 1.4;
+    opacity: 1 !important;
 }
 
-/* Section title links */
-.homepage-news-layout .section-heading a {
-    color: #111 !important;
+/* DARK MODE */
+body.dark-mode .homepage-news-layout h3.section-heading,
+body.dark-mode .homepage-news-layout h3.section-heading a {
+    color: #ffffff !important;
     font-weight: 800 !important;
-    text-decoration: none !important;
+    opacity: 1 !important;
 }
 
-/* Dark mode */
-body.dark-mode .homepage-news-layout .section-heading,
-body.dark-mode .homepage-news-layout .section-heading a {
-    color: #fff !important;
-}
-
-/* Mobile */
+/* MOBILE */
 @media (max-width: 768px) {
-    .homepage-news-layout .section-heading {
+    .homepage-news-layout h3.section-heading {
         font-size: 19px !important;
     }
 }
