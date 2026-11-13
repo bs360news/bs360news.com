@@ -100,9 +100,8 @@
 <style>
 
 /* =========================================
-   BS 360 NEWS
-   8 CATEGORIES + 5 SIDEBARS
-   DESKTOP / TABLET / MOBILE
+   BS 360 NEWS - BELOW ARTICLE LAYOUT
+   8 CATEGORIES + UNLIMITED SIDEBARS
 ========================================= */
 
 .below-articles-main-layout,
@@ -110,7 +109,7 @@
     box-sizing: border-box;
 }
 
-/* MAIN TWO COLUMN LAYOUT */
+/* MAIN LAYOUT */
 
 .below-articles-main-layout {
     display: grid;
@@ -121,7 +120,7 @@
     align-items: start;
 }
 
-/* LEFT SIDE - 8 CATEGORIES */
+/* LEFT CONTENT */
 
 .below-articles-content {
     display: flex;
@@ -131,16 +130,12 @@
     min-width: 0;
 }
 
-/* EACH CATEGORY */
-
 .below-news-section {
-    display: block;
     width: 100%;
     min-width: 0;
-    margin: 0;
 }
 
-/* CATEGORY HEADING */
+/* SECTION HEADING */
 
 .below-news-section > .section-heading {
     margin: 0 0 13px;
@@ -152,11 +147,7 @@
     border-bottom: 2px solid #d60000;
 }
 
-/* 8 ARTICLES GRID
-   FIRST ROW: 2 BIG ARTICLES
-   SECOND ROW: 3 ARTICLES
-   THIRD ROW: 3 ARTICLES
-*/
+/* CATEGORY GRID */
 
 .below-articles-content .below-news-grid {
     display: grid;
@@ -164,17 +155,16 @@
     gap: 14px;
     width: 100%;
     min-width: 0;
-    align-items: stretch;
 }
 
-/* FIRST TWO ARTICLES - BIG */
+/* FIRST TWO BIG CARDS */
 
 .below-articles-content .below-news-grid > .news-item:nth-child(1),
 .below-articles-content .below-news-grid > .news-item:nth-child(2) {
     grid-column: span 3;
 }
 
-/* REMAINING SIX ARTICLES - SMALL */
+/* REMAINING SMALL CARDS */
 
 .below-articles-content .below-news-grid > .news-item:nth-child(n+3) {
     grid-column: span 2;
@@ -195,7 +185,7 @@
     background: var(--card-bg, #fff);
 }
 
-/* ARTICLE IMAGE */
+/* IMAGE */
 
 .below-articles-content .below-news-image {
     display: block;
@@ -206,8 +196,8 @@
 .below-articles-content .below-news-image img {
     display: block;
     width: 100%;
-    height: auto;
     aspect-ratio: 16 / 9;
+    height: auto;
     object-fit: cover;
     transition: transform .3s ease;
 }
@@ -216,7 +206,7 @@
     transform: scale(1.04);
 }
 
-/* ARTICLE TITLE AREA */
+/* TITLE */
 
 .below-articles-content .below-news-content {
     width: 100%;
@@ -226,7 +216,6 @@
 
 .below-articles-content .news-item h3 {
     margin: 0;
-    padding: 0;
     font-size: 14px;
     line-height: 1.5;
     font-weight: 700;
@@ -244,7 +233,7 @@
 }
 
 /* =========================================
-   RIGHT SIDE - FIVE SIDEBARS
+   RIGHT SIDEBARS - UNLIMITED ARTICLES
 ========================================= */
 
 .below-articles-three-sidebars {
@@ -258,20 +247,15 @@
     align-self: start;
 }
 
-/* SIDEBAR BOX */
-
 .below-sidebar-box {
     display: block;
     width: 100%;
     min-width: 0;
     padding: 12px;
-    overflow: hidden;
     background: var(--card-bg, #fff);
     border: 1px solid var(--card-border, #ddd);
     border-radius: 7px;
 }
-
-/* SIDEBAR HEADING */
 
 .below-sidebar-box h4 {
     margin: 0 0 10px;
@@ -283,12 +267,11 @@
     border-bottom: 2px solid #d60000;
 }
 
-/* SIDEBAR ARTICLES */
+/* SIDEBAR CONTAINER */
 
 .below-sidebar-box > div {
     display: flex;
     flex-direction: column;
-    gap: 0;
     width: 100%;
     min-width: 0;
 }
@@ -310,6 +293,10 @@
     background: transparent;
 }
 
+.below-sidebar-box .news-item:last-child {
+    border-bottom: 0;
+}
+
 /* SIDEBAR IMAGE */
 
 .below-sidebar-box .news-item > a.below-news-image {
@@ -323,7 +310,6 @@
     display: block;
     width: 85px;
     height: 65px;
-    aspect-ratio: auto;
     object-fit: cover;
     border-radius: 4px;
 }
@@ -359,14 +345,11 @@
 
 .below-articles-main-layout .no-articles {
     grid-column: 1 / -1;
-    margin: 10px 0;
     font-size: 13px;
     color: var(--text-color, #555);
 }
 
-/* =========================================
-   DARK MODE
-========================================= */
+/* DARK MODE */
 
 body.dark-mode .below-news-section > .section-heading,
 body.dark-mode .below-articles-content .news-item h3,
@@ -386,9 +369,7 @@ body.dark-mode .below-sidebar-box .news-item {
     border-bottom-color: #444;
 }
 
-/* =========================================
-   TABLET
-========================================= */
+/* TABLET */
 
 @media (min-width: 651px) and (max-width: 1000px) {
 
@@ -432,10 +413,7 @@ body.dark-mode .below-sidebar-box .news-item {
     }
 }
 
-/* =========================================
-   MOBILE
-   IMAGE LEFT + TITLE RIGHT
-========================================= */
+/* MOBILE */
 
 @media (max-width: 650px) {
 
@@ -443,20 +421,12 @@ body.dark-mode .below-sidebar-box .news-item {
         display: grid;
         grid-template-columns: minmax(0, 1fr) 122px;
         gap: 9px;
-        width: 100%;
         margin: 22px 0;
         align-items: start;
     }
 
     .below-articles-content {
-        display: flex;
-        flex-direction: column;
         gap: 22px;
-        min-width: 0;
-    }
-
-    .below-news-section {
-        width: 100%;
         min-width: 0;
     }
 
@@ -466,7 +436,7 @@ body.dark-mode .below-sidebar-box .news-item {
         padding-bottom: 7px;
     }
 
-    /* MOBILE ARTICLE LIST */
+    /* MAIN ARTICLES */
 
     .below-articles-content .below-news-grid {
         display: flex;
@@ -474,8 +444,6 @@ body.dark-mode .below-sidebar-box .news-item {
         gap: 0;
         width: 100%;
     }
-
-    /* MOBILE IMAGE LEFT + TITLE RIGHT */
 
     .below-articles-content .below-news-grid > .news-item,
     .below-articles-content .below-news-grid > .news-item:nth-child(1),
@@ -486,7 +454,6 @@ body.dark-mode .below-sidebar-box .news-item {
         align-items: center;
         gap: 8px;
         width: 100%;
-        min-width: 0;
         padding: 9px 0;
         border: 0;
         border-bottom: 1px solid var(--card-border, #ddd);
@@ -495,14 +462,11 @@ body.dark-mode .below-sidebar-box .news-item {
     }
 
     .below-articles-content .news-item > a.below-news-image {
-        display: block;
         flex: 0 0 78px;
         width: 78px;
-        overflow: hidden;
     }
 
     .below-articles-content .news-item img {
-        display: block;
         width: 78px;
         height: 60px;
         aspect-ratio: auto;
@@ -519,18 +483,14 @@ body.dark-mode .below-sidebar-box .news-item {
     .below-articles-content .news-item h3 {
         font-size: 11px;
         line-height: 1.45;
-        font-weight: 700;
     }
 
-    /* FIVE SIDEBARS ON RIGHT */
+    /* SIDEBARS */
 
     .below-articles-three-sidebars {
-        display: flex;
-        flex-direction: column;
+        position: static;
         gap: 12px;
         width: 100%;
-        min-width: 0;
-        position: static;
     }
 
     .below-sidebar-box {
@@ -546,10 +506,7 @@ body.dark-mode .below-sidebar-box .news-item {
         padding-bottom: 5px;
     }
 
-    /* SIDEBAR IMAGE ABOVE TITLE ON MOBILE */
-
     .below-sidebar-box .news-item {
-        display: flex;
         flex-direction: column;
         align-items: stretch;
         gap: 4px;
@@ -575,7 +532,6 @@ body.dark-mode .below-sidebar-box .news-item {
     .below-sidebar-box .news-item h3 {
         font-size: 9px;
         line-height: 1.4;
-        overflow-wrap: anywhere;
     }
 }
 
@@ -614,6 +570,7 @@ body.dark-mode .below-sidebar-box .news-item {
         font-size: 8px;
     }
 }
+
 
 </style>
 <!-- NEWSARTICLE STRUCTURED DATA -->
@@ -991,10 +948,11 @@ BS 360 NEWSలో తాజా తెలుగు సినిమా వార�
 
 
 <script>
+
 /* =========================================
    BS 360 NEWS
-   8 CATEGORY ARTICLE LOADER
-   5 SIDEBARS
+   UNLIMITED ARTICLE LOADER
+   8 CATEGORIES + 5 SIDEBARS
 ========================================= */
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -1002,7 +960,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const HOME_URL = "https://bs360news.com/";
 
     /* =====================================
-       8 ARTICLE CATEGORIES
+       CATEGORY CONFIGURATION
     ===================================== */
 
     const sections = [
@@ -1095,7 +1053,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =====================================
-       FIVE RIGHT SIDE SIDEBARS
+       SIDEBARS
+       ALL HOMEPAGE ARTICLES
     ===================================== */
 
     const sidebarSections = [
@@ -1106,8 +1065,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 "trendingSource",
                 "trendingGrid",
                 "trendingSidebar"
-            ],
-            limit: 5
+            ]
         },
 
         {
@@ -1115,50 +1073,9 @@ document.addEventListener("DOMContentLoaded", function () {
             sources: [
                 "latestNewsSource",
                 "latestGrid",
-                "latestSidebar"
-            ],
-            limit: 5
+                "latestSection"
+            ]
         },
-
-        {
-            target: "topNewsSidebar",
-            sources: [
-                "mostReadSource",
-                "mostReadGrid",
-                "topNewsSidebar",
-                "latestGrid"
-            ],
-            limit: 5
-        },
-
-        {
-            target: "articleNationalSidebar",
-            sources: [
-                "nationalNewsSource",
-                "nationalGrid",
-                "nationalSection"
-            ],
-            limit: 5
-        },
-
-        {
-            target: "articleInternationalSidebar",
-            sources: [
-                "internationalNewsSource",
-                "internationalGrid",
-                "worldSection"
-            ],
-            limit: 5
-        }
-
-    ];
-
-
-    /* =====================================
-       ARTICLE PAGE TOP SIDEBARS
-    ===================================== */
-
-    const topSidebarSections = [
 
         {
             target: "articleTrendingSidebar",
@@ -1166,8 +1083,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 "trendingSource",
                 "trendingGrid",
                 "trendingSidebar"
-            ],
-            limit: 5
+            ]
         },
 
         {
@@ -1175,26 +1091,37 @@ document.addEventListener("DOMContentLoaded", function () {
             sources: [
                 "mostReadSource",
                 "mostReadGrid",
+                "topNewsSource",
                 "topNewsSidebar",
                 "latestGrid"
-            ],
-            limit: 5
+            ]
+        },
+
+        {
+            target: "articleInternationalSidebar",
+            sources: [
+                "internationalNewsSource",
+                "internationalSource",
+                "internationalGrid",
+                "worldSection"
+            ]
+        },
+
+        {
+            target: "articleNationalSidebar",
+            sources: [
+                "nationalNewsSource",
+                "nationalSource",
+                "nationalGrid",
+                "nationalSection"
+            ]
         }
 
     ];
 
 
     /* =====================================
-       GET ELEMENT
-    ===================================== */
-
-    function getSource(doc, id) {
-        return doc.getElementById(id);
-    }
-
-
-    /* =====================================
-       CONVERT URL TO ABSOLUTE URL
+       URL VALIDATION
     ===================================== */
 
     function makeAbsoluteURL(value) {
@@ -1214,8 +1141,11 @@ document.addEventListener("DOMContentLoaded", function () {
             return url.href;
 
         } catch (error) {
+
             return "";
+
         }
+
     }
 
 
@@ -1231,8 +1161,6 @@ document.addEventListener("DOMContentLoaded", function () {
             return null;
         }
 
-        /* Prefer the image's own article link */
-
         let link = image.closest("a[href]");
 
         if (!link) {
@@ -1247,8 +1175,6 @@ document.addEventListener("DOMContentLoaded", function () {
             url = card.getAttribute("data-url") || "";
         }
 
-        /* Read onclick URL if available */
-
         if (!url) {
 
             const onclick = card.getAttribute("onclick") || "";
@@ -1260,9 +1186,8 @@ document.addEventListener("DOMContentLoaded", function () {
             if (match) {
                 url = match[1];
             }
-        }
 
-        /* ARTICLE TITLE */
+        }
 
         const heading = card.querySelector(
             "h1, h2, h3, h4, .post-title, .news-title, .article-title"
@@ -1279,8 +1204,6 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!title) {
             title = image.alt || "";
         }
-
-        /* IMAGE URL */
 
         const imageURL =
             image.getAttribute("data-src") ||
@@ -1307,11 +1230,13 @@ document.addEventListener("DOMContentLoaded", function () {
             alt: image.alt || title
 
         };
+
     }
 
 
     /* =====================================
-       READ ARTICLES FROM SOURCE
+       READ ARTICLES
+       AVOID DUPLICATES
     ===================================== */
 
     function readArticles(source) {
@@ -1346,7 +1271,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
 
-        /* FALLBACK: DIRECT IMAGE LINKS */
+        /* FALLBACK */
 
         if (!articles.length) {
 
@@ -1399,21 +1324,24 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
 
             });
+
         }
 
         return articles;
+
     }
 
 
     /* =====================================
-       FIND FIRST SOURCE WITH ARTICLES
+       FIND SOURCE
+       USE FIRST SOURCE WITH ARTICLES
     ===================================== */
 
     function findArticles(homeDoc, sourceNames) {
 
         for (const sourceName of sourceNames) {
 
-            const source = getSource(homeDoc, sourceName);
+            const source = homeDoc.getElementById(sourceName);
 
             if (!source) {
                 continue;
@@ -1429,12 +1357,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 };
 
             }
+
         }
 
         return {
             articles: [],
             source: "Not found"
         };
+
     }
 
 
@@ -1448,19 +1378,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
         card.className = "news-item";
 
-        /* IMAGE LINK */
+
+        /* IMAGE */
 
         const imageLink = document.createElement("a");
 
         imageLink.className = "below-news-image";
+
         imageLink.href = item.url;
+
         imageLink.setAttribute("aria-label", item.title);
 
         const image = document.createElement("img");
 
         image.src = item.image;
+
         image.alt = item.alt;
+
         image.loading = "lazy";
+
         image.decoding = "async";
 
         imageLink.appendChild(image);
@@ -1480,9 +1416,11 @@ document.addEventListener("DOMContentLoaded", function () {
         const titleLink = document.createElement("a");
 
         titleLink.href = item.url;
+
         titleLink.textContent = item.title;
 
         title.appendChild(titleLink);
+
         content.appendChild(title);
 
 
@@ -1492,11 +1430,13 @@ document.addEventListener("DOMContentLoaded", function () {
         );
 
         return card;
+
     }
 
 
     /* =====================================
        RENDER ARTICLES
+       UNLIMITED WHEN LIMIT IS INFINITY
     ===================================== */
 
     function renderArticles(target, articles, limit) {
@@ -1507,7 +1447,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
         target.replaceChildren();
 
-        const selected = articles.slice(0, limit);
+        const selected = articles.slice(
+            0,
+            limit === undefined ? Infinity : limit
+        );
 
         if (!selected.length) {
 
@@ -1520,27 +1463,35 @@ document.addEventListener("DOMContentLoaded", function () {
             target.appendChild(message);
 
             return;
+
         }
+
+        const fragment = document.createDocumentFragment();
 
         selected.forEach(function (item) {
 
-            target.appendChild(
+            fragment.appendChild(
                 createArticleCard(item)
             );
 
         });
+
+        target.appendChild(fragment);
+
     }
 
 
     /* =====================================
-       LOAD EIGHT MAIN CATEGORIES
+       LOAD MAIN CATEGORIES
     ===================================== */
 
     function loadMainSections(homeDoc) {
 
         sections.forEach(function (config) {
 
-            const target = document.getElementById(config.target);
+            const target = document.getElementById(
+                config.target
+            );
 
             if (!target) {
                 return;
@@ -1563,22 +1514,25 @@ document.addEventListener("DOMContentLoaded", function () {
                 "SOURCE:",
                 result.source,
                 "COUNT:",
-                Math.min(result.articles.length, config.limit)
+                result.articles.length
             );
 
         });
+
     }
 
 
     /* =====================================
-       LOAD SIDEBARS
+       LOAD UNLIMITED SIDEBARS
     ===================================== */
 
-    function loadSidebars(homeDoc, configurations) {
+    function loadSidebars(homeDoc) {
 
-        configurations.forEach(function (config) {
+        sidebarSections.forEach(function (config) {
 
-            const target = document.getElementById(config.target);
+            const target = document.getElementById(
+                config.target
+            );
 
             if (!target) {
                 return;
@@ -1589,10 +1543,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 config.sources
             );
 
+            /* IMPORTANT:
+               NO LIMIT = ALL ARTICLES
+            */
+
             renderArticles(
                 target,
                 result.articles,
-                config.limit
+                Infinity
             );
 
             console.log(
@@ -1601,10 +1559,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 "SOURCE:",
                 result.source,
                 "COUNT:",
-                Math.min(result.articles.length, config.limit)
+                result.articles.length
             );
 
         });
+
     }
 
 
@@ -1612,7 +1571,7 @@ document.addEventListener("DOMContentLoaded", function () {
        FETCH HOMEPAGE
     ===================================== */
 
-    async function loadAllBelowSections() {
+    async function loadAllSections() {
 
         try {
 
@@ -1642,29 +1601,18 @@ document.addEventListener("DOMContentLoaded", function () {
             );
 
 
-            /* LOAD 8 CATEGORIES */
+            /* LOAD CATEGORIES */
 
             loadMainSections(homeDoc);
 
 
-            /* LOAD FIVE BELOW ARTICLE SIDEBARS */
+            /* LOAD ALL SIDEBARS */
 
-            loadSidebars(
-                homeDoc,
-                sidebarSections
-            );
-
-
-            /* LOAD ARTICLE PAGE TOP SIDEBARS */
-
-            loadSidebars(
-                homeDoc,
-                topSidebarSections
-            );
+            loadSidebars(homeDoc);
 
 
             console.log(
-                "BS 360 NEWS: 8 CATEGORIES AND 5 SIDEBARS LOADED."
+                "BS360 NEWS: ALL CATEGORIES AND UNLIMITED SIDEBARS LOADED."
             );
 
         } catch (error) {
@@ -1679,80 +1627,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    /* =====================================
-       START
-    ===================================== */
+    /* START */
 
-    loadAllBelowSections();
+    loadAllSections();
 
 });
 
-
-
-
-
-
-
-    /* =====================================
-   FIVE BELOW ARTICLE SIDEBARS
-===================================== */
-
-const sidebarSections = [
-
-    /* 1. TRENDING NEWS */
-    {
-        target: "articleTrendingSidebar",
-        sources: [
-            "trendingSidebar",
-            "trendingSource",
-            "trendingGrid"
-        ],
-        limit: 5
-    },
-
-    /* 2. TOP NEWS - HOMEPAGE SOURCE */
-    {
-        target: "articleTopNewsSidebar",
-        sources: [
-            "topNewsSource"
-        ],
-        limit: 5
-    },
-
-    /* 3. LATEST NEWS */
-    {
-        target: "latestSidebar",
-        sources: [
-            "latestSection",
-            "latestNewsSource",
-            "latestGrid"
-        ],
-        limit: 5
-    },
-
-    /* 4. NATIONAL NEWS */
-    {
-        target: "articleNationalSidebar",
-        sources: [
-            "nationalSection",
-            "nationalNewsSource",
-            "nationalGrid"
-        ],
-        limit: 5
-    },
-
-    /* 5. INTERNATIONAL NEWS */
-    {
-        target: "articleInternationalSidebar",
-        sources: [
-            "worldSection",
-            "internationalNewsSource",
-            "internationalGrid"
-        ],
-        limit: 5
-    }
-
-];
  
 </script>
   
