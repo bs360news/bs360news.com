@@ -1705,6 +1705,400 @@ body.dark-mode .article-sidebar .news-item {
         font-size: 13px;
     }
 }
+     /* MAIN ARTICLES + SIDEBAR HEIGHT ALIGNMENT */
+
+.below-articles-main-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    align-items: stretch;
+    gap: 20px;
+}
+
+.below-articles-main,
+.below-articles-three-sidebars {
+    min-width: 0;
+    height: 100%;
+}
+
+.below-articles-three-sidebars {
+    display: flex;
+    flex-direction: column;
+    align-self: stretch;
+}
+
+.below-sidebar-box:last-child {
+    margin-bottom: 0;
+}
+
+/* TABLET & MOBILE */
+@media (max-width: 768px) {
+    .below-articles-main-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .below-articles-three-sidebars {
+        height: auto;
+    }
+}
+
+
+    /* TOP NEWS SIDEBAR */
+
+#TopNewsSidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.top-news-sidebar-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.top-news-sidebar-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.top-news-sidebar-item img {
+    width: 90px;
+    height: 65px;
+    object-fit: cover;
+    border-radius: 4px;
+    display: block;
+}
+
+.top-news-sidebar-item > a:last-child {
+    flex: 1;
+    color: #222;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.5;
+    text-decoration: none;
+}
+
+.top-news-sidebar-item > a:last-child:hover {
+    color: #d71920;
+}
+
+@media (max-width: 600px) {
+    .top-news-sidebar-item img {
+        width: 82px;
+        height: 60px;
+    }
+
+    .top-news-sidebar-item > a:last-child {
+        font-size: 13px;
+    }
+}
+    /* =================================
+   CONTENT & SIDEBAR HEIGHT FIX
+================================= */
+
+/* Main layout rows */
+.top-content-layout,
+.sports-apts-trending-layout,
+.business-world-row {
+    align-items: start !important;
+}
+
+/* Sidebar height should follow its content */
+.latest-news-column,
+.trending-news-column,
+.top-side-column,
+.world-news-side {
+    height: fit-content !important;
+    min-height: 0 !important;
+    align-self: start !important;
+    position: relative;
+}
+
+/* Sidebar article list */
+.top-side-articles,
+.trending-news-list,
+.world-side-articles {
+    height: auto !important;
+    min-height: 0 !important;
+}
+
+/* Remove unwanted fixed heights */
+.latest-news-column,
+.trending-news-column,
+.top-side-column,
+.world-news-side {
+    max-height: none !important;
+}
+    /* SIDEBAR CONTENT END FIX */
+
+@media (min-width: 769px) {
+
+    .top-content-layout,
+    .sports-apts-trending-layout {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) 300px;
+        align-items: stretch !important;
+    }
+
+    .latest-news-column,
+    .trending-news-column {
+        min-width: 0;
+        min-height: 0;
+        overflow: hidden !important;
+        height: 100% !important;
+    }
+
+    .top-left-column,
+    .sports-apts-left-column {
+        min-height: 0;
+    }
+    /* ARTICLE CONTENT + SIDEBAR */
+
+.article-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    align-items: stretch;
+    gap: 25px;
+}
+
+.article-content {
+    min-width: 0;
+}
+
+.article-sidebar {
+    position: static !important;
+    align-self: stretch !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .article-layout {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .article-sidebar {
+        width: 100%;
+        height: auto !important;
+        overflow: visible !important;
+    }
+}
+    
+/* =========================================
+   ARTICLE SIDEBAR - CONTENT HEIGHT MATCH
+   NORMAL PAGE SCROLL - NO STICKY
+========================================= */
+
+.article-layout {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: 25px;
+    align-items: stretch !important;
+    overflow: hidden !important;
+}
+
+.article-main {
+    min-width: 0;
+    height: auto !important;
+}
+
+.article-content {
+    min-width: 0;
+    height: auto !important;
+}
+
+.article-sidebar {
+    position: static !important;
+    top: auto !important;
+    align-self: stretch !important;
+
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+
+    overflow: hidden !important;
+    overflow-y: hidden !important;
+    overflow-x: hidden !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+/* Sidebar boxes */
+.article-sidebar .sidebar-box {
+    flex-shrink: 0;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .article-layout {
+        display: flex !important;
+        flex-direction: column !important;
+        overflow: visible !important;
+    }
+
+    .article-sidebar {
+        position: static !important;
+        height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
+    }
+}
+
+/* =========================================
+   BS 360 NEWS
+   ARTICLE SIDEBAR END AT ARTICLE CONTENT END
+   FINAL OVERRIDE
+========================================= */
+
+/* LAPTOP + TABLET */
+
+@media (min-width: 769px) {
+
+    .article-layout {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) 320px !important;
+        align-items: stretch !important;
+        gap: 25px !important;
+        height: auto !important;
+        overflow: hidden !important;
+    }
+
+    .article-main {
+        display: block !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        height: auto !important;
+        min-height: 0 !important;
+    }
+
+    .article-content {
+        display: block !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: 0 !important;
+        overflow: visible !important;
+    }
+
+    .article-sidebar {
+        display: flex !important;
+        flex-direction: column !important;
+        align-self: stretch !important;
+
+        width: 100% !important;
+        min-width: 0 !important;
+        min-height: 0 !important;
+
+        height: 100% !important;
+        max-height: 100% !important;
+
+        position: static !important;
+        top: auto !important;
+
+        overflow: hidden !important;
+        overflow-y: hidden !important;
+        overflow-x: hidden !important;
+    }
+
+    .article-sidebar .sidebar-box {
+        flex: 0 0 auto !important;
+        width: 100% !important;
+        min-width: 0 !important;
+    }
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+    .article-layout {
+        display: flex !important;
+        flex-direction: column !important;
+        height: auto !important;
+        overflow: visible !important;
+    }
+
+    .article-main {
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    .article-content {
+        height: auto !important;
+        overflow: visible !important;
+    }
+
+    .article-sidebar {
+        display: flex !important;
+        flex-direction: column !important;
+        position: static !important;
+
+        width: 100% !important;
+        height: auto !important;
+        min-height: 0 !important;
+        max-height: none !important;
+
+        overflow: visible !important;
+    }
+
+    .article-sidebar .sidebar-box {
+        flex-shrink: 0 !important;
+    }
+}
+
+@media (min-width: 769px) {
+
+    .article-layout {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) 320px !important;
+        align-items: start !important;
+        height: auto !important;
+        overflow: hidden !important;
+    }
+
+    .article-main {
+        min-height: 0 !important;
+        height: auto !important;
+    }
+
+    .article-sidebar {
+        position: relative !important;
+        top: auto !important;
+        align-self: stretch !important;
+
+        height: 100% !important;
+        max-height: 100% !important;
+        min-height: 0 !important;
+
+        overflow: hidden !important;
+    }
+
+    .article-sidebar .sidebar-box {
+        flex-shrink: 0 !important;
+    }
+
+}
+
+@media (max-width: 768px) {
+    .article-layout {
+        display: flex !important;
+        flex-direction: column !important;
+        overflow: visible !important;
+    }
+
+    .article-sidebar {
+        height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
+        position: static !important;
+    }
+}
+
  
 /* =========================================
    BS 360 NEWS
