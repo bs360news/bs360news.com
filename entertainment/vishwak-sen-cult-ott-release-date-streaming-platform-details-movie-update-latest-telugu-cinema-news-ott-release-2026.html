@@ -1865,6 +1865,39 @@ body.dark-mode .article-sidebar .news-item {
     .sports-apts-left-column {
         min-height: 0;
     }
+    /* ARTICLE CONTENT + SIDEBAR */
+
+.article-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    align-items: stretch;
+    gap: 25px;
+}
+
+.article-content {
+    min-width: 0;
+}
+
+.article-sidebar {
+    position: static !important;
+    align-self: stretch !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .article-layout {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .article-sidebar {
+        width: 100%;
+        height: auto !important;
+        overflow: visible !important;
+    }
 }
 </style>
 <!-- NEWSARTICLE STRUCTURED DATA -->
