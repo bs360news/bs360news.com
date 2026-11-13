@@ -1512,6 +1512,39 @@ body.dark-mode .article-sidebar .news-item {
     }
 }
 
+    /* STICKY SIDEBAR */
+@media (min-width: 900px) {
+
+    .below-articles-main-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 300px;
+        align-items: stretch;
+        gap: 20px;
+    }
+
+    .below-articles-content {
+        min-width: 0;
+    }
+
+    .below-articles-three-sidebars {
+        position: sticky;
+        top: 15px;
+        align-self: start;
+        height: fit-content;
+        max-height: calc(100vh - 30px);
+        overflow-y: auto;
+        overscroll-behavior: contain;
+    }
+}
+
+/* MOBILE - NORMAL SCROLL */
+@media (max-width: 899px) {
+    .below-articles-three-sidebars {
+        position: static;
+        max-height: none;
+        overflow: visible;
+    }
+}
 </style>
 <!-- NEWSARTICLE STRUCTURED DATA -->
 
