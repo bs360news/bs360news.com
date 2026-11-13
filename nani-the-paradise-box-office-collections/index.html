@@ -950,6 +950,62 @@ article,
     border-radius: 4px;
     flex-shrink: 0;
 }
+    
+/* =====================================
+   BS 360 NEWS - ALL SIDEBAR IMAGE SIZE
+   DESKTOP / TABLET / MOBILE
+   FIXED 120 x 80 PX
+===================================== */
+
+.article-sidebar .sidebar-box img,
+.below-articles-three-sidebars .below-sidebar-box img,
+#articleTrendingSidebar img,
+#articleTopNewsSidebar img,
+#articleMovieReviewsSidebar img,
+#articleNationalSidebar img,
+#articleInternationalSidebar img,
+#trendingSidebar img,
+#latestSidebar img,
+#articleInternationalSidebar img {
+
+    width: 120px !important;
+    min-width: 120px !important;
+    max-width: 120px !important;
+
+    height: 80px !important;
+    min-height: 80px !important;
+    max-height: 80px !important;
+
+    aspect-ratio: 3 / 2 !important;
+    object-fit: cover !important;
+    flex-shrink: 0 !important;
+    border-radius: 4px !important;
+}
+
+/* IMAGE LINK */
+.article-sidebar .sidebar-box a.below-news-image,
+.below-articles-three-sidebars a.below-news-image {
+    flex: 0 0 120px !important;
+    width: 120px !important;
+    min-width: 120px !important;
+}
+
+/* PREVENT MOBILE OVERRIDE */
+@media (max-width: 768px) {
+    .article-sidebar .sidebar-box img,
+    .below-articles-three-sidebars img,
+    #articleTrendingSidebar img,
+    #articleTopNewsSidebar img,
+    #articleMovieReviewsSidebar img,
+    #articleNationalSidebar img,
+    #articleInternationalSidebar img,
+    #trendingSidebar img,
+    #latestSidebar img {
+        width: 120px !important;
+        height: 80px !important;
+    }
+}
+
 </style>
 <!-- NEWSARTICLE STRUCTURED DATA -->
 
