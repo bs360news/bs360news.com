@@ -848,6 +848,93 @@ body.dark-mode,
     background: #ffffff !important;
     color: #222222 !important;
 }
+
+
+    /* REMOVE BOX / CARD DESIGN FROM ENTIRE PAGE */
+
+html,
+body {
+    background: #fff !important;
+    color: #222 !important;
+}
+
+* {
+    box-shadow: none !important;
+}
+
+/* Remove backgrounds and borders from article containers */
+.news-item,
+.post,
+.news-card,
+.article-card,
+.article-content,
+.article-container,
+.below-news-section,
+.below-news-grid,
+.below-articles-content,
+.sidebar-box,
+.sidebar-news-item,
+.movie-review-card {
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+/* Remove card-like appearance */
+.news-item,
+.post,
+.news-card,
+.article-card,
+.sidebar-news-item {
+    outline: none !important;
+}
+
+/* Simple news separators */
+.news-item,
+.post,
+.sidebar-news-item {
+    border-bottom: 1px solid #e5e5e5 !important;
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+}
+
+/* Keep images clean */
+.news-item img,
+.post img,
+.news-card img,
+.sidebar-news-item img {
+    border-radius: 0 !important;
+}
+
+/* White background for all page sections */
+header,
+nav,
+main,
+section,
+article,
+footer,
+.container,
+.wrapper {
+    background-color: #fff !important;
+}
+
+
+    /* ALL ARTICLE IMAGES 16:9 */
+
+.news-item img,
+.post img,
+.news-card img,
+.article-card img,
+.below-news-grid img,
+.sidebar-news-item img,
+.movie-review-card img {
+    width: 100% !important;
+    aspect-ratio: 16 / 9 !important;
+    height: auto !important;
+    object-fit: cover !important;
+    display: block;
+}
 </style>
 <!-- NEWSARTICLE STRUCTURED DATA -->
 
