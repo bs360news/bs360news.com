@@ -854,6 +854,7 @@ BS 360 NEWSలో తాజా తెలుగు సినిమా వార�
             </div>
 
            
+ 
 
             <div class="sidebar-box">
                 <div class="sidebar-title">టాప్ వార్తలు</div>
@@ -946,6 +947,11 @@ BS 360 NEWSలో తాజా తెలుగు సినిమా వార�
         </div>
 
 
+        <!-- 5. INTERNATIONAL -->
+        <div class="below-sidebar-box">
+            <h4>అంతర్జాతీయ వార్తలు</h4>
+            <div id="articleInternationalSidebar"></div>
+        </div>
         
 
     </aside>
@@ -1681,6 +1687,72 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
+
+
+
+
+
+
+    /* =====================================
+   FIVE BELOW ARTICLE SIDEBARS
+===================================== */
+
+const sidebarSections = [
+
+    /* 1. TRENDING NEWS */
+    {
+        target: "articleTrendingSidebar",
+        sources: [
+            "trendingSidebar",
+            "trendingSource",
+            "trendingGrid"
+        ],
+        limit: 5
+    },
+
+    /* 2. TOP NEWS - HOMEPAGE SOURCE */
+    {
+        target: "articleTopNewsSidebar",
+        sources: [
+            "topNewsSource"
+        ],
+        limit: 5
+    },
+
+    /* 3. LATEST NEWS */
+    {
+        target: "latestSidebar",
+        sources: [
+            "latestSection",
+            "latestNewsSource",
+            "latestGrid"
+        ],
+        limit: 5
+    },
+
+    /* 4. NATIONAL NEWS */
+    {
+        target: "articleNationalSidebar",
+        sources: [
+            "nationalSection",
+            "nationalNewsSource",
+            "nationalGrid"
+        ],
+        limit: 5
+    },
+
+    /* 5. INTERNATIONAL NEWS */
+    {
+        target: "articleInternationalSidebar",
+        sources: [
+            "worldSection",
+            "internationalNewsSource",
+            "internationalGrid"
+        ],
+        limit: 5
+    }
+
+];
  
 </script>
   
