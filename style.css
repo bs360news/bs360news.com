@@ -2644,3 +2644,18 @@ body.dark-mode #telanganaSection .section-heading {
         font-size: 13px;
     }
 }
+
+
+
+/* SPORTS & ANDHRA PRADESH HEADING COLOR */
+#sportsSection .section-heading,
+#aptsSection .section-heading {
+    color: #222 !important;
+    font-weight: 700 !important;
+}
+
+/* DARK MODE LO KUDA DARK COLOR */
+body.dark-mode #sportsSection .section-heading,
+body.dark-mode #aptsSection .section-heading {
+    color: #222 !important;
+} 
