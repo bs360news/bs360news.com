@@ -1842,6 +1842,30 @@ body.dark-mode .article-sidebar .news-item {
 .world-news-side {
     max-height: none !important;
 }
+    /* SIDEBAR CONTENT END FIX */
+
+@media (min-width: 769px) {
+
+    .top-content-layout,
+    .sports-apts-trending-layout {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) 300px;
+        align-items: stretch !important;
+    }
+
+    .latest-news-column,
+    .trending-news-column {
+        min-width: 0;
+        min-height: 0;
+        overflow: hidden !important;
+        height: 100% !important;
+    }
+
+    .top-left-column,
+    .sports-apts-left-column {
+        min-height: 0;
+    }
+}
 </style>
 <!-- NEWSARTICLE STRUCTURED DATA -->
 
