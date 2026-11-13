@@ -2369,3 +2369,28 @@ body.dark-mode .homepage-news-layout h3.section-heading a {
         font-size: 19px !important;
     }
 }
+
+/* HOMEPAGE SECTION HEADINGS - BOLD FIX */
+
+.homepage-news-layout h3.section-heading,
+.homepage-news-layout h3.section-heading a,
+#nationalSection h3,
+#telanganaSection h3,
+#businessSection h3,
+#worldSection h3 {
+    font-weight: 900 !important;
+    -webkit-text-stroke: 0.5px currentColor !important;
+    opacity: 1 !important;
+}
+
+/* LIGHT MODE */
+body:not(.dark-mode) .homepage-news-layout h3.section-heading,
+body:not(.dark-mode) .homepage-news-layout h3.section-heading a {
+    color: #111 !important;
+}
+
+/* DARK MODE */
+body.dark-mode .homepage-news-layout h3.section-heading,
+body.dark-mode .homepage-news-layout h3.section-heading a {
+    color: #fff !important;
+}
