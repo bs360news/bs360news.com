@@ -2601,3 +2601,46 @@ body.dark-mode #businessSection .section-heading,
 body.dark-mode #telanganaSection .section-heading {
     color: #222 !important;
 }
+
+/* LATEST NEWS HEADING */
+#latestSection .section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+    color: #222;
+    font-size: 21px;
+    font-weight: 700;
+}
+
+/* MORE ARTICLES LINK */
+#latestSection .more-articles {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: #007bff;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+#latestSection .more-articles:hover {
+    color: #0056b3;
+}
+
+#latestSection .more-articles span {
+    font-size: 16px;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+    #latestSection .section-heading {
+        font-size: 19px;
+    }
+
+    #latestSection .more-articles {
+        font-size: 13px;
+    }
+}
