@@ -2369,3 +2369,177 @@ body.dark-mode .homepage-news-layout h3.section-heading a {
         font-size: 19px !important;
     }
 }
+/* =========================================
+   BS 360 NEWS
+   ALL SECTION HEADINGS - NEW FONT SIZE
+   OLD FONT SIZE OVERRIDE
+   LIGHT + DARK MODE
+========================================= */
+
+/* ALL MAIN SECTION HEADINGS */
+.homepage-news-layout .section-heading,
+.homepage-news-layout h3.section-heading,
+.homepage-news-layout .section-head h2,
+.homepage-news-layout .sidebar-title,
+.homepage-news-layout .movie-reviews-heading span,
+.homepage-news-layout .bigboss-heading span {
+    font-size: 21px !important;
+    line-height: 1.4 !important;
+    font-weight: 700 !important;
+}
+
+/* TOP NEWS HEADINGS */
+.homepage-news-layout .top-side-article h3 {
+    font-size: 15px !important;
+    line-height: 1.5 !important;
+}
+
+/* LATEST NEWS */
+#latestSidebar .news-item h2,
+#latestSidebar .news-item h3,
+#latestSidebar .news-item a,
+#latestSidebar .news-content p,
+#latestSidebar .sidebar-item-title {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    font-weight: 400 !important;
+}
+
+/* TRENDING NEWS */
+#trendingSidebar .news-item h2,
+#trendingSidebar .news-item h3,
+#trendingSidebar .news-item a,
+#trendingSidebar .news-content p,
+#trendingSidebar .sidebar-item-title {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    font-weight: 400 !important;
+}
+
+/* TOP NEWS SIDEBAR */
+#topNewsSidebar .news-item h2,
+#topNewsSidebar .news-item h3,
+#topNewsSidebar .news-item a,
+#topNewsSidebar .news-content p,
+#topNewsSidebar .sidebar-item-title {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    font-weight: 400 !important;
+}
+
+/* ENTERTAINMENT / SPORTS / AP & TS */
+.entertainment-featured h3,
+.entertainment-small-grid h3,
+.entertainment-bottom-grid h3 {
+    font-size: 15px !important;
+    line-height: 1.5 !important;
+    font-weight: 400 !important;
+}
+
+/* BUSINESS / NATIONAL / WORLD */
+#businessSection h3,
+#nationalSection h3,
+#worldSection h3,
+#telanganaSection h3 {
+    font-size: 15px !important;
+    line-height: 1.5 !important;
+    font-weight: 400 !important;
+}
+
+/* BIGG BOSS / MOVIE REVIEWS */
+.bigboss-card h3,
+.movie-review-card h3 {
+    font-size: 15px !important;
+    line-height: 1.5 !important;
+    font-weight: 400 !important;
+}
+
+/* MAIN HERO HEADLINE - UNCHANGED */
+.top-main-column > .news-item .news-content p {
+    font-size: 22px !important;
+    font-weight: 800 !important;
+}
+
+/* =========================================
+   MOBILE FONT SIZES
+========================================= */
+
+@media (max-width: 700px) {
+
+    /* Section Headings */
+    .homepage-news-layout .section-heading,
+    .homepage-news-layout h3.section-heading,
+    .homepage-news-layout .section-head h2,
+    .homepage-news-layout .sidebar-title,
+    .homepage-news-layout .movie-reviews-heading span,
+    .homepage-news-layout .bigboss-heading span {
+        font-size: 19px !important;
+        line-height: 1.4 !important;
+        font-weight: 700 !important;
+    }
+
+    /* Sidebar Headlines */
+    #latestSidebar .news-item h2,
+    #latestSidebar .news-item h3,
+    #latestSidebar .news-item a,
+    #latestSidebar .news-content p,
+    #trendingSidebar .news-item h2,
+    #trendingSidebar .news-item h3,
+    #trendingSidebar .news-item a,
+    #trendingSidebar .news-content p,
+    #topNewsSidebar .news-item h2,
+    #topNewsSidebar .news-item h3,
+    #topNewsSidebar .news-item a,
+    #topNewsSidebar .news-content p {
+        font-size: 14px !important;
+        line-height: 1.5 !important;
+        font-weight: 400 !important;
+    }
+
+    /* Other News Headlines */
+    .entertainment-featured h3,
+    .entertainment-small-grid h3,
+    .entertainment-bottom-grid h3,
+    #businessSection h3,
+    #nationalSection h3,
+    #worldSection h3,
+    #telanganaSection h3,
+    .bigboss-card h3,
+    .movie-review-card h3 {
+        font-size: 13px !important;
+        line-height: 1.5 !important;
+        font-weight: 400 !important;
+    }
+
+    /* Hero Headline */
+    .top-main-column > .news-item .news-content p {
+        font-size: 20px !important;
+        font-weight: 800 !important;
+    }
+}
+
+/* =========================================
+   DARK MODE - HEADINGS
+========================================= */
+
+body.dark-mode .homepage-news-layout .section-heading,
+body.dark-mode .homepage-news-layout .section-heading a,
+body.dark-mode .homepage-news-layout .section-head h2,
+body.dark-mode .homepage-news-layout .sidebar-title,
+body.dark-mode .homepage-news-layout .movie-reviews-heading span,
+body.dark-mode .homepage-news-layout .bigboss-heading span {
+    color: #ffffff !important;
+}
+
+/* Dark Mode News Headlines */
+body.dark-mode .homepage-news-layout h3,
+body.dark-mode .homepage-news-layout h3 a,
+body.dark-mode .homepage-news-layout p,
+body.dark-mode .homepage-news-layout .news-item a {
+    color: #f1f1f1 !important;
+}
+
+/* More Articles */
+body.dark-mode .more-articles {
+    color: #66b3ff !important;
+}
