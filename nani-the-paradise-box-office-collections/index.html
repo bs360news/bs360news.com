@@ -100,23 +100,20 @@
 <style>
 
 /* =========================================
-   BS 360 NEWS - BELOW ARTICLE SECTIONS
-   8 ARTICLES: 2 BIG + 6 SMALL
+   BS 360 NEWS
+   8 CATEGORIES + 5 SIDEBARS
+   DESKTOP / TABLET / MOBILE
 ========================================= */
-
-/* ==========================================
-   BS 360 NEWS - FINAL RESPONSIVE LAYOUT
-   8 SECTIONS: 2 + 3 + 3
-   RIGHT SIDE: 5 SIDEBARS
-========================================== */
 
 .below-articles-main-layout,
 .below-articles-main-layout * {
     box-sizing: border-box;
 }
 
+/* MAIN TWO COLUMN LAYOUT */
+
 .below-articles-main-layout {
-    display: grid !important;
+    display: grid;
     grid-template-columns: minmax(0, 1fr) 300px;
     gap: 22px;
     width: 100%;
@@ -124,38 +121,26 @@
     align-items: start;
 }
 
-/* LEFT ARTICLE SECTIONS */
+/* LEFT SIDE - 8 CATEGORIES */
 
 .below-articles-content {
-    display: grid !important;
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-    gap: 24px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
     width: 100%;
     min-width: 0;
 }
 
-/* FIRST ROW - 2 SECTIONS */
-
-.below-articles-content > .below-news-section:nth-child(1),
-.below-articles-content > .below-news-section:nth-child(2) {
-    grid-column: span 3;
-}
-
-/* SECOND AND THIRD ROWS - 3 + 3 SECTIONS */
-
-.below-articles-content > .below-news-section:nth-child(n+3) {
-    grid-column: span 2;
-}
+/* EACH CATEGORY */
 
 .below-news-section {
     display: block;
     width: 100%;
     min-width: 0;
     margin: 0;
-    align-self: start;
 }
 
-/* SECTION HEADING */
+/* CATEGORY HEADING */
 
 .below-news-section > .section-heading {
     margin: 0 0 13px;
@@ -167,15 +152,32 @@
     border-bottom: 2px solid #d60000;
 }
 
-/* ARTICLE GRID */
+/* 8 ARTICLES GRID
+   FIRST ROW: 2 BIG ARTICLES
+   SECOND ROW: 3 ARTICLES
+   THIRD ROW: 3 ARTICLES
+*/
 
 .below-articles-content .below-news-grid {
-    display: grid !important;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 12px;
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 14px;
     width: 100%;
     min-width: 0;
     align-items: stretch;
+}
+
+/* FIRST TWO ARTICLES - BIG */
+
+.below-articles-content .below-news-grid > .news-item:nth-child(1),
+.below-articles-content .below-news-grid > .news-item:nth-child(2) {
+    grid-column: span 3;
+}
+
+/* REMAINING SIX ARTICLES - SMALL */
+
+.below-articles-content .below-news-grid > .news-item:nth-child(n+3) {
+    grid-column: span 2;
 }
 
 /* ARTICLE CARD */
@@ -214,7 +216,7 @@
     transform: scale(1.04);
 }
 
-/* ARTICLE TITLE */
+/* ARTICLE TITLE AREA */
 
 .below-articles-content .below-news-content {
     width: 100%;
@@ -241,20 +243,22 @@
     color: #d60000;
 }
 
-/* ==========================================
+/* =========================================
    RIGHT SIDE - FIVE SIDEBARS
-========================================== */
+========================================= */
 
 .below-articles-three-sidebars {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 23px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
     width: 100%;
     min-width: 0;
     position: sticky;
     top: 15px;
     align-self: start;
 }
+
+/* SIDEBAR BOX */
 
 .below-sidebar-box {
     display: block;
@@ -267,6 +271,8 @@
     border-radius: 7px;
 }
 
+/* SIDEBAR HEADING */
+
 .below-sidebar-box h4 {
     margin: 0 0 10px;
     padding: 0 0 9px;
@@ -277,7 +283,7 @@
     border-bottom: 2px solid #d60000;
 }
 
-/* SIDEBAR LIST */
+/* SIDEBAR ARTICLES */
 
 .below-sidebar-box > div {
     display: flex;
@@ -286,6 +292,8 @@
     width: 100%;
     min-width: 0;
 }
+
+/* SIDEBAR ITEM */
 
 .below-sidebar-box .news-item {
     display: flex;
@@ -349,28 +357,16 @@
 
 /* EMPTY MESSAGE */
 
-.no-articles {
+.below-articles-main-layout .no-articles {
     grid-column: 1 / -1;
     margin: 10px 0;
     font-size: 13px;
     color: var(--text-color, #555);
 }
 
-/* ==========================================
-   ARTICLE MAIN SIDEBAR
-========================================== */
-
-.article-sidebar {
-    min-width: 0;
-}
-
-.article-sidebar .sidebar-box {
-    margin-bottom: 20px;
-}
-
-/* ==========================================
+/* =========================================
    DARK MODE
-========================================== */
+========================================= */
 
 body.dark-mode .below-news-section > .section-heading,
 body.dark-mode .below-articles-content .news-item h3,
@@ -386,12 +382,13 @@ body.dark-mode .below-sidebar-box {
 }
 
 body.dark-mode .below-sidebar-box .news-item {
+    background: transparent;
     border-bottom-color: #444;
 }
 
-/* ==========================================
+/* =========================================
    TABLET
-========================================== */
+========================================= */
 
 @media (min-width: 651px) and (max-width: 1000px) {
 
@@ -401,7 +398,7 @@ body.dark-mode .below-sidebar-box .news-item {
     }
 
     .below-articles-content {
-        gap: 20px 10px;
+        gap: 25px;
     }
 
     .below-articles-content .below-news-grid {
@@ -435,56 +432,57 @@ body.dark-mode .below-sidebar-box .news-item {
     }
 }
 
-/* ==========================================
-   MOBILE - ARTICLES LEFT / SIDEBARS RIGHT
-========================================== */
+/* =========================================
+   MOBILE
+   IMAGE LEFT + TITLE RIGHT
+========================================= */
 
 @media (max-width: 650px) {
 
     .below-articles-main-layout {
-        display: grid !important;
-        grid-template-columns: minmax(0, 1fr) 122px !important;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 122px;
         gap: 9px;
         width: 100%;
+        margin: 22px 0;
         align-items: start;
     }
 
-    /* 8 SECTIONS STACK ON LEFT */
-
     .below-articles-content {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 20px;
-        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 22px;
         min-width: 0;
     }
 
-    .below-articles-content > .below-news-section {
-        display: block;
+    .below-news-section {
         width: 100%;
         min-width: 0;
     }
 
     .below-news-section > .section-heading {
-        margin-bottom: 9px;
+        margin-bottom: 8px;
         font-size: 16px;
         padding-bottom: 7px;
     }
 
-    /* ARTICLE LIST */
+    /* MOBILE ARTICLE LIST */
 
     .below-articles-content .below-news-grid {
-        display: flex !important;
-        flex-direction: column !important;
+        display: flex;
+        flex-direction: column;
         gap: 0;
         width: 100%;
     }
 
-    /* IMAGE LEFT - TITLE RIGHT */
+    /* MOBILE IMAGE LEFT + TITLE RIGHT */
 
-    .below-articles-content .news-item {
-        display: flex !important;
-        flex-direction: row !important;
+    .below-articles-content .below-news-grid > .news-item,
+    .below-articles-content .below-news-grid > .news-item:nth-child(1),
+    .below-articles-content .below-news-grid > .news-item:nth-child(2),
+    .below-articles-content .below-news-grid > .news-item:nth-child(n+3) {
+        display: flex;
+        flex-direction: row;
         align-items: center;
         gap: 8px;
         width: 100%;
@@ -497,14 +495,16 @@ body.dark-mode .below-sidebar-box .news-item {
     }
 
     .below-articles-content .news-item > a.below-news-image {
-        flex: 0 0 88px;
-        width: 88px;
+        display: block;
+        flex: 0 0 78px;
+        width: 78px;
+        overflow: hidden;
     }
 
     .below-articles-content .news-item img {
         display: block;
-        width: 88px;
-        height: 65px;
+        width: 78px;
+        height: 60px;
         aspect-ratio: auto;
         object-fit: cover;
         border-radius: 4px;
@@ -517,21 +517,20 @@ body.dark-mode .below-sidebar-box .news-item {
     }
 
     .below-articles-content .news-item h3 {
-        font-size: 12px;
+        font-size: 11px;
         line-height: 1.45;
         font-weight: 700;
     }
 
-    /* KEEP FIVE SIDEBARS ON RIGHT */
+    /* FIVE SIDEBARS ON RIGHT */
 
     .below-articles-three-sidebars {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 13px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
         width: 100%;
         min-width: 0;
-        position: static !important;
-        align-self: start;
+        position: static;
     }
 
     .below-sidebar-box {
@@ -541,11 +540,13 @@ body.dark-mode .below-sidebar-box .news-item {
     }
 
     .below-sidebar-box h4 {
-        font-size: 12px;
+        font-size: 11px;
         line-height: 1.4;
         margin-bottom: 5px;
         padding-bottom: 5px;
     }
+
+    /* SIDEBAR IMAGE ABOVE TITLE ON MOBILE */
 
     .below-sidebar-box .news-item {
         display: flex;
@@ -572,41 +573,45 @@ body.dark-mode .below-sidebar-box .news-item {
     }
 
     .below-sidebar-box .news-item h3 {
-        font-size: 10px;
+        font-size: 9px;
         line-height: 1.4;
         overflow-wrap: anywhere;
     }
 }
 
-/* SMALL MOBILE */
+/* VERY SMALL MOBILE */
 
 @media (max-width: 360px) {
 
     .below-articles-main-layout {
-        grid-template-columns: minmax(0, 1fr) 108px !important;
+        grid-template-columns: minmax(0, 1fr) 108px;
         gap: 7px;
     }
 
     .below-articles-content .news-item > a.below-news-image {
-        flex-basis: 76px;
-        width: 76px;
+        flex-basis: 70px;
+        width: 70px;
     }
 
     .below-articles-content .news-item img {
-        width: 76px;
-        height: 58px;
+        width: 70px;
+        height: 55px;
     }
 
     .below-articles-content .news-item h3 {
-        font-size: 11px;
+        font-size: 10px;
     }
 
     .below-sidebar-box {
         padding: 5px;
     }
 
+    .below-sidebar-box h4 {
+        font-size: 10px;
+    }
+
     .below-sidebar-box .news-item h3 {
-        font-size: 9px;
+        font-size: 8px;
     }
 }
 
@@ -869,67 +874,69 @@ BS 360 NEWSలో తాజా తెలుగు సినిమా వార�
 
 
 
+
+
+
+<!-- =========================================
+     BELOW ARTICLE SECTIONS
+     8 CATEGORIES + 5 RIGHT SIDE SIDEBARS
+========================================= -->
+
 <div class="below-articles-main-layout">
 
-    <!-- LEFT SIDE: 8 ARTICLE SECTIONS -->
+    <!-- LEFT SIDE: 8 ARTICLE CATEGORIES -->
     <div class="below-articles-content">
 
-        <!-- FIRST ROW: 2 LARGE ARTICLES -->
-        <div class="articles-row articles-row-two">
+        <!-- 1. LATEST NEWS -->
+        <section class="below-news-section">
+            <h3 class="section-heading">తాజా వార్తలు</h3>
+            <div class="below-news-grid" id="articleLatestGrid"></div>
+        </section>
 
-            <section class="below-news-section">
-                <h3 class="section-heading">తాజా వార్తలు</h3>
-                <div class="below-news-grid" id="articleLatestGrid"></div>
-            </section>
+        <!-- 2. ENTERTAINMENT -->
+        <section class="below-news-section">
+            <h3 class="section-heading">ఎంటర్టైన్మెంట్</h3>
+            <div class="below-news-grid" id="articleEntertainmentGrid"></div>
+        </section>
 
-            <section class="below-news-section">
-                <h3 class="section-heading">ఎంటర్టైన్మెంట్</h3>
-                <div class="below-news-grid" id="articleEntertainmentGrid"></div>
-            </section>
+        <!-- 3. SPORTS -->
+        <section class="below-news-section">
+            <h3 class="section-heading">స్పోర్ట్స్</h3>
+            <div class="below-news-grid" id="articleSportsGrid"></div>
+        </section>
 
-        </div>
+        <!-- 4. ANDHRA PRADESH -->
+        <section class="below-news-section">
+            <h3 class="section-heading">ఆంధ్రప్రదేశ్</h3>
+            <div class="below-news-grid" id="articleAPGrid"></div>
+        </section>
 
-        <!-- SECOND ROW: 3 ARTICLES -->
-        <div class="articles-row articles-row-three">
+        <!-- 5. TELANGANA -->
+        <section class="below-news-section">
+            <h3 class="section-heading">తెలంగాణ</h3>
+            <div class="below-news-grid" id="articleTelanganaGrid"></div>
+        </section>
 
-            <section class="below-news-section">
-                <h3 class="section-heading">స్పోర్ట్స్</h3>
-                <div class="below-news-grid" id="articleSportsGrid"></div>
-            </section>
+        <!-- 6. BUSINESS -->
+        <section class="below-news-section">
+            <h3 class="section-heading">బిజినెస్</h3>
+            <div class="below-news-grid" id="articleBusinessGrid"></div>
+        </section>
 
-            <section class="below-news-section">
-                <h3 class="section-heading">ఆంధ్రప్రదేశ్</h3>
-                <div class="below-news-grid" id="articleAPGrid"></div>
-            </section>
+        <!-- 7. NATIONAL -->
+        <section class="below-news-section">
+            <h3 class="section-heading">జాతీయ వార్తలు</h3>
+            <div class="below-news-grid" id="articleNationalGrid"></div>
+        </section>
 
-            <section class="below-news-section">
-                <h3 class="section-heading">తెలంగాణ</h3>
-                <div class="below-news-grid" id="articleTelanganaGrid"></div>
-            </section>
-
-        </div>
-
-        <!-- THIRD ROW: 3 ARTICLES -->
-        <div class="articles-row articles-row-three">
-
-            <section class="below-news-section">
-                <h3 class="section-heading">బిజినెస్</h3>
-                <div class="below-news-grid" id="articleBusinessGrid"></div>
-            </section>
-
-            <section class="below-news-section">
-                <h3 class="section-heading">జాతీయ వార్తలు</h3>
-                <div class="below-news-grid" id="articleNationalGrid"></div>
-            </section>
-
-            <section class="below-news-section">
-                <h3 class="section-heading">అంతర్జాతీయ వార్తలు</h3>
-                <div class="below-news-grid" id="articleInternationalGrid"></div>
-            </section>
-
-        </div>
+        <!-- 8. INTERNATIONAL -->
+        <section class="below-news-section">
+            <h3 class="section-heading">అంతర్జాతీయ వార్తలు</h3>
+            <div class="below-news-grid" id="articleInternationalGrid"></div>
+        </section>
 
     </div>
+
 
     <!-- RIGHT SIDE: FIVE SIDEBARS -->
     <aside class="below-articles-three-sidebars">
@@ -962,9 +969,6 @@ BS 360 NEWSలో తాజా తెలుగు సినిమా వార�
     </aside>
 
 </div>
-
-
-
 
 
 
@@ -1001,37 +1005,28 @@ BS 360 NEWSలో తాజా తెలుగు సినిమా వార�
 
 
 <script>
-
 /* =========================================
    BS 360 NEWS
-   COMPLETE ARTICLE PAGE LOADER
-   8 ARTICLES + NATIONAL + INTERNATIONAL
-   WITH LATEST NEWS SIDEbars
+   8 CATEGORY ARTICLE LOADER
+   5 SIDEBARS
 ========================================= */
-
-
-/* ==========================================
-   BS 360 NEWS - COMPLETE ARTICLE LOADER
-   8 ARTICLE SECTIONS + 5 SIDE BARS
-   DESKTOP + MOBILE RESPONSIVE
-========================================== */
 
 document.addEventListener("DOMContentLoaded", function () {
 
     const HOME_URL = "https://bs360news.com/";
 
-    /* ======================================
-       8 ARTICLE SECTIONS
-    ====================================== */
+    /* =====================================
+       8 ARTICLE CATEGORIES
+    ===================================== */
 
     const sections = [
 
         {
             target: "articleLatestGrid",
             sources: [
+                "latestNewsSource",
                 "latestGrid",
-                "latestSection",
-                "latestNewsSource"
+                "latestSection"
             ],
             limit: 8
         },
@@ -1039,9 +1034,10 @@ document.addEventListener("DOMContentLoaded", function () {
         {
             target: "articleEntertainmentGrid",
             sources: [
-                "entertainmentSection",
+                "entertainmentSource",
                 "cinemaGrid",
-                "entertainmentSource"
+                "moviesGrid",
+                "entertainmentSection"
             ],
             limit: 8
         },
@@ -1049,10 +1045,10 @@ document.addEventListener("DOMContentLoaded", function () {
         {
             target: "articleSportsGrid",
             sources: [
-                "sportsSection",
+                "sportsSource",
                 "sportsGrid",
                 "sportsNewsSection",
-                "sportsSource"
+                "sportsSection"
             ],
             limit: 8
         },
@@ -1060,9 +1056,9 @@ document.addEventListener("DOMContentLoaded", function () {
         {
             target: "articleAPGrid",
             sources: [
-                "aptsSection",
+                "aptsSource",
                 "aptsGrid",
-                "aptsSource"
+                "aptsSection"
             ],
             limit: 8
         },
@@ -1070,8 +1066,9 @@ document.addEventListener("DOMContentLoaded", function () {
         {
             target: "articleTelanganaGrid",
             sources: [
-                "telanganaSection",
-                "telanganaGrid"
+                "telanganaSource",
+                "telanganaGrid",
+                "telanganaSection"
             ],
             limit: 8
         },
@@ -1079,9 +1076,9 @@ document.addEventListener("DOMContentLoaded", function () {
         {
             target: "articleBusinessGrid",
             sources: [
-                "businessSection",
+                "businessSource",
                 "businessGrid",
-                "businessSource"
+                "businessSection"
             ],
             limit: 8
         },
@@ -1089,9 +1086,10 @@ document.addEventListener("DOMContentLoaded", function () {
         {
             target: "articleNationalGrid",
             sources: [
-                "nationalSection",
+                "nationalNewsSource",
+                "nationalSource",
                 "nationalGrid",
-                "nationalNewsSource"
+                "nationalSection"
             ],
             limit: 8
         },
@@ -1099,9 +1097,10 @@ document.addEventListener("DOMContentLoaded", function () {
         {
             target: "articleInternationalGrid",
             sources: [
-                "internationalSection",
-                "worldSection",
-                "internationalGrid"
+                "internationalNewsSource",
+                "internationalSource",
+                "internationalGrid",
+                "worldSection"
             ],
             limit: 8
         }
@@ -1109,18 +1108,18 @@ document.addEventListener("DOMContentLoaded", function () {
     ];
 
 
-    /* ======================================
+    /* =====================================
        FIVE RIGHT SIDE SIDEBARS
-    ====================================== */
+    ===================================== */
 
     const sidebarSections = [
 
         {
             target: "trendingSidebar",
             sources: [
-                "trendingSidebar",
+                "trendingSource",
                 "trendingGrid",
-                "trendingSource"
+                "trendingSidebar"
             ],
             limit: 5
         },
@@ -1128,9 +1127,9 @@ document.addEventListener("DOMContentLoaded", function () {
         {
             target: "latestSidebar",
             sources: [
-                "latestSidebar",
+                "latestNewsSource",
                 "latestGrid",
-                "latestNewsSource"
+                "latestSidebar"
             ],
             limit: 5
         },
@@ -1149,9 +1148,9 @@ document.addEventListener("DOMContentLoaded", function () {
         {
             target: "articleNationalSidebar",
             sources: [
+                "nationalNewsSource",
                 "nationalGrid",
-                "nationalSection",
-                "nationalNewsSource"
+                "nationalSection"
             ],
             limit: 5
         },
@@ -1159,8 +1158,8 @@ document.addEventListener("DOMContentLoaded", function () {
         {
             target: "articleInternationalSidebar",
             sources: [
+                "internationalNewsSource",
                 "internationalGrid",
-                "internationalSection",
                 "worldSection"
             ],
             limit: 5
@@ -1169,18 +1168,18 @@ document.addEventListener("DOMContentLoaded", function () {
     ];
 
 
-    /* ======================================
+    /* =====================================
        ARTICLE PAGE TOP SIDEBARS
-    ====================================== */
+    ===================================== */
 
     const topSidebarSections = [
 
         {
             target: "articleTrendingSidebar",
             sources: [
-                "trendingSidebar",
+                "trendingSource",
                 "trendingGrid",
-                "trendingSource"
+                "trendingSidebar"
             ],
             limit: 5
         },
@@ -1199,20 +1198,18 @@ document.addEventListener("DOMContentLoaded", function () {
     ];
 
 
-    /* ======================================
+    /* =====================================
        GET ELEMENT
-    ====================================== */
+    ===================================== */
 
     function getSource(doc, id) {
-
         return doc.getElementById(id);
-
     }
 
 
-    /* ======================================
-       CONVERT TO ABSOLUTE URL
-    ====================================== */
+    /* =====================================
+       CONVERT URL TO ABSOLUTE URL
+    ===================================== */
 
     function makeAbsoluteURL(value) {
 
@@ -1231,17 +1228,14 @@ document.addEventListener("DOMContentLoaded", function () {
             return url.href;
 
         } catch (error) {
-
             return "";
-
         }
-
     }
 
 
-    /* ======================================
-       GET ARTICLE INFORMATION
-    ====================================== */
+    /* =====================================
+       GET ARTICLE DATA
+    ===================================== */
 
     function getArticleData(card) {
 
@@ -1251,30 +1245,27 @@ document.addEventListener("DOMContentLoaded", function () {
             return null;
         }
 
-        const link = card.querySelector(
-            'a[href]:not([href="#"])'
-        );
+        /* Prefer the image's own article link */
 
-        let url = "";
+        let link = image.closest("a[href]");
 
-        if (link) {
-
-            url = link.getAttribute("href");
-
+        if (!link) {
+            link = card.querySelector("a[href]");
         }
 
-        if (!url) {
+        let url = link
+            ? link.getAttribute("href")
+            : "";
 
+        if (!url) {
             url = card.getAttribute("data-url") || "";
-
         }
 
-        /* ONCLICK URL */
+        /* Read onclick URL if available */
 
         if (!url) {
 
-            const onclick =
-                card.getAttribute("onclick") || "";
+            const onclick = card.getAttribute("onclick") || "";
 
             const match = onclick.match(
                 /location(?:\.href)?\s*=\s*['"]([^'"]+)['"]/
@@ -1283,13 +1274,12 @@ document.addEventListener("DOMContentLoaded", function () {
             if (match) {
                 url = match[1];
             }
-
         }
 
-        /* TITLE */
+        /* ARTICLE TITLE */
 
         const heading = card.querySelector(
-            "h1, h2, h3, h4, .post-title, .news-title, .article-title, .news-content p"
+            "h1, h2, h3, h4, .post-title, .news-title, .article-title"
         );
 
         let title = heading
@@ -1297,18 +1287,14 @@ document.addEventListener("DOMContentLoaded", function () {
             : "";
 
         if (!title && link) {
-
             title = link.textContent.trim();
-
         }
 
         if (!title) {
-
             title = image.alt || "";
-
         }
 
-        /* IMAGE */
+        /* IMAGE URL */
 
         const imageURL =
             image.getAttribute("data-src") ||
@@ -1318,7 +1304,6 @@ document.addEventListener("DOMContentLoaded", function () {
             "";
 
         const absoluteImage = makeAbsoluteURL(imageURL);
-
         const absoluteLink = makeAbsoluteURL(url);
 
         if (!absoluteLink || !absoluteImage || !title) {
@@ -1336,13 +1321,12 @@ document.addEventListener("DOMContentLoaded", function () {
             alt: image.alt || title
 
         };
-
     }
 
 
-    /* ======================================
-       READ ARTICLES
-    ====================================== */
+    /* =====================================
+       READ ARTICLES FROM SOURCE
+    ===================================== */
 
     function readArticles(source) {
 
@@ -1351,11 +1335,10 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         const articles = [];
-
         const seen = new Set();
 
         const candidates = source.querySelectorAll(
-            "article, .news-item, .news-card, .movie-review-card, .post, li"
+            ".news-item, .news-card, .movie-review-card, .post, article, li"
         );
 
         candidates.forEach(function (card) {
@@ -1377,81 +1360,74 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
 
-        /* FALLBACK IMAGE LINKS */
+        /* FALLBACK: DIRECT IMAGE LINKS */
 
         if (!articles.length) {
 
-            source.querySelectorAll("a[href]").forEach(
-                function (link) {
+            source.querySelectorAll("a[href]").forEach(function (link) {
 
-                    const image = link.querySelector("img");
+                const image = link.querySelector("img");
 
-                    if (!image) {
-                        return;
-                    }
-
-                    const heading = link.querySelector(
-                        "h1, h2, h3, h4"
-                    );
-
-                    const title = heading
-                        ? heading.textContent.trim()
-                        : (image.alt || link.textContent.trim());
-
-                    const url = makeAbsoluteURL(
-                        link.getAttribute("href")
-                    );
-
-                    const imageURL = makeAbsoluteURL(
-                        image.getAttribute("data-src") ||
-                        image.getAttribute("data-lazy-src") ||
-                        image.getAttribute("src")
-                    );
-
-                    if (!url || !imageURL || !title) {
-                        return;
-                    }
-
-                    if (seen.has(url)) {
-                        return;
-                    }
-
-                    seen.add(url);
-
-                    articles.push({
-
-                        title: title.replace(/\s+/g, " ").trim(),
-
-                        url: url,
-
-                        image: imageURL,
-
-                        alt: image.alt || title
-
-                    });
-
+                if (!image) {
+                    return;
                 }
-            );
 
+                const heading = link.querySelector(
+                    "h1, h2, h3, h4"
+                );
+
+                const title = heading
+                    ? heading.textContent.trim()
+                    : (image.alt || link.textContent.trim());
+
+                const url = makeAbsoluteURL(
+                    link.getAttribute("href")
+                );
+
+                const imageURL = makeAbsoluteURL(
+                    image.getAttribute("data-src") ||
+                    image.getAttribute("data-lazy-src") ||
+                    image.getAttribute("src")
+                );
+
+                if (!url || !imageURL || !title) {
+                    return;
+                }
+
+                if (seen.has(url)) {
+                    return;
+                }
+
+                seen.add(url);
+
+                articles.push({
+
+                    title: title.replace(/\s+/g, " ").trim(),
+
+                    url: url,
+
+                    image: imageURL,
+
+                    alt: image.alt || title
+
+                });
+
+            });
         }
 
         return articles;
-
     }
 
 
-    /* ======================================
-       FIND AVAILABLE SOURCE
-    ====================================== */
+    /* =====================================
+       FIND FIRST SOURCE WITH ARTICLES
+    ===================================== */
 
     function findArticles(homeDoc, sourceNames) {
 
         for (const sourceName of sourceNames) {
 
-            const source = getSource(
-                homeDoc,
-                sourceName
-            );
+            const source = getSource(homeDoc, sourceName);
 
             if (!source) {
                 continue;
@@ -1462,31 +1438,23 @@ document.addEventListener("DOMContentLoaded", function () {
             if (articles.length) {
 
                 return {
-
                     articles: articles,
-
                     source: sourceName
-
                 };
 
             }
-
         }
 
         return {
-
             articles: [],
-
             source: "Not found"
-
         };
-
     }
 
 
-    /* ======================================
+    /* =====================================
        CREATE ARTICLE CARD
-    ====================================== */
+    ===================================== */
 
     function createArticleCard(item) {
 
@@ -1499,22 +1467,14 @@ document.addEventListener("DOMContentLoaded", function () {
         const imageLink = document.createElement("a");
 
         imageLink.className = "below-news-image";
-
         imageLink.href = item.url;
-
-        imageLink.setAttribute(
-            "aria-label",
-            item.title
-        );
+        imageLink.setAttribute("aria-label", item.title);
 
         const image = document.createElement("img");
 
         image.src = item.image;
-
         image.alt = item.alt;
-
         image.loading = "lazy";
-
         image.decoding = "async";
 
         imageLink.appendChild(image);
@@ -1534,30 +1494,24 @@ document.addEventListener("DOMContentLoaded", function () {
         const titleLink = document.createElement("a");
 
         titleLink.href = item.url;
-
         titleLink.textContent = item.title;
 
         title.appendChild(titleLink);
-
         content.appendChild(title);
 
 
         card.append(
-
             imageLink,
-
             content
-
         );
 
         return card;
-
     }
 
 
-    /* ======================================
+    /* =====================================
        RENDER ARTICLES
-    ====================================== */
+    ===================================== */
 
     function renderArticles(target, articles, limit) {
 
@@ -1575,13 +1529,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
             message.className = "no-articles";
 
-            message.textContent =
-                "వార్తలు అందుబాటులో లేవు.";
+            message.textContent = "వార్తలు అందుబాటులో లేవు.";
 
             target.appendChild(message);
 
             return;
-
         }
 
         selected.forEach(function (item) {
@@ -1591,21 +1543,18 @@ document.addEventListener("DOMContentLoaded", function () {
             );
 
         });
-
     }
 
 
-    /* ======================================
-       LOAD ARTICLE SECTIONS
-    ====================================== */
+    /* =====================================
+       LOAD EIGHT MAIN CATEGORIES
+    ===================================== */
 
     function loadMainSections(homeDoc) {
 
         sections.forEach(function (config) {
 
-            const target = document.getElementById(
-                config.target
-            );
+            const target = document.getElementById(config.target);
 
             if (!target) {
                 return;
@@ -1623,30 +1572,27 @@ document.addEventListener("DOMContentLoaded", function () {
             );
 
             console.log(
-                "BS360 ARTICLE:",
+                "BS360 CATEGORY:",
                 config.target,
                 "SOURCE:",
                 result.source,
                 "COUNT:",
-                result.articles.length
+                Math.min(result.articles.length, config.limit)
             );
 
         });
-
     }
 
 
-    /* ======================================
-       LOAD FIVE SIDEBARS
-    ====================================== */
+    /* =====================================
+       LOAD SIDEBARS
+    ===================================== */
 
     function loadSidebars(homeDoc, configurations) {
 
         configurations.forEach(function (config) {
 
-            const target = document.getElementById(
-                config.target
-            );
+            const target = document.getElementById(config.target);
 
             if (!target) {
                 return;
@@ -1669,17 +1615,16 @@ document.addEventListener("DOMContentLoaded", function () {
                 "SOURCE:",
                 result.source,
                 "COUNT:",
-                result.articles.length
+                Math.min(result.articles.length, config.limit)
             );
 
         });
-
     }
 
 
-    /* ======================================
+    /* =====================================
        FETCH HOMEPAGE
-    ====================================== */
+    ===================================== */
 
     async function loadAllBelowSections() {
 
@@ -1696,8 +1641,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (!response.ok) {
 
                 throw new Error(
-                    "Homepage loading failed: " +
-                    response.status
+                    "Homepage loading failed: " + response.status
                 );
 
             }
@@ -1712,7 +1656,7 @@ document.addEventListener("DOMContentLoaded", function () {
             );
 
 
-            /* LOAD 8 ARTICLE SECTIONS */
+            /* LOAD 8 CATEGORIES */
 
             loadMainSections(homeDoc);
 
@@ -1734,7 +1678,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
             console.log(
-                "BS 360 NEWS: ALL 8 SECTIONS AND 5 SIDEBARS LOADED."
+                "BS 360 NEWS: 8 CATEGORIES AND 5 SIDEBARS LOADED."
             );
 
         } catch (error) {
@@ -1749,17 +1693,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    /* ======================================
+    /* =====================================
        START
-    ====================================== */
+    ===================================== */
 
     loadAllBelowSections();
 
 });
-
-
 </script>
-
   
 </body>
 </html>
