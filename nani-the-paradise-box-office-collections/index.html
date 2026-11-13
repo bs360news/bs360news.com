@@ -1032,6 +1032,92 @@ body.dark-mode .sidebar-news-item {
     overflow: visible !important;
 }
 
+/* =====================================
+   REMOVE ALL ARTICLE BACKGROUND BOXES
+   LAPTOP / TABLET / MOBILE
+===================================== */
+
+/* MAIN ARTICLES */
+
+.below-articles-content .news-item,
+.below-articles-content .below-news-grid .news-item,
+.below-articles-content article,
+.below-news-section .news-item,
+.below-news-section article {
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+/* REMOVE ARTICLE CARD BACKGROUND */
+
+.news-item,
+.news-card,
+.post,
+.article-card,
+.movie-review-card {
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+/* REMOVE SIDEBAR BOX BACKGROUND */
+
+.below-sidebar-box,
+.sidebar-box,
+.article-sidebar .sidebar-box {
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+/* SIDEBAR ARTICLES */
+
+.below-sidebar-box .news-item,
+.below-sidebar-box article,
+.article-sidebar .news-item,
+.article-sidebar article,
+.sidebar-news-item {
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+/* KEEP SIMPLE SEPARATOR ONLY */
+
+.below-articles-content .news-item,
+.below-sidebar-box .news-item,
+.article-sidebar .news-item,
+.sidebar-news-item {
+    border-bottom: 1px solid #e5e5e5 !important;
+}
+
+/* IMAGE BACKGROUND BOX REMOVE */
+
+.below-articles-content .news-item img,
+.below-sidebar-box .news-item img,
+.article-sidebar .news-item img,
+.sidebar-news-item img {
+    box-shadow: none !important;
+    border: none !important;
+}
+
+/* DARK MODE */
+
+body.dark-mode .below-articles-content .news-item,
+body.dark-mode .below-sidebar-box,
+body.dark-mode .below-sidebar-box .news-item,
+body.dark-mode .article-sidebar .news-item {
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
 </style>
 <!-- NEWSARTICLE STRUCTURED DATA -->
 
