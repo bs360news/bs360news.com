@@ -3502,6 +3502,53 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 });
 
+
+
+
+
+
+
+
+        <!-- మీ ఇతర JavaScript కోడ్‌లు -->
+
+  
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const main = document.querySelector(".article-main");
+        const sidebar = document.querySelector(".article-sidebar");
+
+        if (!main || !sidebar) return;
+
+        function matchSidebarHeight() {
+
+            if (window.innerWidth <= 768) {
+                sidebar.style.removeProperty("height");
+                sidebar.style.removeProperty("max-height");
+                sidebar.style.removeProperty("overflow");
+                return;
+            }
+
+            const articleHeight = Math.ceil(
+                main.getBoundingClientRect().height
+            );
+
+            sidebar.style.setProperty("height", articleHeight + "px", "important");
+            sidebar.style.setProperty("max-height", articleHeight + "px", "important");
+            sidebar.style.setProperty("overflow", "hidden", "important");
+        }
+
+        matchSidebarHeight();
+
+        if ("ResizeObserver" in window) {
+            const observer = new ResizeObserver(matchSidebarHeight);
+            observer.observe(main);
+        }
+
+        window.addEventListener("resize", matchSidebarHeight);
+        window.addEventListener("load", matchSidebarHeight);
+
+    });
+   
 </script>
   
 </body>
