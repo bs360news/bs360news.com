@@ -843,43 +843,9 @@ BS 360 NEWSలో తాజా తెలుగు సినిమా వార�
 </article>
 
 
-<!-- SIDEBAR -->
-
-  <aside class="article-sidebar">
-
-             <div class="sidebar-box">
-                <div class="sidebar-title">ట్రెండింగ్ వార్తలు</div>
-                <div id="articleTrendingSidebar">
-                  
-                </div>
-            </div>
-
-           
-
-            <div class="sidebar-box">
-                <div class="sidebar-title">టాప్ వార్తలు</div>
-                <div id="articleTopNewsSidebar">
-                   
-                </div>
-            </div>
-
-
-            
-
-        </aside>
-
-
-
-</div> <!-- ARTICLE LAYOUT END -->
-
-
-
-
-
-
 <!-- =========================================
      BELOW ARTICLE SECTIONS
-     8 CATEGORIES + 5 RIGHT SIDE SIDEBARS
+     8 CATEGORIES + 5 SIDEBARS
 ========================================= -->
 
 <div class="below-articles-main-layout">
@@ -887,49 +853,41 @@ BS 360 NEWSలో తాజా తెలుగు సినిమా వార�
     <!-- LEFT SIDE: 8 ARTICLE CATEGORIES -->
     <div class="below-articles-content">
 
-        <!-- 1. LATEST NEWS -->
         <section class="below-news-section">
             <h3 class="section-heading">తాజా వార్తలు</h3>
             <div class="below-news-grid" id="articleLatestGrid"></div>
         </section>
 
-        <!-- 2. ENTERTAINMENT -->
         <section class="below-news-section">
             <h3 class="section-heading">ఎంటర్టైన్మెంట్</h3>
             <div class="below-news-grid" id="articleEntertainmentGrid"></div>
         </section>
 
-        <!-- 3. SPORTS -->
         <section class="below-news-section">
             <h3 class="section-heading">స్పోర్ట్స్</h3>
             <div class="below-news-grid" id="articleSportsGrid"></div>
         </section>
 
-        <!-- 4. ANDHRA PRADESH -->
         <section class="below-news-section">
             <h3 class="section-heading">ఆంధ్రప్రదేశ్</h3>
             <div class="below-news-grid" id="articleAPGrid"></div>
         </section>
 
-        <!-- 5. TELANGANA -->
         <section class="below-news-section">
             <h3 class="section-heading">తెలంగాణ</h3>
             <div class="below-news-grid" id="articleTelanganaGrid"></div>
         </section>
 
-        <!-- 6. BUSINESS -->
         <section class="below-news-section">
             <h3 class="section-heading">బిజినెస్</h3>
             <div class="below-news-grid" id="articleBusinessGrid"></div>
         </section>
 
-        <!-- 7. NATIONAL -->
         <section class="below-news-section">
             <h3 class="section-heading">జాతీయ వార్తలు</h3>
             <div class="below-news-grid" id="articleNationalGrid"></div>
         </section>
 
-        <!-- 8. INTERNATIONAL -->
         <section class="below-news-section">
             <h3 class="section-heading">అంతర్జాతీయ వార్తలు</h3>
             <div class="below-news-grid" id="articleInternationalGrid"></div>
@@ -938,29 +896,34 @@ BS 360 NEWSలో తాజా తెలుగు సినిమా వార�
     </div>
 
 
-    <!-- RIGHT SIDE: FIVE SIDEBARS -->
+    <!-- RIGHT SIDE: ALL FIVE SIDEBARS -->
     <aside class="below-articles-three-sidebars">
 
+        <!-- 1. TRENDING -->
         <div class="below-sidebar-box">
             <h4>ట్రెండింగ్ వార్తలు</h4>
-            <div id="trendingSidebar"></div>
+            <div id="articleTrendingSidebar"></div>
         </div>
 
+        <!-- 2. TOP NEWS -->
+        <div class="below-sidebar-box">
+            <h4>టాప్ వార్తలు</h4>
+            <div id="articleTopNewsSidebar"></div>
+        </div>
+
+        <!-- 3. LATEST -->
         <div class="below-sidebar-box">
             <h4>తాజా వార్తలు</h4>
             <div id="latestSidebar"></div>
         </div>
 
-        <div class="below-sidebar-box">
-            <h4>ముఖ్యమైన వార్తలు</h4>
-            <div id="topNewsSidebar"></div>
-        </div>
-
+        <!-- 4. NATIONAL -->
         <div class="below-sidebar-box">
             <h4>జాతీయ వార్తలు</h4>
             <div id="articleNationalSidebar"></div>
         </div>
 
+        <!-- 5. INTERNATIONAL -->
         <div class="below-sidebar-box">
             <h4>అంతర్జాతీయ వార్తలు</h4>
             <div id="articleInternationalSidebar"></div>
@@ -1700,6 +1663,34 @@ document.addEventListener("DOMContentLoaded", function () {
     loadAllBelowSections();
 
 });
+
+    const sidebarSections = [
+    {
+        target: "articleTrendingSidebar",
+        sources: ["trendingSource", "trendingGrid", "trendingSidebar"],
+        limit: 5
+    },
+    {
+        target: "articleTopNewsSidebar",
+        sources: ["mostReadSource", "mostReadGrid", "topNewsSidebar", "latestGrid"],
+        limit: 5
+    },
+    {
+        target: "latestSidebar",
+        sources: ["latestNewsSource", "latestGrid", "latestSidebar"],
+        limit: 5
+    },
+    {
+        target: "articleNationalSidebar",
+        sources: ["nationalNewsSource", "nationalGrid", "nationalSection"],
+        limit: 5
+    },
+    {
+        target: "articleInternationalSidebar",
+        sources: ["internationalNewsSource", "internationalGrid", "worldSection"],
+        limit: 5
+    }
+];
 </script>
   
 </body>
