@@ -786,6 +786,239 @@ body.dark-mode .below-sidebar-box .news-item a {
     }
 }
 
+
+    
+/* =========================================
+   BS 360 NEWS - BELOW ARTICLES LAYOUT
+========================================= */
+
+/* MAIN LAYOUT */
+.below-articles-main-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 310px;
+    gap: 24px;
+    width: 100%;
+    align-items: start;
+}
+
+/* LEFT ARTICLES */
+.below-articles-content {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* ARTICLE ROWS */
+.articles-row {
+    display: grid;
+    gap: 18px;
+    width: 100%;
+    align-items: start;
+}
+
+.articles-row-two {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.articles-row-three {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+/* SECTION */
+.below-news-section {
+    min-width: 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+.below-news-section .section-heading {
+    font-size: 19px;
+    font-weight: 700;
+    margin: 0 0 14px;
+    padding-bottom: 9px;
+    border-bottom: 2px solid #e5e5e5;
+}
+
+/* ARTICLE GRID */
+.below-news-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 0;
+}
+
+/* ARTICLE CARDS */
+.below-news-grid .news-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+    width: 100%;
+    min-width: 0;
+    padding-bottom: 11px;
+    border-bottom: 1px solid #e9e9e9;
+    overflow: hidden;
+}
+
+/* IMAGE LEFT */
+.below-news-grid .news-item img {
+    width: 105px;
+    height: 75px;
+    flex: 0 0 105px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/* TITLE RIGHT */
+.below-news-grid .news-item h2,
+.below-news-grid .news-item h3,
+.below-news-grid .news-item a {
+    min-width: 0;
+    font-size: 14px;
+    line-height: 1.55;
+    font-weight: 600;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+}
+
+/* RIGHT SIDEBARS */
+.below-articles-three-sidebars {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    min-width: 0;
+}
+
+.below-sidebar-box {
+    width: 100%;
+    min-width: 0;
+    padding: 13px;
+    border: 1px solid #e6e6e6;
+    border-radius: 6px;
+    background: #fff;
+}
+
+.below-sidebar-box h4 {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 0 13px;
+    padding-bottom: 9px;
+    border-bottom: 2px solid #ddd;
+}
+
+/* TABLET */
+@media (max-width: 1000px) {
+
+    .below-articles-main-layout {
+        grid-template-columns: minmax(0, 1fr) 260px;
+        gap: 15px;
+    }
+
+    .articles-row-two {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .articles-row-three {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .below-news-grid .news-item img {
+        width: 85px;
+        height: 65px;
+        flex-basis: 85px;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 650px) {
+
+    .below-articles-main-layout {
+        display: flex;
+        flex-direction: column;
+        gap: 22px;
+        width: 100%;
+    }
+
+    .below-articles-content {
+        width: 100%;
+        gap: 20px;
+    }
+
+    .articles-row,
+    .articles-row-two,
+    .articles-row-three {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 18px;
+    }
+
+    .below-news-section {
+        width: 100%;
+    }
+
+    .below-news-section .section-heading {
+        font-size: 18px;
+        margin-bottom: 12px;
+    }
+
+    /* MOBILE IMAGE LEFT + TEXT RIGHT */
+    .below-news-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        width: 100%;
+    }
+
+    .below-news-grid .news-item {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: flex-start !important;
+        gap: 12px;
+        width: 100%;
+        padding: 10px 0;
+        margin: 0;
+        border-bottom: 1px solid #e5e5e5;
+    }
+
+    .below-news-grid .news-item img {
+        display: block;
+        width: 115px !important;
+        height: 78px !important;
+        min-width: 115px;
+        flex: 0 0 115px;
+        object-fit: cover;
+        border-radius: 5px;
+    }
+
+    .below-news-grid .news-item h2,
+    .below-news-grid .news-item h3,
+    .below-news-grid .news-item a {
+        font-size: 14px !important;
+        line-height: 1.5;
+        font-weight: 600;
+        margin: 0;
+    }
+
+    /* SIDEBARS BELOW ARTICLES */
+    .below-articles-three-sidebars {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 16px;
+    }
+
+    .below-sidebar-box {
+        width: 100%;
+        padding: 12px;
+    }
+
+    .below-sidebar-box h4 {
+        font-size: 17px;
+    }
+}
+
 </style>
 <!-- NEWSARTICLE STRUCTURED DATA -->
 
@@ -1045,48 +1278,67 @@ BS 360 NEWSలో తాజా తెలుగు సినిమా వార�
 
 
 
-
-<!-- ======================================
-     BS 360 NEWS - BELOW ARTICLE SECTIONS
-====================================== -->
-
 <div class="below-articles-main-layout">
 
-    <!-- LEFT SIDE: ARTICLES -->
+    <!-- LEFT SIDE: 8 ARTICLE SECTIONS -->
     <div class="below-articles-content">
 
-        <section class="below-news-section">
-            <h3 class="section-heading">తాజా వార్తలు</h3>
-            <div class="below-news-grid" id="articleLatestGrid"></div>
-        </section>
+        <!-- FIRST ROW: 2 LARGE ARTICLES -->
+        <div class="articles-row articles-row-two">
 
-        <section class="below-news-section">
-            <h3 class="section-heading">ఎంటర్టైన్మెంట్</h3>
-            <div class="below-news-grid" id="articleEntertainmentGrid"></div>
-        </section>
+            <section class="below-news-section">
+                <h3 class="section-heading">తాజా వార్తలు</h3>
+                <div class="below-news-grid" id="articleLatestGrid"></div>
+            </section>
 
-        <section class="below-news-section">
-            <h3 class="section-heading">స్పోర్ట్స్</h3>
-            <div class="below-news-grid" id="articleSportsGrid"></div>
-        </section>
+            <section class="below-news-section">
+                <h3 class="section-heading">ఎంటర్టైన్మెంట్</h3>
+                <div class="below-news-grid" id="articleEntertainmentGrid"></div>
+            </section>
 
-        <section class="below-news-section">
-            <h3 class="section-heading">ఆంధ్రప్రదేశ్</h3>
-            <div class="below-news-grid" id="articleAPGrid"></div>
-        </section>
+        </div>
 
-        <section class="below-news-section">
-            <h3 class="section-heading">తెలంగాణ</h3>
-            <div class="below-news-grid" id="articleTelanganaGrid"></div>
-        </section>
+        <!-- SECOND ROW: 3 ARTICLES -->
+        <div class="articles-row articles-row-three">
 
-        <section class="below-news-section">
-            <h3 class="section-heading">బిజినెస్</h3>
-            <div class="below-news-grid" id="articleBusinessGrid"></div>
-        </section>
+            <section class="below-news-section">
+                <h3 class="section-heading">స్పోర్ట్స్</h3>
+                <div class="below-news-grid" id="articleSportsGrid"></div>
+            </section>
+
+            <section class="below-news-section">
+                <h3 class="section-heading">ఆంధ్రప్రదేశ్</h3>
+                <div class="below-news-grid" id="articleAPGrid"></div>
+            </section>
+
+            <section class="below-news-section">
+                <h3 class="section-heading">తెలంగాణ</h3>
+                <div class="below-news-grid" id="articleTelanganaGrid"></div>
+            </section>
+
+        </div>
+
+        <!-- THIRD ROW: 3 ARTICLES -->
+        <div class="articles-row articles-row-three">
+
+            <section class="below-news-section">
+                <h3 class="section-heading">బిజినెస్</h3>
+                <div class="below-news-grid" id="articleBusinessGrid"></div>
+            </section>
+
+            <section class="below-news-section">
+                <h3 class="section-heading">జాతీయ వార్తలు</h3>
+                <div class="below-news-grid" id="articleNationalGrid"></div>
+            </section>
+
+            <section class="below-news-section">
+                <h3 class="section-heading">అంతర్జాతీయ వార్తలు</h3>
+                <div class="below-news-grid" id="articleInternationalGrid"></div>
+            </section>
+
+        </div>
 
     </div>
-
 
     <!-- RIGHT SIDE: FIVE SIDEBARS -->
     <aside class="below-articles-three-sidebars">
@@ -1119,6 +1371,7 @@ BS 360 NEWSలో తాజా తెలుగు సినిమా వార�
     </aside>
 
 </div>
+
 
 
 
