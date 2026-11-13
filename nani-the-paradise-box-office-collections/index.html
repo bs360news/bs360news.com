@@ -1634,6 +1634,124 @@ body.dark-mode .article-sidebar .news-item {
     }
 }
 
+
+    /* TOP NEWS SIDEBAR */
+
+.below-sidebar-box {
+    width: 100%;
+    margin-bottom: 22px;
+    padding: 14px;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+.below-sidebar-box h4 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 0 14px;
+    padding: 0 0 10px;
+    font-size: 19px;
+    font-weight: 700;
+    color: #222;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+/* Top news items */
+
+#TopNewsSidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+#TopNewsSidebar .news-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #eee;
+}
+
+#TopNewsSidebar .news-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+#TopNewsSidebar img {
+    width: 90px;
+    height: 65px;
+    object-fit: cover;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+#TopNewsSidebar a {
+    color: #222;
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+#TopNewsSidebar a:hover {
+    color: #d71920;
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+    .below-sidebar-box h4 {
+        font-size: 17px;
+    }
+
+    #TopNewsSidebar img {
+        width: 85px;
+        height: 60px;
+    }
+
+    #TopNewsSidebar a {
+        font-size: 13px;
+    }
+}
+    /* MAIN ARTICLES + SIDEBAR HEIGHT ALIGNMENT */
+
+.below-articles-main-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    align-items: stretch;
+    gap: 20px;
+}
+
+.below-articles-main,
+.below-articles-three-sidebars {
+    min-width: 0;
+    height: 100%;
+}
+
+.below-articles-three-sidebars {
+    display: flex;
+    flex-direction: column;
+    align-self: stretch;
+}
+
+.below-sidebar-box:last-child {
+    margin-bottom: 0;
+}
+
+/* TABLET & MOBILE */
+@media (max-width: 768px) {
+    .below-articles-main-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .below-articles-three-sidebars {
+        height: auto;
+    }
+}
+
 </style>
 <!-- NEWSARTICLE STRUCTURED DATA -->
 
@@ -2011,7 +2129,11 @@ BS 360 NEWSలో తాజా తెలుగు సినిమా వార�
     <div id="articleInternationalSidebar"></div>
 </div>
         
-
+<!-- TOP NEWS -->
+<div class="below-sidebar-box">
+    <h4>టాప్ వార్తలు</h4>
+    <div id="TopNewsSidebar"></div>
+</div>
     </aside>
 
 </div>
