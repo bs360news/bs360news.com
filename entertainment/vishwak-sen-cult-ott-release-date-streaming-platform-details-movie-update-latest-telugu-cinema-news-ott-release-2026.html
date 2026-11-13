@@ -1559,18 +1559,7 @@ body.dark-mode .article-sidebar .news-item {
         min-width: 0;
     }
 
-    /* RIGHT SIDEBAR ONLY */
-    .article-sidebar {
-        position: sticky;
-        top: 15px;
-        align-self: start;
-        height: fit-content;
-        max-height: calc(100vh - 30px);
-        overflow-y: auto;
-        overflow-x: hidden;
-        overscroll-behavior: contain;
-    }
-}
+
 
 /* MOBILE */
 @media (max-width: 899px) {
@@ -1899,6 +1888,68 @@ body.dark-mode .article-sidebar .news-item {
         overflow: visible !important;
     }
 }
+    
+/* =========================================
+   ARTICLE SIDEBAR - CONTENT HEIGHT MATCH
+   NORMAL PAGE SCROLL - NO STICKY
+========================================= */
+
+.article-layout {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: 25px;
+    align-items: stretch !important;
+    overflow: hidden !important;
+}
+
+.article-main {
+    min-width: 0;
+    height: auto !important;
+}
+
+.article-content {
+    min-width: 0;
+    height: auto !important;
+}
+
+.article-sidebar {
+    position: static !important;
+    top: auto !important;
+    align-self: stretch !important;
+
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+
+    overflow: hidden !important;
+    overflow-y: hidden !important;
+    overflow-x: hidden !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+/* Sidebar boxes */
+.article-sidebar .sidebar-box {
+    flex-shrink: 0;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .article-layout {
+        display: flex !important;
+        flex-direction: column !important;
+        overflow: visible !important;
+    }
+
+    .article-sidebar {
+        position: static !important;
+        height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
+    }
+}
+
 </style>
 <!-- NEWSARTICLE STRUCTURED DATA -->
 
