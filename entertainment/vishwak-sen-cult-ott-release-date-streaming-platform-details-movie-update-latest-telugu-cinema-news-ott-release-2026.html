@@ -1805,6 +1805,43 @@ body.dark-mode .article-sidebar .news-item {
         font-size: 13px;
     }
 }
+    /* =================================
+   CONTENT & SIDEBAR HEIGHT FIX
+================================= */
+
+/* Main layout rows */
+.top-content-layout,
+.sports-apts-trending-layout,
+.business-world-row {
+    align-items: start !important;
+}
+
+/* Sidebar height should follow its content */
+.latest-news-column,
+.trending-news-column,
+.top-side-column,
+.world-news-side {
+    height: fit-content !important;
+    min-height: 0 !important;
+    align-self: start !important;
+    position: relative;
+}
+
+/* Sidebar article list */
+.top-side-articles,
+.trending-news-list,
+.world-side-articles {
+    height: auto !important;
+    min-height: 0 !important;
+}
+
+/* Remove unwanted fixed heights */
+.latest-news-column,
+.trending-news-column,
+.top-side-column,
+.world-news-side {
+    max-height: none !important;
+}
 </style>
 <!-- NEWSARTICLE STRUCTURED DATA -->
 
