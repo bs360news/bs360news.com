@@ -376,6 +376,66 @@ body.dark-mode .news-item,
 body.dark-mode .sidebar-news-item {
     border-bottom-color: #333333 !important;
 }
+
+    /* =========================================
+   LAPTOP & MOBILE SIDEBAR STYLING
+   LEFT IMAGE (120x80) | RIGHT TEXT
+========================================= */
+.article-sidebar .news-item,
+.below-articles-three-sidebars .news-item,
+.below-sidebar-box .news-item,
+.sidebar-news-item,
+#articleTopNewsSidebar .news-item {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 12px !important;
+    width: 100% !important;
+    padding: 10px 0 !important;
+    border-bottom: 1px solid #e5e5e5 !important;
+    background: transparent !important;
+}
+
+/* సైడ్‌బార్ ఇమేజ్ సైజ్ (120 x 80) */
+.article-sidebar .news-item img,
+.below-articles-three-sidebars .news-item img,
+.below-sidebar-box .news-item img,
+.sidebar-news-item img,
+#articleTopNewsSidebar img {
+    width: 120px !important;
+    min-width: 120px !important;
+    max-width: 120px !important;
+    height: 80px !important;
+    min-height: 80px !important;
+    max-height: 80px !important;
+    object-fit: cover !important;
+    border-radius: 6px !important;
+    flex-shrink: 0 !important;
+}
+
+/* సైడ్‌బార్ టెక్స్ట్ అమరిక */
+.article-sidebar .news-item .below-news-content,
+.below-articles-three-sidebars .news-item .below-news-content,
+.sidebar-news-item > a:last-child,
+#articleTopNewsSidebar .news-item > a:last-child {
+    flex: 1 1 auto !important;
+    width: auto !important;
+    min-width: 0 !important;
+    padding: 0 !important;
+}
+
+/* సైడ్‌బార్ హెడ్డింగ్స్ డార్క్ & బోల్డ్ */
+.article-sidebar .news-item h3,
+.below-articles-three-sidebars .news-item h3,
+.below-sidebar-box .news-item h3,
+.sidebar-news-item h4,
+#articleTopNewsSidebar h3 {
+    margin: 0 !important;
+    font-size: 14px !important;
+    line-height: 1.4 !important;
+    font-weight: 700 !important;
+    color: #111111 !important;
+}
 </style>
 
 <!-- NEWSARTICLE STRUCTURED DATA -->
