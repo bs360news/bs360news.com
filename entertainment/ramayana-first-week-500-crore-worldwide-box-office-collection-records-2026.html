@@ -819,6 +819,61 @@ body.dark-mode .article-main .article-content p {
         z-index: 10;
     }
 }
+
+    /* =========================================
+   TOP NEWS SIDEBAR & SIDEBAR ITEMS ALIGNMENT FIX
+========================================= */
+#TopNewsSidebar .news-item,
+#articleTopNewsSidebar .news-item,
+.below-sidebar-box .news-item,
+.sidebar-news-item {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important; /* ఇమేజ్ మరియు టెక్స్ట్ నిలువుగా మధ్యలో సరిగ్గా సమానంగా రావడానికి */
+    gap: 12px !important;
+    width: 100% !important;
+    padding: 10px 0 !important;
+}
+
+/* ఇమేజ్ సైజ్ మరియు పొజిషన్ ఖచ్చితంగా ఫిక్స్ చేయడానికి */
+#TopNewsSidebar img,
+#articleTopNewsSidebar img,
+.below-sidebar-box img,
+.sidebar-news-item img {
+    width: 120px !important;
+    min-width: 120px !important;
+    max-width: 120px !important;
+    height: 80px !important;
+    min-height: 80px !important;
+    max-height: 80px !important;
+    object-fit: cover !important;
+    border-radius: 6px !important;
+    flex-shrink: 0 !important;
+    margin: 0 !important;
+}
+
+/* టెక్స్ట్ సెక్షన్ ఎక్కడా కదల కుండా సరిగ్గా అమరడానికి */
+#TopNewsSidebar a:last-child,
+#articleTopNewsSidebar a:last-child,
+.below-sidebar-box .news-item > div,
+.below-sidebar-box .news-item > a:last-child {
+    flex: 1 1 auto !important;
+    width: auto !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+#TopNewsSidebar h3,
+#articleTopNewsSidebar h3,
+.below-sidebar-box .news-item h3,
+.below-sidebar-box .news-item h4 {
+    margin: 0 !important;
+    font-size: 14px !important;
+    line-height: 1.4 !important;
+    font-weight: 700 !important;
+    color: #333333 !important;
+}
 </style>
 
 <!-- NEWSARTICLE STRUCTURED DATA -->
