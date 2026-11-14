@@ -2278,6 +2278,74 @@ body.dark-mode .article-sidebar .news-item {
     }
 
 }
+
+    /* BELOW ARTICLES - HEADING AND MORE LINK SIDE BY SIDE */
+
+.below-articles-main-layout .below-news-section .section-heading-row {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    flex-wrap: nowrap !important;
+    width: 100% !important;
+    gap: 8px !important;
+    margin-bottom: 12px !important;
+}
+
+.below-articles-main-layout .below-news-section .section-heading {
+    display: block !important;
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    width: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 19px !important;
+    line-height: 1.4 !important;
+    font-weight: 800 !important;
+    color: #0878e8 !important;
+    border: none !important;
+}
+
+.below-articles-main-layout .below-news-section .more-link {
+    display: inline-flex !important;
+    flex: 0 0 auto !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    color: #0878e8 !important;
+    white-space: nowrap !important;
+    text-decoration: none !important;
+}
+
+.below-articles-main-layout .below-news-section .more-link:hover {
+    color: #0056b3 !important;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+    .below-articles-main-layout .below-news-section .section-heading-row {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        flex-wrap: nowrap !important;
+        gap: 5px !important;
+    }
+
+    .below-articles-main-layout .below-news-section .section-heading {
+        font-size: 17px !important;
+        line-height: 1.4 !important;
+    }
+
+    .below-articles-main-layout .below-news-section .more-link {
+        font-size: 12px !important;
+    }
+}
 </style>
 <!-- NEWSARTICLE STRUCTURED DATA -->
 
