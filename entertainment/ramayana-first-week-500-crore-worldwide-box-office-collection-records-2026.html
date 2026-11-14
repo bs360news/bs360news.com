@@ -781,6 +781,26 @@ body.dark-mode .article-main .article-content p {
     justify-content: space-between;
     align-items: center;
 }
+
+    /* 1. ఆర్టికల్ పారాగ్రాఫ్స్ మధ్య గ్యాప్ తగ్గించడానికి */
+.article-content p {
+    margin-top: 0 !important;
+    margin-bottom: 12px !important; /* అవసరమైతే 10px లేదా 12px పెట్టుకోండి */
+    line-height: 1.6 !important;
+}
+
+/* 2. మెయిన్ కంటెంట్ బాక్సులు/సెక్షన్ల మధ్య గ్యాప్ తగ్గించడానికి */
+.below-articles-content,
+.article-content {
+    gap: 15px !important; /* ఇక్కడ 25px ఉండేదాన్ని 15px కి తగ్గించండి */
+}
+
+/* 3. హెడ్డింగ్స్ (h2, h3, h4) కింద ఉండే స్పేస్ తగ్గించడానికి */
+.article-content h3, 
+.article-content h2 {
+    margin-top: 15px !important;
+    margin-bottom: 8px !important;
+}
 </style>
 
 <!-- NEWSARTICLE STRUCTURED DATA -->
