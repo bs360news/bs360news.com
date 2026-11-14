@@ -758,6 +758,23 @@ body.dark-mode .sidebar-news-item {
         height: 240px !important; /* మొదట ఉండే 2 పెద్ద ఆర్టికల్స్ ఇమేజ్ హైట్ 240px */
     }
 }
+
+    /* =========================================
+   ARTICLE TEXT COLOR - LIGHTER SHADE FIX
+========================================= */
+
+/* ఆర్టికల్ లోపల ఉండే పారాగ్రాఫ్ టెక్స్ట్ కొంచెం లైట్‌గా (#444444 లేదా #555555) ఉండేలా */
+.article-main .article-content p {
+    color: #444444 !important; /* అవసరమైతే #555555 కూడా పెట్టుకోవచ్చు */
+    font-size: 16px;
+    line-height: 1.7;
+    font-weight: 400 !important;
+}
+
+/* డార్క్ మోడ్ (Dark Mode) ఆన్ చేసినప్పుడు ఆర్టికల్ టెక్స్ట్ లైట్ వైట్/గ్రే కలర్ లో కనిపించడానికి */
+body.dark-mode .article-main .article-content p {
+    color: #cccccc !important;
+}
 </style>
 
 <!-- NEWSARTICLE STRUCTURED DATA -->
