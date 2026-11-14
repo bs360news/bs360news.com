@@ -98,2122 +98,286 @@
 >
 
 <style>
-
-
 /* =========================================
-   BS 360 NEWS - BELOW ARTICLE LAYOUT
-   LAPTOP / TABLET / MOBILE
-   LAPTOP + TABLET: ORIGINAL LAYOUT
-   MOBILE: NEW 120 x 80 IMAGE LEFT LAYOUT
+   BS 360 NEWS - BASE & LAYOUT RESET
 ========================================= */
-
-.below-articles-main-layout,
-.below-articles-main-layout *,
-.article-layout,
-.article-layout *,
-.article-sidebar,
-.article-sidebar * {
+*, *::before, *::after {
     box-sizing: border-box;
 }
 
-/* =========================================
-   MAIN LAYOUT - LAPTOP
-========================================= */
+body {
+    margin: 0;
+    padding: 0;
+    color: #222222;
+    background-color: #ffffff;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
 
-.below-articles-main-layout {
+/* =========================================
+   MAIN LAYOUT (LAPTOP & DESKTOP > 900px)
+========================================= */
+.below-articles-main-layout,
+.article-layout {
     display: grid;
     grid-template-columns: minmax(0, 1fr) 300px;
     gap: 22px;
     width: 100%;
-    margin: 35px 0;
+    margin: 20px 0;
     align-items: start;
-    overflow: visible !important;
 }
 
-.below-articles-content {
+.below-articles-content,
+.article-content {
+    width: 100%;
+    min-width: 0;
     display: flex;
     flex-direction: column;
-    gap: 30px;
-    width: 100%;
-    min-width: 0;
-}
-
-.below-news-section {
-    width: 100%;
-    min-width: 0;
+    gap: 25px;
 }
 
 /* =========================================
-   SECTION HEADINGS
+   HEADINGS (DARK & BOLD)
 ========================================= */
-
+.section-heading,
 .below-news-section > .section-heading,
 .below-sidebar-box h4,
 .sidebar-title {
-    color: var(--text-color, #222);
-    font-weight: 800;
-    border: none !important;
-    text-decoration: none !important;
-    box-shadow: none !important;
-}
-
-.below-news-section > .section-heading {
-    margin: 0 0 13px;
-    padding: 0 0 5px;
+    color: #111111 !important;
+    font-weight: 800 !important;
     font-size: 20px;
     line-height: 1.4;
+    margin: 0 0 15px 0;
+    padding: 0;
+    border: none !important;
+}
+
+.section-heading-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 12px;
+}
+
+.section-heading-row .more-link {
+    color: #0878d1;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
 }
 
 /* =========================================
-   LAPTOP CATEGORY GRID
+   DESKTOP GRID (LAPTOP CARDS)
 ========================================= */
-
-.below-articles-content .below-news-grid {
+.below-news-grid {
     display: grid;
     grid-template-columns: repeat(6, minmax(0, 1fr));
-    gap: 14px;
+    gap: 16px;
     width: 100%;
-    min-width: 0;
 }
 
-/* FIRST TWO BIG CARDS */
-
-.below-articles-content .below-news-grid > .news-item:nth-child(1),
-.below-articles-content .below-news-grid > .news-item:nth-child(2) {
+.below-news-grid > .news-item:nth-child(1),
+.below-news-grid > .news-item:nth-child(2) {
     grid-column: span 3;
 }
 
-/* REMAINING CARDS */
-
-.below-articles-content .below-news-grid > .news-item:nth-child(n+3) {
+.below-news-grid > .news-item:nth-child(n+3) {
     grid-column: span 2;
 }
 
-/* =========================================
-   LAPTOP MAIN ARTICLE CARDS
-========================================= */
-
-.below-articles-content .news-item {
+.news-item {
     display: flex;
     flex-direction: column;
     width: 100%;
     min-width: 0;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    border: 1px solid var(--card-border, #ddd);
-    border-radius: 7px;
-    background: var(--card-bg, #fff);
+    background: #ffffff;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 12px;
 }
 
-/* MAIN ARTICLE IMAGE */
-
-.below-articles-content .below-news-image {
+.below-news-image {
     display: block;
     width: 100%;
     overflow: hidden;
+    border-radius: 6px;
 }
 
-.below-articles-content .below-news-image img {
+.below-news-image img {
     display: block;
     width: 100%;
     height: auto;
     aspect-ratio: 16 / 9;
     object-fit: cover;
-    transition: transform .3s ease;
 }
 
-.below-articles-content .below-news-image:hover img {
-    transform: scale(1.04);
-}
-
-/* MAIN ARTICLE TEXT */
-
-.below-articles-content .below-news-content {
+.below-news-content {
     width: 100%;
     min-width: 0;
-    padding: 9px;
+    padding-top: 8px;
 }
 
-.below-articles-content .news-item h3 {
+.news-item h3,
+.news-item h4 {
     margin: 0;
-    font-size: 14px;
+    font-size: 15px;
     line-height: 1.5;
-    font-weight: 700;
-    color: var(--text-color, #222);
+    font-weight: 700 !important;
+    color: #111111 !important;
+    word-break: break-word;
     overflow-wrap: anywhere;
 }
 
-.below-articles-content .news-item h3 a {
-    color: inherit;
+.news-item h3 a,
+.news-item h4 a {
+    color: #111111 !important;
     text-decoration: none;
 }
 
-.below-articles-content .news-item h3 a:hover {
-    color: #d60000;
+.news-item h3 a:hover,
+.news-item h4 a:hover {
+    color: #d60000 !important;
 }
 
 /* =========================================
-   RIGHT SIDEBARS
+   SIDEBAR STYLING
 ========================================= */
-
-.below-articles-three-sidebars,
-.article-sidebar {
+.article-sidebar,
+.below-articles-three-sidebars {
     display: flex;
     flex-direction: column;
-    gap: 22px;
+    gap: 20px;
     width: 100%;
-    min-width: 0;
-    position: static !important;
-    top: auto !important;
-    align-self: stretch;
-    height: auto !important;
-    max-height: none !important;
-    overflow: visible !important;
 }
 
-/* SIDEBAR BOX */
-
-.below-sidebar-box,
-.sidebar-box {
-    display: block;
-    width: 100%;
-    min-width: 0;
-    padding: 10px !important;
-    background: transparent !important;
-    border: none !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-}
-
-/* SIDEBAR HEADING */
-
-.below-sidebar-box h4,
-.sidebar-title {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
-    width: 100%;
-    margin: 0 0 10px;
-    padding: 0 0 5px;
-    font-size: 18px;
-    line-height: 1.4;
-    border-bottom: none !important;
-}
-
-/* SIDEBAR LIST */
-
-.below-sidebar-box > div,
-.sidebar-box > div:not(.sidebar-title) {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    min-width: 0;
-}
-
-/* =========================================
-   SIDEBAR ARTICLES
-   LAPTOP IMAGE LEFT - TEXT RIGHT
-========================================= */
-
-.below-sidebar-box .news-item,
-.below-sidebar-box article,
-.article-sidebar .news-item,
-.article-sidebar article,
-.sidebar-news-item {
+.sidebar-news-item,
+.below-sidebar-box .news-item {
     display: flex !important;
     flex-direction: row !important;
     align-items: center !important;
-    gap: 10px !important;
-    width: 100% !important;
-    min-width: 0 !important;
-    margin: 0 !important;
-    padding: 9px 0 !important;
-    background: transparent !important;
-    border: none !important;
+    gap: 12px !important;
+    padding: 10px 0 !important;
     border-bottom: 1px solid #e5e5e5 !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
 }
 
-/* SIDEBAR IMAGE LINKS */
-
-.below-sidebar-box .news-item > a.below-news-image,
-.below-sidebar-box article > a.below-news-image,
-.article-sidebar .news-item > a.below-news-image,
-.article-sidebar article > a.below-news-image,
-.sidebar-news-item > a {
-    display: block !important;
-    flex: 0 0 120px !important;
+.sidebar-news-item img,
+.below-sidebar-box img {
     width: 120px !important;
     min-width: 120px !important;
-    max-width: 120px !important;
-    overflow: hidden;
-}
-
-/* SIDEBAR IMAGES - 120 x 80 */
-
-.below-sidebar-box .news-item img,
-.below-sidebar-box article img,
-.article-sidebar .news-item img,
-.article-sidebar article img,
-.sidebar-news-item img {
-    display: block !important;
-    width: 120px !important;
-    min-width: 120px !important;
-    max-width: 120px !important;
     height: 80px !important;
-    min-height: 80px !important;
-    max-height: 80px !important;
-    aspect-ratio: 3 / 2 !important;
     object-fit: cover !important;
-    border-radius: 4px !important;
+    border-radius: 6px !important;
     flex-shrink: 0 !important;
 }
 
-/* SIDEBAR TEXT */
+/* =========================================
+   MOBILE RESPONSIVE LAYOUT (<= 899px)
+   - Left Image (120x80) & Right Text
+   - Strong Dark Headings
+========================================= */
+@media (max-width: 899px) {
 
-.below-sidebar-box .below-news-content,
-.article-sidebar .below-news-content,
-.sidebar-news-item > a:last-child {
-    flex: 1 1 0 !important;
-    width: auto !important;
-    min-width: 0 !important;
-    padding: 0 !important;
-}
+    .below-articles-main-layout,
+    .article-layout {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 20px !important;
+        margin: 10px 0 !important;
+    }
 
-.below-sidebar-box .news-item h3,
-.below-sidebar-box .news-item h4,
-.below-sidebar-box article h3,
-.article-sidebar h3,
-.article-sidebar h4,
-.sidebar-news-item h4 {
-    margin: 0;
-    padding: 0;
-    font-size: 14px;
-    line-height: 1.5;
-    font-weight: 600;
-    color: var(--text-color, #222);
-    overflow-wrap: anywhere;
-}
+    /* Grid సవరణ: అన్ని ఆర్టికల్స్ నిలువు వరుసలో వస్తాయి */
+    .below-news-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+    }
 
-.below-sidebar-box .news-item h3 a,
-.article-sidebar h3 a,
-.sidebar-news-item a {
-    color: inherit;
-    text-decoration: none;
+    .below-news-grid > .news-item:nth-child(n) {
+        grid-column: auto !important;
+    }
+
+    /* మొబైల్‌లో ఎడమవైపు బొమ్మ - కుడివైపు టెక్స్ట్ అమరిక */
+    .news-item,
+    .below-news-section .news-item,
+    .sidebar-news-item {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 12px !important;
+        width: 100% !important;
+        padding: 10px 0 !important;
+        border-bottom: 1px solid #e5e5e5 !important;
+    }
+
+    /* ఇమేజ్ సైజ్ నియంత్రణ (120px x 80px) */
+    .below-news-image,
+    .news-item > a:first-child {
+        flex: 0 0 120px !important;
+        width: 120px !important;
+        min-width: 120px !important;
+        height: 80px !important;
+        overflow: hidden !important;
+    }
+
+    .below-news-image img,
+    .news-item img {
+        width: 120px !important;
+        min-width: 120px !important;
+        height: 80px !important;
+        object-fit: cover !important;
+        border-radius: 6px !important;
+    }
+
+    /* టెక్స్ట్ అమరిక */
+    .below-news-content,
+    .news-item > div,
+    .news-item > a:last-child {
+        flex: 1 1 auto !important;
+        width: auto !important;
+        min-width: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* మొబైల్ టైటిల్స్ - డార్క్ & బోల్డ్ */
+    .news-item h3,
+    .news-item h4 {
+        font-size: 14px !important;
+        line-height: 1.4 !important;
+        font-weight: 700 !important;
+        color: #111111 !important;
+        margin: 0 !important;
+        white-space: normal !important;
+    }
+
+    .section-heading,
+    .below-news-section > .section-heading {
+        font-size: 18px !important;
+        color: #111111 !important;
+    }
 }
 
 /* =========================================
-   TOP NEWS SIDEBAR
+   DARK MODE SUPPORT
 ========================================= */
-
-#articleTopNewsSidebar {
-    position: static !important;
-    top: auto !important;
-    height: auto !important;
-    max-height: none !important;
-    overflow: visible !important;
-}
-
-#articleTopNewsSidebar .news-item,
-#articleTopNewsSidebar .sidebar-article,
-#articleTopNewsSidebar article {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    gap: 10px !important;
-    width: 100% !important;
-    min-width: 0 !important;
-    margin: 0 !important;
-    padding: 9px 0 !important;
-    position: static !important;
-    overflow: hidden !important;
-    background: transparent !important;
-    border: none !important;
-    border-bottom: 1px solid #e5e5e5 !important;
-}
-
-/* TOP NEWS IMAGE */
-
-#articleTopNewsSidebar .news-item > a.below-news-image,
-#articleTopNewsSidebar article > a.below-news-image {
-    display: block !important;
-    flex: 0 0 120px !important;
-    width: 120px !important;
-    min-width: 120px !important;
-    max-width: 120px !important;
-    overflow: hidden !important;
-}
-
-#articleTopNewsSidebar .news-item img,
-#articleTopNewsSidebar article img {
-    display: block !important;
-    position: static !important;
-    width: 120px !important;
-    min-width: 120px !important;
-    max-width: 120px !important;
-    height: 80px !important;
-    min-height: 80px !important;
-    max-height: 80px !important;
-    object-fit: cover !important;
-    border-radius: 4px !important;
-}
-
-/* TOP NEWS TEXT */
-
-#articleTopNewsSidebar .news-item > .below-news-content,
-#articleTopNewsSidebar article > .below-news-content {
-    flex: 1 1 0 !important;
-    width: auto !important;
-    min-width: 0 !important;
-    padding: 0 !important;
-}
-
-#articleTopNewsSidebar .news-item h3,
-#articleTopNewsSidebar article h3,
-#articleTopNewsSidebar .news-title {
-    position: static !important;
-    display: block !important;
-    width: auto !important;
-    min-width: 0 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    font-size: 14px !important;
-    line-height: 1.5 !important;
-    text-align: left !important;
-    background: transparent !important;
-    transform: none !important;
-    overflow-wrap: anywhere;
-}
-
-#articleTopNewsSidebar .news-item h3 a,
-#articleTopNewsSidebar article h3 a {
-    display: inline !important;
-    color: inherit;
-    text-decoration: none;
-}
-
-/* =========================================
-   MOVIE REVIEWS + NATIONAL + INTERNATIONAL
-========================================= */
-
-#articleMovieReviewsSidebar,
-#articleNationalSidebar,
-#articleInternationalSidebar,
-#articleTrendingSidebar,
-#trendingSidebar,
-#latestSidebar {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    width: 100%;
-    min-width: 0;
-}
-
-#articleMovieReviewsSidebar .sidebar-news-item,
-#articleNationalSidebar .sidebar-news-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    width: 100%;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #ddd;
-    box-sizing: border-box;
-}
-
-.sidebar-news-item img {
-    width: 120px !important;
-    min-width: 120px !important;
-    height: 80px !important;
-    object-fit: cover !important;
-    border-radius: 4px;
-    flex-shrink: 0;
-}
-
-.sidebar-news-item a {
-    color: inherit;
-    text-decoration: none;
-}
-
-.sidebar-news-item h4 {
-    font-size: 14px;
-    line-height: 1.5;
-    margin: 0;
-    font-weight: 600;
-}
-
-/* =========================================
-   MORE LINK
-========================================= */
-
-.sidebar-more {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    color: #0878d1 !important;
-    font-size: 13px;
-    font-weight: 600;
-    text-decoration: none !important;
-    white-space: nowrap;
-    flex-shrink: 0;
-}
-
-.sidebar-more span {
-    font-size: 16px;
-    color: #0878d1;
-    transition: transform .2s ease;
-}
-
-.sidebar-more:hover {
-    color: #0056a8 !important;
-}
-
-.sidebar-more:hover span {
-    transform: translateX(3px);
-}
-
-/* =========================================
-   ARTICLE CONTENT IMAGES - 16:9
-========================================= */
-
-.article-content img,
-.article-body img,
-.post-content img,
-.news-content img,
-.article-image img {
-    display: block;
-    width: 100% !important;
-    height: auto !important;
-    aspect-ratio: 16 / 9 !important;
-    object-fit: cover !important;
-    margin: 15px auto;
-}
-
-/* =========================================
-   REMOVE EXTRA BOX DESIGN
-========================================= */
-
-.news-item,
-.post,
-.news-card,
-.article-card,
-.article-content,
-.article-container,
-.sidebar-news-item,
-.movie-review-card {
-    box-shadow: none !important;
-    outline: none !important;
-}
-
-/* ARTICLE ITEMS - SIMPLE SEPARATOR */
-
-.below-articles-content .news-item {
-    box-shadow: none !important;
-}
-
-/* REMOVE RED LINES */
-
-.section-heading,
-.sidebar-title,
-.below-news-section > .section-heading,
-.below-sidebar-box h4 {
-    border-bottom: none !important;
-    text-decoration: none !important;
-    box-shadow: none !important;
-}
-
-/* =========================================
-   ARTICLE CONTENT BACKGROUND
-========================================= */
-
-.below-articles-main-layout,
-.below-articles-content,
-.below-news-section,
-.below-articles-three-sidebars,
-.below-sidebar-box,
-section,
-article,
-.sidebar {
-    background-color: #ffffff !important;
-    color: #222222 !important;
-}
-
-/* REMOVE SIDEBAR BOX BORDERS */
-
-.below-sidebar-box,
-.sidebar-box {
-    border: none !important;
-    box-shadow: none !important;
-    border-radius: 0 !important;
-    padding: 10px !important;
-}
-
-/* SIDEBAR ITEM SEPARATORS */
-
-.below-sidebar-box .news-item {
-    border: none !important;
-    border-bottom: 1px solid #e5e5e5 !important;
-    background: transparent !important;
-}
-
-/* =========================================
-   DARK MODE
-========================================= */
-
-body.dark-mode .below-news-section > .section-heading,
-body.dark-mode .below-articles-content .news-item h3,
-body.dark-mode .below-sidebar-box h4,
-body.dark-mode .below-sidebar-box .news-item h3,
-body.dark-mode .article-sidebar h3,
-body.dark-mode .article-sidebar h4,
-body.dark-mode .sidebar-news-item h4,
-body.dark-mode #articleTopNewsSidebar h3 {
+body.dark-mode {
+    background-color: #121212 !important;
     color: #f1f1f1 !important;
 }
 
-body.dark-mode .below-articles-content .news-item,
-body.dark-mode .below-sidebar-box,
-body.dark-mode .article-sidebar .news-item {
-    border-color: #383838 !important;
+body.dark-mode .news-item h3,
+body.dark-mode .news-item h4,
+body.dark-mode .news-item h3 a,
+body.dark-mode .news-item h4 a,
+body.dark-mode .section-heading,
+body.dark-mode .below-sidebar-box h4 {
+    color: #ffffff !important;
 }
 
-body.dark-mode .below-sidebar-box .news-item,
+body.dark-mode .news-item,
 body.dark-mode .sidebar-news-item {
-    background: transparent !important;
-    border-bottom-color: #444 !important;
+    border-bottom-color: #333333 !important;
 }
-
-/* =========================================
-   TABLET
-   ORIGINAL TABLET LAYOUT
-========================================= */
-
-@media (min-width: 651px) and (max-width: 1000px) {
-
-    .below-articles-main-layout {
-        grid-template-columns: minmax(0, 1fr) 245px;
-        gap: 14px;
-    }
-
-    .below-articles-content {
-        gap: 25px;
-    }
-
-    .below-articles-content .below-news-grid {
-        gap: 9px;
-    }
-
-    .below-news-section > .section-heading {
-        font-size: 17px;
-    }
-
-    .below-articles-content .news-item h3 {
-        font-size: 12px;
-    }
-
-    .below-sidebar-box {
-        padding: 9px !important;
-    }
-
-    .below-sidebar-box .news-item h3,
-    .article-sidebar h3,
-    .below-sidebar-box h3,
-    .sidebar-news-item h4 {
-        font-size: 12px;
-    }
-}
-
-/* =========================================
-   MOBILE
-   NEW LAYOUT FROM SECOND CSS
-   IMAGE LEFT - TEXT RIGHT
-   IMAGE SIZE 120 x 80
-========================================= */
-
-/* =========================================
-   VERY SMALL MOBILE
-   KEEP 120 x 80 IMAGES
-========================================= */
-
-@media (max-width: 360px) {
-
-    .below-articles-main-layout {
-        grid-template-columns: minmax(0, 1fr) 300px;
-        gap: 8px;
-    }
-
-    .below-articles-content .news-item > a.below-news-image,
-    .article-sidebar .news-item > a.below-news-image,
-    .below-sidebar-box .news-item > a.below-news-image {
-        flex-basis: 120px !important;
-        width: 120px !important;
-        min-width: 120px !important;
-    }
-
-    .below-articles-content .news-item img,
-    .article-sidebar .news-item img,
-    .below-sidebar-box .news-item img {
-        width: 120px !important;
-        height: 80px !important;
-    }
-}
-
-/* =========================================
-   FINAL SCROLL FIX
-   REMOVE STICKY FROM ALL SIDEBARS
-========================================= */
-
-.below-articles-three-sidebars,
-.below-articles-sidebar,
-.article-sidebar,
-#articleTopNewsSidebar,
-.below-sidebar-box,
-.sidebar-box,
-.article-sidebar .sidebar-box {
-    position: static !important;
-    top: auto !important;
-    align-self: stretch;
-    height: auto !important;
-    max-height: none !important;
-    overflow: visible !important;
-}
-
-.below-articles-main-layout,
-.below-articles-sidebar-layout {
-    overflow: visible !important;
-}
-
-/* =====================================
-   REMOVE ALL ARTICLE BACKGROUND BOXES
-   LAPTOP / TABLET / MOBILE
-===================================== */
-
-/* MAIN ARTICLES */
-
-.below-articles-content .news-item,
-.below-articles-content .below-news-grid .news-item,
-.below-articles-content article,
-.below-news-section .news-item,
-.below-news-section article {
-    background: transparent !important;
-    border: none !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    outline: none !important;
-}
-
-/* REMOVE ARTICLE CARD BACKGROUND */
-
-.news-item,
-.news-card,
-.post,
-.article-card,
-.movie-review-card {
-    background: transparent !important;
-    border: none !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    outline: none !important;
-}
-
-/* REMOVE SIDEBAR BOX BACKGROUND */
-
-.below-sidebar-box,
-.sidebar-box,
-.article-sidebar .sidebar-box {
-    background: transparent !important;
-    border: none !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-}
-
-/* SIDEBAR ARTICLES */
-
-.below-sidebar-box .news-item,
-.below-sidebar-box article,
-.article-sidebar .news-item,
-.article-sidebar article,
-.sidebar-news-item {
-    background: transparent !important;
-    border: none !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-}
-
-/* KEEP SIMPLE SEPARATOR ONLY */
-
-.below-articles-content .news-item,
-.below-sidebar-box .news-item,
-.article-sidebar .news-item,
-.sidebar-news-item {
-    border-bottom: 1px solid #e5e5e5 !important;
-}
-
-/* IMAGE BACKGROUND BOX REMOVE */
-
-.below-articles-content .news-item img,
-.below-sidebar-box .news-item img,
-.article-sidebar .news-item img,
-.sidebar-news-item img {
-    box-shadow: none !important;
-    border: none !important;
-}
-
-/* DARK MODE */
-
-body.dark-mode .below-articles-content .news-item,
-body.dark-mode .below-sidebar-box,
-body.dark-mode .below-sidebar-box .news-item,
-body.dark-mode .article-sidebar .news-item {
-    background: transparent !important;
-    box-shadow: none !important;
-}
-
-    
-/* =========================================
-   MOBILE - ALL ARTICLE LISTS
-   LEFT IMAGE | RIGHT TEXT
-   ========================================= */
-
-/* =====================================
-   BS 360 NEWS
-   FINAL MOBILE LAYOUT FIX
-   ALL CATEGORY SECTIONS
-   IMAGE LEFT - TEXT RIGHT
-===================================== */
-
-/* STICKY SIDEBAR */
-@media (min-width: 900px) {
-
-    .below-articles-main-layout {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) 300px;
-        align-items: stretch;
-        gap: 20px;
-    }
-
-    .below-articles-content {
-        min-width: 0;
-    }
-
-    .below-articles-three-sidebars {
-        position: sticky;
-        top: 15px;
-        align-self: start;
-        height: fit-content;
-        max-height: calc(100vh - 30px);
-        overflow-y: auto;
-        overscroll-behavior: contain;
-    }
-}
-
-/* MOBILE - NORMAL SCROLL */
-@media (max-width: 899px) {
-    .below-articles-three-sidebars {
-        position: static;
-        max-height: none;
-        overflow: visible;
-    }
-}
-    /* ARTICLE CONTENT + STICKY SIDEBAR */
-@media (min-width: 900px) {
-
-    .article-main-layout {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) 300px;
-        align-items: stretch;
-        gap: 20px;
-    }
-
-    .article-content {
-        min-width: 0;
-    }
-
-
-
-/* MOBILE */
-@media (max-width: 899px) {
-    .article-sidebar {
-        position: static;
-        height: auto;
-        max-height: none;
-        overflow: visible;
-    }
-}
-    /* SECTION HEADING + MORE LINK */
-.section-heading-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    gap: 10px;
-    margin-bottom: 10px;
-}
-
-.section-heading-row .section-heading {
-    margin: 0;
-    padding: 0;
-    border: none;
-    box-shadow: none;
-}
-
-.section-heading-row .more-link {
-    flex-shrink: 0;
-    color: #0878e8;
-    font-size: 13px;
-    font-weight: 600;
-    text-decoration: none;
-    white-space: nowrap;
-}
-
-.section-heading-row .more-link:hover {
-    color: #0056b3;
-    text-decoration: underline;
-}
-    
-/* అన్ని Sidebars సాధారణంగా Scroll అవ్వాలి */
-.below-articles-three-sidebars {
-    position: static !important;
-    overflow: visible !important;
-}
-
-/* అంతర్జాతీయ వార్తలు మాత్రమే Sticky */
-@media (min-width: 900px) {
-    .below-articles-three-sidebars .below-sidebar-box:last-child {
-        position: sticky !important;
-        top: 15px !important;
-        align-self: start;
-    }
-}
-
-/* Mobileలో Sticky వద్దు */
-@media (max-width: 899px) {
-    .below-articles-three-sidebars .below-sidebar-box {
-        position: static !important;
-    }
-}
-
-
-    /* TOP NEWS SIDEBAR */
-
-.below-sidebar-box {
-    width: 100%;
-    margin-bottom: 22px;
-    padding: 14px;
-    background: #fff;
-    border: 1px solid #e5e5e5;
-    border-radius: 6px;
-    box-sizing: border-box;
-}
-
-.below-sidebar-box h4 {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 0 0 14px;
-    padding: 0 0 10px;
-    font-size: 19px;
-    font-weight: 700;
-    color: #222;
-    border-bottom: 1px solid #e5e5e5;
-}
-
-/* Top news items */
-
-#TopNewsSidebar {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-#TopNewsSidebar .news-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid #eee;
-}
-
-#TopNewsSidebar .news-item:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
-}
-
-#TopNewsSidebar img {
-    width: 90px;
-    height: 65px;
-    object-fit: cover;
-    border-radius: 4px;
-    flex-shrink: 0;
-}
-
-#TopNewsSidebar a {
-    color: #222;
-    font-size: 14px;
-    line-height: 1.5;
-    font-weight: 600;
-    text-decoration: none;
-}
-
-#TopNewsSidebar a:hover {
-    color: #d71920;
-}
-
-/* Mobile */
-
-@media (max-width: 600px) {
-    .below-sidebar-box h4 {
-        font-size: 17px;
-    }
-
-    #TopNewsSidebar img {
-        width: 85px;
-        height: 60px;
-    }
-
-    #TopNewsSidebar a {
-        font-size: 13px;
-    }
-}
-     /* MAIN ARTICLES + SIDEBAR HEIGHT ALIGNMENT */
-
-.below-articles-main-layout {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 320px;
-    align-items: stretch;
-    gap: 20px;
-}
-
-.below-articles-main,
-.below-articles-three-sidebars {
-    min-width: 0;
-    height: 100%;
-}
-
-.below-articles-three-sidebars {
-    display: flex;
-    flex-direction: column;
-    align-self: stretch;
-}
-
-.below-sidebar-box:last-child {
-    margin-bottom: 0;
-}
-
-/* TABLET & MOBILE */
-@media (max-width: 768px) {
-    .below-articles-main-layout {
-        grid-template-columns: 1fr;
-    }
-
-    .below-articles-three-sidebars {
-        height: auto;
-    }
-}
-
-
-    /* TOP NEWS SIDEBAR */
-
-#TopNewsSidebar {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.top-news-sidebar-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid #e5e5e5;
-}
-
-.top-news-sidebar-item:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
-}
-
-.top-news-sidebar-item img {
-    width: 90px;
-    height: 65px;
-    object-fit: cover;
-    border-radius: 4px;
-    display: block;
-}
-
-.top-news-sidebar-item > a:last-child {
-    flex: 1;
-    color: #222;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 1.5;
-    text-decoration: none;
-}
-
-.top-news-sidebar-item > a:last-child:hover {
-    color: #d71920;
-}
-
-@media (max-width: 600px) {
-    .top-news-sidebar-item img {
-        width: 82px;
-        height: 60px;
-    }
-
-    .top-news-sidebar-item > a:last-child {
-        font-size: 13px;
-    }
-}
-    /* =================================
-   CONTENT & SIDEBAR HEIGHT FIX
-================================= */
-
-/* Main layout rows */
-.top-content-layout,
-.sports-apts-trending-layout,
-.business-world-row {
-    align-items: start !important;
-}
-
-/* Sidebar height should follow its content */
-.latest-news-column,
-.trending-news-column,
-.top-side-column,
-.world-news-side {
-    height: fit-content !important;
-    min-height: 0 !important;
-    align-self: start !important;
-    position: relative;
-}
-
-/* Sidebar article list */
-.top-side-articles,
-.trending-news-list,
-.world-side-articles {
-    height: auto !important;
-    min-height: 0 !important;
-}
-
-/* Remove unwanted fixed heights */
-.latest-news-column,
-.trending-news-column,
-.top-side-column,
-.world-news-side {
-    max-height: none !important;
-}
-    /* SIDEBAR CONTENT END FIX */
-
-@media (min-width: 769px) {
-
-    .top-content-layout,
-    .sports-apts-trending-layout {
-        display: grid !important;
-        grid-template-columns: minmax(0, 1fr) 300px;
-        align-items: stretch !important;
-    }
-
-    .latest-news-column,
-    .trending-news-column {
-        min-width: 0;
-        min-height: 0;
-        overflow: hidden !important;
-        height: 100% !important;
-    }
-
-    .top-left-column,
-    .sports-apts-left-column {
-        min-height: 0;
-    }
-    /* ARTICLE CONTENT + SIDEBAR */
-
-.article-layout {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 320px;
-    align-items: stretch;
-    gap: 25px;
-}
-
-.article-content {
-    min-width: 0;
-}
-
-.article-sidebar {
-    position: static !important;
-    align-self: stretch !important;
-    height: 100% !important;
-    min-height: 0 !important;
-    overflow: hidden !important;
-}
-
-/* MOBILE */
-@media (max-width: 768px) {
-    .article-layout {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .article-sidebar {
-        width: 100%;
-        height: auto !important;
-        overflow: visible !important;
-    }
-}
-    
-/* =========================================
-   ARTICLE SIDEBAR - CONTENT HEIGHT MATCH
-   NORMAL PAGE SCROLL - NO STICKY
-========================================= */
-
-.article-layout {
-    display: grid !important;
-    grid-template-columns: minmax(0, 1fr) 320px;
-    gap: 25px;
-    align-items: stretch !important;
-    overflow: hidden !important;
-}
-
-.article-main {
-    min-width: 0;
-    height: auto !important;
-}
-
-.article-content {
-    min-width: 0;
-    height: auto !important;
-}
-
-.article-sidebar {
-    position: static !important;
-    top: auto !important;
-    align-self: stretch !important;
-
-    height: auto !important;
-    min-height: 0 !important;
-    max-height: none !important;
-
-    overflow: hidden !important;
-    overflow-y: hidden !important;
-    overflow-x: hidden !important;
-
-    display: flex !important;
-    flex-direction: column !important;
-}
-
-/* Sidebar boxes */
-.article-sidebar .sidebar-box {
-    flex-shrink: 0;
-}
-
-/* MOBILE */
-@media (max-width: 768px) {
-    .article-layout {
-        display: flex !important;
-        flex-direction: column !important;
-        overflow: visible !important;
-    }
-
-    .article-sidebar {
-        position: static !important;
-        height: auto !important;
-        max-height: none !important;
-        overflow: visible !important;
-    }
-}
-
-/* =========================================
-   BS 360 NEWS
-   ARTICLE SIDEBAR END AT ARTICLE CONTENT END
-   FINAL OVERRIDE
-========================================= */
-
-/* LAPTOP + TABLET */
-
-@media (min-width: 769px) {
-
-    .article-layout {
-        display: grid !important;
-        grid-template-columns: minmax(0, 1fr) 320px !important;
-        align-items: stretch !important;
-        gap: 25px !important;
-        height: auto !important;
-        overflow: hidden !important;
-    }
-
-    .article-main {
-        display: block !important;
-        width: 100% !important;
-        min-width: 0 !important;
-        height: auto !important;
-        min-height: 0 !important;
-    }
-
-    .article-content {
-        display: block !important;
-        width: 100% !important;
-        height: auto !important;
-        min-height: 0 !important;
-        overflow: visible !important;
-    }
-
-    .article-sidebar {
-        display: flex !important;
-        flex-direction: column !important;
-        align-self: stretch !important;
-
-        width: 100% !important;
-        min-width: 0 !important;
-        min-height: 0 !important;
-
-        height: 100% !important;
-        max-height: 100% !important;
-
-        position: static !important;
-        top: auto !important;
-
-        overflow: hidden !important;
-        overflow-y: hidden !important;
-        overflow-x: hidden !important;
-    }
-
-    .article-sidebar .sidebar-box {
-        flex: 0 0 auto !important;
-        width: 100% !important;
-        min-width: 0 !important;
-    }
-}
-
-/* MOBILE */
-
-@media (max-width: 768px) {
-
-    .article-layout {
-        display: flex !important;
-        flex-direction: column !important;
-        height: auto !important;
-        overflow: visible !important;
-    }
-
-    .article-main {
-        width: 100% !important;
-        height: auto !important;
-    }
-
-    .article-content {
-        height: auto !important;
-        overflow: visible !important;
-    }
-
-    .article-sidebar {
-        display: flex !important;
-        flex-direction: column !important;
-        position: static !important;
-
-        width: 100% !important;
-        height: auto !important;
-        min-height: 0 !important;
-        max-height: none !important;
-
-        overflow: visible !important;
-    }
-
-    .article-sidebar .sidebar-box {
-        flex-shrink: 0 !important;
-    }
-}
-
-@media (min-width: 769px) {
-
-    .article-layout {
-        display: grid !important;
-        grid-template-columns: minmax(0, 1fr) 320px !important;
-        align-items: start !important;
-        height: auto !important;
-        overflow: hidden !important;
-    }
-
-    .article-main {
-        min-height: 0 !important;
-        height: auto !important;
-    }
-
-    .article-sidebar {
-        position: relative !important;
-        top: auto !important;
-        align-self: stretch !important;
-
-        height: 100% !important;
-        max-height: 100% !important;
-        min-height: 0 !important;
-
-        overflow: hidden !important;
-    }
-
-    .article-sidebar .sidebar-box {
-        flex-shrink: 0 !important;
-    }
-
-}
-
-@media (max-width: 768px) {
-    .article-layout {
-        display: flex !important;
-        flex-direction: column !important;
-        overflow: visible !important;
-    }
-
-    .article-sidebar {
-        height: auto !important;
-        max-height: none !important;
-        overflow: visible !important;
-        position: static !important;
-    }
-}
-
- 
-/* =========================================
-   BS 360 NEWS
-   ARTICLE SIDEBAR - EXACT CONTENT HEIGHT
-   DESKTOP + TABLET
-========================================= */
-
-@media (min-width: 769px) {
-
-    .article-layout {
-        display: grid !important;
-        grid-template-columns: minmax(0, 1fr) 320px !important;
-        align-items: start !important;
-        gap: 25px !important;
-
-        height: auto !important;
-        min-height: 0 !important;
-        overflow: visible !important;
-    }
-
-    .article-main {
-        display: block !important;
-        width: 100% !important;
-        min-width: 0 !important;
-        height: auto !important;
-        min-height: 0 !important;
-    }
-
-    .article-content {
-        display: flow-root !important;
-        width: 100% !important;
-        height: auto !important;
-        min-height: 0 !important;
-        overflow: visible !important;
-    }
-
-    .article-sidebar {
-        display: flex !important;
-        flex-direction: column !important;
-
-        position: static !important;
-        align-self: start !important;
-
-        width: 100% !important;
-        height: auto !important;
-        min-height: 0 !important;
-        max-height: none !important;
-
-        overflow: hidden !important;
-    }
-
-    .article-sidebar .sidebar-box {
-        flex: 0 0 auto !important;
-        width: 100% !important;
-        margin-bottom: 15px !important;
-    }
-
-}
-
-/* =========================================
-   MOBILE - NORMAL LAYOUT
-========================================= */
-
-@media (max-width: 768px) {
-
-    .article-layout {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: stretch !important;
-        height: auto !important;
-        overflow: visible !important;
-    }
-
-    .article-main {
-        width: 100% !important;
-        height: auto !important;
-    }
-
-    .article-content {
-        height: auto !important;
-        overflow: visible !important;
-    }
-
-    .article-sidebar {
-        display: flex !important;
-        flex-direction: column !important;
-        position: static !important;
-
-        width: 100% !important;
-        height: auto !important;
-        min-height: 0 !important;
-        max-height: none !important;
-
-        overflow: visible !important;
-    }
-
-    .article-sidebar .sidebar-box {
-        flex-shrink: 0 !important;
-    }
-}
-/* =====================================
-   BS 360 NEWS - MOBILE SIDEBAR HEADINGS
-   HEADING LEFT | MORE LINK RIGHT
-===================================== */
-
-.section-heading-row {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    width: 100% !important;
-    gap: 8px !important;
-    margin: 0 0 12px !important;
-}
-
-/* HEADING */
-
-.section-heading-row .sidebar-heading,
-.section-heading-row .section-heading {
-    display: block !important;
-    flex: 1 1 auto !important;
-    min-width: 0 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    font-size: 18px !important;
-    line-height: 1.5 !important;
-    font-weight: 800 !important;
-    color: #0878e8 !important;
-    white-space: nowrap !important;
-    border: none !important;
-    box-shadow: none !important;
-}
-
-/* MORE LINK */
-
-.section-heading-row .more-link {
-    display: inline-flex !important;
-    flex: 0 0 auto !important;
-    align-items: center !important;
-    justify-content: flex-end !important;
-    color: #0878e8 !important;
-    font-size: 13px !important;
-    font-weight: 700 !important;
-    white-space: nowrap !important;
-    text-decoration: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
-}
-
-.section-heading-row .more-link:hover {
-    color: #0056b3 !important;
-}
-
-/* MOBILE */
-
-@media (max-width: 650px) {
-
-    .below-sidebar-box .section-heading-row {
-        display: flex !important;
-        flex-direction: row !important;
-        align-items: center !important;
-        justify-content: space-between !important;
-        width: 100% !important;
-        gap: 6px !important;
-        margin-bottom: 10px !important;
-    }
-
-    .below-sidebar-box .sidebar-heading {
-        font-size: 17px !important;
-        line-height: 1.4 !important;
-        color: #0878e8 !important;
-    }
-
-    .below-sidebar-box .more-link {
-        font-size: 13px !important;
-        color: #0878e8 !important;
-    }
-
-}
-
-    /* BELOW ARTICLES - HEADING AND MORE LINK SIDE BY SIDE */
-
-.below-articles-main-layout .below-news-section .section-heading-row {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    flex-wrap: nowrap !important;
-    width: 100% !important;
-    gap: 8px !important;
-    margin-bottom: 12px !important;
-}
-
-.below-articles-main-layout .below-news-section .section-heading {
-    display: block !important;
-    flex: 1 1 auto !important;
-    min-width: 0 !important;
-    width: auto !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    font-size: 19px !important;
-    line-height: 1.4 !important;
-    font-weight: 800 !important;
-    color: #0878e8 !important;
-    border: none !important;
-}
-
-.below-articles-main-layout .below-news-section .more-link {
-    display: inline-flex !important;
-    flex: 0 0 auto !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: auto !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    font-size: 14px !important;
-    font-weight: 700 !important;
-    color: #0878e8 !important;
-    white-space: nowrap !important;
-    text-decoration: none !important;
-}
-
-.below-articles-main-layout .below-news-section .more-link:hover {
-    color: #0056b3 !important;
-}
-
-/* MOBILE */
-@media (max-width: 768px) {
-
-    .below-articles-main-layout .below-news-section .section-heading-row {
-        display: flex !important;
-        flex-direction: row !important;
-        align-items: center !important;
-        justify-content: space-between !important;
-        flex-wrap: nowrap !important;
-        gap: 5px !important;
-    }
-
-    .below-articles-main-layout .below-news-section .section-heading {
-        font-size: 17px !important;
-        line-height: 1.4 !important;
-    }
-
-    .below-articles-main-layout .below-news-section .more-link {
-        font-size: 12px !important;
-    }
-}
-
-    .below-articles-main-layout .below-news-section .section-heading {
-    color: inherit !important;
-}
-
-.below-articles-main-layout .below-news-section .more-link {
-    color: #0878e8 !important;
-}
-
-
-/* =========================================
-   BS 360 NEWS - FINAL MOBILE SIDEBAR HEADINGS FIX
-   ONLY SIDEBAR HEADINGS - ARTICLE TITLES UNCHANGED
-========================================= */
-@media screen and (max-width: 768px) {
-
-    /* ARTICLE SIDEBAR:
-       ట్రెండింగ్ వార్తలు, నేటి హైలైట్స్, సినిమా రివ్యూస్ */
-    .article-sidebar > .sidebar-box > .sidebar-title,
-    .article-sidebar .sidebar-title,
-    .sidebar-box > .sidebar-title {
-        font-size: 18px !important;
-        font-weight: 800 !important;
-        line-height: 1.5 !important;
-        color: #0878d1 !important;
-        text-align: left !important;
-        margin: 0 0 10px !important;
-        padding: 0 0 7px !important;
-    }
-
-    /* BELOW ARTICLE SIDEBAR:
-       హాట్ న్యూస్, తాజా వార్తలు, టాప్ వార్తలు */
-    .below-articles-three-sidebars .below-sidebar-box > h4,
-    .below-sidebar-box > h4 {
-        font-size: 18px !important;
-        font-weight: 800 !important;
-        line-height: 1.5 !important;
-        color: #0878d1 !important;
-        text-align: left !important;
-        margin: 0 0 10px !important;
-        padding: 0 0 7px !important;
-    }
-
-    /* DARK MODE - KEEP THE SAME BLUE HEADING COLOR */
-    body.dark-mode .article-sidebar > .sidebar-box > .sidebar-title,
-    body.dark-mode .article-sidebar .sidebar-title,
-    body.dark-mode .sidebar-box > .sidebar-title,
-    body.dark-mode .below-articles-three-sidebars .below-sidebar-box > h4,
-    body.dark-mode .below-sidebar-box > h4 {
-        color: #0878d1 !important;
-    }
-}
-
-
-
-/* =====================================================
-   FINAL OVERRIDE - MOBILE SIDEBAR SECTION HEADINGS ONLY
-   Does not change article titles or desktop/tablet layout
-===================================================== */
-@media screen and (max-width: 768px) {
-    html body .article-sidebar .sidebar-box > .sidebar-title,
-    html body .article-sidebar .sidebar-box .sidebar-title,
-    html body .below-articles-three-sidebars .below-sidebar-box > h4 {
-        display: flex !important;
-        align-items: center !important;
-        justify-content: space-between !important;
-        width: 100% !important;
-        font-size: 20px !important;
-        line-height: 1.45 !important;
-        font-weight: 800 !important;
-        margin: 0 0 12px !important;
-        padding: 0 0 7px !important;
-        text-align: left !important;
-    }
-}
-
-
-
-/* =====================================================
-   BS 360 NEWS - SINGLE FINAL MOBILE ARTICLE LAYOUT
-   IMAGE LEFT (120 x 80) | TITLE TOP-ALIGNED ON THE RIGHT
-   Replaces all older duplicate mobile card rules
-===================================================== */
-@media screen and (max-width: 650px) {
-
-    .below-articles-main-layout {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: stretch !important;
-        width: 100% !important;
-        gap: 18px !important;
-        margin: 15px 0 !important;
-        overflow: visible !important;
-    }
-
-    .below-articles-content {
-        display: flex !important;
-        flex-direction: column !important;
-        width: 100% !important;
-        min-width: 0 !important;
-        gap: 18px !important;
-    }
-
-    .below-news-section {
-        display: block !important;
-        width: 100% !important;
-        min-width: 0 !important;
-    }
-
-    .below-news-section > .section-heading {
-        font-size: 17px !important;
-        line-height: 1.4 !important;
-        margin: 0 0 8px !important;
-        padding: 0 0 5px !important;
-    }
-
-    /* Category article lists */
-    .below-articles-content .below-news-grid {
-        display: flex !important;
-        flex-direction: column !important;
-        width: 100% !important;
-        min-width: 0 !important;
-        gap: 0 !important;
-    }
-
-    .below-articles-content .below-news-grid > .news-item,
-    .below-articles-content .below-news-grid > article {
-        display: flex !important;
-        flex-direction: row !important;
-        align-items: flex-start !important;
-        justify-content: flex-start !important;
-        gap: 8px !important;
-        width: 100% !important;
-        min-width: 0 !important;
-        margin: 0 !important;
-        padding: 9px 0 !important;
-        background: transparent !important;
-        border: 0 !important;
-        border-bottom: 1px solid #e5e5e5 !important;
-        border-radius: 0 !important;
-        box-shadow: none !important;
-        text-align: left !important;
-    }
-
-    /* Keep the existing image size and appearance */
-    .below-articles-content .below-news-grid > .news-item > a.below-news-image,
-    .below-articles-content .below-news-grid > article > a.below-news-image {
-        display: block !important;
-        flex: 0 0 120px !important;
-        width: 120px !important;
-        min-width: 120px !important;
-        max-width: 120px !important;
-        height: 80px !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        overflow: hidden !important;
-    }
-
-    .below-articles-content .below-news-grid > .news-item > a.below-news-image img,
-    .below-articles-content .below-news-grid > article > a.below-news-image img {
-        display: block !important;
-        width: 120px !important;
-        min-width: 120px !important;
-        max-width: 120px !important;
-        height: 80px !important;
-        min-height: 80px !important;
-        max-height: 80px !important;
-        aspect-ratio: 3 / 2 !important;
-        object-fit: cover !important;
-        margin: 0 !important;
-        border-radius: 4px !important;
-    }
-
-    /* Title begins at the top edge, directly beside the image */
-    .below-articles-content .below-news-grid > .news-item > .below-news-content,
-    .below-articles-content .below-news-grid > article > .below-news-content {
-        display: block !important;
-        flex: 1 1 0 !important;
-        width: auto !important;
-        min-width: 0 !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        align-self: flex-start !important;
-        text-align: left !important;
-    }
-
-    .below-articles-content .below-news-grid .below-news-content h3,
-    .below-articles-content .below-news-grid .news-item h3 {
-        display: block !important;
-        width: 100% !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        font-size: 13px !important;
-        line-height: 1.45 !important;
-        font-weight: 700 !important;
-        text-align: left !important;
-        overflow-wrap: anywhere !important;
-    }
-
-    .below-articles-content .below-news-grid .below-news-content h3 a {
-        display: inline !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        text-align: left !important;
-    }
-
-    /* Sidebar sections remain below the category articles */
-    .below-articles-three-sidebars,
-    .article-sidebar {
-        display: flex !important;
-        flex-direction: column !important;
-        width: 100% !important;
-        min-width: 0 !important;
-        height: auto !important;
-        max-height: none !important;
-        gap: 14px !important;
-        position: static !important;
-        overflow: visible !important;
-    }
-
-    .below-sidebar-box,
-    .article-sidebar .sidebar-box {
-        display: block !important;
-        width: 100% !important;
-        min-width: 0 !important;
-        margin: 0 0 12px !important;
-        padding: 5px 0 !important;
-        background: transparent !important;
-        border: 0 !important;
-        box-shadow: none !important;
-    }
-
-    .below-sidebar-box > h4,
-    .article-sidebar .sidebar-title {
-        font-size: 18px !important;
-        line-height: 1.45 !important;
-        font-weight: 800 !important;
-        margin: 0 0 8px !important;
-        padding: 0 0 5px !important;
-        text-align: left !important;
-    }
-
-    /* Sidebar cards: image left, text aligned from its top */
-    .below-sidebar-box .news-item,
-    .below-sidebar-box article,
-    .article-sidebar .news-item,
-    .article-sidebar article,
-    .sidebar-news-item,
-    #articleTopNewsSidebar .news-item,
-    #articleTopNewsSidebar article,
-    .top-news-sidebar-item {
-        display: flex !important;
-        flex-direction: row !important;
-        align-items: flex-start !important;
-        justify-content: flex-start !important;
-        gap: 8px !important;
-        width: 100% !important;
-        min-width: 0 !important;
-        margin: 0 !important;
-        padding: 8px 0 !important;
-        background: transparent !important;
-        border: 0 !important;
-        border-bottom: 1px solid #e5e5e5 !important;
-        border-radius: 0 !important;
-        box-shadow: none !important;
-    }
-
-    .below-sidebar-box .news-item > a:first-child,
-    .below-sidebar-box article > a:first-child,
-    .article-sidebar .news-item > a:first-child,
-    .article-sidebar article > a:first-child,
-    .sidebar-news-item > a:first-child,
-    #articleTopNewsSidebar .news-item > a:first-child,
-    #articleTopNewsSidebar article > a:first-child,
-    .top-news-sidebar-item > a:first-child {
-        display: block !important;
-        flex: 0 0 120px !important;
-        width: 120px !important;
-        min-width: 120px !important;
-        max-width: 120px !important;
-        height: 80px !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        overflow: hidden !important;
-    }
-
-    .below-sidebar-box img,
-    .article-sidebar img,
-    .sidebar-news-item img,
-    #articleTopNewsSidebar img,
-    .top-news-sidebar-item img {
-        display: block !important;
-        width: 120px !important;
-        min-width: 120px !important;
-        max-width: 120px !important;
-        height: 80px !important;
-        min-height: 80px !important;
-        max-height: 80px !important;
-        aspect-ratio: 3 / 2 !important;
-        object-fit: cover !important;
-        margin: 0 !important;
-        border-radius: 4px !important;
-    }
-
-    .below-sidebar-box .below-news-content,
-    .article-sidebar .below-news-content,
-    .sidebar-news-item > a:last-child,
-    .article-sidebar article > a:last-child,
-    .below-sidebar-box article > a:last-child,
-    .top-news-sidebar-item > a:last-child {
-        display: block !important;
-        flex: 1 1 0 !important;
-        width: auto !important;
-        min-width: 0 !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        align-self: flex-start !important;
-        text-align: left !important;
-    }
-
-    .below-sidebar-box h3,
-    .below-sidebar-box h4,
-    .article-sidebar h3,
-    .article-sidebar h4,
-    .sidebar-news-item h4,
-    #articleTopNewsSidebar h3,
-    .top-news-sidebar-item > a:last-child {
-        margin: 0 !important;
-        padding: 0 !important;
-        font-size: 12px !important;
-        line-height: 1.45 !important;
-        font-weight: 600 !important;
-        text-align: left !important;
-        overflow-wrap: anywhere !important;
-    }
-
-    body.dark-mode .below-articles-content .news-item,
-    body.dark-mode .below-sidebar-box .news-item,
-    body.dark-mode .article-sidebar .news-item,
-    body.dark-mode .sidebar-news-item {
-        border-bottom-color: #444 !important;
-    }
-
-    /* Do not alter the large image inside the actual news story */
-    .article-content > img,
-    .article-body > img,
-    .post-content > img {
-        width: 100% !important;
-        height: auto !important;
-        aspect-ratio: 16 / 9 !important;
-        object-fit: cover !important;
-    }
-}
-
-
-
-/* =====================================================
-   MOBILE CATEGORY SEPARATION FIX
-   ONLY THE LEFT CATEGORY SECTIONS ARE CHANGED.
-   RIGHT SIDE SIDEBARS ARE LEFT UNTOUCHED.
-===================================================== */
-@media screen and (max-width: 650px) {
-    .below-articles-content {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: stretch !important;
-        gap: 26px !important;
-    }
-
-    .below-articles-content > .below-news-section {
-        display: block !important;
-        clear: both !important;
-        width: 100% !important;
-        min-width: 0 !important;
-        margin: 0 !important;
-        padding: 16px 0 0 !important;
-        border-top: 1px solid #dedede !important;
-        box-sizing: border-box !important;
-    }
-
-    .below-articles-content > .below-news-section:first-child {
-        padding-top: 0 !important;
-        border-top: 0 !important;
-    }
-
-    .below-articles-content > .below-news-section > .section-heading-row {
-        display: flex !important;
-        align-items: center !important;
-        justify-content: space-between !important;
-        flex-wrap: nowrap !important;
-        width: 100% !important;
-        min-height: 30px !important;
-        margin: 0 0 9px !important;
-        padding: 0 0 7px !important;
-        border-bottom: 2px solid #e7e7e7 !important;
-        box-sizing: border-box !important;
-    }
-
-    .below-articles-content > .below-news-section > .section-heading-row > .section-heading {
-        display: block !important;
-        flex: 1 1 auto !important;
-        min-width: 0 !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        font-size: 17px !important;
-        line-height: 1.4 !important;
-        font-weight: 800 !important;
-        text-align: left !important;
-    }
-
-    .below-articles-content > .below-news-section > .section-heading-row > .more-link {
-        display: inline-flex !important;
-        flex: 0 0 auto !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        font-size: 12px !important;
-        white-space: nowrap !important;
-    }
-
-    .below-articles-content > .below-news-section > .below-news-grid {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: stretch !important;
-        width: 100% !important;
-        min-width: 0 !important;
-        gap: 0 !important;
-        margin: 0 !important;
-        padding: 0 !important;
-    }
-
-    .below-articles-content > .below-news-section > .below-news-grid > article.news-item,
-    .below-articles-content > .below-news-section > .below-news-grid > .news-item {
-        display: flex !important;
-        flex-direction: row !important;
-        align-items: flex-start !important;
-        justify-content: flex-start !important;
-        gap: 9px !important;
-        width: 100% !important;
-        min-width: 0 !important;
-        margin: 0 !important;
-        padding: 9px 0 !important;
-        border: 0 !important;
-        border-bottom: 1px solid #e6e6e6 !important;
-        box-sizing: border-box !important;
-    }
-
-    .below-articles-content > .below-news-section > .below-news-grid > .news-item > .below-news-image {
-        display: block !important;
-        flex: 0 0 120px !important;
-        width: 120px !important;
-        min-width: 120px !important;
-        max-width: 120px !important;
-        height: 80px !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        overflow: hidden !important;
-    }
-
-    .below-articles-content > .below-news-section > .below-news-grid > .news-item > .below-news-image > img {
-        display: block !important;
-        width: 120px !important;
-        min-width: 120px !important;
-        max-width: 120px !important;
-        height: 80px !important;
-        min-height: 80px !important;
-        max-height: 80px !important;
-        object-fit: cover !important;
-        aspect-ratio: 3 / 2 !important;
-        margin: 0 !important;
-    }
-
-    .below-articles-content > .below-news-section > .below-news-grid > .news-item > .below-news-content {
-        display: block !important;
-        flex: 1 1 0 !important;
-        width: auto !important;
-        min-width: 0 !important;
-        align-self: flex-start !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        text-align: left !important;
-    }
-
-    .below-articles-content > .below-news-section > .below-news-grid > .news-item > .below-news-content > h3 {
-        display: block !important;
-        width: 100% !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        font-size: 13px !important;
-        line-height: 1.45 !important;
-        font-weight: 700 !important;
-        text-align: left !important;
-        overflow-wrap: anywhere !important;
-    }
-}
-
 </style>
+
 <!-- NEWSARTICLE STRUCTURED DATA -->
 
 
