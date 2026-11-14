@@ -613,6 +613,57 @@ body.dark-mode .sidebar-news-item {
 .top-news-sidebar-item a:hover {
     color: #d60000 !important;
 }
+    /* =========================================
+   SIDEBAR & LIST ARTICLES PERFECT TOP ALIGNMENT
+   ఇమేజ్ మరియు టెక్స్ట్ సమానంగా (Top Align) రావడానికి
+========================================= */
+
+.article-sidebar .news-item,
+.below-articles-three-sidebars .news-item,
+.below-sidebar-box .news-item,
+.sidebar-news-item,
+#articleTopNewsSidebar .news-item {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important; /* ఇమేజ్ మరియు టెక్స్ట్ పైనుంచి సమానంగా మొదలవుతాయి */
+    gap: 12px !important;
+    padding: 10px 0 !important;
+    margin: 0 !important;
+}
+
+/* ఇమేజ్ టాప్ అలైన్‌మెంట్ ఫిక్స్ */
+.article-sidebar .news-item img,
+.below-articles-three-sidebars .news-item img,
+.below-sidebar-box .news-item img,
+.sidebar-news-item img,
+#articleTopNewsSidebar img {
+    margin-top: 0 !important;
+    align-self: flex-start !important;
+}
+
+/* టెక్స్ట్ కంటైనర్ & హెడ్డింగ్స్ మార్జిన్ ఫిక్స్ */
+.article-sidebar .below-news-content,
+.below-sidebar-box .below-news-content,
+.sidebar-news-item > a:last-child,
+#articleTopNewsSidebar .news-item > a:last-child {
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    align-self: flex-start !important;
+}
+
+/* హెడ్డింగ్ కి ఉన్న డిఫాల్ట్ మార్జిన్ వల్ల కిందకి జారకుండా zero చేయడం */
+.article-sidebar h3,
+.article-sidebar h4,
+.below-sidebar-box h3,
+.below-sidebar-box h4,
+.sidebar-news-item h4,
+#articleTopNewsSidebar h3,
+#articleTopNewsSidebar .news-title {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    line-height: 1.35 !important;
+}
 </style>
 
 <!-- NEWSARTICLE STRUCTURED DATA -->
@@ -756,7 +807,6 @@ body.dark-mode .sidebar-news-item {
 ఒక్క వారంలోనే ₹500 కోట్ల మార్క్ దాటిన ‘రామాయణ’.. బాక్సాఫీస్ వద్ద రికార్డుల వేట
 
 </h2>
-# ఒక్క వారంలోనే ₹500 కోట్ల మార్క్ దాటిన ‘రామాయణ’.. బాక్సాఫీస్ వద్ద రికార్డుల వేట
 
 <p>భారతీయ సినీ చరిత్రలో మరో భారీ విజయం నమోదైంది. దేశవ్యాప్తంగా ప్రేక్షకుల్లో భారీ అంచనాలు పెంచిన ‘రామాయణ’ చిత్రం విడుదలైన తొలి వారంలోనే బాక్సాఫీస్ వద్ద అసాధారణ వసూళ్లను సాధించింది. నవంబర్ 5న థియేటర్లలోకి వచ్చిన ఈ సినిమా కేవలం ఏడు రోజుల్లోనే దేశీయ బాక్సాఫీస్ వద్ద రూ.500 కోట్ల మార్కును దాటింది. అంతేకాదు, ప్రపంచవ్యాప్తంగా కూడా భారీ వసూళ్లతో దూసుకెళ్తూ వెయ్యి కోట్ల క్లబ్‌కు చేరువైంది. తాజాగా ఎనిమిదో రోజు ముగిసే సమయానికి ప్రపంచవ్యాప్తంగా రూ.1,000 కోట్లకు పైగా వసూళ్లు సాధించడం సినీ పరిశ్రమలో చర్చనీయాంశంగా మారింది.</p>
 
