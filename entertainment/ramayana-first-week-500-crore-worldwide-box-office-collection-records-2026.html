@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="te">
 
@@ -2279,114 +2278,6 @@ body.dark-mode .article-sidebar .news-item {
 
 }
 
-
-    /* =========================================
-   BS 360 NEWS - ALL MOBILE HEADINGS
-   HEADING LEFT | MORE RIGHT | BLUE COLOR
-========================================= */
-
-@media screen and (max-width: 768px) {
-
-    /* CATEGORY HEADING ROWS */
-
-    .below-news-section .section-heading-row {
-        display: flex !important;
-        flex-direction: row !important;
-        align-items: center !important;
-        justify-content: space-between !important;
-        flex-wrap: nowrap !important;
-        width: 100% !important;
-        gap: 8px !important;
-        margin: 0 0 12px !important;
-        padding: 0 !important;
-    }
-
-    .below-news-section .section-heading-row .section-heading {
-        display: block !important;
-        flex: 1 1 auto !important;
-        min-width: 0 !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        font-size: 18px !important;
-        line-height: 1.5 !important;
-        font-weight: 800 !important;
-        color: #0878d1 !important;
-        text-align: left !important;
-        white-space: nowrap !important;
-        border: none !important;
-    }
-
-    .below-news-section .section-heading-row .more-link {
-        display: inline-flex !important;
-        flex: 0 0 auto !important;
-        align-items: center !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        font-size: 13px !important;
-        line-height: 1.4 !important;
-        font-weight: 700 !important;
-        color: #0878d1 !important;
-        white-space: nowrap !important;
-        text-decoration: none !important;
-    }
-
-    /* ARTICLE SIDEBAR HEADINGS */
-
-    .article-sidebar .sidebar-title,
-    .below-sidebar-box .sidebar-heading-row {
-        display: flex !important;
-        flex-direction: row !important;
-        align-items: center !important;
-        justify-content: space-between !important;
-        flex-wrap: nowrap !important;
-        width: 100% !important;
-        gap: 8px !important;
-        margin: 0 0 10px !important;
-        padding: 0 0 6px !important;
-        border: none !important;
-        box-shadow: none !important;
-    }
-
-    .article-sidebar .sidebar-title > span,
-    .below-sidebar-box .sidebar-heading-row h4 {
-        display: block !important;
-        flex: 1 1 auto !important;
-        min-width: 0 !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        font-size: 18px !important;
-        line-height: 1.5 !important;
-        font-weight: 800 !important;
-        color: #0878d1 !important;
-        text-align: left !important;
-        white-space: nowrap !important;
-        border: none !important;
-    }
-
-    /* ALL MORE LINKS */
-
-    .article-sidebar .sidebar-more,
-    .below-sidebar-box .sidebar-more {
-        display: inline-flex !important;
-        flex: 0 0 auto !important;
-        align-items: center !important;
-        justify-content: flex-end !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        font-size: 13px !important;
-        line-height: 1.4 !important;
-        font-weight: 700 !important;
-        color: #0878d1 !important;
-        white-space: nowrap !important;
-        text-decoration: none !important;
-    }
-
-    .below-news-section .more-link:hover,
-    .article-sidebar .sidebar-more:hover,
-    .below-sidebar-box .sidebar-more:hover {
-        color: #0056a8 !important;
-    }
-}
     /* BELOW ARTICLES - HEADING AND MORE LINK SIDE BY SIDE */
 
 .below-articles-main-layout .below-news-section .section-heading-row {
@@ -2462,6 +2353,51 @@ body.dark-mode .article-sidebar .news-item {
 .below-articles-main-layout .below-news-section .more-link {
     color: #0878e8 !important;
 }
+
+
+/* =========================================
+   BS 360 NEWS - FINAL MOBILE SIDEBAR HEADINGS FIX
+   ONLY SIDEBAR HEADINGS - ARTICLE TITLES UNCHANGED
+========================================= */
+@media screen and (max-width: 768px) {
+
+    /* ARTICLE SIDEBAR:
+       ట్రెండింగ్ వార్తలు, నేటి హైలైట్స్, సినిమా రివ్యూస్ */
+    .article-sidebar > .sidebar-box > .sidebar-title,
+    .article-sidebar .sidebar-title,
+    .sidebar-box > .sidebar-title {
+        font-size: 18px !important;
+        font-weight: 800 !important;
+        line-height: 1.5 !important;
+        color: #0878d1 !important;
+        text-align: left !important;
+        margin: 0 0 10px !important;
+        padding: 0 0 7px !important;
+    }
+
+    /* BELOW ARTICLE SIDEBAR:
+       హాట్ న్యూస్, తాజా వార్తలు, టాప్ వార్తలు */
+    .below-articles-three-sidebars .below-sidebar-box > h4,
+    .below-sidebar-box > h4 {
+        font-size: 18px !important;
+        font-weight: 800 !important;
+        line-height: 1.5 !important;
+        color: #0878d1 !important;
+        text-align: left !important;
+        margin: 0 0 10px !important;
+        padding: 0 0 7px !important;
+    }
+
+    /* DARK MODE - KEEP THE SAME BLUE HEADING COLOR */
+    body.dark-mode .article-sidebar > .sidebar-box > .sidebar-title,
+    body.dark-mode .article-sidebar .sidebar-title,
+    body.dark-mode .sidebar-box > .sidebar-title,
+    body.dark-mode .below-articles-three-sidebars .below-sidebar-box > h4,
+    body.dark-mode .below-sidebar-box > h4 {
+        color: #0878d1 !important;
+    }
+}
+
 </style>
 <!-- NEWSARTICLE STRUCTURED DATA -->
 
@@ -2797,7 +2733,7 @@ body.dark-mode .article-sidebar .news-item {
     <aside class="below-articles-three-sidebars">
 
         <div class="below-sidebar-box">
-            <h3>హాట్ న్యూస్</h3>
+            <h4>హాట్ న్యూస్</h4>
             <div id="trendingSidebar"></div>
         </div>
 
