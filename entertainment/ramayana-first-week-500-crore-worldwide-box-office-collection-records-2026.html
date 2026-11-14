@@ -711,6 +711,53 @@ body.dark-mode .sidebar-news-item {
         max-height: 80px !important;
     }
 }
+
+
+
+    /* =========================================
+   LAPTOP MAIN GRID IMAGE HEIGHT FIX
+========================================= */
+@media (min-width: 900px) {
+
+    /* మెయిన్ గ్రిడ్ కార్డ్‌ల ఫ్లెక్స్ రూల్ */
+    .below-articles-content .below-news-grid > .news-item {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    /* ఇమేజ్ లింక్ కంటైనర్ పూర్తి వెడల్పు తీసుకోడానికి */
+    .below-articles-content .below-news-grid > .news-item > a,
+    .below-articles-content .below-news-grid .below-news-image {
+        display: block !important;
+        width: 100% !important;
+        min-width: 100% !important;
+        max-width: 100% !important;
+        height: 180px !important; /* ఇక్కడ ఎత్తును 180px కి పెంచాము */
+        overflow: hidden !important;
+        border-radius: 6px !important;
+    }
+
+    /* మెయిన్ గ్రిడ్ ఇమేజ్ హైట్ & విడ్త్ ఫిక్స్ */
+    .below-articles-content .below-news-grid > .news-item img {
+        display: block !important;
+        width: 100% !important;
+        min-width: 100% !important;
+        max-width: 100% !important;
+        height: 100% !important;
+        min-height: 100% !important;
+        object-fit: cover !important; /* ఇమేజ్ సాగకుండా కరెక్ట్‌గా ఫిట్ అవుతుంది */
+        border-radius: 6px !important;
+    }
+
+    /* మొదటి 2 పెద్ద ఆర్టికల్స్ ఇమేజ్ ఎత్తు మరింత పెద్దగా రావడానికి */
+    .below-articles-content .below-news-grid > .news-item:nth-child(1) > a,
+    .below-articles-content .below-news-grid > .news-item:nth-child(2) > a {
+        height: 240px !important; /* మొదట ఉండే 2 పెద్ద ఆర్టికల్స్ ఇమేజ్ హైట్ 240px */
+    }
+}
 </style>
 
 <!-- NEWSARTICLE STRUCTURED DATA -->
