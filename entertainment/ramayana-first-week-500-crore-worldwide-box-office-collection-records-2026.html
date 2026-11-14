@@ -665,58 +665,50 @@ body.dark-mode .sidebar-news-item {
     line-height: 1.35 !important;
 }
 
-    /* =========================================
-   LAPTOP / DESKTOP CATEGORY GRID
-   Row 1: 2 Articles (Span 3 each)
-   Row 2: 3 Articles (Span 2 each)
-   Row 3: 3 Articles (Span 2 each)
+/* =========================================
+   LAPTOP FIX: MAIN GRID IMAGES (FULL WIDTH)
+   VS SIDEBAR IMAGES (120x80)
 ========================================= */
-.below-articles-content .below-news-grid {
-    display: grid !important;
-    grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
-    gap: 16px !important;
-    width: 100% !important;
-}
 
-/* 1st & 2nd Articles -> మొదటి లైన్‌లో 2 ఆర్టికల్స్ (సగానికి సగం) */
-.below-articles-content .below-news-grid > .news-item:nth-child(1),
-.below-articles-content .below-news-grid > .news-item:nth-child(2) {
-    grid-column: span 3 !important;
-}
-
-/* 3rd to 8th Articles -> 2వ & 3వ లైన్లలో మూడేసి ఆర్టికల్స్ (ఒక్కొక్కటి 1/3 వంతు) */
-.below-articles-content .below-news-grid > .news-item:nth-child(n+3) {
-    grid-column: span 2 !important;
-}
-
-/* లాప్‌టాప్‌లో మెయిన్ గ్రిడ్ ఆర్టికల్స్ నిలువు కార్డ్ డిజైన్ (ఇమేజ్ పైన, టెక్స్ట్ కింద) */
 @media (min-width: 900px) {
-    .below-articles-content .below-news-grid > .news-item {
+
+    /* 1. లాప్‌టాప్ మెయిన్ గ్రిడ్‌లో ఉన్న 8 ఆర్టికల్స్ ఇమేజెస్ పెద్దవిగా రావడానికి */
+    .below-articles-content .below-news-grid .news-item {
         display: flex !important;
         flex-direction: column !important;
-        align-items: stretch !important;
         width: 100% !important;
-        border-bottom: none !important;
     }
 
-    .below-articles-content .below-news-grid .below-news-image,
-    .below-articles-content .below-news-grid > .news-item > a:first-child {
+    .below-articles-content .below-news-grid .news-item > a,
+    .below-articles-content .below-news-grid .below-news-image {
         width: 100% !important;
         min-width: 100% !important;
+        max-width: 100% !important;
         height: auto !important;
     }
 
-    .below-articles-content .below-news-grid img {
+    .below-articles-content .below-news-grid .news-item img {
         width: 100% !important;
         min-width: 100% !important;
+        max-width: 100% !important;
         height: auto !important;
         aspect-ratio: 16 / 9 !important;
         object-fit: cover !important;
         border-radius: 6px !important;
     }
 
-    .below-articles-content .below-news-grid .below-news-content {
-        padding-top: 8px !important;
+    /* 2. లాప్‌టాప్‌లోని సైడ్‌బార్ ఐటెమ్స్ మాత్రమే 120x80px ఉండటానికి */
+    .article-sidebar .news-item img,
+    .below-articles-three-sidebars .news-item img,
+    .below-sidebar-box .news-item img,
+    .sidebar-news-item img,
+    #articleTopNewsSidebar img {
+        width: 120px !important;
+        min-width: 120px !important;
+        max-width: 120px !important;
+        height: 80px !important;
+        min-height: 80px !important;
+        max-height: 80px !important;
     }
 }
 </style>
