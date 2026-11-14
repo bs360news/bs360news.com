@@ -801,6 +801,24 @@ body.dark-mode .article-main .article-content p {
     margin-top: 15px !important;
     margin-bottom: 8px !important;
 }
+    /* =========================================
+   STICKY SIDEBAR ON SCROLL (DESKTOP)
+========================================= */
+@media (min-width: 900px) {
+
+    /* 1. Main layout container auto height setup */
+    .below-articles-main-layout {
+        align-items: start !important;
+    }
+
+    /* 2. Sidebar container sticky behavior */
+    .below-articles-three-sidebars {
+        position: -webkit-sticky !important;
+        position: sticky !important;
+        top: 20px !important; /* పై నుండి ఎంత గ్యాప్ ఉండాలో సూచిస్తుంది */
+        z-index: 10;
+    }
+}
 </style>
 
 <!-- NEWSARTICLE STRUCTURED DATA -->
