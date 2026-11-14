@@ -2199,7 +2199,85 @@ body.dark-mode .article-sidebar .news-item {
         flex-shrink: 0 !important;
     }
 }
+/* =====================================
+   BS 360 NEWS - MOBILE SIDEBAR HEADINGS
+   HEADING LEFT | MORE LINK RIGHT
+===================================== */
 
+.section-heading-row {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    gap: 8px !important;
+    margin: 0 0 12px !important;
+}
+
+/* HEADING */
+
+.section-heading-row .sidebar-heading,
+.section-heading-row .section-heading {
+    display: block !important;
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 18px !important;
+    line-height: 1.5 !important;
+    font-weight: 800 !important;
+    color: #0878e8 !important;
+    white-space: nowrap !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* MORE LINK */
+
+.section-heading-row .more-link {
+    display: inline-flex !important;
+    flex: 0 0 auto !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    color: #0878e8 !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    white-space: nowrap !important;
+    text-decoration: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.section-heading-row .more-link:hover {
+    color: #0056b3 !important;
+}
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+
+    .below-sidebar-box .section-heading-row {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        width: 100% !important;
+        gap: 6px !important;
+        margin-bottom: 10px !important;
+    }
+
+    .below-sidebar-box .sidebar-heading {
+        font-size: 17px !important;
+        line-height: 1.4 !important;
+        color: #0878e8 !important;
+    }
+
+    .below-sidebar-box .more-link {
+        font-size: 13px !important;
+        color: #0878e8 !important;
+    }
+
+}
 </style>
 <!-- NEWSARTICLE STRUCTURED DATA -->
 
