@@ -498,6 +498,87 @@ body.dark-mode .sidebar-news-item {
 #TopNewsSidebar a:last-child:hover {
     color: #d60000 !important;
 }
+    /* =========================================
+   మొబైల్ & లాప్‌టాప్ సైడ్‌బార్/లిస్ట్ ఆర్టికల్స్
+   ఇమేజ్ పక్కనే టెక్స్ట్ ఖచ్చితంగా రావడానికి
+========================================= */
+.news-item,
+.sidebar-news-item,
+.top-news-sidebar-item,
+.below-sidebar-box .news-item {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important; /* ఇక్కడ టెక్స్ట్ పైనుండి సరిగ్గా స్టార్ట్ అవుతుంది */
+    gap: 12px !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 10px 0 !important;
+    background: transparent !important;
+    border-bottom: 1px solid #e5e5e5 !important;
+    box-sizing: border-box !important;
+}
+
+/* ఇమేజ్ సైజ్ ఫిక్స్ (120px x 80px) */
+.news-item img,
+.sidebar-news-item img,
+.top-news-sidebar-item img,
+.below-sidebar-box img,
+.below-news-image img {
+    display: block !important;
+    width: 120px !important;
+    min-width: 120px !important;
+    max-width: 120px !important;
+    height: 80px !important;
+    min-height: 80px !important;
+    max-height: 80px !important;
+    object-fit: cover !important;
+    border-radius: 6px !important;
+    flex-shrink: 0 !important;
+    margin: 0 !important;
+}
+
+/* టెక్స్ట్ కంటైనర్ & హెడ్డింగ్స్ పక్కనే ఉండేలా */
+.news-item .below-news-content,
+.news-item > a:last-child,
+.news-item > div,
+.sidebar-news-item > a:last-child,
+.top-news-sidebar-item > a:last-child {
+    display: block !important;
+    flex: 1 1 auto !important;
+    width: auto !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.news-item h3,
+.news-item h4,
+.sidebar-news-item h4,
+.top-news-sidebar-item h3 {
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 14px !important;
+    line-height: 1.4 !important;
+    font-weight: 700 !important;
+    color: #111111 !important;
+    text-align: left !important;
+    word-break: break-word !important;
+    overflow-wrap: anywhere !important;
+}
+
+.news-item h3 a,
+.news-item h4 a,
+.sidebar-news-item a,
+.top-news-sidebar-item a {
+    color: #111111 !important;
+    text-decoration: none !important;
+}
+
+.news-item h3 a:hover,
+.news-item h4 a:hover {
+    color: #d60000 !important;
+}
 </style>
 
 <!-- NEWSARTICLE STRUCTURED DATA -->
