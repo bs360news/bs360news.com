@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="te">
 
@@ -2395,6 +2396,29 @@ body.dark-mode .article-sidebar .news-item {
     body.dark-mode .below-articles-three-sidebars .below-sidebar-box > h4,
     body.dark-mode .below-sidebar-box > h4 {
         color: #0878d1 !important;
+    }
+}
+
+
+
+/* =====================================================
+   FINAL OVERRIDE - MOBILE SIDEBAR SECTION HEADINGS ONLY
+   Does not change article titles or desktop/tablet layout
+===================================================== */
+@media screen and (max-width: 768px) {
+    html body .article-sidebar .sidebar-box > .sidebar-title,
+    html body .article-sidebar .sidebar-box .sidebar-title,
+    html body .below-articles-three-sidebars .below-sidebar-box > h4 {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        width: 100% !important;
+        font-size: 20px !important;
+        line-height: 1.45 !important;
+        font-weight: 800 !important;
+        margin: 0 0 12px !important;
+        padding: 0 0 7px !important;
+        text-align: left !important;
     }
 }
 
