@@ -1096,6 +1096,58 @@ body.dark-mode .article-sidebar h3 {
     color: #ffffff !important;
 }
 
+
+    /* =========================================
+   ONLY SIDEBAR TITLES FIX (ARTICLES UNTOUCHED)
+========================================= */
+
+/* 1. కేవలం సైడ్‌బార్ టైటిల్స్ (హెడ్డింగ్స్) మాత్రమే పెద్దవిగా & డార్క్ బ్లాక్‌లో ఉండటానికి */
+aside.article-sidebar .sidebar-title,
+aside.below-articles-three-sidebars .below-sidebar-box h4,
+aside.below-articles-three-sidebars .below-sidebar-box h3,
+aside.below-articles-three-sidebars .sidebar-title,
+.below-sidebar-box > h4,
+.below-sidebar-box > h3,
+.below-sidebar-box > .sidebar-title,
+.article-sidebar > .sidebar-box > .sidebar-title {
+    color: #111111 !important;
+    font-size: 19px !important;
+    font-weight: 800 !important;
+    line-height: 1.4 !important;
+    margin: 0 0 14px 0 !important;
+    padding: 0 0 6px 0 !important;
+    border-bottom: 2px solid #e50914 !important;
+    display: block !important;
+    background: transparent !important;
+}
+
+/* 2. సైడ్‌బార్ లోపలి ఆర్టికల్స్ టెక్స్ట్ ఎప్పుడూ నార్మల్ సైజులో ఉండేలా */
+.article-sidebar .news-item h3,
+.article-sidebar .news-item h4,
+.article-sidebar .sidebar-news-item h4,
+.below-articles-three-sidebars .news-item h3,
+.below-articles-three-sidebars .news-item h4,
+.below-sidebar-box .news-item h3,
+.below-sidebar-box .news-item h4,
+.sidebar-news-item a,
+.top-news-sidebar-item a {
+    color: #444444 !important;
+    font-size: 14px !important;
+    line-height: 1.45 !important;
+    font-weight: 600 !important;
+}
+
+/* డార్క్ మోడ్ కోసం */
+body.dark-mode aside.article-sidebar .sidebar-title,
+body.dark-mode aside.below-articles-three-sidebars .below-sidebar-box h4,
+body.dark-mode aside.below-articles-three-sidebars .below-sidebar-box h3,
+body.dark-mode aside.below-articles-three-sidebars .sidebar-title,
+body.dark-mode .below-sidebar-box > h4,
+body.dark-mode .below-sidebar-box > h3,
+body.dark-mode .below-sidebar-box > .sidebar-title,
+body.dark-mode .article-sidebar > .sidebar-box > .sidebar-title {
+    color: #ffffff !important;
+}
 </style>
 
 <!-- NEWSARTICLE STRUCTURED DATA -->
