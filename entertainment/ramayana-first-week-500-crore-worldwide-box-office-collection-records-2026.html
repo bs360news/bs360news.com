@@ -1063,6 +1063,38 @@ body.dark-mode .sidebar-box * {
     padding: 0 !important;
     text-align: left !important;
 }
+
+
+
+    /* =========================================
+   UNIFORM SIDEBAR HEADINGS (DARK & LARGE)
+========================================= */
+.sidebar-title,
+.below-sidebar-box h4,
+.below-sidebar-box h3,
+.article-sidebar .sidebar-title,
+.article-sidebar h4,
+.article-sidebar h3 {
+    color: #111111 !important;
+    font-size: 19px !important;
+    font-weight: 800 !important;
+    line-height: 1.4 !important;
+    margin: 0 0 14px 0 !important;
+    padding: 0 0 6px 0 !important;
+    display: block !important;
+    background: transparent !important;
+    border-bottom: 2px solid #e50914 !important; /* హెడ్డింగ్ కింద చిన్న రెడ్ లైన్ (కావాలంటే ఉంచుకోవచ్చు) */
+}
+
+/* డార్క్ మోడ్ (Dark Mode) ఆన్ చేసినప్పుడు హెడ్డింగ్స్ వైట్ కలర్‌లోకి మారడానికి */
+body.dark-mode .sidebar-title,
+body.dark-mode .below-sidebar-box h4,
+body.dark-mode .below-sidebar-box h3,
+body.dark-mode .article-sidebar .sidebar-title,
+body.dark-mode .article-sidebar h4,
+body.dark-mode .article-sidebar h3 {
+    color: #ffffff !important;
+}
     
 </style>
 
@@ -1398,7 +1430,7 @@ body.dark-mode .sidebar-box * {
         
 <!-- TOP NEWS -->
 <div class="below-sidebar-box">
-    <h4>టాప్ వార్తలు</h4>
+    <h3>టాప్ వార్తలు</h3>
     <div id="TopNewsSidebar"></div>
 </div>
         <!-- 7. NATIONAL (SIDEBAR) -->
