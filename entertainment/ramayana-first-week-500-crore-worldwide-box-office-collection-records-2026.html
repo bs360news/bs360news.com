@@ -1086,6 +1086,38 @@ body.dark-mode .article-sidebar .sidebar-box .sidebar-title,
 body.dark-mode .article-sidebar .sidebar-box h4 {
     color: #ffffff !important;
 }
+    /* =========================================
+   EXACT SIDEBAR HEADINGS FIX (ISOLATED)
+========================================= */
+
+/* కేవలం సైడ్‌బార్ హెడ్డింగ్‌లకు మాత్రమే పెద్ద సైజ్ మరియు డార్క్ కలర్ అప్లై అవ్వడానికి */
+aside.article-sidebar .sidebar-title,
+aside.article-sidebar h4,
+aside.below-articles-three-sidebars .below-sidebar-box h4,
+aside.below-articles-three-sidebars .sidebar-title,
+.below-sidebar-box h4,
+.sidebar-title {
+    color: #111111 !important;
+    font-size: 19px !important;
+    font-weight: 800 !important;
+    line-height: 1.4 !important;
+    margin: 0 0 12px 0 !important;
+    padding: 0 0 6px 0 !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    background: transparent !important;
+}
+
+/* డార్క్ మోడ్ కోసం హెడ్డింగ్స్ */
+body.dark-mode aside.article-sidebar .sidebar-title,
+body.dark-mode aside.article-sidebar h4,
+body.dark-mode aside.below-articles-three-sidebars .below-sidebar-box h4,
+body.dark-mode aside.below-articles-three-sidebars .sidebar-title,
+body.dark-mode .below-sidebar-box h4,
+body.dark-mode .sidebar-title {
+    color: #ffffff !important;
+}
 </style>
 
 <!-- NEWSARTICLE STRUCTURED DATA -->
