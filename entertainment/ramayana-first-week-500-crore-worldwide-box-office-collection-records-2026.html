@@ -909,7 +909,38 @@ body.dark-mode .article-main .article-content p {
 .bs-navigation a{display:block;flex:0 0 auto;padding:11px 19px;color:#fff;font-weight:700;white-space:nowrap}
 .bs-navigation a:hover{background:#e60000;color:#fff}
 
+/* =========================================
+   ARTICLE TEXT COLOR & ALIGNMENT FIX
+========================================= */
 
+/* ఆర్టికల్ లోపల ఉండే పారాగ్రాఫ్ టెక్స్ట్ లైట్ కలర్ (#444444) మరియు సమానంగా ఉండేలా */
+.article-main .article-content p {
+    color: #444444 !important;
+    font-size: 16px !important;
+    line-height: 1.7 !important;
+    font-weight: 400 !important;
+    margin-top: 0 !important;
+    margin-bottom: 14px !important;
+}
+
+/* డార్క్ మోడ్ ఆన్ చేసినప్పుడు ఆర్టికల్ టెక్స్ట్ */
+body.dark-mode .article-main .article-content p {
+    color: #cccccc !important;
+}
+
+/* ఆర్టికల్ లోపలి హెడ్డింగ్స్ (h2, h3) */
+.article-main .article-content h2,
+.article-main .article-content h3 {
+    color: #111111 !important;
+    font-weight: 700 !important;
+    margin-top: 20px !important;
+    margin-bottom: 10px !important;
+}
+
+body.dark-mode .article-main .article-content h2,
+body.dark-mode .article-main .article-content h3 {
+    color: #ffffff !important;
+}
 </style>
 
 <!-- NEWSARTICLE STRUCTURED DATA -->
