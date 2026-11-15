@@ -910,36 +910,64 @@ body.dark-mode .article-main .article-content p {
 .bs-navigation a:hover{background:#e60000;color:#fff}
 
 /* =========================================
-   ARTICLE TEXT COLOR & ALIGNMENT FIX
+   ARTICLE PARAGRAPH TEXT COLOR OVERRIDE FIX
 ========================================= */
-
-/* ఆర్టికల్ లోపల ఉండే పారాగ్రాఫ్ టెక్స్ట్ లైట్ కలర్ (#444444) మరియు సమానంగా ఉండేలా */
-.article-main .article-content p {
+.article-main .article-content p,
+.article-content p {
     color: #444444 !important;
     font-size: 16px !important;
     line-height: 1.7 !important;
     font-weight: 400 !important;
-    margin-top: 0 !important;
-    margin-bottom: 14px !important;
 }
 
-/* డార్క్ మోడ్ ఆన్ చేసినప్పుడు ఆర్టికల్ టెక్స్ట్ */
-body.dark-mode .article-main .article-content p {
+body.dark-mode .article-main .article-content p,
+body.dark-mode .article-content p {
     color: #cccccc !important;
 }
+    /* =========================================
+   SIDEBAR ARTICLES UNIFORM TEXT & COLOR FIX
+========================================= */
 
-/* ఆర్టికల్ లోపలి హెడ్డింగ్స్ (h2, h3) */
-.article-main .article-content h2,
-.article-main .article-content h3 {
-    color: #111111 !important;
-    font-weight: 700 !important;
-    margin-top: 20px !important;
-    margin-bottom: 10px !important;
+/* సైడ్‌బార్‌లోని అన్ని ఆర్టికల్ టైటిల్స్ / టెక్స్ట్ ఒకేలా, లైట్ కలర్‌లో ఉండటానికి */
+.article-sidebar .news-item h3,
+.article-sidebar .news-item h4,
+.article-sidebar a,
+.below-articles-three-sidebars .news-item h3,
+.below-articles-three-sidebars .news-item h4,
+.below-articles-three-sidebars a,
+.below-sidebar-box .news-item h3,
+.below-sidebar-box .news-item h4,
+.below-sidebar-box a,
+.sidebar-news-item h4,
+#TopNewsSidebar h3,
+#articleTopNewsSidebar h3 {
+    color: #444444 !important;
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    font-weight: 400 !important; /* మరీ థిక్‌గా కాకుండా లైట్‌గా ఉండటానికి */
 }
 
-body.dark-mode .article-main .article-content h2,
-body.dark-mode .article-main .article-content h3 {
-    color: #ffffff !important;
+/* హోవర్ చేసినప్పుడు కొంచెం డార్క్ / రెడ్ కలర్ రావడానికి (ఆప్షనల్) */
+.article-sidebar a:hover h3,
+.article-sidebar a:hover h4,
+.below-articles-three-sidebars a:hover h3,
+.below-articles-three-sidebars a:hover h4,
+.below-sidebar-box a:hover h3,
+.below-sidebar-box a:hover h4 {
+    color: #d60000 !important;
+}
+
+/* డార్క్ మోడ్ (Dark Mode) ఆన్ చేసినప్పుడు సైడ్‌బార్ టెక్స్ట్ */
+body.dark-mode .article-sidebar .news-item h3,
+body.dark-mode .article-sidebar .news-item h4,
+body.dark-mode .article-sidebar a,
+body.dark-mode .below-articles-three-sidebars .news-item h3,
+body.dark-mode .below-articles-three-sidebars .news-item h4,
+body.dark-mode .below-articles-three-sidebars a,
+body.dark-mode .below-sidebar-box .news-item h3,
+body.dark-mode .below-sidebar-box h4,
+body.dark-mode .below-sidebar-box a {
+    color: #cccccc !important;
 }
 </style>
 
