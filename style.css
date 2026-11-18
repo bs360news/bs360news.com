@@ -3317,3 +3317,69 @@ body.dark-mode #aptsSection .section-heading {
         line-height: 1.45;
     }
 } 
+
+
+
+
+
+
+
+
+
+
+
+/* MINI GRID - FORCE BELOW SMALL GRID */
+
+#entertainmentSection .entertainment-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100%;
+}
+
+#entertainmentSection .entertainment-featured {
+    width: 100%;
+}
+
+#entertainmentSection .entertainment-small-grid {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#entertainmentSection .entertainment-mini-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    flex: 0 0 100% !important;
+    clear: both;
+    margin-top: 12px;
+}
+
+#entertainmentSection .entertainment-mini-grid article a {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center;
+    gap: 10px;
+}
+
+#entertainmentSection .entertainment-mini-grid article img {
+    width: 35%;
+    height: 100px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+#entertainmentSection .entertainment-mini-grid article h3 {
+    flex: 1;
+    margin: 0;
+}
+
+@media (max-width: 600px) {
+    #entertainmentSection .entertainment-mini-grid article img {
+        height: 85px;
+    }
+
+    #entertainmentSection .entertainment-mini-grid article h3 {
+        font-size: 13px;
+    }
+}
