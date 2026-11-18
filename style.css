@@ -3510,94 +3510,51 @@ body.dark-mode #aptsSection .section-heading {
 
 
 
+/* TRENDING SIDEBAR - IMAGE SIZE FIX */
 
-
-
-#entertainmentSection .entertainment-mini-grid article h3 {
-    color: #b8b8b8 !important;
-    font-weight: 400 !important;
+#trendingSection #trendingSidebar .news-item {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 12px !important;
+    width: 100% !important;
 }
 
-
-
-#entertainmentSection .entertainment-mini-grid article h3 {
-    color: #333333 !important;
-    font-weight: 500 !important;
+#trendingSection #trendingSidebar .news-item > a {
+    display: block !important;
+    flex: 0 0 140px !important;
+    width: 140px !important;
+    min-width: 140px !important;
+    max-width: 140px !important;
 }
 
-
-
-/* ALL SIDEBAR ARTICLES - SAME AS ENTERTAINMENT MINI GRID */
-
-#trendingSidebar .news-item img,
-#latestSidebar .news-item img,
-#topNewsSidebar .news-item img {
-    width: 35% !important;
-    min-width: 35% !important;
-    max-width: 35% !important;
-    height: 100px !important;
-    object-fit: cover !important;
-    flex-shrink: 0 !important;
-}
-
-/* MOBILE */
-@media (max-width: 600px) {
-    #trendingSidebar .news-item img,
-    #latestSidebar .news-item img,
-    #topNewsSidebar .news-item img {
-        width: 35% !important;
-        min-width: 35% !important;
-        max-width: 35% !important;
-        height: 85px !important;
-    }
-}
-
-
-
-/* TRENDING SIDEBAR - IMAGE SIZE INCREASE */
-
-#trendingSidebar .news-item img {
-    width: 40% !important;
-    min-width: 40% !important;
-    max-width: 40% !important;
-    height: 110px !important;
-    object-fit: cover !important;
-    flex-shrink: 0 !important;
-}
-
-/* MOBILE */
-@media (max-width: 600px) {
-    #trendingSidebar .news-item img {
-        width: 40% !important;
-        min-width: 40% !important;
-        max-width: 40% !important;
-        height: 95px !important;
-    }
-}
-
-
-
-
-
-
-/* TRENDING SIDEBAR - INCREASE IMAGE SIZE ONLY */
-
-#trendingSidebar .news-item img {
+#trendingSection #trendingSidebar .news-item > a img {
+    display: block !important;
     width: 140px !important;
     min-width: 140px !important;
     max-width: 140px !important;
     height: 110px !important;
     object-fit: cover !important;
-    flex: 0 0 140px !important;
 }
 
-/* MOBILE */
+/* TRENDING TEXT */
+#trendingSection #trendingSidebar .news-content {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+}
+
 @media (max-width: 768px) {
-    #trendingSidebar .news-item img {
+    #trendingSection #trendingSidebar .news-item > a {
+        flex: 0 0 125px !important;
+        width: 125px !important;
+        min-width: 125px !important;
+        max-width: 125px !important;
+    }
+
+    #trendingSection #trendingSidebar .news-item > a img {
         width: 125px !important;
         min-width: 125px !important;
         max-width: 125px !important;
         height: 95px !important;
-        flex: 0 0 125px !important;
     }
 }
