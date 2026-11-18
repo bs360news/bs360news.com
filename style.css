@@ -3524,3 +3524,30 @@ body.dark-mode #aptsSection .section-heading {
     color: #333333 !important;
     font-weight: 500 !important;
 }
+
+
+
+/* ALL SIDEBAR ARTICLES - SAME AS ENTERTAINMENT MINI GRID */
+
+#trendingSidebar .news-item img,
+#latestSidebar .news-item img,
+#topNewsSidebar .news-item img {
+    width: 35% !important;
+    min-width: 35% !important;
+    max-width: 35% !important;
+    height: 100px !important;
+    object-fit: cover !important;
+    flex-shrink: 0 !important;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+    #trendingSidebar .news-item img,
+    #latestSidebar .news-item img,
+    #topNewsSidebar .news-item img {
+        width: 35% !important;
+        min-width: 35% !important;
+        max-width: 35% !important;
+        height: 85px !important;
+    }
+}
