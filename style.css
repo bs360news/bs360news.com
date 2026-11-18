@@ -3513,21 +3513,7 @@ body.dark-mode #aptsSection .section-heading {
 
 
 
-/* Mini Grid Text Light Color */
-
 #entertainmentSection .entertainment-mini-grid article h3 {
-    color: #e6e6e6 !important;
-    font-weight: 500;
-}
-
-/* Mini Grid Link Color */
-
-#entertainmentSection .entertainment-mini-grid article a {
-    color: #e6e6e6 !important;
-}
-
-/* Hover Color */
-
-#entertainmentSection .entertainment-mini-grid article a:hover h3 {
-    color: #ffffff !important;
+    color: #b8b8b8 !important;
+    font-weight: 400 !important;
 }
