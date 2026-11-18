@@ -3551,3 +3551,26 @@ body.dark-mode #aptsSection .section-heading {
         height: 85px !important;
     }
 }
+
+
+
+/* TRENDING SIDEBAR - IMAGE SIZE INCREASE */
+
+#trendingSidebar .news-item img {
+    width: 40% !important;
+    min-width: 40% !important;
+    max-width: 40% !important;
+    height: 110px !important;
+    object-fit: cover !important;
+    flex-shrink: 0 !important;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+    #trendingSidebar .news-item img {
+        width: 40% !important;
+        min-width: 40% !important;
+        max-width: 40% !important;
+        height: 95px !important;
+    }
+}
