@@ -3388,3 +3388,122 @@ body.dark-mode #aptsSection .section-heading {
         font-size: 13px;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ENTERTAINMENT MAIN LAYOUT */
+
+#entertainmentSection .entertainment-layout {
+    display: grid !important;
+    grid-template-columns: 1.15fr 1fr !important;
+    gap: 20px;
+    align-items: start;
+}
+
+/* LEFT BIG ARTICLE */
+
+#entertainmentSection .entertainment-featured {
+    grid-column: 1;
+    grid-row: 1;
+    min-width: 0;
+}
+
+/* RIGHT COLUMN */
+
+#entertainmentSection .entertainment-right-column {
+    grid-column: 2;
+    grid-row: 1;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 15px;
+    min-width: 0;
+    width: 100%;
+}
+
+/* TWO SMALL ARTICLES */
+
+#entertainmentSection .entertainment-small-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    width: 100%;
+}
+
+/* MINI GRID BELOW SMALL GRID */
+
+#entertainmentSection .entertainment-mini-grid {
+    display: block !important;
+    width: 100%;
+    margin-top: 5px;
+}
+
+#entertainmentSection .entertainment-mini-grid article {
+    width: 100%;
+    margin: 0;
+}
+
+#entertainmentSection .entertainment-mini-grid article a {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center;
+    gap: 10px;
+}
+
+#entertainmentSection .entertainment-mini-grid article img {
+    width: 35%;
+    height: 100px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+#entertainmentSection .entertainment-mini-grid article h3 {
+    flex: 1;
+    margin: 0;
+}
+
+/* MOBILE */
+
+@media(max-width:600px) {
+
+    #entertainmentSection .entertainment-layout {
+        grid-template-columns: 1fr !important;
+    }
+
+    #entertainmentSection .entertainment-featured {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    #entertainmentSection .entertainment-right-column {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    #entertainmentSection .entertainment-mini-grid article a {
+        flex-direction: row !important;
+    }
+
+    #entertainmentSection .entertainment-mini-grid article img {
+        width: 35%;
+        height: 85px;
+    }
+
+    #entertainmentSection .entertainment-mini-grid article h3 {
+        font-size: 13px;
+        line-height: 1.5;
+    }
+}
+
+
+
