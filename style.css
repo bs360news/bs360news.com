@@ -3507,3 +3507,20 @@ body.dark-mode #aptsSection .section-heading {
 
 
 
+/* Entertainment Article Text - Light Color */
+
+#entertainmentSection .entertainment-layout article h3,
+#entertainmentSection .entertainment-small-grid article h3,
+#entertainmentSection .entertainment-mini-grid article h3 {
+    color: #e6e6e6 !important;
+}
+
+/* Article Link */
+#entertainmentSection .entertainment-layout article a {
+    color: #e6e6e6 !important;
+}
+
+/* Hover */
+#entertainmentSection .entertainment-layout article a:hover h3 {
+    color: #ffffff !important;
+}
