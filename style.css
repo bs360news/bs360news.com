@@ -3517,3 +3517,10 @@ body.dark-mode #aptsSection .section-heading {
     color: #b8b8b8 !important;
     font-weight: 400 !important;
 }
+
+
+
+#entertainmentSection .entertainment-mini-grid article h3 {
+    color: #333333 !important;
+    font-weight: 500 !important;
+}
