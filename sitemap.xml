@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <url>
@@ -15,10 +16,7 @@
         <lastmod>2026-10-05</lastmod>
     </url>
 
-    <url>
-        <loc>https://bs360news.com/AP%26TS.html</loc>
-        <lastmod>2026-10-05</lastmod>
-    </url>
+  
 
     <url>
         <loc>https://bs360news.com/sports/</loc>
@@ -46,25 +44,28 @@
     </url>
 
     <url>
-        <lochttps://bs360news.com/national/</loc>
+        <loc>https://bs360news.com/national/</loc>
         <lastmod>2026-10-26</lastmod>
     </url>
-<url>
-    <loc>https://bs360news.com/inter-national/</loc>
-    <lastmod>2026-10-26</lastmod>
-</url>
+
     <url>
-    <loc>https://bs360news.com/movie-reviews/akasam-lo-oka-thara-movie-review-telugu-dulquer-salmaan-satwika-story-review-rating-cast-crew-public-talk-bs-360-news.html</loc>
-    <lastmod>2026-11-20</lastmod>
-</url>
-</urlset>
+        <loc>https://bs360news.com/inter-national/</loc>
+        <lastmod>2026-10-26</lastmod>
+    </url>
+
+    <url>
+        <loc>https://bs360news.com/movie-reviews/akasam-lo-oka-thara-movie-review-telugu-dulquer-salmaan-satwika-story-review-rating-cast-crew-public-talk-bs-360-news.html</loc>
+        <lastmod>2026-11-20</lastmod>
+    </url>
+
     <url>
         <loc>https://bs360news.com/movie-reviews/om-movie-review-telugu-dhanush-mammootty-sai-pallavi-cast-story-review-rating-2026.html</loc>
-    <lastmod>2026-11-20</lastmod>
-</url>
-</urlset>
-  <url>
+        <lastmod>2026-11-20</lastmod>
+    </url>
+
+    <url>
         <loc>https://bs360news.com/entertainment/samantha-raj-nidimoru-baby-boy-dev-nidimoru-birth-news-november-19-2026-telugu-latest-celebrity-entertainment-bs-360-news.html</loc>
-    <lastmod>2026-11-20</lastmod>
-</url>
+        <lastmod>2026-11-20</lastmod>
+    </url>
+
 </urlset>
