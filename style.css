@@ -2133,3 +2133,174 @@ body.dark-mode #aptsSection .section-heading {
     flex: 1 1 auto !important;
     min-width: 0 !important;
 }
+
+
+
+
+/* =========================================================
+   TOP NEWS - MOBILE SPECIFIC LAYOUT
+========================================================= */
+
+@media screen and (max-width: 768px) {
+
+    /* Top Layout - Full Width for Mobile */
+    #topNewsSource {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 0 !important;
+    }
+
+    #topNewsSource .top-main-column,
+    #topNewsSource .top-side-column {
+        width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    /* ---------------------------------------------------------
+       1. 1ST ARTICLE (BIG MAIN STORY)
+       పెద్ద ఇమేజ్ పైన, కింద టెక్స్ట్
+    --------------------------------------------------------- */
+    #topNewsSource .top-main-column > .news-item {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        margin-bottom: 16px !important;
+    }
+
+    #topNewsSource .top-main-column > .news-item img {
+        width: 100% !important;
+        height: 220px !important;
+        aspect-ratio: 16 / 9 !important;
+        object-fit: cover !important;
+        border-radius: 6px !important;
+    }
+
+    #topNewsSource .top-main-column > .news-item .news-content {
+        padding: 10px 0 0 !important;
+    }
+
+    #topNewsSource .top-main-column > .news-item .news-content p {
+        margin: 0 !important;
+        font-size: 18px !important;
+        line-height: 1.5 !important;
+        font-weight: 700 !important;
+    }
+
+    /* ---------------------------------------------------------
+       2. NEXT 2 ARTICLES (SIDE BY SIDE GRID)
+       అడ్డంగా 2 ఆర్టికల్స్ - పైన ఇమేజ్, కింద టెక్స్ట్
+    --------------------------------------------------------- */
+    #topNewsSource .top-bottom-articles {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 12px !important;
+        width: 100% !important;
+        margin-bottom: 16px !important;
+    }
+
+    #topNewsSource .bottom-news-card {
+        width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    /* 3rd article దాచేయడం (మొదటి 2 మాత్రమే పక్కపక్కనే రావడానికి) */
+    #topNewsSource .bottom-news-card:nth-child(n+3) {
+        display: none !important;
+    }
+
+    #topNewsSource .bottom-news-card img {
+        width: 100% !important;
+        height: 105px !important;
+        aspect-ratio: 16 / 10 !important;
+        object-fit: cover !important;
+        border-radius: 5px !important;
+    }
+
+    #topNewsSource .bottom-news-card h3 {
+        font-size: 13px !important;
+        line-height: 1.45 !important;
+        font-weight: 500 !important;
+        margin: 6px 0 0 !important;
+    }
+
+    /* ---------------------------------------------------------
+       3. REMAINING ARTICLES (LEFT IMAGE - RIGHT TEXT)
+       ఎడమవైపు ఇమేజ్, కుడివైపు టెక్స్ట్
+    --------------------------------------------------------- */
+    #topNewsSource .top-side-column {
+        display: block !important;
+        margin-top: 5px !important;
+    }
+
+    #topNewsSource .top-side-articles {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+    }
+
+    #topNewsSource .top-side-article {
+        display: flex !important;
+        flex-direction: row-reverse !important; /* HTML లో టెక్స్ట్ మొదట ఉన్నందున ఇమేజ్ ఎడమవైపు రావడం కోసం */
+        justify-content: space-between !important;
+        align-items: flex-start !important;
+        gap: 10px !important;
+        padding: 10px 0 !important;
+        border-bottom: 1px solid #e5e5e5 !important;
+        width: 100% !important;
+    }
+
+    /* ఎడమవైపు ఉండే ఇమేజ్ సైజ్ */
+    #topNewsSource .top-side-article > a {
+        flex: 0 0 110px !important;
+        width: 110px !important;
+        min-width: 110px !important;
+    }
+
+    #topNewsSource .top-side-article img {
+        width: 110px !important;
+        height: 78px !important;
+        object-fit: cover !important;
+        border-radius: 4px !important;
+    }
+
+    /* కుడివైపు ఉండే టెక్స్ట్ */
+    #topNewsSource .top-side-article .article-text {
+        flex: 1 !important;
+        min-width: 0 !important;
+    }
+
+    #topNewsSource .top-side-article .article-text p {
+        margin: 0 !important;
+        font-size: 14px !important;
+        line-height: 1.45 !important;
+        font-weight: 500 !important;
+    }
+}
+
+/* చిన్న ఫోన్‌లు (Small Screens <= 380px) */
+@media screen and (max-width: 380px) {
+
+    #topNewsSource .top-main-column > .news-item img {
+        height: 185px !important;
+    }
+
+    #topNewsSource .top-main-column > .news-item .news-content p {
+        font-size: 16px !important;
+    }
+
+    #topNewsSource .bottom-news-card img {
+        height: 90px !important;
+    }
+
+    #topNewsSource .top-side-article > a,
+    #topNewsSource .top-side-article img {
+        width: 100px !important;
+        min-width: 100px !important;
+        height: 72px !important;
+    }
+
+    #topNewsSource .top-side-article .article-text p {
+        font-size: 13px !important;
+    }
+}
