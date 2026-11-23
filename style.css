@@ -3521,3 +3521,127 @@ body.dark-mode #aptsSection .section-heading {
         word-break: break-word !important;
     }
 }
+
+/* =========================================================
+   FORCE SIDEBARS TO STACK FULL-WIDTH ON MOBILE (NO SIDE)
+========================================================= */
+
+@media (max-width: 900px) {
+
+    /* అన్ని మెయిన్ లేఅవుట్ రాపర్లను నిలువుగా (Column / Block) మార్చడం */
+    .top-content-layout,
+    .top-left-column,
+    .top-news-group,
+    .sports-apts-trending-layout,
+    .sports-apts-left-column,
+    .business-world-row,
+    .main-layout,
+    .movies-main {
+        display: flex !important;
+        flex-direction: column !important;
+        flex-wrap: nowrap !important;
+        grid-template-columns: 1fr !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        gap: 0 !important;
+    }
+
+    /* లాప్‌టాప్ సైడ్‌బార్‌లను పూర్తి వెడల్పుతో కిందకు దించడం */
+    .top-main-column,
+    .top-side-column,
+    .article-sidebar,
+    .sidebar-box,
+    .world-news-side,
+    .trending-news-column,
+    .latest-news-column {
+        display: block !important;
+        position: static !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        float: none !important;
+        clear: both !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        flex: 0 0 100% !important;
+        grid-column: 1 / -1 !important;
+        margin: 12px 0 0 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    /* సైడ్‌బార్ లోపల ఉండే ఆర్టికల్స్ పూర్తి వెడల్పుతో రావడం */
+    .top-side-articles,
+    .trending-news-list,
+    #trendingSidebar,
+    #latestSidebar,
+    #topNewsSidebar {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        gap: 0 !important;
+    }
+
+    /* సైడ్‌బార్ ఆర్టికల్స్: ఎడమవైపు టెక్స్ట్, కుడివైపు ఒకే సైజ్ ఇమేజ్ */
+    .top-side-article,
+    #trendingSidebar .news-item,
+    #latestSidebar .news-item,
+    #topNewsSidebar .news-item {
+        display: flex !important;
+        flex-direction: row-reverse !important;
+        justify-content: space-between !important;
+        align-items: flex-start !important;
+        gap: 10px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 10px 0 !important;
+        border-bottom: 1px solid #e5e5e5 !important;
+        box-sizing: border-box !important;
+    }
+
+    .top-side-article > a,
+    #trendingSidebar .news-item > a,
+    #latestSidebar .news-item > a,
+    #topNewsSidebar .news-item > a {
+        flex: 0 0 110px !important;
+        width: 110px !important;
+        min-width: 110px !important;
+        max-width: 110px !important;
+        display: block !important;
+    }
+
+    .top-side-article img,
+    #trendingSidebar .news-item img,
+    #latestSidebar .news-item img,
+    #topNewsSidebar .news-item img {
+        width: 110px !important;
+        min-width: 110px !important;
+        max-width: 110px !important;
+        height: 76px !important;
+        object-fit: cover !important;
+        border-radius: 5px !important;
+        display: block !important;
+    }
+
+    .top-side-article .article-text,
+    #trendingSidebar .news-item .news-content,
+    #latestSidebar .news-item .news-content,
+    #topNewsSidebar .news-item .news-content {
+        flex: 1 1 auto !important;
+        min-width: 0 !important;
+    }
+
+    .top-side-article .article-text p,
+    .top-side-article .article-text p a,
+    #trendingSidebar .news-item .news-content p,
+    #latestSidebar .news-item .news-content p,
+    #topNewsSidebar .news-item .news-content p {
+        margin: 0 !important;
+        font-size: 14px !important;
+        line-height: 1.45 !important;
+        font-weight: 500 !important;
+        white-space: normal !important;
+        word-break: break-word !important;
+    }
+}
