@@ -3014,3 +3014,255 @@ body.dark-mode #aptsSection .section-heading {
         font-size: 13px !important;
     }
 }
+
+
+
+/* =========================================================
+   TELANGANA CATEGORY PAGE (#moviesGrid & SIDEBARS) - MOBILE
+========================================================= */
+
+@media screen and (max-width: 768px) {
+
+    /* Main Layout Stack */
+    .main-layout {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 20px !important;
+    }
+
+    .movies-main,
+    .article-sidebar {
+        width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    /* Movies / Category Grid Container */
+    #moviesGrid.movies-grid {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: space-between !important;
+        align-items: flex-start !important;
+        gap: 0 !important;
+        width: 100% !important;
+    }
+
+    /* ---------------------------------------------------------
+       1. 1ST ARTICLE (BIG FEATURED STORY)
+       పెద్ద ఇమేజ్ పైన, కింద టెక్స్ట్
+    --------------------------------------------------------- */
+    #moviesGrid.movies-grid > .news-item:first-child {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        flex: 0 0 100% !important;
+        margin-bottom: 16px !important;
+        padding: 0 !important;
+        border: none !important;
+    }
+
+    #moviesGrid.movies-grid > .news-item:first-child img {
+        width: 100% !important;
+        height: 220px !important;
+        aspect-ratio: 16 / 9 !important;
+        object-fit: cover !important;
+        border-radius: 6px !important;
+    }
+
+    #moviesGrid.movies-grid > .news-item:first-child .news-content {
+        padding: 10px 0 0 !important;
+        width: 100% !important;
+    }
+
+    #moviesGrid.movies-grid > .news-item:first-child .news-content p,
+    #moviesGrid.movies-grid > .news-item:first-child .news-content p a {
+        margin: 0 !important;
+        font-size: 18px !important;
+        line-height: 1.5 !important;
+        font-weight: 700 !important;
+        text-align: left !important;
+    }
+
+    /* ---------------------------------------------------------
+       2. NEXT 2 ARTICLES (2ND & 3RD - SIDE BY SIDE)
+       అడ్డంగా 2 ఆర్టికల్స్ - పైన ఇమేజ్, కింద టెక్స్ట్
+    --------------------------------------------------------- */
+    #moviesGrid.movies-grid > .news-item:nth-child(2),
+    #moviesGrid.movies-grid > .news-item:nth-child(3) {
+        display: flex !important;
+        flex-direction: column !important;
+        width: calc(50% - 6px) !important;
+        flex: 0 0 calc(50% - 6px) !important;
+        margin-bottom: 16px !important;
+        padding: 0 !important;
+        border: none !important;
+    }
+
+    #moviesGrid.movies-grid > .news-item:nth-child(2) img,
+    #moviesGrid.movies-grid > .news-item:nth-child(3) img {
+        width: 100% !important;
+        height: 105px !important;
+        aspect-ratio: 16 / 10 !important;
+        object-fit: cover !important;
+        border-radius: 5px !important;
+    }
+
+    #moviesGrid.movies-grid > .news-item:nth-child(2) .news-content,
+    #moviesGrid.movies-grid > .news-item:nth-child(3) .news-content {
+        padding: 6px 0 0 !important;
+        width: 100% !important;
+    }
+
+    #moviesGrid.movies-grid > .news-item:nth-child(2) .news-content p,
+    #moviesGrid.movies-grid > .news-item:nth-child(3) .news-content p,
+    #moviesGrid.movies-grid > .news-item:nth-child(2) .news-content p a,
+    #moviesGrid.movies-grid > .news-item:nth-child(3) .news-content p a {
+        margin: 0 !important;
+        font-size: 13px !important;
+        line-height: 1.45 !important;
+        font-weight: 500 !important;
+        text-align: left !important;
+    }
+
+    /* ---------------------------------------------------------
+       3. REMAINING ARTICLES (4TH ONWARDS - LEFT IMAGE, RIGHT TEXT)
+       ఎడమవైపు ఇమేజ్, కుడివైపు టెక్స్ట్
+    --------------------------------------------------------- */
+    #moviesGrid.movies-grid > .news-item:nth-child(n+4) {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: flex-start !important;
+        justify-content: flex-start !important;
+        gap: 10px !important;
+        width: 100% !important;
+        flex: 0 0 100% !important;
+        margin: 0 !important;
+        padding: 10px 0 !important;
+        border-bottom: 1px solid #e5e5e5 !important;
+    }
+
+    #moviesGrid.movies-grid > .news-item:nth-child(n+4) > a,
+    #moviesGrid.movies-grid > .news-item:nth-child(n+4) > img {
+        flex: 0 0 110px !important;
+        width: 110px !important;
+        min-width: 110px !important;
+        max-width: 110px !important;
+        height: 76px !important;
+        object-fit: cover !important;
+        border-radius: 5px !important;
+    }
+
+    #moviesGrid.movies-grid > .news-item:nth-child(n+4) > a img {
+        width: 110px !important;
+        height: 76px !important;
+        object-fit: cover !important;
+        border-radius: 5px !important;
+    }
+
+    #moviesGrid.movies-grid > .news-item:nth-child(n+4) .news-content {
+        flex: 1 1 auto !important;
+        min-width: 0 !important;
+        padding: 0 !important;
+    }
+
+    #moviesGrid.movies-grid > .news-item:nth-child(n+4) .news-content p,
+    #moviesGrid.movies-grid > .news-item:nth-child(n+4) .news-content p a {
+        margin: 0 !important;
+        font-size: 14px !important;
+        line-height: 1.45 !important;
+        font-weight: 500 !important;
+        text-align: left !important;
+    }
+
+    /* ---------------------------------------------------------
+       4. SIDEBAR NEWS ITEMS (TEXT LEFT, IMAGE RIGHT)
+       సైడ్‌బార్‌లో ఎడమవైపు టెక్స్ట్, కుడివైపు ఇమేజ్
+    --------------------------------------------------------- */
+    #trendingSidebar .news-item,
+    #latestSidebar .news-item,
+    #topNewsSidebar .news-item {
+        display: flex !important;
+        flex-direction: row-reverse !important;
+        justify-content: space-between !important;
+        align-items: flex-start !important;
+        gap: 10px !important;
+        width: 100% !important;
+        padding: 10px 0 !important;
+        border-bottom: 1px solid #e5e5e5 !important;
+    }
+
+    #trendingSidebar .news-item > a,
+    #latestSidebar .news-item > a,
+    #topNewsSidebar .news-item > a {
+        flex: 0 0 110px !important;
+        width: 110px !important;
+        min-width: 110px !important;
+        max-width: 110px !important;
+    }
+
+    #trendingSidebar .news-item img,
+    #latestSidebar .news-item img,
+    #topNewsSidebar .news-item img {
+        width: 110px !important;
+        height: 76px !important;
+        object-fit: cover !important;
+        border-radius: 5px !important;
+    }
+
+    #trendingSidebar .news-item .news-content,
+    #latestSidebar .news-item .news-content,
+    #topNewsSidebar .news-item .news-content {
+        flex: 1 1 auto !important;
+        min-width: 0 !important;
+    }
+
+    #trendingSidebar .news-item .news-content p,
+    #latestSidebar .news-item .news-content p,
+    #topNewsSidebar .news-item .news-content p {
+        margin: 0 !important;
+        font-size: 14px !important;
+        line-height: 1.45 !important;
+        font-weight: 500 !important;
+        text-align: left !important;
+    }
+}
+
+/* చిన్న ఫోన్‌లు (Small Screens <= 380px) */
+@media screen and (max-width: 380px) {
+
+    #moviesGrid.movies-grid > .news-item:first-child img {
+        height: 185px !important;
+    }
+
+    #moviesGrid.movies-grid > .news-item:first-child .news-content p {
+        font-size: 16px !important;
+    }
+
+    #moviesGrid.movies-grid > .news-item:nth-child(2) img,
+    #moviesGrid.movies-grid > .news-item:nth-child(3) img {
+        height: 90px !important;
+    }
+
+    #moviesGrid.movies-grid > .news-item:nth-child(n+4) > a,
+    #moviesGrid.movies-grid > .news-item:nth-child(n+4) > img,
+    #moviesGrid.movies-grid > .news-item:nth-child(n+4) > a img,
+    #trendingSidebar .news-item > a,
+    #latestSidebar .news-item > a,
+    #topNewsSidebar .news-item > a,
+    #trendingSidebar .news-item img,
+    #latestSidebar .news-item img,
+    #topNewsSidebar .news-item img {
+        flex: 0 0 98px !important;
+        width: 98px !important;
+        min-width: 98px !important;
+        max-width: 98px !important;
+        height: 68px !important;
+    }
+
+    #moviesGrid.movies-grid > .news-item:nth-child(n+4) .news-content p,
+    #trendingSidebar .news-item .news-content p,
+    #latestSidebar .news-item .news-content p,
+    #topNewsSidebar .news-item .news-content p {
+        font-size: 13px !important;
+    }
+}
