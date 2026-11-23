@@ -1,4 +1,3 @@
-
 /* =========================================
    LATEST SIDEBAR - EXACT TOP NEWS TEXT SIZE
 ========================================= */
@@ -14,23 +13,6 @@
     line-height: 1.4 !important;
     font-weight: 400 !important;
     margin: 0 !important;
-}
-
-/* Keep same text size on mobile */
-@media (max-width: 768px) {
-
-    #latestSidebar .sidebar-item-title,
-    #latestSidebar .news-content p,
-    #latestSidebar .news-content h2,
-    #latestSidebar .news-content h3,
-    #latestSidebar .news-item h2,
-    #latestSidebar .news-item h3,
-    #latestSidebar .news-item a {
-        font-size: 14px !important;
-        line-height: 1.4 !important;
-        font-weight: 400 !important;
-    }
-
 }
 
 /* BS 360 NEWS - COMPLETE DARK MODE FIX */
@@ -143,7 +125,6 @@ body.dark-mode #movieReviewsSection h2 {
 
 }
 
-
 /* Remove horizontal scrolling */
 
 #trendingSidebar *,
@@ -151,6 +132,7 @@ body.dark-mode #movieReviewsSection h2 {
 #topNewsSidebar * {
     max-width: 100%;
 }
+
 /* National Articles Text Color */
 #moviesGrid .news-item,
 #moviesGrid .news-item h3,
@@ -165,6 +147,7 @@ body.dark-mode #moviesGrid .news-item p,
 body.dark-mode #moviesGrid .news-item a {
     color: #ffffff !important;
 }
+
 /* LAPTOP ONLY - 16:9 MAIN ARTICLE IMAGES */
 @media (min-width: 769px) {
     .movies-grid .news-item img {
@@ -175,60 +158,7 @@ body.dark-mode #moviesGrid .news-item a {
         display: block;
     }
 }
-/* MOBILE SIDEBAR - LEFT IMAGE RIGHT TEXT */
 
-@media (max-width: 768px) {
-
-    #trendingSidebar .news-item,
-    #latestSidebar .news-item,
-    #topNewsSidebar .news-item {
-        display: flex !important;
-        flex-direction: row !important;
-        flex-wrap: nowrap !important;
-        align-items: flex-start !important;
-        gap: 9px !important;
-        width: 100% !important;
-        margin-bottom: 14px !important;
-        padding-bottom: 10px !important;
-        box-sizing: border-box !important;
-    }
-
-    #trendingSidebar .news-item img,
-    #latestSidebar .news-item img,
-    #topNewsSidebar .news-item img {
-        width: 105px !important;
-        min-width: 105px !important;
-        max-width: 105px !important;
-        height: 78px !important;
-        flex-shrink: 0 !important;
-        object-fit: cover !important;
-    }
-
-    #trendingSidebar .news-item h2,
-    #trendingSidebar .news-item h3,
-    #latestSidebar .news-item h2,
-    #latestSidebar .news-item h3,
-    #topNewsSidebar .news-item h2,
-    #topNewsSidebar .news-item h3,
-    #trendingSidebar .news-item a,
-    #latestSidebar .news-item a,
-    #topNewsSidebar .news-item a {
-        font-size: 14px !important;
-        line-height: 1.4 !important;
-        font-weight: 500 !important;
-        margin: 0 !important;
-        min-width: 0 !important;
-        overflow-wrap: break-word !important;
-    }
-
-    #trendingSidebar .news-item > div,
-    #latestSidebar .news-item > div,
-    #topNewsSidebar .news-item > div {
-        flex: 1 !important;
-        min-width: 0 !important;
-    }
-
-}
 /* SIDEBAR - LEFT IMAGE RIGHT TEXT - ALL DEVICES */
 
 #trendingSidebar .news-item,
@@ -277,27 +207,6 @@ body.dark-mode #moviesGrid .news-item a {
     margin-bottom: 15px !important;
 }
 
-/* MOBILE */
-@media (max-width: 768px) {
-
-    #trendingSidebar .news-item img,
-    #latestSidebar .news-item img,
-    #topNewsSidebar .news-item img {
-        width: 125px !important;
-        min-width: 125px !important;
-        height: 100px !important;
-    }
-
-    #trendingSidebar .news-item h2,
-    #trendingSidebar .news-item h3,
-    #latestSidebar .news-item h2,
-    #latestSidebar .news-item h3,
-    #topNewsSidebar .news-item h2,
-    #topNewsSidebar .news-item h3 {
-        font-size: 18px !important;
-        line-height: 1.6 !important;
-    }
-}
 /* =========================================================
    BS 360 NEWS — HOMEPAGE STYLE.CSS
    Based on the supplied index.html structure
@@ -460,69 +369,6 @@ body.dark-mode .ad-space{background:#222;border-color:#444}
   .business-national-world-row #worldSection{grid-column:1/-1}
 }
 
-/* Mobile */
-@media(max-width:700px){
-  .bs-header-top{width:94%;min-height:auto;gap:8px;padding:10px 0}
-  .bs-logo{width:42px;height:42px}
-  .bs-brand{gap:6px}
-  .bs-brand-title{font-size:21px;gap:2px}
-  .bs-tagline{font-size:8px;letter-spacing:1px}
-  .bs-header-actions{gap:7px}
-  .bs-dark-btn{padding:5px 7px;font-size:12px}
-  .bs-live{font-size:10px}
-  .bs-navigation{padding:0 3%}
-  .bs-navigation a{padding:10px 13px;font-size:14px}
-  .headlines-bar .container{align-items:flex-start;flex-direction:column;gap:2px;padding-top:7px;padding-bottom:7px}
-  .headlines-text{font-size:13px}
-  .homepage-news-layout{width:94%;margin-top:16px}
-  .top-content-layout,.sports-apts-trending-layout{grid-template-columns:minmax(0,1fr);gap:23px}
-  .top-left-column,.sports-apts-left-column{gap:23px}
-  .top-news-group{grid-template-columns:minmax(0,1fr)}
-  .top-main-column>.news-item .news-content p{font-size:20px}
-  .top-bottom-articles{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .top-bottom-articles .bottom-news-card:last-child{display:none}
-  .top-side-article{grid-template-columns:minmax(0,1fr) 95px}
-  .top-side-article img{width:95px;height:68px}
-  .section-heading{font-size:20px}
-  .entertainment-layout{grid-template-columns:minmax(0,1fr)}
-  .entertainment-featured h3{font-size:19px}
-  .entertainment-small-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .entertainment-bottom-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .latest-news-column,.trending-news-column{height:auto;padding-left:0;border-left:0}
-  .latest-news-column>.news-item,.trending-news-list>.news-item{grid-template-columns:105px minmax(0,1fr)}
-  .latest-news-column>.news-item>a img,.trending-news-list>.news-item>a img{width:105px;height:74px}
-  .bigboss-heading,.bigboss-scroll,.movie-reviews-heading,.movie-reviews-scroll{width:94%}
-  .bigboss-section{padding:16px 0 20px}
-  .bigboss-heading span,.movie-reviews-heading span{font-size:19px}
-  .bigboss-scroll,.movie-reviews-scroll{gap:12px}
-  .bigboss-card,.movie-review-card{flex-basis:210px}
-  .bigboss-card img{height:135px}
-  .bigboss-card h3{font-size:14px}
-  .movie-review-card img{height:130px}
-  .business-national-world-row{grid-template-columns:minmax(0,1fr)!important;gap:27px;margin-top:24px}
-  .business-national-world-row>section{grid-column:auto!important}
-  .business-national-world-row .national-world-grid{gap:10px}
-  .footer-inner{grid-template-columns:minmax(0,1fr);gap:20px}
-}
-
-/* Small phones */
-@media(max-width:380px){
-  .bs-brand-title{font-size:18px}
-  .bs-logo{width:36px;height:36px}
-  .bs-tagline{font-size:7px}
-  .bs-live{display:none}
-  .top-bottom-articles{gap:8px}
-  .top-side-article h3{font-size:13px}
-  .latest-news-column .news-content p,.trending-news-list .news-content p{font-size:13px}
-}
-
-
-
-
-
-
-
-
 /* MOVIE REVIEWS - DARK BLUE BACKGROUND */
 #movieReviewsSection,
 .movie-reviews-section,
@@ -543,18 +389,6 @@ body.dark-mode .ad-space{background:#222;border-color:#444}
     border-radius: 8px;
     padding: 10px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* =========================================
    ALL SECTIONS — LIGHT NEWS HEADLINES
@@ -605,22 +439,6 @@ body.dark-mode .ad-space{background:#222;border-color:#444}
     font-weight: 800 !important;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* BS 360 NEWS — Manual Scroll Navigation */
 .bs-navigation {
     display: flex;
@@ -663,34 +481,6 @@ body.dark-mode .ad-space{background:#222;border-color:#444}
     flex-shrink: 0;
 }
 
-/* Mobile */
-@media (max-width: 600px) {
-    .bs-navigation {
-        gap: 4px;
-        padding: 7px 8px;
-    }
-
-    .bs-navigation a {
-        padding: 8px 10px;
-        font-size: 13px;
-    }
-
-    .bs-navigation .nav-home svg {
-        width: 16px;
-        height: 16px;
-    }
-}
-
-/* Small mobile */
-@media (max-width: 360px) {
-    .bs-navigation a {
-        padding: 7px 8px;
-        font-size: 12px;
-    }
-}
-
-
-
 /* NAVIGATION SIZE REDUCE */
 .bs-navigation {
     gap: 8px !important;
@@ -702,36 +492,6 @@ body.dark-mode .ad-space{background:#222;border-color:#444}
     padding: 6px 9px !important;
     line-height: 1.3 !important;
 }
-
-/* MOBILE NAVIGATION */
-@media (max-width: 600px) {
-    .bs-navigation {
-        gap: 4px !important;
-        padding: 4px 6px !important;
-    }
-
-    .bs-navigation a {
-        font-size: 11px !important;
-        padding: 5px 7px !important;
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 * {
     box-sizing: border-box;
@@ -1282,221 +1042,6 @@ body.dark-mode .loading {
 
 }
 
-/* MOBILE */
-
-@media (max-width: 600px) {
-
-    .bs-header-top {
-        width: 94%;
-        min-height: 62px;
-        padding: 6px 0;
-        gap: 8px;
-    }
-
-    .bs-logo {
-        width: 42px;
-        height: 42px;
-    }
-
-    .bs-brand {
-        gap: 7px;
-    }
-
-    .bs-brand-title {
-        font-size: 21px;
-    }
-
-    .bs-tagline {
-        font-size: 9px;
-    }
-
-    .bs-header-actions {
-        gap: 8px;
-    }
-
-    .bs-dark-btn {
-        padding: 6px 7px;
-        font-size: 11px;
-    }
-
-    .bs-live {
-        font-size: 11px;
-        gap: 5px;
-    }
-
-    .bs-live-dot {
-        width: 8px;
-        height: 8px;
-    }
-
-    .bs-navigation a {
-        padding: 10px 11px;
-        font-size: 12px;
-    }
-
-    .breaking {
-        margin-top: 8px;
-    }
-
-    .breaking-title {
-        padding: 7px 10px;
-        font-size: 10px;
-    }
-
-    .breaking-text {
-        font-size: 12px;
-        padding: 7px 10px;
-    }
-
-    .page {
-        width: 94%;
-        margin-top: 10px;
-    }
-
-    .page-title {
-        font-size: 20px;
-        padding: 10px 12px;
-    }
-
-    .main-layout {
-        display: block;
-    }
-
-    .movies-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 0;
-    }
-
-    .movie-card {
-        display: flex;
-        flex-direction: row-reverse;
-        align-items: center;
-        width: 100%;
-        min-height: 95px;
-        border-radius: 0;
-        border-bottom: 1px solid #e5e7eb;
-        background: #fff;
-        box-shadow: none;
-        transform: none;
-    }
-
-    .movie-card:hover {
-        transform: none;
-        box-shadow: none;
-    }
-
-    .movie-card img {
-        width: 105px;
-        height: 70px;
-        aspect-ratio: auto;
-        object-fit: cover;
-        border-radius: 5px;
-        flex-shrink: 0;
-        margin-left: 10px;
-    }
-
-    .movie-card-content {
-        flex: 1;
-        min-width: 0;
-        padding: 7px 0;
-    }
-
-    .movie-card-title {
-        font-size: 13px;
-        line-height: 1.45;
-        font-weight: 400 !important;
-        -webkit-line-clamp: 4;
-    }
-
-    .article-sidebar {
-        margin-top: 22px;
-        gap: 12px;
-    }
-
-    .sidebar-box {
-        padding: 11px;
-    }
-
-    .sidebar-title {
-        font-size: 17px;
-    }
-
-    .sidebar-item img,
-    .most-read-item img {
-        width: 90px;
-        height: 62px;
-    }
-
-    .sidebar-item-title,
-    .most-read-title {
-        font-size: 13px;
-        font-weight: 400 !important;
-    }
-
-    .footer-inner {
-        grid-template-columns: 1fr;
-        gap: 22px;
-    }
-
-    .footer-links {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-    }
-
-}
-
-/* SMALL MOBILE */
-
-@media (max-width: 380px) {
-
-    .bs-brand-title {
-        font-size: 18px;
-    }
-
-    .bs-logo {
-        width: 36px;
-        height: 36px;
-    }
-
-    .bs-tagline {
-        font-size: 8px;
-    }
-
-    .bs-header-actions {
-        gap: 5px;
-    }
-
-    .bs-dark-btn {
-        font-size: 10px;
-        padding: 5px;
-    }
-
-    .bs-live {
-        font-size: 10px;
-    }
-
-    .movie-card {
-        min-height: 90px;
-    }
-
-    .movie-card img {
-        width: 95px;
-        height: 64px;
-    }
-
-    .movie-card-content {
-        padding: 5px 0;
-    }
-
-    .movie-card-title {
-        font-size: 12px;
-        line-height: 1.4;
-    }
-
-}
-
-
 /* =========================================
    BS 360 NEWS - ALL 3 SIDEBARS SAME TEXT SIZE
    Trending | Latest | Top News
@@ -1551,51 +1096,12 @@ body.dark-mode .loading {
     flex-shrink: 0 !important;
 }
 
-/* Mobile - same text size, same layout */
-@media (max-width: 768px) {
-
-    #trendingSidebar .news-item h2,
-    #trendingSidebar .news-item h3,
-    #trendingSidebar .news-item a,
-    #latestSidebar .news-item h2,
-    #latestSidebar .news-item h3,
-    #latestSidebar .news-item a,
-    #topNewsSidebar .news-item h2,
-    #topNewsSidebar .news-item h3,
-    #topNewsSidebar .news-item a,
-    #trendingSidebar .news-content p,
-    #latestSidebar .news-content p,
-    #topNewsSidebar .news-content p {
-
-        font-size: 14px !important;
-        line-height: 1.5 !important;
-    }
-
-    #trendingSidebar .news-item img,
-    #latestSidebar .news-item img,
-    #topNewsSidebar .news-item img {
-
-        width: 105px !important;
-        min-width: 105px !important;
-        height: 78px !important;
-    }
-}
-
 /* Dark Mode */
 body.dark-mode #trendingSidebar *,
 body.dark-mode #latestSidebar *,
 body.dark-mode #topNewsSidebar * {
     color: #f1f1f1;
 }
-
-
-
-
-
-
-
-
-
 
 /* ARTICLE + SIDEBAR SIDE BY SIDE */
 @media (min-width: 768px) {
@@ -1628,25 +1134,6 @@ body.dark-mode #topNewsSidebar * {
     }
 }
 
-/* MOBILE */
-@media (max-width: 767px) {
-
-    .article-layout {
-        display: flex !important;
-        flex-direction: column !important;
-    }
-
-    .article-main,
-    .article-sidebar {
-        width: 100% !important;
-    }
-}
-
-
-
-
-
-
 /* LAPTOP - SIDEBAR AUTO SCROLL WITH PAGE */
 @media (min-width: 1101px) {
 
@@ -1673,59 +1160,6 @@ body.dark-mode #topNewsSidebar * {
         overflow: visible !important;
     }
 }
-
-/* MOBILE ARTICLES - LEFT IMAGE RIGHT TEXT */
-@media (max-width: 767px) {
-
-    .news-item {
-        display: flex !important;
-        flex-direction: row !important;
-        align-items: flex-start !important;
-        gap: 10px !important;
-        width: 100% !important;
-    }
-
-    .news-item img {
-        width: 110px !important;
-        height: 75px !important;
-        object-fit: cover !important;
-        flex-shrink: 0 !important;
-    }
-
-    .news-item h2,
-    .news-item h3,
-    .news-item p {
-        text-align: left !important;
-    }
-
-    .news-item h2,
-    .news-item h3 {
-        flex: 1;
-        font-size: 14px !important;
-        line-height: 1.5 !important;
-        margin: 0 !important;
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* =========================================
    BUSINESS + WORLD NEWS
@@ -1915,41 +1349,6 @@ body.dark-mode #topNewsSidebar * {
     }
 }
 
-/* MOBILE */
-@media (max-width: 700px) {
-
-    .business-world-row {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 25px;
-        margin: 24px 0;
-    }
-
-    #businessSection .entertainment-layout {
-        grid-template-columns: minmax(0, 1fr);
-    }
-
-    #businessSection .entertainment-featured img {
-        aspect-ratio: 16 / 9;
-    }
-
-    #businessSection .entertainment-small-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    #businessSection .entertainment-bottom-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    #worldSection .world-side-articles article a {
-        grid-template-columns: 105px minmax(0, 1fr);
-    }
-
-    #worldSection .world-side-articles img {
-        width: 105px;
-        height: 72px;
-    }
-}
-
 /* DARK MODE */
 body.dark-mode #businessSection .section-heading,
 body.dark-mode #worldSection .section-heading {
@@ -1959,8 +1358,6 @@ body.dark-mode #worldSection .section-heading {
 body.dark-mode #worldSection .world-side-articles article {
     border-color: #444;
 }
-
-
 
 #worldSection .section-heading {
     display: flex;
@@ -1988,9 +1385,6 @@ body.dark-mode #worldSection .world-side-articles article {
     text-decoration: none;
     white-space: nowrap;
 }
-
-
-
 
 /* =================================
    TELANGANA + NATIONAL NEWS
@@ -2077,34 +1471,6 @@ body.dark-mode #worldSection .world-side-articles article {
     line-height: 1.5;
     margin: 0;
 }
-
-/* MOBILE */
-@media (max-width: 600px) {
-    #telanganaSection .entertainment-bottom-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 12px;
-    }
-
-    #telanganaSection .entertainment-bottom-grid img {
-        height: 110px;
-    }
-
-    #telanganaSection .entertainment-bottom-grid h3 {
-        font-size: 13px;
-    }
-
-    #nationalSection .world-side-articles article img {
-        width: 100px;
-        height: 65px;
-    }
-
-    #nationalSection .world-side-articles article h3 {
-        font-size: 13px;
-    }
-}
-
-
-
 
 /* =========================================
    TELANGANA + NATIONAL MAIN LAYOUT
@@ -2254,46 +1620,6 @@ body.dark-mode #worldSection .world-side-articles article {
     text-decoration: none;
 }
 
-/* =========================================
-   MOBILE RESPONSIVE
-========================================= */
-
-@media (max-width: 600px) {
-
-    .telangana-national-layout {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 22px;
-    }
-
-    #telanganaSection .entertainment-top-grid,
-    #telanganaSection .entertainment-bottom-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 10px;
-    }
-
-    #telanganaSection .entertainment-top-grid img {
-        height: 110px;
-    }
-
-    #telanganaSection .entertainment-bottom-grid img {
-        height: 110px;
-    }
-
-    #telanganaSection .entertainment-top-grid h3,
-    #telanganaSection .entertainment-bottom-grid h3 {
-        font-size: 13px;
-    }
-
-    #nationalSection .world-side-articles article img {
-        width: 100px;
-        height: 65px;
-    }
-
-    #nationalSection .world-side-articles article h3 {
-        font-size: 13px;
-    }
-}
-
 /* =====================================
    BS 360 NEWS - HOMEPAGE DARK MODE HEADINGS
 ===================================== */
@@ -2343,6 +1669,7 @@ body.dark-mode .top-main-column .section-heading,
 body.dark-mode .top-side-column .section-heading {
     color: #ffffff !important;
 }
+
 /* =====================================
    BS 360 NEWS - HOMEPAGE SECTION TITLES
 ===================================== */
@@ -2363,12 +1690,6 @@ body.dark-mode .homepage-news-layout h3.section-heading a {
     opacity: 1 !important;
 }
 
-/* MOBILE */
-@media (max-width: 768px) {
-    .homepage-news-layout h3.section-heading {
-        font-size: 19px !important;
-    }
-}
 /* =========================================
    BS 360 NEWS
    ALL SECTION HEADINGS - NEW FONT SIZE
@@ -2461,64 +1782,6 @@ body.dark-mode .homepage-news-layout h3.section-heading a {
 }
 
 /* =========================================
-   MOBILE FONT SIZES
-========================================= */
-
-@media (max-width: 700px) {
-
-    /* Section Headings */
-    .homepage-news-layout .section-heading,
-    .homepage-news-layout h3.section-heading,
-    .homepage-news-layout .section-head h2,
-    .homepage-news-layout .sidebar-title,
-    .homepage-news-layout .movie-reviews-heading span,
-    .homepage-news-layout .bigboss-heading span {
-        font-size: 19px !important;
-        line-height: 1.4 !important;
-        font-weight: 700 !important;
-    }
-
-    /* Sidebar Headlines */
-    #latestSidebar .news-item h2,
-    #latestSidebar .news-item h3,
-    #latestSidebar .news-item a,
-    #latestSidebar .news-content p,
-    #trendingSidebar .news-item h2,
-    #trendingSidebar .news-item h3,
-    #trendingSidebar .news-item a,
-    #trendingSidebar .news-content p,
-    #topNewsSidebar .news-item h2,
-    #topNewsSidebar .news-item h3,
-    #topNewsSidebar .news-item a,
-    #topNewsSidebar .news-content p {
-        font-size: 14px !important;
-        line-height: 1.5 !important;
-        font-weight: 400 !important;
-    }
-
-    /* Other News Headlines */
-    .entertainment-featured h3,
-    .entertainment-small-grid h3,
-    .entertainment-bottom-grid h3,
-    #businessSection h3,
-    #nationalSection h3,
-    #worldSection h3,
-    #telanganaSection h3,
-    .bigboss-card h3,
-    .movie-review-card h3 {
-        font-size: 13px !important;
-        line-height: 1.5 !important;
-        font-weight: 400 !important;
-    }
-
-    /* Hero Headline */
-    .top-main-column > .news-item .news-content p {
-        font-size: 20px !important;
-        font-weight: 800 !important;
-    }
-}
-
-/* =========================================
    DARK MODE - HEADINGS
 ========================================= */
 
@@ -2577,23 +1840,6 @@ body.dark-mode .more-articles {
     text-decoration: none !important;
 }
 
-/* MOBILE */
-@media (max-width: 600px) {
-    #nationalSection > .section-heading,
-    #worldSection > .section-heading,
-    #businessSection .section-heading,
-    #telanganaSection .section-heading {
-        font-size: 19px !important;
-    }
-
-    #businessSection .news-item h3,
-    #telanganaSection .news-item h3,
-    #businessSection .news-item a,
-    #telanganaSection .news-item a {
-        font-size: 15px !important;
-    }
-}
-
 /* DARK MODE */
 body.dark-mode #nationalSection > .section-heading,
 body.dark-mode #worldSection > .section-heading,
@@ -2634,19 +1880,6 @@ body.dark-mode #telanganaSection .section-heading {
     font-size: 16px;
 }
 
-/* MOBILE */
-@media (max-width: 600px) {
-    #latestSection .section-heading {
-        font-size: 19px;
-    }
-
-    #latestSection .more-articles {
-        font-size: 13px;
-    }
-}
-
-
-
 /* SPORTS & ANDHRA PRADESH HEADING COLOR */
 #sportsSection .section-heading,
 #aptsSection .section-heading {
@@ -2658,519 +1891,7 @@ body.dark-mode #telanganaSection .section-heading {
 body.dark-mode #sportsSection .section-heading,
 body.dark-mode #aptsSection .section-heading {
     color: #222 !important;
-} 
-
-/* =====================================
-   TOP NEWS - MOBILE FIRST ARTICLE BIG
-===================================== */
-
-@media (max-width: 600px) {
-
-    /* TOP NEWS MAIN LAYOUT */
-    #topNewsSource {
-        display: block !important;
-        width: 100% !important;
-    }
-
-    #topNewsSource .top-main-column {
-        width: 100% !important;
-        display: flex !important;
-        flex-direction: column !important;
-    }
-
-    /* FIRST ARTICLE FULL WIDTH */
-    #topNewsSource .top-main-column > .news-item:first-of-type {
-        display: flex !important;
-        flex-direction: column !important;
-        width: 100% !important;
-        margin-bottom: 16px !important;
-    }
-
-    /* FIRST ARTICLE IMAGE */
-    #topNewsSource .top-main-column > .news-item:first-of-type img {
-        display: block !important;
-        width: 100% !important;
-        height: 230px !important;
-        object-fit: cover !important;
-        border-radius: 6px !important;
-    }
-
-    /* FIRST ARTICLE HEADING BELOW IMAGE */
-    #topNewsSource .top-main-column > .news-item:first-of-type .news-content {
-        display: block !important;
-        width: 100% !important;
-        padding: 10px 0 !important;
-    }
-
-    #topNewsSource .top-main-column > .news-item:first-of-type .news-content p {
-        margin: 0 !important;
-        font-size: 19px !important;
-        line-height: 1.5 !important;
-        font-weight: 700 !important;
-    }
-
-    /* REMAINING 3 SMALL ARTICLES */
-    #topNewsSource .top-bottom-articles {
-        display: grid !important;
-        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-        gap: 12px !important;
-        width: 100% !important;
-    }
-
-    #topNewsSource .bottom-news-card {
-        width: 100% !important;
-        min-width: 0 !important;
-    }
-
-    #topNewsSource .bottom-news-card img {
-        width: 100% !important;
-        height: 105px !important;
-        object-fit: cover !important;
-        border-radius: 5px !important;
-    }
-
-    #topNewsSource .bottom-news-card h3 {
-        font-size: 13px !important;
-        line-height: 1.45 !important;
-        margin-top: 6px !important;
-    }
-
-    /* TOP NEWS SIDE ARTICLES */
-    #topNewsSource .top-side-column {
-        display: none !important;
-    }
 }
-
-/* =====================================
-   BS 360 NEWS - MOBILE NEWS GRID FIX
-   DESKTOP LAYOUT UNCHANGED
-===================================== */
-
-@media (max-width: 600px) {
-
-    /* ENTERTAINMENT / SPORTS / AP-TS /
-       TELANGANA / BUSINESS */
-
-    .entertainment-layout {
-        display: grid !important;
-        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-        gap: 14px !important;
-        width: 100% !important;
-        align-items: start !important;
-    }
-
-    /* Featured article */
-    .entertainment-featured {
-        width: 100% !important;
-        min-width: 0 !important;
-        margin: 0 !important;
-    }
-
-    /* Small grid items join the same grid */
-    .entertainment-small-grid {
-        display: contents !important;
-    }
-
-    .entertainment-layout article {
-        width: 100% !important;
-        min-width: 0 !important;
-        margin: 0 !important;
-        padding: 0 !important;
-    }
-
-    /* All article images */
-    .entertainment-layout article img {
-        display: block !important;
-        width: 100% !important;
-        height: auto !important;
-        aspect-ratio: 16 / 9 !important;
-        object-fit: cover !important;
-        border-radius: 4px !important;
-    }
-
-    /* Article titles */
-    .entertainment-layout article h3 {
-        font-size: 14px !important;
-        line-height: 1.5 !important;
-        font-weight: 600 !important;
-        margin: 6px 0 0 !important;
-        padding: 0 !important;
-    }
-
-    /* Bottom articles */
-    .entertainment-bottom-grid {
-        display: grid !important;
-        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-        gap: 14px !important;
-        width: 100% !important;
-        margin-top: 14px !important;
-    }
-
-    .entertainment-bottom-grid article {
-        width: 100% !important;
-        min-width: 0 !important;
-        margin: 0 !important;
-    }
-
-    .entertainment-bottom-grid img {
-        display: block !important;
-        width: 100% !important;
-        height: auto !important;
-        aspect-ratio: 16 / 9 !important;
-        object-fit: cover !important;
-        border-radius: 4px !important;
-    }
-
-    .entertainment-bottom-grid h3 {
-        font-size: 14px !important;
-        line-height: 1.5 !important;
-        margin: 6px 0 0 !important;
-    }
-
-}
-
-
-
-/* =========================================
-   BS 360 NEWS - MOBILE NEWS SECTION LAYOUT
-   MOBILE ONLY
-   DESKTOP / TABLET UNCHANGED
-========================================= */
-
-@media screen and (max-width: 768px) {
-
-    /* Main section */
-    .entertainment-section .entertainment-layout {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 12px !important;
-    }
-
-    /* 1ST ARTICLE - BIG IMAGE + TEXT BELOW */
-    .entertainment-section .entertainment-featured {
-        width: 100% !important;
-        display: block !important;
-        margin: 0 !important;
-    }
-
-    .entertainment-section .entertainment-featured > a {
-        display: block !important;
-        width: 100% !important;
-    }
-
-    .entertainment-section .entertainment-featured img {
-        display: block !important;
-        width: 100% !important;
-        height: 210px !important;
-        object-fit: cover !important;
-    }
-
-    .entertainment-section .entertainment-featured h3 {
-        display: block !important;
-        margin: 8px 0 12px !important;
-        font-size: 17px !important;
-        line-height: 1.5 !important;
-    }
-
-    /* 2ND AND 3RD ARTICLES - SIDE BY SIDE */
-    .entertainment-section .entertainment-small-grid {
-        display: grid !important;
-        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-        gap: 12px !important;
-        width: 100% !important;
-    }
-
-    .entertainment-section .entertainment-small-grid article {
-        min-width: 0 !important;
-        width: 100% !important;
-        margin: 0 !important;
-    }
-
-    .entertainment-section .entertainment-small-grid article:nth-child(-n+2) > a {
-        display: block !important;
-        width: 100% !important;
-    }
-
-    .entertainment-section .entertainment-small-grid article:nth-child(-n+2) img {
-        display: block !important;
-        width: 100% !important;
-        height: 105px !important;
-        object-fit: cover !important;
-    }
-
-    .entertainment-section .entertainment-small-grid article:nth-child(-n+2) h3 {
-        font-size: 13px !important;
-        line-height: 1.45 !important;
-        margin: 6px 0 10px !important;
-    }
-
-    /* 4TH ARTICLE ONWARDS - LEFT IMAGE + RIGHT TEXT */
-    .entertainment-section .entertainment-small-grid article:nth-child(n+3) {
-        grid-column: 1 / -1 !important;
-        border-bottom: 1px solid #ddd;
-        padding-bottom: 10px;
-    }
-
-    .entertainment-section .entertainment-small-grid article:nth-child(n+3) > a {
-        display: flex !important;
-        flex-direction: row !important;
-        align-items: flex-start !important;
-        gap: 10px !important;
-        width: 100% !important;
-    }
-
-    .entertainment-section .entertainment-small-grid article:nth-child(n+3) img {
-        width: 110px !important;
-        height: 78px !important;
-        min-width: 110px !important;
-        object-fit: cover !important;
-    }
-
-    .entertainment-section .entertainment-small-grid article:nth-child(n+3) h3 {
-        flex: 1 !important;
-        font-size: 14px !important;
-        line-height: 1.45 !important;
-        margin: 0 !important;
-    }
-
-    /* REMAINING BOTTOM ARTICLES - LEFT IMAGE + RIGHT TEXT */
-    .entertainment-section .entertainment-bottom-grid {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 12px !important;
-        width: 100% !important;
-    }
-
-    .entertainment-section .entertainment-bottom-grid article {
-        width: 100% !important;
-        margin: 0 !important;
-        border-bottom: 1px solid #ddd;
-        padding-bottom: 10px;
-    }
-
-    .entertainment-section .entertainment-bottom-grid article > a {
-        display: flex !important;
-        flex-direction: row !important;
-        align-items: flex-start !important;
-        gap: 10px !important;
-        width: 100% !important;
-    }
-
-    .entertainment-section .entertainment-bottom-grid article img {
-        width: 110px !important;
-        height: 78px !important;
-        min-width: 110px !important;
-        object-fit: cover !important;
-    }
-
-    .entertainment-section .entertainment-bottom-grid article h3 {
-        flex: 1 !important;
-        font-size: 14px !important;
-        line-height: 1.45 !important;
-        margin: 0 !important;
-    }
-
-}
-
-/* SMALL MOBILE */
-@media screen and (max-width: 380px) {
-
-    .entertainment-section .entertainment-featured img {
-        height: 185px !important;
-    }
-
-    .entertainment-section .entertainment-small-grid article:nth-child(-n+2) img {
-        height: 90px !important;
-    }
-
-    .entertainment-section .entertainment-small-grid article:nth-child(n+3) img,
-    .entertainment-section .entertainment-bottom-grid article img {
-        width: 100px !important;
-        min-width: 100px !important;
-        height: 72px !important;
-    }
-
-}
-
-
-
-
-/* =========================================
-   BS 360 NEWS - BUSINESS MOBILE LAYOUT
-   SAME AS ENTERTAINMENT SECTION
-   MOBILE ONLY
-   DESKTOP / TABLET UNCHANGED
-========================================= */
-
-@media screen and (max-width: 768px) {
-
-    /* BUSINESS MAIN SECTION */
-    .business-section .entertainment-layout {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 12px !important;
-        width: 100% !important;
-    }
-
-    /* 1ST ARTICLE - BIG IMAGE */
-    .business-section .entertainment-featured {
-        display: block !important;
-        width: 100% !important;
-        margin: 0 !important;
-    }
-
-    .business-section .entertainment-featured > a {
-        display: flex !important;
-        flex-direction: column !important;
-        width: 100% !important;
-    }
-
-    .business-section .entertainment-featured img {
-        display: block !important;
-        width: 100% !important;
-        height: 210px !important;
-        object-fit: cover !important;
-    }
-
-    .business-section .entertainment-featured h3 {
-        display: block !important;
-        font-size: 17px !important;
-        line-height: 1.5 !important;
-        margin: 8px 0 12px !important;
-    }
-
-    /* 2ND TO 5TH ARTICLES */
-    .business-section .entertainment-small-grid {
-        display: grid !important;
-        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-        gap: 12px !important;
-        width: 100% !important;
-    }
-
-    .business-section .entertainment-small-grid article {
-        width: 100% !important;
-        min-width: 0 !important;
-        margin: 0 !important;
-    }
-
-    /* 2ND AND 3RD - SIDE BY SIDE */
-    .business-section .entertainment-small-grid article:nth-child(-n+2) > a {
-        display: flex !important;
-        flex-direction: column !important;
-        width: 100% !important;
-    }
-
-    .business-section .entertainment-small-grid article:nth-child(-n+2) img {
-        display: block !important;
-        width: 100% !important;
-        height: 105px !important;
-        object-fit: cover !important;
-    }
-
-    .business-section .entertainment-small-grid article:nth-child(-n+2) h3 {
-        font-size: 13px !important;
-        line-height: 1.45 !important;
-        margin: 6px 0 10px !important;
-    }
-
-    /* 4TH AND 5TH - LEFT IMAGE + RIGHT TEXT */
-    .business-section .entertainment-small-grid article:nth-child(n+3) {
-        grid-column: 1 / -1 !important;
-        border-bottom: 1px solid #ddd !important;
-        padding-bottom: 10px !important;
-    }
-
-    .business-section .entertainment-small-grid article:nth-child(n+3) > a {
-        display: flex !important;
-        flex-direction: row !important;
-        align-items: flex-start !important;
-        gap: 10px !important;
-        width: 100% !important;
-    }
-
-    .business-section .entertainment-small-grid article:nth-child(n+3) img {
-        display: block !important;
-        width: 110px !important;
-        min-width: 110px !important;
-        height: 78px !important;
-        object-fit: cover !important;
-    }
-
-    .business-section .entertainment-small-grid article:nth-child(n+3) h3 {
-        flex: 1 !important;
-        min-width: 0 !important;
-        font-size: 14px !important;
-        line-height: 1.45 !important;
-        margin: 0 !important;
-    }
-
-    /* 6TH ONWARDS - BOTTOM ARTICLES */
-    .business-section .entertainment-bottom-grid {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 12px !important;
-        width: 100% !important;
-    }
-
-    .business-section .entertainment-bottom-grid article {
-        display: block !important;
-        width: 100% !important;
-        margin: 0 !important;
-        border-bottom: 1px solid #ddd !important;
-        padding-bottom: 10px !important;
-    }
-
-    .business-section .entertainment-bottom-grid article > a {
-        display: flex !important;
-        flex-direction: row !important;
-        align-items: flex-start !important;
-        gap: 10px !important;
-        width: 100% !important;
-    }
-
-    .business-section .entertainment-bottom-grid article img {
-        display: block !important;
-        width: 110px !important;
-        min-width: 110px !important;
-        height: 78px !important;
-        object-fit: cover !important;
-    }
-
-    .business-section .entertainment-bottom-grid article h3 {
-        flex: 1 !important;
-        min-width: 0 !important;
-        font-size: 14px !important;
-        line-height: 1.45 !important;
-        margin: 0 !important;
-    }
-
-}
-
-/* =========================================
-   SMALL MOBILE - BUSINESS
-========================================= */
-
-@media screen and (max-width: 380px) {
-
-    .business-section .entertainment-featured img {
-        height: 185px !important;
-    }
-
-    .business-section .entertainment-small-grid article:nth-child(-n+2) img {
-        height: 90px !important;
-    }
-
-    .business-section .entertainment-small-grid article:nth-child(n+3) img,
-    .business-section .entertainment-bottom-grid article img {
-        width: 100px !important;
-        min-width: 100px !important;
-        height: 72px !important;
-    }
-
-}
-
-
-
 
 @media (min-width: 1024px) {
     .entertainment-bottom-grid {
@@ -3192,10 +1913,6 @@ body.dark-mode #aptsSection .section-heading {
         display: block;
     }
 }
-
-
-
-
 
 .entertainment-mini-grid {
     display: flex;
@@ -3233,38 +1950,6 @@ body.dark-mode #aptsSection .section-heading {
     line-height: 1.5;
 }
 
-@media (max-width: 600px) {
-    .entertainment-mini-grid article a {
-        flex-direction: row !important;
-        gap: 9px;
-    }
-
-    .entertainment-mini-grid article img {
-        width: 35%;
-        height: 85px;
-    }
-
-    .entertainment-mini-grid article h3 {
-        font-size: 13px;
-        line-height: 1.45;
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .entertainment-mini-grid {
     display: flex;
     flex-direction: column;
@@ -3300,33 +1985,6 @@ body.dark-mode #aptsSection .section-heading {
     font-size: 15px;
     line-height: 1.5;
 }
-
-@media (max-width: 600px) {
-    .entertainment-mini-grid article a {
-        flex-direction: row !important;
-        gap: 9px;
-    }
-
-    .entertainment-mini-grid article img {
-        width: 35%;
-        height: 85px;
-    }
-
-    .entertainment-mini-grid article h3 {
-        font-size: 13px;
-        line-height: 1.45;
-    }
-} 
-
-
-
-
-
-
-
-
-
-
 
 /* RIGHT SIDE COLUMN */
 
@@ -3372,35 +2030,6 @@ body.dark-mode #aptsSection .section-heading {
     font-size: 15px;
     line-height: 1.5;
 }
-
-/* MOBILE */
-@media (max-width: 600px) {
-    .entertainment-mini-grid article a {
-        flex-direction: row !important;
-    }
-
-    .entertainment-mini-grid article img {
-        width: 35%;
-        height: 85px;
-    }
-
-    .entertainment-mini-grid article h3 {
-        font-size: 13px;
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* ENTERTAINMENT MAIN LAYOUT */
 
@@ -3472,44 +2101,6 @@ body.dark-mode #aptsSection .section-heading {
     margin: 0;
 }
 
-/* MOBILE */
-
-@media(max-width:600px) {
-
-    #entertainmentSection .entertainment-layout {
-        grid-template-columns: 1fr !important;
-    }
-
-    #entertainmentSection .entertainment-featured {
-        grid-column: 1;
-        grid-row: 1;
-    }
-
-    #entertainmentSection .entertainment-right-column {
-        grid-column: 1;
-        grid-row: 2;
-    }
-
-    #entertainmentSection .entertainment-mini-grid article a {
-        flex-direction: row !important;
-    }
-
-    #entertainmentSection .entertainment-mini-grid article img {
-        width: 35%;
-        height: 85px;
-    }
-
-    #entertainmentSection .entertainment-mini-grid article h3 {
-        font-size: 13px;
-        line-height: 1.5;
-    }
-}
-
-
-
-
-
-
 /* TRENDING SIDEBAR - IMAGE SIZE FIX */
 
 #trendingSection #trendingSidebar .news-item {
@@ -3541,20 +2132,4 @@ body.dark-mode #aptsSection .section-heading {
 #trendingSection #trendingSidebar .news-content {
     flex: 1 1 auto !important;
     min-width: 0 !important;
-}
-
-@media (max-width: 768px) {
-    #trendingSection #trendingSidebar .news-item > a {
-        flex: 0 0 125px !important;
-        width: 125px !important;
-        min-width: 125px !important;
-        max-width: 125px !important;
-    }
-
-    #trendingSection #trendingSidebar .news-item > a img {
-        width: 125px !important;
-        min-width: 125px !important;
-        max-width: 125px !important;
-        height: 95px !important;
-    }
 }
