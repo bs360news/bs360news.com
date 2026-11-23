@@ -2304,3 +2304,713 @@ body.dark-mode #aptsSection .section-heading {
         font-size: 13px !important;
     }
 }
+
+
+
+/* =========================================================
+   ENTERTAINMENT SECTION - MOBILE SPECIFIC LAYOUT
+========================================================= */
+
+@media screen and (max-width: 768px) {
+
+    #entertainmentSection,
+    #entertainmentSection .entertainment-layout,
+    #entertainmentSection .entertainment-right-column {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 0 !important;
+    }
+
+    /* ---------------------------------------------------------
+       1. 1ST ARTICLE (BIG FEATURED STORY)
+       పెద్ద ఇమేజ్ పైన, కింద టెక్స్ట్
+    --------------------------------------------------------- */
+    #entertainmentSection .entertainment-featured {
+        width: 100% !important;
+        margin-bottom: 16px !important;
+    }
+
+    #entertainmentSection .entertainment-featured > a {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+    }
+
+    #entertainmentSection .entertainment-featured img {
+        width: 100% !important;
+        height: 220px !important;
+        aspect-ratio: 16 / 9 !important;
+        object-fit: cover !important;
+        border-radius: 6px !important;
+    }
+
+    #entertainmentSection .entertainment-featured h3 {
+        margin: 10px 0 0 !important;
+        font-size: 18px !important;
+        line-height: 1.5 !important;
+        font-weight: 700 !important;
+    }
+
+    /* ---------------------------------------------------------
+       2. NEXT 2 ARTICLES (SIDE BY SIDE GRID)
+       అడ్డంగా 2 ఆర్టికల్స్ - పైన ఇమేజ్, కింద టెక్స్ట్
+    --------------------------------------------------------- */
+    #entertainmentSection .entertainment-small-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 12px !important;
+        width: 100% !important;
+        margin-bottom: 14px !important;
+    }
+
+    #entertainmentSection .entertainment-small-grid article {
+        width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    #entertainmentSection .entertainment-small-grid article > a {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+    }
+
+    #entertainmentSection .entertainment-small-grid img {
+        width: 100% !important;
+        height: 105px !important;
+        aspect-ratio: 16 / 10 !important;
+        object-fit: cover !important;
+        border-radius: 5px !important;
+    }
+
+    #entertainmentSection .entertainment-small-grid h3 {
+        font-size: 13px !important;
+        line-height: 1.45 !important;
+        font-weight: 500 !important;
+        margin: 6px 0 0 !important;
+    }
+
+    /* ---------------------------------------------------------
+       3. REMAINING ARTICLES (LEFT IMAGE - RIGHT TEXT)
+       ఎడమవైపు ఇమేజ్, కుడివైపు టెక్స్ట్
+    --------------------------------------------------------- */
+    #entertainmentSection .entertainment-mini-grid,
+    #entertainmentSection .entertainment-bottom-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+        width: 100% !important;
+        margin-top: 0 !important;
+    }
+
+    #entertainmentSection .entertainment-mini-grid article,
+    #entertainmentSection .entertainment-bottom-grid article {
+        width: 100% !important;
+        min-width: 0 !important;
+        padding: 10px 0 !important;
+        border-bottom: 1px solid #e5e5e5 !important;
+    }
+
+    #entertainmentSection .entertainment-mini-grid article > a,
+    #entertainmentSection .entertainment-bottom-grid article > a {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: flex-start !important;
+        gap: 10px !important;
+        width: 100% !important;
+    }
+
+    #entertainmentSection .entertainment-mini-grid img,
+    #entertainmentSection .entertainment-bottom-grid img {
+        flex: 0 0 110px !important;
+        width: 110px !important;
+        min-width: 110px !important;
+        height: 78px !important;
+        object-fit: cover !important;
+        border-radius: 4px !important;
+    }
+
+    #entertainmentSection .entertainment-mini-grid .news-content,
+    #entertainmentSection .entertainment-bottom-grid .news-content {
+        flex: 1 !important;
+        min-width: 0 !important;
+    }
+
+    #entertainmentSection .entertainment-mini-grid h3,
+    #entertainmentSection .entertainment-bottom-grid h3 {
+        flex: 1 !important;
+        min-width: 0 !important;
+        margin: 0 !important;
+        font-size: 14px !important;
+        line-height: 1.45 !important;
+        font-weight: 500 !important;
+    }
+}
+
+/* చిన్న ఫోన్‌లు (Small Screens <= 380px) */
+@media screen and (max-width: 380px) {
+
+    #entertainmentSection .entertainment-featured img {
+        height: 185px !important;
+    }
+
+    #entertainmentSection .entertainment-featured h3 {
+        font-size: 16px !important;
+    }
+
+    #entertainmentSection .entertainment-small-grid img {
+        height: 90px !important;
+    }
+
+    #entertainmentSection .entertainment-mini-grid img,
+    #entertainmentSection .entertainment-bottom-grid img {
+        flex: 0 0 100px !important;
+        width: 100px !important;
+        min-width: 100px !important;
+        height: 72px !important;
+    }
+
+    #entertainmentSection .entertainment-mini-grid h3,
+    #entertainmentSection .entertainment-bottom-grid h3 {
+        font-size: 13px !important;
+    }
+}
+
+
+/* =========================================================
+   SPORTS & AP/TS SECTIONS - MOBILE SPECIFIC LAYOUT
+========================================================= */
+
+@media screen and (max-width: 768px) {
+
+    /* Sports & AP TS Sections Container Reset */
+    #sportsSection,
+    #aptsSection,
+    #sportsSection .entertainment-layout,
+    #aptsSection .entertainment-layout,
+    #sportsSection .entertainment-right-column,
+    #aptsSection .entertainment-right-column {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 0 !important;
+    }
+
+    /* ---------------------------------------------------------
+       1. 1ST ARTICLE (BIG FEATURED STORY)
+       పెద్ద ఇమేజ్ పైన, కింద టెక్స్ట్
+    --------------------------------------------------------- */
+    #sportsSection .entertainment-featured,
+    #aptsSection .entertainment-featured {
+        width: 100% !important;
+        margin-bottom: 16px !important;
+    }
+
+    #sportsSection .entertainment-featured > a,
+    #aptsSection .entertainment-featured > a {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+    }
+
+    #sportsSection .entertainment-featured img,
+    #aptsSection .entertainment-featured img {
+        width: 100% !important;
+        height: 220px !important;
+        aspect-ratio: 16 / 9 !important;
+        object-fit: cover !important;
+        border-radius: 6px !important;
+    }
+
+    #sportsSection .entertainment-featured h3,
+    #aptsSection .entertainment-featured h3 {
+        margin: 10px 0 0 !important;
+        font-size: 18px !important;
+        line-height: 1.5 !important;
+        font-weight: 700 !important;
+    }
+
+    /* ---------------------------------------------------------
+       2. NEXT 2 ARTICLES (SIDE BY SIDE GRID)
+       అడ్డంగా 2 ఆర్టికల్స్ - పైన ఇమేజ్, కింద టెక్స్ట్
+    --------------------------------------------------------- */
+    #sportsSection .entertainment-small-grid,
+    #aptsSection .entertainment-small-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 12px !important;
+        width: 100% !important;
+        margin-bottom: 14px !important;
+    }
+
+    #sportsSection .entertainment-small-grid article,
+    #aptsSection .entertainment-small-grid article {
+        width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    #sportsSection .entertainment-small-grid article > a,
+    #aptsSection .entertainment-small-grid article > a {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+    }
+
+    #sportsSection .entertainment-small-grid img,
+    #aptsSection .entertainment-small-grid img {
+        width: 100% !important;
+        height: 105px !important;
+        aspect-ratio: 16 / 10 !important;
+        object-fit: cover !important;
+        border-radius: 5px !important;
+    }
+
+    #sportsSection .entertainment-small-grid h3,
+    #aptsSection .entertainment-small-grid h3 {
+        font-size: 13px !important;
+        line-height: 1.45 !important;
+        font-weight: 500 !important;
+        margin: 6px 0 0 !important;
+    }
+
+    /* ---------------------------------------------------------
+       3. REMAINING ARTICLES (LEFT IMAGE - RIGHT TEXT)
+       ఎడమవైపు ఇమేజ్, కుడివైపు టెక్స్ట్
+    --------------------------------------------------------- */
+    #sportsSection .entertainment-mini-grid,
+    #sportsSection .entertainment-bottom-grid,
+    #aptsSection .entertainment-mini-grid,
+    #aptsSection .entertainment-bottom-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+        width: 100% !important;
+        margin-top: 0 !important;
+    }
+
+    #sportsSection .entertainment-mini-grid article,
+    #sportsSection .entertainment-bottom-grid article,
+    #aptsSection .entertainment-mini-grid article,
+    #aptsSection .entertainment-bottom-grid article {
+        width: 100% !important;
+        min-width: 0 !important;
+        padding: 10px 0 !important;
+        border-bottom: 1px solid #e5e5e5 !important;
+    }
+
+    #sportsSection .entertainment-mini-grid article > a,
+    #sportsSection .entertainment-bottom-grid article > a,
+    #aptsSection .entertainment-mini-grid article > a,
+    #aptsSection .entertainment-bottom-grid article > a {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: flex-start !important;
+        gap: 10px !important;
+        width: 100% !important;
+    }
+
+    #sportsSection .entertainment-mini-grid img,
+    #sportsSection .entertainment-bottom-grid img,
+    #aptsSection .entertainment-mini-grid img,
+    #aptsSection .entertainment-bottom-grid img {
+        flex: 0 0 110px !important;
+        width: 110px !important;
+        min-width: 110px !important;
+        height: 78px !important;
+        object-fit: cover !important;
+        border-radius: 4px !important;
+    }
+
+    #sportsSection .entertainment-mini-grid .news-content,
+    #sportsSection .entertainment-bottom-grid .news-content,
+    #aptsSection .entertainment-mini-grid .news-content,
+    #aptsSection .entertainment-bottom-grid .news-content {
+        flex: 1 !important;
+        min-width: 0 !important;
+    }
+
+    #sportsSection .entertainment-mini-grid h3,
+    #sportsSection .entertainment-bottom-grid h3,
+    #aptsSection .entertainment-mini-grid h3,
+    #aptsSection .entertainment-bottom-grid h3 {
+        flex: 1 !important;
+        min-width: 0 !important;
+        margin: 0 !important;
+        font-size: 14px !important;
+        line-height: 1.45 !important;
+        font-weight: 500 !important;
+    }
+}
+
+/* చిన్న ఫోన్‌లు (Small Screens <= 380px) */
+@media screen and (max-width: 380px) {
+
+    #sportsSection .entertainment-featured img,
+    #aptsSection .entertainment-featured img {
+        height: 185px !important;
+    }
+
+    #sportsSection .entertainment-featured h3,
+    #aptsSection .entertainment-featured h3 {
+        font-size: 16px !important;
+    }
+
+    #sportsSection .entertainment-small-grid img,
+    #aptsSection .entertainment-small-grid img {
+        height: 90px !important;
+    }
+
+    #sportsSection .entertainment-mini-grid img,
+    #sportsSection .entertainment-bottom-grid img,
+    #aptsSection .entertainment-mini-grid img,
+    #aptsSection .entertainment-bottom-grid img {
+        flex: 0 0 100px !important;
+        width: 100px !important;
+        min-width: 100px !important;
+        height: 72px !important;
+    }
+
+    #sportsSection .entertainment-mini-grid h3,
+    #sportsSection .entertainment-bottom-grid h3,
+    #aptsSection .entertainment-mini-grid h3,
+    #aptsSection .entertainment-bottom-grid h3 {
+        font-size: 13px !important;
+    }
+}
+
+
+/* =========================================================
+   TELANGANA & BUSINESS SECTIONS - MOBILE SPECIFIC LAYOUT
+========================================================= */
+
+@media screen and (max-width: 768px) {
+
+    /* Telangana & Business Sections Reset */
+    #telanganaSection,
+    #businessSection,
+    #telanganaSection .entertainment-layout,
+    #businessSection .entertainment-layout,
+    #telanganaSection .entertainment-right-column,
+    #businessSection .entertainment-right-column {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 0 !important;
+    }
+
+    /* ---------------------------------------------------------
+       1. 1ST ARTICLE (BIG FEATURED STORY)
+       పెద్ద ఇమేజ్ పైన, కింద టెక్స్ట్
+    --------------------------------------------------------- */
+    #telanganaSection .entertainment-featured,
+    #businessSection .entertainment-featured {
+        width: 100% !important;
+        margin-bottom: 16px !important;
+    }
+
+    #telanganaSection .entertainment-featured > a,
+    #businessSection .entertainment-featured > a {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+    }
+
+    #telanganaSection .entertainment-featured img,
+    #businessSection .entertainment-featured img {
+        width: 100% !important;
+        height: 220px !important;
+        aspect-ratio: 16 / 9 !important;
+        object-fit: cover !important;
+        border-radius: 6px !important;
+    }
+
+    #telanganaSection .entertainment-featured h3,
+    #businessSection .entertainment-featured h3 {
+        margin: 10px 0 0 !important;
+        font-size: 18px !important;
+        line-height: 1.5 !important;
+        font-weight: 700 !important;
+    }
+
+    /* ---------------------------------------------------------
+       2. NEXT 2 ARTICLES (SIDE BY SIDE GRID)
+       అడ్డంగా 2 ఆర్టికల్స్ - పైన ఇమేజ్, కింద టెక్స్ట్
+    --------------------------------------------------------- */
+    #telanganaSection .entertainment-small-grid,
+    #businessSection .entertainment-small-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 12px !important;
+        width: 100% !important;
+        margin-bottom: 14px !important;
+    }
+
+    #telanganaSection .entertainment-small-grid article,
+    #businessSection .entertainment-small-grid article {
+        width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    #telanganaSection .entertainment-small-grid article > a,
+    #businessSection .entertainment-small-grid article > a {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+    }
+
+    #telanganaSection .entertainment-small-grid img,
+    #businessSection .entertainment-small-grid img {
+        width: 100% !important;
+        height: 105px !important;
+        aspect-ratio: 16 / 10 !important;
+        object-fit: cover !important;
+        border-radius: 5px !important;
+    }
+
+    #telanganaSection .entertainment-small-grid h3,
+    #businessSection .entertainment-small-grid h3 {
+        font-size: 13px !important;
+        line-height: 1.45 !important;
+        font-weight: 500 !important;
+        margin: 6px 0 0 !important;
+    }
+
+    /* ---------------------------------------------------------
+       3. REMAINING ARTICLES (LEFT IMAGE - RIGHT TEXT)
+       ఎడమవైపు ఇమేజ్, కుడివైపు టెక్స్ట్
+    --------------------------------------------------------- */
+    #telanganaSection .entertainment-mini-grid,
+    #telanganaSection .entertainment-bottom-grid,
+    #businessSection .entertainment-mini-grid,
+    #businessSection .entertainment-bottom-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+        width: 100% !important;
+        margin-top: 0 !important;
+    }
+
+    #telanganaSection .entertainment-mini-grid article,
+    #telanganaSection .entertainment-bottom-grid article,
+    #businessSection .entertainment-mini-grid article,
+    #businessSection .entertainment-bottom-grid article {
+        width: 100% !important;
+        min-width: 0 !important;
+        padding: 10px 0 !important;
+        border-bottom: 1px solid #e5e5e5 !important;
+    }
+
+    #telanganaSection .entertainment-mini-grid article > a,
+    #telanganaSection .entertainment-bottom-grid article > a,
+    #businessSection .entertainment-mini-grid article > a,
+    #businessSection .entertainment-bottom-grid article > a {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: flex-start !important;
+        gap: 10px !important;
+        width: 100% !important;
+    }
+
+    #telanganaSection .entertainment-mini-grid img,
+    #telanganaSection .entertainment-bottom-grid img,
+    #businessSection .entertainment-mini-grid img,
+    #businessSection .entertainment-bottom-grid img {
+        flex: 0 0 110px !important;
+        width: 110px !important;
+        min-width: 110px !important;
+        height: 78px !important;
+        object-fit: cover !important;
+        border-radius: 4px !important;
+    }
+
+    #telanganaSection .entertainment-mini-grid .news-content,
+    #telanganaSection .entertainment-bottom-grid .news-content,
+    #businessSection .entertainment-mini-grid .news-content,
+    #businessSection .entertainment-bottom-grid .news-content {
+        flex: 1 !important;
+        min-width: 0 !important;
+    }
+
+    #telanganaSection .entertainment-mini-grid h3,
+    #telanganaSection .entertainment-bottom-grid h3,
+    #businessSection .entertainment-mini-grid h3,
+    #businessSection .entertainment-bottom-grid h3 {
+        flex: 1 !important;
+        min-width: 0 !important;
+        margin: 0 !important;
+        font-size: 14px !important;
+        line-height: 1.45 !important;
+        font-weight: 500 !important;
+    }
+}
+
+/* చిన్న ఫోన్‌లు (Small Screens <= 380px) */
+@media screen and (max-width: 380px) {
+
+    #telanganaSection .entertainment-featured img,
+    #businessSection .entertainment-featured img {
+        height: 185px !important;
+    }
+
+    #telanganaSection .entertainment-featured h3,
+    #businessSection .entertainment-featured h3 {
+        font-size: 16px !important;
+    }
+
+    #telanganaSection .entertainment-small-grid img,
+    #businessSection .entertainment-small-grid img {
+        height: 90px !important;
+    }
+
+    #telanganaSection .entertainment-mini-grid img,
+    #telanganaSection .entertainment-bottom-grid img,
+    #businessSection .entertainment-mini-grid img,
+    #businessSection .entertainment-bottom-grid img {
+        flex: 0 0 100px !important;
+        width: 100px !important;
+        min-width: 100px !important;
+        height: 72px !important;
+    }
+
+    #telanganaSection .entertainment-mini-grid h3,
+    #telanganaSection .entertainment-bottom-grid h3,
+    #businessSection .entertainment-mini-grid h3,
+    #businessSection .entertainment-bottom-grid h3 {
+        font-size: 13px !important;
+    }
+}
+
+/* =========================================================
+   WORLD, NATIONAL, TRENDING & LATEST - MOBILE SPECIFIC
+   Text Left | Image Right | Same Image Size
+========================================================= */
+
+@media screen and (max-width: 768px) {
+
+    #worldSection .world-side-articles,
+    #nationalSection .world-side-articles,
+    #trendingSection #trendingSidebar,
+    #latestSection {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0 !important;
+        width: 100% !important;
+    }
+
+    /* World & National Articles (<img> is before <h3> in HTML) */
+    #worldSection .world-side-articles article,
+    #nationalSection .world-side-articles article {
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 10px 0 !important;
+        border-bottom: 1px solid #e5e5e5 !important;
+    }
+
+    #worldSection .world-side-articles article > a,
+    #nationalSection .world-side-articles article > a {
+        display: flex !important;
+        flex-direction: row-reverse !important; /* Text Left, Image Right */
+        justify-content: space-between !important;
+        align-items: flex-start !important;
+        gap: 10px !important;
+        width: 100% !important;
+    }
+
+    #worldSection .world-side-articles article > a img,
+    #nationalSection .world-side-articles article > a img {
+        flex: 0 0 110px !important;
+        width: 110px !important;
+        min-width: 110px !important;
+        max-width: 110px !important;
+        height: 76px !important;
+        object-fit: cover !important;
+        border-radius: 5px !important;
+    }
+
+    #worldSection .world-side-articles article > a h3,
+    #nationalSection .world-side-articles article > a h3 {
+        flex: 1 1 auto !important;
+        min-width: 0 !important;
+        margin: 0 !important;
+        font-size: 14px !important;
+        line-height: 1.45 !important;
+        font-weight: 500 !important;
+        text-align: left !important;
+    }
+
+    /* Trending & Latest Articles (<a> with <img> is before <div class="news-content">) */
+    #trendingSection .news-item,
+    #latestSection .news-item {
+        display: flex !important;
+        flex-direction: row-reverse !important; /* Text Left, Image Right */
+        justify-content: space-between !important;
+        align-items: flex-start !important;
+        gap: 10px !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 10px 0 !important;
+        border-bottom: 1px solid #e5e5e5 !important;
+    }
+
+    #trendingSection .news-item > a,
+    #latestSection .news-item > a {
+        display: block !important;
+        flex: 0 0 110px !important;
+        width: 110px !important;
+        min-width: 110px !important;
+        max-width: 110px !important;
+    }
+
+    #trendingSection .news-item > a img,
+    #latestSection .news-item > a img {
+        display: block !important;
+        flex: 0 0 110px !important;
+        width: 110px !important;
+        min-width: 110px !important;
+        max-width: 110px !important;
+        height: 76px !important;
+        object-fit: cover !important;
+        border-radius: 5px !important;
+    }
+
+    #trendingSection .news-item .news-content,
+    #latestSection .news-item .news-content {
+        flex: 1 1 auto !important;
+        min-width: 0 !important;
+    }
+
+    #trendingSection .news-item .news-content p,
+    #latestSection .news-item .news-content p,
+    #trendingSection .news-item .news-content p a,
+    #latestSection .news-item .news-content p a {
+        margin: 0 !important;
+        font-size: 14px !important;
+        line-height: 1.45 !important;
+        font-weight: 500 !important;
+        text-align: left !important;
+    }
+}
+
+/* చిన్న ఫోన్‌లు (Small Screens <= 380px) */
+@media screen and (max-width: 380px) {
+
+    #worldSection .world-side-articles article > a img,
+    #nationalSection .world-side-articles article > a img,
+    #trendingSection .news-item > a,
+    #latestSection .news-item > a,
+    #trendingSection .news-item > a img,
+    #latestSection .news-item > a img {
+        flex: 0 0 98px !important;
+        width: 98px !important;
+        min-width: 98px !important;
+        max-width: 98px !important;
+        height: 68px !important;
+    }
+
+    #worldSection .world-side-articles article > a h3,
+    #nationalSection .world-side-articles article > a h3,
+    #trendingSection .news-item .news-content p,
+    #latestSection .news-item .news-content p {
+        font-size: 13px !important;
+    }
+}
