@@ -3266,3 +3266,258 @@ body.dark-mode #aptsSection .section-heading {
         font-size: 13px !important;
     }
 }
+
+
+
+
+
+/* =========================================================
+   MOBILE FULL-WIDTH FIX (STOPS SIDE-BY-SIDE MIXING)
+========================================================= */
+
+@media screen and (max-width: 768px) {
+
+    /* 1. అన్ని పేరెంట్ లేఅవుట్ కంటైనర్లను నిలువుగా (Column) మరియు 100% వెడల్పుతో మార్చడం */
+    html,
+    body,
+    .page,
+    .main-layout,
+    .top-content-layout,
+    .top-left-column,
+    .top-news-group,
+    .top-main-column,
+    .top-side-column,
+    .sports-apts-trending-layout,
+    .sports-apts-left-column,
+    .business-world-row,
+    .entertainment-section,
+    .entertainment-layout,
+    .entertainment-right-column,
+    .world-news-side,
+    .trending-news-column,
+    .latest-news-column,
+    .article-sidebar,
+    .sidebar-box {
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        float: none !important;
+        flex: none !important;
+        grid-template-columns: 1fr !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    /* సెక్షన్ హెడ్డింగ్స్ స్పేసింగ్ */
+    #topNewsSource .section-heading,
+    #latestSection .section-heading,
+    #trendingSection .section-heading,
+    #worldSection .section-heading,
+    #nationalSection .section-heading,
+    #entertainmentSection .section-heading,
+    #sportsSection .section-heading,
+    #aptsSection .section-heading,
+    #telanganaSection .section-heading,
+    #businessSection .section-heading {
+        width: 100% !important;
+        margin: 14px 0 10px !important;
+        font-size: 18px !important;
+    }
+
+    /* ---------------------------------------------------------
+       TOP NEWS (#topNewsSource) - FULL WIDTH LAYOUT
+    --------------------------------------------------------- */
+    #topNewsSource .top-main-column > .news-item {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        margin-bottom: 14px !important;
+    }
+
+    #topNewsSource .top-main-column > .news-item > a,
+    #topNewsSource .top-main-column > .news-item img {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 210px !important;
+        object-fit: cover !important;
+        border-radius: 6px !important;
+        display: block !important;
+    }
+
+    #topNewsSource .top-main-column > .news-item .news-content {
+        width: 100% !important;
+        padding: 8px 0 0 !important;
+    }
+
+    #topNewsSource .top-main-column > .news-item .news-content p,
+    #topNewsSource .top-main-column > .news-item .news-content p a {
+        width: 100% !important;
+        margin: 0 !important;
+        font-size: 17px !important;
+        line-height: 1.45 !important;
+        font-weight: 700 !important;
+        white-space: normal !important;
+        word-break: break-word !important;
+    }
+
+    /* Top News - 2 Side-by-Side Cards */
+    #topNewsSource .top-bottom-articles {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 10px !important;
+        width: 100% !important;
+        margin-bottom: 14px !important;
+    }
+
+    #topNewsSource .bottom-news-card {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    #topNewsSource .bottom-news-card:nth-child(n+3) {
+        display: none !important;
+    }
+
+    #topNewsSource .bottom-news-card > a,
+    #topNewsSource .bottom-news-card img {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 105px !important;
+        object-fit: cover !important;
+        border-radius: 5px !important;
+        display: block !important;
+    }
+
+    #topNewsSource .bottom-news-card h3,
+    #topNewsSource .bottom-news-card h3 a {
+        width: 100% !important;
+        margin: 6px 0 0 !important;
+        font-size: 13px !important;
+        line-height: 1.4 !important;
+        font-weight: 500 !important;
+        white-space: normal !important;
+        word-break: break-word !important;
+    }
+
+    /* Top News - Remaining Articles (Left Image, Right Text) */
+    #topNewsSource .top-side-articles {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0 !important;
+        width: 100% !important;
+    }
+
+    #topNewsSource .top-side-article {
+        display: flex !important;
+        flex-direction: row-reverse !important;
+        justify-content: space-between !important;
+        align-items: flex-start !important;
+        gap: 10px !important;
+        width: 100% !important;
+        padding: 10px 0 !important;
+        border-bottom: 1px solid #e5e5e5 !important;
+    }
+
+    #topNewsSource .top-side-article > a {
+        flex: 0 0 110px !important;
+        width: 110px !important;
+        min-width: 110px !important;
+        max-width: 110px !important;
+    }
+
+    #topNewsSource .top-side-article img {
+        width: 110px !important;
+        min-width: 110px !important;
+        max-width: 110px !important;
+        height: 76px !important;
+        object-fit: cover !important;
+        border-radius: 4px !important;
+        display: block !important;
+    }
+
+    #topNewsSource .top-side-article .article-text {
+        flex: 1 1 auto !important;
+        min-width: 0 !important;
+    }
+
+    #topNewsSource .top-side-article .article-text p,
+    #topNewsSource .top-side-article .article-text p a {
+        margin: 0 !important;
+        font-size: 14px !important;
+        line-height: 1.45 !important;
+        font-weight: 500 !important;
+        white-space: normal !important;
+        word-break: break-word !important;
+    }
+
+    /* ---------------------------------------------------------
+       LATEST, TRENDING, WORLD, NATIONAL (TEXT LEFT, IMAGE RIGHT)
+    --------------------------------------------------------- */
+    #latestSection .news-item,
+    #trendingSection .news-item,
+    #latestSidebar .news-item,
+    #trendingSidebar .news-item,
+    #topNewsSidebar .news-item {
+        display: flex !important;
+        flex-direction: row-reverse !important;
+        justify-content: space-between !important;
+        align-items: flex-start !important;
+        gap: 10px !important;
+        width: 100% !important;
+        padding: 10px 0 !important;
+        border-bottom: 1px solid #e5e5e5 !important;
+    }
+
+    #latestSection .news-item > a,
+    #trendingSection .news-item > a,
+    #latestSidebar .news-item > a,
+    #trendingSidebar .news-item > a,
+    #topNewsSidebar .news-item > a {
+        flex: 0 0 110px !important;
+        width: 110px !important;
+        min-width: 110px !important;
+        max-width: 110px !important;
+    }
+
+    #latestSection .news-item img,
+    #trendingSection .news-item img,
+    #latestSidebar .news-item img,
+    #trendingSidebar .news-item img,
+    #topNewsSidebar .news-item img {
+        width: 110px !important;
+        min-width: 110px !important;
+        max-width: 110px !important;
+        height: 76px !important;
+        object-fit: cover !important;
+        border-radius: 5px !important;
+        display: block !important;
+    }
+
+    #latestSection .news-item .news-content,
+    #trendingSection .news-item .news-content,
+    #latestSidebar .news-item .news-content,
+    #trendingSidebar .news-item .news-content,
+    #topNewsSidebar .news-item .news-content {
+        flex: 1 1 auto !important;
+        min-width: 0 !important;
+    }
+
+    #latestSection .news-item .news-content p,
+    #trendingSection .news-item .news-content p,
+    #latestSidebar .news-item .news-content p,
+    #trendingSidebar .news-item .news-content p,
+    #topNewsSidebar .news-item .news-content p,
+    #latestSection .news-item .news-content p a,
+    #trendingSection .news-item .news-content p a {
+        margin: 0 !important;
+        font-size: 14px !important;
+        line-height: 1.45 !important;
+        font-weight: 500 !important;
+        white-space: normal !important;
+        word-break: break-word !important;
+    }
+}
