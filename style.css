@@ -3645,3 +3645,23 @@ body.dark-mode #aptsSection .section-heading {
         word-break: break-word !important;
     }
 }
+
+
+
+
+/* NAVIGATION ONLY STICKY */
+.bs-navigation {
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    width: 100%;
+}
+
+/* Mobile support */
+@media (max-width: 768px) {
+    .bs-navigation {
+        position: sticky;
+        top: 0;
+        z-index: 9999;
+    }
+}
