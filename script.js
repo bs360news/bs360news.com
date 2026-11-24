@@ -1,19 +1,25 @@
+
+
 document.addEventListener("DOMContentLoaded", function () {
-    "use strict";
 
-    const SITE_URL = window.location.origin;
 
-    /* =====================================
-       1. DARK MODE (SINGLE CLEAN HANDLER)
-    ===================================== */
-    const themeButtons = document.querySelectorAll("#themeToggle, .bs-dark-btn");
+    const themeButtons = document.querySelectorAll(
+        "#themeToggle, .bs-dark-btn"
+    );
 
     function applyTheme(isDark) {
+
+
+
+
+
         document.body.classList.toggle("dark-mode", isDark);
+
         themeButtons.forEach(function (button) {
             button.textContent = isDark ? "☀️ Light" : "🌙 Dark";
-            button.setAttribute("aria-pressed", String(isDark));
+            button.setAttribute("aria-pressed", isDark);
         });
+
         try {
             localStorage.setItem("bs360-theme", isDark ? "dark" : "light");
         } catch (error) {
@@ -21,274 +27,1577 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    // Load saved theme
     let savedTheme = "light";
+
     try {
         savedTheme = localStorage.getItem("bs360-theme") || "light";
     } catch (error) {}
+
     applyTheme(savedTheme === "dark");
 
+    // Dark / Light toggle
     themeButtons.forEach(function (button) {
+
         button.addEventListener("click", function () {
+
             const isDark = !document.body.classList.contains("dark-mode");
+
             applyTheme(isDark);
+
         });
+
     });
 
-    /* =====================================
-       2. HELPER FUNCTIONS
-    ===================================== */
-    function cleanText(text) {
-        return String(text || "").replace(/\s+/g, " ").trim();
+});
+
+/* =========================================
+   BS 360 NEWS - LATEST ARTICLES
+   SINGLE FETCH + AUTOMATIC RETRY
+========================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const grid = document.getElementById("latestNewsGrid");
+    const sidebar = document.getElementById("latestSidebar");
+
+    if (!grid && !sidebar) return;
+
+    const HOME_URL = "https://bs360news.com/";
+
+    let homepagePromise = null;
+
+    function getHomepage() {
+
+        if (!homepagePromise) {
+
+
+
+
+
+
+
+
+
+
+
+            homepagePromise = fetch(
+                HOME_URL + "?v=" + Date.now(),
+                {
+                    cache: "no-store"
+                }
+            )
+            .then(response => {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                if (!response.ok) {
+                    throw new Error("Homepage fetch failed");
+                }
+
+
+
+
+
+
+                return response.text();
+
+
+
+
+            })
+            .then(html => {
+
+
+
+
+                return new DOMParser().parseFromString(
+                    html,
+                    "text/html"
+                );
+
+
+
+
+
+
+
+
+
+
+
+            })
+            .catch(error => {
+
+                homepagePromise = null;
+                throw error;
+
+
+            });
+
+        }
+
+        return homepagePromise;
     }
+
+
+    function getArticles(source) {
+
+        if (!source) return [];
+
+        return Array.from(
+            source.querySelectorAll(
+                "article.news-item.post, .news-item.post"
+            )
+        );
+
+    }
+
+
+    function prepareArticle(article) {
+
+        const clone = article.cloneNode(true);
+
+        clone.querySelectorAll("img").forEach(img => {
+
+            const src =
+                img.getAttribute("data-src") ||
+                img.getAttribute("data-lazy-src") ||
+                img.getAttribute("src");
+
+            if (src) {
+                img.src = new URL(src, HOME_URL).href;
+            }
+
+            img.loading = "lazy";
+
+        });
+
+
+        clone.querySelectorAll("a[href]").forEach(link => {
+
+            const href = link.getAttribute("href");
+
+            if (href) {
+                link.href = new URL(href, HOME_URL).href;
+            }
+
+        });
+
+
+        const articleUrl = clone.getAttribute("data-url");
+
+        if (articleUrl) {
+
+            clone.style.cursor = "pointer";
+
+            clone.addEventListener("click", function (event) {
+
+                if (event.target.closest("a")) return;
+
+                window.location.href = new URL(
+                    articleUrl,
+                    HOME_URL
+                ).href;
+
+            });
+
+        }
+
+        return clone;
+
+    }
+
+
+    function showArticles(target, articles) {
+
+
+
+
+        if (!target) return;
+
+        if (!articles.length) return;
+
+        target.innerHTML = "";
+
+        articles.forEach(article => {
+
+            target.appendChild(
+                prepareArticle(article)
+            );
+
+        });
+
+    }
+
+
+    async function loadLatestNews() {
+
+        if (grid) {
+            grid.innerHTML = "<p>వార్తలు లోడ్ అవుతున్నాయి...</p>";
+        }
+
+        if (sidebar) {
+            sidebar.innerHTML = "<p>వార్తలు లోడ్ అవుతున్నాయి...</p>";
+        }
+
+
+
+
+
+        for (let attempt = 1; attempt <= 4; attempt++) {
+
+            try {
+
+                const home = await getHomepage();
+
+                const latestSource =
+                    home.getElementById("latestNewsSource");
+
+                const latestSection =
+                    home.getElementById("latestSection");
+
+
+                let mainArticles = getArticles(latestSource);
+
+                if (!mainArticles.length) {
+                    mainArticles = getArticles(latestSection);
+                }
+
+
+                let sidebarArticles = getArticles(latestSection);
+
+                if (!sidebarArticles.length) {
+                    sidebarArticles = mainArticles;
+                }
+
+
+                // Local source fallback
+                if (!mainArticles.length) {
+
+                    const localSource =
+                        document.getElementById("localLatestNewsSource");
+
+                    mainArticles = getArticles(localSource);
+
+                }
+
+
+                if (mainArticles.length) {
+
+                    showArticles(grid, mainArticles);
+
+                    console.log(
+                        "BS360 Main Latest Articles:",
+                        mainArticles.length
+                    );
+
+                }
+
+
+                if (sidebarArticles.length) {
+
+                    showArticles(sidebar, sidebarArticles);
+
+                    console.log(
+                        "BS360 Latest Sidebar:",
+                        sidebarArticles.length
+                    );
+
+                }
+
+
+                if (mainArticles.length || sidebarArticles.length) {
+                    return;
+                }
+
+
+
+                console.warn(
+                    "Latest articles not found. Retry:",
+                    attempt
+                );
+
+
+            } catch (error) {
+
+                console.error(
+                    "Latest News Loading Error:",
+                    error
+                );
+
+                homepagePromise = null;
+
+            }
+
+
+            if (attempt < 4) {
+
+                await new Promise(resolve =>
+                    setTimeout(resolve, 1000 * attempt)
+                );
+
+            }
+
+        }
+
+
+        // Show message only after all attempts fail
+
+        if (grid && !grid.querySelector(".news-item.post")) {
+
+            grid.innerHTML =
+                "<p>ప్రస్తుతం వార్తలు అందుబాటులో లేవు.</p>";
+
+        }
+
+        if (sidebar && !sidebar.querySelector(".news-item.post")) {
+
+            sidebar.innerHTML =
+                "<p>తాజా వార్తలు అందుబాటులో లేవు.</p>";
+
+        }
+
+    }
+
+
+
+
+
+
+    loadLatestNews();
+
+});
+
+
+/* ================= BS 360 NEWS DARK MODE ================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const themeButton = document.getElementById("themeToggle");
+
+    if (!themeButton) {
+        return;
+    }
+
+    themeButton.addEventListener("click", function () {
+
+        document.body.classList.toggle("dark-mode");
+
+        if (document.body.classList.contains("dark-mode")) {
+            themeButton.textContent = "☀️ Light";
+        } else {
+            themeButton.textContent = "🌙 Dark";
+        }
+
+    });
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =====================================
+   MOVIE REVIEWS PAGE - 15 ARTICLES
+===================================== */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    const moviesGrid = document.getElementById("moviesGrid");
+    const movieSource = document.getElementById("localMovieReviewsSource");
+
+    // Movie Reviews పేజీ కాకపోతే ఈ కోడ్ పనిచేయదు
+    if (!moviesGrid || !movieSource) return;
+
+    const articles = movieSource.querySelectorAll(".news-item.post");
+
+    if (!articles.length) {
+        moviesGrid.innerHTML = "<p>ప్రస్తుతం మూవీ రివ్యూస్ అందుబాటులో లేవు.</p>";
+        return;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+
+    moviesGrid.innerHTML = "";
+
+    articles.forEach(function (article) {
+
+        const clone = article.cloneNode(true);
+
+        const url = clone.getAttribute("data-url");
+        const image = clone.querySelector("img");
+        const title = clone.querySelector(".news-content p");
+
+        if (!url || !title) return;
+
+        // Article URL
+        clone.style.cursor = "pointer";
+        clone.setAttribute("role", "link");
+        clone.setAttribute("tabindex", "0");
+
+        clone.addEventListener("click", function () {
+            window.location.href = url;
+        });
+
+        clone.addEventListener("keydown", function (event) {
+            if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                window.location.href = url;
+            }
+        });
+
+        // Image loading
+        if (image) {
+            image.loading = "lazy";
+            image.onerror = function () {
+                this.style.display = "none";
+            };
+        }
+
+        moviesGrid.appendChild(clone);
+
+    });
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    "use strict";
+
+    const SITE_URL = window.location.origin;
+
+    /* =====================================
+       DARK MODE
+    ===================================== */
+
+    const themeToggle = document.getElementById("themeToggle");
+
+    function applyTheme() {
+
+        if (!themeToggle) return;
+
+        const savedTheme = localStorage.getItem("bs360-theme");
+
+        if (savedTheme === "dark") {
+
+            document.body.classList.add("dark-mode");
+            themeToggle.textContent = "☀️ Light";
+
+        } else {
+
+            document.body.classList.remove("dark-mode");
+            themeToggle.textContent = "🌙 Dark";
+
+        }
+
+    }
+
+    applyTheme();
+
+    if (themeToggle) {
+
+        themeToggle.addEventListener("click", function () {
+
+            document.body.classList.toggle("dark-mode");
+
+            const isDark = document.body.classList.contains("dark-mode");
+
+            themeToggle.textContent = isDark ? "☀️ Light" : "🌙 Dark";
+
+            localStorage.setItem(
+                "bs360-theme",
+                isDark ? "dark" : "light"
+            );
+
+        });
+
+    }
+
+
+    /* =====================================
+       COMMON FUNCTIONS
+    ===================================== */
+
+    function cleanText(text) {
+
+        return String(text || "")
+            .replace(/\s+/g, " ")
+            .trim();
+
+    }
+
 
     function escapeHTML(text) {
+
         return String(text || "").replace(/[&<>"']/g, function (char) {
+
             return {
-                "&": "&",
-                "<": "<",
-                ">": ">",
-                '"': """,
-                "'": "'"
+                "&": "&amp;",
+                "<": "&lt;",
+                ">": "&gt;",
+                '"': "&quot;",
+                "'": "&#39;"
             }[char];
+
         });
+
     }
 
-    function normalizeUrl(rawUrl) {
+
+    /* =====================================
+       ARTICLE URL NORMALIZATION
+
+       /latest-news/slug/
+       becomes
+       /slug/
+    ===================================== */
+
+    function normalizeArticleUrl(rawUrl) {
+
         if (!rawUrl) return "";
+
         try {
+
             const url = new URL(rawUrl, SITE_URL + "/");
-            if (url.origin !== SITE_URL) return url.href;
-            let pathname = url.pathname
-                .replace(/^\/latest-news\/+/i, "/")
-                .replace(/^\/latest-news\/?$/i, "/");
+
+            /* External links unchanged */
+
+            if (url.origin !== SITE_URL) {
+                return url.href;
+            }
+
+            let pathname = url.pathname;
+
+            /* Remove latest-news prefix */
+
+            pathname = pathname.replace(
+                /^\/latest-news\/+/i,
+                "/"
+            );
+
+            pathname = pathname.replace(
+                /^\/latest-news\/?$/i,
+                "/"
+            );
+
+            /* Add trailing slash to folder URLs */
+
             if (
                 pathname !== "/" &&
                 !pathname.endsWith("/") &&
                 !/\.[a-z0-9]+$/i.test(pathname)
             ) {
+
                 pathname += "/";
+
             }
+
             return pathname + url.search + url.hash;
+
         } catch (error) {
+
+            console.warn("Invalid article URL:", rawUrl);
+
             return "";
+
         }
+
     }
 
-    function normalizeImage(rawImage) {
+
+    /* =====================================
+       IMAGE URL NORMALIZATION
+    ===================================== */
+
+    function normalizeImageUrl(rawImage) {
+
         if (!rawImage) return "";
+
         try {
+
             return new URL(rawImage, SITE_URL + "/").href;
+
         } catch (error) {
+
             return "";
+
         }
+
     }
 
-    function extractArticles(container) {
-        if (!container) return [];
-        const items = Array.from(container.querySelectorAll("article, .news-item"));
+
+    /* =====================================
+       GET IMAGE SOURCE
+    ===================================== */
+
+    function getImageSource(image) {
+
+        if (!image) return "";
+
+        return (
+            image.getAttribute("data-src") ||
+            image.getAttribute("data-lazy-src") ||
+            image.getAttribute("src") ||
+            ""
+        );
+
+    }
+
+
+    /* =====================================
+       GET ARTICLES FROM SOURCE
+    ===================================== */
+
+    function getArticles(source) {
+
+        if (!source) return [];
+
+        const selector = [
+            ".news-item.post",
+            "article",
+            ".news-card",
+            ".movie-card",
+            ".post-card",
+            ".latest-news-card",
+            ".trending-card",
+            ".top-news-card",
+            ".review-card",
+            ".news-item"
+        ].join(",");
+
+
+        let items = [];
+
+
+        if (source.matches && source.matches(selector)) {
+
+            items.push(source);
+
+        }
+
+
+        items.push(
+            ...Array.from(source.querySelectorAll(selector))
+        );
+
+
+        /* Fallback: linked images */
+
+        if (!items.length) {
+
+            items = Array.from(
+                source.querySelectorAll("a[href]")
+            ).filter(function (link) {
+
+                return link.querySelector("img");
+
+            });
+
+        }
+
+
+        const articles = items.map(function (item) {
+
+            const image = item.querySelector("img");
+
+
+            const link = item.matches("a[href]")
+                ? item
+                : item.querySelector("a[href]");
+
+
+            const titleNode = item.querySelector(
+                ".news-content p, " +
+                ".news-content h3, " +
+                ".news-title, " +
+                ".article-title, " +
+                "h1, h2, h3, h4, p, .title"
+            );
+
+
+            const title = cleanText(
+
+                titleNode
+                    ? titleNode.textContent
+                    : (link ? link.textContent : image?.alt)
+
+            );
+
+
+            const rawImage = getImageSource(image);
+
+
+            const rawUrl =
+                item.getAttribute("data-url") ||
+                (link ? link.getAttribute("href") : "");
+
+
+            return {
+
+                title: title,
+
+                image: normalizeImageUrl(rawImage),
+
+                alt: image
+                    ? cleanText(image.getAttribute("alt")) || title
+                    : title,
+
+                url: normalizeArticleUrl(rawUrl)
+
+            };
+
+        }).filter(function (article) {
+
+            return (
+                article.title &&
+                article.image &&
+                article.url &&
+                !article.url.startsWith("#") &&
+                !/^javascript:/i.test(article.url)
+            );
+
+        });
+
+
+        /* Remove duplicate URLs */
+
+        return removeDuplicates(articles);
+
+    }
+
+
+    /* =====================================
+       REMOVE DUPLICATE ARTICLES
+    ===================================== */
+
+    function removeDuplicates(articles) {
+
         const seen = new Set();
 
-        return items
-            .map(function (item) {
-                const img = item.querySelector("img");
-                const link = item.matches("a[href]") ? item : item.querySelector("a[href]");
-                const titleEl = item.querySelector(".news-content p, .news-content h3, h1, h2, h3, h4, p");
+        return articles.filter(function (article) {
 
-                const title = cleanText(
-                    titleEl ? titleEl.textContent : (link ? link.textContent : (img ? img.alt : ""))
+            if (!article.url || seen.has(article.url)) {
+                return false;
+            }
+
+            seen.add(article.url);
+
+            return true;
+
+        });
+
+    }
+
+
+    /* =====================================
+       HOMEPAGE SOURCE FUNCTIONS
+    ===================================== */
+
+    function getFirstAvailableArticles(home, ids) {
+
+        for (const id of ids) {
+
+            const source = home.getElementById(id);
+
+            const articles = getArticles(source);
+
+            if (articles.length) {
+
+                return articles;
+
+            }
+
+        }
+
+        return [];
+
+    }
+
+
+    function getArticlesByHeading(home, labels) {
+
+        const wanted = labels.map(function (label) {
+
+            return cleanText(label).toLowerCase();
+
+        });
+
+
+        const headings = Array.from(
+
+            home.querySelectorAll(
+                "h1,h2,h3,h4,.section-title,.section-head," +
+                ".sidebar-title,.category-title"
+            )
+
+        );
+
+
+        for (const heading of headings) {
+
+            const headingText = cleanText(
+                heading.textContent
+            ).toLowerCase();
+
+
+            const matches = wanted.some(function (label) {
+
+                return (
+                    headingText === label ||
+                    headingText.includes(label)
                 );
-                const rawImg = img
-                    ? (img.getAttribute("data-src") || img.getAttribute("data-lazy-src") || img.getAttribute("src") || "")
-                    : "";
-                const rawUrl = item.getAttribute("data-url") || (link ? link.getAttribute("href") : "");
 
-                return {
-                    title: title,
-                    image: normalizeImage(rawImg),
-                    alt: img ? (cleanText(img.getAttribute("alt")) || title) : title,
-                    url: normalizeUrl(rawUrl)
-                };
-            })
-            .filter(function (art) {
-                if (!art.title || !art.image || !art.url) return false;
-                if (art.url.startsWith("#") || /^javascript:/i.test(art.url)) return false;
-                if (seen.has(art.url)) return false;
-                seen.add(art.url);
-                return true;
             });
+
+
+            if (!matches) continue;
+
+
+            let parent = heading;
+
+
+            for (
+                let level = 0;
+                level < 5 && parent;
+                level++, parent = parent.parentElement
+            ) {
+
+                const articles = getArticles(parent);
+
+                if (articles.length) {
+
+                    return articles;
+
+                }
+
+            }
+
+        }
+
+        return [];
+
     }
 
-    function renderSidebarList(articles) {
-        return articles
-            .map(function (art) {
-                return `
-                    <a href="${escapeHTML(art.url)}" class="sidebar-item">
-                        <img src="${escapeHTML(art.image)}" alt="${escapeHTML(art.alt)}">
-                        <div class="sidebar-item-title">${escapeHTML(art.title)}</div>
-                    </a>
-                `;
-            })
-            .join("");
+
+    function getSectionArticles(home, ids, labels) {
+
+        const articles = getFirstAvailableArticles(home, ids);
+
+        if (articles.length) {
+
+            return articles;
+
+        }
+
+        return getArticlesByHeading(home, labels);
+
     }
+
 
     /* =====================================
-       3. HOMEPAGE FETCH (ONLY WHEN NEEDED)
+       LOCAL ARTICLES
     ===================================== */
-    let homeDocPromise = null;
 
-    function getHomeDoc() {
-        if (!homeDocPromise) {
-            homeDocPromise = fetch("/index.html?v=" + Date.now(), { cache: "no-store" })
-                .then(function (res) {
-                    if (!res.ok) throw new Error("Failed to fetch homepage");
-                    return res.text();
-                })
-                .then(function (html) {
-                    return new DOMParser().parseFromString(html, "text/html");
-                })
-                .catch(function (err) {
-                    homeDocPromise = null;
-                    throw err;
+    const localNational = getArticles(
+
+        document.getElementById("localNationalSource")
+
+    );
+
+
+    /* =====================================
+       CARD HTML
+    ===================================== */
+
+    function cardHTML(article) {
+
+        return `
+
+            <a href="${escapeHTML(article.url)}"
+               class="movie-card">
+
+                <img
+                    src="${escapeHTML(article.image)}"
+                    alt="${escapeHTML(article.alt)}"
+                    loading="lazy"
+                >
+
+                <div class="movie-card-content">
+
+                    <h3 class="movie-card-title">
+                        ${escapeHTML(article.title)}
+                    </h3>
+
+                </div>
+
+            </a>
+
+        `;
+
+    }
+
+
+    /* =====================================
+       SIDEBAR HTML
+    ===================================== */
+
+    function sidebarHTML(article) {
+
+        return `
+
+            <a href="${escapeHTML(article.url)}"
+               class="sidebar-item">
+
+                <img
+                    src="${escapeHTML(article.image)}"
+                    alt="${escapeHTML(article.alt)}"
+                    loading="lazy"
+                >
+
+                <div class="sidebar-item-title">
+                    ${escapeHTML(article.title)}
+                </div>
+
+            </a>
+
+        `;
+
+    }
+
+
+    /* =====================================
+       DISPLAY HTML
+    ===================================== */
+
+    function show(id, html) {
+
+        const element = document.getElementById(id);
+
+        if (element) {
+
+            element.innerHTML = html;
+
+        }
+
+    }
+
+
+    /* =====================================
+       FETCH HTML DOCUMENT
+    ===================================== */
+
+    async function fetchDocument(url) {
+
+        const response = await fetch(
+            url + (url.includes("?") ? "&" : "?") +
+            "v=" + Date.now(),
+            {
+                cache: "no-store"
+            }
+        );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Page load failed: " + url
+            );
+
+        }
+
+
+        const html = await response.text();
+
+        return new DOMParser().parseFromString(
+            html,
+            "text/html"
+        );
+
+    }
+
+
+    /* =====================================
+       HOMEPAGE DOCUMENT
+       Fetch only once
+    ===================================== */
+
+    let homepagePromise = null;
+
+
+    function getHomepageDocument() {
+
+        if (!homepagePromise) {
+
+            homepagePromise = fetchDocument("/index.html")
+                .catch(function (error) {
+
+                    homepagePromise = null;
+
+                    throw error;
+
                 });
+
         }
-        return homeDocPromise;
+
+        return homepagePromise;
+
     }
 
-    /* =====================================
-       4. POPULATE EMPTY SIDEBAR CONTAINERS
-          (NEVER OVERWRITE NON-EMPTY ONES)
-    ===================================== */
-    async function hydrateSidebar(targetId, sectionIds) {
-        const target = document.getElementById(targetId);
-        if (!target) return;
 
-        // If HTML already has articles inside, keep them immediately visible
-        if (target.querySelector("article, .sidebar-item, .news-item")) {
-            return;
+    /* =====================================
+       SIDEBAR HEIGHT
+    ===================================== */
+
+    function matchSidebarToNationalHeight() {
+
+        const main = document.querySelector(".movies-main");
+
+        const sidebar = document.querySelector(".article-sidebar");
+
+
+        if (!main || !sidebar) return;
+
+
+        if (window.innerWidth > 1100) {
+
+            const height = Math.ceil(
+                main.getBoundingClientRect().height
+            );
+
+            sidebar.style.height = height + "px";
+
+            sidebar.style.maxHeight = height + "px";
+
+            sidebar.style.overflowY = "auto";
+
+        } else {
+
+            sidebar.style.height = "";
+
+            sidebar.style.maxHeight = "";
+
+            sidebar.style.overflowY = "";
+
         }
+
+    }
+
+
+    window.addEventListener(
+        "resize",
+        matchSidebarToNationalHeight
+    );
+
+
+    /* =====================================
+       LOAD HOMEPAGE LATEST / TOP / TRENDING
+    ===================================== */
+
+    async function loadHomepageNews() {
 
         try {
-            const home = await getHomeDoc();
-            let collected = [];
 
-            sectionIds.forEach(function (secId) {
-                const sec = home.getElementById(secId);
-                if (sec) {
-                    collected = collected.concat(extractArticles(sec));
-                }
+            const home = await getHomepageDocument();
+
+
+            /* HOMEPAGE LATEST NEWS */
+
+            const homeLatest = getSectionArticles(
+
+                home,
+
+                [
+                    "latestNewsSource",
+                    "latestGrid",
+                    "latestSection",
+                    "latestNews",
+                    "latestNewsList"
+                ],
+
+                [
+                    "Latest News",
+                    "Latest",
+                    "తాజా వార్తలు",
+                    "తాజా వార్త"
+                ]
+
+            );
+
+
+            /* LOCAL + HOMEPAGE LATEST */
+
+            const allLatest = removeDuplicates([
+
+                ...localNational,
+
+                ...homeLatest
+
+            ]);
+
+
+            /* TOP NEWS */
+
+            const topNews = getSectionArticles(
+
+                home,
+
+                [
+                    "topNewsSource",
+                    "topNewsGrid",
+                    "topNews",
+                    "topStory",
+                    "topStoryGrid",
+                    "topStorySection",
+                    "topNewsSection"
+                ],
+
+                [
+                    "Top News",
+                    "Top Story",
+                    "టాప్ న్యూస్",
+                    "ముఖ్య వార్తలు",
+                    "ప్రధాన వార్తలు"
+                ]
+
+            );
+
+
+            /* TRENDING NEWS */
+
+            const trending = getSectionArticles(
+
+                home,
+
+                [
+                    "trendingSource",
+                    "trendingGrid",
+                    "trendingSection",
+                    "trendingNews",
+                    "trendingTrack"
+                ],
+
+                [
+                    "Trending News",
+                    "Trending",
+                    "ట్రెండింగ్ న్యూస్",
+                    "ట్రెండింగ్"
+                ]
+
+            );
+
+
+            /* MAIN LATEST GRID */
+
+            show(
+
+                "nationalGrid",
+
+                allLatest.length
+
+                    ? allLatest.map(cardHTML).join("")
+
+                    : '<div class="loading">తాజా వార్తలు దొరకలేదు.</div>'
+
+            );
+
+
+            /* TOP NEWS SIDEBAR */
+
+            show(
+
+                "topNewsSidebar",
+
+                topNews.length
+
+                    ? topNews.map(sidebarHTML).join("")
+
+                    : '<div class="loading">Top News దొరకలేదు.</div>'
+
+            );
+
+
+            /* TRENDING SIDEBAR */
+
+            show(
+
+                "trendingSidebar",
+
+                trending.length
+
+                    ? trending.map(sidebarHTML).join("")
+
+                    : '<div class="loading">Trending News దొరకలేదు.</div>'
+
+            );
+
+
+            /* SIDEBAR HEIGHT */
+
+            requestAnimationFrame(function () {
+
+                matchSidebarToNationalHeight();
+
             });
 
-            if (collected.length) {
-                target.innerHTML = renderSidebarList(collected);
-            }
-        } catch (err) {
-            console.warn("Sidebar hydrate warning for #" + targetId + ":", err);
+
+            console.log("BS360 Latest News Loaded", {
+
+                localArticles: localNational.length,
+
+                homepageLatest: homeLatest.length,
+
+                totalLatest: allLatest.length,
+
+                topNews: topNews.length,
+
+                trending: trending.length
+
+            });
+
+
+        } catch (error) {
+
+            console.error(
+                "BS360 Homepage Error:",
+                error
+            );
+
+
+            show(
+
+                "nationalGrid",
+
+                '<div class="loading">తాజా వార్తలు లోడ్ కాలేదు. Homepage తనిఖీ చేయండి.</div>'
+
+            );
+
+
+            show(
+
+                "topNewsSidebar",
+
+                '<div class="loading">Top News లోడ్ కాలేదు.</div>'
+
+            );
+
+
+            show(
+
+                "trendingSidebar",
+
+                '<div class="loading">Trending News లోడ్ కాలేదు.</div>'
+
+            );
+
         }
+
     }
 
-    // Only runs on pages where these empty containers exist
-    hydrateSidebar("nationalSidebarArticles", ["nationalSection"]);
-    hydrateSidebar("worldSidebarArticles", ["worldSection"]);
-    hydrateSidebar("topNewsSidebar", ["topNewsSource"]);
-
-    const trendingEl = document.getElementById("trendingSidebar");
-    if (trendingEl && !trendingEl.querySelector("article, .sidebar-item, .news-item")) {
-        hydrateSidebar("trendingSidebar", ["trendingSection"]);
-    }
 
     /* =====================================
-       5. LATEST NEWS GRID / SIDEBAR (SUBPAGES)
+       LOAD NATIONAL SIDEBAR
     ===================================== */
-    const latestGrid = document.getElementById("latestNewsGrid");
-    const latestSidebar = document.getElementById("latestSidebar");
 
-    if (latestGrid || latestSidebar) {
-        (async function () {
+    async function loadNationalSidebar() {
+
+        const target = document.getElementById(
+            "nationalSidebarArticles"
+        );
+
+
+        if (!target) return;
+
+
+        try {
+
+            let articles = [...localNational];
+
+
+            /* NATIONAL PAGE */
+
+            let nationalDoc = null;
+
+
             try {
-                const home = await getHomeDoc();
-                const latestArticles = extractArticles(home.getElementById("latestSection"));
 
-                if (latestArticles.length) {
-                    const html = latestArticles
-                        .map(function (art) {
-                            return `
-                                <article class="news-item post">
-                                    <a href="${escapeHTML(art.url)}">
-                                        <img src="${escapeHTML(art.image)}" alt="${escapeHTML(art.alt)}">
-                                    </a>
-                                    <div class="news-content">
-                                        <p><a href="${escapeHTML(art.url)}">${escapeHTML(art.title)}</a></p>
-                                    </div>
-                                </article>
-                            `;
-                        })
-                        .join("");
+                nationalDoc = await fetchDocument("/national/");
 
-                    if (latestGrid) latestGrid.innerHTML = html;
-                    if (latestSidebar) latestSidebar.innerHTML = html;
+            } catch (folderError) {
+
+                try {
+
+                    nationalDoc = await fetchDocument("/national.html");
+
+                } catch (fileError) {
+
+                    console.warn(
+                        "National page not available:",
+                        fileError
+                    );
+
                 }
-            } catch (err) {
-                console.warn("Latest news load warning:", err);
+
             }
-        })();
-    }
 
-    /* =====================================
-       6. MOVIE REVIEWS PAGE
-    ===================================== */
-    const moviesGrid = document.getElementById("moviesGrid");
-    const movieSource = document.getElementById("localMovieReviewsSource");
 
-    if (moviesGrid && movieSource) {
-        const articles = movieSource.querySelectorAll(".news-item.post");
-        if (articles.length) {
-            moviesGrid.innerHTML = "";
-            articles.forEach(function (article) {
-                const clone = article.cloneNode(true);
-                const url = clone.getAttribute("data-url");
-                const img = clone.querySelector("img");
-                const title = clone.querySelector(".news-content p");
-                if (!url || !title) return;
+            if (nationalDoc) {
 
-                clone.style.cursor = "pointer";
-                clone.addEventListener("click", function () {
-                    window.location.href = url;
-                });
-                if (img) {
-                    img.onerror = function () {
-                        this.style.display = "none";
-                    };
+                let found = getArticles(
+
+                    nationalDoc.getElementById("localNationalSource")
+
+                );
+
+
+                if (!found.length) {
+
+                    found = getFirstAvailableArticles(
+
+                        nationalDoc,
+
+                        [
+                            "nationalNewsSource",
+                            "nationalSource",
+                            "nationalGrid",
+                            "nationalNewsGrid",
+                            "localNationalSource"
+                        ]
+
+                    );
+
                 }
-                moviesGrid.appendChild(clone);
+
+
+                if (!found.length) {
+
+                    found = getArticlesByHeading(
+
+                        nationalDoc,
+
+                        [
+                            "జాతీయ వార్తలు",
+                            "National News",
+                            "National"
+                        ]
+
+                    );
+
+                }
+
+
+                articles = articles.concat(found);
+
+            }
+
+
+            /* HOMEPAGE NATIONAL ARTICLES */
+
+            try {
+
+                const home = await getHomepageDocument();
+
+
+                const homeNational = getSectionArticles(
+
+                    home,
+
+                    [
+                        "nationalNewsSource",
+                        "nationalSource",
+                        "nationalNewsGrid",
+                        "nationalGrid",
+                        "nationalNewsSection"
+                    ],
+
+                    [
+                        "National News",
+                        "జాతీయ వార్తలు",
+                        "జాతీయ వార్త"
+                    ]
+
+                );
+
+
+                articles = articles.concat(homeNational);
+
+
+            } catch (homeError) {
+
+                console.warn(
+                    "Homepage National News Error:",
+                    homeError
+                );
+
+            }
+
+
+            /* REMOVE DUPLICATES */
+
+            articles = removeDuplicates(articles);
+
+
+            /* SHOW ALL NATIONAL ARTICLES */
+
+            target.innerHTML = articles.length
+
+                ? articles.map(sidebarHTML).join("")
+
+                : '<p class="loading">జాతీయ వార్తలు దొరకలేదు.</p>';
+
+
+            requestAnimationFrame(function () {
+
+                matchSidebarToNationalHeight();
+
             });
+
+
+            console.log(
+                "BS360 National Sidebar:",
+                articles.length
+            );
+
+
+        } catch (error) {
+
+            console.error(
+                "National Sidebar Error:",
+                error
+            );
+
+
+            target.innerHTML =
+                '<p class="loading">జాతీయ వార్తలు లోడ్ కాలేదు.</p>';
+
         }
+
     }
 
+
     /* =====================================
-       7. PREVENT IMAGE DRAG
+       PREVENT IMAGE DRAG
     ===================================== */
+
     document.querySelectorAll("img").forEach(function (img) {
+
         img.addEventListener("dragstart", function (event) {
+
             event.preventDefault();
+
         });
+
     });
+
+
+    /* =====================================
+       START
+    ===================================== */
+
+    loadHomepageNews();
+
+    loadNationalSidebar();
+
+
 });
 
-/* =====================================
-   8. NAVIGATION SPACER
-===================================== */
-(function () {
-    const nav = document.querySelector(".bs-navigation");
+
+
+
+  (function () {
+    const nav = document.querySelector('.bs-navigation');
     if (!nav) return;
 
-    const spacer = document.createElement("div");
-    spacer.className = "bs-nav-spacer";
-    nav.insertAdjacentElement("afterend", spacer);
+    const spacer = document.createElement('div');
+    spacer.className = 'bs-nav-spacer';
+    nav.insertAdjacentElement('afterend', spacer);
 
     function syncNavSpace() {
-        spacer.style.height = nav.offsetHeight + "px";
+      spacer.style.height = nav.offsetHeight + 'px';
     }
 
     syncNavSpace();
-    window.addEventListener("resize", syncNavSpace);
-})();
+    window.addEventListener('resize', syncNavSpace);
+  })();
