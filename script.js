@@ -1473,3 +1473,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 });
+
+
+
+
+  (function () {
+    const nav = document.querySelector('.bs-navigation');
+    if (!nav) return;
+
+    const spacer = document.createElement('div');
+    spacer.className = 'bs-nav-spacer';
+    nav.insertAdjacentElement('afterend', spacer);
+
+    function syncNavSpace() {
+      spacer.style.height = nav.offsetHeight + 'px';
+    }
+
+    syncNavSpace();
+    window.addEventListener('resize', syncNavSpace);
+  })();
