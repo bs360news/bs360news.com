@@ -3665,3 +3665,18 @@ body.dark-mode #aptsSection .section-heading {
         z-index: 9999;
     }
 }
+
+
+<!-- ఆర్టికల్ పైన ఉండే మెయిన్ ఇమేజ్ కోసం -->
+<img src="/article-main-image.webp" 
+     alt="వార్త వివరాలు" 
+     width="800" 
+     height="450" 
+     fetchpriority="high">
+
+<!-- ఆర్టికల్ కింద లేదా సైడ్‌బార్‌లో ఉండే ఇతర ఇమేజెస్ కోసం -->
+<img src="/related-news.webp" 
+     alt="సంబంధిత వార్త" 
+     width="300" 
+     height="180" 
+     loading="lazy">
